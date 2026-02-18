@@ -1,7 +1,7 @@
 var database = require("../database/config");
 
 function buscarPorId(id) {
-  var instrucaoSql = `SELECT * FROM token WHERE id_token = '${id}'`;
+  var instrucaoSql = `SELECT id_token FROM token WHERE id_token = '${id}'`;
 
   return database.executar(instrucaoSql);
 }

@@ -27,8 +27,8 @@
             <h6>Email</h6>
           </label>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" id="email_input" placeholder="Ex.: jose_2012" aria-label="Recipient’s username"
-              aria-describedby="basic-addon2">
+            <input type="text" class="form-control" id="email_input" placeholder="Ex.: jose_2012"
+              aria-label="Recipient’s username" aria-describedby="basic-addon2">
             <span class="input-group-text" id="basic-addon2">@btgpactual.com</span>
           </div>
         </div>
@@ -93,6 +93,8 @@
       tokenVar == ""
     ) {
       alert("Mensagem de erro para todos os campos em branco");
+      return false;
+
     } else {
 
       // trataiva da senha 
@@ -127,21 +129,77 @@
       if (senhaVar < 8 ||
         senhaVar != confirmacaoSenhaVar ||
         !contemNumeros ||
-        !contemCaractereEspecial 
+        !contemCaractereEspecial
       ) {
         console.log('A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais')
+        return false;
 
       } else {
         console.log('Cadastro ok')
-        return false;
       }
     }
 
-    // Verificando se o código de ativação é de alguma empresa cadastrada
+    // Receber o id do token
+    let idTokenVincular = '';
 
-    fetch(`/token/buscar/${tokenSplit[0]}`).then((resposta)=>{
-      console.log(resposta)
+    fetch(`/token/buscar/${tokenSplit[0]}`, {
+      method: "GET",
+    }).then((resposta) => {
+      resposta.json().then((array_token) => {
+        console.log('Estou aqui buscando pelo id_token' + array_token[0].id_token)
+        idTokenVincular = array_token[0].id_token;
+
+        console.log('idTokenVincular = ' + idTokenVincular)
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            nomeServer: nomeVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar,
+            idTokenVincularServer: idTokenVincular
+          }),
+        })
+          .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+              mensagem_erro.innerHTML =
+                "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+              setTimeout(() => {
+                window.location = "login.html";
+              }, "2000");
+
+
+            } else {
+              console.log(nomeServer, emailServer, senhaServer, idTokenVincularServer)
+              throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+          });
+
+        return false;
+      })
+
     })
+
+
+  }
+
+
+  /*
+      // Verificando se o código de ativação é de alguma empresa cadastrada
     // for (let i = 0; i < listaTokensCadastrados.length; i++) {
     //   console.log('estou no for listaToken')
     //   if (listaTokensCadastrados[i].token_ativacao == tokenSplit[0]) {
@@ -150,52 +208,9 @@
     //     break;
     //   } else {
     //     mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-    //     finalizarAguardar();
+    //     
     //   }
     // }
-
-    // Enviando o valor da nova input
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
-        nomeServer: nomeVar,
-        emailServer: emailVar,
-        senhaServer: senhaVar,
-        idTokenVincularServer: idTokenVincular
-      }),
-    })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-
-        if (resposta.ok) {
-
-
-          mensagem_erro.innerHTML =
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-          setTimeout(() => {
-            window.location = "login.html";
-          }, "2000");
-
-          limparFormulario();
-          finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-        finalizarAguardar();
-      });
-
-    return false;
-  }
-
   // Listando empresas cadastrados 
   function listar() {
     fetch("/token/listar", {
@@ -214,8 +229,8 @@
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
       });
+  */
 
-  }
 
 
 </script>
