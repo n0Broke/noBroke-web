@@ -26,7 +26,11 @@
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
             <h6>Email</h6>
           </label>
-          <input type="text" class="form-control" id="email_input" placeholder="Ex.: jose@empresa.com">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" id="email_input" placeholder="Ex.: jose_2012" aria-label="Recipient’s username"
+              aria-describedby="basic-addon2">
+            <span class="input-group-text" id="basic-addon2">@btgpactual.com</span>
+          </div>
         </div>
         <div class="mb-3">
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
@@ -55,6 +59,7 @@
       </div>
     </div>
   </div>
+  <div id="mensagem_erro"></div>
 
 
 </body>
@@ -64,8 +69,8 @@
   integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script>
 
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
+  // Array para armazenar Tokens cadastrados para validação de código de ativação 
+  let listaTokensCadastrados = [];
 
   function cadastrar() {
 
@@ -76,7 +81,6 @@
     var senhaVar = senha_input.value.trim();
     var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
     var tokenVar = token_input.value.trim();
-    var idEmpresaVincular
 
     console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, tokenVar)
 
@@ -91,6 +95,7 @@
       alert("Mensagem de erro para todos os campos em branco");
     } else {
 
+      // trataiva da senha 
       let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
       let caractereEsperial = ['!', '@', '#', '"', '$', '%', '¨', '&', '*', '(', ')', '-', '+']
       let contemNumeros = false;
@@ -110,112 +115,106 @@
         }
       }
 
-      let contemDominio = false;
-      let finalPontoCom = false;
+      // tratativa do email
+      emailSplit = emailVar.split('@', 2)
+      emailVar = (emailSplit[0] + '@btgPactual.com')
 
-      for (i = 0; i < emailVar.length; i++) {
-        if (emailVar.includes('@')) {
-          contemDominio = true;
-          break;
-        }
-      }
-      
-      for (i = 0; i < emailVar.length; i++) {
-        if (emailVar.endsWith('.com')) {
-          finalPontoCom = true;
-          break;
-        }
-      }
-      
+      console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailVar)
+
+      // tratativa do token
+      tokenSplit = tokenVar.split('-')
+
       if (senhaVar < 8 ||
         senhaVar != confirmacaoSenhaVar ||
-        contemNumeros == false ||
-        contemCaractereEspecial == false ||
-        contemDominio == false ||
-        finalPontoCom == false
+        !contemNumeros ||
+        !contemCaractereEspecial 
       ) {
         console.log('A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais')
-        
+
       } else {
         console.log('Cadastro ok')
         return false;
       }
     }
-    
-        // Verificando se o código de ativação é de alguma empresa cadastrada
-        for (let i = 0; i < listaEmpresasCadastradas.length; i++) {
-          if (listaEmpresasCadastradas[i].token_ativacao == tokenVar) {
-            idEmpresaVincular = listaEmpresasCadastradas[i].id
-            console.log("Código de ativação válido.");
-            break;
-          } else {
-            cardErro.style.display = "block";
-            mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-            finalizarAguardar();
-          }
+
+    // Verificando se o código de ativação é de alguma empresa cadastrada
+
+    fetch(`/token/buscar/${tokenSplit[0]}`).then((resposta)=>{
+      console.log(resposta)
+    })
+    // for (let i = 0; i < listaTokensCadastrados.length; i++) {
+    //   console.log('estou no for listaToken')
+    //   if (listaTokensCadastrados[i].token_ativacao == tokenSplit[0]) {
+    //     idTokenVincular = listaTokensCadastrados[i].id
+    //     console.log("Código de ativação válido.");
+    //     break;
+    //   } else {
+    //     mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
+    //     finalizarAguardar();
+    //   }
+    // }
+
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        // crie um atributo que recebe o valor recuperado aqui
+        // Agora vá para o arquivo routes/usuario.js
+        nomeServer: nomeVar,
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+        idTokenVincularServer: idTokenVincular
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+
+        if (resposta.ok) {
+
+
+          mensagem_erro.innerHTML =
+            "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+          setTimeout(() => {
+            window.location = "login.html";
+          }, "2000");
+
+          limparFormulario();
+          finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
         }
-    
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            nomeServer: nomeVar,
-            emailServer: emailVar,
-            senhaServer: senhaVar,
-            idEmpresaVincularServer: idEmpresaVincular
-          }),
-        })
-          .then(function (resposta) {
-            console.log("resposta: ", resposta);
-    
-            if (resposta.ok) {
-              cardErro.style.display = "block";
-    
-              mensagem_erro.innerHTML =
-                "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-    
-              setTimeout(() => {
-                window.location = "login.html";
-              }, "2000");
-    
-              limparFormulario();
-              finalizarAguardar();
-            } else {
-              throw "Houve um erro ao tentar realizar o cadastro!";
-            }
-          })
-          .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        finalizarAguardar();
+      });
+
+    return false;
+  }
+
+  // Listando empresas cadastrados 
+  function listar() {
+    fetch("/token/listar", {
+      method: "GET",
+    })
+      .then(function (resposta) {
+        resposta.json().then((tokens) => {
+          token.forEach((token) => {
+            listaTokensCadastrados.push(token);
+
+            console.log("listaTokensCadastrados")
+            console.log(listaTokensCadastrados[0].token_ativacao)
           });
-    
-        return false;
-      }
-    
-      // Listando empresas cadastradas 
-      function listar() {
-        fetch("/empresas/listar", {
-          method: "GET",
-        })
-          .then(function (resposta) {
-            resposta.json().then((empresas) => {
-              empresas.forEach((empresa) => {
-                listaEmpresasCadastradas.push(empresa);
-    
-                console.log("listaEmpresasCadastradas")
-                console.log(listaEmpresasCadastradas[0].token_ativacao)
-              });
-            });
-          })
-          .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-          });
-        
+        });
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
   }
 
 
