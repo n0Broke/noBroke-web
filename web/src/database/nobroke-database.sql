@@ -2,6 +2,13 @@ CREATE DATABASE nobroke_web;
 
 USE nobroke_web;
 
+CREATE TABLE empresa(
+id_empresa INT PRIMARY KEY AUTO_INCREMENT,
+nome_empresa VARCHAR(80) NOT NULL,
+cnpj CHAR(14) UNIQUE NOT NULL,
+data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP
+) AUTO_INCREMENT = 2000;
+
 CREATE TABLE cargo(
 id_cargo INT PRIMARY KEY AUTO_INCREMENT,
 nome_cargo VARCHAR(45) NOT NULL,
@@ -32,12 +39,14 @@ id_usuario INT PRIMARY KEY AUTO_INCREMENT,
 nome VARCHAR(60) NOT NULL,
 email VARCHAR(80) UNIQUE NOT NULL,
 senha VARCHAR(45),
-ativo TINYINT(1),
+ativo TINYINT,
 data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP,
 fk_adm INT NULL,
 FOREIGN KEY (fk_adm) REFERENCES usuario(id_usuario),
 fk_token INT UNIQUE,
-FOREIGN KEY (fk_token) REFERENCES token(id_token)
+FOREIGN KEY (fk_token) REFERENCES token(id_token),
+fk_empresa INT,
+FOREIGN KEY (fk_empresa) REFERENCES empresa(id_empresa)
 );
 
 select * from usuario;
