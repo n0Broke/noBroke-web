@@ -1,4 +1,17 @@
 var tokenModel = require("../models/tokenModel");
+
+function buscarPorId(req, res) {
+  var id = req.params.id;
+
+  tokenModel.buscarPorId(id).then((resultado) => {
+    res.status(200).json(resultado);
+  });
+}
+
+module.exports = {
+  buscarPorId
+};
+
 /*
 function buscarPorCnpj(req, res) {
   var cnpj = req.query.cnpj;
@@ -16,15 +29,6 @@ function listar(req, res) {
 
 */
 
-
-function buscarPorId(req, res) {
-  var id = req.params.id;
-  
-  tokenModel.buscarPorId(id).then((resultado) => {
-    res.status(200).json(resultado);
-  });
-}
- 
 /*
 function cadastrar(req, res) {
   var cnpj = req.body.cnpj;
@@ -43,6 +47,3 @@ function cadastrar(req, res) {
   });
 }
 */
-module.exports = {
-  buscarPorId
-};
