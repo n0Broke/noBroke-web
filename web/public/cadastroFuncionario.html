@@ -46,9 +46,9 @@
         </div>
         <div class="mb-3">
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
-            <h6>Token de Ativação*</h6>
+            <h6>CPF*</h6>
           </label>
-          <input type="text" class="form-control" id="token_input" placeholder="XXX-XXX-XXX">
+          <input type="text" class="form-control" id="cpf_input" placeholder="XXXXXXXXX-XX">
         </div>
         <div class="d-grid gap-2 col-6 mx-auto">
           <button class="btn btn-light button-color" type="button" onclick="cadastrar()">CADASTRE-SE</button>
@@ -58,7 +58,7 @@
         <a href="index.html">
           <img width="70%" src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png" alt="">
         </a>
-        
+
       </div>
     </div>
   </div>
@@ -74,6 +74,7 @@
 
 
   function cadastrar() {
+    id_funcionario = sessionStorage.ID_USUARIO = json.id;
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
@@ -81,9 +82,9 @@
     var emailVar = email_input.value.trim();
     var senhaVar = senha_input.value.trim();
     var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
-    var tokenVar = token_input.value.trim();
+    var cpfVar = cpf_input.value.trim();
 
-    console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, tokenVar)
+    console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, cpfVar)
 
     // Verificando senha e email 
     if (
@@ -91,7 +92,7 @@
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      tokenVar == ""
+      cpfVar == ""
     ) {
       alert("Mensagem de erro para todos os campos em branco");
       return false;
@@ -124,8 +125,7 @@
 
       console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailVar)
 
-      // tratativa do token
-      tokenSplit = tokenVar.split('-')
+      // tratativa do cpf
 
       if (senhaVar < 8 ||
         senhaVar != confirmacaoSenhaVar ||
@@ -140,17 +140,12 @@
       }
     }
 
-    // Receber o id do token
-    let idTokenVincular = '';
-
     fetch(`/token/buscar/${tokenSplit[0]}`, {
       method: "GET",
     }).then((resposta) => {
       resposta.json().then((array_token) => {
         console.log('Estou aqui buscando pelo id_token' + array_token[0].id_token)
-        idTokenVincular = array_token[0].id_token;
 
-        console.log('idTokenVincular = ' + idTokenVincular)
 
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
@@ -164,7 +159,7 @@
             nomeServer: nomeVar,
             emailServer: emailVar,
             senhaServer: senhaVar,
-            idTokenVincularServer: idTokenVincular
+            cpf: cpfVar
           }),
         })
           .then(function (resposta) {
