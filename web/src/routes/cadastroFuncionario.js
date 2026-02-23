@@ -7,4 +7,4 @@ router.post("/cadastrar", function (req, res) {
      cadastroFuncionarioController.cadastrar(req, res);
 });
 
-module.exports = router;
+module.exports = router; 

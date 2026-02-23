@@ -24,6 +24,12 @@
         </div>
         <div class="mb-3">
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
+            <h6>CPF*</h6>
+          </label>
+          <input type="text" class="form-control" id="cpf_input" placeholder="XXXXXXXXX-XX">
+        </div>
+        <div class="mb-3">
+          <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
             <h6>Email*</h6>
           </label>
           <div class="input-group mb-3">
@@ -43,12 +49,6 @@
             <h6>Confirmar Senha*</h6>
           </label>
           <input type="password" class="form-control" id="confirmacao_senha_input" placeholder="******">
-        </div>
-        <div class="mb-3">
-          <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
-            <h6>CPF*</h6>
-          </label>
-          <input type="text" class="form-control" id="cpf_input" placeholder="XXXXXXXXX-XX">
         </div>
         <div class="d-grid gap-2 col-6 mx-auto">
           <button class="btn btn-light button-color" type="button" onclick="cadastrar()">CADASTRE-SE</button>
@@ -74,15 +74,17 @@
 
 
   function cadastrar() {
-    id_funcionario = sessionStorage.ID_USUARIO = json.id;
+
+    let idEmpresa = sessionStorage.ID_EMPRESA = json.id;
+    let idAdm = sessionStorage.ID_USUARIO = json.id;
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value.trim();
+    var cpfVar = cpf_input.value.trim();
     var emailVar = email_input.value.trim();
     var senhaVar = senha_input.value.trim();
     var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
-    var cpfVar = cpf_input.value.trim();
 
     console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, cpfVar)
 
@@ -100,8 +102,8 @@
     } else {
 
       // trataiva da senha 
-      let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-      let caractereEsperial = ['!', '@', '#', '"', '$', '%', '¨', '&', '*', '(', ')', '-', '+']
+      let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      let caractereEsperial = ['!', '@', '#', '"', '$', '%', '¨', '&', '*', '(', ')', '-', '+'];
       let contemNumeros = false;
       let contemCaractereEspecial = false;
 
@@ -127,6 +129,7 @@
 
       // tratativa do cpf
 
+
       if (senhaVar < 8 ||
         senhaVar != confirmacaoSenhaVar ||
         !contemNumeros ||
@@ -137,58 +140,62 @@
 
       } else {
         console.log('Cadastro ok')
+
+        fetch(`/token/buscar/${tokenSplit[0]}`, {
+          method: "GET",
+        }).then((resposta) => {
+          resposta.json().then((array_token) => {
+            console.log('Estou aqui buscando pelo id_token' + array_token[0].id_token)
+
+
+            // Enviando o valor da nova input
+            fetch("/usuarios/cadastrar", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                cpfServer: cpfVar,
+                idAdmServer: idAdmVar,
+                empresaServer: idEmpresa
+              }),
+            })
+              .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                  mensagem_erro.innerHTML =
+                    "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                  setTimeout(() => {
+                    window.location = "login.html";
+                  }, "2000");
+
+
+                } else {
+                  console.log(nomeServer, emailServer, senhaServer, cpfServer, empresaServer)
+                  throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+              })
+              .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+
+              });
+
+            return false;
+          })
+
+        })
       }
     }
 
-    fetch(`/token/buscar/${tokenSplit[0]}`, {
-      method: "GET",
-    }).then((resposta) => {
-      resposta.json().then((array_token) => {
-        console.log('Estou aqui buscando pelo id_token' + array_token[0].id_token)
 
-
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            nomeServer: nomeVar,
-            emailServer: emailVar,
-            senhaServer: senhaVar,
-            cpf: cpfVar
-          }),
-        })
-          .then(function (resposta) {
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-
-              mensagem_erro.innerHTML =
-                "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-              setTimeout(() => {
-                window.location = "login.html";
-              }, "2000");
-
-
-            } else {
-              console.log(nomeServer, emailServer, senhaServer, idTokenVincularServer)
-              throw "Houve um erro ao tentar realizar o cadastro!";
-            }
-          })
-          .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-
-          });
-
-        return false;
-      })
-
-    })
 
 
   }
