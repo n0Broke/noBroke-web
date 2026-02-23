@@ -39,7 +39,7 @@
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
             <h6>CPF*</h6>
           </label>
-          <input type="text" class="form-control" id="cpf_input" placeholder="XXXXXXXXX-XX">
+          <input type="text" class="form-control" maxlength="11" id="cpf_input" placeholder="12345678911">
         </div>
         <div class="mb-3">
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
@@ -88,8 +88,8 @@
 
   function cadastrar() {
 
-    let idEmpresa = sessionStorage.ID_EMPRESA = json.id;
-    let idAdm = sessionStorage.ID_USUARIO = json.id;
+    // let idEmpresa = sessionStorage.ID_EMPRESA = json.id;
+    // let idAdm = sessionStorage.ID_USUARIO = json.id;
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
@@ -116,21 +116,21 @@
 
     } else {
 
-      // trataiva da senha 
+      // tratativa da senha 
       let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
       let caractereEsperial = ['!', '@', '#', '"', '$', '%', '¨', '&', '*', '(', ')', '-', '+'];
       let contemNumeros = false;
       let contemCaractereEspecial = false;
 
-      for (i = 0; i < senhaVar.length; i++) {
+      for (var i = 0; i < senhaVar.length; i++) {
         if (senhaVar.includes(numeros[i])) {
           contemNumeros = true;
           break;
         }
       }
 
-      for (i = 0; i < senhaVar.length; i++) {
-        if (senhaVar.includes(caractereEsperial[i])) {
+      for (var j = 0; j < senhaVar.length; j++) {
+        if (senhaVar.includes(caractereEsperial[j])) {
           contemCaractereEspecial = true;
           break;
         }
@@ -151,11 +151,90 @@
 
       // tratativa do cpf
 
+      let cpfIsNan = true;
+      let cpfValido = false;
+
+      for (var m = 0; m < 12; m++) {
+        if (!isNaN(cpfVar[m])) {
+          cpfIsNan = false;
+        }
+      }
+
+      if (cpfIsNan == false) {
+        let resultado = "";
+
+        // descobrindo o D1
+        let cont1 = 10;
+        let somaD1 = 0;
+
+        for (var k = 0; k < 9; k++) {
+          let multiplicacaoD1 = cpfVar[k] * (cont1);
+
+          somaD1 += multiplicacaoD1;
+
+          cont1 -= 1;
+        }
+
+        let restoD1 = somaD1 % 11;
+
+        if (restoD1 <= 2) {
+          restoD1 = 0;
+          resultado += restoD1.toString();
+
+        } else {
+          restoD1 = 11 - restoD1;
+          resultado += restoD1.toString();
+
+        }
+
+
+        // descobrindo o D2
+        let cont2 = 11;
+
+        let somaD2 = 0;
+
+
+        for (var l = 0; l < 10; l++) {
+          let multiplicacaoD2 = cpfVar[l] * (cont2);
+
+          somaD2 += multiplicacaoD2;
+
+          cont2 -= 1;
+        }
+
+        let restoD2 = somaD2 % 11;
+
+
+        if (restoD2 <= 2) {
+          restoD2 = 0;
+          resultado += restoD2.toString();
+
+        } else {
+          restoD2 = 11 - restoD2;
+          resultado += restoD2.toString();
+
+        }
+
+        if (cpfVar[9] == resultado[0]
+          && cpfVar[10] == resultado[1]) {
+          cpfValido = true;
+
+        } else {
+          cpfValido = false;
+        }
+
+        console.log(resultado + cpfVar[9] + cpfVar[10])
+
+      }
+
+
 
       if (senhaVar < 8 ||
         senhaVar != confirmacaoSenhaVar ||
         !contemNumeros ||
-        !contemCaractereEspecial
+        !contemCaractereEspecial ||
+        cpfVar < 11 ||
+        !cpfValido
       ) {
         console.log('A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais')
         return false;
