@@ -16,12 +16,25 @@
   <div class="container text-center">
     <div class="row align-items-center">
       <div class="col">
+
+        <div class="mb-3">
+          <label class="label-title d-flex justify-content-start" for="formGroupExampleInput" class="form-label">
+            <h6>Nível de Acesso*</h6>
+          </label>
+          <select id="select_nvlAcesso" class="form-select" aria-label="Default select example">
+            <option value="#" selected disabled>Selecione uma opção</option>
+            <option value="1">Administrador</option>
+            <option value="2">Funcionário</option>
+          </select>
+        </div>
+
         <div class="mb-3">
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput" class="form-label">
             <h6>Nome*</h6>
           </label>
           <input type="text" class="form-control" id="nome_input" placeholder="Ex.: José Freitas">
         </div>
+
         <div class="mb-3">
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
             <h6>CPF*</h6>
@@ -85,8 +98,9 @@
     var emailVar = email_input.value.trim();
     var senhaVar = senha_input.value.trim();
     var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
+    var nvlAcessoVar = select_nvlAcesso.value.trim();
 
-    console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, cpfVar)
+    console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, cpfVar, nvlAcessoVar);
 
     // Verificando senha e email 
     if (
@@ -94,7 +108,8 @@
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      cpfVar == ""
+      cpfVar == "" ||
+      nvlAcessoVar == "#"
     ) {
       alert("Mensagem de erro para todos os campos em branco");
       return false;
@@ -125,7 +140,14 @@
       emailSplit = emailVar.split('@', 2)
       emailVar = (emailSplit[0] + '@btgPactual.com')
 
-      console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailVar)
+      console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailVar);
+
+      // tratativa do nivel de Acesso
+      if (nvlAcessoVar == "1") {
+        nvlAcessoVar = "ADMIN";
+      } else {
+        nvlAcessoVar = "FUNCIONARIO"
+      }
 
       // tratativa do cpf
 
@@ -139,104 +161,55 @@
         return false;
 
       } else {
-        console.log('Cadastro ok')
+        console.log('Cadastro ok');
 
-        fetch(`/token/buscar/${tokenSplit[0]}`, {
-          method: "GET",
-        }).then((resposta) => {
-          resposta.json().then((array_token) => {
-            console.log('Estou aqui buscando pelo id_token' + array_token[0].id_token)
-
-
-            // Enviando o valor da nova input
-            fetch("/usuarios/cadastrar", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                cpfServer: cpfVar,
-                idAdmServer: idAdmVar,
-                empresaServer: idEmpresa
-              }),
-            })
-              .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-
-                  mensagem_erro.innerHTML =
-                    "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
-
-                  setTimeout(() => {
-                    window.location = "login.html";
-                  }, "2000");
-
-
-                } else {
-                  console.log(nomeServer, emailServer, senhaServer, cpfServer, empresaServer)
-                  throw "Houve um erro ao tentar realizar o cadastro!";
-                }
-              })
-              .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-
-              });
-
-            return false;
-          })
-
+        // Enviando o valor da nova input
+        fetch("/cadastroFuncionario/cadastrar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            nomeServer: nomeVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar,
+            cpfServer: cpfVar,
+            nvlAcessoServer: nvlAcessoVar,
+            idAdmServer: idAdmVar,
+            empresaServer: idEmpresa
+          }),
         })
+          .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+
+              mensagem_erro.innerHTML =
+                "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+              setTimeout(() => {
+                window.location = "login.html";
+              }, "2000");
+
+
+            } else {
+              console.log(nomeServer, emailServer, senhaServer, cpfServer, idAdmServer, nvlAcessoServer, empresaServer)
+              throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+
+          });
+
+        return false;
+
       }
     }
 
-
-
-
   }
-
-
-  /*
-    // Array para armazenar Tokens cadastrados para validação de código de ativação 
-  let listaTokensCadastrados = [];
-
-      // Verificando se o código de ativação é de alguma empresa cadastrada
-    // for (let i = 0; i < listaTokensCadastrados.length; i++) {
-    //   console.log('estou no for listaToken')
-    //   if (listaTokensCadastrados[i].token_ativacao == tokenSplit[0]) {
-    //     idTokenVincular = listaTokensCadastrados[i].id
-    //     console.log("Código de ativação válido.");
-    //     break;
-    //   } else {
-    //     mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-    //     
-    //   }
-    // }
-  // Listando empresas cadastrados 
-  function listar() {
-    fetch("/token/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((tokens) => {
-          token.forEach((token) => {
-            listaTokensCadastrados.push(token);
-
-            console.log("listaTokensCadastrados")
-            console.log(listaTokensCadastrados[0].token_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  */
-
 
 
 </script>
