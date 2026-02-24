@@ -48,7 +48,7 @@
           <div class="input-group mb-3">
             <input type="text" class="form-control" id="email_input" placeholder="Ex.: jose_2012@exemplo.com"
               aria-label="Recipient’s username" aria-describedby="basic-addon2">
-             <!-- <span class="input-group-text" id="basic-addon2">@btgpactual.com</span> -->
+            <!-- <span class="input-group-text" id="basic-addon2">@btgpactual.com</span> -->
           </div>
         </div>
         <div class="mb-3">
@@ -138,14 +138,14 @@
 
       // tratativa do email
 
-      if(!emailVar.includes(".com")){
+      if (!emailVar.includes(".com")) {
         emailVar += ".com"
       }
       console.log(emailVar);
-      
+
       possuiDominio = true;
 
-      if(!emailVar.includes("@")){
+      if (!emailVar.includes("@")) {
         possuiDominio = false;
       }
 
@@ -163,18 +163,10 @@
 
       // tratativa do cpf
 
-      let cpfIsNan = true;
       let cpfValido = false;
 
-      for (var m = 0; m < 12; m++) {
-        if (!isNaN(cpfVar[m])) {
-          cpfIsNan = false;
+      if (!isNaN(cpfVar)) {
 
-          console.log("is not a number = " + cpfVar[m])
-        }
-      }
-
-      if (!cpfIsNan) {
         let resultado = "";
 
         // descobrindo o D1
@@ -191,7 +183,7 @@
 
         let restoD1 = somaD1 % 11;
 
-        if (restoD1 <= 2) {
+        if (restoD1 < 2) {
           restoD1 = 0;
           resultado += restoD1.toString();
 
@@ -219,7 +211,7 @@
         let restoD2 = somaD2 % 11;
 
 
-        if (restoD2 <= 2) {
+        if (restoD2 < 2) {
           restoD2 = 0;
           resultado += restoD2.toString();
 
@@ -247,8 +239,8 @@
         senhaVar != confirmacaoSenhaVar ||
         !contemNumeros ||
         !contemCaractereEspecial ||
-        cpfVar.length < 11 ||
-        !cpfValido || 
+        cpfVar.length > 11 ||
+        !cpfValido ||
         !possuiDominio
       ) {
         console.log('A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais')
