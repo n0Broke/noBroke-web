@@ -46,9 +46,9 @@
             <h6>Email*</h6>
           </label>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" id="email_input" placeholder="Ex.: jose_2012"
+            <input type="text" class="form-control" id="email_input" placeholder="Ex.: jose_2012@exemplo.com"
               aria-label="Recipient’s username" aria-describedby="basic-addon2">
-            <span class="input-group-text" id="basic-addon2">@btgpactual.com</span>
+             <!-- <span class="input-group-text" id="basic-addon2">@btgpactual.com</span> -->
           </div>
         </div>
         <div class="mb-3">
@@ -137,16 +137,27 @@
       }
 
       // tratativa do email
-      emailSplit = emailVar.split('@', 2)
-      emailVar = (emailSplit[0] + '@btgPactual.com')
 
-      console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailVar);
+      if(!emailVar.includes(".com")){
+        emailVar += ".com"
+      }
+      console.log(emailVar)
+      possuiDominio = true;
+
+      if(!emailVar.includes("@")){
+        possuiDominio = false;
+      }
+
+      //emailSplit = emailVar.split('@', 2)
+      //emailVar = (emailSplit[0] + '@btgPactual.com')
+      //console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailVar);
+
 
       // tratativa do nivel de Acesso
       if (nvlAcessoVar == "1") {
         nvlAcessoVar = "ADMIN";
       } else {
-        nvlAcessoVar = "FUNCIONARIO"
+        nvlAcessoVar = "FUNCIONARIO";
       }
 
       // tratativa do cpf
@@ -157,10 +168,12 @@
       for (var m = 0; m < 12; m++) {
         if (!isNaN(cpfVar[m])) {
           cpfIsNan = false;
+
+          console.log("is not a number = " + cpfVar[m])
         }
       }
 
-      if (cpfIsNan == false) {
+      if (!cpfIsNan) {
         let resultado = "";
 
         // descobrindo o D1
@@ -229,12 +242,13 @@
 
 
 
-      if (senhaVar < 8 ||
+      if (senhaVar.length < 8 ||
         senhaVar != confirmacaoSenhaVar ||
         !contemNumeros ||
         !contemCaractereEspecial ||
-        cpfVar < 11 ||
-        !cpfValido
+        cpfVar.length < 11 ||
+        !cpfValido || 
+        !possuiDominio
       ) {
         console.log('A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais')
         return false;
