@@ -23,7 +23,7 @@
                 <div class="mb-3">
                     <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2"
                         class="form-label">
-                        <h6>Email ou CPF</h6>
+                        <h6>Email ou CPF*</h6>
                         <!-- Utilizaremos ou email ou cpf para realizar login -->
                     </label>
                     <input type="text" class="form-control" id="nome_cpf_input" placeholder="jose@empresa.com">
@@ -31,7 +31,7 @@
                 <div class="mb-3">
                     <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2"
                         class="form-label">
-                        <h6>Senha</h6>
+                        <h6>Senha*</h6>
                     </label>
                     <input type="password" class="form-control" id="senha_input" placeholder="******">
                 </div>
@@ -63,26 +63,8 @@
         aguardar();
 
         var nome_cpf = nome_cpf_input.value;
-        var quantLogin = nome_cpf.lenght;
-        var verificaTipo = 0; //poderia ser usado true ou 
-        
-        if (nome_cpf.trim() == ""){
-            alert("Email ou CPF devem ser preenchidos!")
-        } else{
-
-            for (let i = 0; i < quantLogin; i++) {
-                if (nome_cpf[i] == "@"){
-                    verificaTipo += 1;
-                }
-            }
-
-            if (verificaTipo == 1){
-                entrarEmail();
-            } else {
-                entrarCPF()
-            }
-
-        }
+        var quantLogin = nome_cpf.length;
+        var verificaTipo = 0; //poderia ser usado true ou false
 
 
 
@@ -93,10 +75,9 @@
         }
 
         if (verificaTipo == 1){
-            
-
-        } else {
-
+            entrarEmail();
+        } else if (verificaTipo > 1) {
+            entrarCPF()
         }
 
     }
@@ -105,7 +86,7 @@
         var cpfVar = nome_cpf_input.value;
         var senhaVar = senha_input.value;
 
-        if (emailVar == "" || senhaVar == "") {
+        if (cpfVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
             finalizarAguardar();
@@ -115,7 +96,7 @@
             setInterval(sumirMensagem, 5000)
         }
 
-        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM LOGIN: ", cpfVar);
         console.log("FORM SENHA: ", senhaVar);
 
         fetch("/usuarios/autenticar", {
@@ -124,7 +105,7 @@
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                emailServer: emailVar,
+                cpfServer: cpfVar,
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
@@ -183,7 +164,7 @@
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
 
-        fetch("/usuarios/autenticar", {
+        fetch("/usuarios/autenticaremail", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
