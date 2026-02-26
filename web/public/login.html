@@ -38,9 +38,12 @@
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <button class="btn btn-light button-color" type="button" onclick="verificar()">LOGIN</button>
                 </div>
-                <div id="cardErro" style="display: none;">
+                <!-- <div id="cardErro" style="display: none;">
                     <div id="mensagem_erro"></div>
                 </div>
+                <div id="div_aguardar" style="display:none;">
+                    <p>Carregando...</p>
+                </div> -->
             </div>
 
             <div class="col">
@@ -63,7 +66,7 @@
 
 
     function verificar() {
-        aguardar();
+        // aguardar();
 
         var nome_cpf = nome_cpf_input.value;
         var quantLogin = Number(nome_cpf.length);
@@ -92,14 +95,13 @@
         var senhaVar = senha_input.value;
 
         if (cpfVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            alert("Os campos não devem estar em branco")
+            //cardErro.style.display = "block"
+            //mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            //finalizarAguardar();
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+        
 
         console.log("FORM LOGIN: ", cpfVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -125,10 +127,10 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                   
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "cadastroFuncionario";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -157,13 +159,11 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            finalizarAguardar();
+            alert("Os campos não devem estar em branco")
+            //cardErro.style.display = "block"
+            //mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            //finalizarAguardar();
             return false;
-        }
-        else {
-            setInterval(sumirMensagem, 5000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -192,7 +192,7 @@
                     sessionStorage.ID_USUARIO = json.id_usuario;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "cadastroFuncionario";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -203,7 +203,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    finalizarAguardar(texto);
+                    //finalizarAguardar(texto);
                 });
             }
 
@@ -215,8 +215,8 @@
         
     }
 
-    function sumirMensagem() {
-        cardErro.style.display = "none"
-    }
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
 
 </script>
