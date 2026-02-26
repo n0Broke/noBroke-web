@@ -1,15 +1,6 @@
-<h1 align="center">📈 noBroke</h1>
-<p align="center">Uma empresa além do monitoramento.</p>
-
-<p align="center">
-  <img width="700" height="493" alt="aaa" src="https://github.com/user-attachments/assets/876b4e27-3969-4065-bd70-b7a191c62a67" />
-</p>
-
-
-
-
-
-
+<div align="center">
+<img width="400" alt="Logo noBroke" src="https://github.com/user-attachments/assets/454ecb4f-3b0f-4a7b-9dfb-783ce4b4a944"/>
+</div>
 
 <h2>📌 Sobre o Projeto</h2>
 
