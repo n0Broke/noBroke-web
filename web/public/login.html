@@ -38,6 +38,9 @@
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <button class="btn btn-light button-color" type="button" onclick="verificar()">LOGIN</button>
                 </div>
+                <div id="cardErro" style="display: none;">
+                    <div id="mensagem_erro"></div>
+                </div>
             </div>
 
             <div class="col">
@@ -101,7 +104,7 @@
         console.log("FORM LOGIN: ", cpfVar);
         console.log("FORM SENHA: ", senhaVar);
 
-        fetch("/usuarios/autenticar", {
+        fetch("/usuarios/autenticarcpf", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -186,8 +189,7 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
+                    sessionStorage.ID_USUARIO = json.id_usuario;
 
                     setTimeout(function () {
                         window.location = "./dashboard/cards.html";

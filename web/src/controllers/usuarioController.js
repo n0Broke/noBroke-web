@@ -19,12 +19,13 @@ function autenticaremail(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                                if (resultadoUser.length > 0) {
+                                if (resultadoAutenticar.length > 0) {
                                     res.json({
                                         id: resultadoAutenticar[0].id_usuario,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
+                                        cpf: resultadoAutenticar[0].cpf
                                     });
                                 } else {
                                     res.status(204).json({ token: [] });
@@ -46,8 +47,6 @@ function autenticaremail(req, res) {
     }
 
 }
-
-var usuarioModel = require("../models/usuarioModel");
  
 function autenticarcpf(req, res) {
     var cpf = req.body.cpfServer;
@@ -68,12 +67,13 @@ function autenticarcpf(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                                if (resultadoUser.length > 0) {
+                                if (resultadoAutenticar.length > 0) {
                                     res.json({
                                         id: resultadoAutenticar[0].id_usuario,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
+                                        cpf: resultadoAutenticar[0].cpf
                                     });
                                 } else {
                                     res.status(204).json({ token: [] });
