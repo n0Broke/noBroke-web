@@ -13,7 +13,6 @@ function cadastrar(nome, email, senha, cpf, idAdm, idEmpresa) {
     return database.executar(instrucaoSql);
 }
 
-console.log("Executando a instrução SQL: \n" + instrucaoSql);
 
 module.exports = {
     cadastrar

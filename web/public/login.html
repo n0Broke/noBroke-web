@@ -63,7 +63,7 @@
         aguardar();
 
         var nome_cpf = nome_cpf_input.value;
-        var quantLogin = nome_cpf.length;
+        var quantLogin = Number(nome_cpf.length);
         var verificaTipo = 0; //poderia ser usado true ou false
 
 
@@ -77,6 +77,8 @@
         if (verificaTipo == 1){
             entrarEmail();
         } else if (verificaTipo > 1) {
+            alert("Email deve ter apenas um '@'")
+        } else {
             entrarCPF()
         }
 

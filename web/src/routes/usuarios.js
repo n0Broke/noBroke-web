@@ -11,5 +11,9 @@ router.post("/cadastrar", function (req, res) {
 router.post("/autenticaremail", function (req, res) {
     usuarioController.autenticaremail(req, res);
 });
+
+router.post("/autenticarcpf", function (req, res) {
+    usuarioController.autenticarcpf(req, res);
+});
  
 module.exports = router;
