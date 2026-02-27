@@ -76,33 +76,28 @@
 
         for (let i = 0; i < quantLogin; i++) {
             if (nome_cpf[i] == "@"){
-                verificaTipo += 1
+                verificaTipo += 1;
             }
         }
 
         if (verificaTipo == 1){
             entrarEmail();
         } else if (verificaTipo > 1) {
-            alert("Email deve ter apenas um '@'")
+            alert("Email deve ter apenas um '@'");
         } else {
-            entrarCPF()
+            entrarCPF();
         }
 
     }
-
     function entrarCPF(){
         var cpfVar = nome_cpf_input.value;
-        var senhaVar = senha_input.value;
+        var senhaVar = senha_input.value; 
 
-        if (cpfVar == "" || senhaVar == "") {
-            alert("Os campos não devem estar em branco")
-            //cardErro.style.display = "block"
-            //mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            //finalizarAguardar();
+        if (!verificarcpf(cpfVar, senhaVar)){
             return false;
-        }
-        
+        } else {
 
+        }
         console.log("FORM LOGIN: ", cpfVar);
         console.log("FORM SENHA: ", senhaVar);
 
@@ -127,10 +122,11 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id_usuario;
+                    //sessionStorage.FK_EMPRESA = json.fk_empresa;
                    
 
                     setTimeout(function () {
-                        window.location = "cadastroFuncionario";
+                        window.location = "cadastroFuncionario.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -158,7 +154,7 @@
         var emailVar = nome_cpf_input.value;
         var senhaVar = senha_input.value;
 
-        if (emailVar == "" || senhaVar == "") {
+        if (emailVar.trim() == "" || senhaVar.trim() == "") {
             alert("Os campos não devem estar em branco")
             //cardErro.style.display = "block"
             //mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
@@ -214,7 +210,51 @@
         return false;
         
     }
+    function verificarcpf(cpfVar, senhaVar){
+        
+        var cpfNum = verificarSeNum(cpfVar).trim(); 
 
+        if (cpfNum == "" || senhaVar.trim() == "") {
+            alert("Os campos não devem estar em branco")
+            return false;
+        } else if (cpfNum.length != 11){
+            alert("CPF inválido");
+            return false;
+        } else {
+
+        }
+
+       
+ 
+    }
+
+    function verificarSeNum(cod){
+        var cpf = cod.trim();
+        var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var cpfPuro = "";
+        
+        // Dois fors que servem quase como um includes
+        for (let i = 0; i < cod.length; i++) {
+            
+            for (let j = 0; j < nums.length; j++) {
+
+                if (nums[j] == cod[i]){
+                    cpfPuro += cod[i];
+                }
+
+            }
+            
+        }
+
+        return true;
+    }
+
+    function padraocpf(cpf){
+
+        for (let i = 0; i < 8; i++) {
+            
+        }
+    }
     // function sumirMensagem() {
     //     cardErro.style.display = "none"
     // }
