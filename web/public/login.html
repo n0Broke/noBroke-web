@@ -36,7 +36,7 @@
                     <input type="password" class="form-control" id="senha_input" placeholder="******">
                 </div>
                 <div class="d-grid gap-2 col-6 mx-auto">
-                    <button class="btn btn-light button-color" type="button" onclick="verificar()">LOGIN</button>
+                    <button class="btn btn-light button-color" type="button" onclick="verificartipo()">LOGIN</button>
                 </div>
                 <!-- <div id="cardErro" style="display: none;">
                     <div id="mensagem_erro"></div>
@@ -65,7 +65,7 @@
 
 
 
-    function verificar() {
+    function verificartipo() {
         // aguardar();
 
         var nome_cpf = nome_cpf_input.value;
@@ -84,6 +84,7 @@
             entrarEmail();
         } else if (verificaTipo > 1) {
             alert("Email deve ter apenas um '@'");
+            return false;
         } else {
             entrarCPF();
         }
@@ -96,8 +97,15 @@
         if (!verificarcpf(cpfVar, senhaVar)){
             return false;
         } else {
-
+            cpfVar = verificarSeNum(cpfVar);
         }
+
+        if (!calculoCpf(cpfVar)){
+            alert("CPF incorreto")
+            return false;
+        }
+
+
         console.log("FORM LOGIN: ", cpfVar);
         console.log("FORM SENHA: ", senhaVar);
 
@@ -221,7 +229,7 @@
             alert("CPF inválido");
             return false;
         } else {
-
+            return true;
         }
 
        
@@ -246,14 +254,44 @@
             
         }
 
-        return true;
+        return cpfPuro;
     }
 
-    function padraocpf(cpf){
+    function calculoCpf(cpf){
 
-        for (let i = 0; i < 8; i++) {
-            
+        var soma = 0;
+
+        for (let i = 0; i < 9; i++) {
+            soma += parseInt(cpf[i])*(10 - i);
         }
+
+        var resto = (soma * 10) % 11;
+
+        if (resto == 10){
+            resto = 0; // se o resto for 10, considera ele como 0
+        }
+
+        if (resto != parseInt(cpf[9])) {
+            return false;
+        }
+
+        soma = 0; // zera a soma
+
+        for (let y = 0; y < 10; y++) {
+            soma += parseInt(cpf[y]) * (11 - y);
+        }
+
+        resto = (soma * 10) % 11;
+
+        if (resto == 10){
+            resto = 0;
+        }
+
+        if (resto != parseInt(cpf[10])) {
+            return false;
+        }
+
+        return true;
     }
     // function sumirMensagem() {
     //     cardErro.style.display = "none"
