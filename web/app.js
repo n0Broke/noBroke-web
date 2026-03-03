@@ -21,6 +21,7 @@ var avisosRouter = require("./src/routes/avisos");
 var medidasRouter = require("./src/routes/medidas");
 var aquariosRouter = require("./src/routes/aquarios");
 var cadastroFuncionarioRouter = require("./src/routes/cadastroFuncionario");
+var cadastroEmpresaRouter = require("./src/routes/cadastroEmpresa");
 
 
 
@@ -36,6 +37,7 @@ app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter);
 app.use("/aquarios", aquariosRouter);
 app.use("/cadastroFuncionario", cadastroFuncionarioRouter);
+app.use("/cadastroEmpresa", cadastroEmpresaRouter);
 
 
 app.listen(PORTA_APP, function () {

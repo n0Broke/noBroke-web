@@ -26,7 +26,7 @@
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput" class="form-label">
             <h6>CNPJ*</h6>
           </label>
-          <input type="text" class="form-control" id="nome_input" placeholder="Ex.: 12.345.678/0001-00">
+          <input type="text" class="form-control" id="cnpj_input" placeholder="Ex.: 12.345.678/0001-00">
         </div>
         <div class="mb-3">
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
@@ -78,19 +78,19 @@
     // Agora vá para o método fetch logo abaixo
     var nomeVar = nome_input.value.trim();
     var emailVar = email_input.value.trim();
+    var cnpjVar = cnpj_input.value.trim();
     var senhaVar = senha_input.value.trim();
     var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
-    var tokenVar = token_input.value.trim();
 
-    console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, tokenVar)
+    console.log(nomeVar, emailVar, cnpjVar, senhaVar, confirmacaoSenhaVar)
 
     // Verificando senha e email 
     if (
       nomeVar == "" ||
       emailVar == "" ||
+      cnpjVar == "" ||
       senhaVar == "" ||
-      confirmacaoSenhaVar == "" ||
-      tokenVar == ""
+      confirmacaoSenhaVar == ""
     ) {
       alert("Mensagem de erro para todos os campos em branco");
       return false;
@@ -123,9 +123,6 @@
 
       console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailVar)
 
-      // tratativa do token
-      tokenSplit = tokenVar.split('-')
-
       if (senhaVar < 8 ||
         senhaVar != confirmacaoSenhaVar ||
         !contemNumeros ||
@@ -139,18 +136,6 @@
       }
     }
 
-    // Receber o id do token
-    let idTokenVincular = '';
-
-    fetch(`/token/buscar/${tokenSplit[0]}`, {
-      method: "GET",
-    }).then((resposta) => {
-      resposta.json().then((array_token) => {
-        console.log('Estou aqui buscando pelo id_token' + array_token[0].id_token)
-        idTokenVincular = array_token[0].id_token;
-
-        console.log('idTokenVincular = ' + idTokenVincular)
-
         // Enviando o valor da nova input
         fetch("/usuarios/cadastrar", {
           method: "POST",
@@ -162,8 +147,8 @@
             // Agora vá para o arquivo routes/usuario.js
             nomeServer: nomeVar,
             emailServer: emailVar,
-            senhaServer: senhaVar,
-            idTokenVincularServer: idTokenVincular
+            cnpjServer: cnpjVar,
+            senhaServer: senhaVar
           }),
         })
           .then(function (resposta) {
@@ -175,12 +160,12 @@
                 "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
               setTimeout(() => {
-                window.location = "login.html";
+                window.location = "cadastroFuncionario.html";
               }, "2000");
 
 
             } else {
-              console.log(nomeServer, emailServer, senhaServer, idTokenVincularServer)
+              console.log(nomeServer, emailServer, cnpjServer, senhaServer)
               throw "Houve um erro ao tentar realizar o cadastro!";
             }
           })
@@ -190,12 +175,7 @@
           });
 
         return false;
-      })
-
-    })
-
-
-  }
+      }
 
 
   /*
