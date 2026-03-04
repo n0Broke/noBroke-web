@@ -7,6 +7,169 @@ body {
   background-color: black;
 }
 
+#header {
+  background-color: black;
+}
+
+#header a {
+  color: white;
+}
+
+#inicio .container-fluid {
+  background-image: url('../assets/icon/banner_home.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+}
+
+#inicio .row {
+  width: 100%;
+  backdrop-filter: brightness(0.4);
+}
+
+.logo-banner {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
+#sobre-nos img {
+  width: 200px;
+  height: 200px;
+}
+
+#formulario {
+  background-color: black;
+}
+
+#fale-conosco .container {
+  display: flex;
+  flex-direction: column;
+}
+
+#fale-conosco button {
+  background-color: #ff5400;
+  color: white;
+}
+
+#footer {
+  background-color: black;
+}
+
+#footer img {
+  width: 10%;
+  height: 70px;
+}
+
+@media only screen and (max-width: 576px) {
+ 
+  .logo-banner img {
+  width: 45%;
+  height: 110px;
+  /* background-color: #ED145B; */
+  }
+}
+
+@media only screen and (min-width: 577px) {
+ 
+  .logo-banner img {
+  width: 35%;
+  height: 125px;
+  /* background-color: #32b9cd; */
+  }
+
+  #formulario {
+    border-top: 3px solid #ff5400;
+    border-right: 3px solid #ff5400;
+    border-bottom: 3px solid #ff5400;
+    border-left: 3px solid #ff5400;
+    height: 550px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+ 
+  .logo-banner img {
+  width: 30%;
+  height: 140px;
+  /* background-color: #ED145B; */
+  }
+
+  #formulario {
+    border-top: 3px solid #ff5400;
+    border-right: 3px solid #ff5400;
+    border-bottom: 3px solid #ff5400;
+    border-left: 0;
+    height: 550px;
+  }
+
+  #div-img-form {
+    height: 550px;
+  }
+
+  #img-formulario {
+    border-top: 3px solid #ff5400;
+    border-left: 3px solid #ff5400;
+    border-bottom: 3px solid #ff5400;
+    width: 100%;
+    height: 550px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+ 
+  .logo-banner img {
+  width: 25%;
+  height: 165px;
+  /* background-color: #e3b062; */
+  }
+
+  #formulario {
+    border-top: 3px solid #ff5400;
+    border-right: 3px solid #ff5400;
+    border-bottom: 3px solid #ff5400;
+    border-left: 0;
+    height: 550px;
+  }
+
+  #div-img-form {
+    height: 550px;
+  }
+
+  #img-formulario {
+    border-top: 3px solid #ff5400;
+    border-left: 3px solid #ff5400;
+    border-bottom: 3px solid #ff5400;
+    width: 100%;
+    height: 550px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 :root {
   --tamanho-header: 80px;
   --tamanho-banner: calc(100vh - var(--tamanho-header) - var(--tamanho-footer) - 2px);
