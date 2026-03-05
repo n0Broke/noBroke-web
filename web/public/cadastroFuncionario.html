@@ -16,18 +16,6 @@
   <div class="container text-center">
     <div class="row align-items-center">
       <div class="col">
-
-        <div class="mb-3">
-          <label class="label-title d-flex justify-content-start" for="formGroupExampleInput" class="form-label">
-            <h6>Nível de Acesso*</h6>
-          </label>
-          <select id="select_nvlAcesso" class="form-select" aria-label="Default select example">
-            <option value="#" selected disabled>Selecione uma opção</option>
-            <option value="1">Administrador</option>
-            <option value="2">Funcionário</option>
-          </select>
-        </div>
-
         <div class="mb-3">
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput" class="form-label">
             <h6>Nome*</h6>
@@ -98,9 +86,8 @@
     var emailVar = email_input.value.trim();
     var senhaVar = senha_input.value.trim();
     var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
-    var nvlAcessoVar = select_nvlAcesso.value.trim();
 
-    console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, cpfVar, nvlAcessoVar);
+    console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, cpfVar);
 
     // Verificando senha e email 
     if (
@@ -108,8 +95,7 @@
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      cpfVar == "" ||
-      nvlAcessoVar == "#"
+      cpfVar == "" 
     ) {
       alert("Mensagem de erro para todos os campos em branco");
       return false;
@@ -147,18 +133,6 @@
 
       if (!emailVar.includes("@")) {
         possuiDominio = false;
-      }
-
-      //emailSplit = emailVar.split('@', 2)
-      //emailVar = (emailSplit[0] + '@btgPactual.com')
-      //console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailVar);
-
-
-      // tratativa do nivel de Acesso
-      if (nvlAcessoVar == "1") {
-        nvlAcessoVar = "ADMIN";
-      } else {
-        nvlAcessoVar = "FUNCIONARIO";
       }
 
       // tratativa do cpf
@@ -262,7 +236,6 @@
             emailServer: emailVar,
             senhaServer: senhaVar,
             cpfServer: cpfVar,
-            nvlAcessoServer: nvlAcessoVar,
             idAdmServer: idAdmVar,
             empresaServer: idEmpresa
           }),
@@ -281,7 +254,7 @@
 
 
             } else {
-              console.log(nomeServer, emailServer, senhaServer, cpfServer, idAdmServer, nvlAcessoServer, empresaServer)
+              console.log(nomeServer, emailServer, senhaServer, cpfServer, idAdmServer, empresaServer)
               throw "Houve um erro ao tentar realizar o cadastro!";
             }
           })
