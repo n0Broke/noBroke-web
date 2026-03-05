@@ -9,13 +9,43 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <!-- <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"> -->
     <title>Login | noBroke</title>
 
     <script src="./js/sessao.js"></script>
 </head>
 
 <body class="background">
+    <!-- <nav class="navbar navbar-dark fixed-top navbar-expand-md p-0 w-100 h-">
+        <div class="container-fluid" id="header">
+        <a href="#inicio" class="navbar-brand">
+            <img src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png" width="200px" height="60px" alt="">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link link-light" href="#inicio">Início</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-light" href="#sobre-nos">Sobre</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-light" href="#fale-conosco">Contato</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link link-light" href="login.html">Login</a>
+            </li>
+            </ul>
+        </div>
+        </div>
+    </nav> -->
 
     <div class="container text-center">
         <div class="row align-items-center">
@@ -52,13 +82,25 @@
         </div>
     </div>
 
+    <section id="footer">
+    <div>
+      <a href="#inicio" class="navbar-brand">
+        <img src="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" width="200px" height="60px" alt="">
+      </a>
+    </div>
+  </section>
+
 
 </body>
 
 </html>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script> -->
 
 <script>
 
@@ -127,10 +169,10 @@
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.EMAIL_USUARIO = json.cpf;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id_usuario;
-                    //sessionStorage.FK_EMPRESA = json.fk_empresa;
+                    sessionStorage.FK_EMPRESA = json.fk_empresa;
                    
 
                     setTimeout(function () {
@@ -164,9 +206,6 @@
 
         if (emailVar.trim() == "" || senhaVar.trim() == "") {
             alert("Os campos não devem estar em branco")
-            //cardErro.style.display = "block"
-            //mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-            //finalizarAguardar();
             return false;
         }
 
@@ -207,7 +246,6 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    //finalizarAguardar(texto);
                 });
             }
 
