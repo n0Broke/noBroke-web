@@ -18,34 +18,7 @@
 </head>
 
 <body class="background">
-    <!-- <nav class="navbar navbar-dark fixed-top navbar-expand-md p-0 w-100 h-">
-        <div class="container-fluid" id="header">
-        <a href="#inicio" class="navbar-brand">
-            <img src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png" width="200px" height="60px" alt="">
-        </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
-            <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link link-light" href="#inicio">Início</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link link-light" href="#sobre-nos">Sobre</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link link-light" href="#fale-conosco">Contato</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link link-light" href="login.html">Login</a>
-            </li>
-            </ul>
-        </div>
-        </div>
-    </nav> -->
 
     <div class="container text-center">
         <div class="row align-items-center">
@@ -85,7 +58,7 @@
     <section id="footer">
     <div>
       <a href="#inicio" class="navbar-brand">
-        <img src="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" width="200px" height="60px" alt="">
+       
       </a>
     </div>
   </section>
@@ -101,6 +74,7 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script> -->
+   
 
 <script>
 
@@ -233,6 +207,7 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id_usuario;
+                    sessionStorage.FK_EMPRESA = json.fk_empresa;
 
                     setTimeout(function () {
                         window.location = "cadastroFuncionario.html";
@@ -331,8 +306,5 @@
 
         return true;
     }
-    // function sumirMensagem() {
-    //     cardErro.style.display = "none"
-    // }
 
 </script>
