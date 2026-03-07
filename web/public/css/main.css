@@ -1,10 +1,14 @@
  .background {
-    background-image: linear-gradient(to right, #4E4E4E , #1E1E1E);
-    padding: 12%;
+   background-color: white;
+   height: 100vh;
  }
 
  .label-title {
-    color: white
+    color: black;
+ }
+
+ .mb-3 {
+   border: black;
  }
  
  .button-color{

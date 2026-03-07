@@ -11,29 +11,29 @@
   <title>Cadastro | noBroke </title>
 </head>
 
-<body class="background">
-
+<body>
+  <div class="background d-flex align-items-center justify-content-center">
   <div class="container text-center">
-    <div class="row align-items-center">
+    <div class="align-items-center">
       <div class="col">
         <div class="mb-3">
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput" class="form-label">
             <h6>Nome*</h6>
           </label>
-          <input type="text" class="form-control" id="nome_input" placeholder="Ex.: noBroke">
+          <input type="text" class="form-control" id="nomeEmpresa_input" placeholder="Ex.: noBroke">
         </div>
         <div class="mb-3">
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput" class="form-label">
             <h6>CNPJ*</h6>
           </label>
-          <input type="text" class="form-control" id="cnpj_input" placeholder="Ex.: 12.345.678/0001-00">
+          <input type="text" class="form-control" id="cnpjEmpresa_input" placeholder="Ex.: 12.345.678/0001-00">
         </div>
         <div class="mb-3">
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
             <h6>Email*</h6>
           </label>
           <div class="input-group mb-3">
-            <input type="text" class="form-control" id="email_input" placeholder="Ex.: nobroke@gmail.com"
+            <input type="text" class="form-control" id="emailEmpresa_input" placeholder="Ex.: nobroke@gmail.com"
               aria-label="Recipient’s username" aria-describedby="basic-addon2">
           </div>
         </div>
@@ -41,27 +41,27 @@
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
             <h6>Senha*</h6>
           </label>
-          <input type="text" class="form-control" id="senha_input" placeholder="******">
+          <input type="text" class="form-control d-grid gap-2 col-6 mx-auto" id="senhaEmpresa_input" placeholder="******">
         </div>
         <div class="mb-3">
           <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
             <h6>Confirmar Senha*</h6>
           </label>
-          <input type="text" class="form-control" id="confirmacao_senha_input" placeholder="******">
+          <input type="text" class="form-control" id="confirmacao_senhaEmpresa_input" placeholder="******">
         </div>
         <div class="d-grid gap-2 col-6 mx-auto">
-          <button class="btn btn-light button-color" type="button" onclick="cadastrar()">CADASTRE-SE</button>
+          <button class="btn btn-light button-color" type="button" onclick="cadastrarEmpresa()">CADASTRE-SE</button>
         </div>
       </div>
       <div class="col">
         <a href="index.html">
-          <img width="70%" src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png" alt="">
         </a>
         
       </div>
     </div>
   </div>
   <div id="mensagem_erro"></div>
+  </div>
 
 
 </body>
@@ -72,59 +72,59 @@
 <script>
 
 
-  function cadastrar() {
+  function cadastrarEmpresa() {
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
-    var nomeVar = nome_input.value.trim();
-    var emailVar = email_input.value.trim();
-    var cnpjVar = cnpj_input.value.trim();
-    var senhaVar = senha_input.value.trim();
-    var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
+    var nomeEmpresaVar = nomeEmpresa_input.value.trim();
+    var emailEmpresaVar = emailEmpresa_input.value.trim();
+    var cnpjEmpresaVar = cnpjEmpresa_input.value.trim();
+    var senhaEmpresaVar = senhaEmpresa_input.value.trim();
+    var confirmacaoSenhaEmpresaVar = confirmacao_senhaEmpresa_input.value.trim();
 
-    console.log(nomeVar, emailVar, cnpjVar, senhaVar, confirmacaoSenhaVar)
+    console.log(nomeEmpresaVar, emailEmpresaVar, cnpjEmpresaVar, senhaEmpresaVar, confirmacaoSenhaEmpresaVar)
 
     // Verificando senha e email 
     if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      cnpjVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == ""
+      nomeEmpresaVar == "" ||
+      emailEmpresaVar == "" ||
+      cnpjEmpresaVar == "" ||
+      senhaEmpresaVar == "" ||
+      confirmacaoSenhaEmpresaVar == ""
     ) {
       alert("Mensagem de erro para todos os campos em branco");
       return false;
 
     } else {
 
-      // trataiva da senha 
+      // tratativa da senha 
       let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
       let caractereEsperial = ['!', '@', '#', '"', '$', '%', '¨', '&', '*', '(', ')', '-', '+']
       let contemNumeros = false;
       let contemCaractereEspecial = false;
 
-      for (i = 0; i < senhaVar.length; i++) {
-        if (senhaVar.includes(numeros[i])) {
+      for (i = 0; i < senhaEmpresaVar.length; i++) {
+        if (senhaEmpresaVar.includes(numeros[i])) {
           contemNumeros = true;
           break;
         }
       }
 
-      for (i = 0; i < senhaVar.length; i++) {
-        if (senhaVar.includes(caractereEsperial[i])) {
+      for (i = 0; i < senhaEmpresaVar.length; i++) {
+        if (senhaEmpresaVar.includes(caractereEsperial[i])) {
           contemCaractereEspecial = true;
           break;
         }
       }
 
       // tratativa do email
-      emailSplit = emailVar.split('@', 2)
-      emailVar = (emailSplit[0] + '@btgPactual.com')
+      emailSplit = emailEmpresaVar.split('@', 2)
+      emailEmpresaVar = (emailSplit[0] + '@btgPactual.com')
 
-      console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailVar)
+      console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailEmpresaVar)
 
-      if (senhaVar < 8 ||
-        senhaVar != confirmacaoSenhaVar ||
+      if (senhaEmpresaVar < 8 ||
+        senhaEmpresaVar != confirmacaoSenhaEmpresaVar ||
         !contemNumeros ||
         !contemCaractereEspecial
       ) {
@@ -137,7 +137,7 @@
     }
 
         // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
+        fetch("/cadastroEmpresa/cadastrar", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -145,27 +145,30 @@
           body: JSON.stringify({
             // crie um atributo que recebe o valor recuperado aqui
             // Agora vá para o arquivo routes/usuario.js
-            nomeServer: nomeVar,
-            emailServer: emailVar,
-            cnpjServer: cnpjVar,
-            senhaServer: senhaVar
+            nomeEmpresaServer: nomeEmpresaVar,
+            emailEmpresaServer: emailEmpresaVar,
+            cnpjEmpresaServer: cnpjEmpresaVar,
+            senhaEmpresaServer: senhaEmpresaVar
           }),
         })
           .then(function (resposta) {
             console.log("resposta: ", resposta);
+            return resposta.json()
+          })
 
-            if (resposta.ok) {
-
-              mensagem_erro.innerHTML =
-                "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+          .then(function (resultado) {
+            if (resultado.id) {
+              console.log("Cadastro realizado com sucesso! Redirecionando para tela de Login...");  
+                
+              sessionStorage.setItem('id', resultado.id)
 
               setTimeout(() => {
-                window.location = "cadastroFuncionario.html";
-              }, "2000");
+                window.location = "cadastroAdm.html";
+              }, 2000);
 
 
             } else {
-              console.log(nomeServer, emailServer, cnpjServer, senhaServer)
+              console.log(nomeEmpresaServer, emailEmpresaServer, cnpjEmpresaServer, senhaEmpresaServer)
               throw "Houve um erro ao tentar realizar o cadastro!";
             }
           })
@@ -176,44 +179,6 @@
 
         return false;
       }
-
-
-  /*
-    // Array para armazenar Tokens cadastrados para validação de código de ativação 
-  let listaTokensCadastrados = [];
-
-      // Verificando se o código de ativação é de alguma empresa cadastrada
-    // for (let i = 0; i < listaTokensCadastrados.length; i++) {
-    //   console.log('estou no for listaToken')
-    //   if (listaTokensCadastrados[i].token_ativacao == tokenSplit[0]) {
-    //     idTokenVincular = listaTokensCadastrados[i].id
-    //     console.log("Código de ativação válido.");
-    //     break;
-    //   } else {
-    //     mensagem_erro.innerHTML = "(Mensagem de erro para código inválido)";
-    //     
-    //   }
-    // }
-  // Listando empresas cadastrados 
-  function listar() {
-    fetch("/token/listar", {
-      method: "GET",
-    })
-      .then(function (resposta) {
-        resposta.json().then((tokens) => {
-          token.forEach((token) => {
-            listaTokensCadastrados.push(token);
-
-            console.log("listaTokensCadastrados")
-            console.log(listaTokensCadastrados[0].token_ativacao)
-          });
-        });
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
-  */
-
 
 
 </script>
