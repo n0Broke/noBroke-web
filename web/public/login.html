@@ -111,6 +111,7 @@
         var senhaVar = senha_input.value; 
 
         if (!verificarcpf(cpfVar, senhaVar)){
+            alert("CPF ou senha inválidos")
             return false;
         } else {
             cpfVar = verificarSeNum(cpfVar);
@@ -236,10 +237,8 @@
         var cpfNum = verificarSeNum(cpfVar).trim(); 
 
         if (cpfNum == "" || senhaVar.trim() == "") {
-            alert("Os campos não devem estar em branco")
             return false;
         } else if (cpfNum.length != 11){
-            alert("CPF inválido");
             return false;
         } else {
             return true;
@@ -271,6 +270,19 @@
     }
 
     function calculoCpf(cpf){
+
+        var iguais = true;
+
+        for (let i = 1; i < cpf.length; i++) {
+            if (cpf[i] != cpf[0]) {
+                iguais = false;
+                break;
+            }
+        }
+
+        if (iguais){
+            return false;
+        }
 
         var soma = 0;
 
