@@ -12,84 +12,21 @@
 
   <link rel="stylesheet" href="./css/estilo.css">
   <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
-  <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
-  <!-- <div class="header">
-      <div class="container">
-        <h1 class="titulo">AquaTech</h1>
-        <ul class="navbar">
-          <li class="agora">
-            <a href="#">Inicial</a>
-          </li>
-          <li>
-            <a href="simulador.html">Simulador</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  
-    <div class="banner">
-      <div class="container">
-        <p>Preservando <span>hoje</span> para existirem <span>amanhã</span>.</p>
-      </div>
-    </div>
-  
-    <div class="social">
-      <div class="container">
-        <div class="boxes">
-          <div class="box">
-            <img src="assets/imgs/planet-earth_color.png">
-            <h4>Missão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/lightbulb_color.png">
-            <h4>Visão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/growth_color.png">
-            <h4>Valores</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div class="footer">
-      <div class="container">
-        <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-        <span class="version">v1.0.0</span>
-      </div>
-    </div>
-
-    <button onclick="ir()">ir para o token</button> -->
-
   <nav class="navbar navbar-dark fixed-top navbar-expand-md p-0 w-100 h-">
     <div class="container-fluid" id="header">
-      <a href="#inicio" class="navbar-brand">
-        <img src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png" width="200px" height="60px" alt="">
+      <a href="#inicio" class="navbar-brand ps-md-5 my-3">
+        <img src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png" width="90%" height="40px"
+          alt="Logo da noBroke">
       </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
+        aria-controls="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -107,6 +44,9 @@
           <li class="nav-item">
             <a class="nav-link link-light" href="login.html">Login</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link link-light" href="cadastroEmpresa.html">Cadastro</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -114,30 +54,61 @@
 
   <section id="inicio">
     <div class="container-fluid p-0">
-      <div class="row">
-        <div class="logo-banner">
-          <img class="img-fluid" src="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" alt="logo noBroke">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="d-flex flex-column justify-content-end ps-md-5">
+            <span class="text-light display-3 display-md-1 fw-bolder text-center text-md-start">Observabilidade</span>
+            <span class="text-light display-6 text-center text-md-start">Tenha controle da sua aplicação e mantenha as
+              suas operações seguras</span>
+          </div>
+          <div class="ps-md-5 pt-3 d-flex justify-content-center justify-content-md-start">
+
+            <a href="#servicos" class="btn btn-outline-light me-4">Saiba Mais</a>
+            <a href="#contato" class="btn btn-outline-light">Fale Conosco</a>
+          </div>
         </div>
-        <div class="text-center">
-          <span class="text-light display-6 fw-bold">Mantenha as suas operações seguras com a noBroke</span>
-        </div>
+        <!-- <div class="col-md-6 d-flex justify-content-center align-self-baseline align-self-md-center">
+          <img src="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" alt="Logo da noBroke" class="img-fluid">
+          <span class="display-3 text-light px-5 my-0"> | </span>
+          <img src="https://companieslogo.com/img/orig/B3SA3.SA.D-b2635421.png?t=1744769878" alt="Logo da B3" class="img-fluid">
+        </div> -->
       </div>
     </div>
   </section>
 
   <section id="sobre-nos">
     <div class="container-fluid">
-      <div class="row justify-content-center mb-5">
-        <div class="text-center fw-bold display-2 my-5">Sobre Nós</div>
+      <div class="row justify-content-center">
+        <div class="col-md-5 text-center m-5 d-flex flex-column">
+          <span class="text-center fw-bold display-2 my-5">Sobre nós</span>
+          <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius cupiditate soluta delectus officiis
+            placeat dolore mollitia doloribus optio molestias tenetur modi natus architecto dolorum suscipit, aperiam id
+            reiciendis magnam voluptates. Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda mollitia
+            ipsam non recusandae iure rem possimus velit dolore minus debitis sit, sed culpa ipsum rerum veritatis
+            aspernatur! Autem, officia nam.</span>
+        </div>
+        <div class="col-md-5 d-none d-md-block m-5">
+          <img
+            src="./assets/icon/img-sobreNos.webp"
+            class="img-fluid rounded-pill" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="beneficios">
+    <div class="container-fluid">
+      <div class="row justify-content-evenly mb-5">
         <div class="col-md-3">
           <div class="d-flex justify-content-center">
             <img src="./assets/icon/icon_monitoring.svg" alt="">
           </div>
           <div>
-            <span class="h2 fw-bolder d-flex justify-content-center">MONITORAMENTO</span>
+            <span class="h3 fw-bolder d-flex justify-content-center">MONITORAMENTO</span>
           </div>
           <div>
-            <span class="h4 text-center d-flex justify-content-center">Monitoramos o hardware dos seus servidores para identificar falhas e mapear padrões</span>
+            <span class="h5 text-center d-flex justify-content-center">Monitoramos o hardware dos seus servidores para
+              identificar falhas e mapear padrões</span>
           </div>
         </div>
         <div class="col-md-3">
@@ -145,10 +116,11 @@
             <img src="./assets/icon/icon_security.svg" alt="">
           </div>
           <div>
-            <span class="h2 fw-bolder d-flex justify-content-center">SEGURANÇA</span>
+            <span class="h3 fw-bolder d-flex justify-content-center">SEGURANÇA</span>
           </div>
           <div>
-            <span class="h4 text-center d-flex justify-content-center">Por meio da nossa solução, ajudamos a garantir a segurança e confiabilidade do seu sistema</span>
+            <span class="h5 text-center d-flex justify-content-center">Por meio da nossa solução, ajudamos a garantir a
+              segurança e confiabilidade do seu sistema</span>
           </div>
         </div>
         <div class="col-md-3">
@@ -156,17 +128,187 @@
             <img src="./assets/icon/icon_business.svg" alt="">
           </div>
           <div>
-            <span class="h2 fw-bolder d-flex justify-content-center">NEGÓCIO</span>
+            <span class="h3 fw-bolder d-flex justify-content-center">NEGÓCIO</span>
           </div>
           <div>
-            <span class="h4 text-center d-flex justify-content-center">Auxiliamos em análises mais precisas e evitamos prejuízos ao seu negócio</span>
+            <span class="h5 text-center d-flex justify-content-center">Auxiliamos em análises mais precisas e evitamos
+              prejuízos ao seu negócio</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="fale-conosco" class="bg-dark">
+  <section id="servicos" class="bg-dark py-3">
+    <div class="container">
+      <div class="row my-md-5">
+        <div class="col-md-6 mb-3 d-flex justify-content-center align-items-center" id="img-servicos">
+          <span class="display-1 text-light fw-bold">Serviços</span>
+        </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+          <div class="card w-75 mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+          </div>
+          <div class="card w-75 mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row my-md-5">
+        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center" id="col-cards">
+          <div class="card w-75 mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+          </div>
+          <div class="card w-75 mb-3">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 d-none d-md-block mb-3 d-flex order-first order-md-last" id="img-servicos-noBroke">
+          <div class="h-100 w-100 d-flex justify-content-center align-items-center" id="encapsula-img-servico">
+            <img src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container d-flex justify-content-center align-items-center" style="height: 550px;">
+      <div class="row h-100">
+        <div class="col-md-4 col-lg-6 d-flex flex-column justify-content-center align-items-center text-center">
+          <span class="h3">Responsividade</span>
+          <span class="w-60">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore ipsum quod fugit aliquid
+            labore velit repellat eos facilis enim nam voluptates sunt sed, provident vero molestias eveniet sint nihil
+            quisquam.</span>
+        </div>
+        <div class="col-md-4 col-lg-3 d-none d-md-flex align-items-end mb-5">
+          <img src="./assets/icon/img-dash.png" class="img-fluid" alt="">
+        </div>
+        <div class="col-md-4 col-lg-3 d-none d-md-block mt-5">
+          <img src="./assets/icon/img-dispositovs.png" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="bg-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <span>Serviços Parceiros</span>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+          <div class="img-parceiros">
+            <img style="height: 200px; width: 200px;" src="https://cdn.freebiesupply.com/logos/large/2x/aws-logo-logo-png-transparent.png" alt="">
+          </div>
+          <div class="img-parceiros">
+            <img style="height: 200px; width: 200px;" src="https://www.pngall.com/wp-content/uploads/13/Slack-Logo-Transparent.png" alt="">
+          </div>
+          <div class="img-parceiros">
+            <img style="height: 200px; width: 200px;" src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <section id="faq">
+    <div class="titulo-faq m-auto mb-3">
+      <span class="display-3 fw-bold">Dúvidas Frequentes</span>
+    </div>
+    <div class="accordion m-auto mb-3 accordion-flush" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            Accordion Item #1
+          </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the
+            <code>.accordion-flush</code> class. This is the first item’s accordion body.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            Accordion Item #2
+          </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the
+            <code>.accordion-flush</code> class. This is the second item’s accordion body. Let’s imagine this being
+            filled with some actual content.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+            Accordion Item #3
+          </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the
+            <code>.accordion-flush</code> class. This is the third item’s accordion body. Nothing more exciting
+            happening here in terms of content, but just filling up the space to make it look, at least at first glance,
+            a bit more representative of how this would look in a real-world application.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+            Accordion Item #4
+          </button>
+        </h2>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the
+            <code>.accordion-flush</code> class. This is the third item’s accordion body. Nothing more exciting
+            happening here in terms of content, but just filling up the space to make it look, at least at first glance,
+            a bit more representative of how this would look in a real-world application.
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+            Accordion Item #5
+          </button>
+        </h2>
+        <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+          <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the
+            <code>.accordion-flush</code> class. This is the third item’s accordion body. Nothing more exciting
+            happening here in terms of content, but just filling up the space to make it look, at least at first glance,
+            a bit more representative of how this would look in a real-world application.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="m-auto" id="btn-duvida">
+      <button type="button" class="btn-duvida">Mais alguma dúvida?</button>
+    </div>
+  </section>
+
+  <section id="fale-conosco" class="bg-dark" style="margin-top: 90px;">
     <div class="container">
       <div class="text-center fw-bold display-2 my-5 text-light">Fale Conosco</div>
       <div class="row justify-content-center mb-5">
@@ -198,10 +340,29 @@
   </section>
 
   <section id="footer">
-    <div>
-      <a href="#inicio" class="navbar-brand">
-        <img src="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" width="200px" height="60px" alt="">
-      </a>
+    <div class="container py-3">
+      <div class="row">
+        <div class="col-md-6 d-flex flex-column align-items-center align-items-md-start">
+          <a href="#inicio" class="navbar-brand text-center text-md-start m-0">
+            <img src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png" width="90%" height="60px" alt="">
+          </a>
+          <span class="text-center">Transformando dados em decisões inteligentes</span>
+        </div>
+        <div class="col-md-3 d-flex flex-column">
+          <span class="text-light text-center text-md-start fw-bold">CONTATOS</span>
+          <span class="text-center text-md-start">comercial@nobroke.com</span>
+          <span class="text-center text-md-start">Rua Haddock Lobo, 595</span>
+          <span class="text-center text-md-start">+55 (11)90000-0000</span>
+        </div>
+        <div class="col-md-3 d-flex flex-column">
+          <span class="text-light text-center text-md-start fw-bold">REDES SOCIAIS</span>
+          <div class="mt-3 d-flex justify-content-center justify-content-md-start">
+            <img src="./assets/icon/icon-linkedin.png" class="img-redes  me-2" alt="">
+            <img src="./assets/icon/icon-instagram.png" class="img-redes  me-2" alt="">
+            <img src="./assets/icon/icon-facebook.png" class="img-redes  me-2" alt="">
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
