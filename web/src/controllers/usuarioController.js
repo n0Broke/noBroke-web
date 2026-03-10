@@ -21,12 +21,12 @@ function autenticaremail(req, res) {
 
                                 if (resultadoAutenticar.length > 0) {
                                     res.json({
-                                        id: resultadoAutenticar[0].id_usuario,
+                                        id_usuario: resultadoAutenticar[0].id_usuario,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,
                                         cpf: resultadoAutenticar[0].cpf,
-                                        fk_email: resultadoAutenticar[0].fk_email
+                                        fk_empresa: resultadoAutenticar[0].fk_empresa
                                     });
                                 } else {
                                     res.status(204).json({ token: [] });
@@ -70,7 +70,7 @@ function autenticarcpf(req, res) {
 
                                 if (resultadoAutenticar.length > 0) {
                                     res.json({
-                                        id: resultadoAutenticar[0].id_usuario,
+                                        id_usuario: resultadoAutenticar[0].id_usuario,
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha,

@@ -13,57 +13,57 @@
 
 <body>
   <div class="background d-flex align-items-center justify-content-center">
-  <div class="container text-center">
-    <div class="row align-items-center">
-      <div class="col">
-        <div class="mb-3">
-          <label class="label-title d-flex justify-content-start" for="formGroupExampleInput" class="form-label">
-            <h6>Nome*</h6>
-          </label>
-          <input type="text" class="form-control" id="nomeAdm_input" placeholder="Ex.: noBroke">
-        </div>
-        <div class="mb-3">
-          <label class="label-title d-flex justify-content-start" for="formGroupExampleInput" class="form-label">
-            <h6>CPF*</h6>
-          </label>
-          <input type="text" class="form-control" id="cpfAdm_input" placeholder="Ex.: 123.456.789-00">
-        </div>
-        <div class="mb-3">
-          <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
-            <h6>Email*</h6>
-          </label>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" id="emailAdm_input" placeholder="Ex.: nobroke@gmail.com"
-              aria-label="Recipient’s username" aria-describedby="basic-addon2">
+    <div class="container text-center">
+      <div class="row align-items-center">
+        <div class="col">
+          <div class="mb-3">
+            <label class="label-title d-flex justify-content-start" for="formGroupExampleInput" class="form-label">
+              <h6>Nome*</h6>
+            </label>
+            <input type="text" class="form-control" id="nomeAdm_input" placeholder="Ex.: noBroke">
+          </div>
+          <div class="mb-3">
+            <label class="label-title d-flex justify-content-start" for="formGroupExampleInput" class="form-label">
+              <h6>CPF*</h6>
+            </label>
+            <input type="text" class="form-control" id="cpfAdm_input" placeholder="Ex.: 123.456.789-00">
+          </div>
+          <div class="mb-3">
+            <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
+              <h6>Email*</h6>
+            </label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" id="emailAdm_input" placeholder="Ex.: nobroke@gmail.com"
+                aria-label="Recipient’s username" aria-describedby="basic-addon2">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
+              <h6>Senha*</h6>
+            </label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" id="senhaAdm_input" placeholder="Ex.: nobroke@gmail.com"
+                aria-label="Recipient’s username" aria-describedby="basic-addon2">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
+              <h6>Confirmar Senha*</h6>
+            </label>
+            <input type="text" class="form-control" id="confirmacao_senhaAdm_input" placeholder="******">
+          </div>
+          <div class="d-grid gap-2 col-6 mx-auto">
+            <button class="btn btn-light button-color" type="button" onclick="cadastrarAdm()">CADASTRE-SE</button>
           </div>
         </div>
-        <div class="mb-3">
-          <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
-            <h6>Senha*</h6>
-          </label>
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" id="senhaAdm_input" placeholder="Ex.: nobroke@gmail.com"
-              aria-label="Recipient’s username" aria-describedby="basic-addon2">
-          </div>
+        <div class="col">
+          <a href="index.html">
+          </a>
+
         </div>
-        <div class="mb-3">
-          <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
-            <h6>Confirmar Senha*</h6>
-          </label>
-          <input type="text" class="form-control" id="confirmacao_senhaAdm_input" placeholder="******">
-        </div>
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <button class="btn btn-light button-color" type="button" onclick="cadastrarAdm()">CADASTRE-SE</button>
-        </div>
-      </div>
-      <div class="col">
-        <a href="index.html">
-        </a>
-        
       </div>
     </div>
-  </div>
-  <div id="mensagem_erro"></div>
+    <div id="mensagem_erro"></div>
 
 </body>
 
@@ -72,217 +72,208 @@
   integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script>
 
-      function cadastrarAdm() {
+  function cadastrarAdm() {
 
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var nomeAdmVar = nomeAdm_input.value.trim();
-        var emailAdmVar = emailAdm_input.value.trim();
-        var cpfAdmVar = cpfAdm_input.value.trim();
-        var senhaAdmVar = senhaAdm_input.value.trim();
-        var confirmacaoSenhaAdmVar = confirmacao_senhaAdm_input.value.trim();
+    //Recupere o valor da nova input pelo nome do id
+    // Agora vá para o método fetch logo abaixo
+    var nomeAdmVar = nomeAdm_input.value.trim();
+    var emailAdmVar = emailAdm_input.value.trim();
+    var cpfAdmVar = cpfAdm_input.value.trim();
+    var senhaAdmVar = senhaAdm_input.value.trim();
+    var confirmacaoSenhaAdmVar = confirmacao_senhaAdm_input.value.trim();
 
-        console.log(nomeAdmVar, emailAdmVar, cpfAdmVar, senhaAdmVar, confirmacaoSenhaAdmVar)
+    console.log(nomeAdmVar, emailAdmVar, cpfAdmVar, senhaAdmVar, confirmacaoSenhaAdmVar)
 
-        // Verificando senha e email 
-        if (
-          nomeAdmVar == "" ||
-          emailAdmVar == "" ||
-          cpfAdmVar == "" ||
-          senhaAdmVar == "" ||
-          confirmacaoSenhaAdmVar == ""
-        ) {
-          alert("Mensagem de erro para todos os campos em branco");
-          return false;
+    // Verificando senha e email 
+    if (
+      nomeAdmVar == "" ||
+      emailAdmVar == "" ||
+      cpfAdmVar == "" ||
+      senhaAdmVar == "" ||
+      confirmacaoSenhaAdmVar == ""
+    ) {
+      alert("Mensagem de erro para todos os campos em branco");
+      return false;
 
-        } else {
-          //tratativa de cpf
+    } else {
+      //tratativa de cpf
 
-          if(!verificarcpf(cpfAdmVar, senhaAdmVar)){
-            alert("CPF e senha devem ser preenchidos");
-            return false;
-          } 
-
-          cpfAdmVar = verificarSeNum(cpfAdmVar);
-
-          if(!verificarcpf(cpfAdmVar)){
-             alert("CPF inválido");
-             return false;
-          }
+      if (!verificarcpf(cpfAdmVar, senhaAdmVar)) {
+        alert("CPF inválido ou senha vazia");
+        return false;
+      }
 
 
 
-          // tratativa da senha 
-          let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-          let caractereEsperial = ['!', '@', '#', '"', '$', '%', '¨', '&', '*', '(', ')', '-', '+']
-          let contemNumeros = false;
-          let contemCaractereEspecial = false;
+      // tratativa da senha 
+      let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+      let caractereEsperial = ['!', '@', '#', '"', '$', '%', '¨', '&', '*', '(', ')', '-', '+']
+      //let contemNumeros = false;
+      let contemCaractereEspecial = false;
 
-          for (i = 0; i < senhaAdmVar.length; i++) {
-            if (senhaAdmVar.includes(numeros[i])) {
-              contemNumeros = true;
-              break;
-            }
-          }
+      for (i = 0; i < senhaAdmVar.length; i++) {
+        if (senhaAdmVar.includes(numeros[i])) {
+          contemNumeros = true;
+          break;
+        }
+      }
 
-          for (i = 0; i < senhaAdmVar.length; i++) {
-            if (senhaAdmVar.includes(caractereEsperial[i])) {
-              contemCaractereEspecial = true;
-              break;
-            }
-          }
+      for (i = 0; i < senhaAdmVar.length; i++) {
+        if (senhaAdmVar.includes(caractereEsperial[i])) {
+          contemCaractereEspecial = true;
+          break;
+        }
+      }
 
-          // tratativa do email
-          emailSplit = emailAdmVar.split('@', 2)
-          emailAdmVar = (emailSplit[0] + '@btgPactual.com')
+      // tratativa do email
+      emailSplit = emailAdmVar.split('@', 2)
+      emailAdmVar = (emailSplit[0] + '@btgPactual.com')
 
-          console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailAdmVar)
+      console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailAdmVar)
 
-          if (senhaAdmVar < 8 ||
-            senhaAdmVar != confirmacaoSenhaAdmVar ||
-            !contemNumeros ||
-            !contemCaractereEspecial
-          ) {
-            console.log('Caiu na validação da senha!')
-            console.log('A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais')
-            return false;
+      if (senhaAdmVar < 8 ||
+        senhaAdmVar != confirmacaoSenhaAdmVar
+        //!contemNumeros ||
+        //!contemCaractereEspecial
+      ) {
+        console.log('Caiu na validação da senha!')
+        console.log('A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais')
+        return false;
+
+      } else {
+        console.log('Cadastro ok')
+      }
+
+
+      var idEmpresa = sessionStorage.getItem('id');
+      console.log("idEmpresa:", idEmpresa)
+
+      // Enviando o valor da nova input
+      fetch("/cadastroAdm/cadastroAdm", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeAdmServer: nomeAdmVar,
+          emailAdmServer: emailAdmVar,
+          cpfAdmServer: cpfAdmVar,
+          senhaAdmServer: senhaAdmVar,
+          idEmpresaServer: idEmpresa
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            sessionStorage.setItem('ID_USUARIO', json.id_usuario);
+            sessionStorage.setItem('FK_EMPRESA', json.fk_empresa);
+            mensagem_erro.innerHTML =
+              "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+            setTimeout(() => {
+              window.location = "login.html";
+            }, "2000");
 
           } else {
-            console.log('Cadastro ok')
+            console.log(nomeAdmVar, emailAdmVar, cpfAdmVar, senhaAdmVar)
+            throw "Houve um erro ao tentar realizar o cadastro!";
           }
-        
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
 
-          var idEmpresa = sessionStorage.getItem('id');
-          console.log("idEmpresa:", idEmpresa)
+        });
 
-          // Enviando o valor da nova input
-          fetch("/cadastroAdm/cadastroAdm", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              // crie um atributo que recebe o valor recuperado aqui
-              // Agora vá para o arquivo routes/usuario.js
-              nomeAdmServer: nomeAdmVar,
-              emailAdmServer: emailAdmVar,
-              cpfAdmServer: cpfAdmVar,
-              senhaAdmServer: senhaAdmVar,
-              idEmpresaServer: idEmpresa
-            }),
-          })
-            .then(function (resposta) {
-              console.log("resposta: ", resposta);
+      return false;
+    }
+  }
 
-              if (resposta.ok) {
+  function verificarcpf(cpfVar, senhaVar) {
+    var cpfNum = verificarSeNum(cpfVar || "").trim();
+    var senhaLimpa = (senhaVar || "").trim();
 
-                mensagem_erro.innerHTML =
-                  "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+    if (cpfNum == "" || senhaLimpa == "") {
+      return false;
+    } else if (cpfNum.length != 11) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
-                setTimeout(() => {
-                  window.location = "login.html";
-                }, "2000");
+  function verificarSeNum(cod) {
+    var cpf = cod.trim();
+    var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var cpfPuro = "";
 
-              } else {
-                console.log(nomeAdmVar, emailAdmVar, cpfAdmVar, senhaAdmVar)
-                throw "Houve um erro ao tentar realizar o cadastro!";
-              }
-            })
-            .catch(function (resposta) {
-              console.log(`#ERRO: ${resposta}`);
+    // Dois fors que servem quase como um includes
+    for (let i = 0; i < cod.length; i++) {
 
-            });
+      for (let j = 0; j < nums.length; j++) {
 
-          return false;
+        if (nums[j] == cod[i]) {
+          cpfPuro += cod[i];
+        }
+
+      }
+
+    }
+
+    return cpfPuro;
+  }
+
+  function calculoCpf(cpf) {
+
+    var iguais = true;
+
+    for (let i = 1; i < cpf.length; i++) {
+      if (cpf[i] != cpf[0]) {
+        iguais = false;
+        break;
       }
     }
 
-    function verificarcpf(cpfVar, senhaVar){
-        
-        var cpfNum = verificarSeNum(cpfVar).trim(); 
-
-        if (cpfNum == "" || senhaVar.trim() == "") {
-            return false;
-        } else if (cpfNum.length != 11){
-            return false;
-        } else {
-            return true;
-        }
-
-       
- 
+    if (iguais) {
+      return false;
     }
 
-    function verificarSeNum(cod){
-        var cpf = cod.trim();
-        var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-        var cpfPuro = "";
-        
-        // Dois fors que servem quase como um includes
-        for (let i = 0; i < cod.length; i++) {
-            
-            for (let j = 0; j < nums.length; j++) {
+    var soma = 0;
 
-                if (nums[j] == cod[i]){
-                    cpfPuro += cod[i];
-                }
-
-            }
-            
-        }
-
-        return cpfPuro;
+    for (let i = 0; i < 9; i++) {
+      soma += parseInt(cpf[i]) * (10 - i);
     }
 
-    function calculoCpf(cpf){
+    var resto = (soma * 10) % 11;
 
-        var iguais = true;
-
-        for (let i = 1; i < cpf.length; i++) {
-            if (cpf[i] != cpf[0]) {
-                iguais = false;
-                break;
-            }
-        }
-
-        if (iguais){
-            return false;
-        }
-
-        var soma = 0;
-
-        for (let i = 0; i < 9; i++) {
-            soma += parseInt(cpf[i])*(10 - i);
-        }
-
-        var resto = (soma * 10) % 11;
-
-        if (resto == 10){
-            resto = 0; // se o resto for 10, considera ele como 0
-        }
-
-        if (resto != parseInt(cpf[9])) {
-            return false;
-        }
-
-        soma = 0; // zera a soma
-
-        for (let y = 0; y < 10; y++) {
-            soma += parseInt(cpf[y]) * (11 - y);
-        }
-
-        resto = (soma * 10) % 11;
-
-        if (resto == 10){
-            resto = 0;
-        }
-
-        if (resto != parseInt(cpf[10])) {
-            return false;
-        }
-
-        return true;
+    if (resto == 10) {
+      resto = 0; // se o resto for 10, considera ele como 0
     }
+
+    if (resto != parseInt(cpf[9])) {
+      return false;
+    }
+
+    soma = 0; // zera a soma
+
+    for (let y = 0; y < 10; y++) {
+      soma += parseInt(cpf[y]) * (11 - y);
+    }
+
+    resto = (soma * 10) % 11;
+
+    if (resto == 10) {
+      resto = 0;
+    }
+
+    if (resto != parseInt(cpf[10])) {
+      return false;
+    }
+
+    return true;
+  }
 
 
 </script>

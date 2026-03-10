@@ -7,7 +7,7 @@ function cadastrarAdm(nomeAdm, emailAdm, cpfAdm, senhaAdm, idEmpresa) {
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
             INSERT INTO usuario(nome, email, senha, cpf, ativo, fk_empresa) VALUES 
-            ('${nomeAdm}', '${emailAdm}', '${senhaAdm}', '${cpfAdm}', 1, '${idEmpresa}');
+            ('${nomeAdm}', '${emailAdm}', '${senhaAdm}', '${cpfAdm}', 1, ${idEmpresa});
                     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

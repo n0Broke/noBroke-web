@@ -6,11 +6,13 @@ CREATE TABLE empresa(
     nome VARCHAR(80) NOT NULL,
     email VARCHAR(60) NOT NULL UNIQUE,
     cnpj CHAR(14) NOT NULL UNIQUE,
+    senha varchar(45) NOT NULL,
     data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
  );
 
  CREATE TABLE usuario(
     id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR (60),
     cpf CHAR(11) UNIQUE NOT NULL,
     email VARCHAR(60) UNIQUE NOT NULL,
     senha VARCHAR(45) NOT NULL,

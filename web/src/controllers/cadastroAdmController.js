@@ -27,7 +27,10 @@ function cadastrarAdm(req, res) {
   cadastroAdmModel
     .cadastrarAdm(nomeAdm, emailAdm, cpfAdm, senhaAdm, idEmpresa)
     .then(function (resultado) {
-      res.json(resultado);
+      res.json(resultado)({
+        id_usuario: resultado.insertId,
+        fk_empresa: idEmpresa
+      });
     })
     .catch(function (erro) {
       console.log(erro);
