@@ -126,12 +126,6 @@
         }
       }
 
-      // tratativa do email
-      emailSplit = emailEmpresaVar.split('@', 2)
-      emailEmpresaVar = (emailSplit[0] + '@btgPactual.com')
-
-      console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailEmpresaVar)
-
       if (senhaEmpresaVar < 8 ||
         senhaEmpresaVar != confirmacaoSenhaEmpresaVar ||
         !contemNumeros ||
