@@ -147,12 +147,13 @@
                     sessionStorage.EMAIL_USUARIO = json.cpf;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id_usuario;
+                    sessionStorage.FK_ADM = json.fk_adm;
                     sessionStorage.FK_EMPRESA = json.fk_empresa;
                    
 
                     setTimeout(function () {
                     
-                        window.location = "cadastroFuncionario.html";
+                        window.location = "dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -209,10 +210,11 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id_usuario;
+                    sessionStorage.FK_ADM = json.fk_adm;
                     sessionStorage.FK_EMPRESA = json.fk_empresa;
 
                     setTimeout(function () {
-                        window.location = "cadastroFuncionario.html";
+                        window.location = "dashboard.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
