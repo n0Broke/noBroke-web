@@ -37,18 +37,6 @@
               aria-label="Recipient’s username" aria-describedby="basic-addon2">
           </div>
         </div>
-        <div class="mb-3">
-          <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
-            <h6>Senha*</h6>
-          </label>
-          <input type="text" class="form-control d-grid gap-2 col-6 mx-auto" id="senhaEmpresa_input" placeholder="******">
-        </div>
-        <div class="mb-3">
-          <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
-            <h6>Confirmar Senha*</h6>
-          </label>
-          <input type="text" class="form-control" id="confirmacao_senhaEmpresa_input" placeholder="******">
-        </div>
         <div class="d-grid gap-2 col-6 mx-auto">
           <button class="btn btn-light button-color" type="button" onclick="cadastrarEmpresa()">CADASTRE-SE</button>
         </div>
@@ -79,18 +67,14 @@
     var nomeEmpresaVar = nomeEmpresa_input.value.trim();
     var emailEmpresaVar = emailEmpresa_input.value.trim();
     var cnpjEmpresaVar = cnpjEmpresa_input.value.trim();
-    var senhaEmpresaVar = senhaEmpresa_input.value.trim();
-    var confirmacaoSenhaEmpresaVar = confirmacao_senhaEmpresa_input.value.trim();
 
-    console.log(nomeEmpresaVar, emailEmpresaVar, cnpjEmpresaVar, senhaEmpresaVar, confirmacaoSenhaEmpresaVar)
+    console.log(nomeEmpresaVar, emailEmpresaVar, cnpjEmpresaVar)
 
     // Verificando senha e email 
     if (
       nomeEmpresaVar == "" ||
       emailEmpresaVar == "" ||
-      cnpjEmpresaVar == "" ||
-      senhaEmpresaVar == "" ||
-      confirmacaoSenhaEmpresaVar == ""
+      cnpjEmpresaVar == ""
     ) {
       alert("Mensagem de erro para todos os campos em branco");
       return false;
@@ -105,38 +89,6 @@
       } else {
         cnpjEmpresaVar = cnpjPuro(cnpjEmpresaVar);
       }
-
-      // tratativa da senha 
-      let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-      let caractereEsperial = ['!', '@', '#', '"', '$', '%', '¨', '&', '*', '(', ')', '-', '+']
-      let contemNumeros = false;
-      let contemCaractereEspecial = false;
-
-      for (i = 0; i < senhaEmpresaVar.length; i++) {
-        if (senhaEmpresaVar.includes(numeros[i])) {
-          contemNumeros = true;
-          break;
-        }
-      }
-
-      for (i = 0; i < senhaEmpresaVar.length; i++) {
-        if (senhaEmpresaVar.includes(caractereEsperial[i])) {
-          contemCaractereEspecial = true;
-          break;
-        }
-      }
-
-      if (senhaEmpresaVar < 8 ||
-        senhaEmpresaVar != confirmacaoSenhaEmpresaVar ||
-        !contemNumeros ||
-        !contemCaractereEspecial
-      ) {
-        console.log('A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais')
-        return false;
-
-      } else {
-        console.log('Cadastro ok')
-      }
     }
 
         // Enviando o valor da nova input
@@ -150,8 +102,7 @@
             // Agora vá para o arquivo routes/usuario.js
             nomeEmpresaServer: nomeEmpresaVar,
             emailEmpresaServer: emailEmpresaVar,
-            cnpjEmpresaServer: cnpjEmpresaVar,
-            senhaEmpresaServer: senhaEmpresaVar
+            cnpjEmpresaServer: cnpjEmpresaVar
           }),
         })
           .then(function (resposta) {
@@ -171,7 +122,7 @@
 
 
             } else {
-              console.log(nomeEmpresaVar, emailEmpresaVar, cnpjEmpresaVar, senhaEmpresaVar);
+              console.log(nomeEmpresaVar, emailEmpresaVar, cnpjEmpresaVar);
               throw "Houve um erro ao tentar realizar o cadastro!";
             }
           })
