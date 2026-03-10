@@ -76,7 +76,7 @@
 
   function cadastrar() {
 
-    let idEmpresa = sessionStorage.ID_EMPRESA;
+    let idEmpresa = sessionStorage.FK_EMPRESA;
     let idAdm = sessionStorage.ID_USUARIO;
 
     //Recupere o valor da nova input pelo nome do id
@@ -236,7 +236,7 @@
             emailServer: emailVar,
             senhaServer: senhaVar,
             cpfServer: cpfVar,
-            idAdmServer: idAdmVar,
+            idAdmServer: idAdm,
             empresaServer: idEmpresa
           }),
         })

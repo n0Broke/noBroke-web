@@ -6,7 +6,6 @@ function cadastrar(req, res) {
   var email = req.body.emailServer;
   var senha = req.body.senhaServer;
   var cpf = req.body.cpfServer;
-  var nvlAcesso = req.body.nvlAcessoServer;
   var idAdm = req.body.idAdmServer;
   var idEmpresa = req.body.empresaServer;
 
@@ -19,8 +18,6 @@ function cadastrar(req, res) {
     res.status(400).send("Sua senha está undefined!");
   } else if (cpf == undefined) {
     res.status(400).send("Seu token está undefined!");
-  } else if (nvlAcesso == undefined) {
-    res.status(400).send("Seu token está undefined!");
   } else if (idAdm == undefined) {
     res.status(400).send("Seu token está undefined!");
   } else if (idEmpresa == undefined) {
@@ -28,7 +25,7 @@ function cadastrar(req, res) {
   } else {
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
     cadastroFuncionarioModel
-      .cadastrar(nome, email, senha, cpf, nvlAcesso, idAdm, idEmpresa)
+      .cadastrar(nome, email, senha, cpf, idAdm, idEmpresa)
       .then(function (resultado) {
         res.json(resultado);
       })

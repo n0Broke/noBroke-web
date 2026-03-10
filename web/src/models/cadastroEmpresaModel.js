@@ -6,7 +6,7 @@ function cadastrarEmpresa(nomeEmpresa, emailEmpresa, cnpjEmpresa, senhaEmpresa) 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-            INSERT INTO empresa(nome_empresa, email, cnpj, senha) VALUES 
+            INSERT INTO empresa(nome, email, cnpj, senha) VALUES 
             ('${nomeEmpresa}', '${emailEmpresa}', '${cnpjEmpresa}', '${senhaEmpresa}');
                     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
