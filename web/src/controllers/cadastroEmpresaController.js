@@ -5,7 +5,6 @@ function cadastrarEmpresa(req, res) {
   var nomeEmpresa = req.body.nomeEmpresaServer;
   var emailEmpresa = req.body.emailEmpresaServer;
   var cnpjEmpresa = req.body.cnpjEmpresaServer;
-  var senhaEmpresa = req.body.senhaEmpresaServer;
 
   // Faça as validações dos valores
   if (nomeEmpresa == undefined) {
@@ -14,12 +13,10 @@ function cadastrarEmpresa(req, res) {
     res.status(400).send("Seu email está undefined!");
   } else if (cnpjEmpresa == undefined) {
     res.status(400).send("Seu cnpj está undefined!");
-  } else if (senhaEmpresa == undefined) {
-    res.status(400).send("Sua senha está undefined!");
   } else {
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
     cadastroEmpresaModel
-      .cadastrarEmpresa(nomeEmpresa, emailEmpresa, cnpjEmpresa, senhaEmpresa)
+      .cadastrarEmpresa(nomeEmpresa, emailEmpresa, cnpjEmpresa)
       .then(function (resultado) {
         res.json({id: resultado.insertId});
       })
