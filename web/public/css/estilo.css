@@ -17,6 +17,7 @@ body {
 #main-nav a:hover {
   transform: scale(1.05);
   font-weight: bold;
+  color: #ff5400
 }
 
 #main .muda-pagina {
