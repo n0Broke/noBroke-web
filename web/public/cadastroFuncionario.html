@@ -10,6 +10,7 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="css/cadastro.css" />
+    <link rel="stylesheet" href="css/estilo.css"/>
     <link
       rel="icon"
       href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
@@ -18,67 +19,32 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-dark fixed-top navbar-expand-md p-0 w-100 h-">
-      <div class="container-fluid" id="header">
-        <a href="#inicio" class="navbar-brand ps-md-5 my-3">
-          <img
-            src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png"
-            width="90%"
-            height="40px"
-            alt="Logo da noBroke"
-          />
-        </a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#main-nav"
-          aria-controls="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div
-          class="collapse navbar-collapse justify-content-end align-center"
-          id="main-nav"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link link-light" href="#inicio">Início</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link link-light" href="#sobre-nos">Sobre</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link link-light" href="#fale-conosco">Contato</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link link-light" href="login.html">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link link-light" href="cadastroEmpresa.html"
-                >Cadastro</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
     <div
       class="background d-flex align-items-center justify-content-center flex-column meio"
     >
       <div class="container text-center">
         <div class="campos">
-          <div class="col borda-adm">
+          <div class="col borda">
             <div class="mb-3">
               <label
                 class="label-title d-flex justify-content-start"
                 for="formGroupExampleInput"
                 class="form-label"
-              >
+                <h6>Permissão*</h6>
+              </label>
+              <div class="selectGrande">
+              <select id="permissao">
+                <option value="1">Funcionario</option>
+                <option value="2">Administrador</option>
+                <option value="0" selected disabled>Selecione uma Opção</option>
+              </select>
+              </div>
+              </div>
+              <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput"
+                class="form-label"
                 <h6>Nome do Funcionário*</h6>
               </label>
               <input
@@ -132,7 +98,7 @@
               </label>
               <div class="input-group mb-3">
                 <input
-                  type="text"
+                  type="password"
                   class="form-control"
                   id="senha_input"
                   placeholder="********"
@@ -150,7 +116,7 @@
                 <h6>Confirmar Senha*</h6>
               </label>
               <input
-                type="text"
+                type="password"
                 class="form-control"
                 id="confirmacao_senha_input"
                 placeholder="******"
@@ -172,63 +138,6 @@
         </div>
       </div>
     </div>
-
-    <section id="footer">
-      <div class="container py-3">
-        <div class="row">
-          <div
-            class="col-md-6 d-flex flex-column align-items-center align-items-md-start"
-          >
-            <a
-              href="#inicio"
-              class="navbar-brand text-center text-md-start m-0"
-            >
-              <img
-                src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png"
-                width="90%"
-                height="60px"
-                alt=""
-              />
-            </a>
-            <span class="text-center"
-              >Transformando dados em decisões inteligentes</span
-            >
-          </div>
-          <div class="col-md-3 d-flex flex-column">
-            <span class="text-light text-center text-md-start fw-bold"
-              >CONTATOS</span
-            >
-            <span class="text-center text-md-start">comercial@nobroke.com</span>
-            <span class="text-center text-md-start">Rua Haddock Lobo, 595</span>
-            <span class="text-center text-md-start">+55 (11)90000-0000</span>
-          </div>
-          <div class="col-md-3 d-flex flex-column">
-            <span class="text-light text-center text-md-start fw-bold"
-              >REDES SOCIAIS</span
-            >
-            <div
-              class="mt-3 d-flex justify-content-center justify-content-md-start"
-            >
-              <img
-                src="./assets/icon/icon-linkedin.png"
-                class="img-redes me-2"
-                alt=""
-              />
-              <img
-                src="./assets/icon/icon-instagram.png"
-                class="img-redes me-2"
-                alt=""
-              />
-              <img
-                src="./assets/icon/icon-facebook.png"
-                class="img-redes me-2"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </body>
 </html>
 <script
@@ -243,6 +152,7 @@
 
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
+    var selectValue = document.getElementById("permissao");
     var nomeVar = nome_input.value.trim();
     var cpfVar = cpf_input.value.trim();
     var emailVar = email_input.value.trim();
@@ -257,7 +167,8 @@
       emailVar == "" ||
       senhaVar == "" ||
       confirmacaoSenhaVar == "" ||
-      cpfVar == ""
+      cpfVar == "" ||
+      selectValue.value == 0
     ) {
       alert("Mensagem de erro para todos os campos em branco");
       return false;
@@ -370,6 +281,8 @@
         console.log(resultado + cpfVar[9] + cpfVar[10]);
       }
 
+      
+
       if (
         senhaVar.length < 8 ||
         senhaVar != confirmacaoSenhaVar ||
@@ -383,9 +296,10 @@
           "A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais",
         );
         return false;
-      } else {
+      } else if(selectValue.value == 1) {
         console.log("Cadastro ok");
 
+        
         // Enviando o valor da nova input
         fetch("/cadastroFuncionario/cadastrar", {
           method: "POST",
@@ -430,7 +344,44 @@
           });
 
         return false;
-      }
+      }else if(selectValue.value == 2) {
+    
+      fetch("/cadastroAdm/cadastroAdm", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          // crie um atributo que recebe o valor recuperado aqui
+          // Agora vá para o arquivo routes/usuario.js
+          nomeAdmServer: nomeVar,
+          emailAdmServer: emailVar,
+          cpfAdmServer: cpfVar,
+          senhaAdmServer: senhaVar,
+          idEmpresaServer: idEmpresa,
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            sessionStorage.setItem("ID_USUARIO", json.id_usuario);
+            sessionStorage.setItem("FK_EMPRESA", json.fk_empresa);
+            mensagem_erro.innerHTML =
+              "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+            setTimeout(() => {
+              window.location = "login.html";
+            }, "2000");
+          } else {
+            console.log(nomeAdmVar, emailAdmVar, cpfAdmVar, senhaAdmVar);
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
     }
   }
+}
 </script>

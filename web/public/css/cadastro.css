@@ -1,5 +1,6 @@
+
 #header {
-  background-color: black;
+  background-color: #000;
 }
 
 #header a {
@@ -9,60 +10,145 @@
 #main-nav a:hover {
   transform: scale(1.05);
   font-weight: bold;
+  transition: 0.3s;
+}
+
+.passos{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.bolinha{
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #cfcfcf;
+}
+
+.bolinha.ativa{
+  background-color: #FF5500;
+}
+
+.linha{
+  width: 40px;
+  height: 3px;
+  background-color: #cfcfcf;
+}
+
+.texto-passo{
+  font-size: 14px;
+  color: #555;
+  margin: 0;
+}
+
+.background {
+  height: 100vh;
+
+  background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+    url("../assets/imgs-background/graficoLinha.jpg");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .meio {
-    height: 60vh;
-    background-color: bisque;
+  min-height: 80vh;
 }
 
 .borda {
-    border-radius: 15px;
-    padding: 45px;
-    border: 1.7px solid black;
-    width: 50%;
+  background: white;
+
+  border-radius: 18px;
+  padding: 50px;
+
+  width: 50%;
+
+  border: none;
+
+  box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+
+  transition: 0.3s;
 }
 
-.borda-adm {
-    border-radius: 15px;
-    padding: 30px;
-    border: 1.7px solid black;
-    width: 50%;
-    margin-top: 30px;
+.borda:hover{
+  transform: translateY(-3px);
 }
 
 .campos {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
- .background {
-   background-color: white;
-   height: 100vh;
- }
+.label-title {
+  color: #222;
+  font-weight: 600;
+}
 
- .label-title {
-    color: black;
- }
+.form-control {
 
- .mb-3 {
-   border: black;
- }
- 
- .button-color{
-    background-color: #FF5500;
-    font-weight: bold;
-    border-color: #FF5500;
-    color: white;
- }
+  border-radius: 10px;
 
- .botao {
-    width: 225px;
- }
+  border: 1.5px solid #ddd;
 
- #footer {
+  padding: 10px;
+
+  transition: 0.2s;
+}
+
+
+.form-control:hover {
+
+  border-color: #FF5500;
+  transform: scale(1.05);
+  box-shadow: 0 0 0 0.2rem rgba(255,85,0,0.25);
+}
+
+.button-color {
+
+  background-color: #FF5500;
+
+  font-weight: bold;
+
+  border-color: #FF5500;
+
+  color: white;
+
+  border-radius: 8px;
+
+  transition: 0.25s;
+}
+
+.button-color:hover {
+
+  background-color: #e64a00;
+  color: white;
+  border-color: #e64a00;
+  transform: scale(1.05);
+}
+
+.botao {
+  width: 225px;
+}
+
+.mb-3 select {
+  border-radius: 10px;
+  border: 1.5px solid #ddd;
+  width: 50%;
+  height: 35px;
+  text-align: center;
+  background-color: white;
+}
+
+#footer {
   background-color: black;
 }
 
@@ -76,25 +162,22 @@
 }
 
 @media only screen and (max-width: 576px) {
-    .borda {
-        width: 90%;
-    }
 
-    .borda-adm {
-        width: 90%;
-    }
+  .borda {
+    width: 90%;
+    padding: 35px;
+  }
 
-    .botao {
-        width: 150px;
-    }
+  .botao {
+    width: 150px;
+  }
+
 }
 
 @media only screen and (max-width: 992px) {
-    .borda {
-        width: 80%;
-    }
 
-    .borda-adm {
-        width: 80%;
-    }
+  .borda {
+    width: 80%;
+  }
+
 }

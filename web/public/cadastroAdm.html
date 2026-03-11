@@ -1,74 +1,181 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/cadastro.css" />
+    <link
+      rel="icon"
+      href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+    />
+    <title>Cadastro Usuário | noBroke</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
-  <link rel="stylesheet" href="css/cadastro.css" />
-  <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" />
-  <title>Cadastro Usuário | noBroke</title>
-</head>
+  <body>
+    <nav class="navbar navbar-dark fixed-top navbar-expand-md p-0 w-100 h-">
+      <div class="container-fluid" id="header">
+        <a href="#inicio" class="navbar-brand ps-md-5 my-3">
+          <img
+            src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png"
+            width="90%"
+            height="40px"
+            alt="Logo da noBroke"
+          />
+        </a>
 
-<body>
-  <nav class="navbar navbar-dark fixed-top navbar-expand-md p-0 w-100 h-">
-    <div class="container-fluid" id="header">
-      <a href="#inicio" class="navbar-brand ps-md-5 my-3">
-        <img src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png" width="90%" height="40px"
-          alt="Logo da noBroke" />
-      </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#main-nav"
+          aria-controls="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
-        aria-controls="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link link-light" href="#inicio">Início</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-light" href="#sobre-nos">Sobre</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-light" href="#fale-conosco">Contato</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-light" href="login.html">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-light" href="cadastroEmpresa.html">Cadastro</a>
-          </li>
-        </ul>
+        <div
+          class="collapse navbar-collapse justify-content-end align-center"
+          id="main-nav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link link-light" href="index.html">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light" href="index.html#sobre-nos">Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light" href="index.html#fale-conosco">Contato</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light" href="cadastroEmpresa.html"
+                >Cadastro</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <div class="background d-flex align-items-center justify-content-center flex-column meio">
-    <div class="container text-center">
-      <div class="campos">
-        <div class="col borda-adm">
-          <div class="mb-3">
-            <label class="label-title d-flex justify-content-start" for="formGroupExampleInput" class="form-label">
-              <h6>Nome do Administrador*</h6>
-            </label>
-            <input type="text" class="form-control" id="nomeAdm_input" placeholder="Ex.: José da Silva" />
-          </div>
-          <div class="mb-3">
-            <label class="label-title d-flex justify-content-start" for="formGroupExampleInput" class="form-label">
-              <h6>CPF do Administrador*</h6>
-            </label>
-            <input type="text" class="form-control" id="cpfAdm_input" placeholder="Ex.: 123.456.789-00" />
-          </div>
-          <div class="mb-3">
-            <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
-              <h6>Email do Administrador*</h6>
-            </label>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" id="emailAdm_input" placeholder="Ex.: adm@gmail.com"
-                aria-label="Recipient’s username" aria-describedby="basic-addon2" />
+    <div
+      class="background d-flex align-items-center justify-content-center flex-column meio"
+    >
+      <div class="container text-center">
+        <div class="campos">
+          <div class="col borda">
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput"
+                class="form-label"
+              >
+              <h5>Cadastre o seu primeiro Administrador</h5>
+            </div>
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput"
+                class="form-label"
+              >
+              <div class="passos">
+              <div class="bolinha"></div>
+              <div class="linha"></div>
+              <div class="bolinha ativa"></div>
+              <p class="texto-passo">Passo 2 de 2</p>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput"
+                class="form-label"
+              >
+                <h6>Nome do Administrador*</h6>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="nomeAdm_input"
+                placeholder="Ex.: José da Silva"
+              />
+            </div>
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput"
+                class="form-label"
+              >
+                <h6>CPF do Administrador*</h6>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="cpfAdm_input"
+                placeholder="Ex.: 123.456.789-00"
+              />
+            </div>
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput2"
+                class="form-label"
+              >
+                <h6>Email do Administrador*</h6>
+              </label>
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="emailAdm_input"
+                  placeholder="Ex.: adm@gmail.com"
+                  aria-label="Recipient’s username"
+                  aria-describedby="basic-addon2"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput2"
+                class="form-label"
+              >
+                <h6>Senha*</h6>
+              </label>
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="senhaAdm_input"
+                  placeholder="********"
+                  aria-label="Recipient’s username"
+                  aria-describedby="basic-addon2"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput2"
+                class="form-label"
+              >
+                <h6>Confirmar Senha*</h6>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="confirmacao_senhaAdm_input"
+                placeholder="******"
+              />
             </div>
           </div>
           <div class="mb-3">
