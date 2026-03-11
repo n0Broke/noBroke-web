@@ -1,33 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/main.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/cadastro.css" />
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
     <!-- <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"> -->
     <title>Login | noBroke</title>
 
     <script src="./js/sessao.js"></script>
-</head>
+  </head>
 
-<body class="background">
-
-
-    <div class="container text-center">
+  <body>
+    <!-- <div class="container text-center">
         <div class="row align-items-center">
             <div class="col">
                 <div class="mb-3">
                     <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2"
                         class="form-label">
                         <h6>Email ou CPF*</h6>
-                        <!-- Utilizaremos ou email ou cpf para realizar login -->
                     </label>
                     <input type="text" class="form-control" id="nome_cpf_input" placeholder="jose@empresa.com">
                 </div>
@@ -41,12 +41,6 @@
                 <div class="d-grid gap-2 col-6 mx-auto">
                     <button class="btn btn-light button-color" type="button" onclick="verificartipo()">LOGIN</button>
                 </div>
-                <!-- <div id="cardErro" style="display: none;">
-                    <div id="mensagem_erro"></div>
-                </div>
-                <div id="div_aguardar" style="display:none;">
-                    <p>Carregando...</p>
-                </div> -->
             </div>
 
             <div class="col">
@@ -61,262 +55,392 @@
        
       </a>
     </div>
-  </section>
+  </section> -->
 
+    <nav class="navbar navbar-dark fixed-top navbar-expand-md p-0 w-100 h-">
+      <div class="container-fluid" id="header">
+        <a href="#inicio" class="navbar-brand ps-md-5 my-3">
+          <img
+            src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png"
+            width="90%"
+            height="40px"
+            alt="Logo da noBroke"
+          />
+        </a>
 
-</body>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#main-nav"
+          aria-controls="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
+        <div
+          class="collapse navbar-collapse justify-content-end align-center"
+          id="main-nav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link link-light" href="#inicio">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light" href="#sobre-nos">Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light" href="#fale-conosco">Contato</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light" href="cadastroEmpresa.html"
+                >Cadastro</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="background d-flex align-items-center justify-content-center flex-column meio"
+    >
+      <div class="container text-center">
+        <div class="campos">
+          <div class="col borda">
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput2"
+                class="form-label"
+              >
+                <h6>Email ou CPF*</h6>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="nome_cpf_input"
+                placeholder="jose@empresa.com"
+              />
+            </div>
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput2"
+                class="form-label"
+              >
+                <h6>Senha*</h6>
+              </label>
+              <input
+                type="password"
+                class="form-control"
+                id="senha_input"
+                placeholder="******"
+              />
+            </div>
+            <div class="d-grid justify-content-center mx-auto">
+              <button
+                class="btn btn-light button-color botao"
+                type="button"
+                onclick="verificartipo()"
+              >
+                LOGIN
+              </button>
+            </div>
+          </div>
+          <div class="col">
+            <a href="index.html"> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="footer">
+      <div class="container py-3">
+        <div class="row">
+          <div
+            class="col-md-6 d-flex flex-column align-items-center align-items-md-start"
+          >
+            <a
+              href="#inicio"
+              class="navbar-brand text-center text-md-start m-0"
+            >
+              <img
+                src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png"
+                width="90%"
+                height="60px"
+                alt=""
+              />
+            </a>
+            <span class="text-center"
+              >Transformando dados em decisões inteligentes</span
+            >
+          </div>
+          <div class="col-md-3 d-flex flex-column">
+            <span class="text-light text-center text-md-start fw-bold"
+              >CONTATOS</span
+            >
+            <span class="text-center text-md-start">comercial@nobroke.com</span>
+            <span class="text-center text-md-start">Rua Haddock Lobo, 595</span>
+            <span class="text-center text-md-start">+55 (11)90000-0000</span>
+          </div>
+          <div class="col-md-3 d-flex flex-column">
+            <span class="text-light text-center text-md-start fw-bold"
+              >REDES SOCIAIS</span
+            >
+            <div
+              class="mt-3 d-flex justify-content-center justify-content-md-start"
+            >
+              <img
+                src="./assets/icon/icon-linkedin.png"
+                class="img-redes me-2"
+                alt=""
+              />
+              <img
+                src="./assets/icon/icon-instagram.png"
+                class="img-redes me-2"
+                alt=""
+              />
+              <img
+                src="./assets/icon/icon-facebook.png"
+                class="img-redes me-2"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"
+></script>
 
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script> -->
-   
 
 <script>
+  function verificartipo() {
+    // aguardar();
 
+    var nome_cpf = nome_cpf_input.value;
+    var quantLogin = Number(nome_cpf.length);
+    var verificaTipo = 0; //poderia ser usado true ou false
 
+    for (let i = 0; i < quantLogin; i++) {
+      if (nome_cpf[i] == "@") {
+        verificaTipo += 1;
+      }
+    }
 
+    if (verificaTipo == 1) {
+      entrarEmail();
+    } else if (verificaTipo > 1) {
+      alert("Email deve ter apenas um '@'");
+      return false;
+    } else {
+      entrarCPF();
+    }
+  }
+  function entrarCPF() {
+    var cpfVar = nome_cpf_input.value;
+    var senhaVar = senha_input.value;
 
-    function verificartipo() {
-        // aguardar();
+    if (!verificarcpf(cpfVar, senhaVar)) {
+      alert("CPF ou senha inválidos");
+      return false;
+    } else {
+      cpfVar = verificarSeNum(cpfVar);
+    }
 
-        var nome_cpf = nome_cpf_input.value;
-        var quantLogin = Number(nome_cpf.length);
-        var verificaTipo = 0; //poderia ser usado true ou false
+    if (!calculoCpf(cpfVar)) {
+      alert("CPF incorreto");
+      return false;
+    }
 
+    console.log("FORM LOGIN: ", cpfVar);
+    console.log("FORM SENHA: ", senhaVar);
 
+    fetch("/usuarios/autenticarcpf", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        cpfServer: cpfVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!");
 
-        for (let i = 0; i < quantLogin; i++) {
-            if (nome_cpf[i] == "@"){
-                verificaTipo += 1;
-            }
-        }
+        if (resposta.ok) {
+          console.log(resposta);
 
-        if (verificaTipo == 1){
-            entrarEmail();
-        } else if (verificaTipo > 1) {
-            alert("Email deve ter apenas um '@'");
-            return false;
+          resposta.json().then((json) => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            sessionStorage.EMAIL_USUARIO = json.cpf;
+            sessionStorage.NOME_USUARIO = json.nome;
+            sessionStorage.ID_USUARIO = json.id_usuario;
+            sessionStorage.FK_EMPRESA = json.fk_empresa;
+
+            setTimeout(function () {
+              window.location = "cadastroFuncionario.html";
+            }, 1000); // apenas para exibir o loading
+          });
         } else {
-            entrarCPF();
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          resposta.text().then((texto) => {
+            console.error(texto);
+            finalizarAguardar(texto);
+          });
         }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+      });
 
+    return false;
+  }
+  function entrarEmail() {
+    var emailVar = nome_cpf_input.value;
+    var senhaVar = senha_input.value;
+
+    if (emailVar.trim() == "" || senhaVar.trim() == "") {
+      alert("Os campos não devem estar em branco");
+      return false;
     }
-    function entrarCPF(){
-        var cpfVar = nome_cpf_input.value;
-        var senhaVar = senha_input.value; 
 
-        if (!verificarcpf(cpfVar, senhaVar)){
-            alert("CPF ou senha inválidos")
-            return false;
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
+
+    fetch("/usuarios/autenticaremail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!");
+
+        if (resposta.ok) {
+          console.log(resposta);
+
+          resposta.json().then((json) => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.NOME_USUARIO = json.nome;
+            sessionStorage.ID_USUARIO = json.id_usuario;
+            sessionStorage.FK_EMPRESA = json.fk_empresa;
+
+            setTimeout(function () {
+              window.location = "cadastroFuncionario.html";
+            }, 1000); // apenas para exibir o loading
+          });
         } else {
-            cpfVar = verificarSeNum(cpfVar);
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          resposta.text().then((texto) => {
+            console.error(texto);
+          });
         }
+      })
+      .catch(function (erro) {
+        console.log(erro);
+      });
 
-        if (!calculoCpf(cpfVar)){
-            alert("CPF incorreto")
-            return false;
-        }
+    return false;
+  }
+  function verificarcpf(cpfVar, senhaVar) {
+    var cpfNum = verificarSeNum(cpfVar).trim();
 
-
-        console.log("FORM LOGIN: ", cpfVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticarcpf", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                cpfServer: cpfVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.cpf;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id_usuario;
-                    sessionStorage.FK_EMPRESA = json.fk_empresa;
-                   
-
-                    setTimeout(function () {
-                        window.location = "cadastroFuncionario.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                    finalizarAguardar(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-
+    if (cpfNum == "" || senhaVar.trim() == "") {
+      return false;
+    } else if (cpfNum.length != 11) {
+      return false;
+    } else {
+      return true;
     }
-    function entrarEmail(){
-                
+  }
 
-        var emailVar = nome_cpf_input.value;
-        var senhaVar = senha_input.value;
+  function verificarSeNum(cod) {
+    var cpf = cod.trim();
+    var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var cpfPuro = "";
 
-        if (emailVar.trim() == "" || senhaVar.trim() == "") {
-            alert("Os campos não devem estar em branco")
-            return false;
+    // Dois fors que servem quase como um includes
+    for (let i = 0; i < cod.length; i++) {
+      for (let j = 0; j < nums.length; j++) {
+        if (nums[j] == cod[i]) {
+          cpfPuro += cod[i];
         }
-
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
-
-        fetch("/usuarios/autenticaremail", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
-
-            if (resposta.ok) {
-                console.log(resposta);
-
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id_usuario;
-                    sessionStorage.FK_EMPRESA = json.fk_empresa;
-
-                    setTimeout(function () {
-                        window.location = "cadastroFuncionario.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-        
-    }
-    function verificarcpf(cpfVar, senhaVar){
-        
-        var cpfNum = verificarSeNum(cpfVar).trim(); 
-
-        if (cpfNum == "" || senhaVar.trim() == "") {
-            return false;
-        } else if (cpfNum.length != 11){
-            return false;
-        } else {
-            return true;
-        }
-
-       
- 
+      }
     }
 
-    function verificarSeNum(cod){
-        var cpf = cod.trim();
-        var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-        var cpfPuro = "";
-        
-        // Dois fors que servem quase como um includes
-        for (let i = 0; i < cod.length; i++) {
-            
-            for (let j = 0; j < nums.length; j++) {
+    return cpfPuro;
+  }
 
-                if (nums[j] == cod[i]){
-                    cpfPuro += cod[i];
-                }
+  function calculoCpf(cpf) {
+    var iguais = true;
 
-            }
-            
-        }
-
-        return cpfPuro;
+    for (let i = 1; i < cpf.length; i++) {
+      if (cpf[i] != cpf[0]) {
+        iguais = false;
+        break;
+      }
     }
 
-    function calculoCpf(cpf){
-
-        var iguais = true;
-
-        for (let i = 1; i < cpf.length; i++) {
-            if (cpf[i] != cpf[0]) {
-                iguais = false;
-                break;
-            }
-        }
-
-        if (iguais){
-            return false;
-        }
-
-        var soma = 0;
-
-        for (let i = 0; i < 9; i++) {
-            soma += parseInt(cpf[i])*(10 - i);
-        }
-
-        var resto = (soma * 10) % 11;
-
-        if (resto == 10){
-            resto = 0; // se o resto for 10, considera ele como 0
-        }
-
-        if (resto != parseInt(cpf[9])) {
-            return false;
-        }
-
-        soma = 0; // zera a soma
-
-        for (let y = 0; y < 10; y++) {
-            soma += parseInt(cpf[y]) * (11 - y);
-        }
-
-        resto = (soma * 10) % 11;
-
-        if (resto == 10){
-            resto = 0;
-        }
-
-        if (resto != parseInt(cpf[10])) {
-            return false;
-        }
-
-        return true;
+    if (iguais) {
+      return false;
     }
 
+    var soma = 0;
+
+    for (let i = 0; i < 9; i++) {
+      soma += parseInt(cpf[i]) * (10 - i);
+    }
+
+    var resto = (soma * 10) % 11;
+
+    if (resto == 10) {
+      resto = 0; // se o resto for 10, considera ele como 0
+    }
+
+    if (resto != parseInt(cpf[9])) {
+      return false;
+    }
+
+    soma = 0; // zera a soma
+
+    for (let y = 0; y < 10; y++) {
+      soma += parseInt(cpf[y]) * (11 - y);
+    }
+
+    resto = (soma * 10) % 11;
+
+    if (resto == 10) {
+      resto = 0;
+    }
+
+    if (resto != parseInt(cpf[10])) {
+      return false;
+    }
+
+    return true;
+  }
 </script>
