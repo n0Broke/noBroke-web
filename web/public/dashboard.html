@@ -2,68 +2,56 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | noBroke</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="./js/sessao.js"></script>
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
+<title>Dashboard | noBroke</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="./js/sessao.js"></script>
+
+<link rel="stylesheet" href="./css/estilo.css">
+
+<link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 
 <body>
-    <nav class="navbar navbar-dark fixed-top navbar-expand-md p-0 w-100 h-">
-        <div class="container-fluid" id="header">
-            <a href="#inicio" class="navbar-brand">
-                <img src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png" width="200px" height="60px" alt="">
-            </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
-                aria-controls="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<div class="container-fluid">
+<div class="row min-vh-100">
 
-            <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link link-light" href="index.html">Início</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link link-light" href="dashboard.html">DashBoard</a>
-                    </li> -->
-                    <li class="nav-item" id="admMenu" style="display: block;">
-                        <a class="nav-link link-light" href="cadastroFuncionario.html">Cadastro de Funcionarios</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+    <div class="col-12 col-md-3 col-lg-2 sidebar">
 
-        <div>
-            <img src="./assets/icon/nobroke-manutencao.png" alt="">
-        </div>
-    </nav>
+        <img class="logo-dash img-fluid" src="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
 
-    
-    <section id="footer">
-        <div>
-            <a href="#inicio" class="navbar-brand">
-                <img src="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" width="200px" height="60px" alt="">
-            </a>
-        </div>
-    </section>
+        <a style="font-weight: bolder; color: white;" id="dashMenu" class="btn btn-nobroke mt-4">Dashboard</a>
+
+        <a style="color: white;" id="admMenu" href="cadastroFuncionario.html" class="btn btn-nobroke mt-3">
+            Cadastrar Funcionário
+        </a>
+
+    </div>
+
+    <div class="col conteudo">
+
+        <img class="img-fluid img-manutencao" src="./assets/icon/nobroke-manutencao.png">
+
+    </div>
+
+</div>
+</div>
+
 </body>
-
 </html>
 
 <script>
+window.onload = function () {
 
-    window.onload = function () {
-        if (sessionStorage.FK_ADM != "null") {
-            admMenu.style.display = "none";
-        }
+    if (sessionStorage.FK_ADM != "null") {
+        admMenu.style.display = "none";
     }
 
+}
 </script>

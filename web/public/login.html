@@ -59,7 +59,7 @@
 
     <nav class="navbar navbar-dark fixed-top navbar-expand-md p-0 w-100 h-">
       <div class="container-fluid" id="header">
-        <a href="#inicio" class="navbar-brand ps-md-5 my-3">
+        <a href="index.html#inicio" class="navbar-brand ps-md-5 my-3">
           <img
             src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png"
             width="90%"
@@ -85,16 +85,16 @@
         >
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link link-light" href="#inicio">Início</a>
+              <a class="nav-link link-light" href="index.html">Início</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-light" href="#sobre-nos">Sobre</a>
+              <a class="nav-link link-light" href="index.html#sobre-nos">Sobre</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-light" href="#fale-conosco">Contato</a>
+              <a class="nav-link link-light" href="index.html#fale-conosco">Contato</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link link-light" href="login.html">Login</a>
+              <a class="nav-link link-light" href="login.html" style="font-weight: bolder;">Login</a>
             </li>
             <li class="nav-item">
               <a class="nav-link link-light" href="cadastroEmpresa.html"
@@ -112,6 +112,14 @@
       <div class="container text-center">
         <div class="campos">
           <div class="col borda">
+             <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput"
+                class="form-label"
+              >
+              <h5>Login</h5>
+            </div>
             <div class="mb-3">
               <label
                 class="label-title d-flex justify-content-start"
@@ -291,10 +299,11 @@
             sessionStorage.EMAIL_USUARIO = json.cpf;
             sessionStorage.NOME_USUARIO = json.nome;
             sessionStorage.ID_USUARIO = json.id_usuario;
+            sessionStorage.FK_ADM = json.fk_adm;
             sessionStorage.FK_EMPRESA = json.fk_empresa;
 
             setTimeout(function () {
-              window.location = "cadastroFuncionario.html";
+              window.location = "dashboard.html";
             }, 1000); // apenas para exibir o loading
           });
         } else {
@@ -321,68 +330,39 @@
       return false;
     }
 
-        if (emailVar.trim() == "" || senhaVar.trim() == "") {
-            alert("Os campos não devem estar em branco")
-            return false;
-        }
+    console.log("FORM LOGIN: ", emailVar);
+    console.log("FORM SENHA: ", senhaVar);
 
-        console.log("FORM LOGIN: ", emailVar);
-        console.log("FORM SENHA: ", senhaVar);
+    fetch("/usuarios/autenticaremail", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        emailServer: emailVar,
+        senhaServer: senhaVar,
+      }),
+    })
+      .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!");
 
-        fetch("/usuarios/autenticaremail", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                emailServer: emailVar,
-                senhaServer: senhaVar
-            })
-        }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
+        if (resposta.ok) {
+          console.log(resposta);
 
-            if (resposta.ok) {
-                console.log(resposta);
+          resposta.json().then((json) => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+            sessionStorage.EMAIL_USUARIO = json.email;
+            sessionStorage.NOME_USUARIO = json.nome;
+            sessionStorage.ID_USUARIO = json.id_usuario;
+            sessionstorage.FK_ADM = json.fk_adm;
+            sessionStorage.FK_EMPRESA = json.fk_empresa;
 
-                resposta.json().then(json => {
-                    console.log(json);
-                    console.log(JSON.stringify(json));
-                    sessionStorage.EMAIL_USUARIO = json.email;
-                    sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id_usuario;
-                    sessionStorage.FK_ADM = json.fk_adm;
-                    sessionStorage.FK_EMPRESA = json.fk_empresa;
 
-                    setTimeout(function () {
-                        window.location = "dashboard.html";
-                    }, 1000); // apenas para exibir o loading
-
-                });
-
-            } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
-                resposta.text().then(texto => {
-                    console.error(texto);
-                });
-            }
-
-        }).catch(function (erro) {
-            console.log(erro);
-        })
-
-        return false;
-        
-    }
-    function verificarcpf(cpfVar, senhaVar){
-        
-        var cpfNum = verificarSeNum(cpfVar).trim(); 
-
-        if (cpfNum == "" || senhaVar.trim() == "") {
-            return false;
-        } else if (cpfNum.length != 11){
-            return false;
+            setTimeout(function () {
+              window.location = "dashboard.html";
+            }, 1000); // apenas para exibir o loading
+          });
         } else {
           console.log("Houve um erro ao tentar realizar o login!");
 
