@@ -177,86 +177,66 @@
                 placeholder="******"
               />
             </div>
-            <div class="d-grid justify-content-center mx-auto">
-              <button
-                class="btn btn-light button-color botao"
-                type="button"
-                onclick="cadastrarAdm()"
-              >
-                CADASTRE-SE
-              </button>
+          </div>
+          <div class="mb-3">
+            <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
+              <h6>Senha*</h6>
+            </label>
+            <div class="input-group mb-3">
+              <input type="text" class="form-control" id="senhaAdm_input" placeholder="********"
+                aria-label="Recipient’s username" aria-describedby="basic-addon2" />
             </div>
           </div>
-          <div class="col">
-            <a href="index.html"> </a>
+          <div class="mb-3">
+            <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2" class="form-label">
+              <h6>Confirmar Senha*</h6>
+            </label>
+            <input type="text" class="form-control" id="confirmacao_senhaAdm_input" placeholder="******" />
+          </div>
+          <div class="d-grid justify-content-center mx-auto">
+            <button class="btn btn-light button-color botao" type="button" onclick="cadastrarAdm()">
+              CADASTRE-SE
+            </button>
+          </div>
+        </div>
+        <div class="col">
+          <a href="index.html"> </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="footer">
+    <div class="container py-3">
+      <div class="row">
+        <div class="col-md-6 d-flex flex-column align-items-center align-items-md-start">
+          <a href="#inicio" class="navbar-brand text-center text-md-start m-0">
+            <img src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png" width="90%" height="60px" alt="" />
+          </a>
+          <span class="text-center">Transformando dados em decisões inteligentes</span>
+        </div>
+        <div class="col-md-3 d-flex flex-column">
+          <span class="text-light text-center text-md-start fw-bold">CONTATOS</span>
+          <span class="text-center text-md-start">comercial@nobroke.com</span>
+          <span class="text-center text-md-start">Rua Haddock Lobo, 595</span>
+          <span class="text-center text-md-start">+55 (11)90000-0000</span>
+        </div>
+        <div class="col-md-3 d-flex flex-column">
+          <span class="text-light text-center text-md-start fw-bold">REDES SOCIAIS</span>
+          <div class="mt-3 d-flex justify-content-center justify-content-md-start">
+            <img src="./assets/icon/icon-linkedin.png" class="img-redes me-2" alt="" />
+            <img src="./assets/icon/icon-instagram.png" class="img-redes me-2" alt="" />
+            <img src="./assets/icon/icon-facebook.png" class="img-redes me-2" alt="" />
           </div>
         </div>
       </div>
     </div>
+  </section>
+</body>
 
-    <section id="footer">
-      <div class="container py-3">
-        <div class="row">
-          <div
-            class="col-md-6 d-flex flex-column align-items-center align-items-md-start"
-          >
-            <a
-              href="#inicio"
-              class="navbar-brand text-center text-md-start m-0"
-            >
-              <img
-                src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png"
-                width="90%"
-                height="60px"
-                alt=""
-              />
-            </a>
-            <span class="text-center"
-              >Transformando dados em decisões inteligentes</span
-            >
-          </div>
-          <div class="col-md-3 d-flex flex-column">
-            <span class="text-light text-center text-md-start fw-bold"
-              >CONTATOS</span
-            >
-            <span class="text-center text-md-start">comercial@nobroke.com</span>
-            <span class="text-center text-md-start">Rua Haddock Lobo, 595</span>
-            <span class="text-center text-md-start">+55 (11)90000-0000</span>
-          </div>
-          <div class="col-md-3 d-flex flex-column">
-            <span class="text-light text-center text-md-start fw-bold"
-              >REDES SOCIAIS</span
-            >
-            <div
-              class="mt-3 d-flex justify-content-center justify-content-md-start"
-            >
-              <img
-                src="./assets/icon/icon-linkedin.png"
-                class="img-redes me-2"
-                alt=""
-              />
-              <img
-                src="./assets/icon/icon-instagram.png"
-                class="img-redes me-2"
-                alt=""
-              />
-              <img
-                src="./assets/icon/icon-facebook.png"
-                class="img-redes me-2"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </body>
 </html>
-<script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-  crossorigin="anonymous"
-></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script>
   function cadastrarAdm() {
     //Recupere o valor da nova input pelo nome do id
@@ -327,14 +307,6 @@
         }
       }
 
-      // tratativa do email
-      emailSplit = emailAdmVar.split("@", 2);
-      emailAdmVar = emailSplit[0] + "@btgPactual.com";
-
-      console.log(
-        emailSplit[0] + " e " + emailSplit[1] + " passou para = " + emailAdmVar,
-      );
-
       if (
         senhaAdmVar < 8 ||
         senhaAdmVar != confirmacaoSenhaAdmVar
@@ -348,6 +320,9 @@
         return false;
       } else {
         console.log("Cadastro ok");
+        setTimeout(() => {
+          window.location.href = "login.html";
+        }, "2000");
       }
 
       var idEmpresa = sessionStorage.getItem("id");
@@ -379,7 +354,7 @@
               "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
             setTimeout(() => {
-              window.location = "login.html";
+              window.location.href = "login.html";
             }, "2000");
           } else {
             console.log(nomeAdmVar, emailAdmVar, cpfAdmVar, senhaAdmVar);
