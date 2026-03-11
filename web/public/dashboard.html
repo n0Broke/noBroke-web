@@ -2,56 +2,66 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard | noBroke</title>
+    <title>Dashboard | noBroke</title>
 
-<script src="./js/sessao.js"></script>
+    <script src="./js/sessao.js"></script>
 
-<link rel="stylesheet" href="./css/estilo.css">
+    <link rel="stylesheet" href="./css/estilo.css">
 
-<link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
+    <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class="container-fluid">
-<div class="row min-vh-100">
+    <div class="container-fluid">
+        <div class="row min-vh-100">
 
-    <div class="col-12 col-md-3 col-lg-2 sidebar">
+            <div class="col-12 col-md-3 col-lg-2 sidebar">
+                <img class="logo-dash img-fluid" src="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
+                <div class="menu_centro">
+                    <a style="font-weight: bolder; color: white;" id="dashMenu" class="btn-nobroke mt-4">Dashboard</a>
+                    <a style="color: white;" id="admMenu" href="cadastroFuncionario.html" class="btn-nobroke mt-3">
+                        Cadastrar Funcionário
+                    </a>
+                </div>
+                <div class="user-profile">
+                    <img src="./assets/icon/user.png" alt="Foto de perfil" class="profile-img">
+                    <p class="username" id="usuario" style="color: white;"></p>
+                    <button onclick="logout()" class="logout-btn">Sair</button>
+                </div>
+            </div>
 
-        <img class="logo-dash img-fluid" src="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
 
-        <a style="font-weight: bolder; color: white;" id="dashMenu" class="btn btn-nobroke mt-4">Dashboard</a>
+            <div class="col conteudo">
+                <img class="img-fluid img-manutencao" src="./assets/icon/nobroke-manutencao.png">
+            </div>
 
-        <a style="color: white;" id="admMenu" href="cadastroFuncionario.html" class="btn btn-nobroke mt-3">
-            Cadastrar Funcionário
-        </a>
-
+        </div>
     </div>
-
-    <div class="col conteudo">
-
-        <img class="img-fluid img-manutencao" src="./assets/icon/nobroke-manutencao.png">
-
-    </div>
-
-</div>
-</div>
 
 </body>
+
 </html>
 
 <script>
-window.onload = function () {
+    window.onload = function () {
 
-    if (sessionStorage.FK_ADM != "null") {
-        admMenu.style.display = "none";
+        const usuario = document.getElementById("usuario");
+        usuario.innerHTML = `Olá <b>${sessionStorage.NOME_USUARIO}</b>, boas vindas.`;
+        if (sessionStorage.FK_ADM != "null") {
+            admMenu.style.display = "none";
+        }
+
     }
 
-}
+    function logout() {
+        sessionStorage.clear()
+        window.location = 'index.html';
+    }
 </script>
