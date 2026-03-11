@@ -1,0 +1,100 @@
+#header {
+  background-color: black;
+}
+
+#header a {
+  color: white;
+}
+
+#main-nav a:hover {
+  transform: scale(1.05);
+  font-weight: bold;
+}
+
+.meio {
+    height: 60vh;
+    background-color: bisque;
+}
+
+.borda {
+    border-radius: 15px;
+    padding: 45px;
+    border: 1.7px solid black;
+    width: 50%;
+}
+
+.borda-adm {
+    border-radius: 15px;
+    padding: 30px;
+    border: 1.7px solid black;
+    width: 50%;
+    margin-top: 30px;
+}
+
+.campos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+ .background {
+   background-color: white;
+   height: 100vh;
+ }
+
+ .label-title {
+    color: black;
+ }
+
+ .mb-3 {
+   border: black;
+ }
+ 
+ .button-color{
+    background-color: #FF5500;
+    font-weight: bold;
+    border-color: #FF5500;
+    color: white;
+ }
+
+ .botao {
+    width: 225px;
+ }
+
+ #footer {
+  background-color: black;
+}
+
+#footer span {
+  color: #b4b4b4;
+}
+
+#footer .img-redes {
+  width: 32px;
+  height: 32px;
+}
+
+@media only screen and (max-width: 576px) {
+    .borda {
+        width: 90%;
+    }
+
+    .borda-adm {
+        width: 90%;
+    }
+
+    .botao {
+        width: 150px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .borda {
+        width: 80%;
+    }
+
+    .borda-adm {
+        width: 80%;
+    }
+}
