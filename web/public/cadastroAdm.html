@@ -1,18 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/cadastro.css" />
+    <link
+      rel="icon"
+      href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+    />
+    <title>Cadastro Usuário | noBroke</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
-  <title>Cadastro Usuário | noBroke </title>
-</head>
-
-<body>
-  <div class="background d-flex align-items-center justify-content-center">
+  <body>
+    <!-- <div class="background d-flex align-items-center justify-content-center">
     <div class="container text-center">
       <div class="row align-items-center">
         <div class="col">
@@ -63,17 +69,228 @@
         </div>
       </div>
     </div>
-    <div id="mensagem_erro"></div>
+    <div id="mensagem_erro"></div> -->
 
-</body>
+    <nav class="navbar navbar-dark fixed-top navbar-expand-md p-0 w-100 h-">
+      <div class="container-fluid" id="header">
+        <a href="#inicio" class="navbar-brand ps-md-5 my-3">
+          <img
+            src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png"
+            width="90%"
+            height="40px"
+            alt="Logo da noBroke"
+          />
+        </a>
 
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#main-nav"
+          aria-controls="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="collapse navbar-collapse justify-content-end align-center"
+          id="main-nav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link link-light" href="#inicio">Início</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light" href="#sobre-nos">Sobre</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light" href="#fale-conosco">Contato</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link link-light" href="cadastroEmpresa.html"
+                >Cadastro</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="background d-flex align-items-center justify-content-center flex-column meio"
+    >
+      <div class="container text-center">
+        <div class="campos">
+          <div class="col borda-adm">
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput"
+                class="form-label"
+              >
+                <h6>Nome*</h6>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="nomeAdm_input"
+                placeholder="Ex.: noBroke"
+              />
+            </div>
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput"
+                class="form-label"
+              >
+                <h6>CPF*</h6>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="cpfAdm_input"
+                placeholder="Ex.: 123.456.789-00"
+              />
+            </div>
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput2"
+                class="form-label"
+              >
+                <h6>Email*</h6>
+              </label>
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="emailAdm_input"
+                  placeholder="Ex.: adm@gmail.com"
+                  aria-label="Recipient’s username"
+                  aria-describedby="basic-addon2"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput2"
+                class="form-label"
+              >
+                <h6>Senha*</h6>
+              </label>
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="senhaAdm_input"
+                  placeholder="********"
+                  aria-label="Recipient’s username"
+                  aria-describedby="basic-addon2"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label
+                class="label-title d-flex justify-content-start"
+                for="formGroupExampleInput2"
+                class="form-label"
+              >
+                <h6>Confirmar Senha*</h6>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="confirmacao_senhaAdm_input"
+                placeholder="******"
+              />
+            </div>
+            <div class="d-grid justify-content-center mx-auto">
+              <button
+                class="btn btn-light button-color botao"
+                type="button"
+                onclick="cadastrarEmpresa()"
+              >
+                CADASTRE-SE
+              </button>
+            </div>
+          </div>
+          <div class="col">
+            <a href="index.html"> </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="footer">
+      <div class="container py-3">
+        <div class="row">
+          <div
+            class="col-md-6 d-flex flex-column align-items-center align-items-md-start"
+          >
+            <a
+              href="#inicio"
+              class="navbar-brand text-center text-md-start m-0"
+            >
+              <img
+                src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png"
+                width="90%"
+                height="60px"
+                alt=""
+              />
+            </a>
+            <span class="text-center"
+              >Transformando dados em decisões inteligentes</span
+            >
+          </div>
+          <div class="col-md-3 d-flex flex-column">
+            <span class="text-light text-center text-md-start fw-bold"
+              >CONTATOS</span
+            >
+            <span class="text-center text-md-start">comercial@nobroke.com</span>
+            <span class="text-center text-md-start">Rua Haddock Lobo, 595</span>
+            <span class="text-center text-md-start">+55 (11)90000-0000</span>
+          </div>
+          <div class="col-md-3 d-flex flex-column">
+            <span class="text-light text-center text-md-start fw-bold"
+              >REDES SOCIAIS</span
+            >
+            <div
+              class="mt-3 d-flex justify-content-center justify-content-md-start"
+            >
+              <img
+                src="./assets/icon/icon-linkedin.png"
+                class="img-redes me-2"
+                alt=""
+              />
+              <img
+                src="./assets/icon/icon-instagram.png"
+                class="img-redes me-2"
+                alt=""
+              />
+              <img
+                src="./assets/icon/icon-facebook.png"
+                class="img-redes me-2"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-  integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+  crossorigin="anonymous"
+></script>
 <script>
-
   function cadastrarAdm() {
-
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeAdmVar = nomeAdm_input.value.trim();
@@ -82,9 +299,15 @@
     var senhaAdmVar = senhaAdm_input.value.trim();
     var confirmacaoSenhaAdmVar = confirmacao_senhaAdm_input.value.trim();
 
-    console.log(nomeAdmVar, emailAdmVar, cpfAdmVar, senhaAdmVar, confirmacaoSenhaAdmVar)
+    console.log(
+      nomeAdmVar,
+      emailAdmVar,
+      cpfAdmVar,
+      senhaAdmVar,
+      confirmacaoSenhaAdmVar,
+    );
 
-    // Verificando senha e email 
+    // Verificando senha e email
     if (
       nomeAdmVar == "" ||
       emailAdmVar == "" ||
@@ -94,7 +317,6 @@
     ) {
       alert("Mensagem de erro para todos os campos em branco");
       return false;
-
     } else {
       //tratativa de cpf
 
@@ -103,11 +325,23 @@
         return false;
       }
 
-
-
-      // tratativa da senha 
-      let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-      let caractereEsperial = ['!', '@', '#', '"', '$', '%', '¨', '&', '*', '(', ')', '-', '+']
+      // tratativa da senha
+      let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      let caractereEsperial = [
+        "!",
+        "@",
+        "#",
+        '"',
+        "$",
+        "%",
+        "¨",
+        "&",
+        "*",
+        "(",
+        ")",
+        "-",
+        "+",
+      ];
       //let contemNumeros = false;
       let contemCaractereEspecial = false;
 
@@ -126,27 +360,30 @@
       }
 
       // tratativa do email
-      emailSplit = emailAdmVar.split('@', 2)
-      emailAdmVar = (emailSplit[0] + '@btgPactual.com')
+      emailSplit = emailAdmVar.split("@", 2);
+      emailAdmVar = emailSplit[0] + "@btgPactual.com";
 
-      console.log(emailSplit[0] + ' e ' + emailSplit[1] + ' passou para = ' + emailAdmVar)
+      console.log(
+        emailSplit[0] + " e " + emailSplit[1] + " passou para = " + emailAdmVar,
+      );
 
-      if (senhaAdmVar < 8 ||
+      if (
+        senhaAdmVar < 8 ||
         senhaAdmVar != confirmacaoSenhaAdmVar
         //!contemNumeros ||
         //!contemCaractereEspecial
       ) {
-        console.log('Caiu na validação da senha!')
-        console.log('A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais')
+        console.log("Caiu na validação da senha!");
+        console.log(
+          "A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais",
+        );
         return false;
-
       } else {
-        console.log('Cadastro ok')
+        console.log("Cadastro ok");
       }
 
-
-      var idEmpresa = sessionStorage.getItem('id');
-      console.log("idEmpresa:", idEmpresa)
+      var idEmpresa = sessionStorage.getItem("id");
+      console.log("idEmpresa:", idEmpresa);
 
       // Enviando o valor da nova input
       fetch("/cadastroAdm/cadastroAdm", {
@@ -161,30 +398,28 @@
           emailAdmServer: emailAdmVar,
           cpfAdmServer: cpfAdmVar,
           senhaAdmServer: senhaAdmVar,
-          idEmpresaServer: idEmpresa
+          idEmpresaServer: idEmpresa,
         }),
       })
         .then(function (resposta) {
           console.log("resposta: ", resposta);
 
           if (resposta.ok) {
-            sessionStorage.setItem('ID_USUARIO', json.id_usuario);
-            sessionStorage.setItem('FK_EMPRESA', json.fk_empresa);
+            sessionStorage.setItem("ID_USUARIO", json.id_usuario);
+            sessionStorage.setItem("FK_EMPRESA", json.fk_empresa);
             mensagem_erro.innerHTML =
               "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
 
             setTimeout(() => {
               window.location = "login.html";
             }, "2000");
-
           } else {
-            console.log(nomeAdmVar, emailAdmVar, cpfAdmVar, senhaAdmVar)
+            console.log(nomeAdmVar, emailAdmVar, cpfAdmVar, senhaAdmVar);
             throw "Houve um erro ao tentar realizar o cadastro!";
           }
         })
         .catch(function (resposta) {
           console.log(`#ERRO: ${resposta}`);
-
         });
 
       return false;
@@ -211,22 +446,17 @@
 
     // Dois fors que servem quase como um includes
     for (let i = 0; i < cod.length; i++) {
-
       for (let j = 0; j < nums.length; j++) {
-
         if (nums[j] == cod[i]) {
           cpfPuro += cod[i];
         }
-
       }
-
     }
 
     return cpfPuro;
   }
 
   function calculoCpf(cpf) {
-
     var iguais = true;
 
     for (let i = 1; i < cpf.length; i++) {
@@ -274,6 +504,4 @@
 
     return true;
   }
-
-
 </script>

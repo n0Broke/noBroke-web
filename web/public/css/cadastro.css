@@ -23,6 +23,14 @@
     width: 50%;
 }
 
+.borda-adm {
+    border-radius: 15px;
+    padding: 30px;
+    border: 1.7px solid black;
+    width: 50%;
+    margin-top: 30px;
+}
+
 .campos {
     display: flex;
     align-items: center;
@@ -72,6 +80,10 @@
         width: 90%;
     }
 
+    .borda-adm {
+        width: 90%;
+    }
+
     .botao {
         width: 150px;
     }
@@ -79,6 +91,10 @@
 
 @media only screen and (max-width: 992px) {
     .borda {
+        width: 80%;
+    }
+
+    .borda-adm {
         width: 80%;
     }
 }
