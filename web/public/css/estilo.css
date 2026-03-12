@@ -16,7 +16,7 @@ body {
 #main-nav a:hover {
   transform: scale(1.05);
   font-weight: bold;
-  color: #ff5400
+  transition: 0.3s;
 }
 
 #main .muda-pagina {
@@ -43,27 +43,13 @@ body {
   justify-content: center;
 }
 
-.beneficios-box {
-  height: 250px;
-  border-radius: 20px 0px 20px 0px;
-  background-color: #ff5400;
-  box-shadow: -8px 10px 0px 0px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: -8px 10px 0px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: -8px 10px 0px 0px rgba(0, 0, 0, 0.75);
-  transition: transform 0.3s ease-out
+#beneficios img {
+  width: 150px;
+  height: 150px;
 }
 
-.beneficios-box:hover {
-  transform: scale(1.05);
-}
-
-#servicos {
-  background-color: #ebebeb;
-  border-radius: 60px 60px 0px 0px;
-}
-
-.servicos-titulos {
-  color: #ff5400;
+#servicos .row {
+  height: 400px;
 }
 
 .titulo-faq {
@@ -93,6 +79,10 @@ body {
   font-weight: bold;
 }
 
+#formulario {
+  background-color: black;
+}
+
 #fale-conosco .container {
   display: flex;
   flex-direction: column;
@@ -101,7 +91,6 @@ body {
 #fale-conosco button {
   background-color: #ff5400;
   color: white;
-  width: 100%;
 }
 
 #footer {
@@ -117,53 +106,48 @@ body {
   height: 32px;
 }
 
-#nossos-servicos1 img {
-  width: 100%;
-  height: 100%;
-}
-
-#nossos-servicos2 img {
-  width: 100%;
-  height: 100%;
-}
-
-
-
 @media only screen and (max-width: 576px) {
 
-  .beneficios-box {
-    width: 70%;
+  #inicio img {
+    width: 20%;
+    height: 60px;
   }
 
-  #nossos-servicos1 img {
-    width: 70%;
-    height: 70%;
+  #col-cards {
+    padding-top: 120px;
   }
 
-  #nossos-servicos2 img {
-    width: 70%;
-    height: 70%;
+  #img-servicos {
+    background-image: url('../assets/icon/img-servicos.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(65%);
+    height: 50%;
   }
 
 }
 
 @media only screen and (min-width: 577px) {
 
-  .beneficios-box {
-    width: 50%;
+  #inicio img {
+    width: 15%;
+    height: 70px;
   }
 
-  #nossos-servicos1 img {
-    width: 70%;
-    height: 70%;
-  }
+  #img-servicos {
+    background-image: url('../assets/icon/img-servicos.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(65%);
+    height: 50%;
 
-  #nossos-servicos2 img {
-    width: 70%;
-    height: 70%;
   }
 
   #formulario {
+    border-top: 3px solid #ff5400;
+    border-right: 3px solid #ff5400;
+    border-bottom: 3px solid #ff5400;
+    border-left: 3px solid #ff5400;
     height: 550px;
   }
 
@@ -171,21 +155,41 @@ body {
 
 @media only screen and (min-width: 768px) {
 
-  .beneficios-box {
-    width: 95%;
+  #inicio img {
+    width: 25%;
+    height: 80px;
   }
 
-  #nossos-servicos1 img {
-    width: 100%;
-    height: 65%;
+  #img-servicos {
+    background-image: url('../assets/icon/img-servicos.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(65%);
+    border-radius: 10%;
+    height: 100%;
   }
 
-  #nossos-servicos2 img {
-    width: 100%;
-    height: 65%;
+  #img-servicos-noBroke {
+    background-image: url('../assets/icon/img-servicos2.png');
+    background-size: cover;
+    background-position: center;
+    padding: 0;
+    border-radius: 10%;
+  }
+
+  #encapsula-img-servico {
+    backdrop-filter: grayscale(65%);
+  }
+
+  #encapsula-img-servico img {
+    height: 25%;
+    width: 70%;
   }
 
   #formulario {
+    border-top: 3px solid #ff5400;
+    border-right: 3px solid #ff5400;
+    border-bottom: 3px solid #ff5400;
     border-left: 0;
     height: 550px;
   }
@@ -195,6 +199,9 @@ body {
   }
 
   #img-formulario {
+    border-top: 3px solid #ff5400;
+    border-left: 3px solid #ff5400;
+    border-bottom: 3px solid #ff5400;
     width: 100%;
     height: 550px;
   }
@@ -202,21 +209,41 @@ body {
 
 @media only screen and (min-width: 992px) {
 
-  .beneficios-box {
-    width: 95%;
+  #inicio img {
+    width: 18%;
+    height: 85px;
   }
 
-  #nossos-servicos1 img {
-    width: 100%;
+  #img-servicos {
+    background-image: url('../assets/icon/img-servicos.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(65%);
+    border-radius: 10%;
     height: 100%;
   }
 
-  #nossos-servicos2 img {
-    width: 100%;
-    height: 100%;
+  #img-servicos-noBroke {
+    background-image: url('../assets/icon/img-servicos2.png');
+    background-size: cover;
+    background-position: center;
+    padding: 0;
+    border-radius: 10%;
+  }
+
+  #encapsula-img-servico {
+    backdrop-filter: grayscale(65%);
+  }
+
+  #encapsula-img-servico img {
+    height: 30%;
+    width: 70%;
   }
 
   #formulario {
+    border-top: 3px solid #ff5400;
+    border-right: 3px solid #ff5400;
+    border-bottom: 3px solid #ff5400;
     border-left: 0;
     height: 550px;
   }
@@ -226,8 +253,80 @@ body {
   }
 
   #img-formulario {
+    border-top: 3px solid #ff5400;
+    border-left: 3px solid #ff5400;
+    border-bottom: 3px solid #ff5400;
     width: 100%;
     height: 550px;
+  }
+
+}
+
+.sidebar {
+  background-color: #0f0f0f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px 0;
+}
+
+.logo-dash {
+  width: 120px;
+}
+
+.btn-nobroke {
+  display: block;
+  width: 100%;
+  text-align: center;
+
+  background-color: #ff5400;
+  color: white !important;
+
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+
+  font-weight: bold;
+  text-decoration: none;
+
+  transition: 0.25s;
+}
+
+.btn-nobroke:hover {
+  background-color: #ff6a1f;
+  color: white !important;
+  transform: scale(1.03);
+}
+
+.conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f1f3f6, #e4e7ec);
+}
+
+.img-manutencao {
+  max-width: 500px;
+  width: 50%;
+}
+
+@media (max-width:768px) {
+
+  .sidebar {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 15px;
+  }
+
+  .logo-dash {
+    width: 70px;
+  }
+
+  .btn-nobroke {
+    width: auto;
+    font-size: 14px;
+    padding: 8px 14px;
   }
 
 }
