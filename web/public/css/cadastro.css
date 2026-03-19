@@ -1,15 +1,15 @@
 #header {
-  background-color: #000;
+  background-color: black;
 }
 
 #header a {
   color: white;
+  font-size: 25px;
 }
 
 #main-nav a:hover {
   transform: scale(1.05);
   font-weight: bold;
-  transition: 0.3s;
 }
 
 .passos {
@@ -49,7 +49,6 @@
     url("../assets/imgs-background/graficoLinha.jpg");
   background-size: cover;
   background-position: center;
-  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
