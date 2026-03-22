@@ -211,10 +211,16 @@
     console.log(nomeEmpresaVar, emailEmpresaVar, cnpjEmpresaVar);
 
     // Verificando senha e email
-    if (nomeEmpresaVar == "" || emailEmpresaVar == "" || cnpjEmpresaVar == "") {
-      alert("Mensagem de erro para todos os campos em branco");
+    if (nomeEmpresaVar == "") {
+      alert("O nome da sua empres está vazio")
       return false;
-    } else {
+    } else if(emailEmpresaVar == ""){
+      alert("O email da sua empresa está vazio")
+    } else if(cnpjEmpresaVar == ""){
+      alert("O CNPJ da sua empresa está vazio")
+    }else if(cnpjEmpresaVar.length != 14){
+      alert("O CNPJ da sua empresa está menor que 14 digitos")
+    }else {
       //tratativa de cnpj
 
       if (!cnpjVerificar(cnpjEmpresaVar)) {
@@ -224,6 +230,8 @@
         cnpjEmpresaVar = cnpjPuro(cnpjEmpresaVar);
       }
     }
+
+
 
     // Enviando o valor da nova input
     fetch("/cadastroEmpresa/cadastrar", {

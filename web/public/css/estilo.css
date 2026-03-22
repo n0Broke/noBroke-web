@@ -247,7 +247,8 @@ body {
 }
 
 .btn-nobroke {
-  display: block;
+  display: flex;
+  justify-content: flex-start;
   width: 100%;
   text-align: center;
 
@@ -262,12 +263,18 @@ body {
   text-decoration: none;
 
   transition: 0.25s;
+  margin-bottom: 10px;
 }
 
 .btn-nobroke:hover {
   background-color: #ff6a1f;
   color: white !important;
   transform: scale(1.03);
+}
+
+.icon img{
+  width: 30px;
+  margin-right: 10px;
 }
 
 .conteudo {
@@ -329,4 +336,13 @@ body {
 
 .logout-btn:hover {
   background-color: #c0392b;
+}
+
+/* conteudo da dash*/
+
+.conteudo-dash{
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #0f0f0f;
 }
