@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Dashboard | noBroke</title>
+    <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
 
     <script src="./js/sessao.js"></script>
 
@@ -23,54 +24,80 @@
         <div class="row min-vh-100">
 
             <div class="col-12 col-md-3 col-lg-2 sidebar">
-                <img class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
-                <p style="color: white;">monitoramento</p>
+                <div class="logo-container">
+                    <img class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
+                </div>
                 <div class="menu_centro">
-                    <button class="btn-nobroke">
-                    <span class="icon">
-                    <img src="https://images.vexels.com/media/users/3/157214/isolated/preview/a4830aaca7c432fbab084a9adf31e067-icone-de-casa-plana.png">
-                    </span>
-                    Dashboard
-                    </button>
-                     <button class="btn-nobroke">
-                    <span class="icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/622/622397.png">
-                    </span>
-                    Servidores
-                    </button>
-                     <button class="btn-nobroke">
-                    <span class="icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3253/3253060.png">
-                    </span>
-                    Alertas
-                    </button>
-                     <button class="btn-nobroke">
-                    <span class="icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1321/1321938.png">
-                    </span>
-                    Relatorios
-                    </button>
+                    <!-- Sidebar - Parte 01 -->
+                     <div class="menu01">
+                        <h4 class="titulo_sidebar">PRINCIPAL</h4>
+                        <button class="btn-nobroke btn-active">
+                            <span class="icon">
+                            <img id="iconAtual" style="color: white;" src="../assets//icon/icons-dashboard/painel-de-controle-hover.png">
+                            </span>
+                            Dashboard
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
+                            </span>
+                            Servidores
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/notificacao.png">
+                            </span>
+                            Alertas
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                            </span>
+                            Relatórios
+                        </button>
                     <a href="cadastroFuncionario.html">
-                     <button class="btn-nobroke">
-                    <span class="icon">
-                    <img src="https://static.vecteezy.com/system/resources/previews/019/552/595/non_2x/sign-up-icon-signup-square-box-on-transparent-background-free-png.png">
-                    </span>
-                    Cadastrar funcionario
-                    </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                            </span>
+                            Monitoramento
+                        </button>
                     </a>
-                     <button class="btn-nobroke">
-                    <span class="icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3524/3524636.png">
-                    </span>
-                    Configurações
-                    </button>
-                    
-                </div>
-                <div class="user-profile">
-                    <img src="../assets/icon/user.png" alt="Foto de perfil" class="profile-img">
-                    <p class="username" id="usuario" style="color: white;"></p>
-                    <button onclick="logout()" class="logout-btn">Sair</button>
-                </div>
+                    </div>
+                    <!-- ================================================================ -->
+                     <div class="menu02">
+                        <h4 class="titulo_sidebar">ADMNISTRAÇÃO</h4>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/escudo.png">
+                            </span>
+                            Segurança
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/config.png">
+                            </span>
+                            Configurações
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
+                            </span>
+                            Suporte
+                        </button>
+                    </div>
+                    <!-- Fim dos Menus -->
+                    <!-- ================================================================= -->
+                    <!-- Parte do perfil -->
+                    </div>
+                    <div class="user-profile">
+                        <img src="../assets/icon/user.png" alt="Foto de perfil" class="profile-img">
+                            <div class="user-infos">
+                                <p class="username" id="usuario" style="color: white;">Douglas</p>
+                                <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
+                            </div>
+                    </div>
+                    <!-- ================================================================= -->
             </div>
 
             <div class="col-12 col-md-9 col-lg-10 conteudo-dash">
@@ -100,6 +127,13 @@
         }
 
     }
+
+    // Função pra trocar o Ícone quando for passar o mouse por cima (vulgo hover)
+    function iconTrade() {
+        document.getElementById("iconAtual").src
+    }
+
+    // ==========================================================================
 
     function logout() {
         sessionStorage.clear()
