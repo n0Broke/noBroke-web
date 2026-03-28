@@ -605,7 +605,7 @@ body {
 
 .tabela-servidores button{
     border: none;
-    background-color: #181b20;
+    background-color: #11151c;
     color: white;
     border-radius: 10px;
     padding: 5px;
@@ -618,9 +618,17 @@ body {
 table {
   margin-top: 10px;
   color: white;
-  background-color: #181b20;
+  background-color: #11151c;
   width: 100%;
   border-collapse: collapse;
+}
+
+.card01-icon {
+  margin-right: 10px;
+}
+
+th p{
+    color: grey;
 }
 
 th, td {
@@ -636,6 +644,7 @@ thead th {
 tbody td {
   border-bottom: 1px solid #2a2f36;
 }
+
 
 .conteudo-abaixo-cards p{
     color: grey;
@@ -680,3 +689,79 @@ tbody td {
 .acoes-card button:hover{
     background-color: #e26715;
 }
+
+.Tabela-Relatorios table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #11151c;
+  color: white;
+}
+
+.Tabela-Relatorios th {
+  text-align: left;
+  padding: 16px;
+  border-bottom: 1px solid #2a2f36;
+}
+
+.Tabela-Relatorios td {
+  padding: 0;
+}
+
+.card01-icon {
+  width: 25px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.subtitulo-tabela {
+  font-size: small;
+  color: #9ca3af;
+  margin-top: 6px;
+}
+
+.linha-relatorio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 16px;
+  border-bottom: 1px solid #2a2f36;
+}
+
+.info-esquerda {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.info-esquerda p {
+  margin: 0;
+  font-size: small;
+  color: #9ca3af;
+}
+
+.info-direita {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.info-direita p {
+  margin: 0;
+  font-size: small;
+  color: #9ca3af;
+}
+
+.info-direita button {
+  background-color: #11151c;
+  border: 1px solid #3a3f45;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.info-direita button:hover {
+  border-color: #f97316;
+  color: #f97316;
+}
+

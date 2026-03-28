@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,26 +16,26 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-   
-        <div class="container-fluid">
-            <div class="row min-vh-100">
-                <div class="col-12 col-md-3 col-lg-2 sidebar" id="lateralAberta">
-                    <div class="logo-container">
-                        <img class="logo-dash img-fluid"
-                            src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
-                    </div>
-                    <!-- Side Bar - Botões -->
-                    <div class="menu_centro">
-                        <!-- Sidebar - Parte 01 -->
-                        <div class="menu01">
-                            <h4 class="titulo_sidebar">PRINCIPAL</h4>
-                            <button class="btn-nobroke btn-active">
-                                <span class="icon">
-                                    <img id="iconAtual" style="color: white;"
-                                        src="../assets//icon/icons-dashboard/painel-de-controle-hover.png">
-                                </span>
-                                <a href="dashboard.html">Dashboard</a>
+
+    <div class="container-fluid">
+        <div class="row min-vh-100">
+            <div class="col-12 col-md-3 col-lg-2 sidebar" id="lateralAberta">
+                <div class="logo-container">
+                    <img class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
+                </div>
+                <!-- Side Bar - Botões -->
+                <div class="menu_centro">
+                    <!-- Sidebar - Parte 01 -->
+                    <div class="menu01">
+                        <h4 class="titulo_sidebar">PRINCIPAL</h4>
+                        <button class="btn-nobroke btn-active">
+                            <span class="icon">
+                                <img id="iconAtual" style="color: white;"
+                                    src="../assets//icon/icons-dashboard/painel-de-controle-hover.png">
+                            </span>
+                            <a href="dashboard.html">Dashboard</a>
                         </button>
                         <button class="btn-nobroke">
                             <span class="icon">
@@ -60,176 +61,266 @@
                                     <img src="../assets/icon/icons-dashboard/heart-rate.png">
                                 </span>
                                 <a href="monitoramento.html">Monitoramento</a>
-                                </button>
-                            </a>
-                        </div>
+                            </button>
+                        </a>
+                    </div>
 
-                        <div class="menu02">
-                            <h4 class="titulo_sidebar">ADMNISTRAÇÃO</h4>
-                            <button class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/escudo.png">
-                                </span>
-                                Segurança
-                            </button>
-                            <button class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/config.png">
-                                </span>
-                                Configurações
-                            </button>
-                            <button class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
-                                </span>
-                                Suporte
-                            </button>
+                    <div class="menu02">
+                        <h4 class="titulo_sidebar">ADMNISTRAÇÃO</h4>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/escudo.png">
+                            </span>
+                            Segurança
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/config.png">
+                            </span>
+                            Configurações
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
+                            </span>
+                            Suporte
+                        </button>
+                    </div>
+                </div>
+                <div class="user-profile">
+                    <img src="../assets/icon/user.png" alt="Foto de perfil" class="profile-img">
+                    <div class="user-infos">
+                        <p class="username" id="usuario" style="color: white;">Douglas</p>
+                        <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
+
+                <div class="header-conteudo-dash">
+                    <div class="header-esquerdo">
+                        <div id="fecharAbrirLateral">
+                            <img src="../assets/icon/icons-dashboard/barra-lateral-branco.png" alt="" width="40px"
+                                onclick="mudarLateral()">
+                        </div>
+                        <div class="header-esquerdo01">
+                            <h3 class="servidor-name" id="server-name">Relatórios</h3>
+                        </div>
+                        <div class="header-esquerdo02">
+                            <p class="coleta-servidor" style="align-items: center;">Gere e exporte relatórios detalhados
+                                de monitoramento</p>
                         </div>
                     </div>
-                    <div class="user-profile">
-                        <img src="../assets/icon/user.png" alt="Foto de perfil" class="profile-img">
-                        <div class="user-infos">
-                            <p class="username" id="usuario" style="color: white;">Douglas</p>
-                            <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
+                    <div class="header-direita">
+                        <button class="botao-exportar"><img
+                                src="https://www.flaticon.com/br/icone-gratis/mais_3524388?related_id=3524388&origin=search"
+                                alt="" style="width: 22px; color: white;">📄 Gerar relatorios personalizados</button>
+                    </div>
+                </div>
+
+                <div class="conteudo-dash01">
+                    <div class="cards-conteudo-relatorios card01">
+                        <div class="titulo-cards-servidores">
+                            <img class="card01-icon" src="../assets/svg/crescer.png" alt="cpu" style="width: 25px;">
+                        </div>
+                        <div class="conteudo-abaixo-cards">
+                            <strong style="font-size: large;">Relatório de Disponibilidade Mensal</strong>
+                            <p style="font-size: small;">Análise completa da disponibilidade de todos os servidores de
+                                produção no período.</p>
+                            <p style="font-size: small;">📅 01/03/2026</p>
+                            <div class="acoes-card">
+                                <button class="btn-relatorio"><img class="card01-icon"
+                                        src="../assets/svg/download-direto.png" alt="cpu" style="width: 25px;">
+                                    PDF</button>
+                                <button class="btn-relatorio"><img class="card01-icon"
+                                        src="../assets/svg/download-direto.png" alt="cpu" style="width: 25px;">
+                                    CSV</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cards-conteudo-relatorios card01">
+                        <div class="titulo-cards-servidores">
+                            <img class="card01-icon" src="../assets/svg/grafico-de-barras.png" alt="cpu"
+                                style="width: 25px;">
+                        </div>
+                        <div class="conteudo-abaixo-cards">
+                            <strong style="font-size: large;">Relatório de Performance de Servidores</strong>
+                            <p style="font-size: small;">Métricas detalhadas de CPU, RAM, disco e latência por servidor.
+                            </p>
+                            <p style="font-size: small;">📅 01/03/2026</p>
+                            <div class="acoes-card">
+                                <button class="btn-relatorio"><img class="card01-icon"
+                                        src="../assets/svg/download-direto.png" alt="cpu" style="width: 25px;">
+                                    PDF</button>
+                                <button class="btn-relatorio"><img class="card01-icon"
+                                        src="../assets/svg/download-direto.png" alt="cpu" style="width: 25px;">
+                                    CSV</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cards-conteudo-relatorios card01">
+                        <div class="titulo-cards-servidores">
+                            <img class="card01-icon" src="../assets/svg/escudo.png" alt="cpu" style="width: 25px;">
+                        </div>
+                        <div class="conteudo-abaixo-cards">
+                            <strong style="font-size: large;">Relatório de Incidentes e Alertas</strong>
+                            <p style="font-size: small;">Resumo de todos os alertas críticos, tempo de resposta e
+                                resolução.</p>
+                            <p style="font-size: small;">📅 01/03/2026</p>
+                            <div class="acoes-card">
+                                <button class="btn-relatorio"><img class="card01-icon"
+                                        src="../assets/svg/download-direto.png" alt="cpu" style="width: 25px;">
+                                    PDF</button>
+                                <button class="btn-relatorio"><img class="card01-icon"
+                                        src="../assets/svg/download-direto.png" alt="cpu" style="width: 25px;">
+                                    CSV</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
 
-                    <div class="header-conteudo-dash">
-                        <div class="header-esquerdo">
-                            <div id="fecharAbrirLateral">
-                                <img src="../assets/icon/icons-dashboard/barra-lateral-branco.png" alt="" width="40px"
-                                    onclick="mudarLateral()">
-                            </div>
-                            <div class="header-esquerdo01">
-                                <h3 class="servidor-name" id="server-name">Relatórios</h3>
-                            </div>
-                            <div class="header-esquerdo02">
-                                <p class="coleta-servidor" style="align-items: center;">Gere e exporte relatórios detalhados de monitoramento</p>
-                            </div>
+                <div class="conteudo-dash01">
+                    <div class="cards-conteudo-relatorios card01">
+                        <div class="titulo-cards-servidores">
+                            <img class="card01-icon" src="../assets/svg/servidor.png" alt="cpu" style="width: 25px;">
                         </div>
-                        <div class="header-direita">
-                            <button class="botao-exportar"><img
-                                    src="https://www.flaticon.com/br/icone-gratis/mais_3524388?related_id=3524388&origin=search"
-                                    alt="" style="width: 22px; color: white;">📄 Gerar relatorios personalizados</button>
-                        </div>
-                    </div>
-
-                    <div class="conteudo-dash01">
-                        <div class="cards-conteudo-relatorios card01">
-                            <div class="titulo-cards-servidores">
-                                <img class="card01-icon"
-                                    src="../assets/svg/crescer.png" alt="cpu"
-                                    style="width: 25px;">
-                            </div>
-                            <div class="conteudo-abaixo-cards">
-                                <strong style="font-size: large;">Relatório de Disponibilidade Mensal</strong>
-                                <p style="font-size: small;">Análise completa da disponibilidade de todos os servidores de produção no período.</p>
-                                <p style="font-size: small;">📅 01/03/2026</p>
-                                <div class="acoes-card">
-                                    <button class="btn-relatorio"><img class="card01-icon" src="../assets/svg/download-direto.png" alt="cpu"
-                                    style="width: 25px;"> PDF</button>
-                                    <button class="btn-relatorio"><img class="card01-icon" src="../assets/svg/download-direto.png" alt="cpu"
-                                    style="width: 25px;"> CSV</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cards-conteudo-relatorios card01">
-                            <div class="titulo-cards-servidores">
-                                <img class="card01-icon"
-                                    src="../assets/svg/grafico-de-barras.png" alt="cpu"
-                                    style="width: 25px;">
-                            </div>
-                            <div class="conteudo-abaixo-cards">
-                                <strong style="font-size: large;">Relatório de Performance de Servidores</strong>
-                                <p style="font-size: small;">Métricas detalhadas de CPU, RAM, disco e latência por servidor.</p>
-                                <p style="font-size: small;">📅 01/03/2026</p>
-                                <div class="acoes-card">
-                                    <button class="btn-relatorio"><img class="card01-icon" src="../assets/svg/download-direto.png" alt="cpu"
-                                    style="width: 25px;"> PDF</button>
-                                    <button class="btn-relatorio"><img class="card01-icon" src="../assets/svg/download-direto.png" alt="cpu"
-                                    style="width: 25px;"> CSV</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="cards-conteudo-relatorios card01">
-                            <div class="titulo-cards-servidores">
-                                <img class="card01-icon"
-                                    src="../assets/svg/escudo.png" alt="cpu"
-                                    style="width: 25px;">
-                            </div>
-                            <div class="conteudo-abaixo-cards">
-                                <strong style="font-size: large;">Relatório de Incidentes e Alertas</strong>
-                                <p style="font-size: small;">Resumo de todos os alertas críticos, tempo de resposta e resolução.</p>
-                                <p style="font-size: small;">📅 01/03/2026</p>
-                                <div class="acoes-card">
-                                    <button class="btn-relatorio"><img class="card01-icon" src="../assets/svg/download-direto.png" alt="cpu"
-                                    style="width: 25px;"> PDF</button>
-                                    <button class="btn-relatorio"><img class="card01-icon" src="../assets/svg/download-direto.png" alt="cpu"
-                                    style="width: 25px;"> CSV</button>
-                                </div>
+                        <div class="conteudo-abaixo-cards">
+                            <strong style="font-size: large;">Relatório de Capacidade</strong>
+                            <p style="font-size: small;">Projeção de uso de recursos e recomendações de escalonamento.
+                            </p>
+                            <p style="font-size: small;">📅 01/03/2026</p>
+                            <div class="acoes-card">
+                                <button class="btn-relatorio"><img class="card01-icon"
+                                        src="../assets/svg/download-direto.png" alt="cpu" style="width: 25px;">
+                                    PDF</button>
+                                <button class="btn-relatorio"><img class="card01-icon"
+                                        src="../assets/svg/download-direto.png" alt="cpu" style="width: 25px;">
+                                    CSV</button>
                             </div>
                         </div>
                     </div>
-
-                    <div class="conteudo-dash01">
-                         <div class="cards-conteudo-relatorios card01">
-                            <div class="titulo-cards-servidores">
-                                <img class="card01-icon"
-                                    src="../assets/svg/servidor.png" alt="cpu"
-                                    style="width: 25px;">
-                            </div>
-                            <div class="conteudo-abaixo-cards">
-                                <strong style="font-size: large;">Relatório de Capacidade</strong>
-                                <p style="font-size: small;">Projeção de uso de recursos e recomendações de escalonamento.</p>
-                                <p style="font-size: small;">📅 01/03/2026</p>
-                                <div class="acoes-card">
-                                    <button class="btn-relatorio"><img class="card01-icon" src="../assets/svg/download-direto.png" alt="cpu"
-                                    style="width: 25px;"> PDF</button>
-                                    <button class="btn-relatorio"><img class="card01-icon" src="../assets/svg/download-direto.png" alt="cpu"
-                                    style="width: 25px;"> CSV</button>
-                                </div>
-                            </div>
+                    <div class="cards-conteudo-relatorios card01">
+                        <div class="titulo-cards-servidores">
+                            <img class="card01-icon" src="../assets/svg/documento-de-texto.png" alt="cpu"
+                                style="width: 25px;">
                         </div>
-                          <div class="cards-conteudo-relatorios card01">
-                            <div class="titulo-cards-servidores">
-                                <img class="card01-icon"
-                                    src="../assets/svg/documento-de-texto.png" alt="cpu"
-                                    style="width: 25px;">
-                            </div>
-                            <div class="conteudo-abaixo-cards">
-                                <strong style="font-size: large;">Relatório de SLA</strong>
-                                <p style="font-size: small;">Cumprimento de SLAs por servidor e componente monitorado.</p>
-                                <p style="font-size: small;">📅 01/03/2026</p>
-                                <div class="acoes-card">
-                                    <button class="btn-relatorio"><img class="card01-icon" src="../assets/svg/download-direto.png" alt="cpu"
-                                    style="width: 25px;"> PDF</button>
-                                    <button class="btn-relatorio"><img class="card01-icon" src="../assets/svg/download-direto.png" alt="cpu"
-                                    style="width: 25px;"> CSV</button>
-                                </div>
-                            </div>
-                        </div>
-                         <div class="cards-conteudo-relatorios card01">
-                            <div class="titulo-cards-servidores">
-                                <img class="card01-icon"
-                                    src="../assets/svg/grafico-de-barras.png" alt="cpu"
-                                    style="width: 25px;">
-                            </div>
-                            <div class="conteudo-abaixo-cards">
-                                <strong style="font-size: large;">Relatório Executivo</strong>
-                                <p style="font-size: small;">Visão consolidada para gestores com principais indicadores e tendências.</p>
-                                <p style="font-size: small;">📅 01/03/2026</p>
-                                <div class="acoes-card">
-                                    <button class="btn-relatorio"><img class="card01-icon" src="../assets/svg/download-direto.png" alt="cpu"
-                                    style="width: 25px;"> PDF</button>
-                                    <button class="btn-relatorio"><img class="card01-icon" src="../assets/svg/download-direto.png" alt="cpu"
-                                    style="width: 25px;"> CSV</button>
-                                </div>
+                        <div class="conteudo-abaixo-cards">
+                            <strong style="font-size: large;">Relatório de SLA</strong>
+                            <p style="font-size: small;">Cumprimento de SLAs por servidor e componente monitorado.</p>
+                            <p style="font-size: small;">📅 01/03/2026</p>
+                            <div class="acoes-card">
+                                <button class="btn-relatorio"><img class="card01-icon"
+                                        src="../assets/svg/download-direto.png" alt="cpu" style="width: 25px;">
+                                    PDF</button>
+                                <button class="btn-relatorio"><img class="card01-icon"
+                                        src="../assets/svg/download-direto.png" alt="cpu" style="width: 25px;">
+                                    CSV</button>
                             </div>
                         </div>
                     </div>
+                    <div class="cards-conteudo-relatorios card01">
+                        <div class="titulo-cards-servidores">
+                            <img class="card01-icon" src="../assets/svg/grafico-de-barras.png" alt="cpu"
+                                style="width: 25px;">
+                        </div>
+                        <div class="conteudo-abaixo-cards">
+                            <strong style="font-size: large;">Relatório Executivo</strong>
+                            <p style="font-size: small;">Visão consolidada para gestores com principais indicadores e
+                                tendências.</p>
+                            <p style="font-size: small;">📅 01/03/2026</p>
+                            <div class="acoes-card">
+                                <button class="btn-relatorio"><img class="card01-icon"
+                                        src="../assets/svg/download-direto.png" alt="cpu" style="width: 25px;">
+                                    PDF</button>
+                                <button class="btn-relatorio"><img class="card01-icon"
+                                        src="../assets/svg/download-direto.png" alt="cpu" style="width: 25px;">
+                                    CSV</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Tabela-Relatorios">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <img class="card01-icon" src="../assets/svg/relogio.png" alt="cpu">
+                                    Relatórios Agendados
+                                    <p class="subtitulo-tabela">Próximas gerações automáticas de relatórios</p>
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="linha-relatorio">
+                                        <div class="info-esquerda">
+                                            <strong>Disponibilidade Mensal</strong>
+                                            <p>Mensal</p>
+                                        </div>
+
+                                        <div class="info-direita">
+                                            <p>Próximo: 01/04/2026</p>
+                                            <button>Configurar</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="linha-relatorio">
+                                        <div class="info-esquerda">
+                                            <strong>Performance Semanal</strong>
+                                            <p>Semanal</p>
+                                        </div>
+
+                                        <div class="info-direita">
+                                            <p>Próximo: 24/03/2026</p>
+                                            <button>Configurar</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="linha-relatorio">
+                                        <div class="info-esquerda">
+                                            <strong>Incidentes Semanal</strong>
+                                            <p>Semanal</p>
+                                        </div>
+
+                                        <div class="info-direita">
+                                            <p>Próximo: 24/03/2026</p>
+                                            <button>Configurar</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="linha-relatorio">
+                                        <div class="info-esquerda">
+                                            <strong>Relatório Executivo</strong>
+                                            <p>Mensal</p>
+                                        </div>
+
+                                        <div class="info-direita">
+                                            <p>Próximo: 01/04/2026</p>
+                                            <button>Configurar</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 </body>
+
 </html>
