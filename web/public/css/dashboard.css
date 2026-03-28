@@ -23,8 +23,7 @@ body {
 
 .header-esquerdo01 {
     display: flex;
-    justify-content: space-evenly;
-    align-content: center;
+    align-content: flex-start;
     gap: 12px;
 }
 
@@ -574,11 +573,16 @@ body {
     background-color: #c0392b;
 }
 
+.barra-pesquisa{
+    display: flex;
+    flex-direction: row;
+}
+
 .barra-pesquisa input {
     border: none;
     outline: none;
     background: transparent;
-    flex: 1;
+    width: 300px;
     padding: 5px;
     background-color: rgb(51, 48, 48);
     color: white;
@@ -586,18 +590,49 @@ body {
 }
 
 .barra-pesquisa button{
-    justify-content: space-between;
     background-color: #0c0d0f;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 10px;
+    transition: all 0.25s ease;
+    margin:  0 5px;
     color: white;
 }
 
-.barra-pesquisa button:active {
-    background-color: orange;
+.barra-pesquisa button:hover {
+    background-color: #e26715;
 }
 
-.tabela-servidores{
-    margin-top: 20px;
-    background-color: #333030;
+.tabela-servidores button{
+    border: none;
+    background-color: #181b20;
     color: white;
     border-radius: 10px;
+    padding: 5px;
+}
+
+.tabela-servidores button:hover{
+    background-color: #e26715;
+}
+
+table {
+  margin-top: 10px;
+  color: white;
+  background-color: #181b20;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border: none;
+}
+
+thead th {
+  border-bottom: 1px solid #2a2f36;
+}
+
+tbody td {
+  border-bottom: 1px solid #2a2f36;
 }
