@@ -144,6 +144,14 @@ body {
     margin-bottom: 10px;
 }
 
+.titulo-cards-servidores{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
 .conteudo-abaixo-cards {
     color: white;
 }
@@ -564,4 +572,32 @@ body {
 
 .logout-btn:hover {
     background-color: #c0392b;
+}
+
+.barra-pesquisa input {
+    border: none;
+    outline: none;
+    background: transparent;
+    flex: 1;
+    padding: 5px;
+    background-color: rgb(51, 48, 48);
+    color: white;
+    border-radius: 5px;
+}
+
+.barra-pesquisa button{
+    justify-content: space-between;
+    background-color: #0c0d0f;
+    color: white;
+}
+
+.barra-pesquisa button:active {
+    background-color: orange;
+}
+
+.tabela-servidores{
+    margin-top: 20px;
+    background-color: #333030;
+    color: white;
+    border-radius: 10px;
 }
