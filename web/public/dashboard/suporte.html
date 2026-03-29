@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suporte | noBroke</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row min-vh-100">
+            <div class="col-12 col-md-3 col-lg-2 sidebar" id="lateralAberta">
+                <div class="logo-container">
+                    <img class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
+                </div>
+                <!-- Side Bar - Botões -->
+                <div class="menu_centro">
+                    <!-- Sidebar - Parte 01 -->
+                    <div class="menu01">
+                        <h4 class="titulo_sidebar">PRINCIPAL</h4>
+                        <button class="btn-nobroke btn-active">
+                            <span class="icon">
+                                <img id="iconAtual" style="color: white;"
+                                    src="../assets//icon/icons-dashboard/painel-de-controle-hover.png">
+                            </span>
+                            <a href="dashboard.html">Dashboard</a>
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
+                            </span>
+                            <a href="servidores.html">Servidores</a>
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/notificacao.png">
+                            </span>
+                            <a href="Alertas.html">Alertas</a>
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                            </span>
+                            <a href="Relatorios.html">Relatórios</a>
+                        </button>
+                        <a href="monitoramento.html">
+                            <button class="btn-nobroke">
+                                <span class="icon">
+                                    <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                                </span>
+                                <a href="monitoramento.html">Monitoramento</a>
+                            </button>
+                        </a>
+                    </div>
+
+                    <div class="menu02">
+                        <h4 class="titulo_sidebar">ADMNISTRAÇÃO</h4>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/escudo.png">
+                            </span>
+                            <a href="seguranca.html">Segurança</a>
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/config.png">
+                            </span>
+                            Configurações
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
+                            </span>
+                            Suporte
+                        </button>
+                    </div>
+                </div>
+                <div class="user-profile">
+                    <img src="../assets/icon/user.png" alt="Foto de perfil" class="profile-img">
+                    <div class="user-infos">
+                        <p class="username" id="usuario" style="color: white;">Douglas</p>
+                        <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
+
+                <div class="header-conteudo-dash">
+                    <div class="header-esquerdo">
+                        <div id="fecharAbrirLateral">
+                            <img src="../assets/icon/icons-dashboard/barra-lateral-branco.png" alt="" width="40px"
+                                onclick="mudarLateral()">
+                        </div>
+                        <div class="header-esquerdo01">
+                            <h3 class="servidor-name" id="server-name">Suporte</h3>
+                        </div>
+                        <div class="header-esquerdo02">
+                            <p class="coleta-servidor" style="align-items: center;">Central de ajuda e suporte técnico
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="conteudo-dash01">
+                    <div class="conteudo-dash01">
+                        <div class="cards-conteudo-seguranca card01">
+                            <div><img class="card01-icon" src="../assets/svg/livro-de-capa-preta-fechado.png" alt="cpu"
+                                    style="width: 25px;"></div>
+                            <div class="texto-lado">
+                                <strong style="font-size: large;">Guia de Início Rápido</strong>
+                                <p style="font-size: small;">Como configurar o monitoramento de servidores</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conteudo-dash01">
+                        <div class="cards-conteudo-seguranca card01">
+                            <div><img class="card01-icon" src="../assets/svg/documento-de-texto.png" alt="cpu"
+                                    style="width: 25px;"></div>
+                            <div class="texto-lado">
+                                <strong style="font-size: large;">Documentação da API</strong>
+                                <p style="font-size: small;">Referência completa da API noBroke</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conteudo-dash01">
+                        <div class="cards-conteudo-seguranca card01">
+                            <div><img class="card01-icon" src="../assets/svg/botao-circular-preenchido-de-faq.png"
+                                    alt="cpu" style="width: 25px;"></div>
+                            <div class="texto-lado">
+                                <strong style="font-size: large;">FAQ</strong>
+                                <p style="font-size: small;">Perguntas frequentes sobre o sistema</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="conteudo-dash01">
+                        <div class="cards-conteudo-suporte card01">
+                            <div><img class="card01-icon" src="../assets/svg/bubble-chat.png" alt="cpu"
+                                    style="width: 25px;"></div>
+                            <div class="texto-lado">
+                                <strong style="font-size: large;">Base de Conhecimento</strong>
+                                <p style="font-size: small;">Artigos e tutoriais detalhados</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Tabela-suporte">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Meus Chamados
+                                    <p class="subtitulo-tabela">Acompanhe seus chamados de suporte</p>
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="linha-relatorio">
+                                        <div class="info-esquerda">
+                                            <strong>Falha na coleta de métricas do SRV-PROD-API-01</strong>
+                                            <p>23/03/2026</p>
+                                        </div>
+
+                                        <div class="info-direita">
+                                            <button>Ver</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="linha-relatorio">
+                                        <div class="info-esquerda">
+                                            <strong>Configuração de novo servidor de DR</strong>
+                                            <p>22/03/2026</p>
+                                        </div>
+
+                                        <div class="info-direita">
+                                            <button>Ver</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="linha-relatorio">
+                                        <div class="info-esquerda">
+                                            <strong>Ajuste nos limites de alerta de CPU</strong>
+                                            <p>20/03/2026</p>
+                                        </div>
+
+                                        <div class="info-direita">
+                                            <button>Ver</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <form class="form-contato">
+                        <h2>Contato Rápido</h2>
+                        <p style="font-size: small;">Envie uma mensagem para nossa equipe</p>
+
+                        <label>Assunto</label>
+                        <input type="text" placeholder="Descreva brevemente...">
+
+                        <label>Mensagem</label>
+                        <input style="height: 100px;" type="text" placeholder="Detalhe sua solicitação...">
+
+                        <button type="submit">Enviar mensagem</button>
+                    </form>
+                </div>
+</body>
+
+</html>

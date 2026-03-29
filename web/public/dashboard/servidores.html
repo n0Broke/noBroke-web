@@ -39,31 +39,31 @@
                                         src="../assets//icon/icons-dashboard/painel-de-controle-hover.png">
                                 </span>
                                 <a href="dashboard.html">Dashboard</a>
-                        </button>
-                        <button class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
-                            </span>
-                            <a href="servidores.html">Servidores</a>
-                        </button>
-                        <button class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/notificacao.png">
-                            </span>
-                            <a href="Alertas.html">Alertas</a>
-                        </button>
-                        <button class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
-                            </span>
-                            <a href="Relatorios.html">Relatórios</a>
-                        </button>
-                        <a href="monitoramento.html">
+                            </button>
                             <button class="btn-nobroke">
                                 <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                                    <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
                                 </span>
-                                <a href="monitoramento.html">Monitoramento</a>
+                                <a href="servidores.html">Servidores</a>
+                            </button>
+                            <button class="btn-nobroke">
+                                <span class="icon">
+                                    <img src="../assets/icon/icons-dashboard/notificacao.png">
+                                </span>
+                                <a href="Alertas.html">Alertas</a>
+                            </button>
+                            <button class="btn-nobroke">
+                                <span class="icon">
+                                    <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                                </span>
+                                <a href="Relatorios.html">Relatórios</a>
+                            </button>
+                            <a href="monitoramento.html">
+                                <button class="btn-nobroke">
+                                    <span class="icon">
+                                        <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                                    </span>
+                                    <a href="monitoramento.html">Monitoramento</a>
                                 </button>
                             </a>
                         </div>
@@ -74,7 +74,7 @@
                                 <span class="icon">
                                     <img src="../assets/icon/icons-dashboard/escudo.png">
                                 </span>
-                                Segurança
+                                <a href="seguranca.html">Segurança</a>
                             </button>
                             <button class="btn-nobroke">
                                 <span class="icon">
@@ -173,152 +173,152 @@
                         <button>Todos</button><button>Produção</button><button>Staging</button><button>DR</button><button>Desenvolvimento</button>
                     </div>
 
-                        <table class="tabela-servidores">
-                            <thead>
-                                <tr>
-                                    <th>Servidor</th>
-                                    <th>Ambiente</th>
-                                    <th>Status</th>
-                                    <th>CPU</th>
-                                    <th>RAM</th>
-                                    <th>Disco</th>
-                                    <th>Latência</th>
-                                    <th>Uptime</th>
-                                    <th>Criticidade</th>
-                                    <th>Ações</th>
-                                </tr>
-                            </thead>
+                    <table class="tabela-servidores">
+                        <thead>
+                            <tr>
+                                <th>Servidor</th>
+                                <th>Ambiente</th>
+                                <th>Status</th>
+                                <th>CPU</th>
+                                <th>RAM</th>
+                                <th>Disco</th>
+                                <th>Latência</th>
+                                <th>Uptime</th>
+                                <th>Criticidade</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
 
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <strong>SRV-PROD-HB-01</strong><br>
-                                        <span>hb-prod-01.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">Produção</span></td>
-                                    <td><span class="tag saudavel">Saudável</span></td>
-                                    <td>42%</td>
-                                    <td>61%</td>
-                                    <td>55%</td>
-                                    <td>12ms</td>
-                                    <td>99.98%</td>
-                                    <td><span class="tag criticidade">Alta</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>SRV-PROD-HB-01</strong><br>
+                                    <span>hb-prod-01.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">Produção</span></td>
+                                <td><span class="tag saudavel">Saudável</span></td>
+                                <td>42%</td>
+                                <td>61%</td>
+                                <td>55%</td>
+                                <td>12ms</td>
+                                <td>99.98%</td>
+                                <td><span class="tag criticidade">Alta</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
 
-                                <tr>
-                                    <td>
-                                        <strong>SRV-PROD-HB-02</strong><br>
-                                        <span>hb-prod-02.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag staging">Produção</span></td>
-                                    <td><span class="tag saudavel">Atenção</span></td>
-                                    <td>78%</td>
-                                    <td>82%</td>
-                                    <td>71%</td>
-                                    <td>45ms</td>
-                                    <td>99.90%</td>
-                                    <td><span class="tag criticidade media">Alta</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    <strong>SRV-PROD-HB-02</strong><br>
+                                    <span>hb-prod-02.nobroke.io</span>
+                                </td>
+                                <td><span class="tag staging">Produção</span></td>
+                                <td><span class="tag saudavel">Atenção</span></td>
+                                <td>78%</td>
+                                <td>82%</td>
+                                <td>71%</td>
+                                <td>45ms</td>
+                                <td>99.90%</td>
+                                <td><span class="tag criticidade media">Alta</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
 
-                                <tr>
-                                    <td>
-                                        <strong>SRV-PROD-DB-01</strong><br>
-                                        <span>db-prod-01.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">Produção</span></td>
-                                    <td><span class="tag critico">Saudável</span></td>
-                                    <td>35%</td>
-                                    <td>58%</td>
-                                    <td>42%</td>
-                                    <td>8ms</td>
-                                    <td>99.99%</td>
-                                    <td><span class="tag criticidade critica">Crítica</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    <strong>SRV-PROD-DB-01</strong><br>
+                                    <span>db-prod-01.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">Produção</span></td>
+                                <td><span class="tag critico">Saudável</span></td>
+                                <td>35%</td>
+                                <td>58%</td>
+                                <td>42%</td>
+                                <td>8ms</td>
+                                <td>99.99%</td>
+                                <td><span class="tag criticidade critica">Crítica</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
 
-                                <tr>
-                                    <td>
-                                        <strong>SRV-STG-HB-01</strong><br>
-                                        <span>hb-stg-01.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">Staging</span></td>
-                                    <td><span class="tag saudavel">Saudável</span></td>
-                                    <td>22%</td>
-                                    <td>35%</td>
-                                    <td>30%</td>
-                                    <td>15ms</td>
-                                    <td>99.85%</td>
-                                    <td><span class="tag criticidade">Média</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    <strong>SRV-STG-HB-01</strong><br>
+                                    <span>hb-stg-01.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">Staging</span></td>
+                                <td><span class="tag saudavel">Saudável</span></td>
+                                <td>22%</td>
+                                <td>35%</td>
+                                <td>30%</td>
+                                <td>15ms</td>
+                                <td>99.85%</td>
+                                <td><span class="tag criticidade">Média</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
 
-                                <tr>
-                                    <td>
-                                        <strong>SRV-PROD-API-01</strong><br>
-                                        <span>api-prod-01.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">Produção</span></td>
-                                    <td><span class="tag saudavel">Crítico</span></td>
-                                    <td>95%</td>
-                                    <td>91%</td>
-                                    <td>88%%</td>
-                                    <td>230ms</td>
-                                    <td>98.50%</td>
-                                    <td><span class="tag criticidade">Crítica</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    <strong>SRV-PROD-API-01</strong><br>
+                                    <span>api-prod-01.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">Produção</span></td>
+                                <td><span class="tag saudavel">Crítico</span></td>
+                                <td>95%</td>
+                                <td>91%</td>
+                                <td>88%%</td>
+                                <td>230ms</td>
+                                <td>98.50%</td>
+                                <td><span class="tag criticidade">Crítica</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
 
-                                <tr>
-                                    <td>
-                                        <strong>SRV-PROD-CACHE-01</strong><br>
-                                        <span>cache-prod-01.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">Produção</span></td>
-                                    <td><span class="tag saudavel">Saudável</span></td>
-                                    <td>18%</td>
-                                    <td>45%</td>
-                                    <td>22%</td>
-                                    <td>3ms</td>
-                                    <td>99.99%</td>
-                                    <td><span class="tag criticidade">Alta</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    <strong>SRV-PROD-CACHE-01</strong><br>
+                                    <span>cache-prod-01.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">Produção</span></td>
+                                <td><span class="tag saudavel">Saudável</span></td>
+                                <td>18%</td>
+                                <td>45%</td>
+                                <td>22%</td>
+                                <td>3ms</td>
+                                <td>99.99%</td>
+                                <td><span class="tag criticidade">Alta</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
 
-                                <tr>
-                                    <td>
-                                        <strong>SRV-DR-HB-01</strong><br>
-                                        <span>hb-dr-01.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">DR</span></td>
-                                    <td><span class="tag saudavel">Saudável</span></td>
-                                    <td>5%</td>
-                                    <td>12%</td>
-                                    <td>20%</td>
-                                    <td>25ms</td>
-                                    <td>99.95%</td>
-                                    <td><span class="tag criticidade">Alta</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    <strong>SRV-DR-HB-01</strong><br>
+                                    <span>hb-dr-01.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">DR</span></td>
+                                <td><span class="tag saudavel">Saudável</span></td>
+                                <td>5%</td>
+                                <td>12%</td>
+                                <td>20%</td>
+                                <td>25ms</td>
+                                <td>99.95%</td>
+                                <td><span class="tag criticidade">Alta</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
 
-                                <tr>
-                                    <td>
-                                        <strong>SRV-DEV-HB-01</strong><br>
-                                        <span>hb-dev-01.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">Desenvolvimento</span></td>
-                                    <td><span class="tag saudavel">Atenção</span></td>
-                                    <td>65%</td>
-                                    <td>72%</td>
-                                    <td>60%</td>
-                                    <td>38ms</td>
-                                    <td>99.50%</td>
-                                    <td><span class="tag criticidade">Baixa</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                            <tr>
+                                <td>
+                                    <strong>SRV-DEV-HB-01</strong><br>
+                                    <span>hb-dev-01.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">Desenvolvimento</span></td>
+                                <td><span class="tag saudavel">Atenção</span></td>
+                                <td>65%</td>
+                                <td>72%</td>
+                                <td>60%</td>
+                                <td>38ms</td>
+                                <td>99.50%</td>
+                                <td><span class="tag criticidade">Baixa</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
     </body>
 
 </html>
