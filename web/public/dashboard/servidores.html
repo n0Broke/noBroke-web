@@ -33,16 +33,16 @@
                         <!-- Sidebar - Parte 01 -->
                         <div class="menu01">
                             <h4 class="titulo_sidebar">PRINCIPAL</h4>
-                            <button class="btn-nobroke btn-active">
+                            <button class="btn-nobroke">
                                 <span class="icon">
                                     <img id="iconAtual" style="color: white;"
-                                        src="../assets//icon/icons-dashboard/painel-de-controle-hover.png">
+                                        src="../assets//icon/icons-dashboard/painel-de-controle.png">
                                 </span>
                                 <a href="dashboard.html">Dashboard</a>
                             </button>
-                            <button class="btn-nobroke">
+                            <button class="btn-nobroke btn-active">
                                 <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
+                                    <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem-hover.png">
                                 </span>
                                 <a href="servidores.html">Servidores</a>
                             </button>
@@ -99,13 +99,15 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
-
+                    <div class="header-responsividade">
+                    <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon" style="width: 30px; cursor: pointer;">
+                    <a href="dashboard.html">Dashboard</a>
+                    <span style="color: #7D8999;">></span>
+                    <span style="color: white;">Servidores</span>
+                </div>
+                <hr style="width: 100%; color: #b4b4b4; height: 2px;">
                     <div class="header-conteudo-dash">
                         <div class="header-esquerdo">
-                            <div id="fecharAbrirLateral">
-                                <img src="../assets/icon/icons-dashboard/barra-lateral-branco.png" alt="" width="40px"
-                                    onclick="mudarLateral()">
-                            </div>
                             <div class="header-esquerdo01">
                                 <h3 class="servidor-name" id="server-name">Servidores</h3>
                             </div>

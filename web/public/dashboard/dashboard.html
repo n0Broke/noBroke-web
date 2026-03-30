@@ -39,7 +39,7 @@
                                 <img id="iconAtual" style="color: white;"
                                     src="../assets//icon/icons-dashboard/painel-de-controle-hover.png">
                             </span>
-                            <a href="dashboard.html">Dashboard</a>
+                                Dashboard
                         </button>
                         <button class="btn-nobroke">
                             <span class="icon">
@@ -105,15 +105,14 @@
             <!-- ================================================================= -->
 
             <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
-
-
                 <!-- Header do Conteudo da Dashboard -->
+                <div class="header-responsividade">
+                    <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon" style="width: 30px; cursor: pointer;">
+                    <span style="color: #7D8999;">noBroke Server Monitor</span>
+                </div>
+                <hr style="width: 100%; color: #b4b4b4; height: 2px;">
                 <div class="header-conteudo-dash">
                     <div class="header-esquerdo">
-                        <div id="fecharAbrirLateral">
-                            <img src="../assets/icon/icons-dashboard/barra-lateral-branco.png" alt="" width="40px"
-                                onclick="mudarLateral()">
-                        </div>
                         <div class="header-esquerdo01">
                             <h3 class="servidor-name" id="server-name">SRV-BROKER-PRD-01</h3>
                             <p class="status-servidor" style="border-radius: 18px;"><img
@@ -133,7 +132,7 @@
                     </div>
                     <div class="header-direita">
                         <button class="botao-alerta"><img src="../assets/svg/bell-svgrepo-com.svg" alt=""
-                                style="width: 22px; color: white;"> Alertas</button>
+                                style="width: 22px; color: white;" onclick="window.location.href='Alertas.html'"> Alertas</button>
                         <button class="botao-exportar"><img src="../assets/svg/download-minimalistic-svgrepo-com.svg"
                                 alt="" style="width: 22px; color: white;"> Exportar</button>
                     </div>

@@ -1,71 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alertas | noBroke</title>
+    <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="stylesheet" href="../css/dashboard.css">
+
+    <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Importar o Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
-    
+
     <div class="container-fluid">
         <div class="row min-vh-100">
-
-            <div class="col-12 col-md-3 col-lg-2 sidebar">
-                <img class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
-                <p style="color: white;">monitoramento</p>
+            <div class="col-12 col-md-3 col-lg-2 sidebar" id="lateralAberta">
+                <div class="logo-container">
+                    <img class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
+                </div>
+                <!-- Side Bar - Botões -->
                 <div class="menu_centro">
-                    <button class="btn-nobroke">
-                    <span class="icon">
-                    <img src="https://images.vexels.com/media/users/3/157214/isolated/preview/a4830aaca7c432fbab084a9adf31e067-icone-de-casa-plana.png">
-                    </span>
-                    <a href="dashboard.html"></a>
-                    Dashboard
-                    </button>
-                     <button class="btn-nobroke">
-                    <span class="icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/622/622397.png">
-                    </span>
-                    <a href="servidores.html"></a>
-                    Servidores
-                    </button>
-                     <button class="btn-nobroke">
-                    <span class="icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3253/3253060.png">
-                    </span>
-                    Alertas
-                    </button>
-                     <button class="btn-nobroke">
-                    <span class="icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1321/1321938.png">
-                    </span>
-                    Relatorios
-                    </button>
-                     <button class="btn-nobroke">
-                    <span class="icon">
-                    <img src="https://static.vecteezy.com/system/resources/previews/019/552/595/non_2x/sign-up-icon-signup-square-box-on-transparent-background-free-png.png">
-                    </span>
-                    Cadastrar funcionario
-                    </button>
-                     <button class="btn-nobroke">
-                    <span class="icon">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3524/3524636.png">
-                    </span>
-                    Configurações
-                    </button>
-                    
+                    <!-- Sidebar - Parte 01 -->
+                    <div class="menu01">
+                        <h4 class="titulo_sidebar">PRINCIPAL</h4>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img id="iconAtual" style="color: white;"
+                                    src="../assets//icon/icons-dashboard/painel-de-controle.png">
+                            </span>
+                            <a href="dashboard.html">Dashboard</a>
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
+                            </span>
+                            <a href="servidores.html">Servidores</a>
+                        </button>
+                        <button class="btn-nobroke btn-active">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/notificacao-hover.png">
+                            </span>
+                            Alertas
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                            </span>
+                            <a href="Relatorios.html">Relatórios</a>
+                        </button>
+                        <a href="monitoramento.html">
+                            <button class="btn-nobroke">
+                                <span class="icon">
+                                    <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                                </span>
+                                <a href="monitoramento.html">Monitoramento</a>
+                            </button>
+                        </a>
+                    </div>
+                    <!-- ================================================================ -->
+                    <div class="menu02">
+                        <h4 class="titulo_sidebar">ADMNISTRAÇÃO</h4>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/escudo.png">
+                            </span>
+                            <a href="seguranca.html">Segurança</a>
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/config.png">
+                            </span>
+                            Configurações
+                        </button>
+                        <button class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
+                            </span>
+                            Suporte
+                        </button>
+                    </div>
+                    <!-- Fim dos Menus -->
+                    <!-- ================================================================= -->
+                    <!-- Parte do perfil -->
                 </div>
                 <div class="user-profile">
                     <img src="../assets/icon/user.png" alt="Foto de perfil" class="profile-img">
-                    <p class="username" id="usuario" style="color: white;"></p>
-                    <button onclick="logout()" class="logout-btn">Sair</button>
+                    <div class="user-infos">
+                        <p class="username" id="usuario" style="color: white;">Douglas</p>
+                        <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
+                    </div>
                 </div>
             </div>
+            <!-- ================================================================= -->
 
-            <div class="col-12 col-md-9 col-lg-10 conteudo-dash">
+            <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
+                <div class="header-responsividade">
+                    <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
+                        style="width: 30px; cursor: pointer;">
+                    <a href="dashboard.html">Dashboard</a>
+                    <span style="color: #7D8999;">></span>
+                    <span style="color: white;">Alertas</span>
+                </div>
+                <hr style="width: 100%; height: 2px; color: #b4b4b4;">
+
+                <!-- Titulo - Central de Alertas -->
+                <div class="header-central-alertas">
+                    <h2>Central de Alertas</h2>
+                    <p>Monitore e gerencie todos os alertas do sistema</p>
+                </div>
+
+                <!-- Cards de Alertas - KPIs -->
+                <div class="cards-alerta-central">
+                    <div class="card-alerta-geral card-alerta01">
+                        <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt="alerta"
+                            style="width: 50px; padding: 8px; max-height: 50px; background-color: #dc28283e;">
+                        <div class="card-alerta-infos">
+                            <h2 style="color: #DC2828;">2</h2>
+                            <span>Críticos Ativos</span>
+                        </div>
+                    </div>
+                    <div class="card-alerta-geral card-alerta02">
+                        <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="alerta"
+                            style="width: 50px; padding: 8px; max-height: 50px; background-color: #e7af0842;">
+                        <div class="card-alerta-infos">
+                            <h2 style="color: #E7B008;">2</h2>
+                            <span>Abertos</span>
+                        </div>
+                    </div>
+                    <div class="card-alerta-geral card-alerta03">
+                        <img src="../assets/svg/alertas/time-svgrepo-com.svg" alt="alerta"
+                            style="width: 50px; padding: 8px; max-height: 50px; background-color: #f46e1546;">
+                        <div class="card-alerta-infos">
+                            <h2 style="color: white;">1</h2>
+                            <span>Reconhecidos</span>
+                        </div>
+                    </div>
+                    <div class=" card-alerta-geral card-alerta04">
+                        <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt="alerta"
+                            style="width: 50px; padding: 8px; max-height: 50px; background-color: #21c45d3a;">
+                        <div class="card-alerta-infos">
+                            <h2 style="color: #21C45D;">2</h2>
+                            <span>Resolvidos</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- =========================================== -->
+                <!-- Filtro e Buscar -->
+
+                <div class="central-alerta-filtros">
+                    <input type="text" placeholder="Buscar alerta...">
+                    <div class="filtrosDeAlerta">
+                        <button id="FiltroTodos" class="btn-filtro filtroAtivo">Todos (5)</button>
+                        <button id="FiltroAbertos" class="btn-filtro">Abertos (2)</button>
+                        <button id="FiltroReconhecidos" class="btn-filtro">Reconhecidos (1)</button>
+                        <button id="FiltroResolvidos" class="btn-filtro">Resolvidos (2)</button>
+                    </div>
+                </div>
+
+                <!-- ========================================== -->
+                <!-- Lista de Alertas feitos e resolvidos daquele Servidor -->
+                <div class="lista-alertas">
+
+                    <div class="caixa-alerta alerta01">
+                        <div class="conteudo-alerta-esquerda">
+                            <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg"
+                                style="width: 50px; padding: 8px; background-color: #dc28282d; border-radius: 6px; max-height: 55px;"
+                                alt="icon-alerta">
+                            <div class="infoCaixaAlerta">
+                                <span class="tituloAlerta">CPU Acima do Limite Crítico</span> <span
+                                    class="tipoAlerta">Crítico</span> <span class="estadoAlerta">Aberto</span> <br>
+                                <p class="dadosAlertaServidor">SRV-PROD-API-01 | CPU | 22/09/2025</p>
+                                <p class="descricaoAlerta">Uso de CPU atingiu 95%, acima do limite de 90%</p>
+                            </div>
+                        </div>
+                        <div class="escolhasCaixaAlerta">
+                            <button class="btn-Alerta btnReconhecer">Reconhecer</button>
+                            <button class="btn-Alerta btnResolver">Resolver</button>
+                            <img src="../assets/svg/alertas/eye-svgrepo-com.svg" alt="maisInfos" style="width: 35px;">
+                        </div>
+                    </div>
+
+                    <div class="caixa-alerta alerta02">
+                        <div class="conteudo-alerta-esquerda">
+                            <img src="../assets/svg/alertas/alert-svgrepo-com.svg"
+                                style="width: 50px; padding: 8px; background-color: #e7af0820; border-radius: 6px; max-height: 55px;"
+                                alt="icon-alerta">
+                            <div class="infoCaixaAlerta">
+                                <span class="tituloAlerta">Memória RAM em Nível de Atenção</span> <span
+                                    class="tipoAlerta">Atenção</span> <span class="estadoAlerta">Aberto</span> <br>
+                                <p class="dadosAlertaServidor">SRV-PROD-API-01 | CPU | 22/09/2025</p>
+                                <p class="descricaoAlerta">Uso de CPU atingiu 95%, acima do limite de 90%</p>
+                            </div>
+                        </div>
+                        <div class="escolhasCaixaAlerta">
+                            <button class="btn-Alerta btnReconhecer">Reconhecer</button>
+                            <button class="btn-Alerta btnResolver">Resolver</button>
+                            <img src="../assets/svg/alertas/eye-svgrepo-com.svg" alt="maisInfos" style="width: 35px;">
+                        </div>
+                    </div>
+
+                    <div class="caixa-alerta alerta03">
+                        <div class="conteudo-alerta-esquerda">
+                            <img src="../assets/svg/alertas/bell-svgrepo-com.svg"
+                                style="width: 50px; padding: 8px; background-color: #e7af0820; border-radius: 6px; max-height: 55px;"
+                                alt="icon-alerta">
+                            <div class="infoCaixaAlerta">
+                                <span class="tituloAlerta">Disco próximo da capacidade máxima</span> <span
+                                    class="tipoAlerta">Crítico</span> <span class="estadoAlerta">Reconhecido</span> <br>
+                                <p class="dadosAlertaServidor">SRV-PROD-API-01 | CPU | 22/09/2025</p>
+                                <p class="descricaoAlerta">Uso de CPU atingiu 95%, acima do limite de 90%</p>
+                            </div>
+                        </div>
+                        <div class="escolhasCaixaAlerta">
+                            <button class="btn-Alerta btnReconhecer">Reconhecer</button>
+                            <button class="btn-Alerta btnResolver">Resolver</button>
+                            <img src="../assets/svg/alertas/eye-svgrepo-com.svg" alt="maisInfos" style="width: 35px;">
+                        </div>
+                    </div>
+
+                    <div class="caixa-alerta alerta04">
+                        <div class="conteudo-alerta-esquerda">
+                            <img src="../assets/svg/alertas/bell-svgrepo-com.svg"
+                                style="width: 50px; padding: 8px; background-color: #e7af0820; border-radius: 6px; max-height: 55px;"
+                                alt="icon-alerta">
+                            <div class="infoCaixaAlerta">
+                                <span class="tituloAlerta">CPU Acima do Limite</span> <span
+                                    class="tipoAlerta">Info</span> <span class="estadoAlerta">Resolvido</span> <br>
+                                <p class="dadosAlertaServidor">SRV-PROD-API-01 | CPU | 22/09/2025</p>
+                                <p class="descricaoAlerta">Uso de CPU atingiu 95%, acima do limite de 90%</p>
+                            </div>
+                        </div>
+                        <div class="escolhasCaixaAlerta">
+                            <button class="btn-Alerta btnReconhecer">Reconhecer</button>
+                            <button class="btn-Alerta btnResolver">Resolver</button>
+                            <img src="../assets/svg/alertas/eye-svgrepo-com.svg" alt="maisInfos" style="width: 35px;">
+                        </div>
+                    </div>
+
+                    <div class="caixa-alerta alerta05">
+                        <div class="conteudo-alerta-esquerda">
+                            <img src="../assets/svg/alertas/bell-svgrepo-com.svg"
+                                style="width: 50px; padding: 8px; background-color: #e7af0820; border-radius: 6px; max-height: 55px;"
+                                alt="icon-alerta">
+                            <div class="infoCaixaAlerta">
+                                <span class="tituloAlerta">CPU Acima do Limite</span> <span
+                                    class="tipoAlerta">Info</span> <span class="estadoAlerta">Resolvido</span> <br>
+                                <p class="dadosAlertaServidor">SRV-PROD-API-01 | CPU | 22/09/2025</p>
+                                <p class="descricaoAlerta">Uso de CPU atingiu 95%, acima do limite de 90%</p>
+                            </div>
+                        </div>
+                        <div class="escolhasCaixaAlerta">
+                            <button class="btn-Alerta btnReconhecer">Reconhecer</button>
+                            <button class="btn-Alerta btnResolver">Resolver</button>
+                            <img src="../assets/svg/alertas/eye-svgrepo-com.svg" alt="maisInfos" style="width: 35px;">
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
         </div>
     </div>
 
 </body>
+
 </html>
+
+<script>
+
+    // ===================================================================
+    // Função pra Estilização dos Alertas
+
+    // Criamos uma lista dos tipos de Alerta
+    const tiposAlertas = document.querySelectorAll('.tipoAlerta');
+
+    // Bisbilhotar cada parte da lista pra procurar os valores
+    tiposAlertas.forEach(alertaTexto => {
+        // Vai no alertaTexto (alerta atual), pega o texto (textContent), tira os espaços (trim) e deixa minúsculo (toLowerCase);
+        let texto = alertaTexto.textContent.trim().toLowerCase();
+
+        // Acha a caixa inteira do alerta atual e pega a imagem de dentro dela no outro conteúdo
+        let caixaDoAlerta = alertaTexto.closest('.caixa-alerta');
+        let imagemDoAlerta = caixaDoAlerta.querySelector('.conteudo-alerta-esquerda img');
+
+        // Adiciona classe conforme oq está escrito e troca a imagem/fundo (se for confirmado que está lá)
+        // Abaixo se o texto for crítico
+        if (texto === 'crítico') {
+            alertaTexto.classList.add('tipo-critico');
+            if (imagemDoAlerta) {
+                imagemDoAlerta.src = '../assets/svg/alertas/close-circle-svgrepo-com.svg'; // Muda pra imagem crítica
+                imagemDoAlerta.style.backgroundColor = '#dc28282d'; // Troca cor do Fundo
+            }
+
+            // Abaixo se o texto for atenção
+        } else if (texto === 'atenção') {
+            alertaTexto.classList.add('tipo-atencao');
+            if (imagemDoAlerta) {
+                imagemDoAlerta.src = '../assets/svg/alertas/alert-svgrepo-com.svg'; // Muda pra imagem atenção
+                imagemDoAlerta.style.backgroundColor = '#e7af082a'; // Troca cor do Fundo
+            }
+
+            // Abaixo se o texto for Informação
+        } else if (texto === 'info') {
+            alertaTexto.classList.add('tipo-info');
+            // Troca a imagem e o fundo para o modo Info
+            if (imagemDoAlerta) {
+                imagemDoAlerta.src = '../assets/svg/alertas/bell-svgrepo-com.svg'; // Muda pra imagem Informação
+                imagemDoAlerta.style.backgroundColor = '#f46e152a'; // Troca cor do Fundo
+            }
+        }
+    });
+
+    // ==================================================================
+    // Parte do Estado
+
+    const estadosAlertas = document.querySelectorAll('.estadoAlerta');
+
+    estadosAlertas.forEach(estadoTexto => {
+        // Lê o texto, tira os espaços e transforma tudo em minúsculo
+        let texto = estadoTexto.textContent.trim().toLowerCase();
+
+        if (texto === 'aberto') {
+            estadoTexto.classList.add('estado-aberto');
+        } else if (texto === 'reconhecido') {
+            estadoTexto.classList.add('estado-reconhecido');
+        } else if (texto === 'resolvido') {
+            estadoTexto.classList.add('estado-resolvido');
+        }
+    });
+
+    // ===================================================================
+    // Função de filtrar
+    // Aqui pega todos os botões que têm a classe btn-filtro no "Documento", tipo criar uma lista
+    const botoesFiltro = document.querySelectorAll('.btn-filtro');
+
+    // Dentro dessa lista, ele vai EM CADA "botao" (forEach botao)
+    botoesFiltro.forEach(botao => {
+
+        // Nisso ele adiciona um evento que verifica qual foi clicado, e com isso
+        botao.addEventListener('click', () => {
+            // Ele primeiramente remove a classe filtroAtivo de todos os Botões
+            botoesFiltro.forEach(b => b.classList.remove('filtroAtivo'));
+
+            // e por fim, adiciona ao botao que foi clicado (botao.addEventListener) a classe filtroAtivo
+            botao.classList.add('filtroAtivo');
+        });
+    });
+    // ===================================================================
+
+</script>
