@@ -23,7 +23,7 @@
 
     <div class="container-fluid">
         <div class="row min-vh-100">
-            <div class="col-12 col-md-3 col-lg-2 sidebar" id="lateralAberta">
+            <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
                 <div class="logo-container">
                     <img class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
                 </div>
@@ -32,61 +32,65 @@
                     <!-- Sidebar - Parte 01 -->
                     <div class="menu01">
                         <h4 class="titulo_sidebar">PRINCIPAL</h4>
-                        <button class="btn-nobroke">
+                        <a href="dashboard.html" class="btn-nobroke">
                             <span class="icon">
-                                <img id="iconAtual" style="color: white;"
-                                    src="../assets//icon/icons-dashboard/painel-de-controle.png">
+                                <img src="../assets/icon/icons-dashboard/painel-de-controle.png">
                             </span>
-                            <a href="dashboard.html">Dashboard</a>
-                        </button>
-                        <button class="btn-nobroke">
+                            <span class="texto">Dashboard</span>
+                        </a>
+
+                        <a href="servidores.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
                             </span>
-                            <a href="servidores.html">Servidores</a>
-                        </button>
+                            <span class="texto">Servidores</span>
+                        </a>
+
                         <button class="btn-nobroke btn-active">
                             <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/notificacao-hover.png">
+                                <img id="iconAtual" src="../assets/icon/icons-dashboard/notificacao-hover.png">
                             </span>
-                            Alertas
+                            <span class="texto">Alertas</span>
                         </button>
-                        <button class="btn-nobroke">
+
+                        <a href="Relatorios.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
                             </span>
-                            <a href="Relatorios.html">Relatórios</a>
-                        </button>
-                        <a href="monitoramento.html">
-                            <button class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/heart-rate.png">
-                                </span>
-                                <a href="monitoramento.html">Monitoramento</a>
-                            </button>
+                            <span class="texto">Relatórios</span>
+                        </a>
+
+                        <a href="monitoramento.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                            </span>
+                            <span class="texto">Monitoramento</span>
                         </a>
                     </div>
-                    <!-- ================================================================ -->
+                    <!-- ============================ -->
                     <div class="menu02">
-                        <h4 class="titulo_sidebar">ADMNISTRAÇÃO</h4>
-                        <button class="btn-nobroke">
+                        <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
+
+                        <a href="seguranca.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/escudo.png">
                             </span>
-                            <a href="seguranca.html">Segurança</a>
-                        </button>
-                        <button class="btn-nobroke">
+                            <span class="texto">Segurança</span>
+                        </a>
+
+                        <a href="Configurações.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/config.png">
                             </span>
-                            <a href="Configurações.html">Configurações</a>
-                        </button>
-                        <button class="btn-nobroke">
+                            <span class="texto">Configurações</span>
+                        </a>
+
+                        <a href="suporte.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
                             </span>
-                            Suporte
-                        </button>
+                            <span class="texto">Suporte</span>
+                        </a>
                     </div>
                     <!-- Fim dos Menus -->
                     <!-- ================================================================= -->
@@ -105,7 +109,7 @@
             <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
                 <div class="header-responsividade">
                     <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
-                        style="width: 30px; cursor: pointer;">
+                        style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
                     <a href="dashboard.html">Dashboard</a>
                     <span style="color: #7D8999;">></span>
                     <span style="color: white;">Alertas</span>
@@ -276,7 +280,13 @@
 </html>
 
 <script>
+    function fecharAbrirLateral() {
+        const sidebar = document.getElementById("div_lateralAberta");
+        const conteudo = document.getElementById("telaPrincipal");
 
+        sidebar.classList.toggle("compacta");
+        conteudo.classList.toggle("expandido");
+    }
     // ===================================================================
     // Função pra Estilização dos Alertas
 

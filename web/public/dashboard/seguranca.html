@@ -19,7 +19,7 @@
 <body>
     <div class="container-fluid">
         <div class="row min-vh-100">
-            <div class="col-12 col-md-3 col-lg-2 sidebar" id="lateralAberta">
+            <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
                 <div class="logo-container">
                     <img class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
                 </div>
@@ -28,62 +28,69 @@
                     <!-- Sidebar - Parte 01 -->
                     <div class="menu01">
                         <h4 class="titulo_sidebar">PRINCIPAL</h4>
-                        <button class="btn-nobroke btn-active">
+                        <a href="dashboard.html" class="btn-nobroke">
                             <span class="icon">
-                                <img id="iconAtual" style="color: white;"
-                                    src="../assets//icon/icons-dashboard/painel-de-controle-hover.png">
+                                <img src="../assets/icon/icons-dashboard/painel-de-controle.png">
                             </span>
-                            <a href="dashboard.html">Dashboard</a>
-                        </button>
-                        <button class="btn-nobroke">
+                            <span class="texto">Dashboard</span>
+                        </a>
+
+                        <a href="servidores.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
                             </span>
-                            <a href="servidores.html">Servidores</a>
-                        </button>
-                        <button class="btn-nobroke">
+                            <span class="texto">Servidores</span>
+                        </a>
+
+                        <a href="Alertas.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/notificacao.png">
                             </span>
-                            <a href="Alertas.html">Alertas</a>
-                        </button>
-                        <button class="btn-nobroke">
+                            <span class="texto">Alertas</span>
+                        </a>
+
+                        <a href="Relatorios.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
                             </span>
-                            <a href="Relatorios.html">Relatórios</a>
-                        </button>
-                        <a href="monitoramento.html">
-                            <button class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/heart-rate.png">
-                                </span>
-                                <a href="monitoramento.html">Monitoramento</a>
-                            </button>
+                            <span class="texto">Relatórios</span>
+                        </a>
+
+                        <a href="monitoramento.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                            </span>
+                            <span class="texto">Monitoramento</span>
                         </a>
                     </div>
-
+                    <!-- ============================ -->
                     <div class="menu02">
-                        <h4 class="titulo_sidebar">ADMNISTRAÇÃO</h4>
-                        <button class="btn-nobroke">
+                        <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
+
+                        <button class="btn-nobroke btn-active">
                             <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/escudo.png">
+                                <img id="iconAtual" src="../assets/icon/icons-dashboard/escudo-hover.png">
                             </span>
-                            <a href="seguranca.html">Segurança</a>
+                            <span class="texto">Segurança</span>
                         </button>
-                        <button class="btn-nobroke">
+
+                        <a href="Configurações.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/config.png">
                             </span>
-                            <a href="Configurações.html">Configurações</a>
-                        </button>
-                        <button class="btn-nobroke">
+                            <span class="texto">Configurações</span>
+                        </a>
+
+                        <a href="suporte.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
                             </span>
-                            <a href="suporte.html">Suporte</a>
-                        </button>
+                            <span class="texto">Suporte</span>
+                        </a>
                     </div>
+                    <!-- Fim dos Menus -->
+                    <!-- ================================================================= -->
+                    <!-- Parte do perfil -->
                 </div>
                 <div class="user-profile">
                     <img src="../assets/icon/user.png" alt="Foto de perfil" class="profile-img">
@@ -94,13 +101,17 @@
                 </div>
             </div>
             <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
+                <div class="header-responsividade">
+                    <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
+                        style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
+                    <a href="dashboard.html">Dashboard</a>
+                    <span style="color: #7D8999;">></span>
+                    <span style="color: white;">Segurança</span>
+                </div>
+                <hr style="width: 100%; height: 2px; color: #b4b4b4;">
 
                 <div class="header-conteudo-dash">
                     <div class="header-esquerdo">
-                        <div id="fecharAbrirLateral">
-                            <img src="../assets/icon/icons-dashboard/barra-lateral-branco.png" alt="" width="40px"
-                                onclick="mudarLateral()">
-                        </div>
                         <div class="header-esquerdo01">
                             <h3 class="servidor-name" id="server-name">Segurança</h3>
                         </div>
@@ -214,3 +225,12 @@
 </body>
 
 </html>
+<script>
+    function fecharAbrirLateral() {
+        const sidebar = document.getElementById("div_lateralAberta");
+        const conteudo = document.getElementById("telaPrincipal");
+
+        sidebar.classList.toggle("compacta");
+        conteudo.classList.toggle("expandido");
+    }
+</script>
