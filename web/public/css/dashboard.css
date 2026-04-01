@@ -1378,3 +1378,208 @@ tbody td {
     border-radius: 20px;
     /* Arredondar os cantos da Scrollbar*/
 }
+
+/* ============================================ */
+/* Estilização - Configurações */
+.header-configuracoes {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.header-configuracoes h2 {
+    color: white;
+    font-size: 26px;
+}
+
+.header-configuracoes p {
+    color: #7D8999;
+    font-size: 18px;
+}
+
+.configuracoesCorpo {
+    display: flex;
+    flex-direction: row;
+
+    /* background-color: red; */
+    gap: 20px;
+}
+
+.configuracoesPainel {
+    display: flex;
+    flex-direction: column;
+    max-width: 25%;
+    max-height: fit-content;
+    height: 100%;
+    width: 100%;
+
+    background-color: #1D2025;
+    border: 1px solid #3a3f45;
+    border-radius: 6px;
+    padding: 15px 20px;
+    gap: 10px;
+}
+
+.configuracaoEscolha {
+    cursor: pointer;
+    width: 100%;
+    min-height: 40px;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    padding: 0px 10px;
+    border-radius: 6px;
+
+    transition: all 0.25s ease;
+}
+
+.configuracaoEscolha:hover {
+    background-color: #ffffff11;
+}
+
+.configuracaoEscolha:hover span {
+    color: white;
+}
+
+.configuracaoEscolha span {
+    color: #7D8999;
+    font-size: 16px;
+}
+
+.configuracaoSelecionada {
+    background-color: rgba(249, 112, 21, 0.10);
+    transition: all 0.25s ease;
+    transform: scale(1.05);
+}
+
+.configuracaoSelecionada:hover {
+    background-color: rgba(249, 112, 21, 0.25);
+}
+
+.configuracaoSelecionada:hover span {
+    color: #F97015;
+}
+
+.configuracaoSelecionada span {
+    color: #F97015;
+}
+
+/* ================================ */
+/* Estilização - COnfiguração Geral */
+
+.configuracoesEscolhido {
+    width: 100%;
+}
+
+.cardConfiguracao {
+    width: 100%;
+    padding: 10px 20px;
+
+    background-color: #1D2025;
+    border: 1px solid #3a3f45;
+    border-radius: 6px;
+    padding: 25px 20px;
+    gap: 10px;
+}
+
+.cardConfiguracao h4 {
+    color: white;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.iptTitulo {
+    color: white !important;
+    margin: 0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.cardConfiguracao p {
+    color: #b4b4b4;
+}
+
+.cardConfiguracao input, .cardConfiguracao select {
+    width: 100%;
+    background-color: #1D2025;
+    border: 1px solid #3a3f45;
+    border-radius: 6px;
+    padding: 10px 10px;
+
+    color: white;
+    transition: all 0.25s ease;
+}
+
+.cardConfiguracao input:focus, .cardConfiguracao select:focus {
+    transform: scale(1.01);
+    outline: 2px solid #F97015;
+}
+
+.configGeralInferior {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.configGeralInferior h6 {
+    color: white;
+    font-size: 16px;
+    margin: 0;
+}
+
+.configGeralInferior span {
+    color: #7D8999;
+}
+
+.configuracaoGeral {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.geralBotoes {
+    display: flex;
+    align-self: flex-end;
+
+    gap: 10px;
+}
+
+.btnGeral01 {
+    background: transparent;
+    color: white;
+    border: 1px solid #3a3f45;
+    border-radius: 6px;
+    padding: 6px 15px;
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+.btnGeral01:hover {
+    background-color: #F97015;
+}
+
+.btnGeral02 {
+    background-color: #F97015;
+    color: white;
+    border: 1px solid #3a3f45;
+    border-radius: 6px;
+    padding: 6px 15px;
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+.btnGeral02:hover {
+    background-color: #f97015c4;
+}
+
+/* Estilização do Switch do Bootstrap */
+.form-check-input:checked {
+    background-color: #F97015 !important; /* Sua cor laranja */
+    border-color: rgba(0, 0, 0, 0.1) !important;
+}

@@ -4,19 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>noBroke | Configurações</title>
+    <title>Configurações | noBroke</title>
     <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
 
-  <script src="./js/sessao.js"></script>
+    <script src="./js/sessao.js"></script>
 
-  <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
 
-  <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
+    <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
-  <!-- Importar o Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Importar o Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -57,9 +58,9 @@
                         <a href="Relatorios.html">Relatórios</a>
                     </button>
                     <a href="monitoramento.html">
-                        <button class="btn-nobroke btn-active">
+                        <button class="btn-nobroke">
                             <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/heart-rate-hover.png">
+                                <img src="../assets/icon/icons-dashboard/heart-rate.png">
                             </span>
                             Monitoramento
                         </button>
@@ -74,9 +75,9 @@
                         </span>
                         <a href="seguranca.html">Segurança</a>
                     </button>
-                    <button class="btn-nobroke">
+                    <button class="btn-nobroke btn-active">
                         <span class="icon">
-                            <img src="../assets/icon/icons-dashboard/config.png">
+                            <img src="../assets/icon/icons-dashboard/config-hover.png">
                         </span>
                         <a href="Configurações.html">Configurações</a>
                     </button>
@@ -107,14 +108,131 @@
                     style="width: 30px; cursor: pointer;">
                 <a href="dashboard.html">Dashboard</a>
                 <span style="color: #7D8999;">></span>
-                <span style="color: white;">Monitoramento</span>
+                <span style="color: white;">Configurações</span>
             </div>
             <hr style="width: 100%; height: 2px; color: #b4b4b4;">
             <!-- ================================================================ -->
+            <!-- Titulo - Monitoramento em Tempo Real -->
+            <div class="header-configuracoes">
+                <h2>Configurações</h2>
+                <p>Gerencie as configurações do sistema de monitoramento</p>
+            </div>
+            <!-- ================================================================ -->
+            <!-- Corpo geral das Configurações -->
 
+            <div class="configuracoesCorpo">
+                <!-- Painel da Esquerda -->
+                <div class="configuracoesPainel">
+                    <div class="configuracaoEscolha configuracaoSelecionada">
+                        <img src="../assets/svg/configuracoes/setting-svgrepo-com-hover.svg" width="25px"
+                            alt="iconConfig">
+                        <span>Geral</span>
+                    </div>
+                    <div class="configuracaoEscolha">
+                        <img src="../assets/svg/configuracoes/bell-alt-svgrepo-com.svg" width="25px" alt="iconConfig">
+                        <span>Notificações</span>
+                    </div>
+                    <div class="configuracaoEscolha">
+                        <img src="../assets/svg/configuracoes/email-svgrepo-com.svg" width="25px" alt="iconConfig">
+                        <span>Integrações</span>
+                    </div>
+                    <div class="configuracaoEscolha">
+                        <img src="../assets/svg/configuracoes/timer-svgrepo-com.svg" width="25px" alt="iconConfig">
+                        <span>Intervalos de Coleta</span>
+                    </div>
+                    <div class="configuracaoEscolha">
+                        <img src="../assets/svg/configuracoes/team-svgrepo-com.svg" width="25px" alt="iconConfig">
+                        <span>Equipe</span>
+                    </div>
+                    <div class="configuracaoEscolha">
+                        <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com.svg" width="25px"
+                            alt="iconConfig">
+                        <span>Meu Perfil</span>
+                    </div>
+                </div>
+                <!-- ======================================================== -->
+                <!-- Painel da Direita - Conteúdo da Opção Escolhida -->
+                <div class="configuracoesEscolhido">
+                    <div class="configuracaoGeral">
+                        <div class="cardConfiguracao">
+                            <h4>Configurações Gerais</h4>
+                            <p style="font-size: 14px;">Configurações básicas do sistema noBroke</p>
+
+                            <p class="iptTitulo">Nome da Organização</p>
+                            <input type="text">
+                            <p class="iptTitulo">Fuso Horário</p>
+                            <select name="" id="">
+                                <option selected disabled value="#">Selecione uma Opção</option>
+                                <option value="America/Sao_Paulo">America/Sao_Paulo (UTC-3)</option>
+                            </select>
+                            <hr style="width: 100%; height: 2px; color: #7D8999;">
+                            <div class="configGeralInferior">
+                                <div class="geralEsquerda">
+                                    <h6>Modo Manutenção</h6>
+                                    <span>Suspende alertas e notificações</span>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                                </div>
+                            </div>
+                            <div class="configGeralInferior">
+                                <div class="geralEsquerda">
+                                    <h6>Atualização Automática</h6>
+                                    <span>Atualizar dados automaticamente a cada 30s</span>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="geralBotoes">
+                            <button class="btnGeral01">Cancelar</button>
+                            <button class="btnGeral02">Salvar Configurações</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
 </body>
 
 </html>
+
+<script>
+    // ===================================================================
+    // Função de Escolher
+    // Aqui pega todos os "botões" que têm a classe configuracaoEscolha no "Documento"
+    const botoesEscolha = document.querySelectorAll('.configuracaoEscolha');
+
+    // Dentro dessa lista, ele vai EM CADA "botao"
+    botoesEscolha.forEach(botao => {
+        // chama de botão o que for apertado
+        botao.addEventListener('click', () => {
+
+            // Vai ir em cada botão (b é o atual)
+            botoesEscolha.forEach(b => {
+                // Remove a classe de todos
+                b.classList.remove('configuracaoSelecionada');
+                // Pega a tag img dentro deste botão específico
+                let img = b.querySelector('img');
+
+                // Se o src da imagem tiver '-hover.svg' nós tira o '-hover' para voltar sem hover
+                if (img.src.includes('-hover.svg')) {
+                    img.src = img.src.replace('-hover.svg', '.svg');
+                }
+            });
+            // Adiciona a classe no botão que foi clicado
+            botao.classList.add('configuracaoSelecionada');
+
+            // Pega a img especifica do botão que acaba de clicar
+            let imgClicada = botao.querySelector('img');
+
+            // Troca o final '.svg' por '-hover.svg' apenas caso não inclua -hover na mesma (por isso do !)
+            if (!imgClicada.src.includes('-hover.svg')) {
+                imgClicada.src = imgClicada.src.replace('.svg', '-hover.svg');
+            }
+        });
+    });
+    // ===================================================================
+</script>
