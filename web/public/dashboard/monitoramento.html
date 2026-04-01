@@ -4,413 +4,725 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <link rel="stylesheet" href="../css/cadastro.css" />
-  <link rel="stylesheet" href="../css/estilo.css">
-
-  <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" />
-
   <title>Dashboard | Cadastro Funcionário</title>
+  <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
+
+  <script src="./js/sessao.js"></script>
+
+  <link rel="stylesheet" href="../css/dashboard.css">
+
+  <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Importar o Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body>
 
-  <div class="container-fluid p-0">
-    <div class="row min-vh-100 g-0">
-      <div class="col-12 col-md-3 col-lg-2 sidebar">
-
-        <img class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
-
-        <div class="menu-centro">
-
-          <a style="color: white;" href="dashboard.html" id="dashMenu" class="btn-nobroke mt-4">Dashboard</a>
-          <a style="color: white; font-weight: bolder;" id="admMenu" class="btn-nobroke mt-3">
-            Cadastrar Funcionário
-          </a>
-
-        </div>
-
-        <div class="user-profile">
-          <img src="../assets/icon/user.png" class="profile-img">
-          <p class="username" id="usuario" style="color: white;"></p>
-          <button onclick="logout()" class="logout-btn">Sair</button>
-        </div>
-
+  <div class="row min-vh-100">
+    <div class="col-12 col-md-3 col-lg-2 sidebar" id="lateralAberta">
+      <div class="logo-container">
+        <img class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
       </div>
+      <!-- Side Bar - Botões -->
+      <div class="menu_centro">
+        <!-- Sidebar - Parte 01 -->
+        <div class="menu01">
+          <h4 class="titulo_sidebar">PRINCIPAL</h4>
+          <button class="btn-nobroke">
+            <span class="icon">
+              <img id="iconAtual" style="color: white;" src="../assets//icon/icons-dashboard/painel-de-controle.png">
+            </span>
+            <a href="dashboard.html">Dashboard</a>
+          </button>
+          <button class="btn-nobroke">
+            <span class="icon">
+              <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
+            </span>
+            <a href="servidores.html">Servidores</a>
+          </button>
+          <button class="btn-nobroke">
+            <span class="icon">
+              <img src="../assets/icon/icons-dashboard/notificacao.png">
+            </span>
+            <a href="Alertas.html">Alertas</a>
+          </button>
+          <button class="btn-nobroke">
+            <span class="icon">
+              <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+            </span>
+            <a href="Relatorios.html">Relatórios</a>
+          </button>
+          <a href="monitoramento.html">
+            <button class="btn-nobroke btn-active">
+              <span class="icon">
+                <img src="../assets/icon/icons-dashboard/heart-rate-hover.png">
+              </span>
+              Monitoramento
+            </button>
+          </a>
+        </div>
+        <!-- ================================================================ -->
+        <div class="menu02">
+          <h4 class="titulo_sidebar">ADMNISTRAÇÃO</h4>
+          <button class="btn-nobroke">
+            <span class="icon">
+              <img src="../assets/icon/icons-dashboard/escudo.png">
+            </span>
+            <a href="seguranca.html">Segurança</a>
+          </button>
+          <button class="btn-nobroke">
+            <span class="icon">
+              <img src="../assets/icon/icons-dashboard/config.png">
+            </span>
+            <a href="Configurações.html">Configurações</a>
+          </button>
+          <button class="btn-nobroke">
+            <span class="icon">
+              <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
+            </span>
+            Suporte
+          </button>
+        </div>
+        <!-- Fim dos Menus -->
+        <!-- ================================================================= -->
+        <!-- Parte do perfil -->
+      </div>
+      <div class="user-profile">
+        <img src="../assets/icon/user.png" alt="Foto de perfil" class="profile-img">
+        <div class="user-infos">
+          <p class="username" id="usuario" style="color: white;">Douglas</p>
+          <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
+        </div>
+      </div>
+    </div>
+    <!-- ================================================================= -->
 
-      <div class="col conteudo">
+    <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
+      <div class="header-responsividade">
+        <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
+          style="width: 30px; cursor: pointer;">
+        <a href="dashboard.html">Dashboard</a>
+        <span style="color: #7D8999;">></span>
+        <span style="color: white;">Monitoramento</span>
+      </div>
+      <hr style="width: 100%; height: 2px; color: #b4b4b4;">
+      <!-- ================================================================ -->
 
-        <div class="background d-flex align-items-center justify-content-center flex-column meio w-100">
-          <div class="text-center w-100">
+      <!-- Titulo - Monitoramento em Tempo Real -->
+      <div class="header-monitoramento">
+        <div class="header-monitoramento-esquerda">
+          <h2>Monitoramento em Tempo Real</h2>
+          <p>Visão consolidada de todos os componentes monitorados</p>
+        </div>
+        <div class="header-monitoramento-direita">
+          <button><img src="../assets/svg/loading-svgrepo-com.svg" alt="loading-icon" style="width: 25px;">Atualizar</button>
+        </div>
+      </div>
+      <!-- ================================================================ -->
+      <!-- Cards de Monitoramento -->
 
-            <div class="campos">
+      <div class="cards-monitoramento">
 
-              <div class="col borda">
+        <div class="cardIndividual-monitoramento cardMonitorar01">
+          <img src="../assets/svg/crescer.png" alt="logo-monitoramento" style="background-color: #f9701539;">
+          <div class="cardMonitoramento-infos">
+            <h4 style="color: white;">20</h4>
+            <span>Componentes Monitorados</span>
+          </div>
+        </div>
 
-                <div id="mensagem_erro"></div>
+        <div class="cardIndividual-monitoramento cardMonitorar02">
+          <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt="logo-monitoramento" style="background-color: #21c45d3a;">
+          <div class="cardMonitoramento-infos">
+            <h4 style="color: #21C45D;">14</h4>
+            <span>Saudáveis</span>
+          </div>
+        </div>
 
-                <div class="mb-3">
-                  <label class="label-title d-flex justify-content-start">
-                    <h6>Permissão*</h6>
-                  </label>
+        <div class="cardIndividual-monitoramento cardMonitorar03">
+          <img src="../assets/svg/alertas/alert-svgrepo-com.svg" alt="logo-monitoramento" style="background-color: #e7af082f;">
+          <div class="cardMonitoramento-infos">
+            <h4 style="color: #E7B008;">4</h4>
+            <span>Em Atenção</span>
+          </div>
+        </div>
 
-                  <div class="selectGrande">
-                    <select id="permissao">
-                      <option value="1">Funcionario</option>
-                      <option value="2">Administrador</option>
-                      <option value="0" selected disabled>Selecione uma Opção</option>
-                    </select>
-                  </div>
-                </div>
-
-
-                <div class="mb-3">
-                  <label class="label-title d-flex justify-content-start">
-                    <h6>Nome do Funcionário*</h6>
-                  </label>
-
-                  <input type="text" maxlength="60" class="form-control" id="nome_input"
-                    placeholder="Ex.: José da Silva" />
-                </div>
-
-
-                <div class="mb-3">
-                  <label class="label-title d-flex justify-content-start">
-                    <h6>CPF do Funcionário*</h6>
-                  </label>
-
-                  <input type="text" maxlength="11" class="form-control" id="cpf_input"
-                    placeholder="Ex.: 123.456.789-00" />
-                </div>
-
-
-                <div class="mb-3">
-                  <label class="label-title d-flex justify-content-start">
-                    <h6>Email do Funcionário*</h6>
-                  </label>
-
-                  <div class="input-group mb-3">
-                    <input type="text" maxlength="60" class="form-control" id="email_input"
-                      placeholder="Ex.: funcionario@gmail.com">
-                  </div>
-                </div>
-
-
-                <div class="mb-3">
-                  <label class="label-title d-flex justify-content-start">
-                    <h6>Senha*</h6>
-                  </label>
-
-                  <div class="input-group mb-3">
-                    <input type="password" maxlength="45" class="form-control" id="senha_input" placeholder="********">
-                  </div>
-                </div>
-
-
-                <div class="mb-3">
-                  <label class="label-title d-flex justify-content-start">
-                    <h6>Confirmar Senha*</h6>
-                  </label>
-
-                  <input type="password" maxlength="45" class="form-control" id="confirmacao_senha_input"
-                    placeholder="******" />
-                </div>
-
-
-                <div class="d-grid justify-content-center mx-auto">
-                  <button class="btn btn-light button-color botao" type="button" onclick="cadastrar()">
-                    CADASTRE-SE
-                  </button>
-                </div>
-
-              </div>
-            </div>
+        <div class="cardIndividual-monitoramento cardMonitorar04">
+          <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt="logo-monitoramento" style="background-color: #dc28282d;">
+          <div class="cardMonitoramento-infos">
+            <h4 style="color: #DC2828;">2</h4>
+            <span>Críticos</span>
           </div>
         </div>
 
       </div>
+
+      <!-- =========================================== -->
+      <!-- Card - Componentes cada Servidor -->
+
+      <div class="componentesServidor">
+
+        <div class="cards-componentesServidor">
+
+          <div class="cardIndividual-ServidoresComponentes">
+            <div class="servidoresComponentes-titulo">
+              <img src="../assets/svg/alertas/cpu-svgrepo-com.svg" style="width: 25px;" alt="cpu-icon">
+              <span>CPU</span>
+            </div>
+
+            <div class="dadosComponentesServidores">
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+          </div>
+
+          </div>
+
+          <div class="cardIndividual-ServidoresComponentes">
+            <div class="servidoresComponentes-titulo">
+              <img src="../assets/svg/alertas/ram-memory-svgrepo-com.svg" style="width: 25px;" alt="cpu-icon">
+              <span>Memória RAM</span>
+            </div>
+
+            <div class="dadosComponentesServidores">
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+          </div>
+          </div>
+
+        </div>
+
+        <div class="cards-componentesServidor">
+          <div class="cardIndividual-ServidoresComponentes">
+            <div class="servidoresComponentes-titulo">
+              <img src="../assets/svg/alertas/disk-svgrepo-com.svg" style="width: 25px;" alt="cpu-icon">
+              <span>Disco</span>
+            </div>
+
+            <div class="dadosComponentesServidores">
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">40%</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+          <div class="cardIndividual-ServidoresComponentes">
+            <div class="servidoresComponentes-titulo">
+              <img src="../assets/svg/alertas/internet-network-signal-svgrepo-com.svg" style="width: 25px;" alt="cpu-icon">
+              <span>Latência</span>
+            </div>
+
+            <div class="dadosComponentesServidores">
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">11 ms</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">11 ms</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">11 ms</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">11 ms</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+
+            <div class="servidoresComponentes-dados">
+              <div class="dadosIndividuais01">
+                <span class="srvMonitorado-Titulo">SRV-PROD-HB-01</span>
+                <span class="srvMonitorado-Porcentagem">11 ms</span>
+              </div>
+              <div class="dadosIndividuais02">
+                <div class="srvMonitorado-linhaPreenchida"></div>
+                <div class="srvMonitorado-linhaNaoPreenchida"></div>
+              </div>
+            </div>
+          </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
-  </div>
 
-   <div id="modal-overlay" class="modal-overlay">
-    <div class="modal-box">
-      <span class="fechar" id="fecharX"></span>
-      <h3>Sucesso!</h3>
-      <p>Funcionário cadastrado com sucesso.</p>
-      <button id="btnOk" class="btn-modal">OK</button>
-    </div>
-  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
 
-  <script>
-
-    var modal = document.querySelector('.modal-overlay');
-    var btnFechar = document.querySelector('#btnOk');
+      var modal = document.querySelector('.modal-overlay');
+      var btnFechar = document.querySelector('#btnOk');
 
 
-    function modalCadastro() {
-      modal.style.display = 'flex';
-    }
+      function modalCadastro() {
+        modal.style.display = 'flex';
+      }
 
-    function fecharModal() {
-      modal.style.display = 'none';
-    } 
+      function fecharModal() {
+        modal.style.display = 'none';
+      }
 
-    btnFechar.addEventListener('click', fecharModal);
+      btnFechar.addEventListener('click', fecharModal);
 
 
-    window.onload = function () {
-      const usuario = document.getElementById("usuario");
-      usuario.innerHTML = `Olá <b>${sessionStorage.NOME_USUARIO}</b>, boas vindas.`;
-    }
+      window.onload = function () {
+        const usuario = document.getElementById("usuario");
+        usuario.innerHTML = `Olá <b>${sessionStorage.NOME_USUARIO}</b>, boas vindas.`;
+      }
 
-    function logout() {
-      sessionStorage.clear()
-      window.location.href = "index.html"
-    }
+      function logout() {
+        sessionStorage.clear()
+        window.location.href = "index.html"
+      }
 
-    function mostrarErro(texto) {
-      const mensagem = document.getElementById("mensagem_erro");
+      function mostrarErro(texto) {
+        const mensagem = document.getElementById("mensagem_erro");
 
-      mensagem.innerHTML = `<div class="alert alert-dismissible fade show" role="alert">${texto}<button type="button" class="btnFechar"></button></div>
+        mensagem.innerHTML = `<div class="alert alert-dismissible fade show" role="alert">${texto}<button type="button" class="btnFechar"></button></div>
   `;
-    }
+      }
 
-    function cadastrar() {
-      let idEmpresa = sessionStorage.FK_EMPRESA;
-      let idAdm = sessionStorage.ID_USUARIO;
+      function cadastrar() {
+        let idEmpresa = sessionStorage.FK_EMPRESA;
+        let idAdm = sessionStorage.ID_USUARIO;
 
-      //Recupere o valor da nova input pelo nome do id
-      // Agora vá para o método fetch logo abaixo
-      var selectValue = document.getElementById("permissao");
-      var nomeVar = nome_input.value.trim();
-      var cpfVar = cpf_input.value.trim();
-      var emailVar = email_input.value.trim();
-      var senhaVar = senha_input.value.trim();
-      var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var selectValue = document.getElementById("permissao");
+        var nomeVar = nome_input.value.trim();
+        var cpfVar = cpf_input.value.trim();
+        var emailVar = email_input.value.trim();
+        var senhaVar = senha_input.value.trim();
+        var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
 
-      console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, cpfVar);
+        console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar, cpfVar);
 
-      // Verificando senha e email
-      if (
-        nomeVar == "" ||
-        emailVar == "" ||
-        senhaVar == "" ||
-        confirmacaoSenhaVar == "" ||
-        cpfVar == "" ||
-        selectValue.value == 0
-      ) {
-        alert("Mensagem de erro para todos os campos em branco");
-        return false;
-      } else {
-        // tratativa da senha
-        let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-        let caractereEsperial = [
-          "!",
-          "@",
-          "#",
-          '"',
-          "$",
-          "%",
-          "¨",
-          "&",
-          "*",
-          "(",
-          ")",
-          "-",
-          "+",
-        ];
-        let contemNumeros = false;
-        let contemCaractereEspecial = false;
-
-        for (var i = 0; i < senhaVar.length; i++) {
-          if (senhaVar.includes(numeros[i])) {
-            contemNumeros = true;
-            break;
-          }
-        }
-
-        for (var j = 0; j < senhaVar.length; j++) {
-          if (senhaVar.includes(caractereEsperial[j])) {
-            contemCaractereEspecial = true;
-            break;
-          }
-        }
-
-        // tratativa do email
-
-        if (!emailVar.includes(".com")) {
-          emailVar += ".com";
-        }
-        console.log(emailVar);
-
-        possuiDominio = true;
-
-        if (!emailVar.includes("@")) {
-          possuiDominio = false;
-        }
-
-        // tratativa do cpf
-
-        let cpfValido = false;
-
-        if (!isNaN(cpfVar)) {
-          let resultado = "";
-
-          // descobrindo o D1
-          let cont1 = 10;
-          let somaD1 = 0;
-
-          for (var k = 0; k < 9; k++) {
-            let multiplicacaoD1 = cpfVar[k] * cont1;
-
-            somaD1 += multiplicacaoD1;
-
-            cont1 -= 1;
-          }
-
-          let restoD1 = somaD1 % 11;
-
-          if (restoD1 < 2) {
-            restoD1 = 0;
-            resultado += restoD1.toString();
-          } else {
-            restoD1 = 11 - restoD1;
-            resultado += restoD1.toString();
-          }
-
-          // descobrindo o D2
-          let cont2 = 11;
-
-          let somaD2 = 0;
-
-          for (var l = 0; l < 10; l++) {
-            let multiplicacaoD2 = cpfVar[l] * cont2;
-
-            somaD2 += multiplicacaoD2;
-
-            cont2 -= 1;
-          }
-
-          let restoD2 = somaD2 % 11;
-
-          if (restoD2 < 2) {
-            restoD2 = 0;
-            resultado += restoD2.toString();
-          } else {
-            restoD2 = 11 - restoD2;
-            resultado += restoD2.toString();
-          }
-
-          if (cpfVar[9] == resultado[0] && cpfVar[10] == resultado[1]) {
-            cpfValido = true;
-          } else {
-            cpfValido = false;
-          }
-
-          console.log(resultado + cpfVar[9] + cpfVar[10]);
-        }
-
-
-
+        // Verificando senha e email
         if (
-          senhaVar.length < 8 ||
-          senhaVar != confirmacaoSenhaVar ||
-          !contemNumeros ||
-          !contemCaractereEspecial ||
-          cpfVar.length > 11 ||
-          !cpfValido ||
-          !possuiDominio
+          nomeVar == "" ||
+          emailVar == "" ||
+          senhaVar == "" ||
+          confirmacaoSenhaVar == "" ||
+          cpfVar == "" ||
+          selectValue.value == 0
         ) {
-          console.log(
-            "A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais",
-          );
+          alert("Mensagem de erro para todos os campos em branco");
           return false;
-        } else if (selectValue.value == 1) {
-          console.log("Cadastro ok");
+        } else {
+          // tratativa da senha
+          let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+          let caractereEsperial = [
+            "!",
+            "@",
+            "#",
+            '"',
+            "$",
+            "%",
+            "¨",
+            "&",
+            "*",
+            "(",
+            ")",
+            "-",
+            "+",
+          ];
+          let contemNumeros = false;
+          let contemCaractereEspecial = false;
+
+          for (var i = 0; i < senhaVar.length; i++) {
+            if (senhaVar.includes(numeros[i])) {
+              contemNumeros = true;
+              break;
+            }
+          }
+
+          for (var j = 0; j < senhaVar.length; j++) {
+            if (senhaVar.includes(caractereEsperial[j])) {
+              contemCaractereEspecial = true;
+              break;
+            }
+          }
+
+          // tratativa do email
+
+          if (!emailVar.includes(".com")) {
+            emailVar += ".com";
+          }
+          console.log(emailVar);
+
+          possuiDominio = true;
+
+          if (!emailVar.includes("@")) {
+            possuiDominio = false;
+          }
+
+          // tratativa do cpf
+
+          let cpfValido = false;
+
+          if (!isNaN(cpfVar)) {
+            let resultado = "";
+
+            // descobrindo o D1
+            let cont1 = 10;
+            let somaD1 = 0;
+
+            for (var k = 0; k < 9; k++) {
+              let multiplicacaoD1 = cpfVar[k] * cont1;
+
+              somaD1 += multiplicacaoD1;
+
+              cont1 -= 1;
+            }
+
+            let restoD1 = somaD1 % 11;
+
+            if (restoD1 < 2) {
+              restoD1 = 0;
+              resultado += restoD1.toString();
+            } else {
+              restoD1 = 11 - restoD1;
+              resultado += restoD1.toString();
+            }
+
+            // descobrindo o D2
+            let cont2 = 11;
+
+            let somaD2 = 0;
+
+            for (var l = 0; l < 10; l++) {
+              let multiplicacaoD2 = cpfVar[l] * cont2;
+
+              somaD2 += multiplicacaoD2;
+
+              cont2 -= 1;
+            }
+
+            let restoD2 = somaD2 % 11;
+
+            if (restoD2 < 2) {
+              restoD2 = 0;
+              resultado += restoD2.toString();
+            } else {
+              restoD2 = 11 - restoD2;
+              resultado += restoD2.toString();
+            }
+
+            if (cpfVar[9] == resultado[0] && cpfVar[10] == resultado[1]) {
+              cpfValido = true;
+            } else {
+              cpfValido = false;
+            }
+
+            console.log(resultado + cpfVar[9] + cpfVar[10]);
+          }
 
 
-          // Enviando o valor da nova input
-          fetch("/cadastroFuncionario/cadastrar", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              // crie um atributo que recebe o valor recuperado aqui
-              // Agora vá para o arquivo routes/usuario.js
-              nomeServer: nomeVar,
-              emailServer: emailVar,
-              senhaServer: senhaVar,
-              cpfServer: cpfVar,
-              idAdmServer: idAdm,
-              empresaServer: idEmpresa,
-            }),
-          })
-            .then(function (resposta) {
-              console.log("resposta: ", resposta);
 
-              if (resposta.ok) {
-                mensagem_erro.innerHTML =
-                  "Cadastro realizado com sucesso!";
-                  modalCadastro();
-              } else {
-                console.log(
-                  nomeServer,
-                  emailServer,
-                  senhaServer,
-                  cpfServer,
-                  idAdmServer,
-                  empresaServer,
-                );
-                throw "Houve um erro ao tentar realizar o cadastro!";
-              }
+          if (
+            senhaVar.length < 8 ||
+            senhaVar != confirmacaoSenhaVar ||
+            !contemNumeros ||
+            !contemCaractereEspecial ||
+            cpfVar.length > 11 ||
+            !cpfValido ||
+            !possuiDominio
+          ) {
+            console.log(
+              "A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais",
+            );
+            return false;
+          } else if (selectValue.value == 1) {
+            console.log("Cadastro ok");
+
+
+            // Enviando o valor da nova input
+            fetch("/cadastroFuncionario/cadastrar", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                cpfServer: cpfVar,
+                idAdmServer: idAdm,
+                empresaServer: idEmpresa,
+              }),
             })
-            .catch(function (resposta) {
-              console.log(`#ERRO: ${resposta}`);
-            });
+              .then(function (resposta) {
+                console.log("resposta: ", resposta);
 
-          return false;
-        } else if (selectValue.value == 2) {
-
-          fetch("/cadastroAdm/cadastroAdm", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              // crie um atributo que recebe o valor recuperado aqui
-              // Agora vá para o arquivo routes/usuario.js
-              nomeAdmServer: nomeVar,
-              emailAdmServer: emailVar,
-              cpfAdmServer: cpfVar,
-              senhaAdmServer: senhaVar,
-              idEmpresaServer: idEmpresa,
-            }),
-          })
-            .then(function (resposta) {
-              console.log("resposta: ", resposta);
-
-              if (resposta.ok) {
-                mensagem_erro.innerHTML =
-                  "Cadastro realizado com sucesso! ";
+                if (resposta.ok) {
+                  mensagem_erro.innerHTML =
+                    "Cadastro realizado com sucesso!";
                   modalCadastro();
-              } else {
-                console.log(nomeAdmVar, emailAdmVar, cpfAdmVar, senhaAdmVar);
-                throw "Houve um erro ao tentar realizar o cadastro!";
-              }
+                } else {
+                  console.log(
+                    nomeServer,
+                    emailServer,
+                    senhaServer,
+                    cpfServer,
+                    idAdmServer,
+                    empresaServer,
+                  );
+                  throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+              })
+              .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+              });
+
+            return false;
+          } else if (selectValue.value == 2) {
+
+            fetch("/cadastroAdm/cadastroAdm", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeAdmServer: nomeVar,
+                emailAdmServer: emailVar,
+                cpfAdmServer: cpfVar,
+                senhaAdmServer: senhaVar,
+                idEmpresaServer: idEmpresa,
+              }),
             })
-            .catch(function (resposta) {
-              console.log(`#ERRO: ${resposta}`);
-            });
+              .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                  mensagem_erro.innerHTML =
+                    "Cadastro realizado com sucesso! ";
+                  modalCadastro();
+                } else {
+                  console.log(nomeAdmVar, emailAdmVar, cpfAdmVar, senhaAdmVar);
+                  throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+              })
+              .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+              });
+          }
         }
       }
-    }
 
-  </script>
+    </script>
 
 </body>
 

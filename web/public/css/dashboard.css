@@ -963,18 +963,18 @@ tbody td {
     margin-bottom: 20px;
 }
 
-.header-central-alertas {
+.header-central-alertas, .header-monitoramento {
     display: flex;
     flex-direction: column;
     gap: 2px;
 }
 
-.header-central-alertas h2 {
+.header-central-alertas h2, .header-monitoramento h2 {
     color: white;
     font-size: 26px;
 }
 
-.header-central-alertas p {
+.header-central-alertas p, .header-monitoramento p {
     color: #b4b4b4;
     font-size: 18px;
 }
@@ -1133,7 +1133,7 @@ tbody td {
 }
 
 .btn-Alerta {
-    background-color: rgba(0, 0, 0, 0.25);;
+    background-color: rgba(0, 0, 0, 0.25);
     border: 1px solid #3a3f45;
     border-radius: 6px;
     padding: 4px 12px;
@@ -1188,4 +1188,193 @@ tbody td {
 .estado-resolvido {
     color: #21C45D;
     background-color: #21c45d3a;
+}
+
+/* ================================== */
+/* Monitoramento */
+
+.header-monitoramento {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 10px;
+}
+
+.header-monitoramento-direita button {
+    background-color: rgba(0, 0, 0, 0.25);
+    color: #b4b4b4;
+    padding: 4px 12px;
+    border: 1px solid #3a3f45;
+    border-radius: 6px;
+
+    transition: all 0.25s ease;
+}
+
+.header-monitoramento-direita button:hover {
+    background-color: #e26715;
+    border: 1px solid #e26715;
+    box-shadow: 0 0 14px #f9701590;
+    color: white;
+    transform: scale(1.05);
+}
+
+.cards-monitoramento {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.cardIndividual-monitoramento {
+    background-color: #1D2025;
+    border: 1px solid #3a3f45;
+    border-radius: 6px;
+    padding: 15px 20px;
+    width: 25%;
+
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    align-items: center;
+    transition: all 0.25s ease;
+}
+
+.cardIndividual-monitoramento:hover {
+    border: 1px solid #f9701573;
+}
+
+.cardIndividual-monitoramento img {
+    width: 50px;
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.cardMonitoramento-infos h4 {
+    font-weight: 800;
+}
+
+.cardMonitoramento-infos span {
+    color: #7D8999;
+}
+
+/* ======================================= */
+/* Classe - Parte dos Componentes de cada servidor */
+
+.componentesServidor {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+}
+
+.cards-componentesServidor {
+    display: flex;
+    flex-direction: row;
+    max-height: 350px;
+    height: 400px;
+
+    gap: 10px;
+}
+
+.cardIndividual-ServidoresComponentes {
+    width: 100%;
+
+    background-color: #1D2025;
+    border: 1px solid #3a3f45;
+    border-radius: 6px;
+    padding: 20px 20px;
+
+    transition: all 0.25s ease;
+}
+
+.cardIndividual-ServidoresComponentes:hover {
+    border: 1px solid #f9701573;
+}
+
+.servidoresComponentes-titulo {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+
+.servidoresComponentes-dados {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dadosIndividuais01 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.srvMonitorado-Titulo {
+    font-size: 14px;
+    color: #b4b4b4;
+}
+
+.srvMonitorado-Porcentagem {
+    color: #21C45D;
+}
+
+.dadosIndividuais02 {
+    display: flex;
+    width: 100%;
+}
+
+.srvMonitorado-linhaPreenchida {
+    height: 5px;
+    width: 40%;
+    background-color: #21C45D;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.srvMonitorado-linhaNaoPreenchida {
+    height: 5px;
+    width: 60%;
+    background-color: rgb(45, 50, 57);
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.dadosComponentesServidores {
+    display: flex;
+    flex-direction: column;
+    max-height: 80%;
+    gap: 10px;
+}
+
+/* Scrollbar de Monitoramento - Servidores */
+/* dadosComponentesServidores */
+
+.dadosComponentesServidores {
+    overflow-y: auto;
+    /* Adiciona Scrollbar mesmo sem precisar*/
+}
+
+.dadosComponentesServidores::-webkit-scrollbar {
+    width: 5px;
+    /* Largura do Scrollbard*/
+}
+
+.dadosComponentesServidores::-webkit-scrollbar-track {
+    background: transparent;
+    /* Tira aquele fundo zoado branco entorno da Scrollbar */
+}
+
+.dadosComponentesServidores::-webkit-scrollbar-thumb {
+    background: rgba(249, 112, 21, 0.7);
+    /* Cor da Scrollbar */
+    border-radius: 20px;
+    /* Arredondar os cantos da Scrollbar*/
 }
