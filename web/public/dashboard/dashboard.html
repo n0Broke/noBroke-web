@@ -21,12 +21,12 @@
 
 </head>
 
-<body>
+<body onload="verificarModo()">
     <div class="container-fluid">
         <div class="row min-vh-100">
             <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
                 <div class="logo-container">
-                    <img class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
+                    <img id="imgLogo" class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
                 </div>
                 <!-- Side Bar - Botões -->
                 <div class="menu_centro">
@@ -100,9 +100,9 @@
                     <!-- Parte do perfil -->
                 </div>
                 <div class="user-profile">
-                    <img src="../assets/icon/user.png" alt="Foto de perfil" class="profile-img">
+                    <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil" class="profile-img">
                     <div class="user-infos">
-                        <p class="username" id="usuario" style="color: white;">Douglas</p>
+                        <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
                         <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
                     </div>
                 </div>
@@ -112,9 +112,15 @@
             <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
                 <!-- Header do Conteudo da Dashboard -->
                 <div class="header-responsividade">
-                    <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
-                        style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
-                    <span style="color: #7D8999;">noBroke Server Monitor</span>
+                    <div>
+                        <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
+                            style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
+                        <span style="color: #7D8999;">noBroke Server Monitor</span>
+                    </div>
+                    <div id="iconeModo">
+                        <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
+                            style="width: 40px; cursor: pointer; margin-right: 20px;">
+                    </div>
                 </div>
                 <hr style="width: 100%; color: #b4b4b4; height: 2px;">
                 <div class="header-conteudo-dash">
@@ -137,7 +143,7 @@
                         </div>
                     </div>
                     <div class="header-direita">
-                        <button class="botao-alerta"><img src="../assets/svg/bell-svgrepo-com.svg" alt=""
+                        <button class="botao-alerta"><img id="logoAlerta" src="../assets/svg/bell-svgrepo-com.svg" alt=""
                                 style="width: 22px; color: white;" onclick="window.location.href='Alertas.html'">
                             Alertas</button>
                         <button class="botao-exportar"><img src="../assets/svg/download-minimalistic-svgrepo-com.svg"
@@ -460,6 +466,50 @@
         conteudo.classList.toggle("expandido");
     }
 
+    const root = document.documentElement;
+    const imgModo = document.getElementById("imgModo");
+    const imgLogo = document.getElementById("imgLogo");
+    const imgUser = document.getElementById("imgUser");
+    const logoAlerta = document.getElementById("logoAlerta");
+
+    let modoEscuro = false;
+
+    imgModo.addEventListener("click", mudarModo);
+
+    function mudarModo() {
+        modoEscuro = !modoEscuro;
+
+        if (modoEscuro) {
+            sessionStorage.MODO = 1;
+            root.style.setProperty('--preto', '#F2F2F2');
+            root.style.setProperty('--branco', '#000');
+            root.style.setProperty('--pretoClaro', '#fff');
+            root.style.setProperty('--brancoCinza', '#1D2025');
+            root.style.setProperty('--bordas', '#b5b5b5');
+            imgModo.src = "../assets/icon/icons-dashboard/lua-crescente.png";
+            imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg"
+            logoAlerta.src = "../assets/svg/alertas/bell-svgrepo-com-preto.svg"
+        } else {
+            sessionStorage.MODO = 0;
+            root.style.setProperty('--branco', '#fff');
+            root.style.setProperty('--preto', '#000');
+            root.style.setProperty('--pretoClaro', '#1D2025');
+            root.style.setProperty('--brancoCinza', '#b5b5b5');
+            root.style.setProperty('--bordas', '#3a3f45');
+            imgModo.src = "../assets/icon/icons-dashboard/brilho-do-sol.png";
+            imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg"
+            logoAlerta.src = "../assets/svg/alertas/bell-svgrepo-com.svg"
+        }
+    }
+
+    function verificarModo(){
+        if(sessionStorage.MODO == 1){
+            mudarModo()
+        }
+    }
+
     // ==================================================================================
     // __________________________________________________________________________________
     // Criação dos Gráficos Aqui!!
@@ -491,7 +541,8 @@
                 borderColor: '#DD6617',
 
                 // Fundo que fica abaixo da Linha
-                backgroundColor: 'rgba(12, 13, 15, 0.75)',
+                backgroundColor: '#b5b5b550',
+
                 // Esse comando vai servir pra realmente preencher abaixo da linha
                 fill: true,
 
@@ -510,7 +561,7 @@
             scales: {
                 x: {
                     grid: {
-                        color: "rgba(255, 255, 255, 0.1)"
+                        display: false
                     }
                 },
                 y: {
@@ -526,7 +577,7 @@
                     },
 
                     grid: {
-                        color: "rgba(255, 255, 255, 0.1)"
+                        display: false
                     }
                 }
             }
@@ -554,7 +605,7 @@
                 borderColor: '#E7B008',
 
                 // Fundo que fica abaixo da Linha
-                backgroundColor: 'rgba(12, 13, 15, 0.75)',
+                backgroundColor: '#b5b5b550',
                 // Esse comando vai servir pra realmente preencher abaixo da linha
                 fill: true,
 
@@ -573,7 +624,7 @@
             scales: {
                 x: {
                     grid: {
-                        color: "rgba(255, 255, 255, 0.1)"
+                        display: false
                     }
                 },
                 y: {
@@ -588,7 +639,7 @@
                     },
 
                     grid: {
-                        color: "rgba(255, 255, 255, 0.1)"
+                        display: false
                     }
                 }
             }
@@ -616,7 +667,7 @@
                 borderColor: '#21C45D',
 
                 // Fundo que fica abaixo da Linha
-                backgroundColor: 'rgba(12, 13, 15, 0.75)',
+                backgroundColor: '#b5b5b550',
                 // Esse comando vai servir pra realmente preencher abaixo da linha
                 fill: true,
 
@@ -635,7 +686,7 @@
             scales: {
                 x: {
                     grid: {
-                        color: "rgba(255, 255, 255, 0.1)"
+                        display: false
                     }
                 },
                 y: {
@@ -650,7 +701,7 @@
                     },
 
                     grid: {
-                        color: "rgba(255, 255, 255, 0.1)"
+                        display: false
                     }
                 }
             }

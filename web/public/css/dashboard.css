@@ -4,7 +4,11 @@ body {
 
 :root{
     --branco: #fff;
+    --brancoCinza: #F2F2F2;
+    --cinzaClaro: #b5b5b5;
     --preto: #000;
+    --pretoClaro: #1D2025;
+    --bordas: #3a3f45;
 }
 
 /* =========================================== */
@@ -18,7 +22,7 @@ body {
 
 .header-esquerdo h3,
 .header-direita button {
-    color: white;
+    color: var(--branco);
 }
 
 .header-esquerdo {
@@ -60,7 +64,7 @@ body {
 .header-esquerdo02 {
     display: flex;
     gap: 15px;
-    color: #b4b4b4;
+    color: var(--brancoCinza);
     align-items: center;
 
     font-size: 14px;
@@ -72,15 +76,15 @@ body {
 }
 
 .botao-alerta {
-    background-color: #16181D;
-    border: 1px solid #484c55;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
     border-radius: 6px;
     padding: 4px 10px;
     transition: all 0.25s ease;
 }
 
 .botao-alerta:hover {
-    background-color: #1f232a;
+    background-color: var(--preto);
     box-shadow: 0 0 8px #747985;
 }
 
@@ -89,7 +93,7 @@ body {
     border: 1px solid #F97015;
     border-radius: 6px;
     padding: 4px 10px;
-
+    color: white !important;
     margin-left: 4px;
     transition: all 0.25s ease;
 }
@@ -102,6 +106,7 @@ body {
 
 .header-responsividade {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     align-content: center;
     /* background-color: red; */
@@ -119,13 +124,13 @@ body {
 }
 
 .header-responsividade a {
-    color: #7D8999;
+    color: var(--brancoCinza);
     text-decoration: none;
     transition: all 0.25s ease;
 }
 
 .header-responsividade a:hover {
-    color: white;
+    color: var(--branco);
 }
 
 /* =========================================== */
@@ -137,7 +142,7 @@ body {
     padding: 20px;
     padding-left: 25px !important;
     padding-right: 20px !important;
-    background-color: #0C0D0F;
+    background-color: var(--preto);
 }
 
 /* =========================================== */
@@ -152,7 +157,7 @@ body {
 
 .cards-conteudo {
     padding: auto;
-    background-color: #1D2025;
+    background-color: var(--pretoClaro);
     border-radius: 6px;
     display: flex;
     flex-direction: column;
@@ -160,10 +165,9 @@ body {
     max-width: 33%;
     width: 100%;
     height: 100%;
-    border: 1px solid #3a3f45;
+    border: 1px solid var(--bordas);
 
     padding: 14px 12px;
-
     transition: all 0.25s ease;
 }
 
@@ -181,25 +185,25 @@ body {
     gap: 300px;
     display: flex;
     justify-content: space-between;
-    color: white;
+    color: var(--branco);
     flex-direction: row;
     margin-bottom: 10px;
 }
 
 .conteudo-abaixo-cards {
-    color: white;
+    color: var(--branco);
 }
 
 .conteudo-abaixo-cards h1 {
     font-size: 28px;
     font-weight: 800;
-    color: white;
+    color: var(--branco);
 }
 
 .conteudo-abaixo-cards h4 {
     font-size: 14px;
     font-weight: 400;
-    color: #7D8999;
+    color: var(--brancoCinza);
 }
 
 .linha-cards {
@@ -208,7 +212,6 @@ body {
 
 /* =========================================== */
 /* Estilo - Chart.js | Gráficos Cards */
-
 .conteudo-dash02 {
     margin-bottom: 20px;
 }
@@ -220,13 +223,13 @@ body {
 }
 
 .card-grafico {
-    background-color: #1D2025;
+    background-color: var(--pretoClaro);
     border-radius: 6px;
     display: flex;
     min-width: 32%;
     flex-direction: column;
     gap: 8px;
-    border: 1px solid #3a3f45;
+    border: 1px solid var(--bordas);
 
     padding: 14px 12px;
     transition: all 0.25s ease;
@@ -238,7 +241,7 @@ body {
 
 .card-grafico h4 {
     font-size: 18px;
-    color: #b4b4b4;
+    color: var(--brancoCinza);
 }
 
 /* =========================================== */
@@ -256,8 +259,8 @@ body {
     width: 100%;
 
     height: 425px;
-    background-color: #1D2025;
-    border: 1px solid #3a3f45;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
     border-radius: 6px;
 
     transition: all 0.25s ease;
@@ -268,7 +271,7 @@ body {
 }
 
 .componentes-titulo {
-    color: white;
+    color: var(--branco);
     margin: 20px 0px 0px 20px;
     /* Cima, Esquerda, Baixo e Direita*/
     font-size: 22px;
@@ -287,8 +290,8 @@ body {
 .card-alertas {
     display: flex;
     flex-direction: column;
-    background-color: #1D2025;
-    border: 1px solid #3a3f45;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
     border-radius: 6px;
     width: 100%;
     max-height: 100%;
@@ -316,12 +319,12 @@ body {
 }
 
 .componente-monitorado p {
-    color: white;
+    color: var(--branco);
     margin: 0;
 }
 
 .componente-monitorado span {
-    color: #b4b4b4;
+    color: var(--brancoCinza);
 }
 
 .componente-infos,
@@ -362,13 +365,13 @@ body {
 }
 
 .header-alertas-card p {
-    color: white;
+    color: var(--branco);
     font-size: 20px;
     font-weight: 700;
 }
 
 .header-alertas-card span {
-    color: #b4b4b4;
+    color: var(--brancoCinza);
     font-size: 14px;
 }
 
@@ -392,13 +395,13 @@ body {
 }
 
 .infos-escrita-alerta p {
-    color: white;
+    color: var(--branco);
     margin: 0;
     font-size: 18px;
 }
 
 .infos-escrita-alerta span {
-    color: #b4b4b4;
+    color: var(--brancoCinza);
     font-size: 14px;
     margin: 0;
 }
@@ -452,7 +455,7 @@ body {
 
 .sidebar {
     display: flex !important;
-    background-color: #121317;
+    background-color: var(--preto);
     border-right: 1px solid #484c55;
     flex-direction: column;
     align-items: center;
@@ -541,8 +544,8 @@ body {
     width: 120%;
     text-align: center;
 
-    background-color: #121317;
-    color: #b4b4b4 !important;
+    background-color: var(--preto);
+    color: var(--brancoCinza) !important;
 
     padding: 6px 8px;
     border-radius: 8px;
@@ -556,15 +559,15 @@ body {
 }
 
 .btn-nobroke a {
-    color: #b4b4b4;
+    color: var(--brancoCinza);
 }
 
 .btn-nobroke:hover a {
-    color: white;
+    color: var(--branco);
 }
 
 .btn-active {
-    background-color: #22252B;
+    background-color: var(--pretoClaro);
     color: #F97015 !important;
     transition: all 0.5s ease;
 }
@@ -575,9 +578,9 @@ body {
 
 
 .btn-nobroke:hover {
-    background-color: #1B1E23;
+    background-color: var(--pretoClaro);
     box-shadow: 0 0 8px #ffffff90;
-    color: white !important;
+    color: var(--branco) !important;
     transform: scale(1.03);
 }
 
@@ -647,7 +650,7 @@ body {
     padding: 6px 12px;
     border: none;
     background-color: #e74c3c;
-    color: white;
+    color: var(--branco);
     border-radius: 5px;
     cursor: pointer;
 }
@@ -668,7 +671,7 @@ body {
     width: 300px;
     padding: 5px;
     background-color: rgb(51, 48, 48);
-    color: white;
+    color: var(--branco);
     border-radius: 5px;
 }
 
@@ -679,7 +682,7 @@ body {
     padding: 4px 10px;
     transition: all 0.25s ease;
     margin: 0 5px;
-    color: white;
+    color: var(--branco);
 }
 
 .barra-pesquisa button:hover {
@@ -689,7 +692,7 @@ body {
 .tabela-servidores button {
     border: none;
     background-color: #11151c;
-    color: white;
+    color: var(--branco);
     border-radius: 10px;
     padding: 5px;
 }
@@ -700,7 +703,7 @@ body {
 
 table {
     margin-top: 10px;
-    color: white;
+    color: var(--branco);
     background-color: #11151c;
     width: 100%;
     border-collapse: collapse;
@@ -738,7 +741,7 @@ tbody td {
     padding: auto;
     justify-content: space-between;
     align-items: flex-start;
-    background-color: #1D2025;
+    background-color: var(--pretoClaro);
     border-radius: 6px;
     display: flex;
     flex-direction: column;
@@ -746,7 +749,7 @@ tbody td {
     max-width: 33%;
     width: 100%;
     height: 100%;
-    border: 1px solid #3a3f45;
+    border: 1px solid var(--bordas);
 
     padding: 14px 12px;
 
@@ -764,8 +767,8 @@ tbody td {
 
 .acoes-card button {
     border: none;
-    background-color: #1d2025;
-    color: white;
+    background-color: var(--pretoClaro);
+    color: var(--branco);
     border-radius: 10px;
     padding: 5px;
 }
@@ -778,7 +781,7 @@ tbody td {
     width: 100%;
     border-collapse: collapse;
     background-color: #11151c;
-    color: white;
+    color: var(--branco);
 }
 
 .Tabela-Relatorios th {
@@ -837,8 +840,8 @@ tbody td {
 
 .info-direita button {
     background-color: #11151c;
-    border: 1px solid #3a3f45;
-    color: white;
+    border: 1px solid var(--bordas);
+    color: var(--branco);
     padding: 6px 12px;
     border-radius: 6px;
     cursor: pointer;
@@ -851,14 +854,14 @@ tbody td {
 
 .cards-conteudo-seguranca {
     padding: auto;
-    background-color: #1D2025;
+    background-color: var(--pretoClaro);
     border-radius: 6px;
     display: flex;
     flex-direction: row;
     gap: 8px;
     width: 100%;
     height: 100%;
-    border: 1px solid #3a3f45;
+    border: 1px solid var(--bordas);
 
     padding: 14px 12px;
 
@@ -866,7 +869,7 @@ tbody td {
 }
 
 .score-pontuacao {
-    background-color: #1d2025;
+    background-color: var(--pretoClaro);
     color: green;
     width: 100px;
     height: 100px;
@@ -883,7 +886,7 @@ tbody td {
 .texto-lado{
     display: flex;
     flex-direction: column;
-    color: white;
+    color: var(--branco);
 }
 
 .texto-lado p{
@@ -910,13 +913,13 @@ tbody td {
 
 .cards-conteudo-suporte{
     padding: auto;
-    background-color: #1D2025;
+    background-color: var(--pretoClaro);
     border-radius: 6px;
     display: flex;
     flex-direction: row;
     gap: 8px;
     height: 100%;
-    border: 1px solid #3a3f45;
+    border: 1px solid var(--bordas);
 
     padding: 14px 12px;
 
@@ -927,7 +930,7 @@ tbody td {
     width: 100%;
     border-collapse: collapse;
     background-color: #11151c;
-    color: white;
+    color: var(--branco);
 }
 
 .Tabela-suporte th {
@@ -963,14 +966,14 @@ tbody td {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    color: white;
+    color: var(--branco);
 }
 
 .form-contato input{
     background-color: #11151b;
     border: 1px solid #2a2f36;
     border-radius: 10px;
-    color: white;
+    color: var(--branco);
 }
 
 .form-contato input:hover{
@@ -983,7 +986,7 @@ tbody td {
   border: none;
   padding: 12px;
   border-radius: 6px;
-  color: white;
+  color: var(--branco);
   font-weight: 500;
   cursor: pointer;
 }
@@ -1010,12 +1013,12 @@ tbody td {
 }
 
 .header-central-alertas h2, .header-monitoramento h2 {
-    color: white;
+    color: var(--branco);
     font-size: 26px;
 }
 
 .header-central-alertas p, .header-monitoramento p {
-    color: #b4b4b4;
+    color: var(--brancoCinza);
     font-size: 18px;
 }
 
@@ -1023,11 +1026,11 @@ tbody td {
     display: flex;
     gap: 25px;
     align-items: center;
-    background-color: #1D2025;
+    background-color: var(--pretoClaro);
     width: 25%;
     padding: 20px 10px;
     border-radius: 6px;
-    border: 1px solid #3a3f45;
+    border: 1px solid var(--bordas);
 }
 
 .card-alerta-geral img {
@@ -1041,7 +1044,7 @@ tbody td {
 }
 
 .card-alerta-infos span {
-    color: #7D8999;
+    color: var(--brancoCinza);
 }
 
 /* Filtros e Busca da Central de Avisos */
@@ -1054,18 +1057,18 @@ tbody td {
 
 .central-alerta-filtros input {
     width: 24.5%;
-    background-color: #1D2025;
-    color: #7D8999;
+    background-color: var(--pretoClaro);
+    color: var(--brancoCinza);
     border-radius: 6px;
-    border: 1px solid #3a3f45;
+    border: 1px solid var(--bordas);
     padding: 8px 10px;
 }
 
 .filtrosDeAlerta {
     display: flex;
     gap: 5px;
-    background-color: #1D2025;
-    border: 1px solid #3a3f45;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
     border-radius: 6px;
     height: 100%;
     padding: 6px;
@@ -1074,14 +1077,14 @@ tbody td {
 .filtrosDeAlerta button {
     background-color: transparent;
     border: none;
-    color: #7D8999;
+    color: var(--brancoCinza);
     transition: all 0.25s ease;
     border-radius: 6px;
 }
 
 .btn-filtro.filtroAtivo {
     background-color: rgba(0, 0, 0, 0.25);
-    color: white;
+    color: var(--branco);
 }
 
 /* Cards de Alerta - Abaixo do Filtro */
@@ -1114,8 +1117,8 @@ tbody td {
 
 
 .caixa-alerta {
-    background-color: #1D2025;
-    border: 1px solid #3a3f45;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
     border-radius: 6px;
     padding: 10px 18px;
 
@@ -1132,7 +1135,7 @@ tbody td {
 }
 
 .tituloAlerta {
-    color: white;
+    color: var(--branco);
     font-size: 18px;
     font-weight: 700;
 }
@@ -1143,14 +1146,14 @@ tbody td {
 
 
 .descricaoAlerta {
-    color: #7D8999;
+    color: var(--brancoCinza);
     font-size: 12px;
 }
 
 .dadosAlertaServidor {
     margin-top: 5px;
     font-size: 14px;
-    color: #b4b4b4;
+    color: var(--brancoCinza);
 }
 
 
@@ -1174,10 +1177,10 @@ tbody td {
 
 .btn-Alerta {
     background-color: rgba(0, 0, 0, 0.25);
-    border: 1px solid #3a3f45;
+    border: 1px solid var(--bordas);
     border-radius: 6px;
     padding: 4px 12px;
-    color: whitesmoke;
+    color: var(--branco);
     
     font-size: 14px;
     transition: all 0.25s ease;
@@ -1187,7 +1190,7 @@ tbody td {
     background-color: #e26715;
     border: 1px solid #e26715;
     box-shadow: 0 0 14px #f9701590;
-    color: white;
+    color: var(--branco);
 }
 
 /* Tipo e Estado do Alerta */
@@ -1244,9 +1247,9 @@ tbody td {
 
 .header-monitoramento-direita button {
     background-color: rgba(0, 0, 0, 0.25);
-    color: #b4b4b4;
+    color: var(--brancoCinza);
     padding: 4px 12px;
-    border: 1px solid #3a3f45;
+    border: 1px solid var(--bordas);
     border-radius: 6px;
 
     transition: all 0.25s ease;
@@ -1256,7 +1259,7 @@ tbody td {
     background-color: #e26715;
     border: 1px solid #e26715;
     box-shadow: 0 0 14px #f9701590;
-    color: white;
+    color: var(--branco);
     transform: scale(1.05);
 }
 
@@ -1268,8 +1271,8 @@ tbody td {
 }
 
 .cardIndividual-monitoramento {
-    background-color: #1D2025;
-    border: 1px solid #3a3f45;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
     border-radius: 6px;
     padding: 15px 20px;
     width: 25%;
@@ -1296,7 +1299,7 @@ tbody td {
 }
 
 .cardMonitoramento-infos span {
-    color: #7D8999;
+    color: var(--brancoCinza);
 }
 
 /* ======================================= */
@@ -1321,8 +1324,8 @@ tbody td {
 .cardIndividual-ServidoresComponentes {
     width: 100%;
 
-    background-color: #1D2025;
-    border: 1px solid #3a3f45;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
     border-radius: 6px;
     padding: 20px 20px;
 
@@ -1334,7 +1337,7 @@ tbody td {
 }
 
 .servidoresComponentes-titulo {
-    color: white;
+    color: var(--branco);
     font-size: 20px;
     font-weight: 600;
 
@@ -1359,7 +1362,7 @@ tbody td {
 
 .srvMonitorado-Titulo {
     font-size: 14px;
-    color: #b4b4b4;
+    color: var(--brancoCinza);
 }
 
 .srvMonitorado-Porcentagem {
@@ -1430,12 +1433,12 @@ tbody td {
 }
 
 .header-configuracoes h2 {
-    color: white;
+    color: var(--branco);
     font-size: 26px;
 }
 
 .header-configuracoes p {
-    color: #7D8999;
+    color: var(--brancoCinza);
     font-size: 18px;
 }
 
@@ -1455,8 +1458,8 @@ tbody td {
     height: 100%;
     width: 100%;
 
-    background-color: #1D2025;
-    border: 1px solid #3a3f45;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
     border-radius: 6px;
     padding: 15px 20px;
     gap: 10px;
@@ -1482,11 +1485,11 @@ tbody td {
 }
 
 .configuracaoEscolha:hover span {
-    color: white;
+    color: var(--branco);
 }
 
 .configuracaoEscolha span {
-    color: #7D8999;
+    color: var(--brancoCinza);
     font-size: 16px;
 }
 
@@ -1519,38 +1522,38 @@ tbody td {
     width: 100%;
     padding: 10px 20px;
 
-    background-color: #1D2025;
-    border: 1px solid #3a3f45;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
     border-radius: 6px;
     padding: 25px 20px;
     gap: 10px;
 }
 
 .cardConfiguracao h4 {
-    color: white;
+    color: var(--branco);
     font-weight: 600;
     font-size: 22px;
 }
 
 .iptTitulo {
-    color: white !important;
+    color: var(--branco) !important;
     margin: 0;
     margin-top: 20px;
     margin-bottom: 10px;
 }
 
 .cardConfiguracao p {
-    color: #b4b4b4;
+    color: var(--brancoCinza);
 }
 
 .cardConfiguracao input, .cardConfiguracao select {
     width: 100%;
-    background-color: #1D2025;
-    border: 1px solid #3a3f45;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
     border-radius: 6px;
     padding: 10px 10px;
 
-    color: white;
+    color: var(--branco);
     transition: all 0.25s ease;
 }
 
@@ -1566,13 +1569,13 @@ tbody td {
 }
 
 .configGeralInferior h6 {
-    color: white;
+    color: var(--branco);
     font-size: 16px;
     margin: 0;
 }
 
 .configGeralInferior span {
-    color: #7D8999;
+    color: var(--brancoCinza);
 }
 
 .configuracaoGeral {
@@ -1590,8 +1593,8 @@ tbody td {
 
 .btnGeral01 {
     background: transparent;
-    color: white;
-    border: 1px solid #3a3f45;
+    color: var(--branco);
+    border: 1px solid var(--bordas);
     border-radius: 6px;
     padding: 6px 15px;
     font-weight: 600;
@@ -1605,8 +1608,8 @@ tbody td {
 
 .btnGeral02 {
     background-color: #F97015;
-    color: white;
-    border: 1px solid #3a3f45;
+    color: var(--branco);
+    border: 1px solid var(--bordas);
     border-radius: 6px;
     padding: 6px 15px;
     font-weight: 600;
@@ -1634,14 +1637,21 @@ tbody td {
     gap: 20px;
 }
 
+.configuracoesNotificacoes input, select, button{
+    background-color: var(--cinzaClaro);
+    cursor: pointer;
+    border-radius: 5px;
+    width: 200px;
+}
+
 .cardNotificacoes01, .cardNotificacoes02 {
     width: 100%;
-    background-color: #1D2025;
-    border: 1px solid #3a3f45;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
     border-radius: 6px;
     padding: 20px 30px;
 
-    color: white;
+    color: var(--branco);
     transition: all 0.25s ease;
 }
 
@@ -1668,5 +1678,5 @@ tbody td {
 
 .conteudoNotificacao-linha span {
     font-size: 18px;
-    color: #7D8999;
+    color: var(--brancoCinza);
 }

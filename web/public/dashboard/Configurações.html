@@ -20,12 +20,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
-
+<body onload="verificarModo()">
     <div class="row min-vh-100">
         <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
             <div class="logo-container">
-                <img class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
+                <img id="imgLogo" class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
             </div>
             <!-- Side Bar - Botões -->
             <div class="menu_centro">
@@ -97,9 +96,9 @@
                 <!-- Parte do perfil -->
             </div>
             <div class="user-profile">
-                <img src="../assets/icon/user.png" alt="Foto de perfil" class="profile-img">
+                <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil" class="profile-img">
                 <div class="user-infos">
-                    <p class="username" id="usuario" style="color: white;">Douglas</p>
+                    <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
                     <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
                 </div>
             </div>
@@ -108,11 +107,17 @@
 
         <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
             <div class="header-responsividade">
-                <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
-                    style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
-                <a href="dashboard.html">Dashboard</a>
-                <span style="color: #7D8999;">></span>
-                <span style="color: white;">Configurações</span>
+                <div>
+                    <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
+                        style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
+                    <a href="dashboard.html">Dashboard</a>
+                    <span style="color: #7D8999;">></span>
+                    <span style="color: var(--branco);">Configurações</span>
+                </div>
+                <div id="iconeModo">
+                        <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
+                            style="width: 40px; cursor: pointer; margin-right: 20px;">
+                    </div>
             </div>
             <hr style="width: 100%; height: 2px; color: #b4b4b4;">
             <!-- ================================================================ -->
@@ -335,7 +340,7 @@
                             <div class="conteudoNotificacao-linha">
                                 <div class="conteudoNotificacao-esquerda">
                                     <h6>Agrupar alertas repetidos</h6>
-                                    <span>Não reenviar o mesmo alerta em 5 minutos  </span>
+                                    <span>Não reenviar o mesmo alerta em 5 minutos </span>
                                 </div>
                                 <div class="conteudoNotificacao-direita">
                                     <div class="form-check form-switch">
@@ -352,9 +357,7 @@
     </div>
 
 </body>
-
 </html>
-
 <script>
     function fecharAbrirLateral() {
         const sidebar = document.getElementById("div_lateralAberta");
@@ -362,6 +365,47 @@
 
         sidebar.classList.toggle("compacta");
         conteudo.classList.toggle("expandido");
+    }
+
+    const root = document.documentElement;
+    const imgModo = document.getElementById("imgModo");
+    const imgLogo = document.getElementById("imgLogo");
+    const imgUser = document.getElementById("imgUser");
+
+    let modoEscuro = false;
+
+    imgModo.addEventListener("click", mudarModo);
+
+    function mudarModo() {
+        modoEscuro = !modoEscuro;
+
+        if (modoEscuro) {
+            sessionStorage.MODO = 1;
+            root.style.setProperty('--preto', '#F2F2F2');
+            root.style.setProperty('--branco', '#000');
+            root.style.setProperty('--pretoClaro', '#fff');
+            root.style.setProperty('--brancoCinza', '#1D2025');
+            root.style.setProperty('--bordas', '#b5b5b5');
+            imgModo.src = "../assets/icon/icons-dashboard/lua-crescente.png";
+            imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg"
+        } else {
+            sessionStorage.MODO = 0;
+            root.style.setProperty('--branco', '#fff');
+            root.style.setProperty('--preto', '#000');
+            root.style.setProperty('--pretoClaro', '#1D2025');
+            root.style.setProperty('--brancoCinza', '#b5b5b5');
+            root.style.setProperty('--bordas', '#3a3f45');
+            imgModo.src = "../assets/icon/icons-dashboard/brilho-do-sol.png";
+            imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg"
+        }
+    }
+
+    function verificarModo(){
+        if(sessionStorage.MODO == 1){
+            mudarModo()
+        }
     }
     // ===================================================================
     // Função de Escolher
