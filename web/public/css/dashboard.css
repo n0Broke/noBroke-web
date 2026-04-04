@@ -691,7 +691,7 @@ body {
 
 .tabela-servidores button {
     border: none;
-    background-color: #11151c;
+    background-color: #1d2025;
     color: var(--branco);
     border-radius: 10px;
     padding: 5px;
@@ -704,7 +704,7 @@ body {
 table {
     margin-top: 10px;
     color: var(--branco);
-    background-color: #11151c;
+    background-color: #1d2025;
     width: 100%;
     border-collapse: collapse;
 }
@@ -780,7 +780,7 @@ tbody td {
 .Tabela-Relatorios table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #11151c;
+    background-color: #1d2025;
     color: var(--branco);
 }
 
@@ -839,7 +839,7 @@ tbody td {
 }
 
 .info-direita button {
-    background-color: #11151c;
+    background-color: #1d2025;
     border: 1px solid var(--bordas);
     color: var(--branco);
     padding: 6px 12px;
