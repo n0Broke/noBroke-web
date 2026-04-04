@@ -68,7 +68,7 @@
                     <div class="mb-3">
                         <label class="label-title d-flex justify-content-start" for="formGroupExampleInput"
                             class="form-label">
-                            <h6>Nome do Servidor*</h6>
+                            <h6>Nome do Servidor</h6>
                         </label>
                         <input type="text" maxlength="80" class="form-control" id="nomeServidor_input"
                             placeholder="Ex.: serv-banco-01" />
@@ -76,7 +76,7 @@
                     <div class="mb-3">
                         <label class="label-title d-flex justify-content-start" for="formGroupExampleInput"
                             class="form-label">
-                            <h6>Sistema_operacional*</h6>
+                            <h6>Sistema_operacional</h6>
                         </label>
                         <input type="text" class="form-control" id="SistemaOperacional_input"
                             placeholder="Ex.: Ubuntu" />
@@ -84,17 +84,66 @@
                     <div class="mb-3">
                         <label class="label-title d-flex justify-content-start" for="formGroupExampleInput2"
                             class="form-label">
-                            <h6>Numero serial*</h6>
+                            <h6>Numero serial</h6>
                         </label>
                         <div class="input-group mb-3">
                             <input type="text" maxlength="60" class="form-control" id="NumeroSerial_input"
                                 placeholder="Ex.: CZJ1234XYZ" aria-label="Recipient’s username"
                                 aria-describedby="basic-addon2" />
                         </div>
+
+                        <div class="mb-3">
+                        <label class="label-title d-flex justify-content-start" for="formGroupExampleInput"
+                            class="form-label">
+                            <h6>Hostname</h6>
+                        </label>
+                        <input type="text" class="form-control" id="Hostname_input"
+                            placeholder="Ex.: Ubuntu" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="label-title d-flex justify-content-start" for="formGroupExampleInput"
+                            class="form-label">
+                            <h6>Endereço IP</h6>
+                        </label>
+                        <input type="text" class="form-control" id="IP_input"
+                            placeholder="Ex.: Ubuntu" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="label-title d-flex justify-content-start" for="formGroupExampleInput"
+                            class="form-label">
+                            <h6>Porta SSH</h6>
+                        </label>
+                        <input type="text" class="form-control" id="ssh_input"
+                            placeholder="Ex.: Ubuntu" />
+                    </div>
+
+                     <div class="mb-3">
+                        <label class="label-title d-flex justify-content-start" for="formGroupExampleInput"
+                            class="form-label">
+                            <h6>Ambiente</h6>
+                        </label>
+                        <select name="" id="select_ambiente">
+                            <option value="">Produção</option>
+                            <option value="">Staging</option>
+                            <option value="">DR</option>
+                            <option value="">Desenvolvimento</option>
+                        </select>
+                    </div>
+                     <div class="mb-3">
+                        <label class="label-title d-flex justify-content-start" for="formGroupExampleInput"
+                            class="form-label">
+                            <h6>Localização (Data Center)</h6>
+                        </label>
+                        <input type="text" class="form-control" id="localizacao_input"
+                            placeholder="Ex.: Ubuntu" />
+                    </div>
+
                     </div>
                     <div class="d-grid justify-content-center mx-auto">
                         <button class="btn btn-light button-color botao" type="button" onclick="cadastrarEmpresa()">
-                            CADASTRAR
+                            Adicionar Servidor
                         </button>
                     </div>
                 </div>
@@ -257,7 +306,7 @@
                         </div>
                         <div class="d-grid justify-content-center mx-auto">
                         <button class="btn btn-light button-color botao" type="button" onclick="cadastrarEmpresa()">
-                            CADASTRAR
+                            Cadastrar componentes
                         </button>
                     </div>
                     </div>
