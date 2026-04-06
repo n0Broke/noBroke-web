@@ -8,6 +8,19 @@
     <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
 
     <script src="./js/sessao.js"></script>
+    <script>
+        (function () {
+            const modo = sessionStorage.getItem("MODO");
+
+            if (modo == 1) {
+                document.documentElement.style.setProperty('--preto', '#F2F2F2');
+                document.documentElement.style.setProperty('--branco', '#000');
+                document.documentElement.style.setProperty('--pretoClaro', '#fff');
+                document.documentElement.style.setProperty('--brancoCinza', '#1D2025');
+                document.documentElement.style.setProperty('--bordas', '#b5b5b5');
+            }
+        })();
+    </script>
 
     <link rel="stylesheet" href="../css/dashboard.css">
 
@@ -71,13 +84,6 @@
                     <div class="menu02">
                         <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
 
-                        <a href="seguranca.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/escudo.png">
-                            </span>
-                            <span class="texto">Segurança</span>
-                        </a>
-
                         <a href="Configurações.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/config.png">
@@ -97,7 +103,8 @@
                     <!-- Parte do perfil -->
                 </div>
                 <div class="user-profile">
-                    <img id="imgUser" src="../assets/icon/user.png" alt="Foto de perfil" class="profile-img">
+                    <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil"
+                        class="profile-img">
                     <div class="user-infos">
                         <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
                         <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>

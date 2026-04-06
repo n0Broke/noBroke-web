@@ -670,19 +670,21 @@ body {
     background: transparent;
     width: 300px;
     padding: 5px;
-    background-color: rgb(51, 48, 48);
+    background-color: var(--pretoClaro);
     color: var(--branco);
     border-radius: 5px;
+    border: 1px solid var(--bordas);
 }
 
 .barra-pesquisa button {
-    background-color: #0c0d0f;
+    background-color: var(--pretoClaro);
     border: none;
     border-radius: 6px;
     padding: 4px 10px;
     transition: all 0.25s ease;
     margin: 0 5px;
     color: var(--branco);
+    border: 1px solid var(--bordas);
 }
 
 .barra-pesquisa button:hover {
@@ -691,7 +693,7 @@ body {
 
 .tabela-servidores button {
     border: none;
-    background-color: #1d2025;
+    background-color: var(--pretoClaro);
     color: var(--branco);
     border-radius: 10px;
     padding: 5px;
@@ -704,9 +706,10 @@ body {
 table {
     margin-top: 10px;
     color: var(--branco);
-    background-color: #1d2025;
+    background-color: var(--pretoClaro);
     width: 100%;
     border-collapse: collapse;
+    border: 1px solid var(--bordas);
 }
 
 .card01-icon {
@@ -725,11 +728,11 @@ td {
 }
 
 thead th {
-    border-bottom: 1px solid #2a2f36;
+    border-bottom: 1px solid var(--bordas);
 }
 
 tbody td {
-    border-bottom: 1px solid #2a2f36;
+    border-bottom: 1px solid var(--bordas);
 }
 
 
@@ -767,10 +770,12 @@ tbody td {
 
 .acoes-card button {
     border: none;
-    background-color: var(--pretoClaro);
+    background-color: var(--preto);
     color: var(--branco);
     border-radius: 10px;
     padding: 5px;
+    width: 40%;
+    margin: 0px 15px 0px 15px;
 }
 
 .acoes-card button:hover {
@@ -780,14 +785,16 @@ tbody td {
 .Tabela-Relatorios table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #1d2025;
+    background-color: var(--pretoClaro);
     color: var(--branco);
+    border-radius: 6px;
+    border: 1px solid var(--bordas);
 }
 
 .Tabela-Relatorios th {
     text-align: left;
     padding: 16px;
-    border-bottom: 1px solid #2a2f36;
+    border-bottom: 1px solid var(--bordas);
 }
 
 .Tabela-Relatorios td {
@@ -811,7 +818,7 @@ tbody td {
     justify-content: space-between;
     align-items: center;
     padding: 18px 16px;
-    border-bottom: 1px solid #2a2f36;
+    border-bottom: 1px solid var(--bordas);
 }
 
 .info-esquerda {
@@ -839,7 +846,7 @@ tbody td {
 }
 
 .info-direita button {
-    background-color: #1d2025;
+    background-color: var(--preto);
     border: 1px solid var(--bordas);
     color: var(--branco);
     padding: 6px 12px;
@@ -929,14 +936,14 @@ tbody td {
 .Tabela-suporte table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #11151c;
+    background-color: var(--pretoClaro);
     color: var(--branco);
 }
 
 .Tabela-suporte th {
     text-align: left;
     padding: 16px;
-    border-bottom: 1px solid #2a2f36;
+    border-bottom: 1px solid var(--bordas);
 }
 
 .Tabela-suporte td {
@@ -957,8 +964,8 @@ tbody td {
 
 .form-contato {
     margin-top: 30px;
-    background-color: #11151b;
-    border: 1px solid #2a2f36;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
     border-radius: 8px;
     padding: 24px;
     width: 100%;
@@ -970,8 +977,8 @@ tbody td {
 }
 
 .form-contato input{
-    background-color: #11151b;
-    border: 1px solid #2a2f36;
+    background-color: var(--pretoC);
+    border: 1px solid var(--bordas);
     border-radius: 10px;
     color: var(--branco);
 }
@@ -1246,7 +1253,7 @@ tbody td {
 }
 
 .header-monitoramento-direita button {
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: var(--pretoClaro);
     color: var(--brancoCinza);
     padding: 4px 12px;
     border: 1px solid var(--bordas);
@@ -1638,10 +1645,13 @@ tbody td {
 }
 
 .configuracoesNotificacoes input, select, button{
-    background-color: var(--cinzaClaro);
+    background-color: #F2F2F2;
     cursor: pointer;
     border-radius: 5px;
-    width: 200px;
+}
+
+.configuracoesNotificacoes input{
+    width: 60%;
 }
 
 .cardNotificacoes01, .cardNotificacoes02 {
@@ -1669,6 +1679,8 @@ tbody td {
 .conteudoNotificacao-dados {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .conteudoNotificacao-linha h4 {

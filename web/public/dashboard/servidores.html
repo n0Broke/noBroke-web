@@ -9,6 +9,19 @@
     <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
 
     <script src="./js/sessao.js"></script>
+    <script>
+        (function () {
+            const modo = sessionStorage.getItem("MODO");
+
+            if (modo == 1) {
+                document.documentElement.style.setProperty('--preto', '#F2F2F2');
+                document.documentElement.style.setProperty('--branco', '#000');
+                document.documentElement.style.setProperty('--pretoClaro', '#fff');
+                document.documentElement.style.setProperty('--brancoCinza', '#1D2025');
+                document.documentElement.style.setProperty('--bordas', '#b5b5b5');
+            }
+        })();
+    </script>
 
     <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="../css/dashboard.css">
@@ -18,7 +31,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body onload="verificarModo()">
 
     <body>
 
@@ -26,7 +39,7 @@
             <div class="row min-vh-100">
                 <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
                     <div class="logo-container">
-                        <img class="logo-dash img-fluid"
+                        <img id="imgLogo" class="logo-dash img-fluid"
                             src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
                     </div>
                     <!-- Side Bar - Botões -->
@@ -74,13 +87,6 @@
                         <div class="menu02">
                             <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
 
-                            <a href="seguranca.html" class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/escudo.png">
-                                </span>
-                                <span class="texto">Segurança</span>
-                            </a>
-
                             <a href="Configurações.html" class="btn-nobroke">
                                 <span class="icon">
                                     <img src="../assets/icon/icons-dashboard/config.png">
@@ -100,10 +106,12 @@
                         <!-- Parte do perfil -->
                     </div>
                     <div class="user-profile">
-                        <img src="../assets/icon/user.png" alt="Foto de perfil" class="profile-img">
+                        <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil"
+                            class="profile-img">
                         <div class="user-infos">
-                            <p class="username" id="usuario" style="color: white;">Douglas</p>
-                            <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
+                            <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
+                            <span class="cargo" id="usuario_cargo" style="color: var(--brancoCinza);">Gerente de
+                                Infra</span>
                         </div>
                     </div>
                 </div>
@@ -114,12 +122,12 @@
                                 style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
                             <a href="dashboard.html">Dashboard</a>
                             <span style="color: #7D8999;">></span>
-                            <span style="color: white;">Servidores</span>
+                            <span style="color: var(--branco);">Servidores</span>
                         </div>
                         <div id="iconeModo">
-                        <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
-                            style="width: 40px; cursor: pointer; margin-right: 20px;">
-                    </div>
+                            <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
+                                style="width: 40px; cursor: pointer; margin-right: 20px;">
+                        </div>
                     </div>
                     <hr style="width: 100%; color: #b4b4b4; height: 2px;">
                     <div class="header-conteudo-dash">
@@ -156,8 +164,8 @@
 
                         <div class="cards-conteudo card01">
                             <div class="titulo-cards-servidores">
-                                <img class="card01-icon" src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt="cpu"
-                                    style="width: 25px;">
+                                <img class="card01-icon" src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg"
+                                    alt="cpu" style="width: 25px;">
                             </div>
                             <div class="conteudo-abaixo-cards">
                                 <h1 style="color: green;">5</h1>
@@ -178,8 +186,8 @@
 
                         <div class="cards-conteudo card01">
                             <div class="titulo-cards-servidores">
-                                <img class="card01-icon" src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt="cpu"
-                                    style="width: 25px;">
+                                <img class="card01-icon" src="../assets/svg/alertas/close-circle-svgrepo-com.svg"
+                                    alt="cpu" style="width: 25px;">
                             </div>
                             <div class="conteudo-abaixo-cards">
                                 <h1 style="color: red;">1</h1>
@@ -193,7 +201,7 @@
                         <button>Todos</button><button>Produção</button><button>Staging</button><button>DR</button><button>Desenvolvimento</button>
                     </div>
 
-                    <table class="tabela-servidores">
+                    <table class="tabela-servidores" style="background-color: var(--pretoClaro);">
                         <thead>
                             <tr>
                                 <th>Servidor</th>
@@ -349,5 +357,46 @@
 
         sidebar.classList.toggle("compacta");
         conteudo.classList.toggle("expandido");
+    }
+
+    const root = document.documentElement;
+    const imgModo = document.getElementById("imgModo");
+    const imgLogo = document.getElementById("imgLogo");
+    const imgUser = document.getElementById("imgUser");
+
+    let modoEscuro = false;
+
+    imgModo.addEventListener("click", mudarModo);
+
+    function mudarModo() {
+        modoEscuro = !modoEscuro;
+
+        if (modoEscuro) {
+            sessionStorage.MODO = 1;
+            root.style.setProperty('--preto', '#F2F2F2');
+            root.style.setProperty('--branco', '#000');
+            root.style.setProperty('--pretoClaro', '#fff');
+            root.style.setProperty('--brancoCinza', '#1D2025');
+            root.style.setProperty('--bordas', '#b5b5b5');
+            imgModo.src = "../assets/icon/icons-dashboard/lua-crescente.png";
+            imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg"
+        } else {
+            sessionStorage.MODO = 0;
+            root.style.setProperty('--branco', '#fff');
+            root.style.setProperty('--preto', '#000');
+            root.style.setProperty('--pretoClaro', '#1D2025');
+            root.style.setProperty('--brancoCinza', '#b5b5b5');
+            root.style.setProperty('--bordas', '#3a3f45');
+            imgModo.src = "../assets/icon/icons-dashboard/brilho-do-sol.png";
+            imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg"
+        }
+    }
+
+    function verificarModo() {
+        if (sessionStorage.MODO == 1) {
+            mudarModo()
+        }
     }
 </script>

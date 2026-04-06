@@ -8,6 +8,19 @@
   <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
 
   <script src="./js/sessao.js"></script>
+  <script>
+    (function () {
+      const modo = sessionStorage.getItem("MODO");
+
+      if (modo == 1) {
+        document.documentElement.style.setProperty('--preto', '#F2F2F2');
+        document.documentElement.style.setProperty('--branco', '#000');
+        document.documentElement.style.setProperty('--pretoClaro', '#fff');
+        document.documentElement.style.setProperty('--brancoCinza', '#1D2025');
+        document.documentElement.style.setProperty('--bordas', '#b5b5b5');
+      }
+    })();
+  </script>
 
   <link rel="stylesheet" href="../css/dashboard.css">
 
@@ -20,12 +33,12 @@
 
 </head>
 
-<body>
+<body onload="verificarModo()">
 
   <div class="row min-vh-100">
-    <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
+    <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta" style="padding: 25px;">
       <div class="logo-container">
-        <img class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
+        <img id="imgLogo" class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
       </div>
       <!-- Side Bar - Botões -->
       <div class="menu_centro">
@@ -71,13 +84,6 @@
         <div class="menu02">
           <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
 
-          <a href="seguranca.html" class="btn-nobroke">
-            <span class="icon">
-              <img src="../assets/icon/icons-dashboard/escudo.png">
-            </span>
-            <span class="texto">Segurança</span>
-          </a>
-
           <a href="Configurações.html" class="btn-nobroke">
             <span class="icon">
               <img src="../assets/icon/icons-dashboard/config.png">
@@ -97,10 +103,10 @@
         <!-- Parte do perfil -->
       </div>
       <div class="user-profile">
-        <img src="../assets/icon/user.png" alt="Foto de perfil" class="profile-img">
+        <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil" class="profile-img">
         <div class="user-infos">
-          <p class="username" id="usuario" style="color: white;">Douglas</p>
-          <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
+          <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
+          <span class="cargo" id="usuario_cargo" style="color: var(--cinzaClaro);">Gerente de Infra</span>
         </div>
       </div>
     </div>
@@ -142,7 +148,7 @@
         <div class="cardIndividual-monitoramento cardMonitorar01">
           <img src="../assets/svg/crescer.png" alt="logo-monitoramento" style="background-color: #f9701539;">
           <div class="cardMonitoramento-infos">
-            <h4 style="color: white;">20</h4>
+            <h4 style="color: var(--branco);">20</h4>
             <span>Componentes Monitorados</span>
           </div>
         </div>
@@ -482,6 +488,47 @@
         conteudo.classList.toggle("expandido");
       }
 
+      const root = document.documentElement;
+      const imgModo = document.getElementById("imgModo");
+      const imgLogo = document.getElementById("imgLogo");
+      const imgUser = document.getElementById("imgUser");
+
+      let modoEscuro = false;
+
+      imgModo.addEventListener("click", mudarModo);
+
+      function mudarModo() {
+        modoEscuro = !modoEscuro;
+
+        if (modoEscuro) {
+          sessionStorage.MODO = 1;
+          root.style.setProperty('--preto', '#F2F2F2');
+          root.style.setProperty('--branco', '#000');
+          root.style.setProperty('--pretoClaro', '#fff');
+          root.style.setProperty('--brancoCinza', '#1D2025');
+          root.style.setProperty('--bordas', '#b5b5b5');
+          imgModo.src = "../assets/icon/icons-dashboard/lua-crescente.png";
+          imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+          imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg"
+        } else {
+          sessionStorage.MODO = 0;
+          root.style.setProperty('--branco', '#fff');
+          root.style.setProperty('--preto', '#000');
+          root.style.setProperty('--pretoClaro', '#1D2025');
+          root.style.setProperty('--brancoCinza', '#b5b5b5');
+          root.style.setProperty('--bordas', '#3a3f45');
+          imgModo.src = "../assets/icon/icons-dashboard/brilho-do-sol.png";
+          imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+          imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg"
+        }
+      }
+
+      function verificarModo() {
+        if (sessionStorage.MODO == 1) {
+          mudarModo()
+        }
+      }
+
       var modal = document.querySelector('.modal-overlay');
       var btnFechar = document.querySelector('#btnOk');
 
@@ -748,5 +795,6 @@
     </script>
 
 </body>
+
 </html>
 <script src="../js/mudarModo.js"></script>
