@@ -2389,3 +2389,9 @@ tbody td {
     gap: 10px;
     align-self: end;
 }
+
+.configPagEscolhido {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}

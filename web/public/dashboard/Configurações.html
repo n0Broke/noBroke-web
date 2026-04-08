@@ -166,7 +166,7 @@
                 <!-- ======================================================== -->
                 <!-- Painel da Direita - Conteúdo da Opção Escolhida -->
                 <div class="configuracoesEscolhido">
-                    <div class="configuracaoGeral configPagEscolhido" style="display: none;">
+                    <div class="configuracaoGeral configPagEscolhido" style="display: flex;">
                         <div class="cardConfiguracao">
                             <h4>Configurações Gerais</h4>
                             <p style="font-size: 14px;">Configurações básicas do sistema noBroke</p>
@@ -722,7 +722,7 @@
                     </div>
                     <!-- ======================================== -->
                     <!-- Configurações - Meu Perfil -->
-                    <div class="configuracoesPerfil configPagEscolhido">
+                    <div class="configuracoesPerfil configPagEscolhido" style="display: none;">
 
                         <div class="cardsPerfil cardPerfil01">
                             <h4>Informações do Perfil</h4>
@@ -912,7 +912,7 @@
     const configuracoesGerais = document.querySelectorAll('.configPagEscolhido')
 
     // Dentro dessa lista, ele vai EM CADA "botao"
-    botoesEscolha.forEach(botao => {
+    botoesEscolha.forEach((botao, index) => {
         // chama de botão o que for apertado
         botao.addEventListener('click', () => {
 
@@ -938,6 +938,14 @@
             if (!imgClicada.src.includes('-hover.svg')) {
                 imgClicada.src = imgClicada.src.replace('.svg', '-hover.svg');
             }
+
+            // Esconde todas as páginas
+            configuracoesGerais.forEach(pagina => {
+                pagina.style.display = 'none';
+            });
+
+            // Mostra apenas a correspondente ao botão clicado
+            configuracoesGerais[index].style.display = 'flex';
         });
     });
     // ===================================================================
