@@ -4,11 +4,25 @@ body {
 
 :root{
     --branco: #fff;
+    --laranja-transparente: #f97015ad;
     --brancoCinza: #F2F2F2;
-    --cinzaClaro: #b5b5b5;
+    --cinzaClaro: #b4b4b4;
     --preto: #000;
     --pretoClaro: #1D2025;
+    --containersPreto: #25292f;
     --bordas: #3a3f45;
+    --input: rgb(45, 50, 57);
+    --verde: #21C45D;
+    --vermelho: #DC2828;
+    --laranja: #F97015;
+    --amarelo: #F8CA15;
+    --azul: #4B7FC1;
+
+    --verde-transparente: #21c45d30;
+    --vermelho-transparente: #dc282830;
+    --laranja-transparente: #f970153c;
+    --amarelo-transparente: #f8cb154c;
+    --azul-transparente: #4b7ec14b;
 }
 
 /* =========================================== */
@@ -1628,6 +1642,10 @@ tbody td {
     background-color: #f97015c4;
 }
 
+.form-check-input {
+    cursor: pointer;
+}
+
 /* Estilização do Switch do Bootstrap */
 .form-check-input:checked {
     background-color: #F97015 !important; /* Sua cor laranja */
@@ -1669,11 +1687,11 @@ tbody td {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
+} 
 
 .conteudoNotificacao-linha {
     display: flex;
-
+    justify-content: space-between;
 }
 
 .conteudoNotificacao-dados {
@@ -1691,4 +1709,683 @@ tbody td {
 .conteudoNotificacao-linha span {
     font-size: 18px;
     color: var(--brancoCinza);
+}
+
+.form-check-input {
+    width: 50px !important;
+    height: 30px !important;
+}
+
+.conteudoNotificacao-dados {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 6px;
+    padding: 10px 15px;
+
+    border-left: 1px solid var(--laranja-transparente);
+}
+
+.conteudoNotificacao-dados span, .conteudoNotificacao-esquerda span, .conteudoNotificacao-direita span, .conteudoNotificacao-regrasTitulo span {
+    color: var(--cinzaClaro);
+}
+
+.conteudoNotificacao-dados h4 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.conteudoNotificacao-dados input {
+    background-color: var(--input);
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+    padding: 6px 10px;
+    transition: all 0.25s ease;
+    outline: none;
+    color: white;
+    width: 100%;
+
+    cursor: text;
+}
+
+.conteudoNotificacao-dados input::after {
+    outline: none;
+}
+
+.conteudoNotificacao-dados button {
+    background: transparent;
+    border: none;
+    color: var(--laranja);
+    font-size: 18px;
+}
+
+.conteudoNotificacao-dados select {
+    background-color: var(--input);
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+    padding: 6px 10px;
+    transition: all 0.25s ease;
+    outline: none;
+    color: white;
+    width: 100%;
+}
+
+.conteudoNotificacao-regras {
+    display: flex;
+    justify-content: space-between;
+}
+
+.conteudoNotificacao-regrasTitulo {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: 30px;
+}
+
+.conteudoNotificacao-regras {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+}
+
+.conteudoNotificacao-regras .conteudoNotificacao-esquerda {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    gap: 12px;
+    margin: 10px 0px;
+}
+
+.conteudoNotificacao-regras .conteudoNotificacao-esquerda h6 {
+    margin: 0;
+}
+
+.regra-tipo1, .regra-tipo2, .regra-tipo3, .regra-tipo4 {
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.regra-tipo1 {
+    color: white;
+    background-color: var(--vermelho);
+}
+
+.regra-tipo2 {
+    color: var(--laranja);
+    background-color: var(--laranja-transparente);
+}
+
+.regra-tipo3 {
+    color: var(--amarelo);
+    background-color: var(--amarelo-transparente);
+}
+
+.regra-tipo4 {
+    color: var(--azul);
+    background-color: var(--azul-transparente);
+}
+
+.conteudoNotificacao-frequencia {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.conteudoNotificacao-frequencia select {
+    background-color: var(--input);
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+    padding: 6px 10px;
+    transition: all 0.25s ease;
+    outline: none;
+    color: white;
+    width: 100%;
+}
+
+/* =============================== */
+/* Configurações - Estilização Coleta */
+
+.configuracoesColeta {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+
+    gap: 20px;
+}
+
+.cardColeta01, .cardColeta02 {
+    width: 100%;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+    padding: 20px 30px;
+
+    color: var(--branco);
+    transition: all 0.25s ease;
+}
+
+.cardColeta01 h4, .cardColeta02 h4 {
+    font-size: 22px;
+    margin: 0;
+}
+
+.cardColeta01 span, .cardColeta02 span {
+    color: var(--cinzaClaro);
+}
+
+.frequenciaColeta {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0px;
+}
+
+.coletaInfos {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.contadorMundano {
+    color: var(--laranja) !important;
+    font-weight: 600;
+}
+
+.coletaInfos-esquerda {
+    display: flex;
+    flex-direction: column;
+}
+
+.coletaInfos-esquerda h6 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.coletaInfos-esquerda span {
+    font-weight: 300;
+}
+
+.frequenciaNumeros {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ================================ */
+/* Estilização Slider -  Bootstrap */
+/* Mudando a estilização da Bolinha */
+.form-range::-webkit-slider-thumb {
+  background-color: #1e1e1e !important; /* Cor de dentro da bolinha (escuro) */
+  border: 2px solid #ff7a00 !important; /* Cor e grossura da borda (laranja) */
+
+    width: 20px !important;  /* Aumenta a largura da bolinha do slider*/
+  height: 20px !important; /* Aumenta a altura da bolinha do slider*/
+}
+
+/* Mudando a Linha de Fundo (branco pra cinza) */
+.form-range::-webkit-slider-runnable-track {
+  background-color: var(--bordas) !important; /* Cor da linha toda (ex: laranja) */
+}
+/* ================================ */
+
+.cardColeta02 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cardColeta02-titulo {
+    margin-bottom: 10px;
+}
+
+.intervalosConfig {
+    display: flex;
+    justify-content: space-between;
+}
+
+.intervalosConfig h6 {
+    margin: 0;
+}
+
+.cardColeta02 h6 {
+    margin: 0px;
+}
+
+.cardColeta02 input, .cardColeta02 select {
+    width: 100%;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+    padding: 10px 10px;
+
+    color: var(--branco);
+    transition: all 0.25s ease;
+}
+
+.btnSalvarFrequencia {
+    display: flex;
+    justify-content: end;
+    gap: 32px;
+    /* background-color: white; */
+}
+
+.btnFrequencia02, .btnCargos02, .btnPopUp02 {
+    background-color: #e26715;
+    border: 1px solid #e26715;
+    border-radius: 6px;
+    padding: 4px 8px;
+    color: var(--branco);
+    transition: all 0.25s ease;
+}
+
+.btnFrequencia01, .btnCargos01, .btnPopUp01 {
+    background: transparent;
+    color: var(--branco);
+    border: 1px solid var(--bordas);
+    padding: 4px 8px;
+    border-radius: 6px;
+
+    transition: all 0.25s ease;
+}
+
+.btnFrequencia02:hover, .btnFrequencia01:hover, .btnCargos01:hover, .btnPopUp01:hover {
+    box-shadow: 0 0 14px #f9701590;
+    background-color: #e26715;
+}
+
+.funcionario-direita img {
+    width: 20px;
+    cursor: pointer;
+}
+
+/* =============================================== */
+/* Configurações - Minha Equipe */
+
+.configuracoesEquipe {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cardEquipe01, .cardEquipe02 {
+    width: 100%;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+    padding: 20px 30px;
+
+    color: var(--branco);
+}
+
+.cardEquipe01 {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.tituloEquipes {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.tituloEquipes-esquerda {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.tituloEquipes-esquerda h4 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.tituloEquipes-esquerda span {
+    color: var(--cinzaClaro);
+}
+
+.tituloEquipes-direita button {
+    background-color: var(--laranja);
+    color: var(--branco);
+    padding: 4px 12px;
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+
+    transition: all 0.25s ease;
+}
+
+.tituloEquipes-direita button:hover {
+    box-shadow: 0 0 14px var(--laranja-transparente);
+    transform: scale(1.02);
+}
+
+.equipeScroll {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+    max-height: 360px;
+}
+
+/* =================================== */
+/* Scroll da Equipe */
+.equipeScroll {
+    overflow-y: auto;
+    /* Adiciona Scrollbar mesmo sem precisar*/
+}
+
+.equipeScroll::-webkit-scrollbar {
+    width: 5px;
+    /* Largura do Scrollbard*/
+}
+
+.equipeScroll::-webkit-scrollbar-track {
+    background: transparent;
+    /* Tira aquele fundo zoado branco entorno da Scrollbar */
+}
+
+.equipeScroll::-webkit-scrollbar-thumb {
+    background: rgba(249, 112, 21, 0.7);
+    /* Cor da Scrollbar */
+    border-radius: 20px;
+    /* Arredondar os cantos da Scrollbar*/
+}
+
+/* =================================== */
+
+.equipeUsuarios {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    background-color: var(--containersPreto);
+    padding: 8px 20px;
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+}
+
+.funcionario-esquerda {
+    display: flex;
+    gap: 10px;
+}
+
+.funcionario-direita {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.funcionario-direita img {
+    width: 25px;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 3px;
+    transition: all 0.25s ease;
+}
+
+.funcionario-direita img:hover {
+    background-color: var(--laranja);
+    box-shadow: 0 0 14px var(--laranja-transparente);
+}
+
+.funcionarioCargo {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.funcionarioCargo h6 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.funcionarioCargo span {
+    color: var(--cinzaClaro);
+}
+
+.equipeUsuarioFoto {
+    width: 50px;
+    padding: 6px 15px;
+    border-radius: 26px;
+    background-color: var(--laranja-transparente);
+}
+
+.funcionarioDados {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.funcionarioDados h4 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.funcionarioDados span {
+    font-size: 16px;
+    color: var(--cinzaClaro);
+}
+
+.statusFuncionario {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 12px;
+    color: var(--verde);
+    background-color: var(--verde-transparente);
+}
+
+
+/* Card 02 - Equipe e Funcionários */
+.cardEquipe02 {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.cardEquipe02 h4 {
+    font-weight: 700;
+    margin: 0;
+}
+
+.cardEquipe02 span {
+    color: var(--cinzaClaro);
+}
+
+.equipe-cargosScroll {
+    display: flex;
+    flex-direction: column;
+    
+    gap: 10px;
+    max-height: 360px;
+}
+
+/* =================================== */
+/* Scroll da Equipe */
+.equipe-cargosScroll {
+    overflow-y: auto;
+    /* Adiciona Scrollbar mesmo sem precisar*/
+}
+
+.equipe-cargosScroll::-webkit-scrollbar {
+    width: 5px;
+    /* Largura do Scrollbard*/
+}
+
+.equipe-cargosScroll::-webkit-scrollbar-track {
+    background: transparent;
+    /* Tira aquele fundo zoado branco entorno da Scrollbar */
+}
+
+.equipe-cargosScroll::-webkit-scrollbar-thumb {
+    background: rgba(249, 112, 21, 0.7);
+    /* Cor da Scrollbar */
+    border-radius: 20px;
+    /* Arredondar os cantos da Scrollbar*/
+}
+
+/* =================================== */
+
+.cargosTipo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    background-color: var(--containersPreto);
+    padding: 8px 20px;
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+}
+
+.cargoInfo-esquerda {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.cargoDados h6 {
+    font-weight: 600;
+    margin: 0;
+}
+
+.cargoDados span {
+    color: var(--cinzaClaro);
+}
+
+.cargoInfo-direita {
+    display: flex;
+    gap: 20px;
+}
+
+.cargoShieldIcon {
+    width: 25px;
+    height: 25px;
+}
+
+.cargoEditIcon {
+    width: 20px;
+    cursor: pointer;
+}
+
+.cardEquipe02 button {
+    margin-top: 20px;
+    background: transparent;
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: none;
+    color: var(--laranja);
+    font-size: 18px;
+    max-width: fit-content;
+
+    transition: all 0.25s ease;
+}
+
+.cardEquipe02 button:hover {
+    color: white;
+    box-shadow: 0 0 14px #f9701590;
+    background-color: #e26715;
+}
+
+.btnCargos {
+    display: flex;
+    gap: 20px;
+    align-self: end;
+}
+
+/* ================================= */
+/* Pop Ups */
+.fundoPopUp {
+    display: flex;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.500);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.popUp-adicionarFuncionario {
+    display: flex;
+    flex-direction: column;
+    
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+    padding: 20px 30px;
+    gap: 20px;
+
+    color: var(--branco);
+}
+
+.headerPopUpFuncionario {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.headerPopUp-esquerda h4 {
+    font-size: 22px;
+    margin: 0;
+}
+
+.headerPopUp-esquerda span {
+    font-size: 16px;
+    color: var(--cinzaClaro);
+}
+
+.headerPopUp-direita {
+    color: var(--cinzaClaro);
+    cursor: pointer;
+}
+
+.popUpFuncionario-dados {
+    display: flex;
+    gap: 10px;
+}
+
+.popUpFuncionario-dados h6 {
+    font-weight: 800;
+}
+
+.popUpFuncionario-dados input, .popUpFuncionario-dados select, .popUpFuncionario-Senha input {
+    min-width: 100%;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+    padding: 10px 10px;
+
+    color: var(--branco);
+    transition: all 0.25s ease;
+}
+
+.popUpFuncionario-dados input:focus, .popUpFuncionario-dados select:focus .popUpFuncionario-Senha input:focus {
+    outline: 2px solid #F97015;
+}
+
+.popUpFuncionarioEnviar {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.popUpConfirmacao-esquerda h4 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.popUpConfirmacao-esquerda span {
+    font-size: 16px;
+    color: var(--cinzaClaro);
+}
+
+.popUpFuncionario-confirmar {
+    display: flex;
+    gap: 10px;
+    align-self: end;
 }

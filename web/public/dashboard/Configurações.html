@@ -150,10 +150,6 @@
                         <span>Notificações</span>
                     </div>
                     <div class="configuracaoEscolha">
-                        <img src="../assets/svg/configuracoes/email-svgrepo-com.svg" width="25px" alt="iconConfig">
-                        <span>Integrações</span>
-                    </div>
-                    <div class="configuracaoEscolha">
                         <img src="../assets/svg/configuracoes/timer-svgrepo-com.svg" width="25px" alt="iconConfig">
                         <span>Intervalos de Coleta</span>
                     </div>
@@ -170,7 +166,7 @@
                 <!-- ======================================================== -->
                 <!-- Painel da Direita - Conteúdo da Opção Escolhida -->
                 <div class="configuracoesEscolhido">
-                    <div class="configuracaoGeral" style="display: none;">
+                    <div class="configuracaoGeral configPagEscolhido" style="display: none;">
                         <div class="cardConfiguracao">
                             <h4>Configurações Gerais</h4>
                             <p style="font-size: 14px;">Configurações básicas do sistema noBroke</p>
@@ -212,7 +208,7 @@
 
                     <!-- ============================================ -->
                     <!-- Configurações tipo - Notificações -->
-                    <div class="configuracoesNotificacoes">
+                    <div class="configuracoesNotificacoes configPagEscolhido" style="display: none;">
                         <div class="cardNotificacoes01">
                             <div class="conteudoNotificacao-linha">
                                 <div class="conteudoNotificacao-esquerda">
@@ -286,13 +282,13 @@
                         </div>
 
                         <div class="cardNotificacoes02">
-                            <div class="conteudoNotificacao-linha">
+                            <div class="conteudoNotificacao-regrasTitulo">
                                 <h4>Regras de Notificação</h4>
+                                <span>Defina quais severidades disparam notificações</span>
                             </div>
-                            <div class="conteudoNotificacao-linha">
+                            <div class="conteudoNotificacao-regras">
                                 <div class="conteudoNotificacao-esquerda">
-                                    <span>Defina quais severidades disparam notificações</span>
-                                    <h6>Crítico</h6>
+                                    <h6 class="regra-tipo1">Crítico</h6>
                                     <span>Alertas críticos</span>
                                 </div>
                                 <div class="conteudoNotificacao-direita">
@@ -302,9 +298,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="conteudoNotificacao-linha">
+                            <div class="conteudoNotificacao-regras">
                                 <div class="conteudoNotificacao-esquerda">
-                                    <h6>Alto</h6>
+                                    <h6 class="regra-tipo2">Alto</h6>
                                     <span>Alertas de alta severidade</span>
                                 </div>
                                 <div class="conteudoNotificacao-direita">
@@ -314,9 +310,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="conteudoNotificacao-linha">
+                            <div class="conteudoNotificacao-regras">
                                 <div class="conteudoNotificacao-esquerda">
-                                    <h6>Médio</h6>
+                                    <h6 class="regra-tipo3">Médio</h6>
                                     <span>Alertas médios</span>
                                 </div>
                                 <div class="conteudoNotificacao-direita">
@@ -326,9 +322,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="conteudoNotificacao-linha">
+                            <div class="conteudoNotificacao-regras">
                                 <div class="conteudoNotificacao-esquerda">
-                                    <h6>Baixo</h6>
+                                    <h6 class="regra-tipo4">Baixo</h6>
                                     <span>Alertas informativos</span>
                                 </div>
                                 <div class="conteudoNotificacao-direita">
@@ -340,15 +336,17 @@
                             </div>
                             <hr style="width: 100%; height: 2px; color: #b4b4b4;">
                             <div class="conteudoNotificacao-linha">
-                                <h4>Frequência de resumo diário</h4>
-                                <select name="horarios" id="horariosColeta">
-                                    <option value="#">Selecione um Horário</option>
-                                </select>
+                                <div class="conteudoNotificacao-frequencia">
+                                    <h4>Frequência de resumo diário</h4>
+                                    <select name="horarios" id="horariosColeta">
+                                        <option value="#">Selecione um Horário</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="conteudoNotificacao-linha">
                                 <div class="conteudoNotificacao-esquerda">
                                     <h6>Agrupar alertas repetidos</h6>
-                                    <span>Não reenviar o mesmo alerta em 5 minutos </span>
+                                    <span style="font-size: 14px;">Não reenviar o mesmo alerta em 5 minutos </span>
                                 </div>
                                 <div class="conteudoNotificacao-direita">
                                     <div class="form-check form-switch">
@@ -359,15 +357,505 @@
                             </div>
                         </div>
                     </div>
+                    <!-- ========================================================= -->
+                    <!-- Intervalos de Coleta -->
+                    <div class="configuracoesColeta configPagEscolhido" style="display: none;">
+                        <div class="cardColeta01">
+                            <h4>Intervalos de Coleta por Métrica</h4>
+                            <span>Defina a frequência de coleta de cada tipo de dado (em segundos)</span>
+                            <div class="frequenciaColeta">
+                                <div class="coletaInfos">
+                                    <div class="coletaInfos-esquerda">
+                                        <h6>CPU</h6>
+                                        <span>Uso de processador</span>
+                                    </div>
+                                    <span class="contadorMundano">15s</span>
+                                </div>
+                                <div class="coletaMedidor">
+                                    <input type="range" class="form-range rangerCustom" min="5" max="60" step="1"
+                                        id="range3">
+                                </div>
+                                <div class="frequenciaNumeros">
+                                    <span>5s</span>
+                                    <span>15s</span>
+                                    <span>30s</span>
+                                    <span>60s</span>
+                                </div>
+                            </div>
+                            <div class="frequenciaColeta">
+                                <div class="coletaInfos">
+                                    <div class="coletaInfos-esquerda">
+                                        <h6>Memória RAM</h6>
+                                        <span>Consumo de memória</span>
+                                    </div>
+                                    <span class="contadorMundano">15s</span>
+                                </div>
+                                <div class="coletaMedidor">
+                                    <input type="range" class="form-range" min="5" max="60" step="1" id="range3">
+                                </div>
+                                <div class="frequenciaNumeros">
+                                    <span>5s</span>
+                                    <span>15s</span>
+                                    <span>30s</span>
+                                    <span>60s</span>
+                                </div>
+                            </div>
+                            <div class="frequenciaColeta">
+                                <div class="coletaInfos">
+                                    <div class="coletaInfos-esquerda">
+                                        <h6>Disco</h6>
+                                        <span>I/O e espaço em disco</span>
+                                    </div>
+                                    <span class="contadorMundano">15s</span>
+                                </div>
+                                <div class="coletaMedidor">
+                                    <input type="range" class="form-range rangerCustom" min="5" max="60" step="1"
+                                        id="range3">
+                                </div>
+                                <div class="frequenciaNumeros">
+                                    <span>5s</span>
+                                    <span>15s</span>
+                                    <span>30s</span>
+                                    <span>60s</span>
+                                </div>
+                            </div>
+                            <div class="frequenciaColeta">
+                                <div class="coletaInfos">
+                                    <div class="coletaInfos-esquerda">
+                                        <h6>Rede</h6>
+                                        <span>Throughput e pacotes</span>
+                                    </div>
+                                    <span class="contadorMundano">15s</span>
+                                </div>
+                                <div class="coletaMedidor">
+                                    <input type="range" class="form-range rangerCustom" min="5" max="60" step="1"
+                                        id="range3">
+                                </div>
+                                <div class="frequenciaNumeros">
+                                    <span>5s</span>
+                                    <span>15s</span>
+                                    <span>30s</span>
+                                    <span>60s</span>
+                                </div>
+                            </div>
+                            <div class="frequenciaColeta">
+                                <div class="coletaInfos">
+                                    <div class="coletaInfos-esquerda">
+                                        <h6>Latência</h6>
+                                        <span>Tempo de resposta</span>
+                                    </div>
+                                    <span class="contadorMundano">15s</span>
+                                </div>
+                                <div class="coletaMedidor">
+                                    <input type="range" class="form-range rangerCustom" min="5" max="60" step="1"
+                                        id="range3">
+                                </div>
+                                <div class="frequenciaNumeros">
+                                    <span>5s</span>
+                                    <span>15s</span>
+                                    <span>30s</span>
+                                    <span>60s</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 02 - Coleta -->
+                        <div class="cardColeta02">
+                            <div class="cardColeta02-titulo">
+                                <h4>Configurações Avançadas</h4>
+                                <span>Otimização e performance de coleta</span>
+                            </div>
+                            <div class="intervalosConfig">
+                                <div class="intervalosConfig-esquerda">
+                                    <h6>Coleta em lote (batch)</h6>
+                                    <span>Agrupa métricas para envio otimizado</span>
+                                </div>
+                                <div class="intervalosConfig-direita">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                            id="switchCheckDefault">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="intervalosConfig">
+                                <div class="intervalosConfig-esquerda">
+                                    <h6>Compressão de dados</h6>
+                                    <span>Reduz uso de banda na transmissão</span>
+                                </div>
+                                <div class="intervalosConfig-direita">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                            id="switchCheckDefault">
+                                    </div>
+                                </div>
+                            </div>
+                            <h6>Timeout de coleta (ms)</h6>
+                            <input type="text">
+                            <h6>Tentativas em caso de falha </h6>
+                            <select name="tentativasFalhas" id="tentativasFalhas">
+                                <option value="tentativa1">1 tentativa</option>
+                                <option value="tentativa2">2 tentativas</option>
+                                <option value="tentativa3">3 tentativas</option>
+                                <option value="tentativa5">5 tentativas</option>
+                            </select>
+                        </div>
+                        <div class="btnSalvarFrequencia">
+                            <button class="btnFrequencia01">Cancelar</button>
+                            <button class="btnFrequencia02">Salvar Configurações</button>
+                        </div>
+                    </div>
+                    <!-- ========================================= -->
+                    <!-- Configurações - Equipe -->
+                    <div class="configuracoesEquipe configPagEscolhido" style="display: none;">
+                        <div class="cardEquipe01">
+                            <div class="tituloEquipes">
+                                <div class="tituloEquipes-esquerda">
+                                    <h4>Membros da Equipe</h4>
+                                    <span>Gerencie os usuários com acesso ao noBroke</span>
+                                </div>
+                                <div class="tituloEquipes-direita">
+                                    <button onclick="addFunc()">+ Adicionar Membro</button>
+                                </div>
+                            </div>
+                            <!-- Daqui pra baixo o Scroll de funcionários -->
+                            <div class="equipeScroll">
+                                <div class="equipeUsuarios usuario01">
+                                    <div class="funcionario-esquerda">
+                                        <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com-hover.svg"
+                                            alt="profile-pic" class="equipeUsuarioFoto">
+                                        <div class="funcionarioDados">
+                                            <h4>Carlos Mendes</h4>
+                                            <span>email</span>
+                                        </div>
+                                    </div>
+                                    <div class="funcionario-direita">
+                                        <div class="funcionarioCargo">
+                                            <h6>Admnistrador</h6>
+                                            <span>Infraestrutura</span>
+                                        </div>
+                                        <span class="statusFuncionario">Ativo</span>
+                                        <img src="../assets/svg/configuracoes/pen-svgrepo-com.svg"
+                                            alt="personalizarFuncionario">
+                                        <img src="../assets/svg/configuracoes/trash-alt-svgrepo-com.svg"
+                                            alt="excluirFuncionario">
+                                    </div>
+                                </div>
+
+                                <div class="equipeUsuarios usuario02">
+                                    <div class="funcionario-esquerda">
+                                        <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com-hover.svg"
+                                            alt="profile-pic" class="equipeUsuarioFoto">
+                                        <div class="funcionarioDados">
+                                            <h4>Carlos Mendes</h4>
+                                            <span>email</span>
+                                        </div>
+                                    </div>
+                                    <div class="funcionario-direita">
+                                        <div class="funcionarioCargo">
+                                            <h6>Admnistrador</h6>
+                                            <span>Infraestrutura</span>
+                                        </div>
+                                        <span class="statusFuncionario">Ativo</span>
+                                        <img src="../assets/svg/configuracoes/pen-svgrepo-com.svg"
+                                            alt="personalizarFuncionario">
+                                        <img src="../assets/svg/configuracoes/trash-alt-svgrepo-com.svg"
+                                            alt="excluirFuncionario">
+                                    </div>
+                                </div>
+
+                                <div class="equipeUsuarios usuario03">
+                                    <div class="funcionario-esquerda">
+                                        <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com-hover.svg"
+                                            alt="profile-pic" class="equipeUsuarioFoto">
+                                        <div class="funcionarioDados">
+                                            <h4>Carlos Mendes</h4>
+                                            <span>email</span>
+                                        </div>
+                                    </div>
+                                    <div class="funcionario-direita">
+                                        <div class="funcionarioCargo">
+                                            <h6>Admnistrador</h6>
+                                            <span>Infraestrutura</span>
+                                        </div>
+                                        <span class="statusFuncionario">Ativo</span>
+                                        <img src="../assets/svg/configuracoes/pen-svgrepo-com.svg"
+                                            alt="personalizarFuncionario">
+                                        <img src="../assets/svg/configuracoes/trash-alt-svgrepo-com.svg"
+                                            alt="excluirFuncionario">
+                                    </div>
+                                </div>
+
+                                <div class="equipeUsuarios usuario04">
+                                    <div class="funcionario-esquerda">
+                                        <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com-hover.svg"
+                                            alt="profile-pic" class="equipeUsuarioFoto">
+                                        <div class="funcionarioDados">
+                                            <h4>Carlos Mendes</h4>
+                                            <span>email</span>
+                                        </div>
+                                    </div>
+                                    <div class="funcionario-direita">
+                                        <div class="funcionarioCargo">
+                                            <h6>Admnistrador</h6>
+                                            <span>Infraestrutura</span>
+                                        </div>
+                                        <span class="statusFuncionario">Ativo</span>
+                                        <img src="../assets/svg/configuracoes/pen-svgrepo-com.svg"
+                                            alt="personalizarFuncionario">
+                                        <img src="../assets/svg/configuracoes/trash-alt-svgrepo-com.svg"
+                                            alt="excluirFuncionario">
+                                    </div>
+                                </div>
+
+                                <div class="equipeUsuarios usuario05">
+                                    <div class="funcionario-esquerda">
+                                        <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com-hover.svg"
+                                            alt="profile-pic" class="equipeUsuarioFoto">
+                                        <div class="funcionarioDados">
+                                            <h4>Carlos Mendes</h4>
+                                            <span>email</span>
+                                        </div>
+                                    </div>
+                                    <div class="funcionario-direita">
+                                        <div class="funcionarioCargo">
+                                            <h6>Admnistrador</h6>
+                                            <span>Infraestrutura</span>
+                                        </div>
+                                        <span class="statusFuncionario">Ativo</span>
+                                        <img src="../assets/svg/configuracoes/pen-svgrepo-com.svg"
+                                            alt="personalizarFuncionario">
+                                        <img src="../assets/svg/configuracoes/trash-alt-svgrepo-com.svg"
+                                            alt="excluirFuncionario">
+                                    </div>
+                                </div>
+                                <!-- --------------------------------------------------------------------- -->
+                            </div>
+                        </div>
+
+                        <div class="cardEquipe02">
+                            <h4>Cargos e Permissões</h4>
+                            <span>Defina os níveis de acesso de cada cargo</span>
+                            <!-- Cargos Scroll -->
+                            <div class="equipe-cargosScroll">
+                                <div class="cargosTipo cargo01">
+                                    <div class="cargoInfo-esquerda">
+                                        <img src="../assets/icon/icons-dashboard/escudo.png" class="cargoShieldIcon"
+                                            alt="iconShield">
+                                        <div class="cargoDados">
+                                            <h6>Admnistrador</h6>
+                                            <span>Acesso total ao Sistema</span>
+                                        </div>
+                                    </div>
+                                    <div class="cargoInfo-direita">
+                                        <span>1 Usuário</span>
+                                        <img src="../assets/svg/configuracoes/pen-svgrepo-com.svg" class="cargoEditIcon"
+                                            alt="editIcon">
+                                    </div>
+                                </div>
+                                <div class="cargosTipo cargo02">
+                                    <div class="cargoInfo-esquerda">
+                                        <img src="../assets/icon/icons-dashboard/escudo.png" class="cargoShieldIcon"
+                                            alt="iconShield">
+                                        <div class="cargoDados">
+                                            <h6>Admnistrador</h6>
+                                            <span>Acesso total ao Sistema</span>
+                                        </div>
+                                    </div>
+                                    <div class="cargoInfo-direita">
+                                        <span>1 Usuário</span>
+                                        <img src="../assets/svg/configuracoes/pen-svgrepo-com.svg" class="cargoEditIcon"
+                                            alt="editIcon">
+                                    </div>
+                                </div>
+                                <div class="cargosTipo cargo03">
+                                    <div class="cargoInfo-esquerda">
+                                        <img src="../assets/icon/icons-dashboard/escudo.png" class="cargoShieldIcon"
+                                            alt="iconShield">
+                                        <div class="cargoDados">
+                                            <h6>Admnistrador</h6>
+                                            <span>Acesso total ao Sistema</span>
+                                        </div>
+                                    </div>
+                                    <div class="cargoInfo-direita">
+                                        <span>1 Usuário</span>
+                                        <img src="../assets/svg/configuracoes/pen-svgrepo-com.svg" class="cargoEditIcon"
+                                            alt="editIcon">
+                                    </div>
+                                </div>
+                                <div class="cargosTipo cargo04">
+                                    <div class="cargoInfo-esquerda">
+                                        <img src="../assets/icon/icons-dashboard/escudo.png" class="cargoShieldIcon"
+                                            alt="iconShield">
+                                        <div class="cargoDados">
+                                            <h6>Admnistrador</h6>
+                                            <span>Acesso total ao Sistema</span>
+                                        </div>
+                                    </div>
+                                    <div class="cargoInfo-direita">
+                                        <span>1 Usuário</span>
+                                        <img src="../assets/svg/configuracoes/pen-svgrepo-com.svg" class="cargoEditIcon"
+                                            alt="editIcon">
+                                    </div>
+                                </div>
+                                <div class="cargosTipo cargo05">
+                                    <div class="cargoInfo-esquerda">
+                                        <img src="../assets/icon/icons-dashboard/escudo.png" class="cargoShieldIcon"
+                                            alt="iconShield">
+                                        <div class="cargoDados">
+                                            <h6>Admnistrador</h6>
+                                            <span>Acesso total ao Sistema</span>
+                                        </div>
+                                    </div>
+                                    <div class="cargoInfo-direita">
+                                        <span>1 Usuário</span>
+                                        <img src="../assets/svg/configuracoes/pen-svgrepo-com.svg" class="cargoEditIcon"
+                                            alt="editIcon">
+                                    </div>
+                                </div>
+                            </div>
+                            <button>+ Criar Cargo</button>
+                        </div>
+                        <div class="btnCargos">
+                            <button class="btnCargos01">Cancelar</button>
+                            <button class="btnCargos02">Salvar Configurações</button>
+                        </div>
+                    </div>
+                    <!-- ======================================== -->
+                    <!-- Configurações - Meu Perfil -->
+                    <div class="configuracoesPerfil configPagEscolhido">
+
+                        <div class="cardsPerfil cardPerfil01">
+                            <h4>Informações do Perfil</h4>
+                            <span>Visualize e edite seus dados pessoais</span>
+                            <div class="fotoDadosPerfil">
+                                <img src="../" alt="fotoPerfil">
+                                <div class="perfilNomeCargo">
+                                    <h4>Carlos Mendes</h4>
+                                    <span>Administrador</span>
+                                    <span>Departamento de Infraestrutura</span>
+                                </div>
+                            </div>
+                            <div class="dadosPerfil">
+                                <div class="dadosPerfil-input">
+                                    <div class="dadosPerfil-esquerda">
+                                        <h6>Nome</h6>
+                                        <input type="text">
+                                    </div>
+                                    <div class="dadosPerfil-direita">
+                                        <h6>Nome</h6>
+                                        <input type="text">
+                                    </div>
+                                </div>
+                                <div class="dadosPerfil-input">
+                                    <div class="dadosPerfil-esquerda">
+                                        <h6>Nome</h6>
+                                        <input type="text">
+                                    </div>
+                                    <div class="dadosPerfil-direita">
+                                        <h6>Nome</h6>
+                                        <input type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cardsPerfil cardPerfil02">
+                            <h4>Segurança</h4>
+                            <span>Gerencie suas credenciais de acesso</span>
+                            <div class="segurancaPerfil">
+                                <div class="segurancaPerfil-input"></div>
+                                <div class="segurancaPerfil-input"></div>
+                            </div>
+                        </div>
+                        <div class="cardsPerfil cardPerfil03"></div>
+                    </div>
+                    <!-- ======================================== -->
+                </div>
+            </div>
+        </div>
+        <!-- =================================== -->
+        <!-- PopUps - Adicionar Funcionários -->
+        <div class="fundoPopUp" style="display: none;" id="popUpCadastrar">
+            <div class="popUp-adicionarFuncionario">
+                <div class="headerPopUpFuncionario">
+                    <div class="headerPopUp-esquerda">
+                        <h4>Adicionar Funcionário</h4>
+                        <span>Convide um novo usuário pra equipe</span>
+                    </div>
+                    <div class="headerPopUp-direita">
+                        <span>x</span>
+                    </div>
+                </div>
+                <div class="popUpFuncionario-dados">
+                    <div class="popUpFuncionario-inserirDados-esquerda">
+                        <h6>Nome</h6>
+                        <input type="text" placeholder="Nome Completo">
+                    </div>
+                    <div class="popUpFuncionario-inserirDados-direita">
+                        <h6>Email</h6>
+                        <input type="text" placeholder="email@empresa">
+                    </div>
+                </div>
+                <div class="popUpFuncionario-dados">
+                    <div class="popUpFuncionario-inserirDados-esquerda" style="width: 50%">
+                        <h6>Cargo</h6>
+                        <select name="cargosFuncionario" id="cargosEscolher">
+                            <option value="#">Selecione</option>
+                            <option value="tentativa2">Admnistrador</option>
+                            <option value="tentativa3">Analista de Suporte</option>
+                            <option value="tentativa5">Gerente de TI</option>
+                        </select>
+                    </div>
+                    <div class="popUpFuncionario-inserirDados-direita" style="width: 50%">
+                        <h6>Departamento</h6>
+                        <select name="departamentosFuncionario" id="departamentosEscolher">
+                            <option value="#">Selecione</option>
+                            <option value="departamento1">Infraestrutura</option>
+                            <option value="departamento2">Operação</option>
+                            <option value="departamento3">Gestão</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="popUpFuncionario-Senha">
+                    <h6>Senha</h6>
+                    <input type="password" placeholder="Insira a Senha do Usuário">
+                </div>
+                <div class="popUpFuncionarioEnviar">
+                    <div class="popUpConfirmacao-esquerda">
+                        <h4>Enviar convite por e-mail</h4>
+                        <span>O usuário receberá um link de ativação</span>
+                    </div>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                    </div>
+                </div>
+                <div class="popUpFuncionario-confirmar">
+                    <button class="btnPopUp01" onclick="fecharFunc()">Cancelar</button>
+                    <button class="btnPopUp02">Adicionar</button>
                 </div>
             </div>
         </div>
     </div>
-
+    <!-- =================================== -->
+    </div>
 </body>
 
 </html>
 <script>
+
+    // ===================================================================
+    // Função Abrir e fechar PopUp de Cadastrar Funcionário
+
+    function addFunc() {
+        document.getElementById('popUpCadastrar').style.display = 'flex';
+    }
+
+    function fecharFunc() {
+        document.getElementById('popUpCadastrar').style.display = 'none';
+    }
+    // ===================================================================
+
+
     function fecharAbrirLateral() {
         const sidebar = document.getElementById("div_lateralAberta");
         const conteudo = document.getElementById("telaPrincipal");
@@ -421,6 +909,7 @@
     // Função de Escolher
     // Aqui pega todos os "botões" que têm a classe configuracaoEscolha no "Documento"
     const botoesEscolha = document.querySelectorAll('.configuracaoEscolha');
+    const configuracoesGerais = document.querySelectorAll('.configPagEscolhido')
 
     // Dentro dessa lista, ele vai EM CADA "botao"
     botoesEscolha.forEach(botao => {
