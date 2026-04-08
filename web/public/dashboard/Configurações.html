@@ -724,50 +724,104 @@
                     <!-- Configurações - Meu Perfil -->
                     <div class="configuracoesPerfil configPagEscolhido" style="display: none;">
 
+                        <!-- ________________________________________-- -->
                         <div class="cardsPerfil cardPerfil01">
                             <h4>Informações do Perfil</h4>
                             <span>Visualize e edite seus dados pessoais</span>
                             <div class="fotoDadosPerfil">
-                                <img src="../" alt="fotoPerfil">
+                                <div class="container-fotoPerfil">
+                                    <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com-hover.svg" alt="fotoPerfil">
+                                </div>
                                 <div class="perfilNomeCargo">
                                     <h4>Carlos Mendes</h4>
-                                    <span>Administrador</span>
+                                    <h6>Administrador</h6>
                                     <span>Departamento de Infraestrutura</span>
                                 </div>
                             </div>
+                            <hr style="width: 100%; height: 2px; color: #b4b4b4;">
                             <div class="dadosPerfil">
                                 <div class="dadosPerfil-input">
                                     <div class="dadosPerfil-esquerda">
-                                        <h6>Nome</h6>
-                                        <input type="text">
+                                        <h6>Nome Completo</h6>
+                                        <input type="text" value="Carlos Mendes">
                                     </div>
                                     <div class="dadosPerfil-direita">
-                                        <h6>Nome</h6>
-                                        <input type="text">
+                                        <h6>Email</h6>
+                                        <input type="text" value="example@gmail.com">
                                     </div>
                                 </div>
                                 <div class="dadosPerfil-input">
                                     <div class="dadosPerfil-esquerda">
-                                        <h6>Nome</h6>
-                                        <input type="text">
+                                        <h6>Telefone</h6>
+                                        <input type="text" value="(11) 98374-2734">
                                     </div>
                                     <div class="dadosPerfil-direita">
-                                        <h6>Nome</h6>
-                                        <input type="text">
+                                        <h6>Cargo</h6>
+                                        <input disabled type="text" value="Admnistrador">
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+                        <!-- ________________________________________-- -->
                         <div class="cardsPerfil cardPerfil02">
                             <h4>Segurança</h4>
                             <span>Gerencie suas credenciais de acesso</span>
                             <div class="segurancaPerfil">
-                                <div class="segurancaPerfil-input"></div>
-                                <div class="segurancaPerfil-input"></div>
+                                <div class="segurancaPerfil-input">
+                                    <div class="segurancaInput-esquerda">
+                                        <h6>Senha Atual</h6>
+                                        <input type="text" placeholder="*************">
+                                    </div>
+                                </div>
+                                <div class="segurancaPerfil-input">
+                                    <div class="segurancaInput-esquerda">
+                                        <h6>Nova Senha</h6>
+                                        <input type="text" placeholder="Mínimo de 8 Caracteres">
+                                    </div>
+                                    <div class="segurancaInput-direita">
+                                        <h6>Confirmar Nova Senha</h6>
+                                        <input type="text" placeholder="Repita a nova senha">
+                                    </div>
+                                </div>
+                                <hr style="width: 100%; height: 2px; color: #b4b4b4;">
+                                <div class="doisFatores">
+                                    <div class="doisFatores-esquerda">
+                                        <h4>Autenticação em dois fatores (2FA)</h4>
+                                        <span>Proteja sua conta com uma camada extra de segurança</span>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" role="switch"
+                                            id="switchCheckDefault">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="cardsPerfil cardPerfil03"></div>
+                        <!-- ________________________________________-- -->
+                        <div class="cardsPerfil cardPerfil03">
+                            <h4>Sessão e Atividade</h4>
+                            <span>Informações sobre seu acesso ao sistema</span>
+                            <hr style="width: 100%; height: 2px; color: #b4b4b4;">
+                            <div class="sessaoLinhas">
+                                <span>Último Login</span>
+                                <h6>28/03/2026 às 08:42</h6>
+                            </div>
+                            <div class="sessaoLinhas">
+                                <span>IP do acesso atual</span>
+                                <h6>192.168.1.105</h6>
+                            </div>
+                            <div class="sessaoLinhas">
+                                <span>Navegador</span>
+                                <h6>Chrome 124.0 — Windows 11</h6>
+                            </div>
+                            <div class="sessaoLinhas">
+                                <span>Membro desde</span>
+                                <h6>15/01/2025</h6>
+                            </div>
+                        </div>
+                        <div class="perfilBotoes">
+                            <button class="btnPerfil01">Cancelar</button>
+                            <button class="btnPerfil02">Salvar Configurações</button>
+                        </div>
                     </div>
                     <!-- ======================================== -->
                 </div>

@@ -1612,36 +1612,6 @@ tbody td {
     gap: 10px;
 }
 
-.btnGeral01 {
-    background: transparent;
-    color: var(--branco);
-    border: 1px solid var(--bordas);
-    border-radius: 6px;
-    padding: 6px 15px;
-    font-weight: 600;
-
-    transition: all 0.25s ease;
-}
-
-.btnGeral01:hover {
-    background-color: #F97015;
-}
-
-.btnGeral02 {
-    background-color: #F97015;
-    color: var(--branco);
-    border: 1px solid var(--bordas);
-    border-radius: 6px;
-    padding: 6px 15px;
-    font-weight: 600;
-
-    transition: all 0.25s ease;
-}
-
-.btnGeral02:hover {
-    background-color: #f97015c4;
-}
-
 .form-check-input {
     cursor: pointer;
 }
@@ -1970,7 +1940,7 @@ tbody td {
     /* background-color: white; */
 }
 
-.btnFrequencia02, .btnCargos02, .btnPopUp02 {
+.btnFrequencia02, .btnCargos02, .btnPopUp02, .btnPerfil02, .btnGeral02 {
     background-color: #e26715;
     border: 1px solid #e26715;
     border-radius: 6px;
@@ -1979,7 +1949,7 @@ tbody td {
     transition: all 0.25s ease;
 }
 
-.btnFrequencia01, .btnCargos01, .btnPopUp01 {
+.btnFrequencia01, .btnCargos01, .btnPopUp01, .btnPerfil01, .btnGeral01 {
     background: transparent;
     color: var(--branco);
     border: 1px solid var(--bordas);
@@ -1989,7 +1959,7 @@ tbody td {
     transition: all 0.25s ease;
 }
 
-.btnFrequencia02:hover, .btnFrequencia01:hover, .btnCargos01:hover, .btnPopUp01:hover {
+.btnFrequencia02:hover, .btnFrequencia01:hover, .btnCargos01:hover, .btnCargos02:hover, .btnPopUp01:hover, .btnPopUp02:hover, .btnPerfil01:hover, .btnPerfil02:hover, .btnGeral01:hover, .btnGeral02:hover {
     box-shadow: 0 0 14px #f9701590;
     background-color: #e26715;
 }
@@ -2394,4 +2364,165 @@ tbody td {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+/* ============================== */
+/* Configurações - Meu Perfil */
+
+.cardsPerfil {
+    width: 100%;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+    padding: 20px 30px;
+
+    color: var(--branco);
+}
+
+.cardsPerfil h4 {
+    color: var(--branco);
+    font-weight: 700;
+    margin: 0;
+}
+
+.cardsPerfil span {
+    color: var(--cinzaClaro);
+}
+
+.fotoDadosPerfil {
+    display: flex;
+    gap: 25px;
+    margin: 30px 0px;
+}
+
+.fotoDadosPerfil img {
+    max-width: 40px;
+    max-height: 40px;
+    width: 100%;
+    height: 100%;
+}
+
+.container-fotoPerfil {
+    padding: 20px;
+    background-color: var(--laranja-transparente);
+    border-radius: 100%;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.container-fotoPerfil:hover {
+    filter: brightness(50%);
+}
+
+.perfilNomeCargo {
+    display: flex;
+    flex-direction: column;
+    align-self: end;
+
+    gap: 3px;
+}
+
+.perfilNomeCargo h6, .perfilNomeCargo h4 {
+    margin: 0;
+}
+
+.perfilNomeCargo h6, .perfilNomeCargo span {
+    font-weight: 400;
+}
+
+.perfilNomeCargo h6 {
+    color: var(--cinzaClaro);
+}
+
+.perfilNomeCargo span {
+    font-size: 14px;
+}
+
+.perfilBotoes {
+    display: flex;
+    align-self: end;
+    gap: 20px;
+}
+
+.dadosPerfil {
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.dadosPerfil-input {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+
+.dadosPerfil-esquerda, .dadosPerfil-direita {
+    width: 50%;
+}
+
+.dadosPerfil-esquerda input, .dadosPerfil-direita input, .segurancaInput-esquerda input, .segurancaInput-direita input {
+    min-width: 100%;
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+    padding: 10px 10px;
+
+    color: var(--branco);
+    transition: all 0.25s ease;
+}
+
+.dadosPerfil-esquerda input:focus, .dadosPerfil-direita input:focus {
+    outline: 2px solid #F97015;
+}
+
+.cardPerfil02 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.segurancaPerfil-input {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.segurancaInput-esquerda, .segurancaInput-direita {
+    min-width: 50%;
+}
+
+.doisFatores {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.doisFatores-esquerda h4 {
+    font-size: 22px;
+}
+
+.doisFatores-esquerda span {
+    font-size: 16px;
+}
+
+.cardPerfil03 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cardPerfil03 h4 {
+    margin: 0;
+}
+
+.cardPerfil03 span {
+    color: var(--cinzaClaro);
+}
+
+.sessaoLinhas {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0px;
 }
