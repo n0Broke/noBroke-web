@@ -2,6 +2,7 @@
 
     html {
         overflow-x: hidden ;
+
     }
     .sidebar {
         position: fixed;
@@ -17,7 +18,7 @@
         left: 0;
     }
     
-    .cards-grafico, .conteudo-dash03, .componentes-servidor, .legendas-servidor, .header-conteudo-dash, .header-esquerdo01{
+    .cards-grafico, .conteudo-dash03, .componentes-servidor, .legendas-servidor, .header-conteudo-dash, .header-esquerdo01, .cards-monitoramento, .cards-componentesServidor{
         flex-direction: column;
         min-width: 100%;
     }
@@ -73,7 +74,6 @@
     .card-server {
         flex-direction: row;
         min-height: 46%;
-
     }
 
     .card-server img {
@@ -116,4 +116,25 @@
         height: 32%;
     }
 
+    .componentesServidor{
+        overflow-y: auto;
+        scrollbar-width: auto;
+    }
+
+    .cardIndividual-monitoramento {
+        min-width: 100%;
+    }
+
+    .cardIndividual-ServidoresComponentes {
+        min-width: 100%;
+    }
+
+    .cards-componentesServidor {
+        height: auto;
+        max-height: none;
+    }
+
+    .cardIndividual-ServidoresComponentes {
+        width: 100%;
+    }
 }
