@@ -32,4 +32,38 @@
         min-width: 100%;
         justify-content: center;
     }
+
+    .cards-alerta-central {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .card-alerta-geral {
+        display: flex;
+        min-width: 48%;
+        min-height: 45%;
+        gap: 5px;
+    }
+
+    .central-alerta-filtros {
+        display: block;
+        margin-bottom: 50px;
+        width: 100%;
+    }
+
+    .central-alerta-filtros input {
+        display: flex;
+        width: 100%;
+    }
+
+    .lista-alertas {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .alerta01, .alerta02, .alerta03, .alerta04, .alerta05 {
+        display: flex;
+        flex-direction: column;
+    }
+    
 }
