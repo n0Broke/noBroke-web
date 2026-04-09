@@ -137,4 +137,127 @@
     .cardIndividual-ServidoresComponentes {
         width: 100%;
     }
+
+    .configuracoesCorpo {
+        flex-direction: column;
+    }
+
+    .configuracoesPainel {
+        min-width: 100%;
+    }
+    
+    .geralBotoes {
+        min-width: 100%;
+    }
+
+    
+    .cardEquipe01 {
+        display: flex;
+    }
+    
+    .equipeUsuarios {
+        gap: 30px;
+        width: 100%;
+        
+    }
+
+    .funcionarioCargo {
+        display: none;
+    }
+
+    
+    .equipeUsuarioFoto {
+        width: 34px;
+        padding: 6px 5px;
+        border-radius: 50%;
+    } 
+
+    .funcionario-esquerda img{
+        background-color: transparent;
+        padding: 0;
+        width: 20px;
+    }
+
+    .tituloEquipes{
+        flex-direction: column
+    }
+
+   
+    .btnCargos {
+        min-width: 100%;
+    }
+
+    .fundoPopUp {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+
+    }
+
+    .popUpFuncionario-dados{
+        flex-direction: column;
+    }
+
+    .popUpFuncionario-inserirDados-direita, 
+    .popUpFuncionario-inserirDados-esquerda {
+        min-width: 100%;
+    }
+
+    
+    .dadosPerfil-input {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dadosPerfil-esquerda,
+    .dadosPerfil-direita {
+        width: 100%;
+    }
+
+    .segurancaPerfil-input {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .segurancaInput-esquerda,
+    .segurancaInput-direita {
+        width: 100%;
+    }
+
+
+    .perfilBotoes {
+        min-width: 100%;
+    }
+    
+    .container-fotoPerfil {
+        background-color: transparent;
+    }
+
+    .funcionarioDados h4, 
+    .funcionarioDados span, 
+    .cargoDados span, 
+    .cargoInfo-direita span, 
+    .sessaoLinhas h6{
+        font-size: 12px;
+    }
+
+    .cardNotificacoes01 h4, 
+    .cardNotificacoes01 span, 
+    .conteudoNotificacao-dados button, 
+    .cardColeta01 h4, 
+    .cardColeta01 span,
+    .cardColeta02 h4, 
+    .cardColeta02 span, 
+    .cardEquipe01 h4,
+    .cardEquipe01 span,
+    .cardEquipe02 button,
+    .cardEquipe02 h4, 
+    .cardEquipe02 span, 
+    .doisFatores-esquerda h4, 
+    .doisFatores-esquerda span,  
+    .cargoDados h6 {
+        font-size: 14px;
+    }
 }
