@@ -1,4 +1,8 @@
 @media (max-width: 768px) {
+
+    html {
+        overflow-x: hidden ;
+    }
     .sidebar {
         position: fixed;
         left: -100%;
@@ -65,5 +69,38 @@
         display: flex;
         flex-direction: column;
     }
-    
+
+    .card-server {
+        flex-direction: row;
+        min-height: 46%;
+
+    }
+
+    .card-server img {
+        width: 20px;
+        height: 30px;
+    }
+
+    .titulo-cards-servidores {
+        align-items: center;
+    }
+
+    .barra-pesquisa{
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .barra-pesquisa input, button{
+        width: 100%;
+    }
+
+    table{
+        display: flex;
+        overflow-x: auto;
+        scrollbar-width: auto;
+        width: 100%;
+        flex-direction: column;
+    }
+
 }
