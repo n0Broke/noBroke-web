@@ -103,4 +103,17 @@
         flex-direction: column;
     }
 
+    .kpi-relatorio {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        width: 100%;
+        
+    }
+
+    .conteudo-relatorio {
+        min-width: 100%;
+        display: flex;
+        height: 32%;
+    }
+
 }
