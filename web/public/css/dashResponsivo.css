@@ -1,9 +1,10 @@
 @media (max-width: 768px) {
 
     html {
-        overflow-x: hidden ;
+        overflow-x: hidden;
 
     }
+
     .sidebar {
         position: fixed;
         left: -100%;
@@ -13,26 +14,87 @@
         transition: 0.3s;
         z-index: 1000;
     }
-    
-    .sidebar.ativa {
+
+    .compacta {
         left: 0;
     }
+
+    .botao-fechar{
+        display: flex !important;
+        position: fixed;
+        cursor: pointer;
+        width: 100%;
+        justify-content: flex-end;
+        color: var(--branco);
+    }
     
-    .cards-grafico, .conteudo-dash03, .componentes-servidor, .legendas-servidor, .header-conteudo-dash, .header-esquerdo01, .cards-monitoramento, .cards-componentesServidor{
+    .botao-fechar span{
+        font-size: 50px;
+    }
+
+    /* Modo visivel */
+    .sidebar.compacta {
+        width: 80%;
+    }
+
+    /* Esconder textos */
+    .sidebar.compacta .titulo_sidebar,
+    .sidebar.compacta .btn-nobroke a,
+    .sidebar.compacta .btn-nobroke span:not(.icon),
+    .sidebar.compacta .user-infos {
+        display: flex;
+    }
+
+    .sidebar.compacta .menu_centro {
+        width: 100%;
+        align-items: start;
+    }
+
+    /* Centralizar ícones */
+    .sidebar.compacta .btn-nobroke {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        width: 100%;
+    }
+
+    /* Ajustar ícones */
+    .sidebar.compacta .icon img {
+        width: 30px;
+    }
+
+    .sidebar.compacta .user-profile {
+        width: 100;
+        justify-content: start;
+    }
+
+    .conteudo-dash.expandido {
+        width: 100% !important;
+        z-index: -1 !important;
+    }
+
+    .cards-grafico,
+    .conteudo-dash03,
+    .componentes-servidor,
+    .legendas-servidor,
+    .header-conteudo-dash,
+    .header-esquerdo01,
+    .cards-monitoramento,
+    .cards-componentesServidor {
         flex-direction: column;
         min-width: 100%;
     }
 
-    .header-direita{
+    .header-direita {
         margin-bottom: 10px;
     }
 
-    .cards-conteudo{
+    .cards-conteudo {
         max-height: 30%;
         min-width: 45%;
     }
 
-    .conteudo-dash01{
+    .conteudo-dash01 {
         flex-wrap: wrap;
         min-width: 100%;
         justify-content: center;
@@ -66,7 +128,11 @@
         flex-wrap: wrap;
     }
 
-    .alerta01, .alerta02, .alerta03, .alerta04, .alerta05 {
+    .alerta01,
+    .alerta02,
+    .alerta03,
+    .alerta04,
+    .alerta05 {
         display: flex;
         flex-direction: column;
     }
@@ -85,17 +151,18 @@
         align-items: center;
     }
 
-    .barra-pesquisa{
+    .barra-pesquisa {
         align-items: center;
         flex-direction: column;
         gap: 10px;
     }
 
-    .barra-pesquisa input, button{
+    .barra-pesquisa input,
+    button {
         width: 100%;
     }
 
-    table{
+    table {
         display: flex;
         overflow-x: auto;
         scrollbar-width: auto;
@@ -107,7 +174,7 @@
         flex-wrap: nowrap;
         flex-direction: column;
         width: 100%;
-        
+
     }
 
     .conteudo-relatorio {
@@ -116,7 +183,7 @@
         height: 32%;
     }
 
-    .componentesServidor{
+    .componentesServidor {
         overflow-y: auto;
         scrollbar-width: auto;
     }
@@ -145,44 +212,44 @@
     .configuracoesPainel {
         min-width: 100%;
     }
-    
+
     .geralBotoes {
         min-width: 100%;
     }
 
-    
+
     .cardEquipe01 {
         display: flex;
     }
-    
+
     .equipeUsuarios {
         gap: 30px;
         width: 100%;
-        
+
     }
 
     .funcionarioCargo {
         display: none;
     }
 
-    
+
     .equipeUsuarioFoto {
         width: 34px;
         padding: 6px 5px;
         border-radius: 50%;
-    } 
+    }
 
-    .funcionario-esquerda img{
+    .funcionario-esquerda img {
         background-color: transparent;
         padding: 0;
         width: 20px;
     }
 
-    .tituloEquipes{
+    .tituloEquipes {
         flex-direction: column
     }
 
-   
+
     .btnCargos {
         min-width: 100%;
     }
@@ -196,16 +263,16 @@
 
     }
 
-    .popUpFuncionario-dados{
+    .popUpFuncionario-dados {
         flex-direction: column;
     }
 
-    .popUpFuncionario-inserirDados-direita, 
+    .popUpFuncionario-inserirDados-direita,
     .popUpFuncionario-inserirDados-esquerda {
         min-width: 100%;
     }
 
-    
+
     .dadosPerfil-input {
         display: flex;
         flex-direction: column;
@@ -230,33 +297,33 @@
     .perfilBotoes {
         min-width: 100%;
     }
-    
+
     .container-fotoPerfil {
         background-color: transparent;
     }
 
-    .funcionarioDados h4, 
-    .funcionarioDados span, 
-    .cargoDados span, 
-    .cargoInfo-direita span, 
-    .sessaoLinhas h6{
+    .funcionarioDados h4,
+    .funcionarioDados span,
+    .cargoDados span,
+    .cargoInfo-direita span,
+    .sessaoLinhas h6 {
         font-size: 12px;
     }
 
-    .cardNotificacoes01 h4, 
-    .cardNotificacoes01 span, 
-    .conteudoNotificacao-dados button, 
-    .cardColeta01 h4, 
+    .cardNotificacoes01 h4,
+    .cardNotificacoes01 span,
+    .conteudoNotificacao-dados button,
+    .cardColeta01 h4,
     .cardColeta01 span,
-    .cardColeta02 h4, 
-    .cardColeta02 span, 
+    .cardColeta02 h4,
+    .cardColeta02 span,
     .cardEquipe01 h4,
     .cardEquipe01 span,
     .cardEquipe02 button,
-    .cardEquipe02 h4, 
-    .cardEquipe02 span, 
-    .doisFatores-esquerda h4, 
-    .doisFatores-esquerda span,  
+    .cardEquipe02 h4,
+    .cardEquipe02 span,
+    .doisFatores-esquerda h4,
+    .doisFatores-esquerda span,
     .cargoDados h6 {
         font-size: 14px;
     }

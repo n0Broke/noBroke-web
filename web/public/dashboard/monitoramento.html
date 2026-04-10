@@ -38,6 +38,9 @@
 
   <div class="row min-vh-100">
     <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta" style="padding: 25px;">
+      <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
+        <span>X</span>
+      </div>
       <div class="logo-container">
         <img id="imgLogo" class="logo-dash img-fluid" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
       </div>
@@ -120,7 +123,7 @@
             style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
           <a href="dashboard.html">Dashboard</a>
           <span style="color: #7D8999;">></span>
-          <span style="color: white;">Monitoramento</span>
+          <span style="color: var(--branco);">Monitoramento</span>
         </div>
         <div id="iconeModo">
           <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
