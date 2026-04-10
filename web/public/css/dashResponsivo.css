@@ -324,7 +324,33 @@
     .cardEquipe02 span,
     .doisFatores-esquerda h4,
     .doisFatores-esquerda span,
-    .cargoDados h6 {
+    .cargoDados h6,
+    .form-contato h2,
+    .form-contato label,
+    .form-contato input {
         font-size: 14px;
     }
+
+    .sup-dash {
+        gap: 0;
+    }
+    .cards-conteudo-suporte {
+        min-width: 100%;
+    }
+
+    .cards-conteudo-seguranca, .cards-conteudo-suporte {
+        height: 90%;
+        align-items: center;
+    }
+
+    .info-esquerda strong{
+        font-size: 12px;
+    }
+
+    .info-direita button {
+        font-size: 12px;
+    }
+
+    
+    
 }
