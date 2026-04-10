@@ -37,7 +37,7 @@
 <body onload="verificarModo()">
 
   <div class="row min-vh-100">
-    <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta" style="padding: 25px;">
+    <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
       <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
         <span>X</span>
       </div>
@@ -484,22 +484,37 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      function fecharAbrirLateral() {
-        const sidebar = document.getElementById("div_lateralAberta");
-        const conteudo = document.getElementById("telaPrincipal");
-
-        sidebar.classList.toggle("compacta");
-        conteudo.classList.toggle("expandido");
-      }
-
       const root = document.documentElement;
       const imgModo = document.getElementById("imgModo");
       const imgLogo = document.getElementById("imgLogo");
       const imgUser = document.getElementById("imgUser");
-
-      let modoEscuro = false;
+      const sidebar = document.getElementById("div_lateralAberta");
 
       imgModo.addEventListener("click", mudarModo);
+      let modoEscuro = false;
+
+      function fecharAbrirLateral() {
+        const conteudo = document.getElementById("telaPrincipal");
+
+        sidebar.classList.toggle("compacta");
+        conteudo.classList.toggle("expandido");
+
+        if (sidebar.classList.contains("compacta")) {
+          sessionStorage.LATERAL = 1;
+          if (modoEscuro) {
+            imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
+          } else {
+            imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+          }
+        } else {
+          sessionStorage.LATERAL = 0;
+          if (modoEscuro) {
+            imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+          } else {
+            imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+          }
+        }
+      }
 
       function mudarModo() {
         modoEscuro = !modoEscuro;
@@ -512,8 +527,20 @@
           root.style.setProperty('--brancoCinza', '#1D2025');
           root.style.setProperty('--bordas', '#b5b5b5');
           imgModo.src = "../assets/icon/icons-dashboard/lua-crescente.png";
-          imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
-          imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg"
+          imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg";
+          if (sidebar.classList.contains("compacta")) {
+            if(modoEscuro){
+                imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
+            }else{
+                imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+            }
+        } else {
+            if (modoEscuro) {
+                imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+            } else {
+                imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+            }
+        }
         } else {
           sessionStorage.MODO = 0;
           root.style.setProperty('--branco', '#fff');
@@ -522,14 +549,29 @@
           root.style.setProperty('--brancoCinza', '#b5b5b5');
           root.style.setProperty('--bordas', '#3a3f45');
           imgModo.src = "../assets/icon/icons-dashboard/brilho-do-sol.png";
-          imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
-          imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg"
+          imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg";
+          if (sidebar.classList.contains("compacta")) {
+            if(modoEscuro){
+                imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
+            }else{
+                imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+            }
+        } else {
+            if (modoEscuro) {
+                imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+            } else {
+                imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+            }
+        }
         }
       }
 
       function verificarModo() {
         if (sessionStorage.MODO == 1) {
           mudarModo()
+        }
+        if(sessionStorage.LATERAL == 1){
+          fecharAbrirLateral()
         }
       }
 

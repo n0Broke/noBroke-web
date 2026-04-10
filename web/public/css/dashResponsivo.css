@@ -19,7 +19,7 @@
         left: 0;
     }
 
-    .botao-fechar{
+    .botao-fechar {
         display: flex !important;
         position: fixed;
         cursor: pointer;
@@ -27,8 +27,8 @@
         justify-content: flex-end;
         color: var(--branco);
     }
-    
-    .botao-fechar span{
+
+    .botao-fechar span {
         font-size: 50px;
     }
 
@@ -59,12 +59,17 @@
     }
 
     /* Ajustar ícones */
+    .sidebar.compacta .logo-container img {
+        width: 50%;
+        height: 50px;
+    }
+
     .sidebar.compacta .icon img {
         width: 30px;
     }
 
     .sidebar.compacta .user-profile {
-        width: 100;
+        width: 100%;
         justify-content: start;
     }
 
@@ -78,7 +83,18 @@
     .componentes-servidor,
     .legendas-servidor,
     .header-conteudo-dash,
-    .cards-componentesServidor {
+    .cards-componentesServidor,
+    .header-monitoramento,
+    .configuracoesCorpo,
+    .configuracoesPainel,
+    .alerta01,
+    .alerta02,
+    .alerta03,
+    .alerta04,
+    .alerta05,
+    .tituloEquipes,
+    .btnCargos,
+    .popUpFuncionario-dados {
         flex-direction: column;
         min-width: 100%;
     }
@@ -93,7 +109,7 @@
         min-width: 45%;
     }
 
-    .conteudo-dash01{
+    .conteudo-dash01 {
         flex-wrap: wrap;
         min-width: 100%;
         justify-content: center;
@@ -126,15 +142,6 @@
     .lista-alertas {
         display: flex;
         flex-wrap: wrap;
-    }
-
-    .alerta01,
-    .alerta02,
-    .alerta03,
-    .alerta04,
-    .alerta05 {
-        display: flex;
-        flex-direction: column;
     }
 
     .conteudo-alerta-esquerda {
@@ -193,11 +200,17 @@
         scrollbar-width: auto;
     }
 
-    .cardIndividual-monitoramento {
-        min-width: 100%;
-    }
-
-    .cardIndividual-ServidoresComponentes {
+    .cardIndividual-monitoramento,
+    .cardIndividual-ServidoresComponentes,
+    .cardIndividual-ServidoresComponentes,
+    .geralBotoes,
+    .dadosPerfil-esquerda,
+    .dadosPerfil-direita,
+    .popUpFuncionario-inserirDados-direita,
+    .popUpFuncionario-inserirDados-esquerda,
+    .segurancaInput-esquerda,
+    .segurancaInput-direita,
+    .perfilBotoes {
         min-width: 100%;
     }
 
@@ -205,23 +218,6 @@
         height: auto;
         max-height: none;
     }
-
-    .cardIndividual-ServidoresComponentes {
-        width: 100%;
-    }
-
-    .configuracoesCorpo {
-        flex-direction: column;
-    }
-
-    .configuracoesPainel {
-        min-width: 100%;
-    }
-
-    .geralBotoes {
-        min-width: 100%;
-    }
-
 
     .cardEquipe01 {
         display: flex;
@@ -250,15 +246,6 @@
         width: 20px;
     }
 
-    .tituloEquipes {
-        flex-direction: column
-    }
-
-
-    .btnCargos {
-        min-width: 100%;
-    }
-
     .fundoPopUp {
         position: fixed;
         top: 0;
@@ -268,39 +255,14 @@
 
     }
 
-    .popUpFuncionario-dados {
-        flex-direction: column;
-    }
-
-    .popUpFuncionario-inserirDados-direita,
-    .popUpFuncionario-inserirDados-esquerda {
-        min-width: 100%;
-    }
-
-
     .dadosPerfil-input {
         display: flex;
         flex-direction: column;
     }
 
-    .dadosPerfil-esquerda,
-    .dadosPerfil-direita {
-        width: 100%;
-    }
-
     .segurancaPerfil-input {
         display: flex;
         flex-direction: column;
-    }
-
-    .segurancaInput-esquerda,
-    .segurancaInput-direita {
-        width: 100%;
-    }
-
-
-    .perfilBotoes {
-        min-width: 100%;
     }
 
     .container-fotoPerfil {
@@ -334,7 +296,7 @@
     .cargoDados h6,
     .form-contato h2,
     .form-contato label,
-    .form-contato input, 
+    .form-contato input,
     .cardMonitoramento-infos span,
     .status-servidor,
     .tipo-servidor {
@@ -344,11 +306,13 @@
     .sup-dash {
         gap: 0;
     }
+
     .cards-conteudo-suporte {
         min-width: 100%;
     }
 
-    .cards-conteudo-seguranca, .cards-conteudo-suporte {
+    .cards-conteudo-seguranca,
+    .cards-conteudo-suporte {
         height: 90%;
         align-items: center;
     }
@@ -368,10 +332,6 @@
         min-width: unset;
     }
 
-    .header-monitoramento {
-        flex-direction: column;
-    }
-
     .header-monitoramento-direita button {
         width: 90vw;
     }
@@ -380,16 +340,8 @@
         gap: 0;
     }
 
-    .header-esquerdo01{
-        display: flex;
-    }
-
     .header-esquerdo01 h3 {
         font-size: 16px;
-    }
-
-    .botao-exportar {
-        min-width: 100%;
     }
 
 }
