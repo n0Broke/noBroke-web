@@ -512,14 +512,19 @@ body {
     width: 100%;
 }
 
+.sidebar.compacta .btn-nobroke img{
+    margin: 0;
+}
+
 .sidebar.compacta .logo-container{
-    height: 8%;
+    width: 100px;
+    height: auto;
 }
 
 /* Ajustar ícones */
 .sidebar.compacta .logo-container img{
-    width: 100%;
-    height: 60px;
+    width: 60px;
+    height: 50px;
 }
 
 
@@ -530,6 +535,10 @@ body {
 .sidebar.compacta .user-profile{
     width: 100px;
     justify-content: center;
+}
+
+.sidebar.compacta .user-profile img{
+    width: 80px;
 }
 
 .conteudo-dash.expandido {
@@ -663,10 +672,16 @@ body {
 }
 
 .profile-img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-bottom: 10px;
+    display: flex;
+    width: 30%;
+    height: 80%;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-img img{
+    width: 80px;
+    height: 100%;
 }
 
 .username {
@@ -743,8 +758,9 @@ table {
     margin-right: 10px;
 }
 
-th p {
-    color: grey;
+thead, tr{
+    font-size: 16px;
+    width: 100% !important;
 }
 
 th,

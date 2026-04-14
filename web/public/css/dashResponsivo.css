@@ -2,7 +2,6 @@
 
     html {
         overflow-x: hidden;
-
     }
 
     .sidebar {
@@ -48,24 +47,26 @@
     .sidebar.compacta .menu_centro {
         width: 100%;
         align-items: start;
-    }
+    }  
 
     /* Centralizar ícones */
     .sidebar.compacta .btn-nobroke {
         display: flex;
         justify-content: start;
-        align-items: start;
         width: 100%;
     }
 
-    /* Ajustar ícones */
-    .sidebar.compacta .logo-container img {
-        width: 50%;
-        height: 50px;
+    .sidebar.compacta .btn-nobroke img{
+        margin-right: 10px;
     }
 
-    .sidebar.compacta .icon img {
-        width: 30px;
+    /* Ajustar ícones */
+    .sidebar.compacta .logo-container{
+        width: 100%;
+    }
+
+    .sidebar.compacta .logo-container img {
+        width: 100px;
     }
 
     .sidebar.compacta .user-profile {
@@ -344,4 +345,469 @@
         font-size: 16px;
     }
 
+}
+
+/* ===== DESKTOP MÉDIO (769px – 1280px) ===== */
+@media (min-width: 769px) and (max-width: 1280px) {
+     html {
+        overflow-x: hidden;
+    }
+
+    h3{
+        font-size: 32px !important;
+    }
+    span, p, h4, button, a{
+        font-size: 22px !important;
+    }
+
+    .sidebar {
+        position: fixed;
+        left: -100%;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        transition: 0.3s;
+        z-index: 1000;
+    }
+
+    .compacta {
+        left: 0;
+    }
+
+    .botao-fechar {
+        display: flex !important;
+        position: fixed;
+        cursor: pointer;
+        width: 100%;
+        justify-content: flex-end;
+        color: var(--branco);
+    }
+
+    .botao-fechar span {
+        font-size: 50px !important;
+    }
+
+    /* Modo visivel */
+    .sidebar.compacta {
+        width: 70%;
+    }
+
+    /* Esconder textos */
+    .sidebar.compacta .titulo_sidebar,
+    .sidebar.compacta .btn-nobroke a,
+    .sidebar.compacta .btn-nobroke span:not(.icon),
+    .sidebar.compacta .user-infos {
+        display: flex;
+        font-size: 26px ;
+    }
+
+    .sidebar.compacta .menu_centro {
+        width: 100%;
+        align-items: center;
+    }
+
+    .sidebar.compacta .menu01 {
+        height: 60%;
+    }
+
+    /* Centralizar ícones */
+    /* Centralizar ícones */
+    .sidebar.compacta .btn-nobroke {
+        display: flex;
+        justify-content: start;
+        width: 100%;
+    }
+
+    .sidebar.compacta .btn-nobroke img{
+        margin-right: 10px;
+    }
+
+    /* Ajustar ícones */
+    .sidebar.compacta .logo-container{
+        width: 100%;
+    }
+
+    .sidebar.compacta .logo-container img {
+        width: 150px;
+        height: 100px;
+    }
+
+    .sidebar.compacta .icon img {
+        width: 60px;
+    }
+
+    .sidebar.compacta .user-profile {
+        width: 100%;
+        height: 15%;
+        justify-content: start;
+    }
+
+    .sidebar.compacta .user-profile{
+        font-size: 25px;
+    }
+
+    .sidebar.compacta .username{
+        font-size: 26px;
+    }
+
+    .sidebar.compacta .profile-img img{
+        width: 100%;
+    }
+
+    .conteudo-dash.expandido {
+        width: 100% !important;
+        z-index: -1 !important;
+    }
+
+    .conteudo-dash{
+        width: 100% !important;
+    }
+
+    .cards-grafico,
+    .conteudo-dash03,
+    .componentes-servidor,
+    .legendas-servidor,
+    .header-conteudo-dash,
+    .cards-componentesServidor,
+    .header-monitoramento,
+    .configuracoesCorpo,
+    .configuracoesPainel,
+    .alerta01,
+    .alerta02,
+    .alerta03,
+    .alerta04,
+    .alerta05,  
+    .btnCargos,
+    .popUpFuncionario-dados {
+        flex-direction: column;
+        min-width: 100%;
+    }
+
+    .header-direita {
+        margin-bottom: 10px;
+        display: flex;
+    }
+
+    .cards-conteudo {
+        max-height: 30%;
+        min-width: 45%;
+    }
+
+    .conteudo-dash01 {
+        flex-wrap: wrap;
+        min-width: 100%;
+        justify-content: center;
+    }
+
+    .cards-alerta-central {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .card-alerta-geral {
+        display: flex;
+        min-width: 48%;
+        min-height: 45%;
+        gap: 5px;
+    }
+
+    .central-alerta-filtros {
+        display: block;
+        margin-bottom: 60px;
+        width: 100%;
+    }
+
+    .central-alerta-filtros input {
+        display: flex;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .lista-alertas {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .conteudo-alerta-esquerda {
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .conteudo-alerta-esquerda img{
+        width: 100px !important;
+        height: 80px !important;
+    }
+
+    .card-server {
+        flex-direction: row;
+        min-height: 46%;
+    }
+
+    .card-server img {
+        width: 20px;
+        height: 30px;
+    }
+
+    .titulo-cards-servidores {
+        align-items: center;
+    }
+
+    .barra-pesquisa {
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .barra-pesquisa input {
+        width: 100%;
+    }
+
+    .Tabela-Relatorios thead, 
+    .Tabela-Relatorios tbody{
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .Tabela-Relatorios th, 
+    .Tabela-Relatorios tr, 
+    .Tabela-Relatorios td{
+        width: 100% !important;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 0;
+    }
+
+    .Tabela-Relatorios img, 
+    .Tabela-Relatorios span, 
+    .subtitulo-tabela{
+        margin: 10px;
+    }
+
+  
+    .tabela-servidores td{
+            font-size: 20px;
+    }
+    .tabela-container {
+        overflow-x: auto;
+    }
+
+    .linha-relatorio{
+        display: flex;
+        width: 100% !important;
+    }
+    
+
+    .linha-relatorio strong{
+        font-size: 20px !important;
+    }
+
+    .linha-relatorio p{
+        font-size: 24px !important;
+    }
+
+    .kpi-relatorio {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        width: 100%;
+
+    }
+
+    .conteudo-relatorio {
+        min-width: 100%;
+        display: flex;
+        height: 32%;
+    }
+
+    .componentesServidor {
+        overflow-y: auto;
+        scrollbar-width: auto;
+    }
+
+    .cardIndividual-monitoramento,
+    .cardIndividual-ServidoresComponentes,
+    .cardIndividual-ServidoresComponentes,
+    .geralBotoes,
+    .dadosPerfil-esquerda,
+    .dadosPerfil-direita,
+    .popUpFuncionario-inserirDados-direita,
+    .popUpFuncionario-inserirDados-esquerda,
+    .segurancaInput-esquerda,
+    .segurancaInput-direita,
+    .perfilBotoes {
+        min-width: 100%;
+    }
+
+    .cards-componentesServidor {
+        height: auto;
+        max-height: none;
+    }
+
+    .cardEquipe01 {
+        display: flex;
+    }
+
+    .equipeUsuarios {
+        gap: 30px;
+        width: 100%;
+
+    }
+
+    .funcionarioCargo {
+        display: none;
+    }
+
+
+    .equipeUsuarioFoto {
+        width: 34px;
+        padding: 6px 5px;
+        border-radius: 50%;
+    }
+
+    .funcionario-esquerda img {
+        background-color: transparent;
+        padding: 0;
+        width: 20px;
+    }
+
+    .fundoPopUp {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+
+    }
+
+    .dadosPerfil-input {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .segurancaPerfil-input {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .container-fotoPerfil {
+        background-color: transparent;
+    }
+
+    .funcionarioDados h4,
+    .funcionarioDados span,
+    .cargoDados span,
+    .cargoInfo-direita span,
+    .sessaoLinhas h6,
+    .info-esquerda strong,
+    .info-direita button {
+        font-size: 12px;
+    }
+
+    .cardNotificacoes01 h4,
+    .cardNotificacoes01 span,
+    .conteudoNotificacao-dados button,
+    .cardColeta01 h4,
+    .cardColeta01 span,
+    .cardColeta02 h4,
+    .cardColeta02 span,
+    .cardEquipe01 h4,
+    .cardEquipe01 span,
+    .cardEquipe02 button,
+    .cardEquipe02 h4,
+    .cardEquipe02 span,
+    .doisFatores-esquerda h4,
+    .doisFatores-esquerda span,
+    .cargoDados h6,
+    .form-contato h2,
+    .form-contato label,
+    .form-contato input,
+    .cardMonitoramento-infos span,
+    .status-servidor,
+    .tipo-servidor {
+        font-size: 14px;
+    }
+
+    .sup-dash {
+        gap: 0;
+    }
+
+    .cards-conteudo-suporte {
+        min-width: 100%;
+    }
+
+    .cards-conteudo-seguranca,
+    .cards-conteudo-suporte {
+        height: 90%;
+        align-items: center;
+    }
+
+    .caixa-alerta {
+        gap: 16px;
+    }
+
+    .cards-monitoramento {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .cardIndividual-monitoramento {
+        width: 48%;
+        min-width: unset;
+    }
+
+    .header-monitoramento-direita button {
+        width: 90vw;
+    }
+
+    .status-servidor {
+        gap: 0;
+    }
+
+    .header-esquerdo01 h3 {
+        font-size: 16px;
+    }
+
+    .cards-conteudo-relatorios{
+        justify-content: center;
+        flex-direction: row;
+    }
+
+    .conteudo-abaixo-cards{
+        align-items: center;
+        font-size: 26px;
+    }
+
+    .cards-conteudo-relatorios .titulo-cards-servidores{
+        align-items: flex-start;
+        width: 60px;
+        height: 200px;
+    }
+
+    .card01{
+        justify-content: start;
+        align-items: center;
+    }
+
+    .cards-conteudo-relatorios .titulo-cards-servidores img{
+        width: 50px !important;
+    }
+
+    .infoCaixaAlerta{
+        display: flex;
+        width: 100% !important;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .form-contato h2, 
+    .form-contato p, 
+    .form-contato label, 
+    .form-contato input,
+    .Tabela-suporte th,
+    .cardsPerfil h6 {
+        font-size: 20px;
+    }
+
+    
 }
