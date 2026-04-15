@@ -368,19 +368,19 @@
 
             <div class="popUpFuncionario-SenhaServidor">
                 <h6>Nome do Servidor</h6>
-                <input type="text" placeholder="SRV-PROD-API-01">
+                <input id = "input_nome_servidor" type="text" placeholder="SRV-PROD-API-01">
             </div>
 
 
             <div class="popUpFuncionario-dadosServidor">
                 <div class="popUpFuncionario-inserirDados-esquerdaServidor" style="width: 50%;">
                     <h6>Sistema Operacional</h6>
-                    <input type="text" placeholder="Ubuntu 22.04 LTS">
+                    <input id = "input_SO_servidor" type="text" placeholder="Ubuntu 22.04 LTS">
                 </div>
 
                 <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
                     <h6>Número Serial</h6>
-                    <input type="text" placeholder="SN-XXXXXXX">
+                    <input id = "numero_serial_servidor" type="text" placeholder="SN-XXXXXXX">
                 </div>
             </div>
 
@@ -388,12 +388,12 @@
             <div class="popUpFuncionario-dadosServidor">
                 <div class="popUpFuncionario-inserirDados-esquerdaServidor" style="width: 50%;">
                     <h6>Hostname</h6>
-                    <input type="text" placeholder="host.nobroke.io">
+                    <input id = "input_hostname_servidor" type="text" placeholder="host.nobroke.io">
                 </div>
 
                 <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
                     <h6>Endereço IP</h6>
-                    <input type="text" placeholder="10.0.1.100">
+                    <input id = "input_endereco_servidor" type="text" placeholder="10.0.1.100">
                 </div>
             </div>
 
@@ -401,7 +401,7 @@
             <div class="popUpFuncionario-dadosServidor">
                 <div class="popUpFuncionario-inserirDados-esquerda" style="width: 50%;">
                     <h6>Porta SSH</h6>
-                    <input type="text" placeholder="22">
+                    <input id = "input_portaSSH_servidor" type="text" placeholder="22">
                 </div>
 
                 <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
@@ -418,7 +418,7 @@
 
             <div class="popUpFuncionario-SenhaServidor">
                 <h6>Localização (Data Center)</h6>
-                <input type="text" placeholder="São Paulo — SP1-DC">
+                <input id ="input_localizacao_servidor" type="text" placeholder="São Paulo — SP1-DC">
             </div>
 
             <div class="popUpFuncionario-confirmarServidor">
@@ -913,8 +913,8 @@
 
                 <p>Defina os limites para cada nível de alerta</p>
 
-            </div
-            <h6 class="titulo-grupo"> <img src="../assets/svg/crescer.png" alt="" width="20px"> CPU(%)</h6>
+            </div>
+            <h6></h6> class="titulo-grupo"> <img src="../assets/svg/crescer.png" alt="" width="20px"> CPU(%)</h6>
             <div class="componente-box">
                 <p>Utilização da CPU</p>
                 <div class="limites">
@@ -1214,6 +1214,8 @@
     }
     function addFunc3() {
         document.getElementById('popUpCadastrarComponente').style.display = 'flex';
+        console.log("CLICOU")
+        cadastrarServidor();
     }
     function addFunc4() {
         document.getElementById('popUpCadastrarAvisos').style.display = 'flex';
@@ -1324,4 +1326,56 @@
             fecharAbrirLateral()
         }
     }
+     function cadastrarServidor(){
+       
+        var nomeServidor = input_nome_servidor.value; 
+        var SOServidor = input_SO_servidor.value;
+        var numeroSerialServidor = numero_serial_servidor.value;
+        var HostServidor = input_hostname_servidor.value; 
+        var enderecoServidor = input_endereco_servidor.value;
+        var portaSSHservidor = input_portaSSH_servidor.value; 
+        var ambienteServidor = select_ambiente.value;
+        var localizacaoServidor = input_localizacao_servidor.value;
+        var fk_empresa = sessionStorage.getItem('FK_EMPRESA');
+
+        
+            if(nomeServidor == ""|| nomeServidor == "" || numeroSerialServidor == "" ||
+            HostServidor == "" || enderecoServidor == ""|| portaSSHservidor == "" || localizacaoServidor == "" ){
+                console.log("As informaçoes do servidor não foram preenchidas corretamente!")
+            }else{
+            fetch("http://localhost:3333/cadastrarServidor", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                   nomeServer: nomeServidor, 
+                SOServer: SOServidor, 
+                SerialServer: numeroSerialServidor, 
+                hostServer: HostServidor, 
+                enderecoIPServer: enderecoServidor, 
+                SSHServer: portaSSHservidor,
+                ambienteServer: ambienteServidor,
+                localizacaoServer: localizacaoServidor,
+                fk_empresaServer: fk_empresa
+                })
+            })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            console.log("Cadastro server!!!")
+          } else {
+            console.log("Deu pauem cadastrar servidor!!!");
+            throw "Houve um erro ao tentar realizar o cadastro do servidor!";
+          }
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        })
+
+      return false;
+    }
+}
+        
 </script>

@@ -23,6 +23,7 @@ var avisosRouter = require("./src/routes/avisos");
 var cadastroFuncionarioRouter = require("./src/routes/cadastroFuncionario");
 var cadastroEmpresaRouter = require("./src/routes/cadastroEmpresa");
 var cadastroAdmRouter = require("./src/routes/cadastroAdm");
+var servidor = require("./src/routes/servidor");
 
 
 
@@ -40,6 +41,7 @@ app.use("/avisos", avisosRouter);
 app.use("/cadastroFuncionario", cadastroFuncionarioRouter);
 app.use("/cadastroEmpresa", cadastroEmpresaRouter);
 app.use("/cadastroAdm", cadastroAdmRouter);
+app.use("/cadastrarServidor",servidor);
 
 
 app.listen(PORTA_APP, function () {
