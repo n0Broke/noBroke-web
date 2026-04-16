@@ -109,7 +109,7 @@
                         <!-- ================================================================= -->
                         <!-- Parte do perfil -->
                     </div>
-                    <div class="user-profile">
+                    <div class="user-profile" onclick="window.location.href = 'Configurações.html?aba=perfil'">
                         <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil"
                             class="profile-img">
                         <div class="user-infos">
@@ -177,23 +177,23 @@
 
                         <div class="cards-conteudo card01 card-server">
                             <div class="titulo-cards-servidores">
+                                <img class="card01-icon" src="../assets/svg/alertas/close-circle-svgrepo-com.svg"
+                                    alt="cpu" style="width: 25px;">
+                            </div>
+                            <div class="conteudo-abaixo-cards">
+                                <h1 style="color: red;">2</h1>
+                                <h4 style="color: red;">Críticos</h4>
+                            </div>
+                        </div>
+
+                        <div class="cards-conteudo card01 card-server">
+                            <div class="titulo-cards-servidores">
                                 <img class="card01-icon" src="../assets/svg/alert-svgrepo-com.svg" alt="cpu"
                                     style="width: 25px;">
                             </div>
                             <div class="conteudo-abaixo-cards">
                                 <h1 style="color: yellow;">2</h1>
                                 <h4 style="color: yellow;">Em Atenção</h4>
-                            </div>
-                        </div>
-
-                        <div class="cards-conteudo card01 card-server">
-                            <div class="titulo-cards-servidores">
-                                <img class="card01-icon" src="../assets/svg/alertas/close-circle-svgrepo-com.svg"
-                                    alt="cpu" style="width: 25px;">
-                            </div>
-                            <div class="conteudo-abaixo-cards">
-                                <h1 style="color: red;">1</h1>
-                                <h4 style="color: red;">Críticos</h4>
                             </div>
                         </div>
                     </div>
@@ -203,152 +203,152 @@
                         <button>Todos</button><button>Produção</button><button>Staging</button><button>DR</button><button>Desenvolvimento</button>
                     </div>
                     <div class="tabela-container">
-                    <table class="tabela-servidores" style="background-color: var(--pretoClaro);">
-                        <thead>
-                            <tr>
-                                <th>Servidor</th>
-                                <th>Ambiente</th>
-                                <th>Status</th>
-                                <th>CPU</th>
-                                <th>RAM</th>
-                                <th>Disco</th>
-                                <th>Latência</th>
-                                <th>Uptime</th>
-                                <th>Criticidade</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
+                        <table class="tabela-servidores" style="background-color: var(--pretoClaro);">
+                            <thead>
+                                <tr>
+                                    <th>Servidor</th>
+                                    <th>Ambiente</th>
+                                    <th>Status</th>
+                                    <th>CPU</th>
+                                    <th>RAM</th>
+                                    <th>Disco</th>
+                                    <th>Latência</th>
+                                    <th>Uptime</th>
+                                    <th>Criticidade</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <strong>SRV-PROD-API-01</strong><br>
-                                    <span>api-prod-01.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">Produção</span></td>
-                                <td><span class="tag saudavel" style="color: red;">Crítico</span></td>
-                                <td>95%</td>
-                                <td>91%</td>
-                                <td>88%</td>
-                                <td>230ms</td>
-                                <td>98.50%</td>
-                                <td><span class="tag criticidade" style="color: red;">Crítica</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>SRV-PROD-API-01</strong><br>
+                                        <span>api-prod-01.nobroke.io</span>
+                                    </td>
+                                    <td><span class="tag producao">Produção</span></td>
+                                    <td><span class="tag saudavel" style="color: red;">Crítico</span></td>
+                                    <td>95%</td>
+                                    <td>91%</td>
+                                    <td>88%</td>
+                                    <td>230ms</td>
+                                    <td>98.50%</td>
+                                    <td><span class="tag criticidade" style="color: red;">Crítica</span></td>
+                                    <td><button>Ver detalhes</button></td>
+                                </tr>
 
-                            <tr>
-                                <td>
-                                    <strong>SRV-PROD-HB-02</strong><br>
-                                    <span>hb-prod-02.nobroke.io</span>
-                                </td>
-                                <td><span class="tag staging">Produção</span></td>
-                                <td><span class="tag saudavel" style="color: yellow;">Atenção</span></td>
-                                <td>78%</td>
-                                <td>82%</td>
-                                <td>71%</td>
-                                <td>45ms</td>
-                                <td>99.90%</td>
-                                <td><span class="tag criticidade media" style="color: yellow;">Alta</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        <strong>SRV-PROD-HB-02</strong><br>
+                                        <span>hb-prod-02.nobroke.io</span>
+                                    </td>
+                                    <td><span class="tag staging">Produção</span></td>
+                                    <td><span class="tag saudavel" style="color: yellow;">Atenção</span></td>
+                                    <td>78%</td>
+                                    <td>82%</td>
+                                    <td>71%</td>
+                                    <td>45ms</td>
+                                    <td>99.90%</td>
+                                    <td><span class="tag criticidade media" style="color: yellow;">Alta</span></td>
+                                    <td><button>Ver detalhes</button></td>
+                                </tr>
 
-                             <tr>
-                                <td>
-                                    <strong>SRV-DEV-HB-01</strong><br>
-                                    <span>hb-dev-01.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">Desenvolvimento</span></td>
-                                <td><span class="tag saudavel" style="color: yellow;">Atenção</span></td>
-                                <td>65%</td>
-                                <td>72%</td>
-                                <td>60%</td>
-                                <td>38ms</td>
-                                <td>99.50%</td>
-                                <td><span class="tag criticidade" style="color: green;">Baixa</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        <strong>SRV-DEV-HB-01</strong><br>
+                                        <span>hb-dev-01.nobroke.io</span>
+                                    </td>
+                                    <td><span class="tag producao">Desenvolvimento</span></td>
+                                    <td><span class="tag saudavel" style="color: yellow;">Atenção</span></td>
+                                    <td>65%</td>
+                                    <td>72%</td>
+                                    <td>60%</td>
+                                    <td>38ms</td>
+                                    <td>99.50%</td>
+                                    <td><span class="tag criticidade" style="color: green;">Baixa</span></td>
+                                    <td><button>Ver detalhes</button></td>
+                                </tr>
 
-                            <tr>
-                                <td>
-                                    <strong>SRV-STG-HB-01</strong><br>
-                                    <span>hb-stg-01.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">Staging</span></td>
-                                <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
-                                <td>22%</td>
-                                <td>35%</td>
-                                <td>30%</td>
-                                <td>15ms</td>
-                                <td>99.85%</td>
-                                <td><span class="tag criticidade" style="color: yellow;">Média</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        <strong>SRV-STG-HB-01</strong><br>
+                                        <span>hb-stg-01.nobroke.io</span>
+                                    </td>
+                                    <td><span class="tag producao">Staging</span></td>
+                                    <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
+                                    <td>22%</td>
+                                    <td>35%</td>
+                                    <td>30%</td>
+                                    <td>15ms</td>
+                                    <td>99.85%</td>
+                                    <td><span class="tag criticidade" style="color: yellow;">Média</span></td>
+                                    <td><button>Ver detalhes</button></td>
+                                </tr>
 
-                            <tr>
-                                <td>
-                                    <strong>SRV-PROD-DB-01</strong><br>
-                                    <span>db-prod-01.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">Produção</span></td>
-                                <td><span class="tag critico" style="color: green;">Saudável</span></td>
-                                <td>35%</td>
-                                <td>58%</td>
-                                <td>42%</td>
-                                <td>8ms</td>
-                                <td>99.99%</td>
-                                <td><span class="tag criticidade critica" style="color: red;">Crítica</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        <strong>SRV-PROD-DB-01</strong><br>
+                                        <span>db-prod-01.nobroke.io</span>
+                                    </td>
+                                    <td><span class="tag producao">Produção</span></td>
+                                    <td><span class="tag critico" style="color: green;">Saudável</span></td>
+                                    <td>35%</td>
+                                    <td>58%</td>
+                                    <td>42%</td>
+                                    <td>8ms</td>
+                                    <td>99.99%</td>
+                                    <td><span class="tag criticidade critica" style="color: red;">Crítica</span></td>
+                                    <td><button>Ver detalhes</button></td>
+                                </tr>
 
-                            <tr>
-                                <td>
-                                    <strong>SRV-PROD-CACHE-01</strong><br>
-                                    <span>cache-prod-01.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">Produção</span></td>
-                                <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
-                                <td>18%</td>
-                                <td>45%</td>
-                                <td>22%</td>
-                                <td>3ms</td>
-                                <td>99.99%</td>
-                                <td><span class="tag criticidade" style="color: yellow;">Alta</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        <strong>SRV-PROD-CACHE-01</strong><br>
+                                        <span>cache-prod-01.nobroke.io</span>
+                                    </td>
+                                    <td><span class="tag producao">Produção</span></td>
+                                    <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
+                                    <td>18%</td>
+                                    <td>45%</td>
+                                    <td>22%</td>
+                                    <td>3ms</td>
+                                    <td>99.99%</td>
+                                    <td><span class="tag criticidade" style="color: yellow;">Alta</span></td>
+                                    <td><button>Ver detalhes</button></td>
+                                </tr>
 
-                            <tr>
-                                <td>
-                                    <strong>SRV-DR-HB-01</strong><br>
-                                    <span>hb-dr-01.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">DR</span></td>
-                                <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
-                                <td>5%</td>
-                                <td>12%</td>
-                                <td>20%</td>
-                                <td>25ms</td>
-                                <td>99.95%</td>
-                                <td><span class="tag criticidade" style="color: yellow;">Alta</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        <strong>SRV-DR-HB-01</strong><br>
+                                        <span>hb-dr-01.nobroke.io</span>
+                                    </td>
+                                    <td><span class="tag producao">DR</span></td>
+                                    <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
+                                    <td>5%</td>
+                                    <td>12%</td>
+                                    <td>20%</td>
+                                    <td>25ms</td>
+                                    <td>99.95%</td>
+                                    <td><span class="tag criticidade" style="color: yellow;">Alta</span></td>
+                                    <td><button>Ver detalhes</button></td>
+                                </tr>
 
-                            <tr>
-                                <td>
-                                    <strong>SRV-PROD-DB-01</strong><br>
-                                    <span>db-prod-01.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">Produção</span></td>
-                                <td><span class="tag critico" style="color: green;">Saudável</span></td>
-                                <td>35%</td>
-                                <td>58%</td>
-                                <td>42%</td>
-                                <td>8ms</td>
-                                <td>99.99%</td>
-                                <td><span class="tag criticidade critica" style="color: red;">Crítica</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                <tr>
+                                    <td>
+                                        <strong>SRV-PROD-DB-01</strong><br>
+                                        <span>db-prod-01.nobroke.io</span>
+                                    </td>
+                                    <td><span class="tag producao">Produção</span></td>
+                                    <td><span class="tag critico" style="color: green;">Saudável</span></td>
+                                    <td>35%</td>
+                                    <td>58%</td>
+                                    <td>42%</td>
+                                    <td>8ms</td>
+                                    <td>99.99%</td>
+                                    <td><span class="tag criticidade critica" style="color: red;">Crítica</span></td>
+                                    <td><button>Ver detalhes</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
     </body>
 
@@ -361,51 +361,51 @@
                     <span>Passo 1 de 3 — Informações do servidor</span>
                 </div>
                 <div class="headerPopUp-direita">
-                    <span onclick="fecharFunc()">x</span>
+                    <h4 onclick="fecharFunc()">X</h4>
                 </div>
             </div>
 
 
             <div class="popUpFuncionario-SenhaServidor">
-                <h6>Nome do Servidor</h6>
-                <input id = "input_nome_servidor" type="text" placeholder="SRV-PROD-API-01">
+                <span>Nome do Servidor</span>
+                <input id="input_nome_servidor" type="text" placeholder="SRV-PROD-API-01">
             </div>
 
 
             <div class="popUpFuncionario-dadosServidor">
                 <div class="popUpFuncionario-inserirDados-esquerdaServidor" style="width: 50%;">
-                    <h6>Sistema Operacional</h6>
-                    <input id = "input_SO_servidor" type="text" placeholder="Ubuntu 22.04 LTS">
+                    <span>Sistema Operacional</span>
+                    <input id="input_SO_servidor" type="text" placeholder="Ubuntu 22.04 LTS">
                 </div>
 
                 <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
-                    <h6>Número Serial</h6>
-                    <input id = "numero_serial_servidor" type="text" placeholder="SN-XXXXXXX">
+                    <span>Número Serial</span>
+                    <input id="numero_serial_servidor" type="text" placeholder="SN-XXXXXXX">
                 </div>
             </div>
 
 
             <div class="popUpFuncionario-dadosServidor">
                 <div class="popUpFuncionario-inserirDados-esquerdaServidor" style="width: 50%;">
-                    <h6>Hostname</h6>
-                    <input id = "input_hostname_servidor" type="text" placeholder="host.nobroke.io">
+                    <span>Hostname</span>
+                    <input id="input_hostname_servidor" type="text" placeholder="host.nobroke.io">
                 </div>
 
                 <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
-                    <h6>Endereço IP</h6>
-                    <input id = "input_endereco_servidor" type="text" placeholder="10.0.1.100">
+                    <span>Endereço IP</span>
+                    <input id="input_endereco_servidor" type="text" placeholder="10.0.1.100">
                 </div>
             </div>
 
 
-            <div class="popUpFuncionario-dadosServidor">
+            <div class="popUpFuncionario-dadosServidor portaSSH">
                 <div class="popUpFuncionario-inserirDados-esquerda" style="width: 50%;">
-                    <h6>Porta SSH</h6>
-                    <input id = "input_portaSSH_servidor" type="text" placeholder="22">
+                    <span>Porta SSH</span>
+                    <input id="input_portaSSH_servidor" type="text" placeholder="22">
                 </div>
 
                 <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
-                    <h6>Ambiente</h6>
+                    <span>Ambiente</span>
                     <select id="select_ambiente">
                         <option value="1">Produção</option>
                         <option value="2">Staging</option>
@@ -417,13 +417,13 @@
 
 
             <div class="popUpFuncionario-SenhaServidor">
-                <h6>Localização (Data Center)</h6>
-                <input id ="input_localizacao_servidor" type="text" placeholder="São Paulo — SP1-DC">
+                <span>Localização (Data Center)</span>
+                <input id="input_localizacao_servidor" type="text" placeholder="São Paulo — SP1-DC">
             </div>
 
             <div class="popUpFuncionario-confirmarServidor">
                 <button class="btnPopUp01" onclick="fecharFunc()">Cancelar</button>
-                <button class="btnPopUp02" onclick="addFunc3()">Próximo <img width="20px"
+                <button class="btnPopUp02" onclick="addFunc3()" style="color: white;">Próximo <img width="20px"
                         src="../assets/svg/seta-direita.png" alt=""></button>
             </div>
         </div>
@@ -438,7 +438,7 @@
                     <span>Passo 2 de 3 — Componentes monitorados</span>
                 </div>
                 <div class="headerPopUp-direitaServidor">
-                    <span onclick="fecharFunc()">x</span>
+                    <h4 onclick="fecharFunc2()">X</h4>
                 </div>
             </div>
 
@@ -872,8 +872,8 @@
             </div>
 
             <div class="popUpFuncionario-confirmarServidor">
-                <button class="btnPopUp01" onclick="fecharFunc2()">← Voltar</button>
-                <button class="btnPopUp02" onclick="addFunc4()">Próximo <img width="20px"
+                <button class="btnPopUp01" onclick="voltarFunc2()">← Voltar</button>
+                <button class="btnPopUp02" onclick="addFunc4()" style="color: white;">Próximo <img width="20px"
                         src="../assets/svg/seta-direita.png" alt=""></button>
             </div>
         </div>
@@ -888,7 +888,7 @@
                     <span>Passo 3 de 3 — Configurações de alertas</span>
                 </div>
                 <div class="headerPopUp-direitaServidor">
-                    <span onclick="fecharFunc()">x</span>
+                    <h4 onclick="fecharFunc3()">X</h4>
                 </div>
             </div>
 
@@ -914,7 +914,7 @@
                 <p>Defina os limites para cada nível de alerta</p>
 
             </div>
-            <h6></h6> class="titulo-grupo"> <img src="../assets/svg/crescer.png" alt="" width="20px"> CPU(%)</h6>
+            <h6 class="titulo-grupo"> <img src="../assets/svg/crescer.png" alt="" width="20px"> CPU(%)</h6>
             <div class="componente-box">
                 <p>Utilização da CPU</p>
                 <div class="limites">
@@ -955,7 +955,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="componente-box">
                 <p>Frequência(MHz)</p>
                 <div class="limites">
@@ -975,11 +974,131 @@
                     </div>
                 </div>
             </div>
+            <h6 class="titulo-grupo"><img src="../assets/svg/servidor.png" alt="" width="20px">Memória(%)</h6>
+            <div class="componente-box">
+                <p>Uso da memória RAM</p>
+                <div class="limites">
+                    <div>
+                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                width="20px">Saudavel</span>
+                        <input type="number" value="0">
+                    </div>
+                    <div>
+                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
+                        <input type="number" value="0">
+                    </div>
+                    <div>
+                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                width="20px">Critico</span>
+                        <input type="number" value="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="componente-box">
+                <p>Memória disponível RAM(GB)</p>
+                <div class="limites">
+                    <div>
+                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                width="20px">Saudavel</span>
+                        <input type="number" value="0">
+                    </div>
+                    <div>
+                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
+                        <input type="number" value="0">
+                    </div>
+                    <div>
+                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                width="20px">Critico</span>
+                        <input type="number" value="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="componente-box">
+                <p>Uso de swap</p>
+                <div class="limites">
+                    <div>
+                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                width="20px">Saudavel</span>
+                        <input type="number" value="0">
+                    </div>
+                    <div>
+                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
+                        <input type="number" value="0">
+                    </div>
+                    <div>
+                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                width="20px">Critico</span>
+                        <input type="number" value="0">
+                    </div>
+                </div>
+            </div>
+
+            <h6 class="titulo-grupo"><img src="../assets/svg/crescer.png" alt="" width="20px">Disco(%)</h6>
+            <div class="componente-box">
+                <p>Partições</p>
+                <div class="limites">
+                    <div>
+                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                width="20px">Saudavel</span>
+                        <input type="number" value="0">
+                    </div>
+                    <div>
+                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
+                        <input type="number" value="0">
+                    </div>
+                    <div>
+                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                width="20px">Critico</span>
+                        <input type="number" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="componente-box">
+                <p>Uso de disco</p>
+                <div class="limites">
+                    <div>
+                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                width="20px">Saudavel</span>
+                        <input type="number" value="0">
+                    </div>
+                    <div>
+                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
+                        <input type="number" value="0">
+                    </div>
+                    <div>
+                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                width="20px">Critico</span>
+                        <input type="number" value="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="componente-box">
+                <p>Latência de disco(ms)</p>
+                <div class="limites">
+                    <div>
+                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                width="20px">Saudavel</span>
+                        <input type="number" value="0">
+                    </div>
+                    <div>
+                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
+                        <input type="number" value="0">
+                    </div>
+                    <div>
+                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                width="20px">Critico</span>
+                        <input type="number" value="0">
+                    </div>
+                </div>
+            </div>
 
             <div>
-                <h6 class="titulo-grupo"><img src="../assets/svg/servidor.png" alt="" width="20px">Memória(%)</h6>
+                <h6 class="titulo-grupo"><img src="../assets/svg/crescer.png" alt="" width="20px">Rede</h6>
                 <div class="componente-box">
-                    <p>Uso da memória RAM</p>
+                    <p>Volume de dados enviados/recebidos(pkt/s)</p>
                     <div class="limites">
                         <div>
                             <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
@@ -1000,28 +1119,7 @@
                 </div>
 
                 <div class="componente-box">
-                    <p>Memória disponível RAM(GB)</p>
-                    <div class="limites">
-                        <div>
-                            <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                    width="20px">Saudavel</span>
-                            <input type="number" value="0">
-                        </div>
-                        <div>
-                            <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                    width="20px">Atenção</span>
-                            <input type="number" value="0">
-                        </div>
-                        <div>
-                            <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                    width="20px">Critico</span>
-                            <input type="number" value="0">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="componente-box">
-                    <p>Uso de swap</p>
+                    <p>Latência da rede(ms)</p>
                     <div class="limites">
                         <div>
                             <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
@@ -1042,9 +1140,9 @@
                 </div>
 
                 <div>
-                    <h6 class="titulo-grupo"><img src="../assets/svg/crescer.png" alt="" width="20px">Disco(%)</h6>
+                    <h6 class="titulo-grupo">Processos(%)</h6>
                     <div class="componente-box">
-                        <p>Partições</p>
+                        <p>Número de CPUs em uso</p>
                         <div class="limites">
                             <div>
                                 <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
@@ -1065,7 +1163,7 @@
                     </div>
 
                     <div class="componente-box">
-                        <p>Uso de disco</p>
+                        <p>Processo com mais gasto</p>
                         <div class="limites">
                             <div>
                                 <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
@@ -1085,122 +1183,13 @@
                         </div>
                     </div>
 
-                    <div class="componente-box">
-                        <p>Latência de disco(ms)</p>
-                        <div class="limites">
-                            <div>
-                                <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                        width="20px">Saudavel</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                        width="20px">Atenção</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                        width="20px">Critico</span>
-                                <input type="number" value="0">
-                            </div>
-                        </div>
+
+                    <div class="popUpFuncionario-confirmarServidor">
+                        <button class="btnPopUp01" onclick="voltarFunc3()">← Voltar</button>
+                        <button class="btnPopUp02" style="color: white;">Cadastrar Servidor</button>
                     </div>
-
-                    <div>
-                        <h6 class="titulo-grupo"><img src="../assets/svg/crescer.png" alt="" width="20px">Rede</h6>
-                        <div class="componente-box">
-                            <p>Volume de dados enviados/recebidos(pkt/s)</p>
-                            <div class="limites">
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                            width="20px">Saudavel</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                            width="20px">Atenção</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                            width="20px">Critico</span>
-                                    <input type="number" value="0">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="componente-box">
-                            <p>Latência da rede(ms)</p>
-                            <div class="limites">
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                            width="20px">Saudavel</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                            width="20px">Atenção</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                            width="20px">Critico</span>
-                                    <input type="number" value="0">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h6 class="titulo-grupo">Processos(%)</h6>
-                            <div class="componente-box">
-                                <p>Número de CPUs em uso</p>
-                                <div class="limites">
-                                    <div>
-                                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                                width="20px">Saudavel</span>
-                                        <input type="number" value="0">
-                                    </div>
-                                    <div>
-                                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                                width="20px">Atenção</span>
-                                        <input type="number" value="0">
-                                    </div>
-                                    <div>
-                                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                                width="20px">Critico</span>
-                                        <input type="number" value="0">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="componente-box">
-                                <p>Processo com mais gasto</p>
-                                <div class="limites">
-                                    <div>
-                                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                                width="20px">Saudavel</span>
-                                        <input type="number" value="0">
-                                    </div>
-                                    <div>
-                                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                                width="20px">Atenção</span>
-                                        <input type="number" value="0">
-                                    </div>
-                                    <div>
-                                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                                width="20px">Critico</span>
-                                        <input type="number" value="0">
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="popUpFuncionario-confirmarServidor">
-                                <button class="btnPopUp01" onclick="fecharFunc3()">← Voltar</button>
-                                <button class="btnPopUp02">Cadastrar Servidor</button>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
 
 </html>
 <script>
@@ -1209,6 +1198,7 @@
     const imgLogo = document.getElementById("imgLogo");
     const imgUser = document.getElementById("imgUser");
     const sidebar = document.getElementById("div_lateralAberta");
+
     function addFunc2() {
         document.getElementById('popUpCadastrarServidor').style.display = 'flex';
     }
@@ -1216,9 +1206,13 @@
         document.getElementById('popUpCadastrarComponente').style.display = 'flex';
         console.log("CLICOU")
         cadastrarServidor();
+
+        document.getElementById('popUpCadastrarServidor').style.display = 'none';
     }
     function addFunc4() {
         document.getElementById('popUpCadastrarAvisos').style.display = 'flex';
+
+        document.getElementById('popUpCadastrarComponente').style.display = 'none';
     }
     function fecharFunc() {
         document.getElementById('popUpCadastrarServidor').style.display = 'none';
@@ -1228,6 +1222,14 @@
     }
     function fecharFunc3() {
         document.getElementById('popUpCadastrarAvisos').style.display = 'none';
+    }
+    function voltarFunc2() {
+        document.getElementById('popUpCadastrarComponente').style.display = 'none';
+        document.getElementById('popUpCadastrarServidor').style.display = 'flex';
+    }
+    function voltarFunc3() {
+        document.getElementById('popUpCadastrarAvisos').style.display = 'none';
+        document.getElementById('popUpCadastrarComponente').style.display = 'flex';
     }
 
     function AbrirComponente(checkbox) {
@@ -1326,56 +1328,56 @@
             fecharAbrirLateral()
         }
     }
-     function cadastrarServidor(){
-       
-        var nomeServidor = input_nome_servidor.value; 
+    function cadastrarServidor() {
+
+        var nomeServidor = input_nome_servidor.value;
         var SOServidor = input_SO_servidor.value;
         var numeroSerialServidor = numero_serial_servidor.value;
-        var HostServidor = input_hostname_servidor.value; 
+        var HostServidor = input_hostname_servidor.value;
         var enderecoServidor = input_endereco_servidor.value;
-        var portaSSHservidor = input_portaSSH_servidor.value; 
+        var portaSSHservidor = input_portaSSH_servidor.value;
         var ambienteServidor = select_ambiente.value;
         var localizacaoServidor = input_localizacao_servidor.value;
         var fk_empresa = sessionStorage.getItem('FK_EMPRESA');
 
-        
-            if(nomeServidor == ""|| nomeServidor == "" || numeroSerialServidor == "" ||
-            HostServidor == "" || enderecoServidor == ""|| portaSSHservidor == "" || localizacaoServidor == "" ){
-                console.log("As informaçoes do servidor não foram preenchidas corretamente!")
-            }else{
+
+        if (nomeServidor == "" || nomeServidor == "" || numeroSerialServidor == "" ||
+            HostServidor == "" || enderecoServidor == "" || portaSSHservidor == "" || localizacaoServidor == "") {
+            console.log("As informaçoes do servidor não foram preenchidas corretamente!")
+        } else {
             fetch("http://localhost:3333/cadastrarServidor", {
                 method: "POST",
                 headers: {
-                  "Content-Type": "application/json"
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                   nomeServer: nomeServidor, 
-                SOServer: SOServidor, 
-                SerialServer: numeroSerialServidor, 
-                hostServer: HostServidor, 
-                enderecoIPServer: enderecoServidor, 
-                SSHServer: portaSSHservidor,
-                ambienteServer: ambienteServidor,
-                localizacaoServer: localizacaoServidor,
-                fk_empresaServer: fk_empresa
+                    nomeServer: nomeServidor,
+                    SOServer: SOServidor,
+                    SerialServer: numeroSerialServidor,
+                    hostServer: HostServidor,
+                    enderecoIPServer: enderecoServidor,
+                    SSHServer: portaSSHservidor,
+                    ambienteServer: ambienteServidor,
+                    localizacaoServer: localizacaoServidor,
+                    fk_empresaServer: fk_empresa
                 })
             })
-        .then(function (resposta) {
-          console.log("resposta: ", resposta);
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
 
-          if (resposta.ok) {
-            console.log("Cadastro server!!!")
-          } else {
-            console.log("Deu pauem cadastrar servidor!!!");
-            throw "Houve um erro ao tentar realizar o cadastro do servidor!";
-          }
-        })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-        })
+                    if (resposta.ok) {
+                        console.log("Cadastro server!!!")
+                    } else {
+                        console.log("Deu pauem cadastrar servidor!!!");
+                        throw "Houve um erro ao tentar realizar o cadastro do servidor!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                })
 
-      return false;
+            return false;
+        }
     }
-}
-        
+
 </script>

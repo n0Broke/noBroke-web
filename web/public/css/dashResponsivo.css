@@ -1,4 +1,4 @@
-@media (max-width: 768px) {
+@media (max-width: 767px) {
 
     html {
         overflow-x: hidden;
@@ -95,7 +95,7 @@
     .alerta05,
     .tituloEquipes,
     .btnCargos,
-    .popUpFuncionario-dados {
+    .popUpFuncionario-dados, .popUpFuncionario-dadosServidor {
         flex-direction: column;
         min-width: 100%;
     }
@@ -171,7 +171,7 @@
         flex-wrap: wrap;
     }
 
-    .barra-pesquisa input {
+    .barra-pesquisa input{
         width: 100%;
     }
 
@@ -345,10 +345,26 @@
         font-size: 16px;
     }
 
+    .popUpFuncionario-inserirDados-esquerdaServidor, .popUpFuncionario-inserirDados-direitaServidor{
+        min-width: 100%;
+    }
+
+    .limites{
+        flex-direction: column;
+    }
+
+    .limites div{
+        width: 90% !important;
+    }
+
+    .popUp-adicionarFuncionarioServidor{
+        width: 90%;
+    }
+
 }
 
 /* ===== DESKTOP MÉDIO (769px – 1280px) ===== */
-@media (min-width: 769px) and (max-width: 1280px) {
+@media (min-width: 768px) and (max-width: 1280px) {
      html {
         overflow-x: hidden;
     }
@@ -809,5 +825,19 @@
         font-size: 20px;
     }
 
-    
+    .limites{
+        flex-direction: column;
+    }
+
+    .limites div{
+        width: 90% !important;
+    }
+
+    .popUp-adicionarFuncionarioServidor{
+        width: 90%;
+    }    
+
+    .portaSSH{
+        width: 74% !important;
+    }
 }
