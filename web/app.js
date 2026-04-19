@@ -18,6 +18,7 @@ var app = express();
 var indexRouter = require("./src/routes/index");
 var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
+var componenteRouter = require("./src/routes/cadastroComponente");
 // var medidasRouter = require("./src/routes/medidas");
 // var aquariosRouter = require("./src/routes/aquarios");
 var cadastroFuncionarioRouter = require("./src/routes/cadastroFuncionario");
@@ -30,6 +31,7 @@ var servidor = require("./src/routes/servidor");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
+
  
 app.use(cors());
 
@@ -42,7 +44,7 @@ app.use("/cadastroFuncionario", cadastroFuncionarioRouter);
 app.use("/cadastroEmpresa", cadastroEmpresaRouter);
 app.use("/cadastroAdm", cadastroAdmRouter);
 app.use("/cadastrarServidor",servidor);
-
+app.use("/componente", componenteRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

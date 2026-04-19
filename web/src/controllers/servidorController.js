@@ -22,8 +22,13 @@ function cadastrarServidor(req, res) {
           servidorModel
               .cadastrar(nomeServidor, SOservidor, serialServidor, hostServidor, enderecoIPServidor, sshServidor,ambienteServidor,localizacaoServidor, fk_empresa)
               .then(function (resultado) {
-                res.json(resultado);
-              })
+    console.log("RESULTADO:", resultado);
+
+    res.json({
+        idServidor: resultado.insertId,
+        resultado: resultado 
+    });
+})
               .catch(function (erro) {
                 console.log(erro);
                 console.log(
@@ -34,10 +39,6 @@ function cadastrarServidor(req, res) {
               });
           }
         }
-    
-        
-
-
 module.exports = {
     cadastrarServidor,
 }

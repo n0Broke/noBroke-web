@@ -1193,6 +1193,21 @@
 
 </html>
 <script>
+  
+  function normalizar(texto) {
+    return texto
+        ?.trim()
+        .replace(/\s+/g, " ")
+        .toLowerCase();
+}
+
+const mapaComponentes = {
+    "cpu (processador)": 1,
+    "memória": 2,
+    "disco (armazenamento)": 3,
+    "rede": 4,
+    "processos": 5
+};
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");
     const imgLogo = document.getElementById("imgLogo");
@@ -1211,8 +1226,8 @@
     }
     function addFunc4() {
         document.getElementById('popUpCadastrarAvisos').style.display = 'flex';
-
         document.getElementById('popUpCadastrarComponente').style.display = 'none';
+        cadastrarComponente();
     }
     function fecharFunc() {
         document.getElementById('popUpCadastrarServidor').style.display = 'none';
@@ -1346,38 +1361,127 @@
             console.log("As informaçoes do servidor não foram preenchidas corretamente!")
         } else {
             fetch("http://localhost:3333/cadastrarServidor", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    nomeServer: nomeServidor,
-                    SOServer: SOServidor,
-                    SerialServer: numeroSerialServidor,
-                    hostServer: HostServidor,
-                    enderecoIPServer: enderecoServidor,
-                    SSHServer: portaSSHservidor,
-                    ambienteServer: ambienteServidor,
-                    localizacaoServer: localizacaoServidor,
-                    fk_empresaServer: fk_empresa
-                })
-            })
-                .then(function (resposta) {
-                    console.log("resposta: ", resposta);
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        nomeServer: nomeServidor,
+        SOServer: SOServidor,
+        SerialServer: numeroSerialServidor,
+        hostServer: HostServidor,
+        enderecoIPServer: enderecoServidor,
+        SSHServer: portaSSHservidor,
+        ambienteServer: ambienteServidor,
+        localizacaoServer: localizacaoServidor,
+        fk_empresaServer: fk_empresa
+    })
+})
+.then(function (resposta) {
+    console.log("resposta: ", resposta);
 
-                    if (resposta.ok) {
-                        console.log("Cadastro server!!!")
-                    } else {
-                        console.log("Deu pauem cadastrar servidor!!!");
-                        throw "Houve um erro ao tentar realizar o cadastro do servidor!";
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                })
-
-            return false;
-        }
+    if (!resposta.ok) {
+        throw "Erro ao cadastrar servidor";
     }
 
+    return resposta.json(); 
+})
+.then(function (data) {
+    console.log("DATA:", data);
+
+    var idServidor = data.idServidor; 
+    sessionStorage.setItem('idServidor', idServidor);
+
+    console.log("ID DO SERVIDOR:", idServidor);
+
+})
+.catch(function (erro) {
+    console.log("#ERRO:", erro);
+});
+    }
+}
+
+function cadastrarComponente() {
+
+    var componentes = [];
+
+    document.querySelectorAll(".componente-box").forEach(box => {
+
+        var checkbox = box.querySelector("input[type='checkbox']");
+        if (!checkbox || !checkbox.checked) return;
+
+        var grupo = box.closest(".grupo-componente")
+                       .querySelector("h6")
+                       ?.innerText;
+
+        var grupoNormalizado = normalizar(grupo);
+
+        var fk_componente = mapaComponentes[grupoNormalizado];
+
+        console.log("Grupo:", grupo, "→", grupoNormalizado, "→ FK:", fk_componente);
+
+        var inputs = box.querySelectorAll(".limites input");
+
+        var minimo = Number(inputs[0]?.value);
+        var maximo = Number(inputs[1]?.value);
+
+        var nome = box.querySelector(".titulo-componente")?.innerText;
+
+        var tipo = box.querySelector(".botoes-metrica .ativo")?.innerText;
+
+        let fk_formato = null;
+
+        if (tipo?.includes("%")) fk_formato = 1;
+        else if (tipo?.includes("GHz")) fk_formato = 2;
+        else if (tipo?.includes("GB")) fk_formato = 3;
+        else if (tipo?.includes("ms")) fk_formato = 4;
+        else if (tipo?.includes("°C")) fk_formato = 5;
+        else fk_formato = 1;
+
+        componentes.push({
+            fk_componente,
+            fk_formato,
+            nome_componente: nome,
+            valor_min_critico: minimo,
+            valor_max_critico: maximo,
+            valor_min_atencao: minimo,
+            valor_max_atencao: maximo
+        });
+    });
+
+    console.log("COMPONENTES:", componentes);
+
+    var idServidor = sessionStorage.getItem('idServidor');
+
+    if (!idServidor) {
+        console.log("idServidor não encontrado");
+        return;
+    }
+
+    if (componentes.length === 0) {
+        console.log("Nenhum componente selecionado");
+        return;
+    }
+
+    fetch("http://localhost:3333/componente", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            idServidor,
+            componentes
+        })
+    })
+    .then(res => {
+        if (!res.ok) throw "Erro ao cadastrar componentes";
+        return res.json();
+    })
+    .then(data => {
+        console.log("COMPONENTES SALVOS:", data);
+    })
+    .catch(err => {
+        console.log("ERRO COMPONENTES:", err);
+    });
+}
 </script>
