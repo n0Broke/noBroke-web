@@ -1,8 +1,11 @@
 var database = require("../database/config");
 
-function cadastrarComponentes(idServidor, componentes) {
+function cadastrarComponente(idServidor, componentes) {
+
     var promises = [];
+
     componentes.forEach(c => {
+
         var sql = `
             INSERT INTO tipo_componente (
                 fk_componente,
@@ -26,7 +29,42 @@ function cadastrarComponentes(idServidor, componentes) {
             );
         `;
 
-        console.log("SQL:", sql);
+        var p = database.executar(sql).then(result => {
+            return result.insertId;
+        });
+
+        promises.push(p);
+    });
+
+    return Promise.all(promises);
+}
+
+function cadastrarLegendas(idServidor, legendas, idsTipo, fkEmpresa) {
+
+    var promises = [];
+
+    legendas.forEach((l, index) => {
+
+        var fkTipo = idsTipo[index];
+
+        var sql = `
+            INSERT INTO nivel_alerta (
+                critico,
+                alerta,
+                normal,
+                fkEmpresa,
+                fkServidor,
+                fkTipo_componente
+            )
+            VALUES (
+                ${l.critico},
+                ${l.atencao},
+                ${l.saudavel},
+                ${fkEmpresa},
+                ${idServidor},
+                ${fkTipo}
+            );
+        `;
 
         promises.push(database.executar(sql));
     });
@@ -35,5 +73,6 @@ function cadastrarComponentes(idServidor, componentes) {
 }
 
 module.exports = {
-    cadastrarComponentes
+    cadastrarComponente,
+    cadastrarLegendas
 };

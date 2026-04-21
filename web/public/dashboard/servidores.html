@@ -1186,7 +1186,7 @@
 
                     <div class="popUpFuncionario-confirmarServidor">
                         <button class="btnPopUp01" onclick="voltarFunc3()">← Voltar</button>
-                        <button class="btnPopUp02" style="color: white;">Cadastrar Servidor</button>
+                        <button class="btnPopUp02" onclick="cadastrarLegendas()" style="color: white;">Cadastrar Servidor</button>
                     </div>
                 </div>
             </div>
@@ -1473,15 +1473,88 @@ function cadastrarComponente() {
             componentes
         })
     })
-    .then(res => {
-        if (!res.ok) throw "Erro ao cadastrar componentes";
-        return res.json();
-    })
-    .then(data => {
-        console.log("COMPONENTES SALVOS:", data);
-    })
-    .catch(err => {
-        console.log("ERRO COMPONENTES:", err);
+ .then(res => {
+    if (!res.ok) throw "Erro ao cadastrar componentes";
+    return res.json();
+})
+.then(data => {
+
+    console.log("RESPOSTA:", data);
+
+    sessionStorage.setItem(
+        "idsTipo",
+        JSON.stringify(data.idsTipo)
+    );
+
+})
+.catch(err => {
+    console.log("ERRO:", err);
+});
+
+}
+
+
+function cadastrarLegendas() {
+
+    var idsTipo = JSON.parse(sessionStorage.getItem("idsTipo"));
+    var fkEmpresa = sessionStorage.getItem("FK_EMPRESA");
+    console.log("idsTipo:", idsTipo);
+    if (!idsTipo) {
+        alert("Cadastre os componentes primeiro.");
+        return;
+    }
+    var legendas = [];
+    document.querySelectorAll(".componente-box").forEach(box => {
+        var checkbox = box.querySelector("input[type='checkbox']");
+        if (!checkbox || !checkbox.checked) return;
+
+        var nome = box.querySelector("p")?.innerText 
+                || box.querySelector(".titulo-componente")?.innerText 
+                || "sem_nome";
+
+        var inputs = box.querySelectorAll(".limites input");
+
+        var saudavel = Number(inputs[0]?.value || 0);
+        var atencao = Number(inputs[1]?.value || 0);
+        var critico = Number(inputs[2]?.value || 0);
+
+        legendas.push({
+            nome_componente: nome,saudavel,atencao,critico});
     });
+
+    console.log("LEGENDAS:", legendas);
+
+    var idServidor = sessionStorage.getItem('idServidor');
+
+    if (!idServidor) {
+        console.log("idServidor não encontrado");
+        return;
+    }
+
+    console.log("CHAMANDO FETCH DE LEGENDAS...");
+
+    
+fetch("http://localhost:3333/componente/legendas", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        idServidor,
+        legendas,
+        idsTipo,
+        fkEmpresa
+    })
+})
+.then(res => {
+    console.log("STATUS:", res.status); // 🔥 ESSENCIAL
+    return res.text(); // muda pra text pra ver erro bruto
+})
+.then(data => {
+    console.log("RESPOSTA BRUTA:", data);
+})
+.catch(err => {
+    console.log("ERRO FETCH:", err);
+});
 }
 </script>
