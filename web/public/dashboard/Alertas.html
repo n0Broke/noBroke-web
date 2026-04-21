@@ -153,7 +153,7 @@
                         <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="alerta"
                             style="width: 50px; padding: 8px; max-height: 50px; background-color: #e7af0842;">
                         <div class="card-alerta-infos">
-                            <h2 style="color: #E7B008;">2</h2>
+                            <h2 style="color: #E7B008;">5</h2>
                             <span>Abertos</span>
                         </div>
                     </div>
@@ -169,7 +169,7 @@
                         <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt="alerta"
                             style="width: 50px; padding: 8px; max-height: 50px; background-color: #21c45d3a;">
                         <div class="card-alerta-infos">
-                            <h2 style="color: #21C45D;">2</h2>
+                            <h2 style="color: #21C45D;">0</h2>
                             <span>Resolvidos</span>
                         </div>
                     </div>
@@ -180,10 +180,10 @@
                 <div class="central-alerta-filtros">
                     <input type="text" placeholder="Buscar alerta...">
                     <div class="filtrosDeAlerta">
-                        <button id="FiltroTodos" class="btn-filtro filtroAtivo">Todos (5)</button>
-                        <button id="FiltroAbertos" class="btn-filtro">Abertos (2)</button>
+                        <button id="FiltroTodos" class="btn-filtro filtroAtivo">Todos (6)</button>
+                        <button id="FiltroAbertos" class="btn-filtro">Abertos (5)</button>
                         <button id="FiltroReconhecidos" class="btn-filtro">Reconhecidos (1)</button>
-                        <button id="FiltroResolvidos" class="btn-filtro">Resolvidos (2)</button>
+                        <button id="FiltroResolvidos" class="btn-filtro">Resolvidos (0)</button>
                     </div>
                 </div>
 
@@ -198,12 +198,60 @@
                                 alt="icon-alerta">
                             <div class="infoCaixaAlerta">
                                 <div>
-                                    <span class="tituloAlerta">CPU Acima do Limite Crítico</span>
+                                    <span class="tituloAlerta">RAM Acima do Limite Crítico</span>
                                     <span class="tipoAlerta">Crítico</span> <span class="estadoAlerta">Aberto</span>
                                 </div>
                                 <div>
-                                    <p class="dadosAlertaServidor">SRV-PROD-API-01 | CPU | 22/09/2025</p>
-                                    <p class="descricaoAlerta">Uso de CPU atingiu 95%, acima do limite de 90%</p>
+                                    <p class="dadosAlertaServidor">SRV-DEV-HB-01 | RAM | 22/04/2026</p>
+                                    <p class="descricaoAlerta">Uso de RAM atingiu 72%, acima do limite de 70%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="escolhasCaixaAlerta">
+                            <button class="btn-Alerta btnReconhecer">Reconhecer</button>
+                            <button class="btn-Alerta btnResolver">Resolver</button>
+                            <img class="imgOlho" src="../assets/svg/alertas/eye-svgrepo-com.svg" alt="maisInfos"
+                                style="width: 35px;">
+                        </div>
+                    </div>
+
+                     <div class="caixa-alerta alerta01">
+                        <div class="conteudo-alerta-esquerda">
+                            <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg"
+                                style="width: 50px; padding: 8px; background-color: #dc28282d; border-radius: 6px; height: 55px;"
+                                alt="icon-alerta">
+                            <div class="infoCaixaAlerta">
+                                <div>
+                                    <span class="tituloAlerta">Latência Acima do Limite Crítico</span>
+                                    <span class="tipoAlerta">Crítico</span> <span class="estadoAlerta">Aberto</span>
+                                </div>
+                                <div>
+                                    <p class="dadosAlertaServidor">SRV-PROD-API-01 | Latência | 22/04/2026</p>
+                                    <p class="descricaoAlerta">Latência atingiu 230ms, acima do limite de 50ms</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="escolhasCaixaAlerta">
+                            <button class="btn-Alerta btnReconhecer">Reconhecer</button>
+                            <button class="btn-Alerta btnResolver">Resolver</button>
+                            <img class="imgOlho" src="../assets/svg/alertas/eye-svgrepo-com.svg" alt="maisInfos"
+                                style="width: 35px;">
+                        </div>
+                    </div>
+
+                    <div class="caixa-alerta alerta02">
+                        <div class="conteudo-alerta-esquerda">
+                            <img src="../assets/svg/alertas/alert-svgrepo-com.svg"
+                                style="width: 50px; padding: 8px; background-color: #e7af0820; border-radius: 6px; height: 55px;"
+                                alt="icon-alerta">
+                            <div class="infoCaixaAlerta">
+                                <div>
+                                    <span class="tituloAlerta">Latência em Nível de Atenção</span> <span
+                                        class="tipoAlerta">Atenção</span> <span class="estadoAlerta">Aberto</span> <br>
+                                </div>
+                                <div>
+                                    <p class="dadosAlertaServidor">SRV-PROD-API-01 | Latência | 22/04/2026</p>
+                                    <p class="descricaoAlerta">Latência atingiu 45ms, perto do limite de 50ms</p>
                                 </div>
                             </div>
                         </div>
@@ -226,8 +274,8 @@
                                         class="tipoAlerta">Atenção</span> <span class="estadoAlerta">Aberto</span> <br>
                                 </div>
                                 <div>
-                                    <p class="dadosAlertaServidor">SRV-PROD-API-01 | CPU | 22/09/2025</p>
-                                    <p class="descricaoAlerta">Uso de CPU atingiu 95%, acima do limite de 90%</p>
+                                    <p class="dadosAlertaServidor">SRV-DEV-HB-01 | RAM | 22/04/2026</p>
+                                    <p class="descricaoAlerta">Uso de RAM atingiu 66%, perto do limite de 70%</p>
                                 </div>
                             </div>
                         </div>
@@ -239,20 +287,19 @@
                         </div>
                     </div>
 
-                    <div class="caixa-alerta alerta03">
+                     <div class="caixa-alerta alerta02">
                         <div class="conteudo-alerta-esquerda">
-                            <img src="../assets/svg/alertas/bell-svgrepo-com.svg"
+                            <img src="../assets/svg/alertas/alert-svgrepo-com.svg"
                                 style="width: 50px; padding: 8px; background-color: #e7af0820; border-radius: 6px; height: 55px;"
                                 alt="icon-alerta">
                             <div class="infoCaixaAlerta">
                                 <div>
-                                    <span class="tituloAlerta">Disco próximo da capacidade máxima</span> <span
-                                        class="tipoAlerta">Crítico</span> <span class="estadoAlerta">Reconhecido</span>
-                                    <br>
+                                    <span class="tituloAlerta">CPU em Nível de Atenção</span> <span
+                                        class="tipoAlerta">Atenção</span> <span class="estadoAlerta">Reconhecido</span> <br>
                                 </div>
                                 <div>
-                                    <p class="dadosAlertaServidor">SRV-PROD-API-01 | CPU | 22/09/2025</p>
-                                    <p class="descricaoAlerta">Uso de CPU atingiu 95%, acima do limite de 90%</p>
+                                    <p class="dadosAlertaServidor">SRV-DEV-HB-01 | CPU | 22/04/2026</p>
+                                    <p class="descricaoAlerta">Uso de CPU atingiu 65%, perto do limite de 70%</p>
                                 </div>
                             </div>
                         </div>
@@ -264,43 +311,19 @@
                         </div>
                     </div>
 
-                    <div class="caixa-alerta alerta04">
+                    <div class="caixa-alerta alerta02">
                         <div class="conteudo-alerta-esquerda">
-                            <img src="../assets/svg/alertas/bell-svgrepo-com.svg"
+                            <img src="../assets/svg/alertas/alert-svgrepo-com.svg"
                                 style="width: 50px; padding: 8px; background-color: #e7af0820; border-radius: 6px; height: 55px;"
                                 alt="icon-alerta">
                             <div class="infoCaixaAlerta">
                                 <div>
-                                    <span class="tituloAlerta">CPU Acima do Limite</span> <span
-                                        class="tipoAlerta">Info</span> <span class="estadoAlerta">Resolvido</span> <br>
+                                    <span class="tituloAlerta">RAM em Nível de Atenção</span> <span
+                                        class="tipoAlerta">Atenção</span> <span class="estadoAlerta">Aberto</span> <br>
                                 </div>
                                 <div>
-                                    <p class="dadosAlertaServidor">SRV-PROD-API-01 | CPU | 22/09/2025</p>
-                                    <p class="descricaoAlerta">Uso de CPU atingiu 95%, acima do limite de 90%</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="escolhasCaixaAlerta">
-                            <button class="btn-Alerta btnReconhecer">Reconhecer</button>
-                            <button class="btn-Alerta btnResolver">Resolver</button>
-                            <img class="imgOlho" src="../assets/svg/alertas/eye-svgrepo-com.svg" alt="maisInfos"
-                                style="width: 35px;">
-                        </div>
-                    </div>
-
-                    <div class="caixa-alerta alerta05">
-                        <div class="conteudo-alerta-esquerda">
-                            <img src="../assets/svg/alertas/bell-svgrepo-com.svg"
-                                style="width: 50px; padding: 8px; background-color: #e7af0820; border-radius: 6px; height: 55px;"
-                                alt="icon-alerta">
-                            <div class="infoCaixaAlerta">
-                                <div>
-                                    <span class="tituloAlerta">CPU Acima do Limite</span> <span
-                                        class="tipoAlerta">Info</span> <span class="estadoAlerta">Resolvido</span> <br>
-                                </div>
-                                <div>
-                                    <p class="dadosAlertaServidor">SRV-PROD-API-01 | CPU | 22/09/2025</p>
-                                    <p class="descricaoAlerta">Uso de CPU atingiu 95%, acima do limite de 90%</p>
+                                    <p class="dadosAlertaServidor">SRV-PROD-HB-02 | RAM | 22/04/2026</p>
+                                    <p class="descricaoAlerta">RAM atingiu 68%, perto do limite de 70%</p>
                                 </div>
                             </div>
                         </div>
