@@ -16,11 +16,391 @@ body {
   font-size: 25px;
 }
 
-#main-nav a:hover {
+#nav-links a:hover {
   transform: scale(1.05);
   font-weight: bold;
   color: #ff5400
 }
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #000; 
+  z-index: 1000;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+}
+
+.logo img {
+  height: 40px;
+}
+.nav-links ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
+
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Botão hamburguer */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+#inicio {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: 
+    linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.4)),
+    url('../assets/icon/img-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* garante que o conteúdo não quebre */
+#inicio .container {
+  width: 100%;
+}
+
+/* TEXTO */
+#inicio .text {
+  display: flex;
+  flex-direction: column;
+}
+
+#inicio .titulo {
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 800;
+}
+
+#inicio .subtitulo {
+  color: #dcdcdc;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  max-width: 500px;
+}
+
+/* BOTÕES */
+#inicio .botoes {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+#inicio .btn {
+  padding: 10px 20px;
+  border: 1px solid white;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+#inicio .btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+
+/* OBRE NOS */
+#sobre-nos {
+  background-color: #ffffff;
+  padding: 80px 20px;
+  
+}
+
+.sobre-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.sobre-texto {
+  text-align: center;
+  max-width: 600px;
+}
+
+.sobre-texto .titulo {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+
+}
+
+
+.sobre-img img {
+  width: 100%;
+  max-width: 500px;
+}
+
+#beneficios {
+  padding: 80px 20px;
+}
+
+
+/* beneficios */
+.beneficios-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.beneficio {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.beneficios-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  margin: 20px;
+}
+
+.beneficios-box h5 {
+  color: white;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.beneficios-box p {
+  text-align: justify;
+  font-weight: 500;
+}
+
+
+/* serviços */
+
+#servicos {
+  background-color: #ebebeb;
+  border-radius: 60px 60px 0 0;
+  padding: 60px 20px;
+
+}
+
+#servicos .container {
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo-servicos {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.titulo-servicos span {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.servico {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.servico-img img {
+  width: 100%;
+}
+
+.servico-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 500px;
+  text-align: justify;
+}
+
+
+/* duvidas */
+
+#faq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo-faq {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.titulo-faq span {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.faq-container {
+  min-width: 70%;
+  margin: 0 auto;
+
+}
+
+.faq-item {
+  border-bottom: 1px solid #333;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.faq-item.active .faq-question {
+  background-color: rgba(144, 197, 255, 0.25);
+  color: #4781ee;
+  border: 5px solid #bbd3ff;
+}
+.faq-question:hover {
+  color: #ff5400;
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: 
+    max-height 0.4s ease,
+    padding 0.3s ease,
+    opacity 0.3s ease;
+  opacity: 0;
+}
+
+.faq-item.active .faq-answer {
+  opacity: 1;
+  padding-bottom: 40px;
+}
+
+.arrow {
+  float: right;
+  transition: transform 0.3s;
+}
+
+.faq-item.active .arrow {
+  transform: rotate(180deg);
+}
+
+
+#fale-conosco {
+  margin-top: 90px;
+  padding: 40px 20px;
+}
+
+#div-img-form img {
+  width: 500px;
+}
+
+.titulo-contato {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.titulo-contato span {
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.contato-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  width: 80%;
+}
+
+
+
+.formulario {
+  width: 100%;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 0 20px 20px 0;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.campo label {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.campo input,
+.campo textarea {
+  padding: 10px;
+  border: 2px solid black;
+  outline: none;
+}
+
+.btn-container {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.btn {
+  background-color: #ff5400;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
 
 #main .muda-pagina {
   color: #ff5400;
@@ -129,6 +509,11 @@ body {
   width: 100%;
   height: 100%;
 }
+
+
+
+
+
 
 /* =========================================== */
 /* Configurações para Cell/Midias */

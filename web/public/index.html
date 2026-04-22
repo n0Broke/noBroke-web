@@ -18,291 +18,299 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-dark fixed-top navbar-expand-md p-0 w-100 h-">
-    <div class="container-fluid" id="header">
-      <a href="#inicio" class="navbar-brand ps-md-5 my-3">
-        <img src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png" width="90%" height="40px"
-          alt="Logo da noBroke">
-      </a>
+  <nav class="navbar">
+  <div class="container" id="header">
+    
+    <a href="#inicio" class="logo">
+      <img src="./assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png" alt="Logo da noBroke">
+    </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav"
-        aria-controls="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <button class="menu-toggle" id="menu-toggle">
+      ☰
+    </button>
 
-      <div class="collapse navbar-collapse justify-content-end align-center" id="main-nav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link link-light" href="#inicio">Início</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-light" href="#sobre-nos">Sobre</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-light" href="#fale-conosco">Contato</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link-light" href="login.html">Login</a>
-          </li>
-        </ul>
-      </div>
+    <div class="nav-links" id="nav-links">
+      <ul>
+        <li><a href="#inicio">Início</a></li>
+        <li><a href="#sobre-nos">Sobre</a></li>
+        <li><a href="#fale-conosco">Contato</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
     </div>
-  </nav>
+
+  </div>
+</nav>
 
   <section id="inicio">
-    <div class="container-fluid p-0">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <div class="d-flex flex-column justify-content-end ps-md-5">
-            <span class="text-light display-3 display-md-1 fw-bolder text-center text-md-start">Observabilidade</span>
-            <span class="text-light display-6 text-center text-md-start">Tenha controle da sua aplicação e mantenha as
-              suas operações seguras</span>
-          </div>
-          <div class="ps-md-5 pt-3 d-flex justify-content-center justify-content-md-start">
+  <div class="container">
 
-            <a href="#servicos" class="btn btn-outline-light me-4">Saiba Mais</a>
-            <a href="#fale-conosco" class="btn btn-outline-light">Fale Conosco</a>
-          </div>
-        </div>
+    <div class="content">
+      <div class="text">
+
+        <span class="titulo">Observabilidade</span>
+        <span class="subtitulo">
+          Tenha controle da sua aplicação e mantenha as suas operações seguras
+        </span>
+
+      </div>
+
+      <div class="botoes">
+        <a href="#servicos" class="btn">Saiba Mais</a>
+        <a href="#fale-conosco" class="btn">Fale Conosco</a>
       </div>
     </div>
-  </section>
+
+  </div>
+</section>
+
 
   <section id="sobre-nos">
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-md-5 text-center m-5 d-flex flex-column justify-content-center">
-          <span class="text-center fw-bold display-2 my-5">Sobre nós</span>
-          <span>A noBroke, idealizada e fundada em 2026, é uma start-up com o objetivo de ajudar bancos e
-            corretoras de investimento no monitoramento do hardware de suas máquinas.
-            Especializadas em servidores OMS de Home Broker, nossas soluções garantem uma
-            operação de infraestrutura mais estável e confiável, ancoradas em três pilares principais: Monitoramento, Segurança e Negócio.</span>
-        </div>
-        <div class="col-md-5 d-none d-md-block">
-          <img src="./assets/icon/img-dash.png" class="img-fluid" alt="">
-        </div>
+  <div class="container">
+
+    <div class="sobre-content">
+
+      <div class="sobre-texto">
+        <span class="titulo">Sobre nós</span>
+
+        <p>
+          A noBroke, idealizada e fundada em 2026, é uma start-up com o objetivo de ajudar bancos e
+          corretoras de investimento no monitoramento do hardware de suas máquinas.
+          Especializadas em servidores OMS de Home Broker, nossas soluções garantem uma
+          operação de infraestrutura mais estável e confiável, ancoradas em três pilares principais:
+          Monitoramento, Segurança e Negócio.
+        </p>
       </div>
+
+      <div class="sobre-img">
+        <img src="./assets/icon/img-dash.png" alt="">
+      </div>
+
     </div>
-  </section>
+
+  </div>
+</section>
 
   <section id="beneficios">
-    <div class="container-fluid">
-      <div class="row justify-content-evenly mb-5">
-        <div class="col-md-3 d-flex justify-content-center">
-          <div class="beneficios-box d-flex flex-column justify-content-center align-items-start p-5 m-4 m-md-0">
-            <h5 class="d-flex justify-content-center text-light fw-bold">Monitoramento</h5>
-            <p class="d-flex justify-content-center" style="text-align: justify; font-weight: 500;">Monitoramos o
-              hardware dos seus servidores para
-              identificar falhas e mapear padrões</p>
-          </div>
-        </div>
-        <div class="col-md-3 d-flex justify-content-center">
-          <div class="beneficios-box d-flex flex-column justify-content-center align-items-start p-5 m-4 m-md-0">
-            <h5 class="d-flex justify-content-center text-light fw-bold">Segurança</h5>
-            <p class="d-flex justify-content-center" style="text-align: justify; font-weight: 500;">Por meio da nossa
-              solução, ajudamos a garantir a
-              segurança e confiabilidade do seu sistema</p>
-          </div>
-        </div>
-        <div class="col-md-3 d-flex justify-content-center">
-          <div class="beneficios-box d-flex flex-column justify-content-center align-items-start p-5 m-4 m-md-0">
-            <h5 class="d-flex justify-content-center text-light fw-bold">Negócio</h5>
-            <p class="d-flex justify-content-center" style="text-align: justify; font-weight: 500;">Auxiliamos em
-              análises mais precisas e evitamos
-              prejuízos ao seu negócio</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="container">
 
-  <section id="servicos" class="py-3">
-    <div class="container">
-      <div class="d-flex justify-content-center">
-        <span class="display-2 fw-bold my-5">Nossos Serviços</span>
-      </div>
-      <div class="row my-md-5 d-flex justify-content-evenly">
-        <div class="col-md-5 mb-3 d-flex justify-content-center align-items-center" id="nossos-servicos1">
-          <img src="assets/icon/nossos_servicos1.png" class="img-fluid">
-        </div>
-        <div class="col-md-5 d-flex flex-column justify-content-center align-items-center">
-          <div class="d-flex flex-column">
-            <h5 class="servicos-titulos text-center text-md-start">Alta Disponibilidade 24x7</h5>
-            <p class="text-center text-md-start">Monitoramento em tempo real do hardware de servidores on-premises e
-              instâncias na nuvem, assegurando
-              que o sistema de ordens esteja sempre operacional.</p>
-          </div>
-          <div class="d-flex flex-column">
-            <h5 class="servicos-titulos text-center text-md-start">Alta Performance e Baixa Latência</h5>
-            <p class="text-center text-md-start">Otimização dos servidores próximos à B3, monitorando a carga para
-              garantir que o processamento de ordens
-              ocorra em milissegundos, essencial para operações de alta frequência.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row my-md-5 d-flex justify-content-evenly">
-        <div class="col-md-5 d-flex flex-column justify-content-center align-items-center">
-          <div class="d-flex flex-column">
-            <h5 class="servicos-titulos text-center text-md-start">Segurança e Conformidade</h5>
-            <p class="text-center text-md-start">Verificação constante da integridade dos discos ativos. Garantimos que
-              as regras de risco sejam processadas em um ambiente
-              seguro, monitorado e em conformidade com os padrões estabelecidos.</p>
-          </div>
-          <div class="d-flex flex-column">
-            <h5 class="servicos-titulos text-center text-md-start">Escalabilidade Inteligente</h5>
-            <p class="text-center text-md-start">Dashboards em nuvem permitem escalar a visualização do front-end,
-              enquanto o servidor on-premise mantém a robustez necessária para o alto
-              processamento de dadosde ordens com a B3.</p>
-          </div>
-        </div>
-        <div class="col-md-5 mb-3 order-first order-md-last d-flex justify-content-center align-items-center"
-          id="nossos-servicos2">
-          <img src="assets/icon/nossos_servicos2.png" class="img-fluid">
-        </div>
-      </div>
-    </div>
-  </section>
+    <div class="beneficios-container">
 
-  <!-- <section class="bg-dark">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <span>Serviços Parceiros</span>
-        </div>
-        <div class="col-md-6 d-flex justify-content-center">
-          <div class="img-parceiros">
-            <img style="height: 200px; width: 200px;" src="https://cdn.freebiesupply.com/logos/large/2x/aws-logo-logo-png-transparent.png" alt="">
-          </div>
-          <div class="img-parceiros">
-            <img style="height: 200px; width: 200px;" src="https://www.pngall.com/wp-content/uploads/13/Slack-Logo-Transparent.png" alt="">
-          </div>
-          <div class="img-parceiros">
-            <img style="height: 200px; width: 200px;" src="https://cdn.worldvectorlogo.com/logos/jira-1.svg" alt="">
-          </div>
+      <div class="beneficio">
+        <div class="beneficios-box">
+          <h5>Monitoramento</h5>
+          <p>
+            Monitoramos o hardware dos seus servidores para identificar falhas e mapear padrões
+          </p>
         </div>
       </div>
+
+      <div class="beneficio">
+        <div class="beneficios-box">
+          <h5>Segurança</h5>
+          <p>
+            Por meio da nossa solução, ajudamos a garantir a segurança e confiabilidade do seu sistema
+          </p>
+        </div>
+      </div>
+
+      <div class="beneficio">
+        <div class="beneficios-box">
+          <h5>Negócio</h5>
+          <p>
+            Auxiliamos em análises mais precisas e evitamos prejuízos ao seu negócio
+          </p>
+        </div>
+      </div>
+
     </div>
-  </section> -->
+
+  </div>
+</section>
+
+  <section id="servicos">
+  <div class="container">
+
+    <div class="titulo-servicos">
+      <span>Nossos Serviços</span>
+    </div>
+
+    <!-- BLOCO 1 -->
+    <div class="servico">
+
+      <div class="servico-img" id="nossos-servicos1">
+        <img src="assets/icon/nossos_servicos1.png" alt="">
+      </div>
+
+      <div class="servico-texto">
+        <div>
+          <h5 class="servicos-titulos">Alta Disponibilidade 24x7</h5>
+          <p>
+            Monitoramento em tempo real do hardware de servidores on-premises e instâncias na nuvem,
+            assegurando que o sistema de ordens esteja sempre operacional.
+          </p>
+        </div>
+
+        <div>
+          <h5 class="servicos-titulos">Alta Performance e Baixa Latência</h5>
+          <p>
+            Otimização dos servidores próximos à B3, monitorando a carga para garantir que o processamento
+            de ordens ocorra em milissegundos.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BLOCO 2 -->
+    <div class="servico reverse">
+      <div class="servico-texto">
+        <div>
+          <h5 class="servicos-titulos">Segurança e Conformidade</h5>
+          <p>
+            Verificação constante da integridade dos discos ativos, garantindo um ambiente seguro
+            e em conformidade com os padrões.
+          </p>
+        </div>
+
+        <div>
+          <h5 class="servicos-titulos">Escalabilidade Inteligente</h5>
+          <p>
+            Dashboards em nuvem permitem escalar a visualização enquanto o servidor on-premise
+            mantém a robustez necessária.
+          </p>
+        </div>
+      </div>
+
+      <div class="servico-img" id="nossos-servicos2">
+        <img src="assets/icon/nossos_servicos2.png" alt="">
+      </div>
+    </div>
+  </div>
+</section>
 
   <section id="faq">
-    <div class="titulo-faq m-auto mt-5 mb-3">
-      <span class="display-3 fw-bold">Dúvidas Frequentes</span>
-    </div>
-    <div class="accordion m-auto mb-3 accordion-flush" id="accordionFlushExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-            Quais os padrões normativos de segurança da noBroke?
-          </button>
-        </h2>
-        <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Os padrões seguidos pela noBroke são: ISO27001, ISO27002, LGPD e o NIST.
 
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-            A ferramenta gera relatórios?
-          </button>
-        </h2>
-        <div id="flush-collapseSix" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Sim, nosso serviço gera relatórios de tempos em tempos e envia relatórios
-            completos por e-mail,
-            além de alertas em casos de problemas no hardware.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-            O serviço de manutenção é prestado por vocês?
-          </button>
-        </h2>
-        <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Não. Nosso produto é apenas a ferramenta de monitoramento de hardware.
-            A manutenção deve ser realizada pela equipe responsável pela infra ou equipes terceirizadas.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-            A quem a ferramenta atende?
-          </button>
-        </h2>
-        <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Atende principalmente analistas de infraestrutura e gestores da área que
-            buscam melhorar o desempenho e o monitoramento dos servidores.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-            Terei acesso a dashboards sobre meu hardware?
-          </button>
-        </h2>
-        <div id="flush-collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Sim, dashboards e KPIs são disponibilizados para facilitar a análise.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-            Qual o foco de monitoramento?
-          </button>
-        </h2>
-        <div id="flush-collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">Nossos serviços são pensados especialmente para servidores de OMS na arquitetura
-            de Home Broker.
-          </div>
-        </div>
+  <div class="titulo-faq">
+    <span>Dúvidas Frequentes</span>
+  </div>
+
+  <div class="faq-container">
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Quais os padrões normativos de segurança da noBroke?
+         <span class="arrow">⌄</span>
+      </button>
+      <div class="faq-answer">
+        Os padrões seguidos pela noBroke são: ISO27001, ISO27002, LGPD e o NIST.
       </div>
     </div>
-    <div class="m-auto" id="btn-duvida">
+
+    <div class="faq-item">
+      <button class="faq-question">
+        A ferramenta gera relatórios?
+         <span class="arrow">⌄</span>
+      </button>
+      <div class="faq-answer">
+        Sim, nosso serviço gera relatórios e envia alertas em casos de problemas no hardware.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        O serviço de manutenção é prestado por vocês?
+         <span class="arrow">⌄</span>
+      </button>
+      <div class="faq-answer">
+        Não. Nosso produto é apenas a ferramenta de monitoramento.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        A quem a ferramenta atende?
+         <span class="arrow">⌄</span>
+      </button>
+      <div class="faq-answer">
+        Analistas de infraestrutura e gestores que buscam melhorar o desempenho dos servidores.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Terei acesso a dashboards?
+         <span class="arrow">⌄</span>
+      </button>
+      <div class="faq-answer">
+        Sim, dashboards e KPIs são disponibilizados.
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        Qual o foco de monitoramento?
+         <span class="arrow">⌄</span>
+      </button>
+      <div class="faq-answer">
+        Servidores OMS na arquitetura de Home Broker.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="m-auto" id="btn-duvida">
       <button type="button" class="btn-duvida" onclick="mudarParaContato()">Mais alguma dúvida?</button>
     </div>
-  </section>
 
-  <section id="fale-conosco" style="margin-top: 90px;">
-    <div class="container">
-      <div class="text-center fw-bold display-2 my-5">Fale Conosco</div>
-      <div class="row justify-content-center mb-5">
-        <div class="col-md-5 d-none d-md-block p-0" id="div-img-form">
-          <img id="img-formulario" class="img-fluid" src="./assets/icon/img-dispositovs.png">
-        </div>
-        <div class="col-md-5 p-5 rounded-end" id="formulario">
-          <div class="mb-3">
-            <label for="nomeInput" class="form-label">Nome</label>
-            <input type="text" class="form-control" style="border: 2px solid black;" id="nomeInput">
-          </div>
-          <div class="mb-3">
-            <label for="emailInput" class="form-label">E-mail</label>
-            <input type="text" class="form-control" style="border: 2px solid black;" id="emailInput">
-          </div>
-          <div class="mb-3">
-            <label for="telefoneInput" class="form-label">Telefone</label>
-            <input type="text" class="form-control" style="border: 2px solid black;" id="telefoneInput">
-          </div>
-          <div class="mb-3">
-            <label for="mensagemTextarea" class="form-label">Mensagem</label>
-            <textarea class="form-control" style="border: 2px solid black;" id="mensagemTextarea" rows="4"></textarea>
-          </div>
-          <div class="text-center">
-            <button type="submit" class="btn">Enviar</button>
-          </div>
-        </div>
+</section>
+
+  <section id="fale-conosco">
+
+  <div class="container">
+
+    <div class="titulo-contato">
+      <span>Fale Conosco</span>
+    </div>
+
+    <div class="contato-container">
+
+      <div class="contato-img" id="div-img-form">
+        <img id="img-formulario" src="./assets/icon/img-dispositovs.png" alt="">
       </div>
-  </section>
+
+      <div class="formulario" id="formulario">
+
+        <div class="campo">
+          <label for="nomeInput">Nome</label>
+          <input type="text" id="nomeInput">
+        </div>
+
+        <div class="campo">
+          <label for="emailInput">E-mail</label>
+          <input type="text" id="emailInput">
+        </div>
+
+        <div class="campo">
+          <label for="telefoneInput">Telefone</label>
+          <input type="text" id="telefoneInput">
+        </div>
+
+        <div class="campo">
+          <label for="mensagemTextarea">Mensagem</label>
+          <textarea id="mensagemTextarea" rows="4"></textarea>
+        </div>
+
+        <div class="btn-container">
+          <button type="submit" class="btn">Enviar</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
 
   <section id="footer">
     <div class="container py-3">
@@ -343,4 +351,23 @@
   function mudarParaContato() {
     window.location.href = "#fale-conosco"
   }
+
+   const toggle = document.getElementById("menu-toggle");
+  const nav = document.getElementById("nav-links");
+
+  toggle.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  }); 
+
+   const faqs = document.querySelectorAll(".faq-item");
+
+  faqs.forEach(item => {
+    const btn = item.querySelector(".faq-question");
+
+    btn.addEventListener("click", () => {
+      item.classList.toggle("active");
+    });
+  });
+
+  
 </script>
