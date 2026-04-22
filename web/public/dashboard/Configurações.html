@@ -473,8 +473,8 @@
                                         <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com-hover.svg"
                                             alt="profile-pic" class="equipeUsuarioFoto">
                                         <div class="funcionarioDados">
-                                            <h4>Douglas</h4>
-                                            <span>Douglas@outlook.com.br</span>
+                                            <h4 class="username">Douglas</h4>
+                                            <span class="useremail">Douglas@outlook.com.br</span>
                                         </div>
                                     </div>
                                     <div class="funcionario-direita">
@@ -637,7 +637,7 @@
                                         alt="fotoPerfil">
                                 </div>
                                 <div class="perfilNomeCargo">
-                                    <h4>Douglas</h4>
+                                    <h4 class="username">Douglas</h4>
                                     <h6>Gerente</h6>
                                     <span>Departamento de Infraestrutura</span>
                                 </div>
@@ -647,11 +647,11 @@
                                 <div class="dadosPerfil-input">
                                     <div class="dadosPerfil-esquerda">
                                         <h6>Nome Completo</h6>
-                                        <input type="text" value="Douglas">
+                                        <input type="text" id="userNomeCompleto" value="Douglas">
                                     </div>
                                     <div class="dadosPerfil-direita">
                                         <h6>Email</h6>
-                                        <input type="text" value="Douglas@gmail.com">
+                                        <input type="text" class="useremail" value="Douglas@outlook.com">
                                     </div>
                                 </div>
                                 <div class="dadosPerfil-input">
@@ -791,6 +791,19 @@
 
 </html>
 <script>
+    const nomeCompleto = sessionStorage.NOME_USUARIO
+    const partes = nomeCompleto.trim().split(" ");
+    const primeiroNome = partes[0];
+    const usuario = document.querySelectorAll('.username')
+    const emailUsuario = document.querySelectorAll('.useremail')
+    usuario.forEach(usuario => {
+                usuario.innerHTML = primeiroNome;
+            });
+    emailUsuario.forEach(emailUsuario => {
+                emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO;
+                emailUsuario.value = sessionStorage.EMAIL_USUARIO;
+            });
+    userNomeCompleto.value = nomeCompleto;
 
     // ===================================================================
     // Função Abrir e fechar PopUp de Cadastrar Funcionário

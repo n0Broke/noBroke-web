@@ -214,13 +214,13 @@
     if (nomeEmpresaVar == "") {
       alert("O nome da sua empres está vazio")
       return false;
-    } else if(emailEmpresaVar == ""){
+    } else if (emailEmpresaVar == "") {
       alert("O email da sua empresa está vazio")
-    } else if(cnpjEmpresaVar == ""){
+    } else if (cnpjEmpresaVar == "") {
       alert("O CNPJ da sua empresa está vazio")
-    }else if(cnpjEmpresaVar.length != 14){
+    } else if (cnpjEmpresaVar.length != 14) {
       alert("O CNPJ da sua empresa está menor que 14 digitos")
-    }else {
+    } else {
       //tratativa de cnpj
 
       if (!cnpjVerificar(cnpjEmpresaVar)) {
@@ -230,8 +230,6 @@
         cnpjEmpresaVar = cnpjPuro(cnpjEmpresaVar);
       }
     }
-
-
 
     // Enviando o valor da nova input
     fetch("/cadastroEmpresa/cadastrar", {
@@ -255,7 +253,7 @@
       .then(function (resultado) {
         if (resultado.id) {
           console.log(
-            "Cadastro realizado com sucesso! Redirecionando para tela de Login...",
+            "Cadastro de Empresa realizado com sucesso!",
           );
 
           sessionStorage.setItem("id", resultado.id);
@@ -377,6 +375,7 @@
   }
 
   function cadastrarAdm() {
+    console.log("Entrei no cadastrar func")
     //Recupere o valor da nova input pelo nome do id
     // Agora vá para o método fetch logo abaixo
     var nomeAdmVar = nomeAdm_input.value.trim();
@@ -437,12 +436,18 @@
           break;
         }
       }
+      if (contemNumeros == false) {
+        alert("A senha precisa ter numeros")
+      }
 
       for (i = 0; i < senhaAdmVar.length; i++) {
         if (senhaAdmVar.includes(caractereEsperial[i])) {
           contemCaractereEspecial = true;
           break;
         }
+      }
+      if (contemCaractereEspecial == false) {
+        alert("A senha precisa ter algum caractere especial")
       }
 
       if (
@@ -455,19 +460,15 @@
         console.log(
           "A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais",
         );
+        alert("A senha precisa ter mais de 8 digitos e serem iguais")
         return false;
-      } else {
-        console.log("Cadastro ok");
-        setTimeout(() => {
-          window.location.href = "login.html";
-        }, "2000");
       }
 
       var idEmpresa = sessionStorage.getItem("id");
       console.log("idEmpresa:", idEmpresa);
 
       // Enviando o valor da nova input
-      fetch("/cadastroAdm/cadastroAdm", {
+      fetch("/cadastroAdm/cadastrarAdm", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -486,10 +487,10 @@
           console.log("resposta: ", resposta);
 
           if (resposta.ok) {
-            sessionStorage.setItem("ID_USUARIO", json.id_usuario);
-            sessionStorage.setItem("FK_EMPRESA", json.fk_empresa);
-            mensagem_erro.innerHTML =
-              "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+            console.log("Entrei no fetch")
+            sessionStorage.setItem("ID_USUARIO", resposta.id_usuario);
+            sessionStorage.setItem("FK_EMPRESA", resposta.fk_empresa);
+            alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
             setTimeout(() => {
               window.location.href = "login.html";

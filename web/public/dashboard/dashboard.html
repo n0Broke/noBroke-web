@@ -114,7 +114,7 @@
                         <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil">
                     </div>
                     <div class="user-infos">
-                        <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
+                        <p class="username" id="usuario" style="color: var(--branco);"></p>
                         <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
                     </div>
                 </div>
@@ -466,6 +466,11 @@
 
 </html>
 <script>
+    const nomeCompleto = sessionStorage.NOME_USUARIO
+    const partes = nomeCompleto.trim().split(" ");
+    const primeiroNome = partes[0];
+    usuario.innerHTML = primeiroNome;
+
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");
     const imgLogo = document.getElementById("imgLogo");

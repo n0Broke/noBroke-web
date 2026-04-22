@@ -689,6 +689,11 @@ body {
 
 .username {
     margin-bottom: 10px;
+    font-size: 18px !important;
+}
+
+.cargo{
+    font-size: 14px !important;
 }
 
 .logout-btn {
@@ -2896,8 +2901,8 @@ h6 {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 30%;
-    height: 25%;
+    width: 35%;
+    height: 35%;
     margin-right: 2%;
     border-radius: 5px;
     border-left: 10px solid var(--vermelho);

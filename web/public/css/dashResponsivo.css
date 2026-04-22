@@ -361,6 +361,14 @@
         width: 90%;
     }
 
+    .box-cardAlerta{
+        width: 90%;
+    }
+
+    .corpo-alerta a {
+        text-align: center;
+    }
+
 }
 
 /* ===== DESKTOP MÉDIO (769px – 1280px) ===== */

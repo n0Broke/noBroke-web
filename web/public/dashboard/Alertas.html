@@ -346,6 +346,11 @@
 </html>
 
 <script>
+    const nomeCompleto = sessionStorage.NOME_USUARIO
+    const partes = nomeCompleto.trim().split(" ");
+    const primeiroNome = partes[0];
+    usuario.innerHTML = primeiroNome;
+    
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");
     const imgLogo = document.getElementById("imgLogo");
