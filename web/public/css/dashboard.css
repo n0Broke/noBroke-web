@@ -2,9 +2,8 @@ body {
     overflow-x: hidden;
 }
 
-:root{
+:root {
     --branco: #fff;
-    --laranja-transparente: #f97015ad;
     --brancoCinza: #F2F2F2;
     --cinzaClaro: #b4b4b4;
     --preto: #000;
@@ -18,6 +17,9 @@ body {
     --amarelo: #F8CA15;
     --azul: #4B7FC1;
 
+    --preto-transparente: #0000007c;
+    --branco-transparente: #ffffff7e;
+    --laranja-transparente: #f97015ad;
     --verde-transparente: #21c45d30;
     --vermelho-transparente: #dc282830;
     --laranja-transparente: #f970153c;
@@ -494,11 +496,11 @@ body {
 .sidebar.compacta .titulo_sidebar,
 .sidebar.compacta .btn-nobroke a,
 .sidebar.compacta .btn-nobroke span:not(.icon),
-.sidebar.compacta .user-infos{
+.sidebar.compacta .user-infos {
     display: none;
 }
 
-.sidebar.compacta .menu_centro{
+.sidebar.compacta .menu_centro {
     width: 100%;
     justify-content: center;
     align-items: center;
@@ -512,17 +514,17 @@ body {
     width: 100%;
 }
 
-.sidebar.compacta .btn-nobroke img{
+.sidebar.compacta .btn-nobroke img {
     margin: 0;
 }
 
-.sidebar.compacta .logo-container{
+.sidebar.compacta .logo-container {
     width: 100px;
     height: auto;
 }
 
 /* Ajustar ícones */
-.sidebar.compacta .logo-container img{
+.sidebar.compacta .logo-container img {
     width: 60px;
     height: 50px;
 }
@@ -532,12 +534,12 @@ body {
     width: 40px;
 }
 
-.sidebar.compacta .user-profile{
+.sidebar.compacta .user-profile {
     width: 100px;
     justify-content: center;
 }
 
-.sidebar.compacta .user-profile img{
+.sidebar.compacta .user-profile img {
     width: 80px;
 }
 
@@ -680,7 +682,7 @@ body {
     align-items: center;
 }
 
-.profile-img img{
+.profile-img img {
     width: 80px;
     height: 100%;
 }
@@ -759,7 +761,8 @@ table {
     margin-right: 10px;
 }
 
-thead, tr{
+thead,
+tr {
     font-size: 16px;
     width: 100% !important;
 }
@@ -934,22 +937,22 @@ tbody td {
     border: 3px solid #388E3C;
 }
 
-.texto-lado{
+.texto-lado {
     display: flex;
     flex-direction: column;
     color: var(--branco);
 }
 
-.texto-lado p{
+.texto-lado p {
     color: gray;
 }
 
-.acoes-card-seguranca{
+.acoes-card-seguranca {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
-.acoes-card-seguranca button{
+.acoes-card-seguranca button {
     background-color: transparent;
     border: solid 1px #88e789;
     border-radius: 10px;
@@ -958,11 +961,11 @@ tbody td {
     opacity: 1;
 }
 
-.acoes-card-seguranca button:hover{
-     background-color: #e26715;
+.acoes-card-seguranca button:hover {
+    background-color: #e26715;
 }
 
-.cards-conteudo-suporte{
+.cards-conteudo-suporte {
     padding: auto;
     background-color: var(--pretoClaro);
     border-radius: 6px;
@@ -1020,30 +1023,30 @@ tbody td {
     color: var(--branco);
 }
 
-.form-contato input{
+.form-contato input {
     background-color: var(--pretoC);
     border: 1px solid var(--bordas);
     border-radius: 10px;
     color: var(--branco);
 }
 
-.form-contato input:hover{
+.form-contato input:hover {
     border: 1px solid #ff6a00;
 }
 
 .form-contato button {
-  margin-top: 10px;
-  background-color: #ff6a00;
-  border: none;
-  padding: 12px;
-  border-radius: 6px;
-  color: var(--branco);
-  font-weight: 500;
-  cursor: pointer;
+    margin-top: 10px;
+    background-color: #ff6a00;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    color: var(--branco);
+    font-weight: 500;
+    cursor: pointer;
 }
 
 .form-contato button:hover {
-  background-color: #ff7b2c;
+    background-color: #ff7b2c;
 }
 
 /* ========================================== */
@@ -1057,18 +1060,21 @@ tbody td {
     margin-bottom: 20px;
 }
 
-.header-central-alertas, .header-monitoramento {
+.header-central-alertas,
+.header-monitoramento {
     display: flex;
     flex-direction: column;
     gap: 2px;
 }
 
-.header-central-alertas h2, .header-monitoramento h2 {
+.header-central-alertas h2,
+.header-monitoramento h2 {
     color: var(--branco);
     font-size: 26px;
 }
 
-.header-central-alertas p, .header-monitoramento p {
+.header-central-alertas p,
+.header-monitoramento p {
     color: var(--brancoCinza);
     font-size: 18px;
 }
@@ -1191,7 +1197,8 @@ tbody td {
     font-weight: 700;
 }
 
-.dadosAlertaServidor, .descricaoAlerta {
+.dadosAlertaServidor,
+.descricaoAlerta {
     margin: 0;
 }
 
@@ -1232,7 +1239,7 @@ tbody td {
     border-radius: 6px;
     padding: 4px 12px;
     color: var(--branco);
-    
+
     font-size: 14px;
     transition: all 0.25s ease;
 }
@@ -1246,7 +1253,8 @@ tbody td {
 
 /* Tipo e Estado do Alerta */
 
-.tipoAlerta, .estadoAlerta {
+.tipoAlerta,
+.estadoAlerta {
     font-weight: 600;
     font-size: 10px;
     padding: 6px 12px;
@@ -1520,7 +1528,7 @@ tbody td {
     cursor: pointer;
     width: 100%;
     min-height: 40px;
-    
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1597,7 +1605,8 @@ tbody td {
     color: var(--brancoCinza);
 }
 
-.cardConfiguracao input, .cardConfiguracao select {
+.cardConfiguracao input,
+.cardConfiguracao select {
     width: 100%;
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
@@ -1608,7 +1617,8 @@ tbody td {
     transition: all 0.25s ease;
 }
 
-.cardConfiguracao input:focus, .cardConfiguracao select:focus {
+.cardConfiguracao input:focus,
+.cardConfiguracao select:focus {
     transform: scale(1.01);
     outline: 2px solid #F97015;
 }
@@ -1648,7 +1658,8 @@ tbody td {
 
 /* Estilização do Switch do Bootstrap */
 .form-check-input:checked {
-    background-color: #F97015 !important; /* Sua cor laranja */
+    background-color: #F97015 !important;
+    /* Sua cor laranja */
     border-color: rgba(0, 0, 0, 0.1) !important;
 }
 
@@ -1658,22 +1669,24 @@ tbody td {
 .configuracoesNotificacoes {
     display: flex;
     flex-direction: column;
-    
+
     gap: 20px;
 }
 
-.configuracoesNotificacoes input, select{
+.configuracoesNotificacoes input,
+select {
     background-color: var(--pretoClaro) !important;
     color: var(--branco) !important;
     cursor: pointer;
     border-radius: 5px;
 }
 
-.configuracoesNotificacoes input{
+.configuracoesNotificacoes input {
     width: 60%;
 }
 
-.cardNotificacoes01, .cardNotificacoes02 {
+.cardNotificacoes01,
+.cardNotificacoes02 {
     width: 100%;
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
@@ -1688,7 +1701,7 @@ tbody td {
     display: flex;
     flex-direction: column;
     gap: 10px;
-} 
+}
 
 .conteudoNotificacao-linha {
     display: flex;
@@ -1727,7 +1740,10 @@ tbody td {
     border-left: 1px solid var(--laranja-transparente);
 }
 
-.conteudoNotificacao-dados span, .conteudoNotificacao-esquerda span, .conteudoNotificacao-direita span, .conteudoNotificacao-regrasTitulo span {
+.conteudoNotificacao-dados span,
+.conteudoNotificacao-esquerda span,
+.conteudoNotificacao-direita span,
+.conteudoNotificacao-regrasTitulo span {
     color: var(--cinzaClaro);
 }
 
@@ -1801,7 +1817,10 @@ tbody td {
     margin: 0;
 }
 
-.regra-tipo1, .regra-tipo2, .regra-tipo3, .regra-tipo4 {
+.regra-tipo1,
+.regra-tipo2,
+.regra-tipo3,
+.regra-tipo4 {
     padding: 4px 8px;
     border-radius: 12px;
 }
@@ -1856,7 +1875,8 @@ tbody td {
     gap: 20px;
 }
 
-.cardColeta01, .cardColeta02 {
+.cardColeta01,
+.cardColeta02 {
     width: 100%;
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
@@ -1867,12 +1887,14 @@ tbody td {
     transition: all 0.25s ease;
 }
 
-.cardColeta01 h4, .cardColeta02 h4 {
+.cardColeta01 h4,
+.cardColeta02 h4 {
     font-size: 22px;
     margin: 0;
 }
 
-.cardColeta01 span, .cardColeta02 span {
+.cardColeta01 span,
+.cardColeta02 span {
     color: var(--cinzaClaro);
 }
 
@@ -1917,17 +1939,23 @@ h6 {
 /* Estilização Slider -  Bootstrap */
 /* Mudando a estilização da Bolinha */
 .form-range::-webkit-slider-thumb {
-  background-color: var(--brancoCinza) !important; /* Cor de dentro da bolinha (escuro) */
-  border: 2px solid #ff7a00 !important; /* Cor e grossura da borda (laranja) */
+    background-color: var(--brancoCinza) !important;
+    /* Cor de dentro da bolinha (escuro) */
+    border: 2px solid #ff7a00 !important;
+    /* Cor e grossura da borda (laranja) */
 
-    width: 20px !important;  /* Aumenta a largura da bolinha do slider*/
-  height: 20px !important; /* Aumenta a altura da bolinha do slider*/
+    width: 20px !important;
+    /* Aumenta a largura da bolinha do slider*/
+    height: 20px !important;
+    /* Aumenta a altura da bolinha do slider*/
 }
 
 /* Mudando a Linha de Fundo (branco pra cinza) */
 .form-range::-webkit-slider-runnable-track {
-  background-color: var(--bordas) !important; /* Cor da linha toda (ex: laranja) */
+    background-color: var(--bordas) !important;
+    /* Cor da linha toda (ex: laranja) */
 }
+
 /* ================================ */
 
 .cardColeta02 {
@@ -1953,7 +1981,8 @@ h6 {
     margin: 0px;
 }
 
-.cardColeta02 input, .cardColeta02 select {
+.cardColeta02 input,
+.cardColeta02 select {
     width: 100%;
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
@@ -1971,7 +2000,11 @@ h6 {
     /* background-color: white; */
 }
 
-.btnFrequencia02, .btnCargos02, .btnPopUp02, .btnPerfil02, .btnGeral02 {
+.btnFrequencia02,
+.btnCargos02,
+.btnPopUp02,
+.btnPerfil02,
+.btnGeral02 {
     background-color: #e26715;
     border: 1px solid #e26715;
     border-radius: 6px;
@@ -1980,7 +2013,11 @@ h6 {
     transition: all 0.25s ease;
 }
 
-.btnFrequencia01, .btnCargos01, .btnPopUp01, .btnPerfil01, .btnGeral01 {
+.btnFrequencia01,
+.btnCargos01,
+.btnPopUp01,
+.btnPerfil01,
+.btnGeral01 {
     background: transparent;
     color: var(--branco);
     border: 1px solid var(--bordas);
@@ -1990,7 +2027,16 @@ h6 {
     transition: all 0.25s ease;
 }
 
-.btnFrequencia02:hover, .btnFrequencia01:hover, .btnCargos01:hover, .btnCargos02:hover, .btnPopUp01:hover, .btnPopUp02:hover, .btnPerfil01:hover, .btnPerfil02:hover, .btnGeral01:hover, .btnGeral02:hover {
+.btnFrequencia02:hover,
+.btnFrequencia01:hover,
+.btnCargos01:hover,
+.btnCargos02:hover,
+.btnPopUp01:hover,
+.btnPopUp02:hover,
+.btnPerfil01:hover,
+.btnPerfil02:hover,
+.btnGeral01:hover,
+.btnGeral02:hover {
     box-shadow: 0 0 14px #f9701590;
     background-color: #e26715;
 }
@@ -2009,7 +2055,8 @@ h6 {
     gap: 20px;
 }
 
-.cardEquipe01, .cardEquipe02 {
+.cardEquipe01,
+.cardEquipe02 {
     width: 100%;
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
@@ -2198,7 +2245,7 @@ h6 {
 .equipe-cargosScroll {
     display: flex;
     flex-direction: column;
-    
+
     gap: 10px;
     max-height: 360px;
 }
@@ -2234,7 +2281,7 @@ h6 {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    
+
     background-color: var(--preto);
     padding: 8px 20px;
     border: 1px solid var(--bordas);
@@ -2313,7 +2360,7 @@ h6 {
 .popUp-adicionarFuncionario {
     display: flex;
     flex-direction: column;
-    
+
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
     border-radius: 6px;
@@ -2360,7 +2407,9 @@ h6 {
     font-weight: 800;
 }
 
-.popUpFuncionario-dados input, .popUpFuncionario-dados select, .popUpFuncionario-Senha input {
+.popUpFuncionario-dados input,
+.popUpFuncionario-dados select,
+.popUpFuncionario-Senha input {
     min-width: 100%;
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
@@ -2371,7 +2420,8 @@ h6 {
     transition: all 0.25s ease;
 }
 
-.popUpFuncionario-dados input:focus, .popUpFuncionario-dados select:focus .popUpFuncionario-Senha input:focus {
+.popUpFuncionario-dados input:focus,
+.popUpFuncionario-dados select:focus .popUpFuncionario-Senha input:focus {
     outline: 2px solid #F97015;
 }
 
@@ -2460,11 +2510,13 @@ h6 {
     gap: 3px;
 }
 
-.perfilNomeCargo h6, .perfilNomeCargo h4 {
+.perfilNomeCargo h6,
+.perfilNomeCargo h4 {
     margin: 0;
 }
 
-.perfilNomeCargo h6, .perfilNomeCargo span {
+.perfilNomeCargo h6,
+.perfilNomeCargo span {
     font-weight: 400;
 }
 
@@ -2495,11 +2547,15 @@ h6 {
     gap: 10px;
 }
 
-.dadosPerfil-esquerda, .dadosPerfil-direita {
+.dadosPerfil-esquerda,
+.dadosPerfil-direita {
     width: 50%;
 }
 
-.dadosPerfil-esquerda input, .dadosPerfil-direita input, .segurancaInput-esquerda input, .segurancaInput-direita input {
+.dadosPerfil-esquerda input,
+.dadosPerfil-direita input,
+.segurancaInput-esquerda input,
+.segurancaInput-direita input {
     min-width: 100%;
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
@@ -2510,7 +2566,8 @@ h6 {
     transition: all 0.25s ease;
 }
 
-.dadosPerfil-esquerda input:focus, .dadosPerfil-direita input:focus {
+.dadosPerfil-esquerda input:focus,
+.dadosPerfil-direita input:focus {
     outline: 2px solid #F97015;
 }
 
@@ -2526,7 +2583,8 @@ h6 {
     width: 100%;
 }
 
-.segurancaInput-esquerda, .segurancaInput-direita {
+.segurancaInput-esquerda,
+.segurancaInput-direita {
     min-width: 50%;
 }
 
@@ -2584,7 +2642,7 @@ h6 {
     flex-direction: column;
     max-height: 80vh;
     overflow-y: auto;
-    
+
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
     border-radius: 6px;
@@ -2624,7 +2682,9 @@ h6 {
     font-weight: 800;
 }
 
-.popUpFuncionario-dadosServidor input, .popUpFuncionario-dadosServidor select, .popUpFuncionario-SenhaServidor input {
+.popUpFuncionario-dadosServidor input,
+.popUpFuncionario-dadosServidor select,
+.popUpFuncionario-SenhaServidor input {
     min-width: 100%;
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
@@ -2635,7 +2695,8 @@ h6 {
     transition: all 0.25s ease;
 }
 
-.popUpFuncionario-dadosServidor input:focus, .popUpFuncionario-dadosServidor select:focus .popUpFuncionario-SenhaServidor input:focus {
+.popUpFuncionario-dadosServidor input:focus,
+.popUpFuncionario-dadosServidor select:focus .popUpFuncionario-SenhaServidor input:focus {
     outline: 2px solid #F97015;
 }
 
@@ -2716,7 +2777,7 @@ h6 {
     display: inline-block;
 }
 
-.checkbox-container input:checked + .checkmark {
+.checkbox-container input:checked+.checkmark {
     background-color: #F97015;
 }
 
@@ -2747,7 +2808,7 @@ h6 {
     cursor: pointer;
 }
 
-.botoes-metrica :hover{
+.botoes-metrica :hover {
     background-color: #F97015;
     color: white;
 }
@@ -2764,7 +2825,8 @@ h6 {
     flex-direction: column;
     gap: 5px;
 }
-.limites input{
+
+.limites input {
     min-width: 100%;
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
@@ -2780,17 +2842,120 @@ h6 {
     margin-bottom: 10px;
 }
 
-.titulo-grupo img{
+.titulo-grupo img {
     margin-right: 5px;
 }
 
-.grupo-status {
-    display: flex;
-    gap: 15px;
+/* Card alerta Geral */
+/* ================= */
+
+/* Animação para piscar o card */
+@keyframes piscar {
+    0% {
+        background: var(--branco);
+    }
+
+    50% {
+        background: var(--branco-transparente);
+    }
+
+    100% {
+        background: var(--branco);
+    }
 }
 
-.grupo-status span {
+@keyframes crescer {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 1.3;
+    }
+
+    100% {
+        scale: 1.5;
+    }
+}
+
+.card-alertaGeral {
     display: flex;
+    height: 95%;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: fixed;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.box-cardAlerta {
+    display: flex;
+    background-color: var(--branco);
+    backdrop-filter: blur(5px);
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
-    gap: 5px;
+    width: 30%;
+    height: 25%;
+    margin-right: 2%;
+    border-radius: 5px;
+    border-left: 10px solid var(--vermelho);
+    animation: piscar 2s infinite;
+}
+
+.titulo-pai{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.titulo-alerta {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 30px;
+    color: var(--vermelho);
+    font-weight: bold;
+}
+
+.titulo-alerta img {
+    width: 20%;
+    animation: crescer 1.5s infinite;
+    filter: drop-shadow(6px 6px 10px var(--vermelho));
+}
+
+.fecharCard{
+    display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    color: var(--preto);
+}
+
+.fecharCard span{
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.corpo-alerta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--preto);
+}
+
+.corpo-alerta a {
+    pointer-events: all;
+    text-decoration: none;
+    transition: 1s ease;
+    color: var(--preto);
+}
+
+.corpo-alerta a:hover {
+    transform: scale(1.1);
+    color: var(--vermelho);
 }

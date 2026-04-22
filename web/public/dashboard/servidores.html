@@ -33,1186 +33,1202 @@
 </head>
 
 <body onload="verificarModo()">
+    <div class="container-fluid">
+        <div class="row min-vh-100">
+            <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
+                <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
+                    <span>X</span>
+                </div>
+                <div class="logo-container">
+                    <img id="imgLogo" class="logo-dash img-fluid"
+                        src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
+                </div>
+                <!-- Side Bar - Botões -->
+                <div class="menu_centro">
+                    <!-- Sidebar - Parte 01 -->
+                    <div class="menu01">
+                        <h4 class="titulo_sidebar">PRINCIPAL</h4>
+                        <a href="dashboard.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/painel-de-controle.png">
+                            </span>
+                            <span class="texto">Dashboard</span>
+                        </a>
 
-    <body>
+                        <button class="btn-nobroke btn-active">
+                            <span class="icon">
+                                <img id="iconAtual"
+                                    src="../assets/icon/icons-dashboard/servidores-de-hospedagem-hover.png">
+                            </span>
+                            <span class="texto">Servidores</span>
+                        </button>
 
-        <div class="container-fluid">
-            <div class="row min-vh-100">
-                <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
-                    <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
-                        <span>X</span>
+                        <a href="Alertas.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/notificacao.png">
+                            </span>
+                            <span class="texto">Alertas</span>
+                        </a>
+
+                        <a href="Relatorios.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                            </span>
+                            <span class="texto">Relatórios</span>
+                        </a>
+
+                        <a href="monitoramento.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                            </span>
+                            <span class="texto">Monitoramento</span>
+                        </a>
                     </div>
-                    <div class="logo-container">
-                        <img id="imgLogo" class="logo-dash img-fluid"
-                            src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
+                    <!-- ============================ -->
+                    <div class="menu02">
+                        <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
+
+                        <a href="Configurações.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/config.png">
+                            </span>
+                            <span class="texto">Configurações</span>
+                        </a>
+
+                        <a href="suporte.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
+                            </span>
+                            <span class="texto">Suporte</span>
+                        </a>
                     </div>
-                    <!-- Side Bar - Botões -->
-                    <div class="menu_centro">
-                        <!-- Sidebar - Parte 01 -->
-                        <div class="menu01">
-                            <h4 class="titulo_sidebar">PRINCIPAL</h4>
-                            <a href="dashboard.html" class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/painel-de-controle.png">
-                                </span>
-                                <span class="texto">Dashboard</span>
-                            </a>
-
-                            <button class="btn-nobroke btn-active">
-                                <span class="icon">
-                                    <img id="iconAtual"
-                                        src="../assets/icon/icons-dashboard/servidores-de-hospedagem-hover.png">
-                                </span>
-                                <span class="texto">Servidores</span>
-                            </button>
-
-                            <a href="Alertas.html" class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/notificacao.png">
-                                </span>
-                                <span class="texto">Alertas</span>
-                            </a>
-
-                            <a href="Relatorios.html" class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
-                                </span>
-                                <span class="texto">Relatórios</span>
-                            </a>
-
-                            <a href="monitoramento.html" class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/heart-rate.png">
-                                </span>
-                                <span class="texto">Monitoramento</span>
-                            </a>
+                    <!-- Fim dos Menus -->
+                    <!-- ================================================================= -->
+                    <!-- Parte do perfil -->
+                </div>
+                <div class="user-profile" onclick="window.location.href = 'Configurações.html?aba=perfil'">
+                    <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil"
+                        class="profile-img">
+                    <div class="user-infos">
+                        <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
+                        <span class="cargo" id="usuario_cargo" style="color: var(--brancoCinza);">Gerente de
+                            Infra</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
+                <div class="header-responsividade">
+                    <div>
+                        <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
+                            style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
+                        <a href="dashboard.html">Dashboard</a>
+                        <span style="color: #7D8999;">></span>
+                        <span style="color: var(--branco);">Servidores</span>
+                    </div>
+                    <div id="iconeModo">
+                        <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
+                            style="width: 40px; cursor: pointer; margin-right: 20px;">
+                    </div>
+                </div>
+                <hr style="width: 100%; color: #b4b4b4; height: 2px;">
+                <div class="header-conteudo-dash">
+                    <div class="header-esquerdo">
+                        <div class="header-esquerdo01">
+                            <h3 class="servidor-name" id="server-name">Servidores</h3>
                         </div>
-                        <!-- ============================ -->
-                        <div class="menu02">
-                            <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
-
-                            <a href="Configurações.html" class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/config.png">
-                                </span>
-                                <span class="texto">Configurações</span>
-                            </a>
-
-                            <a href="suporte.html" class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
-                                </span>
-                                <span class="texto">Suporte</span>
-                            </a>
+                        <div class="header-esquerdo02">
+                            <p class="coleta-servidor" style="align-items: center;">Gerencie e monitore todos os
+                                servidores da infraestrutura</p>
                         </div>
-                        <!-- Fim dos Menus -->
-                        <!-- ================================================================= -->
-                        <!-- Parte do perfil -->
                     </div>
-                    <div class="user-profile" onclick="window.location.href = 'Configurações.html?aba=perfil'">
-                        <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil"
-                            class="profile-img">
-                        <div class="user-infos">
-                            <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
-                            <span class="cargo" id="usuario_cargo" style="color: var(--brancoCinza);">Gerente de
-                                Infra</span>
+                    <div class="header-direita">
+                        <button class="botao-exportar" onclick="addFunc2()"><img
+                                src="https://www.flaticon.com/br/icone-gratis/mais_3524388?related_id=3524388&origin=search"
+                                alt="" style="width: 22px; color: white;">✚ Adicionar Servidor</button>
+                    </div>
+                </div>
+
+                <div class="conteudo-dash01">
+                    <div class="cards-conteudo card01 card-server ">
+                        <div class="titulo-cards-servidores">
+                            <img class="card01-icon" src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png"
+                                alt="cpu" style="width: 25px;">
+                        </div>
+                        <div class="conteudo-abaixo-cards">
+                            <h1>8</h1>
+                            <h4>Total de servidores</h4>
+                        </div>
+                    </div>
+
+                    <div class="cards-conteudo card01 card-server">
+                        <div class="titulo-cards-servidores">
+                            <img class="card01-icon" src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg"
+                                alt="cpu" style="width: 25px;">
+                        </div>
+                        <div class="conteudo-abaixo-cards">
+                            <h1 style="color: green;">5</h1>
+                            <h4 style="color: green;">Saudaveis</h4>
+                        </div>
+                    </div>
+
+                    <div class="cards-conteudo card01 card-server">
+                        <div class="titulo-cards-servidores">
+                            <img class="card01-icon" src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt="cpu"
+                                style="width: 25px;">
+                        </div>
+                        <div class="conteudo-abaixo-cards">
+                            <h1 style="color: red;">2</h1>
+                            <h4 style="color: red;">Críticos</h4>
+                        </div>
+                    </div>
+
+                    <div class="cards-conteudo card01 card-server">
+                        <div class="titulo-cards-servidores">
+                            <img class="card01-icon" src="../assets/svg/alert-svgrepo-com.svg" alt="cpu"
+                                style="width: 25px;">
+                        </div>
+                        <div class="conteudo-abaixo-cards">
+                            <h1 style="color: yellow;">1</h1>
+                            <h4 style="color: yellow;">Em Atenção</h4>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
-                    <div class="header-responsividade">
+
+                <div class="barra-pesquisa">
+                    <input type="text" placeholder="🔍Buscar Servidor...">
+                    <button>Todos</button><button>Produção</button><button>Staging</button><button>DR</button><button>Desenvolvimento</button>
+                </div>
+                <div class="tabela-container">
+                    <table class="tabela-servidores" style="background-color: var(--pretoClaro);">
+                        <thead>
+                            <tr>
+                                <th>Servidor</th>
+                                <th>Ambiente</th>
+                                <th>Status</th>
+                                <th>CPU</th>
+                                <th>RAM</th>
+                                <th>Disco</th>
+                                <th>Latência</th>
+                                <th>Uptime</th>
+                                <th>Criticidade</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <strong>SRV-PROD-API-01</strong><br>
+                                    <span>api-prod-01.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">Produção</span></td>
+                                <td><span class="tag saudavel" style="color: red;">Crítico</span></td>
+                                <td>60%</td>
+                                <td>60%</td>
+                                <td>68%</td>
+                                <td>230ms</td>
+                                <td>98.50%</td>
+                                <td><span class="tag criticidade" style="color: red;">Crítica</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>SRV-DEV-HB-01</strong><br>
+                                    <span>hb-dev-01.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">Desenvolvimento</span></td>
+                                <td><span class="tag saudavel" style="color: red;">Crítico</span></td>
+                                <td>65%</td>
+                                <td>72%</td>
+                                <td>60%</td>
+                                <td>38ms</td>
+                                <td>99.50%</td>
+                                <td><span class="tag criticidade" style="color: green;">Baixa</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>SRV-PROD-HB-02</strong><br>
+                                    <span>hb-prod-02.nobroke.io</span>
+                                </td>
+                                <td><span class="tag staging">Produção</span></td>
+                                <td><span class="tag saudavel" style="color: yellow;">Atenção</span></td>
+                                <td>60%</td>
+                                <td>68%</td>
+                                <td>70%</td>
+                                <td>45ms</td>
+                                <td>99.90%</td>
+                                <td><span class="tag criticidade media" style="color: yellow;">Alta</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>SRV-STG-HB-01</strong><br>
+                                    <span>hb-stg-01.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">Staging</span></td>
+                                <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
+                                <td>22%</td>
+                                <td>35%</td>
+                                <td>30%</td>
+                                <td>15ms</td>
+                                <td>99.85%</td>
+                                <td><span class="tag criticidade" style="color: yellow;">Média</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>SRV-PROD-DB-01</strong><br>
+                                    <span>db-prod-01.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">Produção</span></td>
+                                <td><span class="tag critico" style="color: green;">Saudável</span></td>
+                                <td>35%</td>
+                                <td>58%</td>
+                                <td>42%</td>
+                                <td>8ms</td>
+                                <td>99.99%</td>
+                                <td><span class="tag criticidade critica" style="color: red;">Crítica</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>SRV-PROD-CACHE-01</strong><br>
+                                    <span>cache-prod-01.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">Produção</span></td>
+                                <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
+                                <td>18%</td>
+                                <td>45%</td>
+                                <td>22%</td>
+                                <td>3ms</td>
+                                <td>99.99%</td>
+                                <td><span class="tag criticidade" style="color: yellow;">Alta</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>SRV-DR-HB-01</strong><br>
+                                    <span>hb-dr-01.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">DR</span></td>
+                                <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
+                                <td>5%</td>
+                                <td>12%</td>
+                                <td>20%</td>
+                                <td>25ms</td>
+                                <td>99.95%</td>
+                                <td><span class="tag criticidade" style="color: yellow;">Alta</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <strong>SRV-PROD-DB-02</strong><br>
+                                    <span>db-prod-02.nobroke.io</span>
+                                </td>
+                                <td><span class="tag producao">Produção</span></td>
+                                <td><span class="tag critico" style="color: green;">Saudável</span></td>
+                                <td>35%</td>
+                                <td>58%</td>
+                                <td>42%</td>
+                                <td>8ms</td>
+                                <td>99.99%</td>
+                                <td><span class="tag criticidade critica" style="color: red;">Crítica</span></td>
+                                <td><button>Ver detalhes</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="fundoPopUpServidor" style="display: none;" id="popUpCadastrarServidor">
+                    <div class="popUp-adicionarFuncionarioServidor">
+
+                        <div class="headerPopUpFuncionarioServidor">
+                            <div class="headerPopUp-esquerdaServidor">
+                                <h4>Cadastro de Servidor</h4>
+                                <span>Passo 1 de 3 — Informações do servidor</span>
+                            </div>
+                            <div class="headerPopUp-direita">
+                                <h4 onclick="fecharFunc()">X</h4>
+                            </div>
+                        </div>
+
+
+                        <div class="popUpFuncionario-SenhaServidor">
+                            <span>Nome do Servidor</span>
+                            <input id="input_nome_servidor" type="text" placeholder="SRV-PROD-API-01">
+                        </div>
+
+
+                        <div class="popUpFuncionario-dadosServidor">
+                            <div class="popUpFuncionario-inserirDados-esquerdaServidor" style="width: 50%;">
+                                <span>Sistema Operacional</span>
+                                <input id="input_SO_servidor" type="text" placeholder="Ubuntu 22.04 LTS">
+                            </div>
+
+                            <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
+                                <span>Número Serial</span>
+                                <input id="numero_serial_servidor" type="text" placeholder="SN-XXXXXXX">
+                            </div>
+                        </div>
+
+
+                        <div class="popUpFuncionario-dadosServidor">
+                            <div class="popUpFuncionario-inserirDados-esquerdaServidor" style="width: 50%;">
+                                <span>Hostname</span>
+                                <input id="input_hostname_servidor" type="text" placeholder="host.nobroke.io">
+                            </div>
+
+                            <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
+                                <span>Endereço IP</span>
+                                <input id="input_endereco_servidor" type="text" placeholder="10.0.1.100">
+                            </div>
+                        </div>
+
+
+                        <div class="popUpFuncionario-dadosServidor portaSSH">
+                            <div class="popUpFuncionario-inserirDados-esquerda" style="width: 50%;">
+                                <span>Porta SSH</span>
+                                <input id="input_portaSSH_servidor" type="text" placeholder="22">
+                            </div>
+
+                            <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
+                                <span>Ambiente</span>
+                                <select id="select_ambiente">
+                                    <option value="1">Produção</option>
+                                    <option value="2">Staging</option>
+                                    <option value="3">DR</option>
+                                    <option value="4">Desenvolvimento</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="popUpFuncionario-SenhaServidor">
+                            <span>Localização (Data Center)</span>
+                            <input id="input_localizacao_servidor" type="text" placeholder="São Paulo — SP1-DC">
+                        </div>
+
+                        <div class="popUpFuncionario-confirmarServidor">
+                            <button class="btnPopUp01" onclick="fecharFunc()">Cancelar</button>
+                            <button class="btnPopUp02" onclick="addFunc3()" style="color: white;">Próximo <img
+                                    width="20px" src="../assets/svg/seta-direita.png" alt=""></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fundoPopUpServidor" style="display: none;" id="popUpCadastrarComponente">
+                    <div class="popUp-adicionarFuncionarioServidor">
+
+                        <div class="headerPopUpFuncionarioServidor">
+                            <div class="headerPopUp-esquerdaServidor">
+                                <h4>Cadastro de Servidor</h4>
+                                <span>Passo 2 de 3 — Componentes monitorados</span>
+                            </div>
+                            <div class="headerPopUp-direitaServidor">
+                                <h4 onclick="fecharFunc2()">X</h4>
+                            </div>
+                        </div>
+
+                        <div class="barra-progresso-servidor">
+                            <div class="barra-progresso-preenchida"></div>
+                        </div>
+
+                        <div class="grupo-componente">
+                            <h6>CPU (Processador)</h6>
+
+                            <div class="componente-box">
+                                <div class="componente-topo">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" onchange="AbrirComponente(this)">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                    <span class="titulo-componente">Uso geral</span>
+
+                                    <div class="tipo-metrica">
+                                        <span class="badge-metrica">porcentagem (%)</span>
+                                        <span class="badge-intervalo">0 a 100</span>
+                                    </div>
+                                </div>
+
+                                <div class="componente-config">
+                                    <div class="botoes-metrica">
+                                        <button class="ativo" type="button">Porcentagem (%)</button>
+                                        <button type="button">Média</button>
+                                    </div>
+
+                                    <div class="limites">
+                                        <div>
+                                            <span>LIMITE MÍNIMO</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                        <div>
+                                            <span>LIMITE MÁXIMO</span>
+                                            <input type="number" value="80">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="componente-box">
+                                <div class="componente-topo">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" onchange="AbrirComponente(this)">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                    <span class="titulo-componente">Temperatura</span>
+
+                                    <div class="tipo-metrica">
+                                        <span class="badge-metrica">temperatura (°C)</span>
+                                        <span class="badge-intervalo">20 a 95</span>
+                                    </div>
+                                </div>
+
+                                <div class="componente-config">
+                                    <div class="botoes-metrica">
+                                        <button class="ativo" type="button">Temperatura (°C)</button>
+                                        <button type="button">Média</button>
+                                    </div>
+
+                                    <div class="limites">
+                                        <div>
+                                            <span>LIMITE MÍNIMO</span>
+                                            <input type="number" value="20">
+                                        </div>
+                                        <div>
+                                            <span>LIMITE MÁXIMO</span>
+                                            <input type="number" value="85">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grupo-componente">
+                            <h6>Memória</h6>
+
+                            <div class="componente-box">
+                                <div class="componente-topo">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" onchange="AbrirComponente(this)">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                    <span class="titulo-componente">Memória RAM</span>
+
+                                    <div class="tipo-metrica">
+                                        <span class="badge-metrica">valor absoluto</span>
+                                        <span class="badge-intervalo">0 a 64 GB</span>
+                                    </div>
+                                </div>
+
+                                <div class="componente-config">
+                                    <div class="botoes-metrica">
+                                        <button class="ativo" type="button">Valor absoluto</button>
+                                        <button type="button">Porcentagem (%)</button>
+                                    </div>
+
+                                    <div class="limites">
+                                        <div>
+                                            <span>LIMITE MÍNIMO</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                        <div>
+                                            <span>LIMITE MÁXIMO</span>
+                                            <input type="number" value="64">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="componente-box">
+                                <div class="componente-topo">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" onchange="AbrirComponente(this)">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                    <span class="titulo-componente">Memória disponível RAM</span>
+
+                                    <div class="tipo-metrica">
+                                        <span class="badge-metrica">valor absoluto</span>
+                                        <span class="badge-intervalo">0 a 64 GB</span>
+                                    </div>
+                                </div>
+
+                                <div class="componente-config">
+                                    <div class="botoes-metrica">
+                                        <button class="ativo" type="button">Valor absoluto</button>
+                                        <button type="button">Porcentagem (%)</button>
+                                    </div>
+
+                                    <div class="limites">
+                                        <div>
+                                            <span>LIMITE MÍNIMO</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                        <div>
+                                            <span>LIMITE MÁXIMO</span>
+                                            <input type="number" value="32">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="componente-box">
+                                <div class="componente-topo">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" onchange="AbrirComponente(this)">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                    <span class="titulo-componente">Uso de swap</span>
+
+                                    <div class="tipo-metrica">
+                                        <span class="badge-metrica">porcentagem (%)</span>
+                                        <span class="badge-intervalo">0 a 100</span>
+                                    </div>
+                                </div>
+
+                                <div class="componente-config">
+                                    <div class="botoes-metrica">
+                                        <button class="ativo" type="button">Porcentagem (%)</button>
+                                        <button type="button">Valor absoluto</button>
+                                    </div>
+
+                                    <div class="limites">
+                                        <div>
+                                            <span>LIMITE MÍNIMO</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                        <div>
+                                            <span>LIMITE MÁXIMO</span>
+                                            <input type="number" value="70">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grupo-componente">
+                            <h6>Disco (Armazenamento)</h6>
+
+                            <div class="componente-box">
+                                <div class="componente-topo">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" onchange="AbrirComponente(this)">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                    <span class="titulo-componente">Partições</span>
+
+                                    <div class="tipo-metrica">
+                                        <span class="badge-metrica">valor absoluto</span>
+                                        <span class="badge-intervalo">1 a 20</span>
+                                    </div>
+                                </div>
+
+                                <div class="componente-config">
+                                    <div class="botoes-metrica">
+                                        <button class="ativo" type="button">Valor absoluto</button>
+                                    </div>
+
+                                    <div class="limites">
+                                        <div>
+                                            <span>LIMITE MÍNIMO</span>
+                                            <input type="number" value="1">
+                                        </div>
+                                        <div>
+                                            <span>LIMITE MÁXIMO</span>
+                                            <input type="number" value="10">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="componente-box">
+                                <div class="componente-topo">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" onchange="AbrirComponente(this)">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                    <span class="titulo-componente">Uso de disco</span>
+
+                                    <div class="tipo-metrica">
+                                        <span class="badge-metrica">porcentagem (%)</span>
+                                        <span class="badge-intervalo">0 a 100</span>
+                                    </div>
+                                </div>
+
+                                <div class="componente-config">
+                                    <div class="botoes-metrica">
+                                        <button class="ativo" type="button">Porcentagem (%)</button>
+                                        <button type="button">Valor absoluto</button>
+                                    </div>
+
+                                    <div class="limites">
+                                        <div>
+                                            <span>LIMITE MÍNIMO</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                        <div>
+                                            <span>LIMITE MÁXIMO</span>
+                                            <input type="number" value="85">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="componente-box">
+                                <div class="componente-topo">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" onchange="AbrirComponente(this)">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                    <span class="titulo-componente">Latência de disco</span>
+
+                                    <div class="tipo-metrica">
+                                        <span class="badge-metrica">tempo (ms)</span>
+                                        <span class="badge-intervalo">0 a 300</span>
+                                    </div>
+                                </div>
+
+                                <div class="componente-config">
+                                    <div class="botoes-metrica">
+                                        <button class="ativo" type="button">Tempo (ms)</button>
+                                        <button type="button">Média</button>
+                                    </div>
+
+                                    <div class="limites">
+                                        <div>
+                                            <span>LIMITE MÍNIMO</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                        <div>
+                                            <span>LIMITE MÁXIMO</span>
+                                            <input type="number" value="120">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grupo-componente">
+                            <h6>Rede</h6>
+
+                            <div class="componente-box">
+                                <div class="componente-topo">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" onchange="AbrirComponente(this)">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                    <span class="titulo-componente">Volume de dados enviados/recebidos</span>
+
+                                    <div class="tipo-metrica">
+                                        <span class="badge-metrica">por segundo</span>
+                                        <span class="badge-intervalo">0 a 1 GB/s</span>
+                                    </div>
+                                </div>
+
+                                <div class="componente-config">
+                                    <div class="botoes-metrica">
+                                        <button class="ativo" type="button">Por segundo</button>
+                                        <button type="button">Média</button>
+                                    </div>
+
+                                    <div class="limites">
+                                        <div>
+                                            <span>LIMITE MÍNIMO</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                        <div>
+                                            <span>LIMITE MÁXIMO</span>
+                                            <input type="number" value="1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="componente-box">
+                                <div class="componente-topo">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" onchange="AbrirComponente(this)">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                    <span class="titulo-componente">Latência da rede</span>
+
+                                    <div class="tipo-metrica">
+                                        <span class="badge-metrica">média</span>
+                                        <span class="badge-intervalo">0 a 500 ms</span>
+                                    </div>
+                                </div>
+
+                                <div class="componente-config">
+                                    <div class="botoes-metrica">
+                                        <button class="ativo" type="button">Média</button>
+                                        <button type="button">Tempo (ms)</button>
+                                    </div>
+
+                                    <div class="limites">
+                                        <div>
+                                            <span>LIMITE MÍNIMO</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                        <div>
+                                            <span>LIMITE MÁXIMO</span>
+                                            <input type="number" value="150">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="grupo-componente">
+                            <h6>Processos</h6>
+
+                            <div class="componente-box">
+                                <div class="componente-topo">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" onchange="AbrirComponente(this)">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                    <span class="titulo-componente">Número de CPUs em uso</span>
+
+                                    <div class="tipo-metrica">
+                                        <span class="badge-metrica">contagem</span>
+                                        <span class="badge-intervalo">0 a 128</span>
+                                    </div>
+                                </div>
+
+                                <div class="componente-config">
+                                    <div class="botoes-metrica">
+                                        <button class="ativo" type="button">Contagem</button>
+                                    </div>
+
+                                    <div class="limites">
+                                        <div>
+                                            <span>LIMITE MÍNIMO</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                        <div>
+                                            <span>LIMITE MÁXIMO</span>
+                                            <input type="number" value="64">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="componente-box">
+                                <div class="componente-topo">
+                                    <label class="checkbox-container">
+                                        <input type="checkbox" onchange="AbrirComponente(this)">
+                                        <span class="checkmark"></span>
+                                    </label>
+
+                                    <span class="titulo-componente">Processo com mais gasto</span>
+
+                                    <div class="tipo-metrica">
+                                        <span class="badge-metrica">RAM gasta</span>
+                                        <span class="badge-intervalo">0 a 100(%)</span>
+                                    </div>
+                                </div>
+
+                                <div class="componente-config">
+                                    <div class="botoes-metrica">
+                                        <button class="ativo" type="button">Qtd processos</button>
+                                        <button type="button">Ranking</button>
+                                    </div>
+
+                                    <div class="limites">
+                                        <div>
+                                            <span>Qtd processos desejados</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="popUpFuncionario-confirmarServidor">
+                            <button class="btnPopUp01" onclick="voltarFunc2()">← Voltar</button>
+                            <button class="btnPopUp02" onclick="addFunc4()" style="color: white;">Próximo <img
+                                    width="20px" src="../assets/svg/seta-direita.png" alt=""></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fundoPopUpServidor" style="display: none;" id="popUpCadastrarAvisos">
+                    <div class="popUp-adicionarFuncionarioServidor">
+
+                        <div class="headerPopUpFuncionarioServidor">
+                            <div class="headerPopUp-esquerdaServidor">
+                                <h4>Cadastro de servidores</h4>
+                                <span>Passo 3 de 3 — Configurações de alertas</span>
+                            </div>
+                            <div class="headerPopUp-direitaServidor">
+                                <h4 onclick="fecharFunc3()">X</h4>
+                            </div>
+                        </div>
+
+                        <div class="componente-box">
+
+                            <div class="grupo-status">
+                                <span>
+                                    <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" width="20px">
+                                    Saudável
+                                </span>
+
+                                <span>
+                                    <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" width="20px">
+                                    Atenção
+                                </span>
+
+                                <span>
+                                    <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" width="20px">
+                                    Crítico
+                                </span>
+                            </div>
+
+                            <p>Defina os limites para cada nível de alerta</p>
+
+                        </div>
+                        <h6 class="titulo-grupo"> <img src="../assets/svg/crescer.png" alt="" width="20px"> CPU(%)</h6>
+                        <div class="componente-box">
+                            <p>Utilização da CPU</p>
+                            <div class="limites">
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                            width="20px">Saudavel</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
+                                            width="20px">Atenção</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                            width="20px">Critico</span>
+                                    <input type="number" value="0">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="componente-box">
+                            <p>Carga média do sistema</p>
+                            <div class="limites">
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                            width="20px">Saudavel</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
+                                            width="20px">Atenção</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                            width="20px">Critico</span>
+                                    <input type="number" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="componente-box">
+                            <p>Frequência(MHz)</p>
+                            <div class="limites">
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                            width="20px">Saudavel</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
+                                            width="20px">Atenção</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                            width="20px">Critico</span>
+                                    <input type="number" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        <h6 class="titulo-grupo"><img src="../assets/svg/servidor.png" alt="" width="20px">Memória(%)
+                        </h6>
+                        <div class="componente-box">
+                            <p>Uso da memória RAM</p>
+                            <div class="limites">
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                            width="20px">Saudavel</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
+                                            width="20px">Atenção</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                            width="20px">Critico</span>
+                                    <input type="number" value="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="componente-box">
+                            <p>Memória disponível RAM(GB)</p>
+                            <div class="limites">
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                            width="20px">Saudavel</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
+                                            width="20px">Atenção</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                            width="20px">Critico</span>
+                                    <input type="number" value="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="componente-box">
+                            <p>Uso de swap</p>
+                            <div class="limites">
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                            width="20px">Saudavel</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
+                                            width="20px">Atenção</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                            width="20px">Critico</span>
+                                    <input type="number" value="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <h6 class="titulo-grupo"><img src="../assets/svg/crescer.png" alt="" width="20px">Disco(%)</h6>
+                        <div class="componente-box">
+                            <p>Partições</p>
+                            <div class="limites">
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                            width="20px">Saudavel</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
+                                            width="20px">Atenção</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                            width="20px">Critico</span>
+                                    <input type="number" value="0">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="componente-box">
+                            <p>Uso de disco</p>
+                            <div class="limites">
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                            width="20px">Saudavel</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
+                                            width="20px">Atenção</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                            width="20px">Critico</span>
+                                    <input type="number" value="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="componente-box">
+                            <p>Latência de disco(ms)</p>
+                            <div class="limites">
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                            width="20px">Saudavel</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
+                                            width="20px">Atenção</span>
+                                    <input type="number" value="0">
+                                </div>
+                                <div>
+                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                            width="20px">Critico</span>
+                                    <input type="number" value="0">
+                                </div>
+                            </div>
+                        </div>
+
                         <div>
-                            <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
-                                style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
-                            <a href="dashboard.html">Dashboard</a>
-                            <span style="color: #7D8999;">></span>
-                            <span style="color: var(--branco);">Servidores</span>
-                        </div>
-                        <div id="iconeModo">
-                            <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
-                                style="width: 40px; cursor: pointer; margin-right: 20px;">
+                            <h6 class="titulo-grupo"><img src="../assets/svg/crescer.png" alt="" width="20px">Rede</h6>
+                            <div class="componente-box">
+                                <p>Volume de dados enviados/recebidos(pkt/s)</p>
+                                <div class="limites">
+                                    <div>
+                                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                                width="20px">Saudavel</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                    <div>
+                                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
+                                                width="20px">Atenção</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                    <div>
+                                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                                width="20px">Critico</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="componente-box">
+                                <p>Latência da rede(ms)</p>
+                                <div class="limites">
+                                    <div>
+                                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
+                                                width="20px">Saudavel</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                    <div>
+                                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
+                                                width="20px">Atenção</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                    <div>
+                                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                                width="20px">Critico</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h6 class="titulo-grupo">Processos(%)</h6>
+                                <div class="componente-box">
+                                    <p>Número de CPUs em uso</p>
+                                    <div class="limites">
+                                        <div>
+                                            <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg"
+                                                    alt="" width="20px">Saudavel</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                        <div>
+                                            <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
+                                                    width="20px">Atenção</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                        <div>
+                                            <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                                    width="20px">Critico</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="componente-box">
+                                    <p>Processo com mais gasto</p>
+                                    <div class="limites">
+                                        <div>
+                                            <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg"
+                                                    alt="" width="20px">Saudavel</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                        <div>
+                                            <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
+                                                    width="20px">Atenção</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                        <div>
+                                            <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
+                                                    width="20px">Critico</span>
+                                            <input type="number" value="0">
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="popUpFuncionario-confirmarServidor">
+                                    <button class="btnPopUp01" onclick="voltarFunc3()">← Voltar</button>
+                                    <button class="btnPopUp02" onclick="cadastrarLegendas()"
+                                        style="color: white;">Cadastrar Servidor</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <hr style="width: 100%; color: #b4b4b4; height: 2px;">
-                    <div class="header-conteudo-dash">
-                        <div class="header-esquerdo">
-                            <div class="header-esquerdo01">
-                                <h3 class="servidor-name" id="server-name">Servidores</h3>
-                            </div>
-                            <div class="header-esquerdo02">
-                                <p class="coleta-servidor" style="align-items: center;">Gerencie e monitore todos os
-                                    servidores da infraestrutura</p>
-                            </div>
-                        </div>
-                        <div class="header-direita">
-                            <button class="botao-exportar" onclick="addFunc2()"><img
-                                    src="https://www.flaticon.com/br/icone-gratis/mais_3524388?related_id=3524388&origin=search"
-                                    alt="" style="width: 22px; color: white;">✚ Adicionar Servidor</button>
-                        </div>
-                    </div>
-
-                    <div class="conteudo-dash01">
-                        <div class="cards-conteudo card01 card-server ">
-                            <div class="titulo-cards-servidores">
-                                <img class="card01-icon"
-                                    src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png" alt="cpu"
-                                    style="width: 25px;">
-                            </div>
-                            <div class="conteudo-abaixo-cards">
-                                <h1>8</h1>
-                                <h4>Total de servidores</h4>
-                            </div>
-                        </div>
-
-                        <div class="cards-conteudo card01 card-server">
-                            <div class="titulo-cards-servidores">
-                                <img class="card01-icon" src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg"
-                                    alt="cpu" style="width: 25px;">
-                            </div>
-                            <div class="conteudo-abaixo-cards">
-                                <h1 style="color: green;">5</h1>
-                                <h4 style="color: green;">Saudaveis</h4>
-                            </div>
-                        </div>
-
-                        <div class="cards-conteudo card01 card-server">
-                            <div class="titulo-cards-servidores">
-                                <img class="card01-icon" src="../assets/svg/alertas/close-circle-svgrepo-com.svg"
-                                    alt="cpu" style="width: 25px;">
-                            </div>
-                            <div class="conteudo-abaixo-cards">
-                                <h1 style="color: red;">2</h1>
-                                <h4 style="color: red;">Críticos</h4>
-                            </div>
-                        </div>
-
-                        <div class="cards-conteudo card01 card-server">
-                            <div class="titulo-cards-servidores">
-                                <img class="card01-icon" src="../assets/svg/alert-svgrepo-com.svg" alt="cpu"
-                                    style="width: 25px;">
-                            </div>
-                            <div class="conteudo-abaixo-cards">
-                                <h1 style="color: yellow;">1</h1>
-                                <h4 style="color: yellow;">Em Atenção</h4>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="barra-pesquisa">
-                        <input type="text" placeholder="🔍Buscar Servidor...">
-                        <button>Todos</button><button>Produção</button><button>Staging</button><button>DR</button><button>Desenvolvimento</button>
-                    </div>
-                    <div class="tabela-container">
-                        <table class="tabela-servidores" style="background-color: var(--pretoClaro);">
-                            <thead>
-                                <tr>
-                                    <th>Servidor</th>
-                                    <th>Ambiente</th>
-                                    <th>Status</th>
-                                    <th>CPU</th>
-                                    <th>RAM</th>
-                                    <th>Disco</th>
-                                    <th>Latência</th>
-                                    <th>Uptime</th>
-                                    <th>Criticidade</th>
-                                    <th>Ações</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <strong>SRV-PROD-API-01</strong><br>
-                                        <span>api-prod-01.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">Produção</span></td>
-                                    <td><span class="tag saudavel" style="color: red;">Crítico</span></td>
-                                    <td>60%</td>
-                                    <td>60%</td>
-                                    <td>68%</td>
-                                    <td>230ms</td>
-                                    <td>98.50%</td>
-                                    <td><span class="tag criticidade" style="color: red;">Crítica</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
-
-                                 <tr>
-                                    <td>
-                                        <strong>SRV-DEV-HB-01</strong><br>
-                                        <span>hb-dev-01.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">Desenvolvimento</span></td>
-                                    <td><span class="tag saudavel" style="color: red;">Crítico</span></td>
-                                    <td>65%</td>
-                                    <td>72%</td>
-                                    <td>60%</td>
-                                    <td>38ms</td>
-                                    <td>99.50%</td>
-                                    <td><span class="tag criticidade" style="color: green;">Baixa</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <strong>SRV-PROD-HB-02</strong><br>
-                                        <span>hb-prod-02.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag staging">Produção</span></td>
-                                    <td><span class="tag saudavel" style="color: yellow;">Atenção</span></td>
-                                    <td>60%</td>
-                                    <td>68%</td>
-                                    <td>70%</td>
-                                    <td>45ms</td>
-                                    <td>99.90%</td>
-                                    <td><span class="tag criticidade media" style="color: yellow;">Alta</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <strong>SRV-STG-HB-01</strong><br>
-                                        <span>hb-stg-01.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">Staging</span></td>
-                                    <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
-                                    <td>22%</td>
-                                    <td>35%</td>
-                                    <td>30%</td>
-                                    <td>15ms</td>
-                                    <td>99.85%</td>
-                                    <td><span class="tag criticidade" style="color: yellow;">Média</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <strong>SRV-PROD-DB-01</strong><br>
-                                        <span>db-prod-01.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">Produção</span></td>
-                                    <td><span class="tag critico" style="color: green;">Saudável</span></td>
-                                    <td>35%</td>
-                                    <td>58%</td>
-                                    <td>42%</td>
-                                    <td>8ms</td>
-                                    <td>99.99%</td>
-                                    <td><span class="tag criticidade critica" style="color: red;">Crítica</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <strong>SRV-PROD-CACHE-01</strong><br>
-                                        <span>cache-prod-01.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">Produção</span></td>
-                                    <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
-                                    <td>18%</td>
-                                    <td>45%</td>
-                                    <td>22%</td>
-                                    <td>3ms</td>
-                                    <td>99.99%</td>
-                                    <td><span class="tag criticidade" style="color: yellow;">Alta</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <strong>SRV-DR-HB-01</strong><br>
-                                        <span>hb-dr-01.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">DR</span></td>
-                                    <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
-                                    <td>5%</td>
-                                    <td>12%</td>
-                                    <td>20%</td>
-                                    <td>25ms</td>
-                                    <td>99.95%</td>
-                                    <td><span class="tag criticidade" style="color: yellow;">Alta</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
-
-                                <tr>
-                                    <td>
-                                        <strong>SRV-PROD-DB-02</strong><br>
-                                        <span>db-prod-02.nobroke.io</span>
-                                    </td>
-                                    <td><span class="tag producao">Produção</span></td>
-                                    <td><span class="tag critico" style="color: green;">Saudável</span></td>
-                                    <td>35%</td>
-                                    <td>58%</td>
-                                    <td>42%</td>
-                                    <td>8ms</td>
-                                    <td>99.99%</td>
-                                    <td><span class="tag criticidade critica" style="color: red;">Crítica</span></td>
-                                    <td><button>Ver detalhes</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-    </body>
-
-    <div class="fundoPopUpServidor" style="display: none;" id="popUpCadastrarServidor">
-        <div class="popUp-adicionarFuncionarioServidor">
-
-            <div class="headerPopUpFuncionarioServidor">
-                <div class="headerPopUp-esquerdaServidor">
-                    <h4>Cadastro de Servidor</h4>
-                    <span>Passo 1 de 3 — Informações do servidor</span>
-                </div>
-                <div class="headerPopUp-direita">
-                    <h4 onclick="fecharFunc()">X</h4>
                 </div>
             </div>
 
-
-            <div class="popUpFuncionario-SenhaServidor">
-                <span>Nome do Servidor</span>
-                <input id="input_nome_servidor" type="text" placeholder="SRV-PROD-API-01">
-            </div>
-
-
-            <div class="popUpFuncionario-dadosServidor">
-                <div class="popUpFuncionario-inserirDados-esquerdaServidor" style="width: 50%;">
-                    <span>Sistema Operacional</span>
-                    <input id="input_SO_servidor" type="text" placeholder="Ubuntu 22.04 LTS">
-                </div>
-
-                <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
-                    <span>Número Serial</span>
-                    <input id="numero_serial_servidor" type="text" placeholder="SN-XXXXXXX">
-                </div>
-            </div>
-
-
-            <div class="popUpFuncionario-dadosServidor">
-                <div class="popUpFuncionario-inserirDados-esquerdaServidor" style="width: 50%;">
-                    <span>Hostname</span>
-                    <input id="input_hostname_servidor" type="text" placeholder="host.nobroke.io">
-                </div>
-
-                <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
-                    <span>Endereço IP</span>
-                    <input id="input_endereco_servidor" type="text" placeholder="10.0.1.100">
-                </div>
-            </div>
-
-
-            <div class="popUpFuncionario-dadosServidor portaSSH">
-                <div class="popUpFuncionario-inserirDados-esquerda" style="width: 50%;">
-                    <span>Porta SSH</span>
-                    <input id="input_portaSSH_servidor" type="text" placeholder="22">
-                </div>
-
-                <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
-                    <span>Ambiente</span>
-                    <select id="select_ambiente">
-                        <option value="1">Produção</option>
-                        <option value="2">Staging</option>
-                        <option value="3">DR</option>
-                        <option value="4">Desenvolvimento</option>
-                    </select>
-                </div>
-            </div>
-
-
-            <div class="popUpFuncionario-SenhaServidor">
-                <span>Localização (Data Center)</span>
-                <input id="input_localizacao_servidor" type="text" placeholder="São Paulo — SP1-DC">
-            </div>
-
-            <div class="popUpFuncionario-confirmarServidor">
-                <button class="btnPopUp01" onclick="fecharFunc()">Cancelar</button>
-                <button class="btnPopUp02" onclick="addFunc3()" style="color: white;">Próximo <img width="20px"
-                        src="../assets/svg/seta-direita.png" alt=""></button>
+            <div class="card-alertaGeral" id="div_alertaGeral">
             </div>
         </div>
     </div>
-
-    <div class="fundoPopUpServidor" style="display: none;" id="popUpCadastrarComponente">
-        <div class="popUp-adicionarFuncionarioServidor">
-
-            <div class="headerPopUpFuncionarioServidor">
-                <div class="headerPopUp-esquerdaServidor">
-                    <h4>Cadastro de Servidor</h4>
-                    <span>Passo 2 de 3 — Componentes monitorados</span>
-                </div>
-                <div class="headerPopUp-direitaServidor">
-                    <h4 onclick="fecharFunc2()">X</h4>
-                </div>
-            </div>
-
-            <div class="barra-progresso-servidor">
-                <div class="barra-progresso-preenchida"></div>
-            </div>
-
-            <div class="grupo-componente">
-                <h6>CPU (Processador)</h6>
-
-                <div class="componente-box">
-                    <div class="componente-topo">
-                        <label class="checkbox-container">
-                            <input type="checkbox" onchange="AbrirComponente(this)">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <span class="titulo-componente">Uso geral</span>
-
-                        <div class="tipo-metrica">
-                            <span class="badge-metrica">porcentagem (%)</span>
-                            <span class="badge-intervalo">0 a 100</span>
-                        </div>
-                    </div>
-
-                    <div class="componente-config">
-                        <div class="botoes-metrica">
-                            <button class="ativo" type="button">Porcentagem (%)</button>
-                            <button type="button">Média</button>
-                        </div>
-
-                        <div class="limites">
-                            <div>
-                                <span>LIMITE MÍNIMO</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span>LIMITE MÁXIMO</span>
-                                <input type="number" value="80">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="componente-box">
-                    <div class="componente-topo">
-                        <label class="checkbox-container">
-                            <input type="checkbox" onchange="AbrirComponente(this)">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <span class="titulo-componente">Temperatura</span>
-
-                        <div class="tipo-metrica">
-                            <span class="badge-metrica">temperatura (°C)</span>
-                            <span class="badge-intervalo">20 a 95</span>
-                        </div>
-                    </div>
-
-                    <div class="componente-config">
-                        <div class="botoes-metrica">
-                            <button class="ativo" type="button">Temperatura (°C)</button>
-                            <button type="button">Média</button>
-                        </div>
-
-                        <div class="limites">
-                            <div>
-                                <span>LIMITE MÍNIMO</span>
-                                <input type="number" value="20">
-                            </div>
-                            <div>
-                                <span>LIMITE MÁXIMO</span>
-                                <input type="number" value="85">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grupo-componente">
-                <h6>Memória</h6>
-
-                <div class="componente-box">
-                    <div class="componente-topo">
-                        <label class="checkbox-container">
-                            <input type="checkbox" onchange="AbrirComponente(this)">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <span class="titulo-componente">Memória RAM</span>
-
-                        <div class="tipo-metrica">
-                            <span class="badge-metrica">valor absoluto</span>
-                            <span class="badge-intervalo">0 a 64 GB</span>
-                        </div>
-                    </div>
-
-                    <div class="componente-config">
-                        <div class="botoes-metrica">
-                            <button class="ativo" type="button">Valor absoluto</button>
-                            <button type="button">Porcentagem (%)</button>
-                        </div>
-
-                        <div class="limites">
-                            <div>
-                                <span>LIMITE MÍNIMO</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span>LIMITE MÁXIMO</span>
-                                <input type="number" value="64">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="componente-box">
-                    <div class="componente-topo">
-                        <label class="checkbox-container">
-                            <input type="checkbox" onchange="AbrirComponente(this)">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <span class="titulo-componente">Memória disponível RAM</span>
-
-                        <div class="tipo-metrica">
-                            <span class="badge-metrica">valor absoluto</span>
-                            <span class="badge-intervalo">0 a 64 GB</span>
-                        </div>
-                    </div>
-
-                    <div class="componente-config">
-                        <div class="botoes-metrica">
-                            <button class="ativo" type="button">Valor absoluto</button>
-                            <button type="button">Porcentagem (%)</button>
-                        </div>
-
-                        <div class="limites">
-                            <div>
-                                <span>LIMITE MÍNIMO</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span>LIMITE MÁXIMO</span>
-                                <input type="number" value="32">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="componente-box">
-                    <div class="componente-topo">
-                        <label class="checkbox-container">
-                            <input type="checkbox" onchange="AbrirComponente(this)">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <span class="titulo-componente">Uso de swap</span>
-
-                        <div class="tipo-metrica">
-                            <span class="badge-metrica">porcentagem (%)</span>
-                            <span class="badge-intervalo">0 a 100</span>
-                        </div>
-                    </div>
-
-                    <div class="componente-config">
-                        <div class="botoes-metrica">
-                            <button class="ativo" type="button">Porcentagem (%)</button>
-                            <button type="button">Valor absoluto</button>
-                        </div>
-
-                        <div class="limites">
-                            <div>
-                                <span>LIMITE MÍNIMO</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span>LIMITE MÁXIMO</span>
-                                <input type="number" value="70">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="grupo-componente">
-                <h6>Disco (Armazenamento)</h6>
-
-                <div class="componente-box">
-                    <div class="componente-topo">
-                        <label class="checkbox-container">
-                            <input type="checkbox" onchange="AbrirComponente(this)">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <span class="titulo-componente">Partições</span>
-
-                        <div class="tipo-metrica">
-                            <span class="badge-metrica">valor absoluto</span>
-                            <span class="badge-intervalo">1 a 20</span>
-                        </div>
-                    </div>
-
-                    <div class="componente-config">
-                        <div class="botoes-metrica">
-                            <button class="ativo" type="button">Valor absoluto</button>
-                        </div>
-
-                        <div class="limites">
-                            <div>
-                                <span>LIMITE MÍNIMO</span>
-                                <input type="number" value="1">
-                            </div>
-                            <div>
-                                <span>LIMITE MÁXIMO</span>
-                                <input type="number" value="10">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="componente-box">
-                    <div class="componente-topo">
-                        <label class="checkbox-container">
-                            <input type="checkbox" onchange="AbrirComponente(this)">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <span class="titulo-componente">Uso de disco</span>
-
-                        <div class="tipo-metrica">
-                            <span class="badge-metrica">porcentagem (%)</span>
-                            <span class="badge-intervalo">0 a 100</span>
-                        </div>
-                    </div>
-
-                    <div class="componente-config">
-                        <div class="botoes-metrica">
-                            <button class="ativo" type="button">Porcentagem (%)</button>
-                            <button type="button">Valor absoluto</button>
-                        </div>
-
-                        <div class="limites">
-                            <div>
-                                <span>LIMITE MÍNIMO</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span>LIMITE MÁXIMO</span>
-                                <input type="number" value="85">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="componente-box">
-                    <div class="componente-topo">
-                        <label class="checkbox-container">
-                            <input type="checkbox" onchange="AbrirComponente(this)">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <span class="titulo-componente">Latência de disco</span>
-
-                        <div class="tipo-metrica">
-                            <span class="badge-metrica">tempo (ms)</span>
-                            <span class="badge-intervalo">0 a 300</span>
-                        </div>
-                    </div>
-
-                    <div class="componente-config">
-                        <div class="botoes-metrica">
-                            <button class="ativo" type="button">Tempo (ms)</button>
-                            <button type="button">Média</button>
-                        </div>
-
-                        <div class="limites">
-                            <div>
-                                <span>LIMITE MÍNIMO</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span>LIMITE MÁXIMO</span>
-                                <input type="number" value="120">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="grupo-componente">
-                <h6>Rede</h6>
-
-                <div class="componente-box">
-                    <div class="componente-topo">
-                        <label class="checkbox-container">
-                            <input type="checkbox" onchange="AbrirComponente(this)">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <span class="titulo-componente">Volume de dados enviados/recebidos</span>
-
-                        <div class="tipo-metrica">
-                            <span class="badge-metrica">por segundo</span>
-                            <span class="badge-intervalo">0 a 1 GB/s</span>
-                        </div>
-                    </div>
-
-                    <div class="componente-config">
-                        <div class="botoes-metrica">
-                            <button class="ativo" type="button">Por segundo</button>
-                            <button type="button">Média</button>
-                        </div>
-
-                        <div class="limites">
-                            <div>
-                                <span>LIMITE MÍNIMO</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span>LIMITE MÁXIMO</span>
-                                <input type="number" value="1">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="componente-box">
-                    <div class="componente-topo">
-                        <label class="checkbox-container">
-                            <input type="checkbox" onchange="AbrirComponente(this)">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <span class="titulo-componente">Latência da rede</span>
-
-                        <div class="tipo-metrica">
-                            <span class="badge-metrica">média</span>
-                            <span class="badge-intervalo">0 a 500 ms</span>
-                        </div>
-                    </div>
-
-                    <div class="componente-config">
-                        <div class="botoes-metrica">
-                            <button class="ativo" type="button">Média</button>
-                            <button type="button">Tempo (ms)</button>
-                        </div>
-
-                        <div class="limites">
-                            <div>
-                                <span>LIMITE MÍNIMO</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span>LIMITE MÁXIMO</span>
-                                <input type="number" value="150">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="grupo-componente">
-                <h6>Processos</h6>
-
-                <div class="componente-box">
-                    <div class="componente-topo">
-                        <label class="checkbox-container">
-                            <input type="checkbox" onchange="AbrirComponente(this)">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <span class="titulo-componente">Número de CPUs em uso</span>
-
-                        <div class="tipo-metrica">
-                            <span class="badge-metrica">contagem</span>
-                            <span class="badge-intervalo">0 a 128</span>
-                        </div>
-                    </div>
-
-                    <div class="componente-config">
-                        <div class="botoes-metrica">
-                            <button class="ativo" type="button">Contagem</button>
-                        </div>
-
-                        <div class="limites">
-                            <div>
-                                <span>LIMITE MÍNIMO</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span>LIMITE MÁXIMO</span>
-                                <input type="number" value="64">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="componente-box">
-                    <div class="componente-topo">
-                        <label class="checkbox-container">
-                            <input type="checkbox" onchange="AbrirComponente(this)">
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <span class="titulo-componente">Processo com mais gasto</span>
-
-                        <div class="tipo-metrica">
-                            <span class="badge-metrica">RAM gasta</span>
-                            <span class="badge-intervalo">0 a 100(%)</span>
-                        </div>
-                    </div>
-
-                    <div class="componente-config">
-                        <div class="botoes-metrica">
-                            <button class="ativo" type="button">Qtd processos</button>
-                            <button type="button">Ranking</button>
-                        </div>
-
-                        <div class="limites">
-                            <div>
-                                <span>Qtd processos desejados</span>
-                                <input type="number" value="0">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="popUpFuncionario-confirmarServidor">
-                <button class="btnPopUp01" onclick="voltarFunc2()">← Voltar</button>
-                <button class="btnPopUp02" onclick="addFunc4()" style="color: white;">Próximo <img width="20px"
-                        src="../assets/svg/seta-direita.png" alt=""></button>
-            </div>
-        </div>
-    </div>
-
-    <div class="fundoPopUpServidor" style="display: none;" id="popUpCadastrarAvisos">
-        <div class="popUp-adicionarFuncionarioServidor">
-
-            <div class="headerPopUpFuncionarioServidor">
-                <div class="headerPopUp-esquerdaServidor">
-                    <h4>Cadastro de servidores</h4>
-                    <span>Passo 3 de 3 — Configurações de alertas</span>
-                </div>
-                <div class="headerPopUp-direitaServidor">
-                    <h4 onclick="fecharFunc3()">X</h4>
-                </div>
-            </div>
-
-            <div class="componente-box">
-
-                <div class="grupo-status">
-                    <span>
-                        <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" width="20px">
-                        Saudável
-                    </span>
-
-                    <span>
-                        <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" width="20px">
-                        Atenção
-                    </span>
-
-                    <span>
-                        <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" width="20px">
-                        Crítico
-                    </span>
-                </div>
-
-                <p>Defina os limites para cada nível de alerta</p>
-
-            </div>
-            <h6 class="titulo-grupo"> <img src="../assets/svg/crescer.png" alt="" width="20px"> CPU(%)</h6>
-            <div class="componente-box">
-                <p>Utilização da CPU</p>
-                <div class="limites">
-                    <div>
-                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                width="20px">Saudavel</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                width="20px">Critico</span>
-                        <input type="number" value="0">
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="componente-box">
-                <p>Carga média do sistema</p>
-                <div class="limites">
-                    <div>
-                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                width="20px">Saudavel</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                width="20px">Critico</span>
-                        <input type="number" value="0">
-                    </div>
-                </div>
-            </div>
-            <div class="componente-box">
-                <p>Frequência(MHz)</p>
-                <div class="limites">
-                    <div>
-                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                width="20px">Saudavel</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                width="20px">Critico</span>
-                        <input type="number" value="0">
-                    </div>
-                </div>
-            </div>
-            <h6 class="titulo-grupo"><img src="../assets/svg/servidor.png" alt="" width="20px">Memória(%)</h6>
-            <div class="componente-box">
-                <p>Uso da memória RAM</p>
-                <div class="limites">
-                    <div>
-                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                width="20px">Saudavel</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                width="20px">Critico</span>
-                        <input type="number" value="0">
-                    </div>
-                </div>
-            </div>
-
-            <div class="componente-box">
-                <p>Memória disponível RAM(GB)</p>
-                <div class="limites">
-                    <div>
-                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                width="20px">Saudavel</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                width="20px">Critico</span>
-                        <input type="number" value="0">
-                    </div>
-                </div>
-            </div>
-
-            <div class="componente-box">
-                <p>Uso de swap</p>
-                <div class="limites">
-                    <div>
-                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                width="20px">Saudavel</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                width="20px">Critico</span>
-                        <input type="number" value="0">
-                    </div>
-                </div>
-            </div>
-
-            <h6 class="titulo-grupo"><img src="../assets/svg/crescer.png" alt="" width="20px">Disco(%)</h6>
-            <div class="componente-box">
-                <p>Partições</p>
-                <div class="limites">
-                    <div>
-                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                width="20px">Saudavel</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                width="20px">Critico</span>
-                        <input type="number" value="0">
-                    </div>
-                </div>
-            </div>
-            <div class="componente-box">
-                <p>Uso de disco</p>
-                <div class="limites">
-                    <div>
-                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                width="20px">Saudavel</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                width="20px">Critico</span>
-                        <input type="number" value="0">
-                    </div>
-                </div>
-            </div>
-
-            <div class="componente-box">
-                <p>Latência de disco(ms)</p>
-                <div class="limites">
-                    <div>
-                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                width="20px">Saudavel</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt="" width="20px">Atenção</span>
-                        <input type="number" value="0">
-                    </div>
-                    <div>
-                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                width="20px">Critico</span>
-                        <input type="number" value="0">
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <h6 class="titulo-grupo"><img src="../assets/svg/crescer.png" alt="" width="20px">Rede</h6>
-                <div class="componente-box">
-                    <p>Volume de dados enviados/recebidos(pkt/s)</p>
-                    <div class="limites">
-                        <div>
-                            <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                    width="20px">Saudavel</span>
-                            <input type="number" value="0">
-                        </div>
-                        <div>
-                            <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                    width="20px">Atenção</span>
-                            <input type="number" value="0">
-                        </div>
-                        <div>
-                            <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                    width="20px">Critico</span>
-                            <input type="number" value="0">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="componente-box">
-                    <p>Latência da rede(ms)</p>
-                    <div class="limites">
-                        <div>
-                            <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                    width="20px">Saudavel</span>
-                            <input type="number" value="0">
-                        </div>
-                        <div>
-                            <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                    width="20px">Atenção</span>
-                            <input type="number" value="0">
-                        </div>
-                        <div>
-                            <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                    width="20px">Critico</span>
-                            <input type="number" value="0">
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <h6 class="titulo-grupo">Processos(%)</h6>
-                    <div class="componente-box">
-                        <p>Número de CPUs em uso</p>
-                        <div class="limites">
-                            <div>
-                                <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                        width="20px">Saudavel</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                        width="20px">Atenção</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                        width="20px">Critico</span>
-                                <input type="number" value="0">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="componente-box">
-                        <p>Processo com mais gasto</p>
-                        <div class="limites">
-                            <div>
-                                <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                        width="20px">Saudavel</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                        width="20px">Atenção</span>
-                                <input type="number" value="0">
-                            </div>
-                            <div>
-                                <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                        width="20px">Critico</span>
-                                <input type="number" value="0">
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="popUpFuncionario-confirmarServidor">
-                        <button class="btnPopUp01" onclick="voltarFunc3()">← Voltar</button>
-                        <button class="btnPopUp02" onclick="cadastrarLegendas()" style="color: white;">Cadastrar Servidor</button>
-                    </div>
-                </div>
-            </div>
+</body>
 
 </html>
 <script>
-  
-  function normalizar(texto) {
-    return texto
-        ?.trim()
-        .replace(/\s+/g, " ")
-        .toLowerCase();
-}
 
-const mapaComponentes = {
-    "cpu (processador)": 1,
-    "memória": 2,
-    "disco (armazenamento)": 3,
-    "rede": 4,
-    "processos": 5
-};
+    function normalizar(texto) {
+        return texto
+            ?.trim()
+            .replace(/\s+/g, " ")
+            .toLowerCase();
+    }
+
+    const mapaComponentes = {
+        "cpu (processador)": 1,
+        "memória": 2,
+        "disco (armazenamento)": 3,
+        "rede": 4,
+        "processos": 5
+    };
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");
     const imgLogo = document.getElementById("imgLogo");
     const imgUser = document.getElementById("imgUser");
     const sidebar = document.getElementById("div_lateralAberta");
+    const cardAlerta = document.getElementById("div_alertaGeral")
 
     function addFunc2() {
         document.getElementById('popUpCadastrarServidor').style.display = 'flex';
@@ -1342,7 +1358,31 @@ const mapaComponentes = {
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
         }
+        if (sessionStorage.ALERTA == 0) {
+            cardAlerta.style.display = "none"
+        } else {
+            cardAlerta.innerHTML = `<div class="box-cardAlerta">
+                    <div class="titulo-pai">
+                        <div class="titulo-alerta">
+                            <img src="../assets/svg/alertas/warning.png">
+                            <span>ALERTA</span>
+                        </div>
+                        <div class="fecharCard">
+                            <span onclick="fecharAlerta()">X</span>
+                        </div>
+                    </div>
+                    <div class="corpo-alerta">
+                        <span>2 Alertas Críticos</span>
+                        <a href="Alertas.html">Clique aqui para ver mais informações!</a>
+                    </div>
+                </div>`
+        }
     }
+
+    function fecharAlerta() {
+        cardAlerta.style.display = "none"
+    }
+    
     function cadastrarServidor() {
 
         var nomeServidor = input_nome_servidor.value;
@@ -1361,200 +1401,202 @@ const mapaComponentes = {
             console.log("As informaçoes do servidor não foram preenchidas corretamente!")
         } else {
             fetch("http://localhost:3333/cadastrarServidor", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        nomeServer: nomeServidor,
-        SOServer: SOServidor,
-        SerialServer: numeroSerialServidor,
-        hostServer: HostServidor,
-        enderecoIPServer: enderecoServidor,
-        SSHServer: portaSSHservidor,
-        ambienteServer: ambienteServidor,
-        localizacaoServer: localizacaoServidor,
-        fk_empresaServer: fk_empresa
-    })
-})
-.then(function (resposta) {
-    console.log("resposta: ", resposta);
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    nomeServer: nomeServidor,
+                    SOServer: SOServidor,
+                    SerialServer: numeroSerialServidor,
+                    hostServer: HostServidor,
+                    enderecoIPServer: enderecoServidor,
+                    SSHServer: portaSSHservidor,
+                    ambienteServer: ambienteServidor,
+                    localizacaoServer: localizacaoServidor,
+                    fk_empresaServer: fk_empresa
+                })
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
 
-    if (!resposta.ok) {
-        throw "Erro ao cadastrar servidor";
+                    if (!resposta.ok) {
+                        throw "Erro ao cadastrar servidor";
+                    }
+
+                    return resposta.json();
+                })
+                .then(function (data) {
+                    console.log("DATA:", data);
+
+                    var idServidor = data.idServidor;
+                    sessionStorage.setItem('idServidor', idServidor);
+
+                    console.log("ID DO SERVIDOR:", idServidor);
+
+                })
+                .catch(function (erro) {
+                    console.log("#ERRO:", erro);
+                });
+        }
     }
 
-    return resposta.json(); 
-})
-.then(function (data) {
-    console.log("DATA:", data);
+    function cadastrarComponente() {
 
-    var idServidor = data.idServidor; 
-    sessionStorage.setItem('idServidor', idServidor);
+        var componentes = [];
 
-    console.log("ID DO SERVIDOR:", idServidor);
+        document.querySelectorAll(".componente-box").forEach(box => {
 
-})
-.catch(function (erro) {
-    console.log("#ERRO:", erro);
-});
-    }
-}
+            var checkbox = box.querySelector("input[type='checkbox']");
+            if (!checkbox || !checkbox.checked) return;
 
-function cadastrarComponente() {
+            var grupo = box.closest(".grupo-componente")
+                .querySelector("h6")
+                ?.innerText;
 
-    var componentes = [];
+            var grupoNormalizado = normalizar(grupo);
 
-    document.querySelectorAll(".componente-box").forEach(box => {
+            var fk_componente = mapaComponentes[grupoNormalizado];
 
-        var checkbox = box.querySelector("input[type='checkbox']");
-        if (!checkbox || !checkbox.checked) return;
+            console.log("Grupo:", grupo, "→", grupoNormalizado, "→ FK:", fk_componente);
 
-        var grupo = box.closest(".grupo-componente")
-                       .querySelector("h6")
-                       ?.innerText;
+            var inputs = box.querySelectorAll(".limites input");
 
-        var grupoNormalizado = normalizar(grupo);
+            var minimo = Number(inputs[0]?.value);
+            var maximo = Number(inputs[1]?.value);
 
-        var fk_componente = mapaComponentes[grupoNormalizado];
+            var nome = box.querySelector(".titulo-componente")?.innerText;
 
-        console.log("Grupo:", grupo, "→", grupoNormalizado, "→ FK:", fk_componente);
+            var tipo = box.querySelector(".botoes-metrica .ativo")?.innerText;
 
-        var inputs = box.querySelectorAll(".limites input");
+            let fk_formato = null;
 
-        var minimo = Number(inputs[0]?.value);
-        var maximo = Number(inputs[1]?.value);
+            if (tipo?.includes("%")) fk_formato = 1;
+            else if (tipo?.includes("GHz")) fk_formato = 2;
+            else if (tipo?.includes("GB")) fk_formato = 3;
+            else if (tipo?.includes("ms")) fk_formato = 4;
+            else if (tipo?.includes("°C")) fk_formato = 5;
+            else fk_formato = 1;
 
-        var nome = box.querySelector(".titulo-componente")?.innerText;
-
-        var tipo = box.querySelector(".botoes-metrica .ativo")?.innerText;
-
-        let fk_formato = null;
-
-        if (tipo?.includes("%")) fk_formato = 1;
-        else if (tipo?.includes("GHz")) fk_formato = 2;
-        else if (tipo?.includes("GB")) fk_formato = 3;
-        else if (tipo?.includes("ms")) fk_formato = 4;
-        else if (tipo?.includes("°C")) fk_formato = 5;
-        else fk_formato = 1;
-
-        componentes.push({
-            fk_componente,
-            fk_formato,
-            nome_componente: nome,
-            valor_min_critico: minimo,
-            valor_max_critico: maximo,
-            valor_min_atencao: minimo,
-            valor_max_atencao: maximo
+            componentes.push({
+                fk_componente,
+                fk_formato,
+                nome_componente: nome,
+                valor_min_critico: minimo,
+                valor_max_critico: maximo,
+                valor_min_atencao: minimo,
+                valor_max_atencao: maximo
+            });
         });
-    });
 
-    console.log("COMPONENTES:", componentes);
+        console.log("COMPONENTES:", componentes);
 
-    var idServidor = sessionStorage.getItem('idServidor');
+        var idServidor = sessionStorage.getItem('idServidor');
 
-    if (!idServidor) {
-        console.log("idServidor não encontrado");
-        return;
-    }
+        if (!idServidor) {
+            console.log("idServidor não encontrado");
+            return;
+        }
 
-    if (componentes.length === 0) {
-        console.log("Nenhum componente selecionado");
-        return;
-    }
+        if (componentes.length === 0) {
+            console.log("Nenhum componente selecionado");
+            return;
+        }
 
-    fetch("http://localhost:3333/componente", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            idServidor,
-            componentes
+        fetch("http://localhost:3333/componente", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idServidor,
+                componentes
+            })
         })
-    })
- .then(res => {
-    if (!res.ok) throw "Erro ao cadastrar componentes";
-    return res.json();
-})
-.then(data => {
+            .then(res => {
+                if (!res.ok) throw "Erro ao cadastrar componentes";
+                return res.json();
+            })
+            .then(data => {
 
-    console.log("RESPOSTA:", data);
+                console.log("RESPOSTA:", data);
 
-    sessionStorage.setItem(
-        "idsTipo",
-        JSON.stringify(data.idsTipo)
-    );
+                sessionStorage.setItem(
+                    "idsTipo",
+                    JSON.stringify(data.idsTipo)
+                );
 
-})
-.catch(err => {
-    console.log("ERRO:", err);
-});
+            })
+            .catch(err => {
+                console.log("ERRO:", err);
+            });
 
-}
-
-
-function cadastrarLegendas() {
-
-    var idsTipo = JSON.parse(sessionStorage.getItem("idsTipo"));
-    var fkEmpresa = sessionStorage.getItem("FK_EMPRESA");
-    console.log("idsTipo:", idsTipo);
-    if (!idsTipo) {
-        alert("Cadastre os componentes primeiro.");
-        return;
     }
-    var legendas = [];
-    document.querySelectorAll(".componente-box").forEach(box => {
-        var checkbox = box.querySelector("input[type='checkbox']");
-        if (!checkbox || !checkbox.checked) return;
 
-        var nome = box.querySelector("p")?.innerText 
-                || box.querySelector(".titulo-componente")?.innerText 
+
+    function cadastrarLegendas() {
+
+        var idsTipo = JSON.parse(sessionStorage.getItem("idsTipo"));
+        var fkEmpresa = sessionStorage.getItem("FK_EMPRESA");
+        console.log("idsTipo:", idsTipo);
+        if (!idsTipo) {
+            alert("Cadastre os componentes primeiro.");
+            return;
+        }
+        var legendas = [];
+        document.querySelectorAll(".componente-box").forEach(box => {
+            var checkbox = box.querySelector("input[type='checkbox']");
+            if (!checkbox || !checkbox.checked) return;
+
+            var nome = box.querySelector("p")?.innerText
+                || box.querySelector(".titulo-componente")?.innerText
                 || "sem_nome";
 
-        var inputs = box.querySelectorAll(".limites input");
+            var inputs = box.querySelectorAll(".limites input");
 
-        var saudavel = Number(inputs[0]?.value || 0);
-        var atencao = Number(inputs[1]?.value || 0);
-        var critico = Number(inputs[2]?.value || 0);
+            var saudavel = Number(inputs[0]?.value || 0);
+            var atencao = Number(inputs[1]?.value || 0);
+            var critico = Number(inputs[2]?.value || 0);
 
-        legendas.push({
-            nome_componente: nome,saudavel,atencao,critico});
-    });
+            legendas.push({
+                nome_componente: nome, saudavel, atencao, critico
+            });
+        });
 
-    console.log("LEGENDAS:", legendas);
+        console.log("LEGENDAS:", legendas);
 
-    var idServidor = sessionStorage.getItem('idServidor');
+        var idServidor = sessionStorage.getItem('idServidor');
 
-    if (!idServidor) {
-        console.log("idServidor não encontrado");
-        return;
+        if (!idServidor) {
+            console.log("idServidor não encontrado");
+            return;
+        }
+
+        console.log("CHAMANDO FETCH DE LEGENDAS...");
+
+
+        fetch("http://localhost:3333/componente/legendas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idServidor,
+                legendas,
+                idsTipo,
+                fkEmpresa
+            })
+        })
+            .then(res => {
+                console.log("STATUS:", res.status);
+                return res.text();
+            })
+            .then(data => {
+                console.log("RESPOSTA BRUTA:", data);
+                document.getElementById('popUpCadastrarAvisos').style.display = 'none';
+            })
+            .catch(err => {
+                console.log("ERRO FETCH:", err);
+            });
     }
-
-    console.log("CHAMANDO FETCH DE LEGENDAS...");
-
-    
-fetch("http://localhost:3333/componente/legendas", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        idServidor,
-        legendas,
-        idsTipo,
-        fkEmpresa
-    })
-})
-.then(res => {
-    console.log("STATUS:", res.status);
-    return res.text(); 
-})
-.then(data => {
-    console.log("RESPOSTA BRUTA:", data);
-})
-.catch(err => {
-    console.log("ERRO FETCH:", err);
-});
-}
 </script>

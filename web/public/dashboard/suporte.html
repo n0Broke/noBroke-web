@@ -261,6 +261,11 @@
                         <button type="submit">Enviar mensagem</button>
                     </form>
                 </div>
+            </div>
+            <div class="card-alertaGeral" id="div_alertaGeral">
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
@@ -270,6 +275,7 @@
     const imgLogo = document.getElementById("imgLogo");
     const imgUser = document.getElementById("imgUser");
     const sidebar = document.getElementById("div_lateralAberta");
+    const cardAlerta = document.getElementById("div_alertaGeral")
 
     let modoEscuro = false;
 
@@ -355,5 +361,28 @@
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
         }
+        if (sessionStorage.ALERTA == 0) {
+            cardAlerta.style.display = "none"
+        }else{
+            cardAlerta.innerHTML = `<div class="box-cardAlerta">
+                    <div class="titulo-pai">
+                        <div class="titulo-alerta">
+                            <img src="../assets/svg/alertas/warning.png">
+                            <span>ALERTA</span>
+                        </div>
+                        <div class="fecharCard">
+                            <span onclick="fecharAlerta()">X</span>
+                        </div>
+                    </div>
+                    <div class="corpo-alerta">
+                        <span>2 Alertas Críticos</span>
+                        <a href="Alertas.html">Clique aqui para ver mais informações!</a>
+                    </div>
+                </div>`
+        }
+    }
+
+    function fecharAlerta(){
+        cardAlerta.style.display = "none"
     }
 </script>

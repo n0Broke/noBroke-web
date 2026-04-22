@@ -456,6 +456,9 @@
                     </div>
                 </div>
             </div>
+
+            <div class="card-alertaGeral" id="div_alertaGeral">
+            </div>
         </div>
     </div>
 
@@ -469,6 +472,7 @@
     const imgUser = document.getElementById("imgUser");
     const logoAlerta = document.getElementById("logoAlerta");
     const sidebar = document.getElementById("div_lateralAberta");
+    const cardAlerta = document.getElementById("div_alertaGeral")
 
     let modoEscuro = false;
 
@@ -507,6 +511,7 @@
             root.style.setProperty('--pretoClaro', '#fff');
             root.style.setProperty('--brancoCinza', '#1D2025');
             root.style.setProperty('--bordas', '#b5b5b5');
+            root.style.setProperty('--branco-transparente', '#0000007c');
             imgModo.src = "../assets/icon/icons-dashboard/lua-crescente.png";
             imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg"
             logoAlerta.src = "../assets/svg/alertas/bell-svgrepo-com-preto.svg";
@@ -530,6 +535,7 @@
             root.style.setProperty('--pretoClaro', '#1D2025');
             root.style.setProperty('--brancoCinza', '#b5b5b5');
             root.style.setProperty('--bordas', '#3a3f45');
+            root.style.setProperty('--branco-transparente', '#ffffff7e');
             imgModo.src = "../assets/icon/icons-dashboard/brilho-do-sol.png";
             imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg"
             logoAlerta.src = "../assets/svg/alertas/bell-svgrepo-com.svg";
@@ -556,6 +562,29 @@
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
         }
+        if (sessionStorage.ALERTA == 0) {
+            cardAlerta.style.display = "none"
+        } else {
+            cardAlerta.innerHTML = `<div class="box-cardAlerta">
+                    <div class="titulo-pai">
+                        <div class="titulo-alerta">
+                            <img src="../assets/svg/alertas/warning.png">
+                            <span>ALERTA</span>
+                        </div>
+                        <div class="fecharCard">
+                            <span onclick="fecharAlerta()">X</span>
+                        </div>
+                    </div>
+                    <div class="corpo-alerta">
+                        <span>2 Alertas Críticos</span>
+                        <a href="Alertas.html">Clique aqui para ver mais informações!</a>
+                    </div>
+                </div>`
+        }
+    }
+
+    function fecharAlerta() {
+        cardAlerta.style.display = "none"
     }
 
     // ==================================================================================
@@ -786,29 +815,29 @@
         window.location = 'index.html';
     }
 
-        console.log('----------------------------------------------')
-        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-        console.log(resposta)
+    console.log('----------------------------------------------')
+    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+    console.log(resposta)
 
-        // Inserindo valores recebidos em estrutura para plotar o gráfico
-        for (i = 0; i < resposta.length; i++) {
-            var registro = resposta[i];
-            labels.push(registro.momento_grafico);
-            dados.datasets[0].data.push(registro.umidade);
-            dados.datasets[1].data.push(registro.temperatura);
-        }
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
+    for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        labels.push(registro.momento_grafico);
+        dados.datasets[0].data.push(registro.umidade);
+        dados.datasets[1].data.push(registro.temperatura);
+    }
 
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(dados.datasets)
-        console.log('----------------------------------------------')
+    console.log('----------------------------------------------')
+    console.log('O gráfico será plotado com os respectivos valores:')
+    console.log('Labels:')
+    console.log(labels)
+    console.log('Dados:')
+    console.log(dados.datasets)
+    console.log('----------------------------------------------')
 
-        // Criando estrutura para plotar gráfico - config
-        const config = {
-            type: 'line',
-            data: dados,
-        };
+    // Criando estrutura para plotar gráfico - config
+    const config = {
+        type: 'line',
+        data: dados,
+    };
 </script>

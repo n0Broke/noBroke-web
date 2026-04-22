@@ -610,7 +610,7 @@
                                             <span>Acesso total as Dashboards</span>
                                         </div>
                                     </div>
-                                     <div class="cargoInfo-direita">
+                                    <div class="cargoInfo-direita">
                                         <span style="color: var(--branco);">3 Usuários</span>
                                         <img class="imgLapis" src="../assets/svg/configuracoes/pen-svgrepo-com.svg"
                                             alt="editIcon">
@@ -720,6 +720,8 @@
                 </div>
             </div>
         </div>
+        <div class="card-alertaGeral" id="div_alertaGeral">
+        </div>
         <!-- =================================== -->
         <!-- PopUps - Adicionar Funcionários -->
         <div class="fundoPopUp" style="display: none;" id="popUpCadastrar">
@@ -810,6 +812,7 @@
     const imgUser = document.getElementById("imgUser");
     const imagensLapis = document.querySelectorAll('.imgLapis');
     const sidebar = document.getElementById("div_lateralAberta");
+    const cardAlerta = document.getElementById("div_alertaGeral")
 
     imgModo.addEventListener("click", mudarModo);
     let modoEscuro = false;
@@ -901,8 +904,31 @@
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
         }
+        if (sessionStorage.ALERTA == 0) {
+            cardAlerta.style.display = "none"
+        }else{
+            cardAlerta.innerHTML = `<div class="box-cardAlerta">
+                    <div class="titulo-pai">
+                        <div class="titulo-alerta">
+                            <img src="../assets/svg/alertas/warning.png">
+                            <span>ALERTA</span>
+                        </div>
+                        <div class="fecharCard">
+                            <span onclick="fecharAlerta()">X</span>
+                        </div>
+                    </div>
+                    <div class="corpo-alerta">
+                        <span>2 Alertas Críticos</span>
+                        <a href="Alertas.html">Clique aqui para ver mais informações!</a>
+                    </div>
+                </div>`
+        }
         const botoesEscolha = document.querySelectorAll('.configuracaoEscolha');
         botoesEscolha[4].click();
+    }
+
+     function fecharAlerta(){
+        cardAlerta.style.display = "none"
     }
 
     // ===================================================================

@@ -488,7 +488,33 @@ body {
 }
 
 #footer {
+  display: flex;
+  justify-content: center;
   background-color: black;
+}
+
+.container-footer{
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.box .titulo{
+  color: white !important;
+  font-size: 25px;
+}
+
+.box-img{
+  display: flex;
+  justify-content: space-around;
 }
 
 #footer span {
