@@ -37,30 +37,7 @@ function cadastrarComponente(req, res) {
             res.status(500).json(err);
         });
 }
-function cadastrarLegendas(req, res) {
-    var { idServidor, legendas } = req.body;
-
-    var idsTipo = req.body.idsTipo;
-    var fkEmpresa = req.body.fkEmpresa;
-    if (!Array.isArray(legendas) || legendas.length === 0) {
-    return res.status(400).json("Legendas inválidas");
-}
-
-if (!Array.isArray(idsTipo) || idsTipo.length === 0) {
-    return res.status(400).json("idsTipo inválido");
-}
-
-    return componenteModel.cadastrarLegendas(
-        idServidor,
-        legendas,
-        idsTipo,
-        fkEmpresa
-    )
-    .then(r => res.json({ ok: true }))
-    .catch(err => res.status(500).json(err));
-}
 
 module.exports = {
-    cadastrarComponente,
-    cadastrarLegendas
+    cadastrarComponente
 };

@@ -18,9 +18,6 @@ var usuarioRouter = require("./src/routes/usuarios");
 var avisosRouter = require("./src/routes/avisos");
 
 var componenteRouter = require("./src/routes/cadastroComponente");
-// var medidasRouter = require("./src/routes/medidas");
-// var aquariosRouter = require("./src/routes/aquarios");
-
 var cadastroFuncionarioRouter = require("./src/routes/cadastroFuncionario");
 var cadastroEmpresaRouter = require("./src/routes/cadastroEmpresa");
 var cadastroAdmRouter = require("./src/routes/cadastroAdm");

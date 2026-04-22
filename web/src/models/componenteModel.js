@@ -39,40 +39,6 @@ function cadastrarComponente(idServidor, componentes) {
     return Promise.all(promises);
 }
 
-function cadastrarLegendas(idServidor, legendas, idsTipo, fkEmpresa) {
-
-    var promises = [];
-
-    legendas.forEach((l, index) => {
-
-        var fkTipo = idsTipo[index];
-
-        var sql = `
-            INSERT INTO nivel_alerta (
-                critico,
-                alerta,
-                normal,
-                fkEmpresa,
-                fkServidor,
-                fkTipo_componente
-            )
-            VALUES (
-                ${l.critico},
-                ${l.atencao},
-                ${l.saudavel},
-                ${fkEmpresa},
-                ${idServidor},
-                ${fkTipo}
-            );
-        `;
-
-        promises.push(database.executar(sql));
-    });
-
-    return Promise.all(promises);
-}
-
 module.exports = {
-    cadastrarComponente,
-    cadastrarLegendas
+    cadastrarComponente
 };

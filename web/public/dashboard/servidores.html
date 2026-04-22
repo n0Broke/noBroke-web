@@ -353,7 +353,7 @@
                         <div class="headerPopUpFuncionarioServidor">
                             <div class="headerPopUp-esquerdaServidor">
                                 <h4>Cadastro de Servidor</h4>
-                                <span>Passo 1 de 3 — Informações do servidor</span>
+                                <span>Passo 1 de 2 — Informações do servidor</span>
                             </div>
                             <div class="headerPopUp-direita">
                                 <h4 onclick="fecharFunc()">X</h4>
@@ -430,7 +430,7 @@
                         <div class="headerPopUpFuncionarioServidor">
                             <div class="headerPopUp-esquerdaServidor">
                                 <h4>Cadastro de Servidor</h4>
-                                <span>Passo 2 de 3 — Componentes monitorados</span>
+                                <span>Passo 2 de 2 — Componentes monitorados</span>
                             </div>
                             <div class="headerPopUp-direitaServidor">
                                 <h4 onclick="fecharFunc2()">X</h4>
@@ -460,10 +460,6 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    <div class="botoes-metrica">
-                                        <button class="ativo" type="button">Porcentagem (%)</button>
-                                        <button type="button">Média</button>
-                                    </div>
 
                                     <div class="limites">
                                         <div>
@@ -494,10 +490,6 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    <div class="botoes-metrica">
-                                        <button class="ativo" type="button">Temperatura (°C)</button>
-                                        <button type="button">Média</button>
-                                    </div>
 
                                     <div class="limites">
                                         <div>
@@ -532,10 +524,6 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    <div class="botoes-metrica">
-                                        <button class="ativo" type="button">Valor absoluto</button>
-                                        <button type="button">Porcentagem (%)</button>
-                                    </div>
 
                                     <div class="limites">
                                         <div>
@@ -566,10 +554,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    <div class="botoes-metrica">
-                                        <button class="ativo" type="button">Valor absoluto</button>
-                                        <button type="button">Porcentagem (%)</button>
-                                    </div>
+                                    
 
                                     <div class="limites">
                                         <div>
@@ -600,10 +585,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    <div class="botoes-metrica">
-                                        <button class="ativo" type="button">Porcentagem (%)</button>
-                                        <button type="button">Valor absoluto</button>
-                                    </div>
+                                
 
                                     <div class="limites">
                                         <div>
@@ -639,9 +621,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    <div class="botoes-metrica">
-                                        <button class="ativo" type="button">Valor absoluto</button>
-                                    </div>
+                                   
 
                                     <div class="limites">
                                         <div>
@@ -672,10 +652,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    <div class="botoes-metrica">
-                                        <button class="ativo" type="button">Porcentagem (%)</button>
-                                        <button type="button">Valor absoluto</button>
-                                    </div>
+                                  
 
                                     <div class="limites">
                                         <div>
@@ -706,10 +683,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    <div class="botoes-metrica">
-                                        <button class="ativo" type="button">Tempo (ms)</button>
-                                        <button type="button">Média</button>
-                                    </div>
+                                   
 
                                     <div class="limites">
                                         <div>
@@ -745,10 +719,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    <div class="botoes-metrica">
-                                        <button class="ativo" type="button">Por segundo</button>
-                                        <button type="button">Média</button>
-                                    </div>
+                                   
 
                                     <div class="limites">
                                         <div>
@@ -779,10 +750,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    <div class="botoes-metrica">
-                                        <button class="ativo" type="button">Média</button>
-                                        <button type="button">Tempo (ms)</button>
-                                    </div>
+                                    
 
                                     <div class="limites">
                                         <div>
@@ -818,9 +786,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    <div class="botoes-metrica">
-                                        <button class="ativo" type="button">Contagem</button>
-                                    </div>
+                                   
 
                                     <div class="limites">
                                         <div>
@@ -851,10 +817,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    <div class="botoes-metrica">
-                                        <button class="ativo" type="button">Qtd processos</button>
-                                        <button type="button">Ranking</button>
-                                    </div>
+                                   
 
                                     <div class="limites">
                                         <div>
@@ -866,332 +829,9 @@
                             </div>
                         </div>
 
-                        <div class="popUpFuncionario-confirmarServidor">
-                            <button class="btnPopUp01" onclick="voltarFunc2()">← Voltar</button>
-                            <button class="btnPopUp02" onclick="addFunc4()" style="color: white;">Próximo <img
-                                    width="20px" src="../assets/svg/seta-direita.png" alt=""></button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="fundoPopUpServidor" style="display: none;" id="popUpCadastrarAvisos">
-                    <div class="popUp-adicionarFuncionarioServidor">
-
-                        <div class="headerPopUpFuncionarioServidor">
-                            <div class="headerPopUp-esquerdaServidor">
-                                <h4>Cadastro de servidores</h4>
-                                <span>Passo 3 de 3 — Configurações de alertas</span>
-                            </div>
-                            <div class="headerPopUp-direitaServidor">
-                                <h4 onclick="fecharFunc3()">X</h4>
-                            </div>
-                        </div>
-
-                        <div class="componente-box">
-
-                            <div class="grupo-status">
-                                <span>
-                                    <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" width="20px">
-                                    Saudável
-                                </span>
-
-                                <span>
-                                    <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" width="20px">
-                                    Atenção
-                                </span>
-
-                                <span>
-                                    <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" width="20px">
-                                    Crítico
-                                </span>
-                            </div>
-
-                            <p>Defina os limites para cada nível de alerta</p>
-
-                        </div>
-                        <h6 class="titulo-grupo"> <img src="../assets/svg/crescer.png" alt="" width="20px"> CPU(%)</h6>
-                        <div class="componente-box">
-                            <p>Utilização da CPU</p>
-                            <div class="limites">
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                            width="20px">Saudavel</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                            width="20px">Atenção</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                            width="20px">Critico</span>
-                                    <input type="number" value="0">
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="componente-box">
-                            <p>Carga média do sistema</p>
-                            <div class="limites">
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                            width="20px">Saudavel</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                            width="20px">Atenção</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                            width="20px">Critico</span>
-                                    <input type="number" value="0">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="componente-box">
-                            <p>Frequência(MHz)</p>
-                            <div class="limites">
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                            width="20px">Saudavel</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                            width="20px">Atenção</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                            width="20px">Critico</span>
-                                    <input type="number" value="0">
-                                </div>
-                            </div>
-                        </div>
-                        <h6 class="titulo-grupo"><img src="../assets/svg/servidor.png" alt="" width="20px">Memória(%)
-                        </h6>
-                        <div class="componente-box">
-                            <p>Uso da memória RAM</p>
-                            <div class="limites">
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                            width="20px">Saudavel</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                            width="20px">Atenção</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                            width="20px">Critico</span>
-                                    <input type="number" value="0">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="componente-box">
-                            <p>Memória disponível RAM(GB)</p>
-                            <div class="limites">
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                            width="20px">Saudavel</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                            width="20px">Atenção</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                            width="20px">Critico</span>
-                                    <input type="number" value="0">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="componente-box">
-                            <p>Uso de swap</p>
-                            <div class="limites">
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                            width="20px">Saudavel</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                            width="20px">Atenção</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                            width="20px">Critico</span>
-                                    <input type="number" value="0">
-                                </div>
-                            </div>
-                        </div>
-
-                        <h6 class="titulo-grupo"><img src="../assets/svg/crescer.png" alt="" width="20px">Disco(%)</h6>
-                        <div class="componente-box">
-                            <p>Partições</p>
-                            <div class="limites">
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                            width="20px">Saudavel</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                            width="20px">Atenção</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                            width="20px">Critico</span>
-                                    <input type="number" value="0">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="componente-box">
-                            <p>Uso de disco</p>
-                            <div class="limites">
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                            width="20px">Saudavel</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                            width="20px">Atenção</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                            width="20px">Critico</span>
-                                    <input type="number" value="0">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="componente-box">
-                            <p>Latência de disco(ms)</p>
-                            <div class="limites">
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                            width="20px">Saudavel</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                            width="20px">Atenção</span>
-                                    <input type="number" value="0">
-                                </div>
-                                <div>
-                                    <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                            width="20px">Critico</span>
-                                    <input type="number" value="0">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h6 class="titulo-grupo"><img src="../assets/svg/crescer.png" alt="" width="20px">Rede</h6>
-                            <div class="componente-box">
-                                <p>Volume de dados enviados/recebidos(pkt/s)</p>
-                                <div class="limites">
-                                    <div>
-                                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                                width="20px">Saudavel</span>
-                                        <input type="number" value="0">
-                                    </div>
-                                    <div>
-                                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                                width="20px">Atenção</span>
-                                        <input type="number" value="0">
-                                    </div>
-                                    <div>
-                                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                                width="20px">Critico</span>
-                                        <input type="number" value="0">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="componente-box">
-                                <p>Latência da rede(ms)</p>
-                                <div class="limites">
-                                    <div>
-                                        <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt=""
-                                                width="20px">Saudavel</span>
-                                        <input type="number" value="0">
-                                    </div>
-                                    <div>
-                                        <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                                width="20px">Atenção</span>
-                                        <input type="number" value="0">
-                                    </div>
-                                    <div>
-                                        <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                                width="20px">Critico</span>
-                                        <input type="number" value="0">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div>
-                                <h6 class="titulo-grupo">Processos(%)</h6>
-                                <div class="componente-box">
-                                    <p>Número de CPUs em uso</p>
-                                    <div class="limites">
-                                        <div>
-                                            <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg"
-                                                    alt="" width="20px">Saudavel</span>
-                                            <input type="number" value="0">
-                                        </div>
-                                        <div>
-                                            <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                                    width="20px">Atenção</span>
-                                            <input type="number" value="0">
-                                        </div>
-                                        <div>
-                                            <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                                    width="20px">Critico</span>
-                                            <input type="number" value="0">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="componente-box">
-                                    <p>Processo com mais gasto</p>
-                                    <div class="limites">
-                                        <div>
-                                            <span> <img src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg"
-                                                    alt="" width="20px">Saudavel</span>
-                                            <input type="number" value="0">
-                                        </div>
-                                        <div>
-                                            <span> <img src="../assets/svg/alertas/bell2-svgrepo-com.svg" alt=""
-                                                    width="20px">Atenção</span>
-                                            <input type="number" value="0">
-                                        </div>
-                                        <div>
-                                            <span> <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt=""
-                                                    width="20px">Critico</span>
-                                            <input type="number" value="0">
-                                        </div>
-                                    </div>
-                                </div>
-
-
                                 <div class="popUpFuncionario-confirmarServidor">
-                                    <button class="btnPopUp01" onclick="voltarFunc3()">← Voltar</button>
-                                    <button class="btnPopUp02" onclick="cadastrarLegendas()"
+                                    <button class="btnPopUp01" onclick="voltarFunc2()">← Voltar</button>
+                                    <button class="btnPopUp02" onclick="cadastrarServidor()"
                                         style="color: white;">Cadastrar Servidor</button>
                                 </div>
                             </div>
@@ -1208,7 +848,11 @@
 
 </html>
 <script>
-
+    const nomeCompleto = sessionStorage.NOME_USUARIO
+    const partes = nomeCompleto.trim().split(" ");
+    const primeiroNome = partes[0];
+    usuario.innerHTML = primeiroNome;
+    
     function normalizar(texto) {
         return texto
             ?.trim()
@@ -1235,32 +879,14 @@
     }
     function addFunc3() {
         document.getElementById('popUpCadastrarComponente').style.display = 'flex';
-        console.log("CLICOU")
-        cadastrarServidor();
-
         document.getElementById('popUpCadastrarServidor').style.display = 'none';
-    }
-    function addFunc4() {
-        document.getElementById('popUpCadastrarAvisos').style.display = 'flex';
-        document.getElementById('popUpCadastrarComponente').style.display = 'none';
-        cadastrarComponente();
     }
     function fecharFunc() {
         document.getElementById('popUpCadastrarServidor').style.display = 'none';
     }
-    function fecharFunc2() {
-        document.getElementById('popUpCadastrarComponente').style.display = 'none';
-    }
-    function fecharFunc3() {
-        document.getElementById('popUpCadastrarAvisos').style.display = 'none';
-    }
     function voltarFunc2() {
         document.getElementById('popUpCadastrarComponente').style.display = 'none';
         document.getElementById('popUpCadastrarServidor').style.display = 'flex';
-    }
-    function voltarFunc3() {
-        document.getElementById('popUpCadastrarAvisos').style.display = 'none';
-        document.getElementById('popUpCadastrarComponente').style.display = 'flex';
     }
 
     function AbrirComponente(checkbox) {
@@ -1399,6 +1025,7 @@
         if (nomeServidor == "" || nomeServidor == "" || numeroSerialServidor == "" ||
             HostServidor == "" || enderecoServidor == "" || portaSSHservidor == "" || localizacaoServidor == "") {
             console.log("As informaçoes do servidor não foram preenchidas corretamente!")
+       
         } else {
             fetch("http://localhost:3333/cadastrarServidor", {
                 method: "POST",
@@ -1433,6 +1060,7 @@
                     sessionStorage.setItem('idServidor', idServidor);
 
                     console.log("ID DO SERVIDOR:", idServidor);
+                    cadastrarComponente()
 
                 })
                 .catch(function (erro) {
@@ -1526,77 +1154,13 @@
                     JSON.stringify(data.idsTipo)
                 );
 
+                document.getElementById('popUpCadastrarComponente').style.display = 'none';
+                alert("Cadastro realizado!")
+
             })
             .catch(err => {
                 console.log("ERRO:", err);
             });
 
-    }
-
-
-    function cadastrarLegendas() {
-
-        var idsTipo = JSON.parse(sessionStorage.getItem("idsTipo"));
-        var fkEmpresa = sessionStorage.getItem("FK_EMPRESA");
-        console.log("idsTipo:", idsTipo);
-        if (!idsTipo) {
-            alert("Cadastre os componentes primeiro.");
-            return;
-        }
-        var legendas = [];
-        document.querySelectorAll(".componente-box").forEach(box => {
-            var checkbox = box.querySelector("input[type='checkbox']");
-            if (!checkbox || !checkbox.checked) return;
-
-            var nome = box.querySelector("p")?.innerText
-                || box.querySelector(".titulo-componente")?.innerText
-                || "sem_nome";
-
-            var inputs = box.querySelectorAll(".limites input");
-
-            var saudavel = Number(inputs[0]?.value || 0);
-            var atencao = Number(inputs[1]?.value || 0);
-            var critico = Number(inputs[2]?.value || 0);
-
-            legendas.push({
-                nome_componente: nome, saudavel, atencao, critico
-            });
-        });
-
-        console.log("LEGENDAS:", legendas);
-
-        var idServidor = sessionStorage.getItem('idServidor');
-
-        if (!idServidor) {
-            console.log("idServidor não encontrado");
-            return;
-        }
-
-        console.log("CHAMANDO FETCH DE LEGENDAS...");
-
-
-        fetch("http://localhost:3333/componente/legendas", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                idServidor,
-                legendas,
-                idsTipo,
-                fkEmpresa
-            })
-        })
-            .then(res => {
-                console.log("STATUS:", res.status);
-                return res.text();
-            })
-            .then(data => {
-                console.log("RESPOSTA BRUTA:", data);
-                document.getElementById('popUpCadastrarAvisos').style.display = 'none';
-            })
-            .catch(err => {
-                console.log("ERRO FETCH:", err);
-            });
     }
 </script>
