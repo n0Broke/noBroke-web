@@ -2536,6 +2536,8 @@ h6 {
 
 .perfilBotoes {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
     align-self: end;
     gap: 20px;
 }

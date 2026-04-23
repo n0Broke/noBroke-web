@@ -606,8 +606,11 @@
                             </div>
                         </div>
                         <div class="perfilBotoes">
-                            <button class="btnPerfil01">Cancelar</button>
-                            <button class="btnPerfil02">Salvar Configurações</button>
+                            <button class="btnPerfil02" onclick="sairPerfil()">Sair</button>
+                            <div class="div">
+                                <button class="btnPerfil01">Cancelar</button>
+                                <button class="btnPerfil02">Salvar Configurações</button>
+                            </div>
                         </div>
                     </div>
                     <!-- ======================================== -->
@@ -632,21 +635,19 @@
                 <div class="popUpFuncionario-dados">
                     <div class="popUpFuncionario-inserirDados-esquerda">
                         <h6>Nome</h6>
-                        <input type="text" placeholder="Nome Completo">
+                        <input type="text" id="nomeFunc_input" placeholder="Nome Completo">
                     </div>
                     <div class="popUpFuncionario-inserirDados-direita">
                         <h6>Email</h6>
-                        <input type="text" placeholder="email@empresa">
+                        <input type="text" id="emailFunc_input" placeholder="email@empresa">
                     </div>
                 </div>
                 <div class="popUpFuncionario-dados">
                     <div class="popUpFuncionario-inserirDados-esquerda" style="width: 50%">
                         <h6>Cargo</h6>
-                        <select name="cargosFuncionario" id="cargosEscolher">
+                        <select name="cargosFuncionario" id="cargosEscolher_input">
                             <option value="#">Selecione</option>
-                            <option value="tentativa2">Admnistrador</option>
-                            <option value="tentativa3">Analista de Suporte</option>
-                            <option value="tentativa5">Gerente de TI</option>
+                            <option value="2">Analista de Infra</option>
                         </select>
                     </div>
                     <div class="popUpFuncionario-inserirDados-direita" style="width: 50%">
@@ -655,13 +656,12 @@
                             <option value="#">Selecione</option>
                             <option value="departamento1">Infraestrutura</option>
                             <option value="departamento2">Operação</option>
-                            <option value="departamento3">Gestão</option>
                         </select>
                     </div>
                 </div>
                 <div class="popUpFuncionario-Senha">
                     <h6>Senha</h6>
-                    <input type="password" placeholder="Insira a Senha do Usuário">
+                    <input type="password" id="senhaFunc_input" placeholder="Insira a Senha do Usuário">
                 </div>
                 <div class="popUpFuncionarioEnviar">
                     <div class="popUpConfirmacao-esquerda">
@@ -674,7 +674,7 @@
                 </div>
                 <div class="popUpFuncionario-confirmar">
                     <button class="btnPopUp01" onclick="fecharFunc()">Cancelar</button>
-                    <button class="btnPopUp02" style="color: white;">Adicionar</button>
+                    <button class="btnPopUp02" onclick="cadastrarFunc()" style="color: white;">Adicionar</button>
                 </div>
             </div>
         </div>
@@ -715,6 +715,14 @@
     function fecharFunc() {
         document.getElementById('popUpCadastrar').style.display = 'none';
     }
+    // ===================================================================
+    // Function Sair Perfil
+
+    function sairPerfil() {
+        sessionStorage.clear();
+        window.location.href = "../login.html";
+    }
+
     // ===================================================================
 
 
@@ -849,7 +857,7 @@
             divNotifi.style.display = "none";
             divEquipe.style.display = "none";
             sessionStorage.FUNCAO = "Analista de Infra";
-        }else{
+        } else {
             sessionStorage.FUNCAO = "Gestor de Infra";
         }
     }
@@ -902,4 +910,123 @@
         });
     });
     // ===================================================================
+    // Função de Cadastrar Funcionário
+
+    function cadastrarFunc() {
+        console.log("Entrei no Cadastrar Funcionário")
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeFuncVar = nomeFunc_input.value.trim();
+        var emailFuncVar = emailFunc_input.value.trim();
+        var cargoFuncVar = cargosEscolher_input.value.trim();
+        var senhaFuncVar = senhaFunc_input.value.trim();
+
+        console.log(
+            nomeFuncVar,
+            emailFuncVar,
+            cargoFuncVar,
+            senhaFuncVar
+        );
+
+        // Verificando senha e email
+        if (
+            nomeFuncVar == "" ||
+            emailFuncVar == "" ||
+            cargoFuncVar == "#" ||
+            senhaFuncVar == ""
+        ) {
+            alert("Mensagem de Erro! Algum Campo está em branco!");
+            return false;
+        }
+
+        // tratativa da senha (abaixo cria lista do q deve ter algum deles)
+        let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let caractereEsperial = [
+            "!",
+            "@",
+            "#",
+            '"',
+            "$",
+            "%",
+            "¨",
+            "&",
+            "*",
+            "(",
+            ")",
+            "-",
+            "+",
+        ];
+        //let contemNumeros = false;
+        let contemCaractereEspecial = false;
+
+        // Verifica se tem número
+        for (i = 0; i < senhaFuncVar.length; i++) {
+            if (senhaFuncVar.includes(numeros[i])) {
+                contemNumeros = true;
+                break;
+            }
+        }
+        if (contemNumeros == false) {
+            alert("A senha precisa ter números")
+        }
+
+        // Verifica se tem caracter especial
+        for (i = 0; i < senhaFuncVar.length; i++) {
+            if (senhaFuncVar.includes(caractereEsperial[i])) {
+                contemCaractereEspecial = true;
+                break;
+            }
+        }
+        if (contemCaractereEspecial == false) {
+            alert("A senha precisa ter algum caracter especial")
+        }
+
+        if (senhaFuncVar < 8) {
+            console.log("Caiu na validação da senha!");
+            console.log("A senha deve ter mais que 8 caracteres.");
+            alert("A senha precisa ter mais de 8 digitos")
+            return false;
+        }
+
+        var idEmpresa = sessionStorage.getItem("FK_EMPRESA");
+        console.log("idEmpresa:", idEmpresa);
+
+        // Enviando o valor da nova input
+        fetch("/cadastroFuncionario/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeFuncServer: nomeFuncVar,
+                emailFuncServer: emailFuncVar,
+                cargoFuncServer: cargoFuncVar,
+                senhaFuncServer: senhaFuncVar,
+                idAdmServer: sessionStorage.getItem("ID_USUARIO"),
+                idEmpresaServer: sessionStorage.getItem("FK_EMPRESA"),
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    console.log("Entrei no fetch")
+
+                    setTimeout(() => {
+                        window.location.href = "Configurações.html";
+                    }, "2000");
+                } else {
+                    console.log(nomeFuncVar, emailFuncVar, cargoFuncVar, senhaFuncVar);
+                    throw "Houve um erro ao tentar realizar o Cadastro do Funcionário!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
+    }
+    // =============================================
 </script>

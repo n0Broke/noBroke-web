@@ -2,12 +2,12 @@ var cadastroFuncionarioModel = require("../models/cadastroFuncionarioModel");
 
 function cadastrar(req, res) {
   // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-  var nome = req.body.nomeServer;
-  var email = req.body.emailServer;
-  var senha = req.body.senhaServer;
-  var cpf = req.body.cpfServer;
+  var nome = req.body.nomeFuncServer;
+  var email = req.body.emailFuncServer;
+  var senha = req.body.senhaFuncServer;
   var idAdm = req.body.idAdmServer;
-  var idEmpresa = req.body.empresaServer;
+  var cargoFunc = req.body.cargoFuncServer; 
+  var idEmpresa = req.body.idEmpresaServer;
 
   // Faça as validações dos valores
   if (nome == undefined) {
@@ -16,16 +16,16 @@ function cadastrar(req, res) {
     res.status(400).send("Seu email está undefined!");
   } else if (senha == undefined) {
     res.status(400).send("Sua senha está undefined!");
-  } else if (cpf == undefined) {
-    res.status(400).send("Seu token está undefined!");
   } else if (idAdm == undefined) {
-    res.status(400).send("Seu token está undefined!");
+    res.status(400).send("Seu ID está undefined!");
+  } else if (cargoFunc == undefined) {
+    res.status(400).send("Seu Cargo está undefined!");
   } else if (idEmpresa == undefined) {
-    res.status(400).send("Seu token está undefined!");
+    res.status(400).send("Seu ID de Empresa está undefined!");
   } else {
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
     cadastroFuncionarioModel
-      .cadastrar(nome, email, senha, cpf, idAdm, idEmpresa)
+      .cadastrar(nome, email, senha, idAdm, cargoFunc, idEmpresa)
       .then(function (resultado) {
         res.json(resultado);
       })
