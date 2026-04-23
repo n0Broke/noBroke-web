@@ -111,8 +111,7 @@
                         class="profile-img">
                     <div class="user-infos">
                         <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
-                        <span class="cargo" id="usuario_cargo" style="color: var(--brancoCinza);">Gerente de
-                            Infra</span>
+                        <span class="cargo" id="cargoFunc" style="color: var(--branco);">Gerente de Infra</span>
                     </div>
                 </div>
             </div>
@@ -381,6 +380,7 @@
     const partes = nomeCompleto.trim().split(" ");
     const primeiroNome = partes[0];
     usuario.innerHTML = primeiroNome;
+    cargoFunc.innerHTML = sessionStorage.FUNCAO;
     
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");

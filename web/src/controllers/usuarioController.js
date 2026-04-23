@@ -27,7 +27,8 @@ function autenticaremail(req, res) {
                                         senha: resultadoAutenticar[0].senha,
                                         cpf: resultadoAutenticar[0].cpf,
                                         fk_adm: resultadoAutenticar[0].fk_adm,
-                                        fk_empresa: resultadoAutenticar[0].fk_empresa
+                                        fk_empresa: resultadoAutenticar[0].fk_empresa,
+                                        fk_funcao: resultadoAutenticar[0].fk_funcao
                                     });
                                 } else {
                                     res.status(204).json({ token: [] });
@@ -77,7 +78,8 @@ function autenticarcpf(req, res) {
                                         senha: resultadoAutenticar[0].senha,
                                         cpf: resultadoAutenticar[0].cpf,
                                         fk_adm: resultadoAutenticar[0].fk_adm,
-                                        fk_empresa: resultadoAutenticar[0].fk_empresa
+                                        fk_empresa: resultadoAutenticar[0].fk_empresa,
+                                        fk_funcao: resultadoAutenticar[0].fk_funcao
                                     });
                                 } else {
                                     res.status(204).json({ token: [] });

@@ -181,18 +181,6 @@
     var cpfVar = nome_cpf_input.value;
     var senhaVar = senha_input.value;
 
-    if (!verificarcpf(cpfVar, senhaVar)) {
-      alert("CPF ou senha inválidos");
-      return false;
-    } else {
-      cpfVar = verificarSeNum(cpfVar);
-    }
-
-    if (!calculoCpf(cpfVar)) {
-      alert("CPF incorreto");
-      return false;
-    }
-
     console.log("FORM LOGIN: ", cpfVar);
     console.log("FORM SENHA: ", senhaVar);
 
@@ -220,6 +208,7 @@
             sessionStorage.ID_USUARIO = json.id_usuario;
             sessionStorage.FK_ADM = json.fk_adm;
             sessionStorage.FK_EMPRESA = json.fk_empresa;
+            sessionStorage.FK_FUNCAO = json.fk_funcao;
 
             setTimeout(function () {
               window.location = "/dashboard/dashboard.html";
@@ -276,6 +265,7 @@
             sessionStorage.ID_USUARIO = json.id_usuario;
             sessionStorage.FK_ADM = json.fk_adm;
             sessionStorage.FK_EMPRESA = json.fk_empresa;
+            sessionStorage.FK_FUNCAO = json.fk_funcao;
 
 
             setTimeout(function () {
@@ -295,82 +285,5 @@
       });
 
     return false;
-  }
-  function verificarcpf(cpfVar, senhaVar) {
-    var cpfNum = verificarSeNum(cpfVar).trim();
-
-    if (cpfNum == "" || senhaVar.trim() == "") {
-      return false;
-    } else if (cpfNum.length != 11) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  function verificarSeNum(cod) {
-    var cpf = cod.trim();
-    var nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-    var cpfPuro = "";
-
-    // Dois fors que servem quase como um includes
-    for (let i = 0; i < cod.length; i++) {
-      for (let j = 0; j < nums.length; j++) {
-        if (nums[j] == cod[i]) {
-          cpfPuro += cod[i];
-        }
-      }
-    }
-
-    return cpfPuro;
-  }
-
-  function calculoCpf(cpf) {
-    var iguais = true;
-
-    for (let i = 1; i < cpf.length; i++) {
-      if (cpf[i] != cpf[0]) {
-        iguais = false;
-        break;
-      }
-    }
-
-    if (iguais) {
-      return false;
-    }
-
-    var soma = 0;
-
-    for (let i = 0; i < 9; i++) {
-      soma += parseInt(cpf[i]) * (10 - i);
-    }
-
-    var resto = (soma * 10) % 11;
-
-    if (resto == 10) {
-      resto = 0; // se o resto for 10, considera ele como 0
-    }
-
-    if (resto != parseInt(cpf[9])) {
-      return false;
-    }
-
-    soma = 0; // zera a soma
-
-    for (let y = 0; y < 10; y++) {
-      soma += parseInt(cpf[y]) * (11 - y);
-    }
-
-    resto = (soma * 10) % 11;
-
-    if (resto == 10) {
-      resto = 0;
-    }
-
-    if (resto != parseInt(cpf[10])) {
-      return false;
-    }
-
-    return true;
   }
 </script>

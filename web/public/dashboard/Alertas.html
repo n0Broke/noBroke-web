@@ -70,12 +70,14 @@
                             <span class="texto">Alertas</span>
                         </button>
 
-                        <a href="Relatorios.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
-                            </span>
-                            <span class="texto">Relatórios</span>
-                        </a>
+                        <div id="div_relatorios">
+                            <a href="Relatorios.html" class="btn-nobroke">
+                                <span class="icon">
+                                    <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                                </span>
+                                <span class="texto">Relatórios</span>
+                            </a>
+                        </div>
 
                         <a href="monitoramento.html" class="btn-nobroke">
                             <span class="icon">
@@ -111,7 +113,7 @@
                         class="profile-img">
                     <div class="user-infos">
                         <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
-                        <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
+                        <span class="cargo" id="cargoFunc" style="color: var(--branco);">Gerente de Infra</span>
                     </div>
                 </div>
             </div>
@@ -215,7 +217,7 @@
                         </div>
                     </div>
 
-                     <div class="caixa-alerta alerta01">
+                    <div class="caixa-alerta alerta01">
                         <div class="conteudo-alerta-esquerda">
                             <img src="../assets/svg/alertas/close-circle-svgrepo-com.svg"
                                 style="width: 50px; padding: 8px; background-color: #dc28282d; border-radius: 6px; height: 55px;"
@@ -287,7 +289,7 @@
                         </div>
                     </div>
 
-                     <div class="caixa-alerta alerta02">
+                    <div class="caixa-alerta alerta02">
                         <div class="conteudo-alerta-esquerda">
                             <img src="../assets/svg/alertas/alert-svgrepo-com.svg"
                                 style="width: 50px; padding: 8px; background-color: #e7af0820; border-radius: 6px; height: 55px;"
@@ -295,7 +297,8 @@
                             <div class="infoCaixaAlerta">
                                 <div>
                                     <span class="tituloAlerta">CPU em Nível de Atenção</span> <span
-                                        class="tipoAlerta">Atenção</span> <span class="estadoAlerta">Reconhecido</span> <br>
+                                        class="tipoAlerta">Atenção</span> <span class="estadoAlerta">Reconhecido</span>
+                                    <br>
                                 </div>
                                 <div>
                                     <p class="dadosAlertaServidor">SRV-DEV-HB-01 | CPU | 22/04/2026</p>
@@ -350,7 +353,8 @@
     const partes = nomeCompleto.trim().split(" ");
     const primeiroNome = partes[0];
     usuario.innerHTML = primeiroNome;
-    
+    cargoFunc.innerHTML = sessionStorage.FUNCAO;
+
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");
     const imgLogo = document.getElementById("imgLogo");
@@ -447,6 +451,13 @@
         }
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
+        }
+        if (sessionStorage.FK_FUNCAO != 1) {
+            const divRelatorios = document.getElementById("div_relatorios");
+            divRelatorios.style.display = "none";
+            sessionStorage.FUNCAO = "Analista de Infra";
+        } else {
+            sessionStorage.FUNCAO = "Gestor de Infra";
         }
         sessionStorage.ALERTA = 0;
     }

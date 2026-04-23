@@ -70,12 +70,14 @@
                         <span class="texto">Alertas</span>
                     </a>
 
-                    <a href="Relatorios.html" class="btn-nobroke">
-                        <span class="icon">
-                            <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
-                        </span>
-                        <span class="texto">Relatórios</span>
-                    </a>
+                    <div id="div_relatorios">
+                        <a href="Relatorios.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                            </span>
+                            <span class="texto">Relatórios</span>
+                        </a>
+                    </div>
 
                     <a href="monitoramento.html" class="btn-nobroke">
                         <span class="icon">
@@ -111,7 +113,7 @@
                     class="profile-img">
                 <div class="user-infos">
                     <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
-                    <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
+                    <span class="cargo cargoFunc" id="cargoFunc" style="color: var(--branco);">Gerente de Infra</span>
                 </div>
             </div>
         </div>
@@ -144,20 +146,16 @@
             <div class="configuracoesCorpo">
                 <!-- Painel da Esquerda -->
                 <div class="configuracoesPainel">
-                    <div class="configuracaoEscolha configuracaoSelecionada">
+                    <div class="configuracaoEscolha configuracaoSelecionada" id="div_geral">
                         <img src="../assets/svg/configuracoes/setting-svgrepo-com-hover.svg" width="25px"
                             alt="iconConfig">
                         <span>Geral</span>
                     </div>
-                    <div class="configuracaoEscolha">
+                    <div class="configuracaoEscolha" id="div_notifi">
                         <img src="../assets/svg/configuracoes/bell-alt-svgrepo-com.svg" width="25px" alt="iconConfig">
                         <span>Notificações</span>
                     </div>
-                    <div class="configuracaoEscolha">
-                        <img src="../assets/svg/configuracoes/timer-svgrepo-com.svg" width="25px" alt="iconConfig">
-                        <span>Intervalos de Coleta</span>
-                    </div>
-                    <div class="configuracaoEscolha">
+                    <div class="configuracaoEscolha" id="div_equipe">
                         <img src="../assets/svg/configuracoes/team-svgrepo-com.svg" width="25px" alt="iconConfig">
                         <span>Equipe</span>
                     </div>
@@ -348,110 +346,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ========================================================= -->
-                    <!-- Intervalos de Coleta -->
-                    <div class="configuracoesColeta configPagEscolhido" style="display: none;">
-                        <div class="cardColeta01">
-                            <h4>Intervalos de Coleta por Métrica</h4>
-                            <span>Defina a frequência de coleta de cada tipo de dado (em segundos)</span>
-                            <div class="frequenciaColeta">
-                                <div class="coletaInfos">
-                                    <div class="coletaInfos-esquerda">
-                                        <h6>CPU</h6>
-                                        <span>Uso de processador</span>
-                                    </div>
-                                    <span class="contadorMundano">15s</span>
-                                </div>
-                                <div class="coletaMedidor">
-                                    <input type="range" class="form-range rangerCustom" min="5" max="60" step="1"
-                                        id="range3">
-                                </div>
-                                <div class="frequenciaNumeros">
-                                    <span>5s</span>
-                                    <span>15s</span>
-                                    <span>30s</span>
-                                    <span>60s</span>
-                                </div>
-                            </div>
-                            <div class="frequenciaColeta">
-                                <div class="coletaInfos">
-                                    <div class="coletaInfos-esquerda">
-                                        <h6>Memória RAM</h6>
-                                        <span>Consumo de memória</span>
-                                    </div>
-                                    <span class="contadorMundano">15s</span>
-                                </div>
-                                <div class="coletaMedidor">
-                                    <input type="range" class="form-range" min="5" max="60" step="1" id="range3">
-                                </div>
-                                <div class="frequenciaNumeros">
-                                    <span>5s</span>
-                                    <span>15s</span>
-                                    <span>30s</span>
-                                    <span>60s</span>
-                                </div>
-                            </div>
-                            <div class="frequenciaColeta">
-                                <div class="coletaInfos">
-                                    <div class="coletaInfos-esquerda">
-                                        <h6>Disco</h6>
-                                        <span>I/O e espaço em disco</span>
-                                    </div>
-                                    <span class="contadorMundano">15s</span>
-                                </div>
-                                <div class="coletaMedidor">
-                                    <input type="range" class="form-range rangerCustom" min="5" max="60" step="1"
-                                        id="range3">
-                                </div>
-                                <div class="frequenciaNumeros">
-                                    <span>5s</span>
-                                    <span>15s</span>
-                                    <span>30s</span>
-                                    <span>60s</span>
-                                </div>
-                            </div>
-                            <div class="frequenciaColeta">
-                                <div class="coletaInfos">
-                                    <div class="coletaInfos-esquerda">
-                                        <h6>Latência</h6>
-                                        <span>Tempo de resposta</span>
-                                    </div>
-                                    <span class="contadorMundano">15s</span>
-                                </div>
-                                <div class="coletaMedidor">
-                                    <input type="range" class="form-range rangerCustom" min="5" max="60" step="1"
-                                        id="range3">
-                                </div>
-                                <div class="frequenciaNumeros">
-                                    <span>5s</span>
-                                    <span>15s</span>
-                                    <span>30s</span>
-                                    <span>60s</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 02 - Coleta -->
-                        <div class="cardColeta02">
-                            <div class="cardColeta02-titulo">
-                                <h4>Configurações Avançadas</h4>
-                                <span>Otimização e performance de coleta</span>
-                            </div>
-                            <h6>Timeout de coleta (ms)</h6>
-                            <input type="text">
-                            <h6>Tentativas em caso de falha </h6>
-                            <select name="tentativasFalhas" id="tentativasFalhas">
-                                <option value="tentativa1">1 tentativa</option>
-                                <option value="tentativa2">2 tentativas</option>
-                                <option value="tentativa3">3 tentativas</option>
-                                <option value="tentativa5">5 tentativas</option>
-                            </select>
-                        </div>
-                        <div class="btnSalvarFrequencia">
-                            <button class="btnFrequencia01">Cancelar</button>
-                            <button class="btnFrequencia02">Salvar Configurações</button>
-                        </div>
-                    </div>
                     <!-- ========================================= -->
                     <!-- Configurações - Equipe -->
                     <div class="configuracoesEquipe configPagEscolhido" style="display: none;">
@@ -638,7 +532,7 @@
                                 </div>
                                 <div class="perfilNomeCargo">
                                     <h4 class="username">Douglas</h4>
-                                    <h6>Gerente</h6>
+                                    <h6 class="cargoFunc">Gerente</h6>
                                     <span>Departamento de Infraestrutura</span>
                                 </div>
                             </div>
@@ -661,7 +555,7 @@
                                     </div>
                                     <div class="dadosPerfil-direita">
                                         <h6>Cargo</h6>
-                                        <input disabled type="text" value="Gerente">
+                                        <input disabled type="text" class="cargoFunc" value="Gerente">
                                     </div>
                                 </div>
                             </div>
@@ -796,13 +690,19 @@
     const primeiroNome = partes[0];
     const usuario = document.querySelectorAll('.username')
     const emailUsuario = document.querySelectorAll('.useremail')
+    const cargo = document.querySelectorAll('.cargoFunc')
+
     usuario.forEach(usuario => {
-                usuario.innerHTML = primeiroNome;
-            });
+        usuario.innerHTML = primeiroNome;
+    });
     emailUsuario.forEach(emailUsuario => {
-                emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO;
-                emailUsuario.value = sessionStorage.EMAIL_USUARIO;
-            });
+        emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO;
+        emailUsuario.value = sessionStorage.EMAIL_USUARIO;
+    });
+    cargo.forEach(cargo => {
+        cargo.innerHTML = sessionStorage.FUNCAO;
+        cargo.value = sessionStorage.FUNCAO;
+    });
     userNomeCompleto.value = nomeCompleto;
 
     // ===================================================================
@@ -911,6 +811,9 @@
     }
 
     function verificarModo() {
+        const botoesEscolha = document.querySelectorAll('.configuracaoEscolha');
+        botoesEscolha[3].click();
+
         if (sessionStorage.MODO == 1) {
             mudarModo()
         }
@@ -919,7 +822,7 @@
         }
         if (sessionStorage.ALERTA == 0) {
             cardAlerta.style.display = "none"
-        }else{
+        } else {
             cardAlerta.innerHTML = `<div class="box-cardAlerta">
                     <div class="titulo-pai">
                         <div class="titulo-alerta">
@@ -936,11 +839,22 @@
                     </div>
                 </div>`
         }
-        const botoesEscolha = document.querySelectorAll('.configuracaoEscolha');
-        botoesEscolha[4].click();
+        if (sessionStorage.FK_FUNCAO != 1) {
+            const divRelatorios = document.getElementById("div_relatorios");
+            const divGeral = document.getElementById("div_geral");
+            const divNotifi = document.getElementById("div_notifi");
+            const divEquipe = document.getElementById("div_equipe");
+            divRelatorios.style.display = "none";
+            divGeral.style.display = "none";
+            divNotifi.style.display = "none";
+            divEquipe.style.display = "none";
+            sessionStorage.FUNCAO = "Analista de Infra";
+        }else{
+            sessionStorage.FUNCAO = "Gestor de Infra";
+        }
     }
 
-     function fecharAlerta(){
+    function fecharAlerta() {
         cardAlerta.style.display = "none"
     }
 

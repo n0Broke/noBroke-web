@@ -73,12 +73,14 @@
                             <span class="texto">Alertas</span>
                         </a>
 
-                        <a href="Relatorios.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
-                            </span>
-                            <span class="texto">Relatórios</span>
-                        </a>
+                        <div id="div_relatorios">
+                            <a href="Relatorios.html" class="btn-nobroke">
+                                <span class="icon">
+                                    <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                                </span>
+                                <span class="texto">Relatórios</span>
+                            </a>
+                        </div>
 
                         <a href="monitoramento.html" class="btn-nobroke">
                             <span class="icon">
@@ -115,7 +117,7 @@
                     </div>
                     <div class="user-infos">
                         <p class="username" id="usuario" style="color: var(--branco);"></p>
-                        <span class="cargo" id="usuario_cargo" style="color: #AAB2BC;">Gerente de Infra</span>
+                        <span class="cargo" id="cargoFunc" style="color: var(--branco);">Gerente de Infra</span>
                     </div>
                 </div>
             </div>
@@ -470,6 +472,7 @@
     const partes = nomeCompleto.trim().split(" ");
     const primeiroNome = partes[0];
     usuario.innerHTML = primeiroNome;
+    cargoFunc.innerHTML = sessionStorage.FUNCAO;
 
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");
@@ -585,6 +588,13 @@
                         <a href="Alertas.html">Clique aqui para ver mais informações!</a>
                     </div>
                 </div>`
+        }
+        if (sessionStorage.FK_FUNCAO != 1) {
+            const divRelatorios = document.getElementById("div_relatorios");
+            divRelatorios.style.display = "none";
+            sessionStorage.FUNCAO = "Analista de Infra";
+        } else {
+            sessionStorage.FUNCAO = "Gestor de Infra";
         }
     }
 
