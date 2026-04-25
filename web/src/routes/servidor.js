@@ -9,5 +9,8 @@ router.post("/", function (req, res) {
     servidorController.cadastrarServidor(req, res);
 });
 
+router.get("/servidor", function(req, res) {
+    servidorController.listarServidores(req, res)
+})
  
 module.exports = router;

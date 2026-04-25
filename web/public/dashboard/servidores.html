@@ -156,7 +156,7 @@
                                 alt="cpu" style="width: 25px;">
                         </div>
                         <div class="conteudo-abaixo-cards">
-                            <h1>8</h1>
+                            <h1 id="total-servidores">0</h1>
                             <h4>Total de servidores</h4>
                         </div>
                     </div>
@@ -216,134 +216,7 @@
                             </tr>
                         </thead>
 
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <strong>SRV-PROD-API-01</strong><br>
-                                    <span>api-prod-01.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">Produção</span></td>
-                                <td><span class="tag saudavel" style="color: red;">Crítico</span></td>
-                                <td>60%</td>
-                                <td>60%</td>
-                                <td>68%</td>
-                                <td>230ms</td>
-                                <td>98.50%</td>
-                                <td><span class="tag criticidade" style="color: red;">Crítica</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <strong>SRV-DEV-HB-01</strong><br>
-                                    <span>hb-dev-01.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">Desenvolvimento</span></td>
-                                <td><span class="tag saudavel" style="color: red;">Crítico</span></td>
-                                <td>65%</td>
-                                <td>72%</td>
-                                <td>60%</td>
-                                <td>38ms</td>
-                                <td>99.50%</td>
-                                <td><span class="tag criticidade" style="color: green;">Baixa</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <strong>SRV-PROD-HB-02</strong><br>
-                                    <span>hb-prod-02.nobroke.io</span>
-                                </td>
-                                <td><span class="tag staging">Produção</span></td>
-                                <td><span class="tag saudavel" style="color: yellow;">Atenção</span></td>
-                                <td>60%</td>
-                                <td>68%</td>
-                                <td>70%</td>
-                                <td>45ms</td>
-                                <td>99.90%</td>
-                                <td><span class="tag criticidade media" style="color: yellow;">Alta</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <strong>SRV-STG-HB-01</strong><br>
-                                    <span>hb-stg-01.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">Staging</span></td>
-                                <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
-                                <td>22%</td>
-                                <td>35%</td>
-                                <td>30%</td>
-                                <td>15ms</td>
-                                <td>99.85%</td>
-                                <td><span class="tag criticidade" style="color: yellow;">Média</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <strong>SRV-PROD-DB-01</strong><br>
-                                    <span>db-prod-01.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">Produção</span></td>
-                                <td><span class="tag critico" style="color: green;">Saudável</span></td>
-                                <td>35%</td>
-                                <td>58%</td>
-                                <td>42%</td>
-                                <td>8ms</td>
-                                <td>99.99%</td>
-                                <td><span class="tag criticidade critica" style="color: red;">Crítica</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <strong>SRV-PROD-CACHE-01</strong><br>
-                                    <span>cache-prod-01.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">Produção</span></td>
-                                <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
-                                <td>18%</td>
-                                <td>45%</td>
-                                <td>22%</td>
-                                <td>3ms</td>
-                                <td>99.99%</td>
-                                <td><span class="tag criticidade" style="color: yellow;">Alta</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <strong>SRV-DR-HB-01</strong><br>
-                                    <span>hb-dr-01.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">DR</span></td>
-                                <td><span class="tag saudavel" style="color: green;">Saudável</span></td>
-                                <td>5%</td>
-                                <td>12%</td>
-                                <td>20%</td>
-                                <td>25ms</td>
-                                <td>99.95%</td>
-                                <td><span class="tag criticidade" style="color: yellow;">Alta</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
-
-                            <tr>
-                                <td>
-                                    <strong>SRV-PROD-DB-02</strong><br>
-                                    <span>db-prod-02.nobroke.io</span>
-                                </td>
-                                <td><span class="tag producao">Produção</span></td>
-                                <td><span class="tag critico" style="color: green;">Saudável</span></td>
-                                <td>35%</td>
-                                <td>58%</td>
-                                <td>42%</td>
-                                <td>8ms</td>
-                                <td>99.99%</td>
-                                <td><span class="tag criticidade critica" style="color: red;">Crítica</span></td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>
+                        <tbody id="tabela-servidores">
                         </tbody>
                     </table>
                 </div>
@@ -555,7 +428,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    
+
 
                                     <div class="limites">
                                         <div>
@@ -586,7 +459,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                
+
 
                                     <div class="limites">
                                         <div>
@@ -622,7 +495,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                   
+
 
                                     <div class="limites">
                                         <div>
@@ -653,7 +526,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                  
+
 
                                     <div class="limites">
                                         <div>
@@ -684,7 +557,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                   
+
 
                                     <div class="limites">
                                         <div>
@@ -720,7 +593,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                   
+
 
                                     <div class="limites">
                                         <div>
@@ -751,7 +624,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                    
+
 
                                     <div class="limites">
                                         <div>
@@ -787,7 +660,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                   
+
 
                                     <div class="limites">
                                         <div>
@@ -818,7 +691,7 @@
                                 </div>
 
                                 <div class="componente-config">
-                                   
+
 
                                     <div class="limites">
                                         <div>
@@ -830,20 +703,20 @@
                             </div>
                         </div>
 
-                                <div class="popUpFuncionario-confirmarServidor">
-                                    <button class="btnPopUp01" onclick="voltarFunc2()">← Voltar</button>
-                                    <button class="btnPopUp02" onclick="cadastrarServidor()"
-                                        style="color: white;">Cadastrar Servidor</button>
-                                </div>
-                            </div>
+                        <div class="popUpFuncionario-confirmarServidor">
+                            <button class="btnPopUp01" onclick="voltarFunc2()">← Voltar</button>
+                            <button class="btnPopUp02" onclick="cadastrarServidor()" style="color: white;">Cadastrar
+                                Servidor</button>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="card-alertaGeral" id="div_alertaGeral">
-            </div>
         </div>
+    </div>
+
+    <div class="card-alertaGeral" id="div_alertaGeral">
+    </div>
+    </div>
     </div>
 </body>
 
@@ -854,7 +727,7 @@
     const primeiroNome = partes[0];
     usuario.innerHTML = primeiroNome;
     cargoFunc.innerHTML = sessionStorage.FUNCAO;
-    
+
     function normalizar(texto) {
         return texto
             ?.trim()
@@ -1005,11 +878,11 @@
                     </div>
                 </div>`
         }
-        if(sessionStorage.FK_FUNCAO != 1){
+        if (sessionStorage.FK_FUNCAO != 1) {
             const divRelatorios = document.getElementById("div_relatorios");
             divRelatorios.style.display = "none";
-             sessionStorage.FUNCAO = "Analista de Infra";
-        }else{
+            sessionStorage.FUNCAO = "Analista de Infra";
+        } else {
             sessionStorage.FUNCAO = "Gestor de Infra";
         }
     }
@@ -1017,7 +890,7 @@
     function fecharAlerta() {
         cardAlerta.style.display = "none"
     }
-    
+
     function cadastrarServidor() {
 
         var nomeServidor = input_nome_servidor.value;
@@ -1034,7 +907,7 @@
         if (nomeServidor == "" || nomeServidor == "" || numeroSerialServidor == "" ||
             HostServidor == "" || enderecoServidor == "" || portaSSHservidor == "" || localizacaoServidor == "") {
             console.log("As informaçoes do servidor não foram preenchidas corretamente!")
-       
+
         } else {
             fetch("http://localhost:3333/cadastrarServidor", {
                 method: "POST",
@@ -1074,8 +947,13 @@
                 })
                 .catch(function (erro) {
                     console.log("#ERRO:", erro);
-                });
+                })
+                .then(function (data) {
+                     carregarServidores(); 
+                })
         }
+        
+    
     }
 
     function cadastrarComponente() {
@@ -1171,5 +1049,54 @@
                 console.log("ERRO:", err);
             });
 
+
     }
+
+    document.addEventListener("DOMContentLoaded", carregarServidores);
+
+    function carregarServidores() {
+
+        const ambientes = {
+            1: "Produção",
+            2: "Staging",
+            3: "DR",
+            4: "Desenvolvimento"
+        };
+
+        fetch("http://localhost:3333/servidores/servidor")
+            .then(res => res.json())
+            .then(servidores => {
+
+                const tabela = document.getElementById("tabela-servidores");
+                document.getElementById("total-servidores").innerHTML = servidores.length;
+                tabela.innerHTML = "";
+
+      
+                servidores.forEach(s => {
+                    tabela.innerHTML += `
+                     <tr>
+                         <td>
+                            <strong>${s.nome}</strong><br>
+                            <span>${s.hostServer || "Desconhecido"}</span>
+                        </td>
+                        <td>${ambientes[s.ambiente] || "Desconhecido"}</td>
+                        <td>OK</td>
+                        <td>0%</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0ms</td>
+                        <td>0%</td>
+                        <td>Normal</td>
+                        <td><button>Ver detalhes</button></td>
+                     </tr>
+                    `;
+                });
+
+            })
+            .catch(erro => console.log("ERRO:", erro));
+
+};
+
+
+    
 </script>

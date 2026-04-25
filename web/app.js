@@ -40,6 +40,7 @@ app.use("/cadastroEmpresa", cadastroEmpresaRouter);
 app.use("/cadastroAdm", cadastroAdmRouter);
 app.use("/cadastrarServidor",servidor);
 app.use("/componente", componenteRouter);
+app.use("/servidores", servidor);
 
 app.listen(PORTA_APP, function() {
     console.log(`

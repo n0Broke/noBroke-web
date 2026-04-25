@@ -18,8 +18,12 @@ function cadastrar(nomeServidor,SOservidor,serialServidor,hostServidor,enderecoS
   return database.executar(instrucaoSql);
 }
 
-
+function listar() {
+  var instrucao = "SELECT * FROM servidor";
+  return database.executar(instrucao);
+}
 
 module.exports = {
   cadastrar,
+  listar
 };
