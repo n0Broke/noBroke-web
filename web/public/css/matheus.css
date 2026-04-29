@@ -1,0 +1,142 @@
+@import url('dashboard.css');
+@import url('dashResponsivo.css');
+
+.cabeca{
+    display: flex;
+    margin-left: 1%;
+    width: 99%;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tituloTela{
+    display: flex;
+    width: 98%;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+button{
+    display: flex;
+    background-color: var(--pretoClaro);
+    color: var(--branco);
+    border: solid 2px var(--bordas);
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: var(--laranja);
+}
+
+h1, .tituloTela p {
+    color: var(--branco);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+hr{
+    width: 100%; 
+    height: 2px;
+    background-color: var(--cinzaClaro);
+    border: none;
+}
+
+p{
+    color: var(--cinzaClaro);
+}
+
+span{
+    color: var(--branco);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100% !important;
+    height: 90%;
+    gap: 20px;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.kpi{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 20%;
+    justify-content: space-around;
+}
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    padding: 5px;
+    background-color: var(--pretoClaro);
+    border-radius: 10px;
+    border: solid 2px var(--bordas);
+    cursor: pointer;
+}
+
+.totalProc{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.kpi .imgIcone{
+    display: flex;
+    width: 40%;
+    height: 100%;
+    justify-content: center;
+}
+
+.imgIcone img{
+    margin: 30px 0px 20px 0px;
+    width: 60%;
+    height: 35%;
+}
+
+.box-grafico{
+    display: flex;
+    width: 98%;
+    height: 70%;
+    flex-direction: column;
+    background-color: var(--pretoClaro);
+    border-radius: 10px;
+    border: solid 2px var(--bordas);
+    padding: 10px;
+}
+
+.pesquisaServer{
+    display: flex;
+    justify-content: space-between;
+    height: 15%;
+}
+
+.pesquisaServer input{
+    width: 30%;
+    height: 45%;
+    background-color: var(--pretoClaro);
+    border: solid 2px var(--bordas);
+    border-radius: 10px;
+    color: var(--branco);
+    font-size: 16px;
+}
+
+.grafico{
+    display: flex;
+    height: 85%;
+}
+
+canvas{
+    display: flex;
+    width: 90%;
+}
