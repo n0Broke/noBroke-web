@@ -42,7 +42,9 @@ function cadastrarServidor(req, res) {
 
 
 function listarServidores(req, res) {
-    servidorModel.listar()
+    var fk_empresa = req.body.id_empresa;
+    console.log(fk_empresa)
+    servidorModel.listar(fk_empresa)
         .then(function (resultado) {
             res.json(resultado);
         })

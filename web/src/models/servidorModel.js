@@ -18,8 +18,8 @@ function cadastrar(nomeServidor,SOservidor,serialServidor,hostServidor,enderecoS
   return database.executar(instrucaoSql);
 }
 
-function listar() {
-  var instrucao = "SELECT * FROM servidor";
+function listar(fk_empresa) {
+  var instrucao = `SELECT * FROM servidor Where fk_empresa = ${fk_empresa}`;
   return database.executar(instrucao);
 }
 

@@ -14,8 +14,7 @@ function cadastrarComponente(idServidor, componentes) {
                 nome_componente,
                 valor_max_critico,
                 valor_min_critico,
-                valor_max_atencao,
-                valor_min_atencao
+                capacidade
             )
             VALUES (
                 ${c.fk_componente},
@@ -24,8 +23,7 @@ function cadastrarComponente(idServidor, componentes) {
                 '${c.nome_componente}',
                 ${c.valor_max_critico},
                 ${c.valor_min_critico},
-                ${c.valor_max_atencao},
-                ${c.valor_min_atencao}
+                ${null}
             );
         `;
 
