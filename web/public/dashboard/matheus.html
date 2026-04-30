@@ -393,24 +393,22 @@
     }
 
     criarGrafico();
-
-    setInterval(criarGrafico, 30000);
     function criarGrafico() {
         // SUBSTITUIÇÃO: URL direta do arquivo no S3
         const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
         let labels = []
         let data = []
 
-        fetch(`${urlS3}?t=${new Date().getTime()}`)
+        fetch(urlS3)
             .then(res => {
                 if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
                 return res.json();
             })
             .then(servidores => {
-                for (i = 0; i < servidores.length; i++) {
+                for (i = 0; i <= 5; i++) {
                     var registro = servidores[i];
-                    labels.push(registro.timestamp);
-                    dados.datasets[0].data.push(registro.usoCPU);
+                    labels.push(registro.timestamp.split(' ')[1]);
+                    data.push(registro.cpu_percent);
                 }
 
                 console.log('----------------------------------------------')
@@ -418,7 +416,7 @@
                 console.log('Labels:')
                 console.log(labels)
                 console.log('Dados:')
-                console.log(dados.datasets)
+                console.log(data)
                 console.log('----------------------------------------------')
 
                 const ctx = document.getElementById('grafico');
@@ -485,18 +483,16 @@
             })
             .then(servidores => {
                 const tabela = document.getElementById("tabela-servidores");
-                document.getElementById("total-servidores").innerHTML = servidores.length;
 
-                servidores.sort((a, b) => (b.usoCPU || 0) - (a.usoCPU || 0));
+                servidores.sort((a, b) => (b.cpu_percent || 0) - (a.cpu_percent || 0));
                 servidores.forEach(s => {
                     linhas += `
                 <tr>
-                    <td><strong>${s.nome}</strong></td>
-                    <td>${s.status || "Desconhecido"}</td>
-                    <td>${s.usoCPU || 0}%</td>
-                    <td>${s.totalProc || 0}</td>
-                    <td>${s.procMaiorUso || "Desconhecido"}</td>
-                    <td>${s.porcUsoMaiorProc || 0}%</td>
+                    <td><strong>${s.home_broker}</strong></td>
+                    <td>${s.status || "Ativo"}</td>
+                    <td>${s.cpu_percent || 0}%</td>
+                    <td>${s.total_processos || 0}</td>
+                    <td>${s.processo_maior_consumo || "Desconhecido"}</td>
                     <td><button>Ver detalhes</button></td>
                 </tr>`;
                 });
