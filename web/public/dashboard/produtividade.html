@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | noBroke</title>
+    <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
+
+    <script src="./js/sessao.js"></script>
+    <script>
+        (function () {
+            const modo = sessionStorage.getItem("MODO");
+
+            if (modo == 1) {
+                document.documentElement.style.setProperty('--preto', '#F2F2F2');
+                document.documentElement.style.setProperty('--branco', '#000');
+                document.documentElement.style.setProperty('--pretoClaro', '#fff');
+                document.documentElement.style.setProperty('--brancoCinza', '#1D2025');
+                document.documentElement.style.setProperty('--bordas', '#b5b5b5');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../css/produtividade.css">
+    <link rel="stylesheet" href="../css/dashResponsivo.css">
+
+    <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
+
+    <!-- Importar o Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body onload="verificarModo()">
+    <div class="containerPai">
+        <div class="sidebar" id="div_lateralAberta">
+            <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
+                <span>X</span>
+            </div>
+            <div class="logo-container">
+                <img id="imgLogo" class="logo-dash img" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
+            </div>
+            <!-- Side Bar - Botões -->
+            <div class="menu_centro">
+                <!-- Sidebar - Parte 01 -->
+                <div class="menu01">
+                    <h4 class="titulo_sidebar">PRINCIPAL</h4>
+                    <!-- Página atual -->
+                    <button class="btn-nobroke btn-active">
+                        <span class="icon">
+                            <img id="iconAtual" src="../assets/icon/icons-dashboard/painel-de-controle-hover.png">
+                        </span>
+                        <span class="texto">Dashboard</span>
+                    </button>
+
+                    <a href="servidores.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
+                        </span>
+                        <span class="texto">Servidores</span>
+                    </a>
+
+                    <a href="Alertas.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/notificacao.png">
+                        </span>
+                        <span class="texto">Alertas</span>
+                    </a>
+
+                    <div id="div_relatorios">
+                        <a href="Relatorios.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                            </span>
+                            <span class="texto">Relatórios</span>
+                        </a>
+                    </div>
+
+                    <a href="monitoramento.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                        </span>
+                        <span class="texto">Monitoramento</span>
+                    </a>
+                </div>
+                <!-- ============================ -->
+                <div class="menu02">
+                    <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
+
+                    <a href="Configurações.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/config.png">
+                        </span>
+                        <span class="texto">Configurações</span>
+                    </a>
+
+                    <a href="suporte.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
+                        </span>
+                        <span class="texto">Suporte</span>
+                    </a>
+                </div>
+                <!-- Fim dos Menus -->
+                <!-- ================================================================= -->
+                <!-- Parte do perfil -->
+            </div>
+            <div class="user-profile" onclick="window.location.href = 'Configurações.html?aba=perfil'">
+                <div class="profile-img">
+                    <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil">
+                </div>
+                <div class="user-infos">
+                    <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
+                    <span class="cargo" id="cargoFunc" style="color: var(--branco);">Gerente de Infra</span>
+                </div>
+            </div>
+        </div>
+        <!-- ================================================================= -->
+
+        <div class="conteudo-dash" id="telaPrincipal">
+            <!-- Header do Conteudo da Dashboard -->
+            <div class="header-responsividade">
+                <div class="qualTela">
+                    <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
+                        style="width: 30px; cursor: pointer; color: var(--cinzaClaro);" onclick="fecharAbrirLateral()">
+                    <a href="dashboard.html">Dashboard >&nbsp;</a>
+                    <span style="color: var(--branco);">&nbsp;Equipe | Produtividade</span>
+                </div>
+                <div id="iconeModo">
+                    <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
+                        style="width: 40px; cursor: pointer; margin-right: 20px;">
+                </div>
+            </div>
+            <div class="header-conteudo-dash">
+                <div class="header-esquerdo">
+                    <div class="header-esquerdo01">
+                        <h3 class="servidor-name" id="server-name">Produtividade da Equipe</h3>
+                    </div>
+                    <div class="header-esquerdo-prod">
+                        <div class="header-atualizacao">
+                        <p>Atualizado a <b>10 segundos</b></p>
+                        <p> Squad <b>Infra Trading</b></p>
+                        <p class="alinhar-texto-imagem"> <img src="../assets/icon/group (1).png" alt="" width="30px">8 Colaboradores</p>
+                        </div>
+                        <div class="header-botoes-dia">
+                            <button class="botao-dia"> Hoje </button>
+                            <button class="botao-dia botao-selecionado"> Última Semana</button>
+                            <button class="botao-dia"> Último Mês </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-direita">
+                    <button class="" onclick="window.location.reload()"><img id="logoAlerta"
+                            src="../assets/svg/loading-svgrepo-com.svg" alt="" style="width: 22px; color: white;">
+                        <span>Atualizar</span></button>
+                </div>
+            </div>
+            <!-- ========================================================= -->
+            <div class="container">
+                <div class="kpi">
+                    <div class="kpi-box">
+                        <div class="box">
+                            <div>
+                                <p>CPU MAIS ALTA</p>
+                                <h1 id="porcCPU">62%</h1>
+                                <p>mais alta atual</p>
+                            </div>
+                            <div class="imgIcone">
+                                <img src="../assets/matheus/cpu-tower.png" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <p>PROC MAIS ALTO</p>
+                                <h1 id="MaxProcCPU">80%</h1>
+                                <p>mais alto atual</p>
+                            </div>
+                            <div class="imgIcone">
+                                <img src="../assets/matheus/engineer-red.png" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <p>PROC MAIS BAIXO</p>
+                                <h1 id="MinProcCPU">10%</h1>
+                                <p>mais baixo atual</p>
+                            </div>
+                            <div class="imgIcone">
+                                <img src="../assets/matheus/engineer.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="box">
+                            <div>
+                                <p>CPU CRÍTICA</p>
+                                <h1 id="totalCPUcritica">0</h1>
+                                <p>maior que <span id="limiteCPU">75</span><span>%</span></p>
+                            </div>
+                            <div class="imgIcone">
+                                <img src="../assets/matheus/danger.png" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <p>PROC CRÍTICO</p>
+                                <h1 id="totalProcCritico">2</h1>
+                                <p>maior que <span id="limiteCPU">75</span><span>%</span></p>
+                            </div>
+                            <div class="imgIcone">
+                                <img src="../assets/matheus/engineer-red.png" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <p>SERVIDOR COM MAIS PROC</p>
+                                <h1 id="totalPROC">980</h1>
+                                <p>servidor: <span id="serverMaisProc">SRV-DEV-HB-01</span></p>
+                            </div>
+                            <div class="imgIcone">
+                                <img src="../assets/matheus/danger.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-grafico">
+                    <div class="pesquisaServer">
+                        <div>
+                            <h1>Tendência (24 horas)</h1>
+                            <span id="nomeServidor"></span>
+                        </div>
+                        <input type="search" id="busca" list="lista-servidores"
+                            placeholder="🔍 Digite o nome do servidor">
+
+                        <datalist id="lista-servidores">
+                            <option value="SRV-DEV-HB-01">
+                            <option value="SRV-DEV-HB-02">
+                            <option value="SRV-DEV-HB-03">
+                            <option value="SRV-DEV-HB-04">
+                        </datalist>
+                    </div>
+                    <div class="grafico">
+                        <canvas id="grafico"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="tabela-container">
+                <table class="tabela-servidores" style="background-color: var(--pretoClaro);">
+                    <thead>
+                        <tr>
+                            <th>Servidor</th>
+                            <th>Status</th>
+                            <th>uso de CPU (%)</th>
+                            <th>Processos</th>
+                            <th>Proc com maior uso de CPU</th>
+                            <th>Uso da CPU pelo maior processo</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpo-tabela">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="card-alertaGeral" id="div_alertaGeral">
+    </div>
+</body>
+
+</html>
+<script>
+
+
+    const root = document.documentElement;
+    const imgModo = document.getElementById("imgModo");
+    const imgLogo = document.getElementById("imgLogo");
+    const imgUser = document.getElementById("imgUser");
+    const sidebar = document.getElementById("div_lateralAberta");
+    const cardAlerta = document.getElementById("div_alertaGeral")
+    const corPreto = ('--preto')
+    const corBranca = ('--branco')
+
+    let modoEscuro = false;
+
+    imgModo.addEventListener("click", mudarModo);
+
+    function fecharAbrirLateral() {
+        const conteudo = document.getElementById("telaPrincipal");
+
+        sidebar.classList.toggle("compacta");
+        conteudo.classList.toggle("expandido");
+
+        if (sidebar.classList.contains("compacta")) {
+            sessionStorage.LATERAL = 1;
+            if (modoEscuro) {
+                imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
+            } else {
+                imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+            }
+        } else {
+            sessionStorage.LATERAL = 0;
+            if (modoEscuro) {
+                imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+            } else {
+                imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+            }
+        }
+    }
+
+    function mudarModo() {
+        modoEscuro = !modoEscuro;
+
+        if (modoEscuro) {
+            sessionStorage.MODO = 1;
+            root.style.setProperty('--preto', '#F2F2F2');
+            root.style.setProperty('--branco', '#000');
+            root.style.setProperty('--pretoClaro', '#fff');
+            root.style.setProperty('--brancoCinza', '#1D2025');
+            root.style.setProperty('--bordas', '#b5b5b5');
+            imgModo.src = "../assets/icon/icons-dashboard/lua-crescente.png";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg";
+            if (sidebar.classList.contains("compacta")) {
+                if (modoEscuro) {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
+                } else {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+                }
+            } else {
+                if (modoEscuro) {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+                } else {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+                }
+            }
+        } else {
+            sessionStorage.MODO = 0;
+            root.style.setProperty('--branco', '#fff');
+            root.style.setProperty('--preto', '#000');
+            root.style.setProperty('--pretoClaro', '#1D2025');
+            root.style.setProperty('--brancoCinza', '#b5b5b5');
+            root.style.setProperty('--bordas', '#3a3f45');
+            imgModo.src = "../assets/icon/icons-dashboard/brilho-do-sol.png";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg";
+            if (sidebar.classList.contains("compacta")) {
+                if (modoEscuro) {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
+                } else {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+                }
+            } else {
+                if (modoEscuro) {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+                } else {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+                }
+            }
+        }
+    }
+
+    function verificarModo() {
+        if (sessionStorage.MODO == 1) {
+            mudarModo()
+        }
+        if (sessionStorage.LATERAL == 1) {
+            fecharAbrirLateral()
+        }
+        if (sessionStorage.ALERTA == 0) {
+            cardAlerta.style.display = "none"
+        } else {
+            cardAlerta.innerHTML = `<div class="box-cardAlerta">
+                    <div class="titulo-pai">
+                        <div class="titulo-alerta">
+                            <img src="../assets/svg/alertas/warning.png">
+                            <span>ALERTA</span>
+                        </div>
+                        <div class="fecharCard">
+                            <span onclick="fecharAlerta()">X</span>
+                        </div>
+                    </div>
+                    <div class="corpo-alerta">
+                        <span>2 Alertas Críticos</span>
+                        <a href="Alertas.html">Clique aqui para ver mais informações!</a>
+                    </div>
+                </div>`
+        }
+        if (sessionStorage.FK_FUNCAO != 1) {
+            const divRelatorios = document.getElementById("div_relatorios");
+            divRelatorios.style.display = "none";
+            sessionStorage.FUNCAO = "Analista de Infra";
+        } else {
+            sessionStorage.FUNCAO = "Gestor de Infra";
+        }
+    }
+
+    function fecharAlerta() {
+        cardAlerta.style.display = "none"
+    }
+
+    // criarGrafico();
+    // function criarGrafico() {
+    //     // SUBSTITUIÇÃO: URL direta do arquivo no S3
+    //     const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
+    //     let labels = []
+    //     let data = []
+
+    //     fetch(urlS3)
+    //         .then(res => {
+    //             if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
+    //             return res.json();
+    //         })
+    //         .then(servidores => {
+    //             for (i = 0; i <= 5; i++) {
+    //                 var registro = servidores[i];
+    //                 labels.push(registro.timestamp.split(' ')[1]);
+    //                 data.push(registro.cpu_percent);
+    //             }
+
+    //             console.log('----------------------------------------------')
+    //             console.log('O gráfico será plotado com os respectivos valores:')
+    //             console.log('Labels:')
+    //             console.log(labels)
+    //             console.log('Dados:')
+    //             console.log(data)
+    //             console.log('----------------------------------------------')
+
+    //             const ctx = document.getElementById('grafico');
+    //             new Chart(ctx, {
+    //                 type: 'line',
+    //                 data: {
+    //                     labels: [],
+    //                     datasets: [
+    //                         {
+    //                             label: 'CPU (%)',
+    //                             data: [],
+    //                             borderColor: 'rgb(33, 196, 93)',
+    //                             backgroundColor: 'rgba(33, 196, 93, 0.5)',
+    //                             tension: 0.3
+    //                         }
+    //                     ]
+    //                 },
+    //                 options: {
+    //                     responsive: true,
+    //                     maintainAspectRatio: false,
+    //                     scales: {
+    //                         x: {
+    //                             ticks: { color: 'white' }
+    //                         },
+    //                         y: {
+    //                             beginAtZero: true,
+    //                             max: 100,
+    //                             title: {
+    //                                 display: true,
+    //                                 text: 'Uso (%)',
+    //                                 color: 'white'
+    //                             },
+    //                             ticks: { color: 'white' },
+    //                         }
+    //                     },
+    //                     plugins: {
+    //                         legend: {
+    //                             labels: {
+    //                                 color: 'white',
+    //                                 font: {
+    //                                     size: 16
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             })
+    //         })
+    //         .catch(erro => console.error("ERRO:", erro));
+    // };
+
+    const ctx = document.getElementById('grafico');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['10h', '11h', '12h', '13h', '14h', '15h'],
+            datasets: [
+                {
+                    label: 'CPU (%)',
+                    data: [20, 20, 25, 28, 35, 80],
+                    borderColor: 'rgb(33, 196, 93)',
+                    backgroundColor: 'rgba(33, 196, 93, 0.5)',
+                    tension: 0.3
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    ticks: { color: 'white' }
+                },
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    title: {
+                        display: true,
+                        text: 'Uso (%)',
+                        color: 'white'
+                    },
+                    ticks: { color: 'white' },
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white',
+                        font: {
+                            size: 16
+                        }
+                    }
+                }
+            }
+        }
+    })
+
+    carregarServidores();
+
+    setInterval(carregarServidores, 30000);
+    function carregarServidores() {
+        let linhas = '';
+        // SUBSTITUIÇÃO: URL direta do arquivo no S3
+        const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
+
+        fetch(urlS3)
+            .then(res => {
+                if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
+                return res.json();
+            })
+            .then(servidores => {
+                const tabela = document.getElementById("corpo-tabela");
+
+                servidores.sort((a, b) => (b.cpu_percent || 0) - (a.cpu_percent || 0));
+                servidores.forEach(s => {
+                    const procRelativo = parseFloat(s.processo_maior_consumo.split(' ')[4].replace('%', '')) || 0;
+                    const usoRealCalculado = (procRelativo / 100) * s.cpu_percent;
+                    linhas += `
+                <tr>
+                    <td><strong>${s.home_broker}</strong></td>
+                    <td>${s.status || "Ativo"}</td>
+                    <td>${s.cpu_percent || 0}%</td>
+                    <td>${s.total_processos || 0}</td>
+                    <td>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</td>
+                    <td>${usoRealCalculado.toFixed(1) || 0}%</td>
+                    <td><button>Ver detalhes</button></td>
+                </tr>`;
+                });
+
+                tabela.innerHTML = linhas;
+
+            })
+            .catch(erro => console.error("ERRO:", erro));
+    }
+</script>
