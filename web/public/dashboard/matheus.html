@@ -24,6 +24,7 @@
     </script>
 
     <link rel="stylesheet" href="../css/matheus.css">
+    <link rel="stylesheet" href="../css/dashResponsivo.css">
 
     <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
 
@@ -111,7 +112,7 @@
                     <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil">
                 </div>
                 <div class="user-infos">
-                    <p class="username" id="usuario" style="color: var(--branco);"></p>
+                    <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
                     <span class="cargo" id="cargoFunc" style="color: var(--branco);">Gerente de Infra</span>
                 </div>
             </div>
@@ -132,7 +133,6 @@
                         style="width: 40px; cursor: pointer; margin-right: 20px;">
                 </div>
             </div>
-            <hr style="width: 100%; color: #b4b4b4; height: 2px;">
             <div class="header-conteudo-dash">
                 <div class="header-esquerdo">
                     <div class="header-esquerdo01">
@@ -145,74 +145,74 @@
                 <div class="header-direita">
                     <button class="" onclick="window.location.reload()"><img id="logoAlerta"
                             src="../assets/svg/loading-svgrepo-com.svg" alt="" style="width: 22px; color: white;">
-                        Atualizar</button>
+                        <span>Atualizar</span></button>
                 </div>
             </div>
             <!-- ========================================================= -->
             <div class="container">
                 <div class="kpi">
-                    <div class="box">
-                        <div>
-                            <p>CPU MAIS ALTA</p>
-                            <h1 id="porcCPU">62%</h1>
-                            <p>mais alta atual</p>
-                        </div>
-                        <div class="imgIcone">
-                            <img src="../assets/matheus/cpu-tower.png" alt="">
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div>
-                            <p>PROC MAIS ALTO</p>
-                            <h1 id="MaxProcCPU">80%</h1>
-                            <p>mais alto atual</p>
-                        </div>
-                        <div class="imgIcone">
-                            <img src="../assets/matheus/engineer-red.png" alt="">
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div>
-                            <p>PROC MAIS BAIXO</p>
-                            <h1 id="MinProcCPU">10%</h1>
-                            <p>mais baixo atual</p>
-                        </div>
-                        <div class="imgIcone">
-                            <img src="../assets/matheus/engineer.png" alt="">
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div>
-                            <p>CPU CRÍTICA</p>
-                            <h1 id="totalCPUcritica">0</h1>
-                            <p>maior que <span id="limiteCPU">75</span><span>%</span></p>
-                        </div>
-                        <div class="imgIcone">
-                            <img src="../assets/matheus/danger.png" alt="">
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div>
-                            <p>PROC CRÍTICO</p>
-                            <h1 id="totalProcCritico">2</h1>
-                            <p>maior que <span id="limiteCPU">75</span><span>%</span></p>
-                        </div>
-                        <div class="imgIcone">
-                            <img src="../assets/matheus/engineer-red.png" alt="">
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div>
-                            <div class="totalProc">
-                                <div>
-                                    <p>SERVIDOR COM MAIS PROC</p>
-                                    <h1 id="totalPROC">980</h1>
-                                </div>
-                                <div class="imgIcone">
-                                    <img src="../assets/matheus/danger.png" alt="">
-                                </div>
+                    <div class="kpi-box">
+                        <div class="box">
+                            <div>
+                                <p>CPU MAIS ALTA</p>
+                                <h1 id="porcCPU">62%</h1>
+                                <p>mais alta atual</p>
                             </div>
-                            <p>servidor: <span id="serverMaisProc">SRV-DEV-HB-01</span></p>
+                            <div class="imgIcone">
+                                <img src="../assets/matheus/cpu-tower.png" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <p>PROC MAIS ALTO</p>
+                                <h1 id="MaxProcCPU">80%</h1>
+                                <p>mais alto atual</p>
+                            </div>
+                            <div class="imgIcone">
+                                <img src="../assets/matheus/engineer-red.png" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <p>PROC MAIS BAIXO</p>
+                                <h1 id="MinProcCPU">10%</h1>
+                                <p>mais baixo atual</p>
+                            </div>
+                            <div class="imgIcone">
+                                <img src="../assets/matheus/engineer.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="kpi-box">
+                        <div class="box">
+                            <div>
+                                <p>CPU CRÍTICA</p>
+                                <h1 id="totalCPUcritica">0</h1>
+                                <p>maior que <span id="limiteCPU">75</span><span>%</span></p>
+                            </div>
+                            <div class="imgIcone">
+                                <img src="../assets/matheus/danger.png" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <p>PROC CRÍTICO</p>
+                                <h1 id="totalProcCritico">2</h1>
+                                <p>maior que <span id="limiteCPU">75</span><span>%</span></p>
+                            </div>
+                            <div class="imgIcone">
+                                <img src="../assets/matheus/engineer-red.png" alt="">
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div>
+                                <p>SERVIDOR COM MAIS PROC</p>
+                                <h1 id="totalPROC">980</h1>
+                                <p>servidor: <span id="serverMaisProc">SRV-DEV-HB-01</span></p>
+                            </div>
+                            <div class="imgIcone">
+                                <img src="../assets/matheus/danger.png" alt="">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -246,21 +246,18 @@
                             <th>uso de CPU (%)</th>
                             <th>Processos</th>
                             <th>Proc com maior uso de CPU</th>
-                            <th>Procentagem de uso da CPU pelo maior processo</th>
+                            <th>Uso da CPU pelo maior processo</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
-                    <tbody id="tabela-servidores">
+                    <tbody id="corpo-tabela">
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
     <div class="card-alertaGeral" id="div_alertaGeral">
     </div>
-    </div>
-
 </body>
 
 </html>
@@ -392,81 +389,127 @@
         cardAlerta.style.display = "none"
     }
 
-    criarGrafico();
-    function criarGrafico() {
-        // SUBSTITUIÇÃO: URL direta do arquivo no S3
-        const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
-        let labels = []
-        let data = []
+    // criarGrafico();
+    // function criarGrafico() {
+    //     // SUBSTITUIÇÃO: URL direta do arquivo no S3
+    //     const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
+    //     let labels = []
+    //     let data = []
 
-        fetch(urlS3)
-            .then(res => {
-                if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
-                return res.json();
-            })
-            .then(servidores => {
-                for (i = 0; i <= 5; i++) {
-                    var registro = servidores[i];
-                    labels.push(registro.timestamp.split(' ')[1]);
-                    data.push(registro.cpu_percent);
+    //     fetch(urlS3)
+    //         .then(res => {
+    //             if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
+    //             return res.json();
+    //         })
+    //         .then(servidores => {
+    //             for (i = 0; i <= 5; i++) {
+    //                 var registro = servidores[i];
+    //                 labels.push(registro.timestamp.split(' ')[1]);
+    //                 data.push(registro.cpu_percent);
+    //             }
+
+    //             console.log('----------------------------------------------')
+    //             console.log('O gráfico será plotado com os respectivos valores:')
+    //             console.log('Labels:')
+    //             console.log(labels)
+    //             console.log('Dados:')
+    //             console.log(data)
+    //             console.log('----------------------------------------------')
+
+    //             const ctx = document.getElementById('grafico');
+    //             new Chart(ctx, {
+    //                 type: 'line',
+    //                 data: {
+    //                     labels: [],
+    //                     datasets: [
+    //                         {
+    //                             label: 'CPU (%)',
+    //                             data: [],
+    //                             borderColor: 'rgb(33, 196, 93)',
+    //                             backgroundColor: 'rgba(33, 196, 93, 0.5)',
+    //                             tension: 0.3
+    //                         }
+    //                     ]
+    //                 },
+    //                 options: {
+    //                     responsive: true,
+    //                     maintainAspectRatio: false,
+    //                     scales: {
+    //                         x: {
+    //                             ticks: { color: 'white' }
+    //                         },
+    //                         y: {
+    //                             beginAtZero: true,
+    //                             max: 100,
+    //                             title: {
+    //                                 display: true,
+    //                                 text: 'Uso (%)',
+    //                                 color: 'white'
+    //                             },
+    //                             ticks: { color: 'white' },
+    //                         }
+    //                     },
+    //                     plugins: {
+    //                         legend: {
+    //                             labels: {
+    //                                 color: 'white',
+    //                                 font: {
+    //                                     size: 16
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             })
+    //         })
+    //         .catch(erro => console.error("ERRO:", erro));
+    // };
+
+    const ctx = document.getElementById('grafico');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['10h', '11h', '12h', '13h', '14h', '15h'],
+            datasets: [
+                {
+                    label: 'CPU (%)',
+                    data: [20, 20, 25, 28, 35, 80],
+                    borderColor: 'rgb(33, 196, 93)',
+                    backgroundColor: 'rgba(33, 196, 93, 0.5)',
+                    tension: 0.3
                 }
-
-                console.log('----------------------------------------------')
-                console.log('O gráfico será plotado com os respectivos valores:')
-                console.log('Labels:')
-                console.log(labels)
-                console.log('Dados:')
-                console.log(data)
-                console.log('----------------------------------------------')
-
-                const ctx = document.getElementById('grafico');
-                new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: [],
-                        datasets: [
-                            {
-                                label: 'CPU (%)',
-                                data: [],
-                                borderColor: 'rgb(33, 196, 93)',
-                                backgroundColor: 'rgba(33, 196, 93, 0.5)',
-                                tension: 0.3
-                            }
-                        ]
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    ticks: { color: 'white' }
+                },
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    title: {
+                        display: true,
+                        text: 'Uso (%)',
+                        color: 'white'
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            x: {
-                                ticks: { color: 'white' }
-                            },
-                            y: {
-                                beginAtZero: true,
-                                max: 100,
-                                title: {
-                                    display: true,
-                                    text: 'Uso (%)',
-                                    color: 'white'
-                                },
-                                ticks: { color: 'white' },
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                labels: {
-                                    color: 'white',
-                                    font: {
-                                        size: 16
-                                    }
-                                }
-                            }
+                    ticks: { color: 'white' },
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        color: 'white',
+                        font: {
+                            size: 16
                         }
                     }
-                })
-            })
-            .catch(erro => console.error("ERRO:", erro));
-    };
+                }
+            }
+        }
+    })
 
     carregarServidores();
 
@@ -476,23 +519,26 @@
         // SUBSTITUIÇÃO: URL direta do arquivo no S3
         const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
 
-        fetch(`${urlS3}?t=${new Date().getTime()}`)
+        fetch(urlS3)
             .then(res => {
                 if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
                 return res.json();
             })
             .then(servidores => {
-                const tabela = document.getElementById("tabela-servidores");
+                const tabela = document.getElementById("corpo-tabela");
 
                 servidores.sort((a, b) => (b.cpu_percent || 0) - (a.cpu_percent || 0));
                 servidores.forEach(s => {
+                    const procRelativo = parseFloat(s.processo_maior_consumo.split(' ')[4].replace('%', '')) || 0;
+                    const usoRealCalculado = (procRelativo / 100) * s.cpu_percent;
                     linhas += `
                 <tr>
                     <td><strong>${s.home_broker}</strong></td>
                     <td>${s.status || "Ativo"}</td>
                     <td>${s.cpu_percent || 0}%</td>
                     <td>${s.total_processos || 0}</td>
-                    <td>${s.processo_maior_consumo || "Desconhecido"}</td>
+                    <td>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</td>
+                    <td>${usoRealCalculado.toFixed(1) || 0}%</td>
                     <td><button>Ver detalhes</button></td>
                 </tr>`;
                 });

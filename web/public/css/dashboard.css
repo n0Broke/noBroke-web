@@ -35,7 +35,9 @@ body {
 .containerPai{
     display: flex;
     flex-direction: row;
-    min-height: 100vh;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
 }
 
 .qualTela{
@@ -43,14 +45,13 @@ body {
     align-items: center;
 }
 
-
 /* =========================================== */
 /* Header - Dashboard */
 
 .header-conteudo-dash {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .header-esquerdo h3,
@@ -149,6 +150,7 @@ body {
     /* background-color: red; */
     margin: 0px;
     gap: 12px;
+    border-bottom: solid 2px var(--bordas);
 }
 
 .header-responsividade img {
@@ -176,11 +178,14 @@ body {
 .conteudo-dash {
     display: flex;
     flex-direction: column;
+    overflow-y: auto !important;
+    flex: 1;
+    width: 100%;
     padding: 20px;
     padding-left: 25px !important;
     padding-right: 20px !important;
     background-color: var(--preto);
-    gap: 20px;
+    gap: 10px;
 }
 
 /* =========================================== */

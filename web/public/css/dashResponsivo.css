@@ -95,7 +95,8 @@
     .alerta05,
     .tituloEquipes,
     .btnCargos,
-    .popUpFuncionario-dados, .popUpFuncionario-dadosServidor {
+    .popUpFuncionario-dados, .popUpFuncionario-dadosServidor,
+    .kpi-box {
         flex-direction: column;
         min-width: 100%;
     }
@@ -502,7 +503,8 @@
     .alerta04,
     .alerta05,  
     .btnCargos,
-    .popUpFuncionario-dados {
+    .popUpFuncionario-dados,
+    .kpi-box {
         flex-direction: column;
         min-width: 100%;
     }
