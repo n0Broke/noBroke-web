@@ -331,6 +331,7 @@ canvas {
     }
 
     .kpi-box {
+        flex-direction: row !important;
         width: 100%;
     }
 
