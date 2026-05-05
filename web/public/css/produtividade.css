@@ -90,6 +90,55 @@
 .botao-detalhes span {
     color: var(--preto);
 }
+
+.equipe-operacao {
+    background-color: rgb(1, 59, 1);
+    color: #38c411cc;
+    font-weight: bold;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    height: 15px;
+    border: 1px solid;
+}
+
+.header-esquerdo01 {
+    align-items: center;
+}
+
+.container-titulo {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.imagem-titulo {
+    background-color: rgba(130, 72, 1, 0.479);
+    padding: 8px;
+    border-radius: 10px;
+}
+
+.bloco-titulo {
+    align-items: center;
+}
+
+.bloco-titulo h2 {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.bloco-titulo h3 {
+    font-size: 12px;
+    color: #d2d2d2cc;
+    font-weight: 400;
+}
+
+
+
+
 .cabeca {
     display: flex;
     margin-left: 1%;
@@ -106,7 +155,45 @@
     height: 100%;
 }
 
+.kpi {
 
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+}
+
+.kpi-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #1d1e21cc;
+    border: 1px solid #3f3f44cc;
+    border-radius: 12px;
+    padding: 22px;
+    width: 12%;
+}
+
+.kpi-img {
+    background-color: rgb(0, 64, 0);
+    padding: 6px;
+    border-radius: 10px;
+}
+.kpi-valor {
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.kpi-texto {
+    color: #b8b8b8cc;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.kpi-texto-sub {
+    font-size: 10px;
+    font-weight: normal;
+}
 
 button:hover {
     background-color: var(--laranja);
@@ -127,310 +214,4 @@ span {
     color: var(--branco);
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-width: 100% !important;
-    height: 90%;
-    padding: 0 !important;
-    margin: 0 !important;
-}
 
-.kpi {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    height: 20%;
-}
-
-.kpi-box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    padding: 5px;
-    gap: 10px;
-}
-
-.box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    min-height: 80%;
-    max-height: 80%;
-    padding: 5px;
-    background-color: var(--pretoClaro);
-    border-radius: 10px;
-    border: solid 2px var(--bordas);
-    cursor: pointer;
-}
-
-.box div {
-    display: flex;
-    flex-direction: column;
-    width: 70%;
-    height: 100%;
-}
-
-.kpi .imgIcone {
-    display: flex;
-    width: 30%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-.imgIcone img {
-    margin: 30px 0px 20px 0px;
-    width: 100%;
-    height: 50%;
-}
-
-.box-grafico {
-    display: flex;
-    width: 98%;
-    height: 70%;
-    flex-direction: column;
-    background-color: var(--pretoClaro);
-    border-radius: 10px;
-    border: solid 2px var(--bordas);
-    padding: 10px;
-}
-
-.pesquisaServer {
-    display: flex;
-    justify-content: space-between;
-    height: 15%;
-}
-
-.pesquisaServer input {
-    width: 30%;
-    height: 45%;
-    background-color: var(--pretoClaro);
-    border: solid 2px var(--bordas);
-    border-radius: 10px;
-    color: var(--branco);
-    font-size: 16px;
-}
-
-.grafico {
-    display: flex;
-    height: 85%;
-}
-
-canvas {
-    display: flex;
-    width: 90%;
-}
-
-.tabela-container {
-    width: 100%;
-    background-color: var(--preto);
-    border-radius: 8px;
-}
-
-.tabela-servidores {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-}
-
-.tabela-servidores th,
-.tabela-servidores td {
-    padding: 15px 10px;
-    text-align: left;
-    border-bottom: 1px solid var(--bordas);
-    color: var(--branco);
-    font-size: 14px;
-    white-space: nowrap;
-}
-
-/* Definindo larguras idênticas para cabeçalho e corpo */
-.tabela-servidores th:nth-child(1),
-.tabela-servidores td:nth-child(1) {
-    width: 15%;
-}
-
-.tabela-servidores th:nth-child(2),
-.tabela-servidores td:nth-child(2) {
-    width: 10%;
-}
-
-.tabela-servidores th:nth-child(3),
-.tabela-servidores td:nth-child(3) {
-    width: 12%;
-}
-
-.tabela-servidores th:nth-child(4),
-.tabela-servidores td:nth-child(4) {
-    width: 10%;
-}
-
-.tabela-servidores th:nth-child(5),
-.tabela-servidores td:nth-child(5) {
-    width: 20%;
-}
-
-.tabela-servidores th:nth-child(6),
-.tabela-servidores td:nth-child(6) {
-    width: 18%;
-}
-
-.tabela-servidores th:nth-child(7),
-.tabela-servidores td:nth-child(7) {
-    width: 15%;
-}
-
-.tabela-servidores td {
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* =========================================== */
-/* Reponsividade */
-
-@media (max-width: 767px) {
-    .qualTela {
-        font-size: 15px;
-    }
-
-    .header-conteudo-dash {
-        display: flex;
-        width: 100%;
-        flex-direction: row !important;
-    }
-
-    .header-esquerdo {
-        width: 65%;
-    }
-
-    .header-direita {
-        width: 30%;
-        font-size: 26px !important;
-    }
-
-    .header-direita img {
-        width: 30% !important;
-    }
-
-    .container {
-        min-height: fit-content;
-        gap: 15px;
-    }
-
-    .kpi {
-        flex-direction: column;
-        min-width: 100%;
-        height: fit-content;
-    }
-
-    .kpi-box {
-        flex-wrap: wrap;
-    }
-
-    .box {
-        width: 90%;
-        min-width: 140px;
-        height: auto;
-        min-height: 100px;
-    }
-
-    .box div {
-        justify-content: center;
-    }
-
-    .imgIcone img {
-        width: 70%;
-    }
-
-    .pesquisaServer {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .pesquisaServer input {
-        width: 80%;
-    }
-
-    .tabela-container {
-        display: block !important;
-        width: 100%;
-        overflow-x: auto !important;
-        padding-bottom: 10px;
-        min-height: 100vh;
-    }
-
-    .tabela-servidores {
-        min-width: 850px !important; 
-        table-layout: fixed;
-    }
-
-    .tabela-servidores th:nth-child(1), .tabela-servidores td:nth-child(1) { width: 120px; } /* Servidor */
-    .tabela-servidores th:nth-child(2), .tabela-servidores td:nth-child(2) { width: 80px; }  /* Status */
-    .tabela-servidores th:nth-child(3), .tabela-servidores td:nth-child(3) { width: 100px; } /* CPU % */
-    .tabela-servidores th:nth-child(4), .tabela-servidores td:nth-child(4) { width: 90px; }  /* Processos */
-    .tabela-servidores th:nth-child(5), .tabela-servidores td:nth-child(5) { width: 180px; } /* Proc Maior Consumo */
-    .tabela-servidores th:nth-child(6), .tabela-servidores td:nth-child(6) { width: 120px; } /* Uso Real */
-    .tabela-servidores th:nth-child(7), .tabela-servidores td:nth-child(7) { width: 130px; } /* Botão */
-
-    .tabela-servidores td {
-        font-size: 13px;
-        padding: 10px 5px;
-    }
-}
-
-@media (min-width: 768px) and (max-width: 1599px) {
-    .header-conteudo-dash {
-        display: flex;
-        width: 100%;
-        flex-direction: row !important;
-    }
-
-    .header-esquerdo {
-        width: 50%;
-    }
-
-    .header-direita {
-        width: 10%;
-        font-size: 26px !important;
-    }
-
-    .header-direita img {
-        width: 30% !important;
-    }
-
-    .container {
-        min-height: fit-content;
-    }
-
-    .kpi {
-        flex-direction: column;
-        min-width: 100%;
-        height: fit-content;
-    }
-
-    .kpi-box {
-        width: 100%;
-    }
-
-    /* Servidor */
-    .tabela-servidores th:nth-child(1) {
-        width: 12%;
-    }
-    
-    /* Nome do Proc (mais largo) */
-    .tabela-servidores th:nth-child(5) {
-        width: 25%;
-    }
-
-    /* Uso Real */
-    .tabela-servidores th:nth-child(6) {
-        width: 28%;
-    }
-
-    .tabela-servidores td {
-        font-size: 16px;
-    }
-}

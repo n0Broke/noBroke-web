@@ -137,7 +137,12 @@
                 <div class="header-esquerdo">
                     <div class="header-esquerdo01">
                         <h3 class="servidor-name" id="server-name">Produtividade da Equipe</h3>
+                        
+                        <p class="equipe-operacao"> Equipe Operando </p>
+                       
                     </div>
+
+
                     <div class="header-esquerdo-prod">
                         <div class="header-atualizacao">
                             <p>Atualizado a <b>10 segundos</b></p>
@@ -182,94 +187,39 @@
             </div>
             <!-- ========================================================= -->
             <div class="container">
-                <div class="kpi">
-                    <div class="kpi-box">
-                        <div class="box">
-                            <div>
-                                <p>CPU MAIS ALTA</p>
-                                <h1 id="porcCPU">62%</h1>
-                                <p>mais alta atual</p>
-                            </div>
-                            <div class="imgIcone">
-                                <img src="../assets/matheus/cpu-tower.png" alt="">
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div>
-                                <p>PROC MAIS ALTO</p>
-                                <h1 id="MaxProcCPU">80%</h1>
-                                <p>mais alto atual</p>
-                            </div>
-                            <div class="imgIcone">
-                                <img src="../assets/matheus/engineer-red.png" alt="">
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div>
-                                <p>PROC MAIS BAIXO</p>
-                                <h1 id="MinProcCPU">10%</h1>
-                                <p>mais baixo atual</p>
-                            </div>
-                            <div class="imgIcone">
-                                <img src="../assets/matheus/engineer.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="kpi-box">
-                        <div class="box">
-                            <div>
-                                <p>CPU CRÍTICA</p>
-                                <h1 id="totalCPUcritica">0</h1>
-                                <p>maior que <span id="limiteCPU">75</span><span>%</span></p>
-                            </div>
-                            <div class="imgIcone">
-                                <img src="../assets/matheus/danger.png" alt="">
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div>
-                                <p>PROC CRÍTICO</p>
-                                <h1 id="totalProcCritico">2</h1>
-                                <p>maior que <span id="limiteCPU">75</span><span>%</span></p>
-                            </div>
-                            <div class="imgIcone">
-                                <img src="../assets/matheus/engineer-red.png" alt="">
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div>
-                                <p>SERVIDOR COM MAIS PROC</p>
-                                <h1 id="totalPROC">980</h1>
-                                <p>servidor: <span id="serverMaisProc">SRV-DEV-HB-01</span></p>
-                            </div>
-                            <div class="imgIcone">
-                                <img src="../assets/matheus/danger.png" alt="">
-                            </div>
-                        </div>
+                <div class="container-titulo">
+                    <img src="../assets/icon/stars.png" alt="" class="imagem-titulo" width="20px" height="20px">
+                    <div class="bloco-titulo">
+                        <h2>Resumo Executivo</h2>
+                        <h3>Indicadores consolidados de produtividade</h3>
                     </div>
                 </div>
-                <div class="box-grafico">
-                    <div class="pesquisaServer">
-                        <div>
-                            <h1>Tendência (24 horas)</h1>
-                            <span id="nomeServidor"></span>
-                        </div>
-                        <input type="search" id="busca" list="lista-servidores"
-                            placeholder="🔍 Digite o nome do servidor">
+                
 
-                        <datalist id="lista-servidores">
-                            <option value="SRV-DEV-HB-01">
-                            <option value="SRV-DEV-HB-02">
-                            <option value="SRV-DEV-HB-03">
-                            <option value="SRV-DEV-HB-04">
-                        </datalist>
+                <div class="kpi">
+                    <div class="kpi-box">
+                        <img src="../assets/icon/check-mark.png" alt="" width="15px" height="15px" class="kpi-img">
+
+                        <div class="container-texto-kpi">
+                            <p class="kpi-valor"> 300 </p>
+                            <p class="kpi-texto">INCIDENTES RESOLVIDOS</p>
+
+                        </div>
                     </div>
-                    <div class="grafico">
-                        <canvas id="grafico"></canvas>
+
+                    <div class="kpi-box">
+                        <img src="../assets/icon/check-mark.png" alt="" width="15px" height="15px" class="kpi-img">
+
+                        <div class="container-texto-kpi">
+                            <p class="kpi-valor"> 27min </p>
+                            <p class="kpi-texto">MTTR Médio</p>
+                            <p class="kpi-texto-sub">tempo médio de resolução</p>
+
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="tabela-container">
+            <!-- <div class="tabela-container">
                 <table class="tabela-servidores" style="background-color: var(--pretoClaro);">
                     <thead>
                         <tr>
@@ -285,7 +235,7 @@
                     <tbody id="corpo-tabela">
                     </tbody>
                 </table>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="card-alertaGeral" id="div_alertaGeral">

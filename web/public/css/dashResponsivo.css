@@ -612,8 +612,9 @@
 
   
     .tabela-servidores td{
-            font-size: 20px;
+        font-size: 20px;
     }
+
     .tabela-container {
         overflow-x: auto;
     }
@@ -623,7 +624,6 @@
         width: 100% !important;
     }
     
-
     .linha-relatorio strong{
         font-size: 20px !important;
     }
@@ -636,7 +636,6 @@
         flex-wrap: nowrap;
         flex-direction: column;
         width: 100%;
-
     }
 
     .conteudo-relatorio {

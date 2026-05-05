@@ -404,7 +404,7 @@
                 for (i = 0; i <= 5; i++) {
                     var registro = servidores[i];
                     labels.push(registro.timestamp.split(' ')[1]);
-                    data.push(registro.cpu_percent);
+                    dados.datasets[0].dados.push(registro.cpu_percent);
                 }
 
                 console.log('----------------------------------------------')
@@ -412,7 +412,7 @@
                 console.log('Labels:')
                 console.log(labels)
                 console.log('Dados:')
-                console.log(data)
+                console.log(dados.datasets[0].data)
                 console.log('----------------------------------------------')
 
                 const ctx = document.getElementById('grafico');
