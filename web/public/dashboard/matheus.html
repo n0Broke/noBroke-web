@@ -220,20 +220,25 @@
                     <div class="pesquisaServer">
                         <div>
                             <h1>Tendência (24 horas)</h1>
-                            <span id="nomeServidor"></span>
+                            <span>Servidor atual: </span> <span id="span_nomeServidor"> Nenhum</span>
                         </div>
-                        <input type="search" id="busca" list="lista-servidores"
-                            placeholder="🔍 Digite o nome do servidor">
+                        <input style="display: none;" type="search" id="busca" list="lista_servidores"
+                            placeholder="🔍 Digite o nome do servidor" oninput="criarGrafico(this.value)">
 
-                        <datalist id="lista-servidores">
+                        <datalist id="lista_servidores">
                             <option value="SRV-DEV-HB-01">
                             <option value="SRV-DEV-HB-02">
                             <option value="SRV-DEV-HB-03">
                             <option value="SRV-DEV-HB-04">
                         </datalist>
                     </div>
-                    <div class="grafico">
-                        <canvas id="grafico"></canvas>
+                    <div class="grafico" id="div_grafico">
+                        <div class="caminhoPesquisa">
+                            <h1>Qual servidor gostaria de monitorar?</h1>
+                            <span>Insira no campo abaixo o nome do servidor...</span>
+                            <input type="search" id="busca" list="lista_servidores"
+                                placeholder="🔍 Digite o nome do servidor" oninput="criarGrafico(this.value)">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -243,10 +248,11 @@
                         <tr>
                             <th>Servidor</th>
                             <th>Status</th>
+                            <th>Hora da coleta</th>
                             <th>uso de CPU (%)</th>
                             <th>Processos</th>
                             <th>Proc com maior uso de CPU</th>
-                            <th>Uso da CPU pelo maior processo</th>
+                            <th>Uso CPU do maior processo</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -388,12 +394,18 @@
         cardAlerta.style.display = "none"
     }
 
-    criarGrafico();
-    function criarGrafico() {
+    let meuGrafico;
+    function criarGrafico(nomeServidor) {
+        div_grafico.innerHTML = `<canvas id="grafico">`
+        busca.style.display = "flex"
+        span_nomeServidor.innerHTML = nomeServidor
+
+
         // SUBSTITUIÇÃO: URL direta do arquivo no S3
         const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
-        let labels = []
-        let data = []
+        let timestamp = []
+        let dados = []
+        var contDados = 0;
 
         fetch(urlS3)
             .then(res => {
@@ -401,29 +413,49 @@
                 return res.json();
             })
             .then(servidores => {
-                for (i = 0; i <= 5; i++) {
-                    var registro = servidores[i];
-                    labels.push(registro.timestamp.split(' ')[1]);
-                    dados.datasets[0].dados.push(registro.cpu_percent);
+                servidores.sort((a, b) => {
+                    // Transforma "23-04-2026 12:35:14" em "2026-04-23T12:35:14"
+                    const formatarData = (ts) => {
+                        const [data, hora] = ts.split(' ');
+                        const [dia, mes, ano] = data.split('-');
+                        return new Date(`${ano}-${mes}-${dia}T${hora}`);
+                    };
+
+                    return formatarData(a.timestamp) - formatarData(b.timestamp);
+                });
+                for (var i = 0; i < servidores.length; i++) {
+                    var servidorAtual = servidores[i]
+                    if (servidorAtual.home_broker == nomeServidor) {
+                        contDados++;
+                        if (contDados == 7) {
+                            break;
+                        } else {
+                            timestamp.push(servidorAtual.timestamp.split(' ')[1]);
+                            dados.push(servidorAtual.cpu_percent + Math.floor(Math.random() * (100 - 1 + 1)));
+                        }
+                    }
                 }
 
                 console.log('----------------------------------------------')
                 console.log('O gráfico será plotado com os respectivos valores:')
                 console.log('Labels:')
-                console.log(labels)
+                console.log(timestamp)
                 console.log('Dados:')
-                console.log(dados.datasets[0].data)
+                console.log(dados)
                 console.log('----------------------------------------------')
 
                 const ctx = document.getElementById('grafico');
-                new Chart(ctx, {
+                if (meuGrafico) {
+                    meuGrafico.destroy();
+                }
+                meuGrafico = new Chart(ctx, {
                     type: 'line',
                     data: {
-                        labels: [],
+                        labels: timestamp,
                         datasets: [
                             {
                                 label: 'CPU (%)',
-                                data: [],
+                                data: dados,
                                 borderColor: 'rgb(33, 196, 93)',
                                 backgroundColor: 'rgba(33, 196, 93, 0.5)',
                                 tension: 0.3
@@ -464,57 +496,14 @@
             .catch(erro => console.error("ERRO:", erro));
     };
 
-    // const ctx = document.getElementById('grafico');
-    // new Chart(ctx, {
-    //     type: 'line',
-    //     data: {
-    //         labels: ['10h', '11h', '12h', '13h', '14h', '15h'],
-    //         datasets: [
-    //             {
-    //                 label: 'CPU (%)',
-    //                 data: [20, 20, 25, 28, 35, 80],
-    //                 borderColor: 'rgb(33, 196, 93)',
-    //                 backgroundColor: 'rgba(33, 196, 93, 0.5)',
-    //                 tension: 0.3
-    //             }
-    //         ]
-    //     },
-    //     options: {
-    //         responsive: true,
-    //         maintainAspectRatio: false,
-    //         scales: {
-    //             x: {
-    //                 ticks: { color: 'white' }
-    //             },
-    //             y: {
-    //                 beginAtZero: true,
-    //                 max: 100,
-    //                 title: {
-    //                     display: true,
-    //                     text: 'Uso (%)',
-    //                     color: 'white'
-    //                 },
-    //                 ticks: { color: 'white' },
-    //             }
-    //         },
-    //         plugins: {
-    //             legend: {
-    //                 labels: {
-    //                     color: 'white',
-    //                     font: {
-    //                         size: 16
-    //                     }
-    //                 }
-    //             }
-    //         }
-    //     }
-    // })
-
     carregarServidores();
 
     setInterval(carregarServidores, 30000);
     function carregarServidores() {
         let linhas = '';
+        const jaAdicionados = [];
+        const ultimosDados = [];
+
         // SUBSTITUIÇÃO: URL direta do arquivo no S3
         const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
 
@@ -525,37 +514,83 @@
             })
             .then(servidores => {
                 const tabela = document.getElementById("corpo-tabela");
+                servidores.sort((a, b) => {
+                    // Transforma "23-04-2026 12:35:14" em "2026-04-23T12:35:14"
+                    const formatarData = (ts) => {
+                        const [data, hora] = ts.split(' ');
+                        const [dia, mes, ano] = data.split('-');
+                        return new Date(`${ano}-${mes}-${dia}T${hora}`);
+                    };
 
-                servidores.sort((a, b) => (b.cpu_percent || 0) - (a.cpu_percent || 0));
+                    return formatarData(b.timestamp) - formatarData(a.timestamp);
+                });
+
                 servidores.forEach(s => {
+                    if (!jaAdicionados.includes(s.home_broker)) {
+                        jaAdicionados.push(s.home_broker);
+                        ultimosDados.push(s)
+                    }
+                });
+                console.log(ultimosDados)
+                ultimosDados.sort((a, b) => (b.cpu_percent || 0) - (a.cpu_percent || 0))
+                ultimosDados.forEach(s => {
                     const procRelativo = parseFloat(s.processo_maior_consumo.split(' ')[4].replace('%', '')) || 0;
                     const usoRealCalculado = (procRelativo / 100) * s.cpu_percent;
                     if (s.cpu_percent > limiteCPU) {
                         linhas += `
                             <tr>
-                                <td><strong>${s.home_broker}</strong></td>
-                                <td style="color: red;">${s.status || "Critico"}</td>
-                                <td style="color: red;">${s.cpu_percent || 0}%</td>
-                                <td>${s.total_processos || 0}</td>
-                                <td>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</td>
-                                <td>${usoRealCalculado.toFixed(1) || 0}%</td>
-                                <td><button>Ver detalhes</button></td>
+                                <td style="color: red;"><strong>${s.home_broker}</strong></td>
+                                <td style="color: red;"><strong>${s.status || "Critico"}</strong></td>
+                                <td style="color: red;"><strong>${s.timestamp}</strong></td>
+                                <td style="color: red;"><strong>${s.cpu_percent || 0}%</strong></td>
+                                <td style="color: red;"><strong>${s.total_processos || 0}</strong></td>
+                                <td style="color: red;"><strong>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</strong></td>
+                                <td style="color: red;"><strong>${usoRealCalculado.toFixed(1) || 0}%</strong></td>
+                                <td><button onclick="alert('${s.home_broker}')">Ver detalhes</button></td>
                             </tr>`;
-                    }else{
+                    } else {
                         linhas += `
                             <tr>
                                 <td><strong>${s.home_broker}</strong></td>
                                 <td>${s.status || "Normal"}</td>
+                                <td>${s.timestamp}</td>
                                 <td>${s.cpu_percent || 0}%</td>
                                 <td>${s.total_processos || 0}</td>
                                 <td>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</td>
                                 <td>${usoRealCalculado.toFixed(1) || 0}%</td>
-                                <td><button>Ver detalhes</button></td>
-                            </tr>`;
+                                <td><button onclick="alert('${s.home_broker}')">Ver detalhes</button></td>
+                                </tr>`;
+                    }
+
+                });
+
+
+                tabela.innerHTML = linhas;
+
+            })
+            .catch(erro => console.error("ERRO:", erro));
+    }
+
+    pesquisarServidores();
+    function pesquisarServidores() {
+        var linhas = ''
+        const jaAdicionados = [];
+        const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
+
+        fetch(urlS3)
+            .then(res => {
+                if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
+                return res.json();
+            })
+            .then(servidores => {
+                servidores.forEach(s => {
+                    if (!jaAdicionados.includes(s.home_broker)) {
+                        linhas += `<option value="${s.home_broker}">`
+                        jaAdicionados.push(s.home_broker);
                     }
                 });
 
-                tabela.innerHTML = linhas;
+                lista_servidores.innerHTML = linhas;
 
             })
             .catch(erro => console.error("ERRO:", erro));
