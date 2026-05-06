@@ -1,0 +1,51 @@
+@import url('dashboard.css');
+
+:root {
+    --branco: #fff;
+    --brancoCinza: #F2F2F2;
+    --cinzaClaro: #b4b4b4;
+    --preto: #000;
+    --pretoClaro: #1D2025;
+    --containersPreto: #25292f;
+    --bordas: #3a3f45;
+    --input: #2d3239;
+    --verde: #21c45d;
+    --vermelho: #DC2828;
+    --laranja: #F97015; 
+    --amarelo: #F8CA15;
+    --azul: #4B7FC1;
+
+    --preto-transparente: #0000007c;
+    --branco-transparente: #ffffff7e;
+    --laranja-transparente: #f97015ad;
+    --verde-transparente: #21c45d30;
+    --vermelho-transparente: #dc282830;
+    --laranja-transparente: #f970153c;
+    --amarelo-transparente: #f8cb154c;
+    --azul-transparente: #4b7ec14b;
+}
+
+.header-esquerdo {
+    gap: 20px;
+}
+
+.header-esquerdo img {
+    padding: 5px 8px;
+    width: 30px;
+    background-color: var(--laranja-transparente);
+}
+
+.header-esquerdo02 {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 6px;
+}
+
+.header-esquerdo02 h2, .header-esquerdo02 p {
+    margin: 0;
+}
+
+.header-esquerdo02 p {
+    color: var(--cinzaClaro);
+}
