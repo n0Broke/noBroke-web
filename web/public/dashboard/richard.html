@@ -136,21 +136,62 @@
             <div class="header-conteudo-dash">
                 <div class="header-esquerdo" style="flex-direction: row;">
                     <div class="header-esquerdo01">
-                        <img src="../assets/richard/hierarchy-circle-svgrepo-com.svg" alt="">
+                        <img src="../assets/richard/hierarchy-svgrepo-com.svg" alt="logo_redes">
                     </div>
                     <div class="header-esquerdo02" style="flex-direction: column;">
                         <h2>Latência de Rede</h2>
-                        <p>Servidor 01</p>
+                        <p>Servidor #01 - Análise Profunda</p>
                     </div>
                 </div>
                 <div class="header-direita">
-                    <button class="" onclick="window.location.reload()">
-                        <img id="logoAlerta" src="../assets/richard/arrow-u-down-left-svgrepo-com.svg" alt="" style="width: 16px; color: white;">
-                        <span>&nbsp;Voltar</span></button>
+                    <button class="btn-voltar-rede" onclick="window.location.reload()">
+                        <img id="imgVoltar" src="../assets/richard/arrow-u-up-left-svgrepo-com.svg" alt=""
+                            style="width: 16px; color: white;">
+                        <span>&nbsp;Voltar</span>
+                    </button>
                 </div>
             </div>
             <!-- ========================================================= -->
-            
+            <!-- Conteúdo da Dashboard - KPI's -->
+            <div class="cards-rede">
+                <div class="card-rede card-rede01">
+                    <h4>Pico de Latência - 1h</h4>
+                    <h2>28ms</h2>
+                </div>
+                <div class="card-rede card-rede02">
+                    <h4>Jitter - Variação Tempo chegada de Pacotes</h4>
+                    <h2>3.4ms</h2>
+                </div>
+                <div class="card-rede card-rede03">
+                    <h4>Quantidade de Alertas</h4>
+                    <h2>0</h2>
+                </div>
+            </div>
+            <!-- ========================================================= -->
+            <!-- Conteúdo da Dashboard - Gráfico de Latência -->
+            <div class="card-grafico-redeCentral card-grafico01">
+                <h4 class="titulo-grafico">Latência de Rede (60s)</h4>
+                <canvas id="grafico01"></canvas>
+            </div>
+            <!-- ========================================================= -->
+            <!-- Conteúdo da Dashboard - Gráfico de Bubbles -->
+            <div class="card-grafico-redeCentral card-grafico02">
+                <h4 class="titulo-grafico">Tipos de Alertas Registrados</h4>
+                <canvas id="grafico02"></canvas>
+            </div>
+            <!-- ========================================================= -->
+            <!-- Conteúdo da Dashboard - Gráficos (Pacotes recebidos e enviados) -->
+            <div class="graficos-rede-dupla">
+                <div class="card-grafico-rede card-grafico03">
+                    <h4 class="titulo-grafico">Network Receive [RECV] - 60s</h4>
+                    <canvas id="grafico03"></canvas>
+                </div>
+                <div class="card-grafico-rede card-grafico04">
+                    <h4 class="titulo-grafico">Network Seny [SENT] - 60s</h4>
+                    <canvas id="grafico04"></canvas>
+                </div>
+            </div>
+            <!-- ========================================================= -->
         </div>
     </div>
     <div class="card-alertaGeral" id="div_alertaGeral">
@@ -159,11 +200,12 @@
 
 </html>
 <script>
-    const limiteCPU = 15;
+    const limiteLatencia = 15;
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");
     const imgLogo = document.getElementById("imgLogo");
     const imgUser = document.getElementById("imgUser");
+    const imgVoltar = document.getElementById("imgVoltar");
     const sidebar = document.getElementById("div_lateralAberta");
     const cardAlerta = document.getElementById("div_alertaGeral")
     const corPreto = ('--preto')
@@ -210,8 +252,10 @@
             root.style.setProperty('--pretoClaro', '#fff');
             root.style.setProperty('--brancoCinza', '#1D2025');
             root.style.setProperty('--bordas', '#b5b5b5');
+            root.style.setProperty('--linhasChart', '#b4b4b4')
             imgModo.src = "../assets/icon/icons-dashboard/lua-crescente.png";
             imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg";
+            imgVoltar.src = "../assets/richard/arrow-u-up-left-svgrepo-com-escuro.svg";
             // Atualiza a logo dependendo do modo (claro/escuro) e do estado da sidebar (compacta ou expandida)
             if (sidebar.classList.contains("compacta")) {
                 if (modoEscuro) {
@@ -236,8 +280,10 @@
             root.style.setProperty('--pretoClaro', '#1D2025');
             root.style.setProperty('--brancoCinza', '#b5b5b5');
             root.style.setProperty('--bordas', '#3a3f45');
+            root.style.setProperty('--linhasChart', '#3a3f45')
             imgModo.src = "../assets/icon/icons-dashboard/brilho-do-sol.png";
             imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg";
+            imgVoltar.src = "../assets/richard/arrow-u-up-left-svgrepo-com.svg";
             if (sidebar.classList.contains("compacta")) {
                 if (modoEscuro) {
                     imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
@@ -252,6 +298,19 @@
                 }
             }
         }
+
+        const novaCor = getComputedStyle(document.documentElement)
+            .getPropertyValue('--linhasChart');
+
+        chartLatencia.options.scales.y.grid.color = novaCor;
+        chartAlertas.options.scales.y.grid.color = novaCor;
+        chartPackRecv.options.scales.y.grid.color = novaCor;
+        chartPackSent.options.scales.y.grid.color = novaCor;
+
+        chartLatencia.update();
+        chartAlertas.update();
+        chartPackRecv.update();
+        chartPackSent.update();
     }
 
     // Inicializa o estado da dashboard com base no sessionStorage:
@@ -300,4 +359,329 @@
     }
     // =======================================================
     // Abaixo função de carregar as redes e adversos
+
+
+
+    // =======================================================
+    // _______________________________________________________
+    // Criação dos Gráficos Aqui!!
+
+    // Buscando ID dos gŕaficos e criando variáveis deles
+    const graficoLatencia = document.getElementById('grafico01');
+    const graficoAlertas = document.getElementById('grafico02');
+    const graficoPackRecv = document.getElementById('grafico03');
+    const graficoPackSent = document.getElementById('grafico04');
+
+    // Dando informações pra esses gráficos
+    // Primeiro o de Latência de Rede
+    const chartLatencia = new Chart(graficoLatencia, {
+        type: 'line', // O tipo de gráfico.
+        // Dando os dados
+        data: {
+
+            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
+            // Vai aparecer até 60 linhas, criando um array de até 60 de tamanho
+            // Depois pega o valor atual e soma com +1 como se fosse uma função
+            labels: Array.from({ length: 60 }, (_, i) => `${i + 1}s`),
+
+            // DataSet: As linhas, sua legenda e etc
+            datasets: [{
+                // Nome da Legenda e que aparece encima
+                label: 'Latência (ms)',
+
+                // Dados que vão ser plotados no gráfico
+                data: [
+                    12, 18, 25, 30, 22, 40, 35, 28, 33, 27,
+                    45, 50, 38, 42, 60, 55, 48, 52, 47, 65,
+                    70, 58, 62, 75, 68, 80, 72, 66, 78, 85,
+                    90, 88, 76, 82, 95, 100, 92, 87, 105, 110,
+                    98, 102, 115, 108, 120, 112, 99, 93, 84, 79,
+                    73, 67, 59, 53, 46, 39, 31, 24, 16, 10
+                ],
+
+                // Cor da Linha
+                borderColor: '#F97015',
+
+                // Fundo que fica abaixo da Linha (deixei transparente usando rgba)
+                backgroundColor: 'rgba(249, 112, 21, 0.15)',
+
+
+                // Esse comando vai servir pra realmente preencher abaixo da linha
+                fill: true,
+
+                // Grossura da linha
+                borderWidth: 2,
+
+                // Tension serve pra medir a tensão da Linha do gráfico.
+                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
+                tension: 0.5,
+                pointBackgroundColor: '#F97015', // Deixa o fundo da bolinha preenchido (tudo q tiver point antes afeta os pontos)
+            }]
+        },
+
+        // OPTIONS: São os ajustes gerais do desenho do gráfico
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 60
+                    }
+                },
+                y: {
+                    // Garante que a lateral esquerda comece do número ZERO. 
+                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
+                    beginAtZero: true,
+                    min: 0,
+                    max: 160,
+
+                    ticks: {
+                        stepSize: 20 // Faz ir de 20 em 20 a porcentagem
+                        // Use maxTicksLimit pra definir limite de quantos dados vai aparecer em X
+                    },
+
+                    grid: {
+                        display: true,
+                        color: getComputedStyle(document.documentElement)
+                            .getPropertyValue('--linhasChart')
+                    }
+                }
+            }
+        }
+    });
+
+    // =====================================================
+    // Gráfico de Distribuição de Latência pelo Tempo
+
+    const chartAlertas = new Chart(graficoAlertas, {
+        type: 'bar',
+
+        data: {
+            labels: ['Baixo', 'Alerta', 'Crítico'], // Nome das Colunas deitado (x)
+
+            datasets: [{
+                label: 'Quantidade de Alertas', // Título do Gráfico
+
+                data: [12, 5, 2],
+
+                // Cor do backgorund
+                backgroundColor: [
+                    '#21c45d', // Azul
+                    '#F8CA15', // Amarelo
+                    '#ff3b30'  // Vermelho
+                ],
+
+                borderRadius: 8, // Borda das Colunas (curva)
+                borderWidth: 0 // Borda grossura
+            }]
+        },
+
+        options: {
+            responsive: true, // Responsivo né, pra n ficar expandindo sem parar
+            maintainAspectRatio: false, // Responsivo também pra n expandir sem parar
+
+            plugins: {
+                legend: {
+                    display: false // Pra n precisar mostrar legenda
+                }
+            },
+
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+
+                y: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 20,
+
+                    grid: {
+                        color: getComputedStyle(document.documentElement)
+                            .getPropertyValue('--linhasChart')
+                    },
+
+                    ticks: {
+                        stepSize: 2
+                    }
+                }
+            }
+        }
+    });
+
+    // ===================================================================
+    // Gráfico - Pacotes/Network Recebido
+
+    const chartPackRecv = new Chart(graficoPackRecv, {
+        type: 'line', // O tipo de gráfico.
+        // Dando os dados
+        data: {
+
+            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
+            // Vai aparecer até 60 linhas, criando um array de até 60 de tamanho
+            // Depois pega o valor atual e soma com +1 como se fosse uma função
+            labels: Array.from({ length: 60 }, (_, i) => `${i + 1}s`),
+
+            // DataSet: As linhas, sua legenda e etc
+            datasets: [{
+                // Nome da Legenda e que aparece encima
+                label: 'Pacotes Recebidos (KBs)',
+
+                // Dados que vão ser plotados no gráfico
+                data: [
+                    118, 142, 97, 155, 133, 171, 160, 120, 188, 149,
+                    210, 175, 165, 193, 140, 225, 205, 158, 240, 180,
+                    260, 190, 230, 175, 285, 210, 250, 195, 310, 220,
+                    295, 260, 340, 230, 275, 360, 250, 310, 390, 280,
+                    320, 260, 410, 300, 370, 240, 430, 330, 290, 360,
+                    380, 310, 420, 270, 450, 340, 390, 300, 470, 360
+                ],
+
+                // Cor da Linha
+                borderColor: '#21c45d',
+
+                // Fundo que fica abaixo da Linha (deixei transparente usando rgba)
+                backgroundColor: 'rgba(33, 196, 93, 0.15)',
+
+
+                // Esse comando vai servir pra realmente preencher abaixo da linha
+                fill: true,
+
+                // Grossura da linha
+                borderWidth: 2,
+
+                // Tension serve pra medir a tensão da Linha do gráfico.
+                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
+                tension: 0.5,
+                pointBackgroundColor: '#21c45d', // Deixa o fundo da bolinha preenchido (tudo q tiver point antes afeta os pontos)
+            }]
+        },
+
+        // OPTIONS: São os ajustes gerais do desenho do gráfico
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        stepSize: 20,
+                        maxTicksLimit: 60
+                    }
+                },
+                y: {
+                    // Garante que a lateral esquerda comece do número ZERO. 
+                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
+                    beginAtZero: true,
+                    min: 0,
+                    max: 500,
+
+                    ticks: {
+                        stepSize: 50 // Faz ir de 50 em 50
+                        // Use maxTicksLimit pra definir limite de quantos dados vai aparecer em X
+                    },
+
+                    grid: {
+                        display: true,
+                        color: getComputedStyle(document.documentElement)
+                            .getPropertyValue('--linhasChart')
+                    }
+                }
+            }
+        }
+    });
+
+    // ===================================================================
+    // Gráfico - Pacotes/Network Enviado
+
+    const chartPackSent = new Chart(graficoPackSent, {
+        type: 'line', // O tipo de gráfico.
+        // Dando os dados
+        data: {
+
+            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
+            // Vai aparecer até 60 linhas, criando um array de até 60 de tamanho
+            // Depois pega o valor atual e soma com +1 como se fosse uma função
+            labels: Array.from({ length: 60 }, (_, i) => `${i + 1}s`),
+
+            // DataSet: As linhas, sua legenda e etc
+            datasets: [{
+                // Nome da Legenda e que aparece encima
+                label: 'Pacotes Enviados (KBs)',
+
+                // Dados que vão ser plotados no gráfico
+                data: [
+                    105, 120, 88, 130, 115, 140, 125, 95, 150, 118,
+                    160, 135, 122, 145, 110, 170, 155, 130, 180, 140,
+                    190, 150, 175, 128, 200, 165, 185, 140, 210, 155,
+                    195, 170, 220, 145, 205, 230, 160, 215, 240, 175,
+                    225, 150, 250, 180, 235, 160, 260, 190, 200, 245,
+                    210, 175, 270, 185, 230, 160, 280, 200, 240, 180
+                ],
+
+                // Cor da Linha
+                borderColor: '#F8CA15',
+
+                // Fundo que fica abaixo da Linha (deixei transparente usando rgba)
+                backgroundColor: 'rgba(248, 202, 21, 0.15)',
+
+
+                // Esse comando vai servir pra realmente preencher abaixo da linha
+                fill: true,
+
+                // Grossura da linha
+                borderWidth: 2,
+
+                // Tension serve pra medir a tensão da Linha do gráfico.
+                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
+                tension: 0.5,
+                pointBackgroundColor: '#F8CA15', // Deixa o fundo da bolinha preenchido (tudo q tiver point antes afeta os pontos)
+            }]
+        },
+
+        // OPTIONS: São os ajustes gerais do desenho do gráfico
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        stepSize: 20,
+                        maxTicksLimit: 60
+                    }
+                },
+                y: {
+                    // Garante que a lateral esquerda comece do número ZERO. 
+                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
+                    beginAtZero: true,
+                    min: 0,
+                    max: 500,
+
+                    ticks: {
+                        stepSize: 50 // Faz ir de 20 em 20 a porcentagem
+                        // Use maxTicksLimit pra definir limite de quantos dados vai aparecer em X
+                    },
+
+                    grid: {
+                        display: true,
+                        color: getComputedStyle(document.documentElement)
+                            .getPropertyValue('--linhasChart')
+                    }
+                }
+            }
+        }
+    });
+
+
 </script>

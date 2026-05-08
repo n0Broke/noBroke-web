@@ -14,6 +14,7 @@
     --laranja: #F97015; 
     --amarelo: #F8CA15;
     --azul: #4B7FC1;
+    --linhasChart: #3a3f45;
 
     --preto-transparente: #0000007c;
     --branco-transparente: #ffffff7e;
@@ -33,6 +34,7 @@
     padding: 5px 8px;
     width: 30px;
     background-color: var(--laranja-transparente);
+    border-radius: 6px;
 }
 
 .header-esquerdo02 {
@@ -48,4 +50,150 @@
 
 .header-esquerdo02 p {
     color: var(--cinzaClaro);
+}
+
+.btn-voltar-rede {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    padding: 8px 14px;
+    background-color: transparent;
+    border: 1px solid var(--bordas);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.5s all ease;
+}
+
+.btn-voltar-rede:hover {
+    background-color: var(--laranja);
+    box-shadow: 0 0 15px var(--laranja-transparente);
+}
+
+.btn-voltar-rede span {
+    font-size: 18px;
+}
+
+/* ========================================== */
+/* Dashboard - Rede */
+
+.cards-rede {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.card-rede {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 33%;
+    width: 100%;
+    max-height: 80px;
+    height: 100%;
+    background-color: var(--pretoClaro);
+    padding: 16px 20px;
+    gap: 10px;
+
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+
+    transition: all 0.5s ease;
+}
+
+.card-rede:hover {
+    border: 1px solid var(--laranja-transparente);
+    box-shadow: 0 0 15px var(--laranja-transparente);
+}
+
+.card-rede h4 {
+    font-size: 14px;
+    color: var(--cinzaClaro);
+    margin: 0;
+}
+
+.card-rede h2 {
+    font-size: 28px;
+    color: var(--branco);
+    margin: 0;
+}
+
+/* ================================================ */
+/* Gráficos - Estilização */
+
+.card-grafico-redeCentral, .card-grafico-rede {
+    padding: 16px 20px;
+    margin-top: 5px;
+    margin-bottom: 0px;
+
+    background-color: var(--pretoClaro);
+    border: 1px solid var(--bordas);
+    border-radius: 6px;
+
+    transition: all 0.5s ease;
+}
+
+.card-grafico-redeCentral:hover, .card-grafico-rede:hover {
+    border: 1px solid var(--laranja-transparente);
+    box-shadow: 0 0 15px var(--laranja-transparente);
+}
+
+.card-grafico-redeCentral h4, .card-grafico-rede h4 {
+    color: var(--branco);
+    font-weight: 500;
+}
+
+.graficos-rede-dupla {
+    width: 100%;
+    display: flex;
+    gap: 15px;
+}
+
+.card-grafico-rede {
+    max-width: 50%;
+    width: 100%;
+}
+
+/* ============================================= */
+/* Estilização Gráficos Individuais */
+/* Gráfico 01 - Latência */
+
+.card-grafico01 {
+    max-height: 350px;
+    height: 100%;
+}
+
+.card-grafico01 canvas {
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.card-grafico02 {
+    max-height: 250px;
+    height: 100%;
+}
+
+.card-grafico02 canvas {
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.card-grafico03 {
+    max-height: 250px;
+    height: 100%;
+}
+
+.card-grafico03 canvas {
+    width: 100%;
+    padding: 10px 0px;
+}
+
+.card-grafico04 {
+    max-height: 250px;
+    height: 100%;
+}
+
+.card-grafico04 canvas {
+    width: 100%;
+    padding: 10px 0px;
 }
