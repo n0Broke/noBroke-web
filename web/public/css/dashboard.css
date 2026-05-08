@@ -498,6 +498,7 @@ body {
 
 .sidebar {
     display: flex !important;
+    width: 15%;
     background-color: var(--preto);
     border-right: 1px solid #484c55;
     flex-direction: column;
@@ -507,6 +508,10 @@ body {
     padding: 30px !important;
     position: sticky;
     top: 0;
+}
+
+.texto{
+    font-size: 18px;
 }
 
 /* Modo compactado */

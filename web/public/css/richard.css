@@ -1,5 +1,9 @@
 @import url('dashboard.css');
 
+*{
+    overflow: hidden !important;
+}
+
 :root {
     --branco: #fff;
     --brancoCinza: #F2F2F2;
@@ -79,8 +83,8 @@
 .cards-rede {
     display: flex;
     justify-content: space-between;
+    height: 12%;
     gap: 12px;
-    margin-bottom: 20px;
 }
 
 .card-rede {
@@ -89,8 +93,8 @@
     justify-content: center;
     max-width: 33%;
     width: 100%;
-    max-height: 80px;
-    height: 100%;
+    max-height: 70px;
+    height: 100%; 
     background-color: var(--pretoClaro);
     padding: 16px 20px;
     gap: 10px;
@@ -159,7 +163,7 @@
 /* Gráfico 01 - Latência */
 
 .card-grafico01 {
-    max-height: 350px;
+    max-height: 300px;
     height: 100%;
 }
 

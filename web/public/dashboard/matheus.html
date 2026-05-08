@@ -23,7 +23,7 @@
         })();
     </script>
 
-    <link rel="stylesheet" href="../css/matheus.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/dashResponsivo.css">
 
     <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
@@ -52,15 +52,8 @@
                         <span class="icon">
                             <img id="iconAtual" src="../assets/icon/icons-dashboard/painel-de-controle-hover.png">
                         </span>
-                        <span class="texto">Dashboard</span>
+                        <span class="texto">Home</span>
                     </button>
-
-                    <a href="servidores.html" class="btn-nobroke">
-                        <span class="icon">
-                            <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
-                        </span>
-                        <span class="texto">Servidores</span>
-                    </a>
 
                     <a href="Alertas.html" class="btn-nobroke">
                         <span class="icon">
@@ -122,11 +115,10 @@
         <div class="conteudo-dash" id="telaPrincipal">
             <!-- Header do Conteudo da Dashboard -->
             <div class="header-responsividade">
-                <div class="qualTela">
+                <div>
                     <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
-                        style="width: 30px; cursor: pointer; color: var(--cinzaClaro);" onclick="fecharAbrirLateral()">
-                    <a href="dashboard.html">Dashboard >&nbsp;</a>
-                    <span style="color: var(--branco);">&nbsp;CPU | PROCESSOS</span>
+                        style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
+                    <span style="color: #7D8999;">noBroke Server Monitor</span>
                 </div>
                 <div id="iconeModo">
                     <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
@@ -136,129 +128,316 @@
             <div class="header-conteudo-dash">
                 <div class="header-esquerdo">
                     <div class="header-esquerdo01">
-                        <h3 class="servidor-name" id="server-name">CPU | PROCESSOS</h3>
+                        <h3 class="servidor-name" id="server-name">SRV-DEV-HB-01</h3>
+                        <p class="status-servidor" style="border-radius: 18px;"><img
+                                src="../assets/svg/circle-svgrepo-com.svg" alt="simbolo-operacional"
+                                style="width: 8px;">Operacional</p>
+                        <p class="tipo-servidor" style="border-radius: 4px;">Desenvolvimento</p>
                     </div>
                     <div class="header-esquerdo02">
-                        <p>Monitoramento de processamento e processos ativos</p>
+                        <p class="ip-servidor">192.168.***.42</p>
+                        <p>|</p>
+                        <p class="localizacao-servidor">São Paulo - SP</p>
+                        <p>|</p>
+                        <p class="coleta-servidor" style="align-items: center;"><img
+                                src="../assets/svg/loading-svgrepo-com.svg" alt="carregar" style="width: 25px;">6s
+                            atrás</p>
                     </div>
                 </div>
                 <div class="header-direita">
-                    <button class="" onclick="window.location.reload()"><img id="logoAlerta"
-                            src="../assets/svg/loading-svgrepo-com.svg" alt="" style="width: 22px; color: white;">
-                        <span>Atualizar</span></button>
+                    <button class="botao-alerta"><img id="logoAlerta" src="../assets/svg/bell-svgrepo-com.svg" alt=""
+                            style="width: 22px; color: white;" onclick="window.location.href='Alertas.html'">
+                        Alertas</button>
+                    <button class="botao-exportar"><img src="../assets/svg/download-minimalistic-svgrepo-com.svg" alt=""
+                            style="width: 22px; color: white;"> Exportar</button>
                 </div>
             </div>
             <!-- ========================================================= -->
-            <div class="container">
-                <div class="kpi">
-                    <div class="kpi-box">
-                        <div class="box">
-                            <div>
-                                <p>CPU MAIS ALTA</p>
-                                <h1 id="porcCPU">62%</h1>
-                                <p>mais alta atual</p>
-                            </div>
-                            <div class="imgIcone">
-                                <img src="../assets/matheus/cpu-tower.png" alt="">
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div>
-                                <p>PROC MAIS ALTO</p>
-                                <h1 id="MaxProcCPU">80%</h1>
-                                <p>mais alto atual</p>
-                            </div>
-                            <div class="imgIcone">
-                                <img src="../assets/matheus/engineer-red.png" alt="">
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div>
-                                <p>PROC MAIS BAIXO</p>
-                                <h1 id="MinProcCPU">10%</h1>
-                                <p>mais baixo atual</p>
-                            </div>
-                            <div class="imgIcone">
-                                <img src="../assets/matheus/engineer.png" alt="">
-                            </div>
-                        </div>
+
+            <!-- Cards - Conteudo 01 -->
+            <div class="conteudo-dash01">
+                <div class="cards-conteudo">
+                    <div class="titulo-cards">
+                        <img class="card01-icon" src="../assets/svg/cpu-bolt-svgrepo-com.svg" alt="cpu"
+                            style="width: 25px;">
+                        <span class="card01-info" style="color: #b4b4b4; font-size: 10px;">8 Cores</span>
                     </div>
-                    <div class="kpi-box">
-                        <div class="box">
-                            <div>
-                                <p>CPU CRÍTICA</p>
-                                <h1 id="totalCPUcritica">0</h1>
-                                <p>maior que <span id="limiteCPU">75</span><span>%</span></p>
+                    <div class="conteudo-abaixo-cards">
+                        <h1>65%</h1>
+                        <h4>CPU (30 min)</h4>
+                        <div class="linha-cards">
+                            <div class="linha-preenchida01"
+                                style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 67%; height: 5px; background-color: #E7B008;">
                             </div>
-                            <div class="imgIcone">
-                                <img src="../assets/matheus/danger.png" alt="">
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div>
-                                <p>PROC CRÍTICO</p>
-                                <h1 id="totalProcCritico">2</h1>
-                                <p>maior que <span id="limiteCPU">75</span><span>%</span></p>
-                            </div>
-                            <div class="imgIcone">
-                                <img src="../assets/matheus/engineer-red.png" alt="">
-                            </div>
-                        </div>
-                        <div class="box">
-                            <div>
-                                <p>SERVIDOR COM MAIS PROC</p>
-                                <h1 id="totalPROC">980</h1>
-                                <p>servidor: <span id="serverMaisProc">SRV-DEV-HB-01</span></p>
-                            </div>
-                            <div class="imgIcone">
-                                <img src="../assets/matheus/danger.png" alt="">
+                            <div class="linha-faltando01"
+                                style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 33%; height: 5px; background-color: rgb(45, 50, 57);">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="box-grafico">
-                    <div class="pesquisaServer">
-                        <div>
-                            <h1>Tendência (24 horas)</h1>
-                            <span>Servidor atual: </span> <span id="span_nomeServidor"> Nenhum</span>
-                        </div>
-                        <input style="display: none;" type="search" id="busca" list="lista_servidores"
-                            placeholder="🔍 Digite o nome do servidor" oninput="criarGrafico(this.value)">
-
-                        <datalist id="lista_servidores">
-                            <option value="SRV-DEV-HB-01">
-                            <option value="SRV-DEV-HB-02">
-                            <option value="SRV-DEV-HB-03">
-                            <option value="SRV-DEV-HB-04">
-                        </datalist>
+                <div class="cards-conteudo card02">
+                    <div class="titulo-cards">
+                        <img class="card02-icon" src="../assets/svg/ram-memory-svgrepo-com.svg" alt="cpu"
+                            style="width: 25px;">
+                        <span class="card02-info" style="color: #b4b4b4; font-size: 10px;">12.3 / 16 GB</span>
                     </div>
-                    <div class="grafico" id="div_grafico">
-                        <div class="caminhoPesquisa">
-                            <h1>Qual servidor gostaria de monitorar?</h1>
-                            <span>Insira no campo abaixo o nome do servidor...</span>
-                            <input type="search" id="busca" list="lista_servidores"
-                                placeholder="🔍 Digite o nome do servidor" oninput="criarGrafico(this.value)">
+                    <div class="conteudo-abaixo-cards">
+                        <h1>72%</h1>
+                        <h4>Memória RAM (30 min)</h4>
+                        <div class="linha-cards">
+                            <div class="linha-preenchida01"
+                                style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 78%; height: 5px; background-color: #C42728;">
+                            </div>
+                            <div class="linha-faltando01"
+                                style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 22%; height: 5px; background-color: rgb(45, 50, 57);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cards-conteudo card03">
+                    <div class="titulo-cards">
+                        <img class="card03-icon" src="../assets/svg/hard-disk-svgrepo-com.svg" alt="cpu"
+                            style="width: 25px;">
+                        <span class="card03-info" style="color: #b4b4b4; font-size: 10px;">234 / 512 GB</span>
+                    </div>
+                    <div class="conteudo-abaixo-cards">
+                        <h1>60%</h1>
+                        <h4>Disco (30 min)</h4>
+                        <div class="linha-cards">
+                            <div class="linha-preenchida01"
+                                style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 52%; height: 5px; background-color: #21C45D;">
+                            </div>
+                            <div class="linha-faltando01"
+                                style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 48%; height: 5px; background-color: rgb(45, 50, 57);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cards-conteudo card04">
+                    <div class="titulo-cards">
+                        <img class="card04-icon"
+                            src="../assets/svg/speedometer-graph-infographic-data-element-svgrepo-com.svg" alt="cpu"
+                            style="width: 25px;">
+                        <span class="card04-info" style="color: #b4b4b4; font-size: 10px;">Média 5min</span>
+                    </div>
+                    <div class="conteudo-abaixo-cards">
+                        <h1>38ms</h1>
+                        <h4>Latência (30 min)</h4>
+                        <div class="linha-cards">
+                            <div class="linha-preenchida01"
+                                style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 120%; height: 5px; background-color: #21C45D;">
+                            </div>
+                            <div class="linha-faltando01"
+                                style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 88%; height: 5px; background-color: rgb(45, 50, 57);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cards-conteudo card05">
+                    <div class="titulo-cards">
+                        <img class="card05-icon" src="../assets/svg/time-svgrepo-com.svg" alt="cpu"
+                            style="width: 25px;">
+                        <span class="card05-info" style="color: #b4b4b4; font-size: 10px;">Desde 02/01</span>
+                    </div>
+                    <div class="conteudo-abaixo-cards">
+                        <h1>45d 12h</h1>
+                        <h4>Uptime (p/ dia)</h4>
+                        <div class="linha-cards">
+                            <!-- Não precisa adicionar já que não utiliza -->
+                        </div>
+                    </div>
+                </div>
+                <div class="cards-conteudo card06">
+                    <div class="titulo-cards">
+                        <img class="card06-icon" src="../assets/svg/heart-rate-svgrepo-com.svg" alt="cpu"
+                            style="width: 25px;">
+                        <span class="card06-info" style="color: #b4b4b4; font-size: 10px;">Últimos 15d</span>
+                    </div>
+                    <div class="conteudo-abaixo-cards">
+                        <h1>99.7%</h1>
+                        <h4>Disponibilidade (30 min)</h4>
+                        <div class="linha-cards">
+                            <div class="linha-preenchida01"
+                                style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 99%; height: 5px; background-color: #21C45D;">
+                            </div>
+                            <div class="linha-faltando01"
+                                style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 1%; height: 5px; background-color: rgb(45, 50, 57);">
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tabela-container">
-                <table class="tabela-servidores" style="background-color: var(--pretoClaro);">
-                    <thead>
-                        <tr>
-                            <th>Servidor</th>
-                            <th>Status</th>
-                            <th>Hora da coleta</th>
-                            <th>uso de CPU (%)</th>
-                            <th>Processos</th>
-                            <th>Proc com maior uso de CPU</th>
-                            <th>Uso CPU do maior processo</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="corpo-tabela">
-                    </tbody>
-                </table>
+            <!-- =================================== -->
+            <!-- Aqui vem os Cards com Chart.js -->
+            <div class="conteudo-dash02">
+                <div class="cards-grafico">
+                    <!-- ___________________________________ -->
+                    <!-- Gráfico - CPU -->
+                    <div class="card-grafico card-grafico01">
+                        <h4 class="titulo-grafico">CPU (24h)</h4>
+                        <canvas id="grafico01"></canvas>
+                    </div>
+                    <!-- ___________________________________ -->
+                    <!-- Gráfico - CPU -->
+                    <div class="card-grafico card-grafico02">
+                        <h4 class="titulo-grafico">Memória RAM (24h)</h4>
+                        <canvas id="grafico02"></canvas>
+                    </div>
+                    <!-- ___________________________________ -->
+                    <!-- Gráfico - CPU -->
+                    <div class="card-grafico card-grafico03">
+                        <h4 class="titulo-grafico">Latência (24h)</h4>
+                        <canvas id="grafico03"></canvas>
+                    </div>
+                    <!-- ___________________________________ -->
+                </div>
+            </div>
+            <!-- =================================== -->
+            <!-- Última parte da Dashboard - Alertas e Componentes -->
+
+            <div class="conteudo-dash03">
+                <div class="componentes-servidor">
+                    <h4 class="componentes-titulo">Componentes Monitorados</h4>
+
+                    <div class="parte-componentes">
+                        <div class="componente-monitorado componente01">
+                            <div class="componente-infos">
+                                <img src="../assets/svg/circle-svgrepo-com-alert2.svg" alt="status" style="width: 6px;">
+                                <img src="../assets/svg/cpu-bolt-svgrepo-com.svg" alt="cpu" style="width: 20px;">
+                                <p id="componente-info01">CPU</p>
+                            </div>
+                            <div class="componente-status">
+                                <p>65%</p>
+                            </div>
+                            <div class="componente-metrica">
+                                <span>0-70%</span>
+                            </div>
+                            <div class="componente-status-icon">
+                                <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert2.svg" alt="alerta"
+                                    style="width: 18px;">
+                            </div>
+                        </div>
+                        <div class="componente-monitorado componente02">
+                            <div class="componente-infos">
+                                <img src="../assets/svg/circle-svgrepo-com-alert3.svg" alt="status" style="width: 6px;">
+                                <img src="../assets/svg/ram-memory-svgrepo-com.svg" alt="cpu" style="width: 20px;">
+                                <p id="componente-info02">RAM</p>
+                            </div>
+                            <div class="componente-status">
+                                <p>72%</p>
+                            </div>
+                            <div class="componente-metrica">
+                                <span>0-70%</span>
+                            </div>
+                            <div class="componente-status-icon">
+                                <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert3.svg" alt="alerta"
+                                    style="width: 18px;">
+                            </div>
+                        </div>
+                        <div class="componente-monitorado componente03">
+                            <div class="componente-infos">
+                                <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status" style="width: 6px;">
+                                <img src="../assets/svg/hard-disk-svgrepo-com.svg" alt="cpu" style="width: 20px;">
+                                <p id="componente-info01">Disco</p>
+                            </div>
+                            <div class="componente-status">
+                                <p>52%</p>
+                            </div>
+                            <div class="componente-metrica">
+                                <span>0-80%</span>
+                            </div>
+                            <div class="componente-status-icon">
+                                <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert1.svg" alt="alerta"
+                                    style="width: 18px;">
+                            </div>
+                        </div>
+                        <div class="componente-monitorado componente04">
+                            <div class="componente-infos">
+                                <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status" style="width: 6px;">
+                                <img src="../assets/svg/speedometer-graph-infographic-data-element-svgrepo-com.svg"
+                                    alt="cpu" style="width: 20px;">
+                                <p id="componente-info01">Latência</p>
+                            </div>
+                            <div class="componente-status">
+                                <p>38ms</p>
+                            </div>
+                            <div class="componente-metrica">
+                                <span>0-50ms</span>
+                            </div>
+                            <div class="componente-status-icon">
+                                <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert1.svg" alt="alerta"
+                                    style="width: 18px;">
+                            </div>
+                        </div>
+                        <div class="componente-monitorado componente05">
+                            <div class="componente-infos">
+                                <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status" style="width: 6px;">
+                                <img src="../assets/svg/heart-rate-svgrepo-com.svg" alt="cpu" style="width: 20px;">
+                                <p id="componente-info01">Heartbeat</p>
+                            </div>
+                            <div class="componente-status">
+                                <p>Ativo</p>
+                            </div>
+                            <div class="componente-metrica">
+                                <span>Contínuo</span>
+                            </div>
+                            <div class="componente-status-icon">
+                                <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert1.svg" alt="alerta"
+                                    style="width: 18px;">
+                            </div>
+                        </div>
+                        <div class="componente-monitorado componente06">
+                            <div class="componente-infos">
+                                <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status" style="width: 6px;">
+                                <img src="../assets/svg/heart-rate-svgrepo-com.svg" alt="cpu" style="width: 20px;">
+                                <p id="componente-info01">Disponib.</p>
+                            </div>
+                            <div class="componente-status">
+                                <p>99.97%</p>
+                            </div>
+                            <div class="componente-metrica">
+                                <span>≥99%</span>
+                            </div>
+                            <div class="componente-status-icon">
+                                <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert1.svg" alt="alerta"
+                                    style="width: 18px;">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Parte das Legendas - Canto da Direita -->
+                <div class="legendas-servidor">
+                    <div class="card-alertas">
+                        <div class="header-alertas-card">
+                            <p>Alertas Recentes</p>
+                            <span>3 Alertas</span>
+                        </div>
+                        <div class="alertas-recentes">
+                            <div class="info-alerta alerta01">
+                                <img src="../assets/svg/alert-2-svgrepo-com.svg" alt="alert" style="width: 20px;">
+                                <div class="infos-escrita-alerta">
+                                    <p>Memória RAM: Acima do Limite</p>
+                                    <span>RAM - 12:30</span>
+                                </div>
+                            </div>
+                            <div class="info-alerta alerta02">
+                                <img src="../assets/svg/alert-svgrepo-com.svg" alt="alert" style="width: 20px;">
+                                <div class="infos-escrita-alerta">
+                                    <p>CPU: Alcançando o limite</p>
+                                    <span>CPU - 13:00</span>
+                                </div>
+                            </div>
+                            <div class="info-alerta alerta02">
+                                <img src="../assets/svg/alert-svgrepo-com.svg" alt="alert" style="width: 20px;">
+                                <div class="infos-escrita-alerta">
+                                    <p>Memória RAM: Alcançando o limite</p>
+                                    <span>RAM - 12:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -268,15 +447,19 @@
 
 </html>
 <script>
-    const limiteCPU = 15;
+    // const nomeCompleto = sessionStorage.NOME_USUARIO
+    // const partes = nomeCompleto.trim().split(" ");
+    // const primeiroNome = partes[0];
+    // usuario.innerHTML = primeiroNome;
+    // cargoFunc.innerHTML = sessionStorage.FUNCAO;
+
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");
     const imgLogo = document.getElementById("imgLogo");
     const imgUser = document.getElementById("imgUser");
+    const logoAlerta = document.getElementById("logoAlerta");
     const sidebar = document.getElementById("div_lateralAberta");
     const cardAlerta = document.getElementById("div_alertaGeral")
-    const corPreto = ('--preto')
-    const corBranca = ('--branco')
 
     let modoEscuro = false;
 
@@ -315,8 +498,10 @@
             root.style.setProperty('--pretoClaro', '#fff');
             root.style.setProperty('--brancoCinza', '#1D2025');
             root.style.setProperty('--bordas', '#b5b5b5');
+            root.style.setProperty('--branco-transparente', '#0000007c');
             imgModo.src = "../assets/icon/icons-dashboard/lua-crescente.png";
-            imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg"
+            logoAlerta.src = "../assets/svg/alertas/bell-svgrepo-com-preto.svg";
             if (sidebar.classList.contains("compacta")) {
                 if (modoEscuro) {
                     imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
@@ -337,8 +522,10 @@
             root.style.setProperty('--pretoClaro', '#1D2025');
             root.style.setProperty('--brancoCinza', '#b5b5b5');
             root.style.setProperty('--bordas', '#3a3f45');
+            root.style.setProperty('--branco-transparente', '#ffffff7e');
             imgModo.src = "../assets/icon/icons-dashboard/brilho-do-sol.png";
-            imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg"
+            logoAlerta.src = "../assets/svg/alertas/bell-svgrepo-com.svg";
             if (sidebar.classList.contains("compacta")) {
                 if (modoEscuro) {
                     imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
@@ -394,205 +581,257 @@
         cardAlerta.style.display = "none"
     }
 
-    let meuGrafico;
-    function criarGrafico(nomeServidor) {
-        div_grafico.innerHTML = `<canvas id="grafico">`
-        busca.style.display = "flex"
-        span_nomeServidor.innerHTML = nomeServidor
+    // ==================================================================================
+    // __________________________________________________________________________________
+    // Criação dos Gráficos Aqui!!
 
+    // Buscando ID dos gŕaficos e criando variáveis deles
+    const graficoCPU = document.getElementById('grafico01');
+    const graficoRAM = document.getElementById('grafico02');
+    const graficoLatencia = document.getElementById('grafico03');
 
-        // SUBSTITUIÇÃO: URL direta do arquivo no S3
-        const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
-        let timestamp = []
-        let dados = []
-        var contDados = 0;
+    // Dando informações pra esses gráficos
+    // Primeiro o de CPU
+    new Chart(graficoCPU, {
+        type: 'line', // O tipo de gráfico.
+        // Dando os dados
+        data: {
 
-        fetch(urlS3)
-            .then(res => {
-                if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
-                return res.json();
-            })
-            .then(servidores => {
-                servidores.sort((a, b) => {
-                    // Transforma "23-04-2026 12:35:14" em "2026-04-23T12:35:14"
-                    const formatarData = (ts) => {
-                        const [data, hora] = ts.split(' ');
-                        const [dia, mes, ano] = data.split('-');
-                        return new Date(`${ano}-${mes}-${dia}T${hora}`);
-                    };
+            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
+            labels: ['10h00', '10h30', '11h00', '11h30', '12h00', '12h30', '13h00'],
 
-                    return formatarData(a.timestamp) - formatarData(b.timestamp);
-                });
-                for (var i = 0; i < servidores.length; i++) {
-                    var servidorAtual = servidores[i]
-                    if (servidorAtual.home_broker == nomeServidor) {
-                        contDados++;
-                        if (contDados == 7) {
-                            break;
-                        } else {
-                            timestamp.push(servidorAtual.timestamp.split(' ')[1]);
-                            dados.push(servidorAtual.cpu_percent + Math.floor(Math.random() * (100 - 1 + 1)));
-                        }
+            // DataSet: As linhas, sua legenda e etc
+            datasets: [{
+                // Nome da Legenda e que aparece encima
+                label: 'Uso da CPU (%)',
+
+                // Dados que vão ser plotados no gráfico
+                data: [45, 47, 47, 48, 53, 58, 65],
+
+                // Cor da Linha
+                borderColor: '#E7B008',
+
+                // Fundo que fica abaixo da Linha
+                backgroundColor: '#b5b5b550',
+
+                // Esse comando vai servir pra realmente preencher abaixo da linha
+                fill: true,
+
+                // Grossura da linha
+                borderWidth: 2,
+
+                // Tension serve pra medir a tensão da Linha do gráfico.
+                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
+                tension: 0.5,
+                pointBackgroundColor: '#E7B008', // Deixa o fundo da bolinha preenchido (tudo q tiver point antes afeta os pontos)
+            }]
+        },
+
+        // OPTIONS: São os ajustes gerais do desenho do gráfico
+        options: {
+            scales: {
+                x: {
+                    grid: {
+                        display: false
                     }
-                }
+                },
+                y: {
+                    // Garante que a lateral esquerda comece do número ZERO. 
+                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
+                    beginAtZero: true,
+                    min: 0,
+                    max: 100,
 
-                console.log('----------------------------------------------')
-                console.log('O gráfico será plotado com os respectivos valores:')
-                console.log('Labels:')
-                console.log(timestamp)
-                console.log('Dados:')
-                console.log(dados)
-                console.log('----------------------------------------------')
-
-                const ctx = document.getElementById('grafico');
-                if (meuGrafico) {
-                    meuGrafico.destroy();
-                }
-                meuGrafico = new Chart(ctx, {
-                    type: 'line',
-                    data: {
-                        labels: timestamp,
-                        datasets: [
-                            {
-                                label: 'CPU (%)',
-                                data: dados,
-                                borderColor: 'rgb(33, 196, 93)',
-                                backgroundColor: 'rgba(33, 196, 93, 0.5)',
-                                tension: 0.3
-                            }
-                        ]
+                    ticks: {
+                        stepsize: 20 // Faz ir de 20 em 20 a porcentagem
+                        // Use maxTicksLimit pra definir limite de quantos dados vai aparecer em X
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            x: {
-                                ticks: { color: 'white' }
-                            },
-                            y: {
-                                beginAtZero: true,
-                                max: 100,
-                                title: {
-                                    display: true,
-                                    text: 'Uso (%)',
-                                    color: 'white'
-                                },
-                                ticks: { color: 'white' },
-                            }
-                        },
-                        plugins: {
-                            legend: {
-                                labels: {
-                                    color: 'white',
-                                    font: {
-                                        size: 16
-                                    }
-                                }
-                            }
-                        }
+
+                    grid: {
+                        display: false
                     }
-                })
-            })
-            .catch(erro => console.error("ERRO:", erro));
+                }
+            }
+        }
+    });
+
+    // Segundo o de RAM
+    new Chart(graficoRAM, {
+        type: 'line', // O tipo de gráfico.
+        // Dando os dados
+        data: {
+
+            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
+            labels: ['10h00', '10h30', '11h00', '11h30', '12h00', '12h30', '13h00'],
+
+            // DataSet: As linhas, sua legenda e etc
+            datasets: [{
+                // Nome da Legenda e que aparece encima
+                label: 'Uso da RAM (%)',
+
+                // Dados que vão ser plotados no gráfico
+                data: [48, 52, 60, 64, 66, 72, 72],
+
+                // Cor da Linha
+                borderColor: '#FF0000',
+
+                // Fundo que fica abaixo da Linha
+                backgroundColor: '#b5b5b550',
+                // Esse comando vai servir pra realmente preencher abaixo da linha
+                fill: true,
+
+                // Grossura da linha
+                borderWidth: 2,
+
+                // Tension serve pra medir a tensão da Linha do gráfico.
+                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
+                tension: 0.5,
+                pointBackgroundColor: "#FF0000" // Mudando cor da bolinha
+            }]
+        },
+
+        // OPTIONS: São os ajustes gerais do desenho do gráfico
+        options: {
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    // Garante que a lateral esquerda comece do número ZERO. 
+                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
+                    beginAtZero: true,
+                    min: 0,
+                    max: 100,
+
+                    ticks: {
+                        stepsize: 20 // Faz ir de 20 em 20 a porcentagem
+                    },
+
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+
+    // Último é o de Latência
+    new Chart(graficoLatencia, {
+        type: 'line', // O tipo de gráfico.
+        // Dando os dados
+        data: {
+
+            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
+            labels: ['10h00', '10h30', '11h00', '11h30', '12h00', '12h30', '13h00'],
+
+            // DataSet: As linhas, sua legenda e etc
+            datasets: [{
+                // Nome da Legenda e que aparece encima
+                label: 'Latência (ms)',
+
+                // Dados que vão ser plotados no gráfico
+                data: [11, 14, 16, 12, 22, 32, 38],
+
+                // Cor da Linha
+                borderColor: '#21C45D',
+
+                // Fundo que fica abaixo da Linha
+                backgroundColor: '#b5b5b550',
+                // Esse comando vai servir pra realmente preencher abaixo da linha
+                fill: true,
+
+                // Grossura da linha
+                borderWidth: 2,
+
+                // Tension serve pra medir a tensão da Linha do gráfico.
+                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
+                tension: 0.5,
+                pointBackgroundColor: "#21C45D" // Mudando cor da bolinha
+            }]
+        },
+
+        // OPTIONS: São os ajustes gerais do desenho do gráfico
+        options: {
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    // Garante que a lateral esquerda comece do número ZERO. 
+                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
+                    beginAtZero: true,
+                    min: 0,
+                    max: 50,
+
+                    ticks: {
+                        stepsize: 10 // Faz ir de 10 em 10 o gráfico
+                    },
+
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+
+    // __________________________________________________________________________________
+    // ==================================================================================
+
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    let proximaAtualizacao;
+
+    window.onload = function () {
+
+        const usuario = document.getElementById("usuario");
+        usuario.innerHTML = `Olá <b>${sessionStorage.NOME_USUARIO}</b>, boas vindas.`;
+        if (sessionStorage.FK_ADM != "null") {
+            admMenu.style.display = "none";
+        }
+
+    }
+
+    // Função pra trocar o Ícone quando for passar o mouse por cima (vulgo hover)
+    function iconTrade() {
+        document.getElementById("iconAtual").src
+    }
+
+    // ==========================================================================
+
+    function logout() {
+        sessionStorage.clear()
+        window.location = 'index.html';
+    }
+
+    console.log('----------------------------------------------')
+    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+    console.log(resposta)
+
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
+    for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        labels.push(registro.momento_grafico);
+        dados.datasets[0].data.push(registro.umidade);
+        dados.datasets[1].data.push(registro.temperatura);
+    }
+
+    console.log('----------------------------------------------')
+    console.log('O gráfico será plotado com os respectivos valores:')
+    console.log('Labels:')
+    console.log(labels)
+    console.log('Dados:')
+    console.log(dados.datasets)
+    console.log('----------------------------------------------')
+
+    // Criando estrutura para plotar gráfico - config
+    const config = {
+        type: 'line',
+        data: dados,
     };
-
-    carregarServidores();
-
-    setInterval(carregarServidores, 30000);
-    function carregarServidores() {
-        let linhas = '';
-        const jaAdicionados = [];
-        const ultimosDados = [];
-
-        // SUBSTITUIÇÃO: URL direta do arquivo no S3
-        const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
-
-        fetch(urlS3)
-            .then(res => {
-                if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
-                return res.json();
-            })
-            .then(servidores => {
-                const tabela = document.getElementById("corpo-tabela");
-                servidores.sort((a, b) => {
-                    // Transforma "23-04-2026 12:35:14" em "2026-04-23T12:35:14"
-                    const formatarData = (ts) => {
-                        const [data, hora] = ts.split(' ');
-                        const [dia, mes, ano] = data.split('-');
-                        return new Date(`${ano}-${mes}-${dia}T${hora}`);
-                    };
-
-                    return formatarData(b.timestamp) - formatarData(a.timestamp);
-                });
-
-                servidores.forEach(s => {
-                    if (!jaAdicionados.includes(s.home_broker)) {
-                        jaAdicionados.push(s.home_broker);
-                        ultimosDados.push(s)
-                    }
-                });
-                console.log(ultimosDados)
-                ultimosDados.sort((a, b) => (b.cpu_percent || 0) - (a.cpu_percent || 0))
-                ultimosDados.forEach(s => {
-                    const procRelativo = parseFloat(s.processo_maior_consumo.split(' ')[4].replace('%', '')) || 0;
-                    const usoRealCalculado = (procRelativo / 100) * s.cpu_percent;
-                    if (s.cpu_percent > limiteCPU) {
-                        linhas += `
-                            <tr>
-                                <td style="color: red;"><strong>${s.home_broker}</strong></td>
-                                <td style="color: red;"><strong>${s.status || "Critico"}</strong></td>
-                                <td style="color: red;"><strong>${s.timestamp}</strong></td>
-                                <td style="color: red;"><strong>${s.cpu_percent || 0}%</strong></td>
-                                <td style="color: red;"><strong>${s.total_processos || 0}</strong></td>
-                                <td style="color: red;"><strong>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</strong></td>
-                                <td style="color: red;"><strong>${usoRealCalculado.toFixed(1) || 0}%</strong></td>
-                                <td><button onclick="alert('${s.home_broker}')">Ver detalhes</button></td>
-                            </tr>`;
-                    } else {
-                        linhas += `
-                            <tr>
-                                <td><strong>${s.home_broker}</strong></td>
-                                <td>${s.status || "Normal"}</td>
-                                <td>${s.timestamp}</td>
-                                <td>${s.cpu_percent || 0}%</td>
-                                <td>${s.total_processos || 0}</td>
-                                <td>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</td>
-                                <td>${usoRealCalculado.toFixed(1) || 0}%</td>
-                                <td><button onclick="alert('${s.home_broker}')">Ver detalhes</button></td>
-                                </tr>`;
-                    }
-
-                });
-
-
-                tabela.innerHTML = linhas;
-
-            })
-            .catch(erro => console.error("ERRO:", erro));
-    }
-
-    pesquisarServidores();
-    function pesquisarServidores() {
-        var linhas = ''
-        const jaAdicionados = [];
-        const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
-
-        fetch(urlS3)
-            .then(res => {
-                if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
-                return res.json();
-            })
-            .then(servidores => {
-                servidores.forEach(s => {
-                    if (!jaAdicionados.includes(s.home_broker)) {
-                        linhas += `<option value="${s.home_broker}">`
-                        jaAdicionados.push(s.home_broker);
-                    }
-                });
-
-                lista_servidores.innerHTML = linhas;
-
-            })
-            .catch(erro => console.error("ERRO:", erro));
-    }
 </script>

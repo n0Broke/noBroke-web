@@ -75,8 +75,12 @@
     }
 
     .conteudo-dash.expandido {
-        width: 100% !important;
+        width: 90% !important;
         z-index: -1 !important;
+    }
+
+    .conteudo-dash{
+        height: max-content;
     }
 
     .cards-grafico,
@@ -98,7 +102,7 @@
     .popUpFuncionario-dados, .popUpFuncionario-dadosServidor,
     .kpi-box {
         flex-direction: column;
-        min-width: 100%;
+        min-width: 90%;
     }
 
     .header-direita {
@@ -120,12 +124,13 @@
     .cards-alerta-central {
         display: flex;
         flex-wrap: wrap;
+        min-height: fit-content;
     }
 
     .card-alerta-geral {
         display: flex;
-        min-width: 48%;
-        min-height: 45%;
+        min-width: 95%;
+        min-height: 20%;
         gap: 5px;
     }
 
@@ -137,13 +142,13 @@
 
     .central-alerta-filtros input {
         display: flex;
-        width: 100%;
+        width: 96%;
         margin-bottom: 10px;
     }
 
     .lista-alertas {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
     }
 
     .conteudo-alerta-esquerda {
@@ -154,7 +159,8 @@
 
     .card-server {
         flex-direction: row;
-        min-height: 46%;
+        min-height: 40%;
+        min-width: 90%;
     }
 
     .card-server img {
@@ -506,7 +512,7 @@
     .popUpFuncionario-dados,
     .kpi-box {
         flex-direction: column;
-        min-width: 100%;
+        min-width: 90%;
     }
 
     .header-direita {
@@ -521,6 +527,7 @@
 
     .conteudo-dash01 {
         flex-wrap: wrap;
+        min-height: 30%;
         min-width: 100%;
         justify-content: center;
     }
@@ -528,30 +535,37 @@
     .cards-alerta-central {
         display: flex;
         flex-wrap: wrap;
+        min-height: fit-content;
+        margin: 0;
     }
 
     .card-alerta-geral {
         display: flex;
-        min-width: 48%;
-        min-height: 45%;
+        min-width: 47%;
+        min-height: 20%;
         gap: 5px;
     }
 
     .central-alerta-filtros {
         display: block;
-        margin-bottom: 60px;
         width: 100%;
+        min-height: 10%;
     }
 
     .central-alerta-filtros input {
         display: flex;
-        width: 100%;
+        width: 98%;
         margin-bottom: 10px;
+    }
+
+    .filtrosDeAlerta{
+        height: 80%;
     }
 
     .lista-alertas {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        overflow-x: hidden;
     }
 
     .conteudo-alerta-esquerda {
@@ -567,7 +581,7 @@
 
     .card-server {
         flex-direction: row;
-        min-height: 46%;
+        min-height: 35%;
     }
 
     .card-server img {

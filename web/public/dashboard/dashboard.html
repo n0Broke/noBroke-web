@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard | noBroke</title>
+    <title>Home | noBroke</title>
     <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
 
     <script src="./js/sessao.js"></script>
@@ -23,464 +23,748 @@
         })();
     </script>
 
+    <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <link rel="stylesheet" href="../css/dashResponsivo.css">
 
     <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Importar o Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 
-<body onload="verificarModo()">
-    <div class="container-fluid">
-        <div class="row min-vh-100">
-            <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
-                <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
-                    <span>X</span>
-                </div>
-                <div class="logo-container">
-                    <img id="imgLogo" class="logo-dash img-fluid"
-                        src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
-                </div>
-                <!-- Side Bar - Botões -->
-                <div class="menu_centro">
-                    <!-- Sidebar - Parte 01 -->
-                    <div class="menu01">
-                        <h4 class="titulo_sidebar">PRINCIPAL</h4>
-                        <!-- Página atual -->
-                        <button class="btn-nobroke btn-active">
-                            <span class="icon">
-                                <img id="iconAtual" src="../assets/icon/icons-dashboard/painel-de-controle-hover.png">
-                            </span>
-                            <span class="texto">Dashboard</span>
-                        </button>
-
-                        <a href="servidores.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
-                            </span>
-                            <span class="texto">Servidores</span>
-                        </a>
-
-                        <a href="Alertas.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/notificacao.png">
-                            </span>
-                            <span class="texto">Alertas</span>
-                        </a>
-
-                        <div id="div_relatorios">
-                            <a href="Relatorios.html" class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
-                                </span>
-                                <span class="texto">Relatórios</span>
-                            </a>
-                        </div>
-
-                        <a href="monitoramento.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/heart-rate.png">
-                            </span>
-                            <span class="texto">Monitoramento</span>
-                        </a>
-                    </div>
-                    <!-- ============================ -->
-                    <div class="menu02">
-                        <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
-
-                        <a href="Configurações.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/config.png">
-                            </span>
-                            <span class="texto">Configurações</span>
-                        </a>
-
-                        <a href="suporte.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
-                            </span>
-                            <span class="texto">Suporte</span>
-                        </a>
-                    </div>
-                    <!-- Fim dos Menus -->
-                    <!-- ================================================================= -->
-                    <!-- Parte do perfil -->
-                </div>
-                <div class="user-profile" onclick="window.location.href = 'Configurações.html?aba=perfil'">
-                    <div class="profile-img">
-                        <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil">
-                    </div>
-                    <div class="user-infos">
-                        <p class="username" id="usuario" style="color: var(--branco);"></p>
-                        <span class="cargo" id="cargoFunc" style="color: var(--branco);">Gerente de Infra</span>
-                    </div>
-                </div>
+<body onload="verificarModo(), carregarServidores()">
+    <div class="containerPai">
+        <div class="sidebar" id="div_lateralAberta">
+            <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
+                <span>X</span>
             </div>
-            <!-- ================================================================= -->
-
-            <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
-                <!-- Header do Conteudo da Dashboard -->
-                <div class="header-responsividade">
-                    <div>
-                        <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
-                            style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
-                        <span style="color: #7D8999;">noBroke Server Monitor</span>
-                    </div>
-                    <div id="iconeModo">
-                        <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
-                            style="width: 40px; cursor: pointer; margin-right: 20px;">
-                    </div>
-                </div>
-                <hr style="width: 100%; color: #b4b4b4; height: 2px;">
-                <div class="header-conteudo-dash">
-                    <div class="header-esquerdo">
-                        <div class="header-esquerdo01">
-                            <h3 class="servidor-name" id="server-name">SRV-DEV-HB-01</h3>
-                            <p class="status-servidor" style="border-radius: 18px;"><img
-                                    src="../assets/svg/circle-svgrepo-com.svg" alt="simbolo-operacional"
-                                    style="width: 8px;">Operacional</p>
-                            <p class="tipo-servidor" style="border-radius: 4px;">Desenvolvimento</p>
-                        </div>
-                        <div class="header-esquerdo02">
-                            <p class="ip-servidor">192.168.***.42</p>
-                            <p>|</p>
-                            <p class="localizacao-servidor">São Paulo - SP</p>
-                            <p>|</p>
-                            <p class="coleta-servidor" style="align-items: center;"><img
-                                    src="../assets/svg/loading-svgrepo-com.svg" alt="carregar" style="width: 25px;">6s
-                                atrás</p>
-                        </div>
-                    </div>
-                    <div class="header-direita">
-                        <button class="botao-alerta"><img id="logoAlerta" src="../assets/svg/bell-svgrepo-com.svg"
-                                alt="" style="width: 22px; color: white;" onclick="window.location.href='Alertas.html'">
-                            Alertas</button>
-                        <button class="botao-exportar"><img src="../assets/svg/download-minimalistic-svgrepo-com.svg"
-                                alt="" style="width: 22px; color: white;"> Exportar</button>
-                    </div>
-                </div>
-                <!-- ========================================================= -->
-
-                <!-- Cards - Conteudo 01 -->
-                <div class="conteudo-dash01">
-                    <div class="cards-conteudo">
-                        <div class="titulo-cards">
-                            <img class="card01-icon" src="../assets/svg/cpu-bolt-svgrepo-com.svg" alt="cpu"
-                                style="width: 25px;">
-                            <span class="card01-info" style="color: #b4b4b4; font-size: 10px;">8 Cores</span>
-                        </div>
-                        <div class="conteudo-abaixo-cards">
-                            <h1>65%</h1>
-                            <h4>CPU (30 min)</h4>
-                            <div class="linha-cards">
-                                <div class="linha-preenchida01"
-                                    style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 67%; height: 5px; background-color: #E7B008;">
-                                </div>
-                                <div class="linha-faltando01"
-                                    style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 33%; height: 5px; background-color: rgb(45, 50, 57);">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cards-conteudo card02">
-                        <div class="titulo-cards">
-                            <img class="card02-icon" src="../assets/svg/ram-memory-svgrepo-com.svg" alt="cpu"
-                                style="width: 25px;">
-                            <span class="card02-info" style="color: #b4b4b4; font-size: 10px;">12.3 / 16 GB</span>
-                        </div>
-                        <div class="conteudo-abaixo-cards">
-                            <h1>72%</h1>
-                            <h4>Memória RAM (30 min)</h4>
-                            <div class="linha-cards">
-                                <div class="linha-preenchida01"
-                                    style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 78%; height: 5px; background-color: #C42728;">
-                                </div>
-                                <div class="linha-faltando01"
-                                    style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 22%; height: 5px; background-color: rgb(45, 50, 57);">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cards-conteudo card03">
-                        <div class="titulo-cards">
-                            <img class="card03-icon" src="../assets/svg/hard-disk-svgrepo-com.svg" alt="cpu"
-                                style="width: 25px;">
-                            <span class="card03-info" style="color: #b4b4b4; font-size: 10px;">234 / 512 GB</span>
-                        </div>
-                        <div class="conteudo-abaixo-cards">
-                            <h1>60%</h1>
-                            <h4>Disco (30 min)</h4>
-                            <div class="linha-cards">
-                                <div class="linha-preenchida01"
-                                    style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 52%; height: 5px; background-color: #21C45D;">
-                                </div>
-                                <div class="linha-faltando01"
-                                    style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 48%; height: 5px; background-color: rgb(45, 50, 57);">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cards-conteudo card04">
-                        <div class="titulo-cards">
-                            <img class="card04-icon"
-                                src="../assets/svg/speedometer-graph-infographic-data-element-svgrepo-com.svg" alt="cpu"
-                                style="width: 25px;">
-                            <span class="card04-info" style="color: #b4b4b4; font-size: 10px;">Média 5min</span>
-                        </div>
-                        <div class="conteudo-abaixo-cards">
-                            <h1>38ms</h1>
-                            <h4>Latência (30 min)</h4>
-                            <div class="linha-cards">
-                                <div class="linha-preenchida01"
-                                    style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 120%; height: 5px; background-color: #21C45D;">
-                                </div>
-                                <div class="linha-faltando01"
-                                    style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 88%; height: 5px; background-color: rgb(45, 50, 57);">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cards-conteudo card05">
-                        <div class="titulo-cards">
-                            <img class="card05-icon" src="../assets/svg/time-svgrepo-com.svg" alt="cpu"
-                                style="width: 25px;">
-                            <span class="card05-info" style="color: #b4b4b4; font-size: 10px;">Desde 02/01</span>
-                        </div>
-                        <div class="conteudo-abaixo-cards">
-                            <h1>45d 12h</h1>
-                            <h4>Uptime (p/ dia)</h4>
-                            <div class="linha-cards">
-                                <!-- Não precisa adicionar já que não utiliza -->
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cards-conteudo card06">
-                        <div class="titulo-cards">
-                            <img class="card06-icon" src="../assets/svg/heart-rate-svgrepo-com.svg" alt="cpu"
-                                style="width: 25px;">
-                            <span class="card06-info" style="color: #b4b4b4; font-size: 10px;">Últimos 15d</span>
-                        </div>
-                        <div class="conteudo-abaixo-cards">
-                            <h1>99.7%</h1>
-                            <h4>Disponibilidade (30 min)</h4>
-                            <div class="linha-cards">
-                                <div class="linha-preenchida01"
-                                    style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 99%; height: 5px; background-color: #21C45D;">
-                                </div>
-                                <div class="linha-faltando01"
-                                    style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 1%; height: 5px; background-color: rgb(45, 50, 57);">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- =================================== -->
-                <!-- Aqui vem os Cards com Chart.js -->
-                <div class="conteudo-dash02">
-                    <div class="cards-grafico">
-                        <!-- ___________________________________ -->
-                        <!-- Gráfico - CPU -->
-                        <div class="card-grafico card-grafico01">
-                            <h4 class="titulo-grafico">CPU (24h)</h4>
-                            <canvas id="grafico01"></canvas>
-                        </div>
-                        <!-- ___________________________________ -->
-                        <!-- Gráfico - CPU -->
-                        <div class="card-grafico card-grafico02">
-                            <h4 class="titulo-grafico">Memória RAM (24h)</h4>
-                            <canvas id="grafico02"></canvas>
-                        </div>
-                        <!-- ___________________________________ -->
-                        <!-- Gráfico - CPU -->
-                        <div class="card-grafico card-grafico03">
-                            <h4 class="titulo-grafico">Latência (24h)</h4>
-                            <canvas id="grafico03"></canvas>
-                        </div>
-                        <!-- ___________________________________ -->
-                    </div>
-                </div>
-                <!-- =================================== -->
-                <!-- Última parte da Dashboard - Alertas e Componentes -->
-
-                <div class="conteudo-dash03">
-                    <div class="componentes-servidor">
-                        <h4 class="componentes-titulo">Componentes Monitorados</h4>
-
-                        <div class="parte-componentes">
-                            <div class="componente-monitorado componente01">
-                                <div class="componente-infos">
-                                    <img src="../assets/svg/circle-svgrepo-com-alert2.svg" alt="status"
-                                        style="width: 6px;">
-                                    <img src="../assets/svg/cpu-bolt-svgrepo-com.svg" alt="cpu" style="width: 20px;">
-                                    <p id="componente-info01">CPU</p>
-                                </div>
-                                <div class="componente-status">
-                                    <p>65%</p>
-                                </div>
-                                <div class="componente-metrica">
-                                    <span>0-70%</span>
-                                </div>
-                                <div class="componente-status-icon">
-                                    <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert2.svg" alt="alerta"
-                                        style="width: 18px;">
-                                </div>
-                            </div>
-                            <div class="componente-monitorado componente02">
-                                <div class="componente-infos">
-                                    <img src="../assets/svg/circle-svgrepo-com-alert3.svg" alt="status"
-                                        style="width: 6px;">
-                                    <img src="../assets/svg/ram-memory-svgrepo-com.svg" alt="cpu" style="width: 20px;">
-                                    <p id="componente-info02">RAM</p>
-                                </div>
-                                <div class="componente-status">
-                                    <p>72%</p>
-                                </div>
-                                <div class="componente-metrica">
-                                    <span>0-70%</span>
-                                </div>
-                                <div class="componente-status-icon">
-                                    <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert3.svg" alt="alerta"
-                                        style="width: 18px;">
-                                </div>
-                            </div>
-                            <div class="componente-monitorado componente03">
-                                <div class="componente-infos">
-                                    <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status"
-                                        style="width: 6px;">
-                                    <img src="../assets/svg/hard-disk-svgrepo-com.svg" alt="cpu" style="width: 20px;">
-                                    <p id="componente-info01">Disco</p>
-                                </div>
-                                <div class="componente-status">
-                                    <p>52%</p>
-                                </div>
-                                <div class="componente-metrica">
-                                    <span>0-80%</span>
-                                </div>
-                                <div class="componente-status-icon">
-                                    <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert1.svg" alt="alerta"
-                                        style="width: 18px;">
-                                </div>
-                            </div>
-                            <div class="componente-monitorado componente04">
-                                <div class="componente-infos">
-                                    <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status"
-                                        style="width: 6px;">
-                                    <img src="../assets/svg/speedometer-graph-infographic-data-element-svgrepo-com.svg"
-                                        alt="cpu" style="width: 20px;">
-                                    <p id="componente-info01">Latência</p>
-                                </div>
-                                <div class="componente-status">
-                                    <p>38ms</p>
-                                </div>
-                                <div class="componente-metrica">
-                                    <span>0-50ms</span>
-                                </div>
-                                <div class="componente-status-icon">
-                                    <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert1.svg" alt="alerta"
-                                        style="width: 18px;">
-                                </div>
-                            </div>
-                            <div class="componente-monitorado componente05">
-                                <div class="componente-infos">
-                                    <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status"
-                                        style="width: 6px;">
-                                    <img src="../assets/svg/heart-rate-svgrepo-com.svg" alt="cpu" style="width: 20px;">
-                                    <p id="componente-info01">Heartbeat</p>
-                                </div>
-                                <div class="componente-status">
-                                    <p>Ativo</p>
-                                </div>
-                                <div class="componente-metrica">
-                                    <span>Contínuo</span>
-                                </div>
-                                <div class="componente-status-icon">
-                                    <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert1.svg" alt="alerta"
-                                        style="width: 18px;">
-                                </div>
-                            </div>
-                            <div class="componente-monitorado componente06">
-                                <div class="componente-infos">
-                                    <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status"
-                                        style="width: 6px;">
-                                    <img src="../assets/svg/heart-rate-svgrepo-com.svg" alt="cpu" style="width: 20px;">
-                                    <p id="componente-info01">Disponib.</p>
-                                </div>
-                                <div class="componente-status">
-                                    <p>99.97%</p>
-                                </div>
-                                <div class="componente-metrica">
-                                    <span>≥99%</span>
-                                </div>
-                                <div class="componente-status-icon">
-                                    <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert1.svg" alt="alerta"
-                                        style="width: 18px;">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                    <!-- Parte das Legendas - Canto da Direita -->
-                    <div class="legendas-servidor">
-                        <div class="card-alertas">
-                            <div class="header-alertas-card">
-                                <p>Alertas Recentes</p>
-                                <span>3 Alertas</span>
-                            </div>
-                            <div class="alertas-recentes">
-                                <div class="info-alerta alerta01">
-                                    <img src="../assets/svg/alert-2-svgrepo-com.svg" alt="alert" style="width: 20px;">
-                                    <div class="infos-escrita-alerta">
-                                        <p>Memória RAM: Acima do Limite</p>
-                                        <span>RAM - 12:30</span>
-                                    </div>
-                                </div>
-                                <div class="info-alerta alerta02">
-                                    <img src="../assets/svg/alert-svgrepo-com.svg" alt="alert" style="width: 20px;">
-                                    <div class="infos-escrita-alerta">
-                                        <p>CPU: Alcançando o limite</p>
-                                        <span>CPU - 13:00</span>
-                                    </div>
-                                </div>
-                                <div class="info-alerta alerta02">
-                                    <img src="../assets/svg/alert-svgrepo-com.svg" alt="alert" style="width: 20px;">
-                                    <div class="infos-escrita-alerta">
-                                        <p>Memória RAM: Alcançando o limite</p>
-                                        <span>RAM - 12:00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="logo-container">
+                <img id="imgLogo" class="logo-dash img-fluid"
+                    src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
             </div>
+            <!-- Side Bar - Botões -->
+            <div class="menu_centro">
+                <!-- Sidebar - Parte 01 -->
+                <div class="menu01">
+                    <h4 class="titulo_sidebar">PRINCIPAL</h4>
+                    <button class="btn-nobroke btn-active">
+                        <span class="icon">
+                            <img id="iconAtual" src="../assets/icon/icons-dashboard/servidores-de-hospedagem-hover.png">
+                        </span>
+                        <span class="texto">Home</span>
+                    </button>
 
-            <div class="card-alertaGeral" id="div_alertaGeral">
+                    <a href="Alertas.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/notificacao.png">
+                        </span>
+                        <span class="texto">Alertas</span>
+                    </a>
+
+                    <div id="div_relatorios">
+                        <a href="Relatorios.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                            </span>
+                            <span class="texto">Relatórios</span>
+                        </a>
+                    </div>
+
+                    <a href="monitoramento.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                        </span>
+                        <span class="texto">Monitoramento</span>
+                    </a>
+                </div>
+                <!-- ============================ -->
+                <div class="menu02">
+                    <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
+
+                    <a href="Configurações.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/config.png">
+                        </span>
+                        <span class="texto">Configurações</span>
+                    </a>
+
+                    <a href="suporte.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
+                        </span>
+                        <span class="texto">Suporte</span>
+                    </a>
+                </div>
+                <!-- Fim dos Menus -->
+                <!-- ================================================================= -->
+                <!-- Parte do perfil -->
+            </div>
+            <div class="user-profile" onclick="window.location.href = 'Configurações.html?aba=perfil'">
+                <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil"
+                    class="profile-img">
+                <div class="user-infos">
+                    <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
+                    <span class="cargo" id="cargoFunc" style="color: var(--brancoCinza);">Gerente de Infra</span>
+                </div>
             </div>
         </div>
+        <div class="conteudo-dash" id="telaPrincipal">
+            <div class="header-responsividade">
+                <div>
+                    <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
+                        style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
+                    <a href="dashboard.html">Home</a>
+                    <span style="color: #7D8999;">></span>
+                    <span style="color: var(--branco);">Servidores</span>
+                </div>
+                <div id="iconeModo">
+                    <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
+                        style="width: 40px; cursor: pointer; margin-right: 20px;">
+                </div>
+            </div>
+            <div class="header-conteudo-dash">
+                <div class="header-esquerdo">
+                    <div class="header-esquerdo01">
+                        <h3 class="servidor-name" id="server-name">Servidores</h3>
+                    </div>
+                    <div class="header-esquerdo02">
+                        <p class="coleta-servidor" style="align-items: center;">Gerencie e monitore todos os
+                            servidores da infraestrutura</p>
+                    </div>
+                </div>
+                <div class="header-direita">
+                    <button class="botao-exportar" onclick="addFunc2()"><img
+                            src="https://www.flaticon.com/br/icone-gratis/mais_3524388?related_id=3524388&origin=search"
+                            alt="" style="width: 22px; color: white;">✚ Adicionar Servidor</button>
+                </div>
+            </div>
+
+            <div class="conteudo-dash01">
+                <div class="cards-conteudo card01 card-server ">
+                    <div class="titulo-cards-servidores">
+                        <img class="card01-icon" src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png"
+                            alt="cpu" style="width: 25px;">
+                    </div>
+                    <div class="conteudo-abaixo-cards">
+                        <h1 id="total-servidores">0</h1>
+                        <h4>Total de servidores</h4>
+                    </div>
+                </div>
+
+                <div class="cards-conteudo card01 card-server">
+                    <div class="titulo-cards-servidores">
+                        <img class="card01-icon" src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg" alt="cpu"
+                            style="width: 25px;">
+                    </div>
+                    <div class="conteudo-abaixo-cards">
+                        <h1 style="color: green;" id="serverSaudavel">0</h1>
+                        <h4 style="color: green;">Saudaveis</h4>
+                    </div>
+                </div>
+
+                <div class="cards-conteudo card01 card-server">
+                    <div class="titulo-cards-servidores">
+                        <img class="card01-icon" src="../assets/svg/alertas/close-circle-svgrepo-com.svg" alt="cpu"
+                            style="width: 25px;">
+                    </div>
+                    <div class="conteudo-abaixo-cards">
+                        <h1 style="color: red;" id="serverCritico">0</h1>
+                        <h4 style="color: red;">Críticos</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="barra-pesquisa">
+                <input type="search" id="busca" list="lista_servidores" placeholder="🔍 Digite o nome do servidor"
+                    oninput="buscarServidor(this.value)">
+
+                <datalist id="lista_servidores">
+                    <option value="SRV-DEV-HB-01">
+                    <option value="SRV-DEV-HB-02">
+                    <option value="SRV-DEV-HB-03">
+                    <option value="SRV-DEV-HB-04">
+                </datalist>
+                <button>Todos</button><button>Produção</button><button>Staging</button><button>DR</button><button>Desenvolvimento</button>
+            </div>
+            <div class="tabela-container">
+                <table class="tabela-servidores" style="background-color: var(--pretoClaro);">
+                    <thead>
+                        <tr>
+                            <th>Servidor</th>
+                            <th>Status</th>
+                            <th>Data</th>
+                            <th>CPU</th>
+                            <th>RAM</th>
+                            <th>Disco</th>
+                            <th>Total de Processos</th>
+                            <th>Proc maior consumo</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="corpo-tabela">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="fundoPopUpServidor" style="display: none;" id="popUpCadastrarServidor">
+                <div class="popUp-adicionarFuncionarioServidor">
+
+                    <div class="headerPopUpFuncionarioServidor">
+                        <div class="headerPopUp-esquerdaServidor">
+                            <h4>Cadastro de Servidor</h4>
+                            <span>Passo 1 de 2 — Informações do servidor</span>
+                        </div>
+                        <div class="headerPopUp-direita">
+                            <h4 onclick="fecharFunc()">X</h4>
+                        </div>
+                    </div>
+
+
+                    <div class="popUpFuncionario-SenhaServidor">
+                        <span>Nome do Servidor</span>
+                        <input id="input_nome_servidor" type="text" placeholder="SRV-PROD-API-01">
+                    </div>
+
+
+                    <div class="popUpFuncionario-dadosServidor">
+                        <div class="popUpFuncionario-inserirDados-esquerdaServidor" style="width: 50%;">
+                            <span>Sistema Operacional</span>
+                            <input id="input_SO_servidor" type="text" placeholder="Ubuntu 22.04 LTS">
+                        </div>
+
+                        <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
+                            <span>Número Serial</span>
+                            <input id="numero_serial_servidor" type="text" placeholder="SN-XXXXXXX">
+                        </div>
+                    </div>
+
+
+                    <div class="popUpFuncionario-dadosServidor">
+                        <div class="popUpFuncionario-inserirDados-esquerdaServidor" style="width: 50%;">
+                            <span>Hostname</span>
+                            <input id="input_hostname_servidor" type="text" placeholder="host.nobroke.io">
+                        </div>
+
+                        <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
+                            <span>Endereço IP</span>
+                            <input id="input_endereco_servidor" type="text" placeholder="10.0.1.100">
+                        </div>
+                    </div>
+
+
+                    <div class="popUpFuncionario-dadosServidor portaSSH">
+                        <div class="popUpFuncionario-inserirDados-esquerda" style="width: 50%;">
+                            <span>Porta SSH</span>
+                            <input id="input_portaSSH_servidor" type="text" placeholder="22">
+                        </div>
+
+                        <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
+                            <span>Ambiente</span>
+                            <select id="select_ambiente">
+                                <option value="1">Produção</option>
+                                <option value="2">Staging</option>
+                                <option value="3">DR</option>
+                                <option value="4">Desenvolvimento</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="popUpFuncionario-SenhaServidor">
+                        <span>Localização (Data Center)</span>
+                        <input id="input_localizacao_servidor" type="text" placeholder="São Paulo — SP1-DC">
+                    </div>
+
+                    <div class="popUpFuncionario-confirmarServidor">
+                        <button class="btnPopUp01" onclick="fecharFunc()">Cancelar</button>
+                        <button class="btnPopUp02" onclick="addFunc3()" style="color: white;">Próximo <img width="20px"
+                                src="../assets/svg/seta-direita.png" alt=""></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fundoPopUpServidor" style="display: none;" id="popUpCadastrarComponente">
+                <div class="popUp-adicionarFuncionarioServidor">
+
+                    <div class="headerPopUpFuncionarioServidor">
+                        <div class="headerPopUp-esquerdaServidor">
+                            <h4>Cadastro de Servidor</h4>
+                            <span>Passo 2 de 2 — Componentes monitorados</span>
+                        </div>
+                        <div class="headerPopUp-direitaServidor">
+                            <h4 onclick="fecharFunc2()">X</h4>
+                        </div>
+                    </div>
+
+                    <div class="barra-progresso-servidor">
+                        <div class="barra-progresso-preenchida"></div>
+                    </div>
+
+                    <div class="grupo-componente">
+                        <h6>CPU (Processador)</h6>
+
+                        <div class="componente-box">
+                            <div class="componente-topo">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" onchange="AbrirComponente(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <span class="titulo-componente">Uso geral</span>
+
+                                <div class="tipo-metrica">
+                                    <span class="badge-metrica">porcentagem (%)</span>
+                                    <span class="badge-intervalo">0 a 100</span>
+                                </div>
+                            </div>
+
+                            <div class="componente-config">
+
+                                <div class="limites">
+                                    <div>
+                                        <span>LIMITE MÍNIMO</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                    <div>
+                                        <span>LIMITE MÁXIMO</span>
+                                        <input type="number" value="80">
+                                    </div>
+                                    <div>
+                                        <span>CAPACIDADE</span>
+                                        <input type="number" value="3.7" placeholder="Frequência em Ghz">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="componente-box">
+                            <div class="componente-topo">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" onchange="AbrirComponente(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <span class="titulo-componente">Temperatura</span>
+
+                                <div class="tipo-metrica">
+                                    <span class="badge-metrica">temperatura (°C)</span>
+                                    <span class="badge-intervalo">20 a 95</span>
+                                </div>
+                            </div>
+
+                            <div class="componente-config">
+
+                                <div class="limites">
+                                    <div>
+                                        <span>LIMITE MÍNIMO</span>
+                                        <input type="number" value="20">
+                                    </div>
+                                    <div>
+                                        <span>LIMITE MÁXIMO</span>
+                                        <input type="number" value="85">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grupo-componente">
+                        <h6>Memória</h6>
+
+                        <div class="componente-box">
+                            <div class="componente-topo">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" onchange="AbrirComponente(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <span class="titulo-componente">Memória RAM</span>
+
+                                <div class="tipo-metrica">
+                                    <span class="badge-metrica">valor absoluto</span>
+                                    <span class="badge-intervalo">0 a 64 GB</span>
+                                </div>
+                            </div>
+
+                            <div class="componente-config">
+
+                                <div class="limites">
+                                    <div>
+                                        <span>LIMITE MÍNIMO</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                    <div>
+                                        <span>LIMITE MÁXIMO</span>
+                                        <input type="number" value="64">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="componente-box">
+                            <div class="componente-topo">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" onchange="AbrirComponente(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <span class="titulo-componente">Memória disponível RAM</span>
+
+                                <div class="tipo-metrica">
+                                    <span class="badge-metrica">valor absoluto</span>
+                                    <span class="badge-intervalo">0 a 64 GB</span>
+                                </div>
+                            </div>
+
+                            <div class="componente-config">
+
+
+                                <div class="limites">
+                                    <div>
+                                        <span>LIMITE MÍNIMO</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                    <div>
+                                        <span>LIMITE MÁXIMO</span>
+                                        <input type="number" value="32">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="componente-box">
+                            <div class="componente-topo">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" onchange="AbrirComponente(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <span class="titulo-componente">Uso de swap</span>
+
+                                <div class="tipo-metrica">
+                                    <span class="badge-metrica">porcentagem (%)</span>
+                                    <span class="badge-intervalo">0 a 100</span>
+                                </div>
+                            </div>
+
+                            <div class="componente-config">
+
+
+                                <div class="limites">
+                                    <div>
+                                        <span>LIMITE MÍNIMO</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                    <div>
+                                        <span>LIMITE MÁXIMO</span>
+                                        <input type="number" value="70">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="grupo-componente">
+                        <h6>Disco (Armazenamento)</h6>
+
+                        <div class="componente-box">
+                            <div class="componente-topo">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" onchange="AbrirComponente(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <span class="titulo-componente">Partições</span>
+
+                                <div class="tipo-metrica">
+                                    <span class="badge-metrica">valor absoluto</span>
+                                    <span class="badge-intervalo">1 a 20</span>
+                                </div>
+                            </div>
+
+                            <div class="componente-config">
+
+
+                                <div class="limites">
+                                    <div>
+                                        <span>LIMITE MÍNIMO</span>
+                                        <input type="number" value="1">
+                                    </div>
+                                    <div>
+                                        <span>LIMITE MÁXIMO</span>
+                                        <input type="number" value="10">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="componente-box">
+                            <div class="componente-topo">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" onchange="AbrirComponente(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <span class="titulo-componente">Uso de disco</span>
+
+                                <div class="tipo-metrica">
+                                    <span class="badge-metrica">porcentagem (%)</span>
+                                    <span class="badge-intervalo">0 a 100</span>
+                                </div>
+                            </div>
+
+                            <div class="componente-config">
+
+
+                                <div class="limites">
+                                    <div>
+                                        <span>LIMITE MÍNIMO</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                    <div>
+                                        <span>LIMITE MÁXIMO</span>
+                                        <input type="number" value="85">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="componente-box">
+                            <div class="componente-topo">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" onchange="AbrirComponente(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <span class="titulo-componente">Latência de disco</span>
+
+                                <div class="tipo-metrica">
+                                    <span class="badge-metrica">tempo (ms)</span>
+                                    <span class="badge-intervalo">0 a 300</span>
+                                </div>
+                            </div>
+
+                            <div class="componente-config">
+
+
+                                <div class="limites">
+                                    <div>
+                                        <span>LIMITE MÍNIMO</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                    <div>
+                                        <span>LIMITE MÁXIMO</span>
+                                        <input type="number" value="120">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="grupo-componente">
+                        <h6>Rede</h6>
+
+                        <div class="componente-box">
+                            <div class="componente-topo">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" onchange="AbrirComponente(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <span class="titulo-componente">Volume de dados enviados/recebidos</span>
+
+                                <div class="tipo-metrica">
+                                    <span class="badge-metrica">por segundo</span>
+                                    <span class="badge-intervalo">0 a 1 GB/s</span>
+                                </div>
+                            </div>
+
+                            <div class="componente-config">
+
+
+                                <div class="limites">
+                                    <div>
+                                        <span>LIMITE MÍNIMO</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                    <div>
+                                        <span>LIMITE MÁXIMO</span>
+                                        <input type="number" value="1">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="componente-box">
+                            <div class="componente-topo">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" onchange="AbrirComponente(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <span class="titulo-componente">Latência da rede</span>
+
+                                <div class="tipo-metrica">
+                                    <span class="badge-metrica">média</span>
+                                    <span class="badge-intervalo">0 a 500 ms</span>
+                                </div>
+                            </div>
+
+                            <div class="componente-config">
+
+
+                                <div class="limites">
+                                    <div>
+                                        <span>LIMITE MÍNIMO</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                    <div>
+                                        <span>LIMITE MÁXIMO</span>
+                                        <input type="number" value="150">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="grupo-componente">
+                        <h6>Processos</h6>
+
+                        <div class="componente-box">
+                            <div class="componente-topo">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" onchange="AbrirComponente(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <span class="titulo-componente">Número de CPUs em uso</span>
+
+                                <div class="tipo-metrica">
+                                    <span class="badge-metrica">contagem</span>
+                                    <span class="badge-intervalo">0 a 128</span>
+                                </div>
+                            </div>
+
+                            <div class="componente-config">
+
+
+                                <div class="limites">
+                                    <div>
+                                        <span>LIMITE MÍNIMO</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                    <div>
+                                        <span>LIMITE MÁXIMO</span>
+                                        <input type="number" value="64">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="componente-box">
+                            <div class="componente-topo">
+                                <label class="checkbox-container">
+                                    <input type="checkbox" onchange="AbrirComponente(this)">
+                                    <span class="checkmark"></span>
+                                </label>
+
+                                <span class="titulo-componente">Processo com mais gasto</span>
+
+                                <div class="tipo-metrica">
+                                    <span class="badge-metrica">RAM gasta</span>
+                                    <span class="badge-intervalo">0 a 100(%)</span>
+                                </div>
+                            </div>
+
+                            <div class="componente-config">
+
+
+                                <div class="limites">
+                                    <div>
+                                        <span>Qtd processos desejados</span>
+                                        <input type="number" value="0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="popUpFuncionario-confirmarServidor">
+                        <button class="btnPopUp01" onclick="voltarFunc2()">← Voltar</button>
+                        <button class="btnPopUp02" onclick="cadastrarServidor()" style="color: white;">Cadastrar
+                            Servidor</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
+    <div class="card-alertaGeral" id="div_alertaGeral">
+    </div>
+    </div>
+    </div>
 </body>
 
 </html>
 <script>
-    const nomeCompleto = sessionStorage.NOME_USUARIO
-    const partes = nomeCompleto.trim().split(" ");
-    const primeiroNome = partes[0];
-    usuario.innerHTML = primeiroNome;
-    cargoFunc.innerHTML = sessionStorage.FUNCAO;
+    // const nomeCompleto = sessionStorage.NOME_USUARIO
+    // const partes = nomeCompleto.trim().split(" ");
+    // const primeiroNome = partes[0];
+    // usuario.innerHTML = primeiroNome;
+    // cargoFunc.innerHTML = sessionStorage.FUNCAO;
 
+    function normalizar(texto) {
+        return texto
+            ?.trim()
+            .replace(/\s+/g, " ")
+            .toLowerCase();
+    }
+
+    const mapaComponentes = {
+        "cpu (processador)": 1,
+        "memória": 2,
+        "disco (armazenamento)": 3,
+        "rede": 4,
+        "processos": 5
+    };
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");
     const imgLogo = document.getElementById("imgLogo");
     const imgUser = document.getElementById("imgUser");
-    const logoAlerta = document.getElementById("logoAlerta");
     const sidebar = document.getElementById("div_lateralAberta");
     const cardAlerta = document.getElementById("div_alertaGeral")
+
+    function addFunc2() {
+        document.getElementById('popUpCadastrarServidor').style.display = 'flex';
+    }
+    function addFunc3() {
+        document.getElementById('popUpCadastrarComponente').style.display = 'flex';
+        document.getElementById('popUpCadastrarServidor').style.display = 'none';
+    }
+    function fecharFunc() {
+        document.getElementById('popUpCadastrarServidor').style.display = 'none';
+    }
+    function fecharFunc2() {
+        document.getElementById('popUpCadastrarComponente').style.display = 'none';
+    }
+    function voltarFunc2() {
+        document.getElementById('popUpCadastrarComponente').style.display = 'none';
+        document.getElementById('popUpCadastrarServidor').style.display = 'flex';
+    }
+
+    function AbrirComponente(checkbox) {
+        const box = checkbox.closest(".componente-box");
+        const config = box.querySelector(".componente-config");
+
+        if (checkbox.checked) {
+            config.classList.add("ativo");
+        } else {
+            config.classList.remove("ativo");
+        }
+    }
 
     let modoEscuro = false;
 
@@ -519,10 +803,8 @@
             root.style.setProperty('--pretoClaro', '#fff');
             root.style.setProperty('--brancoCinza', '#1D2025');
             root.style.setProperty('--bordas', '#b5b5b5');
-            root.style.setProperty('--branco-transparente', '#0000007c');
             imgModo.src = "../assets/icon/icons-dashboard/lua-crescente.png";
-            imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg"
-            logoAlerta.src = "../assets/svg/alertas/bell-svgrepo-com-preto.svg";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg";
             if (sidebar.classList.contains("compacta")) {
                 if (modoEscuro) {
                     imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
@@ -543,10 +825,8 @@
             root.style.setProperty('--pretoClaro', '#1D2025');
             root.style.setProperty('--brancoCinza', '#b5b5b5');
             root.style.setProperty('--bordas', '#3a3f45');
-            root.style.setProperty('--branco-transparente', '#ffffff7e');
             imgModo.src = "../assets/icon/icons-dashboard/brilho-do-sol.png";
-            imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg"
-            logoAlerta.src = "../assets/svg/alertas/bell-svgrepo-com.svg";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg";
             if (sidebar.classList.contains("compacta")) {
                 if (modoEscuro) {
                     imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
@@ -602,257 +882,432 @@
         cardAlerta.style.display = "none"
     }
 
-    // ==================================================================================
-    // __________________________________________________________________________________
-    // Criação dos Gráficos Aqui!!
+    function cadastrarServidor() {
 
-    // Buscando ID dos gŕaficos e criando variáveis deles
-    const graficoCPU = document.getElementById('grafico01');
-    const graficoRAM = document.getElementById('grafico02');
-    const graficoLatencia = document.getElementById('grafico03');
+        var nomeServidor = input_nome_servidor.value;
+        var SOServidor = input_SO_servidor.value;
+        var numeroSerialServidor = numero_serial_servidor.value;
+        var HostServidor = input_hostname_servidor.value;
+        var enderecoServidor = input_endereco_servidor.value;
+        var portaSSHservidor = input_portaSSH_servidor.value;
+        var ambienteServidor = select_ambiente.value;
+        var localizacaoServidor = input_localizacao_servidor.value;
+        var fk_empresa = sessionStorage.getItem('FK_EMPRESA');
 
-    // Dando informações pra esses gráficos
-    // Primeiro o de CPU
-    new Chart(graficoCPU, {
-        type: 'line', // O tipo de gráfico.
-        // Dando os dados
-        data: {
 
-            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
-            labels: ['10h00', '10h30', '11h00', '11h30', '12h00', '12h30', '13h00'],
+        if (nomeServidor == "" || nomeServidor == "" || numeroSerialServidor == "" ||
+            HostServidor == "" || enderecoServidor == "" || portaSSHservidor == "" || localizacaoServidor == "") {
+            console.log("As informaçoes do servidor não foram preenchidas corretamente!")
 
-            // DataSet: As linhas, sua legenda e etc
-            datasets: [{
-                // Nome da Legenda e que aparece encima
-                label: 'Uso da CPU (%)',
-
-                // Dados que vão ser plotados no gráfico
-                data: [45, 47, 47, 48, 53, 58, 65],
-
-                // Cor da Linha
-                borderColor: '#E7B008',
-
-                // Fundo que fica abaixo da Linha
-                backgroundColor: '#b5b5b550',
-
-                // Esse comando vai servir pra realmente preencher abaixo da linha
-                fill: true,
-
-                // Grossura da linha
-                borderWidth: 2,
-
-                // Tension serve pra medir a tensão da Linha do gráfico.
-                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
-                tension: 0.5,
-                pointBackgroundColor: '#E7B008', // Deixa o fundo da bolinha preenchido (tudo q tiver point antes afeta os pontos)
-            }]
-        },
-
-        // OPTIONS: São os ajustes gerais do desenho do gráfico
-        options: {
-            scales: {
-                x: {
-                    grid: {
-                        display: false
-                    }
+        } else {
+            fetch("http://localhost:3333/cadastrarServidor", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
                 },
-                y: {
-                    // Garante que a lateral esquerda comece do número ZERO. 
-                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
-                    beginAtZero: true,
-                    min: 0,
-                    max: 100,
+                body: JSON.stringify({
+                    nomeServer: nomeServidor,
+                    SOServer: SOServidor,
+                    SerialServer: numeroSerialServidor,
+                    hostServer: HostServidor,
+                    enderecoIPServer: enderecoServidor,
+                    SSHServer: portaSSHservidor,
+                    ambienteServer: ambienteServidor,
+                    localizacaoServer: localizacaoServidor,
+                    fk_empresaServer: fk_empresa
+                })
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
 
-                    ticks: {
-                        stepsize: 20 // Faz ir de 20 em 20 a porcentagem
-                        // Use maxTicksLimit pra definir limite de quantos dados vai aparecer em X
-                    },
-
-                    grid: {
-                        display: false
+                    if (!resposta.ok) {
+                        throw "Erro ao cadastrar servidor";
                     }
-                }
-            }
+
+                    return resposta.json();
+                })
+                .then(function (data) {
+                    console.log("DATA:", data);
+
+                    var idServidor = data.idServidor;
+                    sessionStorage.setItem('idServidor', idServidor);
+
+                    console.log("ID DO SERVIDOR:", idServidor);
+                    cadastrarComponente()
+
+                })
+                .catch(function (erro) {
+                    console.log("#ERRO:", erro);
+                })
+                .then(function (data) {
+                    carregarServidores();
+                })
         }
-    });
 
-    // Segundo o de RAM
-    new Chart(graficoRAM, {
-        type: 'line', // O tipo de gráfico.
-        // Dando os dados
-        data: {
-
-            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
-            labels: ['10h00', '10h30', '11h00', '11h30', '12h00', '12h30', '13h00'],
-
-            // DataSet: As linhas, sua legenda e etc
-            datasets: [{
-                // Nome da Legenda e que aparece encima
-                label: 'Uso da RAM (%)',
-
-                // Dados que vão ser plotados no gráfico
-                data: [48, 52, 60, 64, 66, 72, 72],
-
-                // Cor da Linha
-                borderColor: '#FF0000',
-
-                // Fundo que fica abaixo da Linha
-                backgroundColor: '#b5b5b550',
-                // Esse comando vai servir pra realmente preencher abaixo da linha
-                fill: true,
-
-                // Grossura da linha
-                borderWidth: 2,
-
-                // Tension serve pra medir a tensão da Linha do gráfico.
-                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
-                tension: 0.5,
-                pointBackgroundColor: "#FF0000" // Mudando cor da bolinha
-            }]
-        },
-
-        // OPTIONS: São os ajustes gerais do desenho do gráfico
-        options: {
-            scales: {
-                x: {
-                    grid: {
-                        display: false
-                    }
-                },
-                y: {
-                    // Garante que a lateral esquerda comece do número ZERO. 
-                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
-                    beginAtZero: true,
-                    min: 0,
-                    max: 100,
-
-                    ticks: {
-                        stepsize: 20 // Faz ir de 20 em 20 a porcentagem
-                    },
-
-                    grid: {
-                        display: false
-                    }
-                }
-            }
-        }
-    });
-
-    // Último é o de Latência
-    new Chart(graficoLatencia, {
-        type: 'line', // O tipo de gráfico.
-        // Dando os dados
-        data: {
-
-            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
-            labels: ['10h00', '10h30', '11h00', '11h30', '12h00', '12h30', '13h00'],
-
-            // DataSet: As linhas, sua legenda e etc
-            datasets: [{
-                // Nome da Legenda e que aparece encima
-                label: 'Latência (ms)',
-
-                // Dados que vão ser plotados no gráfico
-                data: [11, 14, 16, 12, 22, 32, 38],
-
-                // Cor da Linha
-                borderColor: '#21C45D',
-
-                // Fundo que fica abaixo da Linha
-                backgroundColor: '#b5b5b550',
-                // Esse comando vai servir pra realmente preencher abaixo da linha
-                fill: true,
-
-                // Grossura da linha
-                borderWidth: 2,
-
-                // Tension serve pra medir a tensão da Linha do gráfico.
-                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
-                tension: 0.5,
-                pointBackgroundColor: "#21C45D" // Mudando cor da bolinha
-            }]
-        },
-
-        // OPTIONS: São os ajustes gerais do desenho do gráfico
-        options: {
-            scales: {
-                x: {
-                    grid: {
-                        display: false
-                    }
-                },
-                y: {
-                    // Garante que a lateral esquerda comece do número ZERO. 
-                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
-                    beginAtZero: true,
-                    min: 0,
-                    max: 50,
-
-                    ticks: {
-                        stepsize: 10 // Faz ir de 10 em 10 o gráfico
-                    },
-
-                    grid: {
-                        display: false
-                    }
-                }
-            }
-        }
-    });
-
-    // __________________________________________________________________________________
-    // ==================================================================================
-
-
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
-    let proximaAtualizacao;
-
-    window.onload = function () {
-
-        const usuario = document.getElementById("usuario");
-        usuario.innerHTML = `Olá <b>${sessionStorage.NOME_USUARIO}</b>, boas vindas.`;
-        if (sessionStorage.FK_ADM != "null") {
-            admMenu.style.display = "none";
-        }
 
     }
 
-    // Função pra trocar o Ícone quando for passar o mouse por cima (vulgo hover)
-    function iconTrade() {
-        document.getElementById("iconAtual").src
+    function cadastrarComponente() {
+
+        var componentes = [];
+
+        document.querySelectorAll(".componente-box").forEach(box => {
+
+            var checkbox = box.querySelector("input[type='checkbox']");
+            if (!checkbox || !checkbox.checked) return;
+
+            var grupo = box.closest(".grupo-componente")
+                .querySelector("h6")
+                ?.innerText;
+
+            var grupoNormalizado = normalizar(grupo);
+
+            var fk_componente = mapaComponentes[grupoNormalizado];
+
+            console.log("Grupo:", grupo, "→", grupoNormalizado, "→ FK:", fk_componente);
+
+            var inputs = box.querySelectorAll(".limites input");
+
+            var minimo = Number(inputs[0]?.value);
+            var maximo = Number(inputs[1]?.value);
+
+            var nome = box.querySelector(".titulo-componente")?.innerText;
+
+            var tipo = box.querySelector(".botoes-metrica .ativo")?.innerText;
+
+            let fk_formato = null;
+
+            if (tipo?.includes("%")) fk_formato = 1;
+            else if (tipo?.includes("GHz")) fk_formato = 2;
+            else if (tipo?.includes("GB")) fk_formato = 3;
+            else if (tipo?.includes("ms")) fk_formato = 4;
+            else if (tipo?.includes("°C")) fk_formato = 5;
+            else fk_formato = 1;
+
+            componentes.push({
+                fk_componente,
+                fk_formato,
+                nome_componente: nome,
+                valor_min_critico: minimo,
+                valor_max_critico: maximo,
+                valor_min_atencao: minimo,
+                valor_max_atencao: maximo
+            });
+        });
+
+        console.log("COMPONENTES:", componentes);
+
+        var idServidor = sessionStorage.getItem('idServidor');
+
+        if (!idServidor) {
+            console.log("idServidor não encontrado");
+            return;
+        }
+
+        if (componentes.length === 0) {
+            console.log("Nenhum componente selecionado");
+            return;
+        }
+
+        fetch("http://localhost:3333/componente", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idServidor,
+                componentes
+            })
+        })
+            .then(res => {
+                if (!res.ok) throw "Erro ao cadastrar componentes";
+                return res.json();
+            })
+            .then(data => {
+
+                console.log("RESPOSTA:", data);
+
+                sessionStorage.setItem(
+                    "idsTipo",
+                    JSON.stringify(data.idsTipo)
+                );
+
+                document.getElementById('popUpCadastrarComponente').style.display = 'none';
+                alert("Cadastro realizado!")
+                fecharFunc2();
+
+            })
+            .catch(err => {
+                console.log("ERRO:", err);
+            });
     }
 
-    // ==========================================================================
+    setInterval(carregarServidores, 30000);
+    function carregarServidores() {
+        var totalServidores = 0;
+        var totalCritico = 0;
+        const tabela = document.getElementById("corpo-tabela");
+        const totalServer = document.getElementById("total-servidores")
+        const critico = document.getElementById("serverCritico")
+        const saudavel = document.getElementById("serverSaudavel")
+        var limiteCPU = 1;
+        var limiteRAM = 80;
+        var limiteDisco = 50;
+        tabela.innerHTML = "";
+        let linhas = '';
+        const jaAdicionados = [];
+        const ultimosDados = [];
 
-    function logout() {
-        sessionStorage.clear()
-        window.location = 'index.html';
+        // SUBSTITUIÇÃO: URL direta do arquivo no S3
+        const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
+
+        fetch(urlS3)
+            .then(res => {
+                if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
+                return res.json();
+            })
+            .then(servidores => {
+                servidores.sort((a, b) => {
+                    // Transforma "23-04-2026 12:35:14" em "2026-04-23T12:35:14"
+                    const formatarData = (ts) => {
+                        const [data, hora] = ts.split(' ');
+                        const [dia, mes, ano] = data.split('-');
+                        return new Date(`${ano}-${mes}-${dia}T${hora}`);
+                    };
+
+                    return formatarData(b.timestamp) - formatarData(a.timestamp);
+                });
+
+                servidores.forEach(s => {
+                    if (!jaAdicionados.includes(s.home_broker)) {
+                        jaAdicionados.push(s.home_broker);
+                        ultimosDados.push(s)
+                    }
+                });
+                console.log("Dados que serão inseridos na tabela:")
+                console.log(ultimosDados)
+                ultimosDados.sort((a, b) => (b.cpu_percent || 0) - (a.cpu_percent || 0))
+                ultimosDados.forEach(s => {
+                    const procRelativo = parseFloat(s.processo_maior_consumo.split(' ')[4].replace('%', '')) || 0;
+                    const usoRealCalculado = (procRelativo / 100) * s.cpu_percent;
+                    if (s.cpu_percent > limiteCPU || s.ram_percent > limiteRAM || s.disk_percent > limiteDisco) {
+                        linhas += `
+                            <tr>
+                                <td style="color: red;"><strong>${s.home_broker}</strong></td>
+                                <td style="color: red;"><strong>${s.status || "Critico"}</strong></td>
+                                <td style="color: red;"><strong>${s.timestamp}</strong></td>
+                                <td style="color: red;"><strong>${s.cpu_percent || 0}%</strong></td>
+                                <td style="color: red;"><strong>${s.ram_percent || 0}%</strong></td>
+                                <td style="color: red;"><strong>${s.disk_percent || 0}%</strong></td>
+                                <td style="color: red;"><strong>${s.total_processos || 0}</td>
+                                <td style="color: red;"><strong>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</strong></td>
+                                <td><button onclick="alert('${s.home_broker}')">Ver detalhes</button></td>
+                            </tr>`;
+                            totalServidores++
+                            totalCritico++
+                    } else {
+                        linhas += `
+                            <tr>
+                                <td><strong>${s.home_broker}</strong></td>
+                                <td><strong>${s.status || "Normal"}</strong></td>
+                                <td><strong>${s.timestamp}</strong></td>
+                                <td><strong>${s.cpu_percent || 0}%</strong></td>
+                                <td><strong>${s.ram_percent || 0}%</strong></td>
+                                <td><strong>${s.disk_percent || 0}%</strong></td>
+                                <td><strong>${s.total_processos || 0}</td>
+                                <td><strong>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</strong></td>
+                                <td><button onclick="alert('${s.home_broker}')">Ver detalhes</button></td>
+                            </tr>`;
+                            totalServidores++
+                    }
+
+                });
+                tabela.innerHTML = linhas;
+                totalServer.innerHTML = totalServidores;
+                critico.innerHTML = totalCritico;
+                saudavel.innerHTML = totalServidores - totalCritico;
+
+            })
+            .catch(erro => console.error("ERRO:", erro));
     }
 
-    console.log('----------------------------------------------')
-    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-    console.log(resposta)
+    pesquisarServidores();
+    function pesquisarServidores() {
+        var linhas = ''
+        const jaAdicionados = [];
+        const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
 
-    // Inserindo valores recebidos em estrutura para plotar o gráfico
-    for (i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
-        labels.push(registro.momento_grafico);
-        dados.datasets[0].data.push(registro.umidade);
-        dados.datasets[1].data.push(registro.temperatura);
+        fetch(urlS3)
+            .then(res => {
+                if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
+                return res.json();
+            })
+            .then(servidores => {
+                servidores.forEach(s => {
+                    if (!jaAdicionados.includes(s.home_broker)) {
+                        linhas += `<option value="${s.home_broker}">`
+                        jaAdicionados.push(s.home_broker);
+                    }
+                });
+
+                lista_servidores.innerHTML = linhas;
+
+            })
+            .catch(erro => console.error("ERRO:", erro));
     }
 
-    console.log('----------------------------------------------')
-    console.log('O gráfico será plotado com os respectivos valores:')
-    console.log('Labels:')
-    console.log(labels)
-    console.log('Dados:')
-    console.log(dados.datasets)
-    console.log('----------------------------------------------')
+    function buscarServidor(nomeServidor) {
+        if (nomeServidor.length == 0) {
+            carregarServidores()
+        } else {
+            var limiteCPU = 1;
+            let linhas = '';
+            const jaAdicionados = [];
+            const ultimosDados = [];
 
-    // Criando estrutura para plotar gráfico - config
-    const config = {
-        type: 'line',
-        data: dados,
-    };
+            // SUBSTITUIÇÃO: URL direta do arquivo no S3
+            const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
+
+            fetch(urlS3)
+                .then(res => {
+                    if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
+                    return res.json();
+                })
+                .then(servidores => {
+                    const tabela = document.getElementById("corpo-tabela");
+                    servidores.sort((a, b) => {
+                        // Transforma "23-04-2026 12:35:14" em "2026-04-23T12:35:14"
+                        const formatarData = (ts) => {
+                            const [data, hora] = ts.split(' ');
+                            const [dia, mes, ano] = data.split('-');
+                            return new Date(`${ano}-${mes}-${dia}T${hora}`);
+                        };
+
+                        return formatarData(b.timestamp) - formatarData(a.timestamp);
+                    });
+
+                    servidores.forEach(s => {
+                        if (!jaAdicionados.includes(s.home_broker)) {
+                            jaAdicionados.push(s.home_broker);
+                            ultimosDados.push(s)
+                        }
+                    });
+                    console.log(ultimosDados)
+                    ultimosDados.sort((a, b) => (b.cpu_percent || 0) - (a.cpu_percent || 0))
+                    ultimosDados.forEach(s => {
+                        const procRelativo = parseFloat(s.processo_maior_consumo.split(' ')[4].replace('%', '')) || 0;
+                        const usoRealCalculado = (procRelativo / 100) * s.cpu_percent;
+                        if (s.cpu_percent > limiteCPU && s.home_broker.includes(nomeServidor)) {
+                            linhas += `
+                            <tr>
+                                <td style="color: red;"><strong>${s.home_broker}</strong></td>
+                                <td style="color: red;"><strong>${s.status || "Critico"}</strong></td>
+                                <td style="color: red;"><strong>${s.timestamp}</strong></td>
+                                <td style="color: red;"><strong>${s.cpu_percent || 0}%</strong></td>
+                                <td style="color: red;"><strong>${s.ram_percent || 0}%</strong></td>
+                                <td style="color: red;"><strong>${s.disk_percent || 0}%</strong></td>
+                                <td style="color: red;"><strong>${s.total_processos || 0}</td>
+                                <td style="color: red;"><strong>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</strong></td>
+                                <td><button onclick="alert('${s.home_broker}')">Ver detalhes</button></td>
+                            </tr>`;
+                        } else if (s.home_broker.includes(nomeServidor)) {
+                            linhas += `
+                            <tr>
+                                <td><strong>${s.home_broker}</strong></td>
+                                <td><strong>${s.status || "Normal"}</strong></td>
+                                <td><strong>${s.timestamp}</strong></td>
+                                <td><strong>${s.cpu_percent || 0}%</strong></td>
+                                <td><strong>${s.ram_percent || 0}%</strong></td>
+                                <td><strong>${s.disk_percent || 0}%</strong></td>
+                                <td><strong>${s.total_processos || 0}</td>
+                                <td><strong>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</strong></td>
+                                <td><button onclick="alert('${s.home_broker}')">Ver detalhes</button></td>
+                            </tr>`;
+                        }
+                    });
+
+
+                    tabela.innerHTML = linhas;
+
+                })
+                .catch(erro => console.error("ERRO:", erro));
+        }
+    }
+
+
+    // criarGrafico();
+    // function criarGrafico() {
+    //     // SUBSTITUIÇÃO: URL direta do arquivo no S3
+    //     const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
+    //     let labels = []
+    //     let data = []
+
+    //     fetch(urlS3)
+    //         .then(res => {
+    //             if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
+    //             return res.json();
+    //         })
+    //         .then(servidores => {
+    //             for (i = 0; i <= 5; i++) {
+    //                 var registro = servidores[i];
+    //                 labels.push(registro.timestamp.split(' ')[1]);
+    //                 data.push(registro.cpu_percent);
+    //             }
+
+    //             console.log('----------------------------------------------')
+    //             console.log('O gráfico será plotado com os respectivos valores:')
+    //             console.log('Labels:')
+    //             console.log(labels)
+    //             console.log('Dados:')
+    //             console.log(data)
+    //             console.log('----------------------------------------------')
+
+    //             const ctx = document.getElementById('grafico');
+    //             new Chart(ctx, {
+    //                 type: 'line',
+    //                 data: {
+    //                     labels: [],
+    //                     datasets: [
+    //                         {
+    //                             label: 'CPU (%)',
+    //                             data: [],
+    //                             borderColor: 'rgb(33, 196, 93)',
+    //                             backgroundColor: 'rgba(33, 196, 93, 0.5)',
+    //                             tension: 0.3
+    //                         }
+    //                     ]
+    //                 },
+    //                 options: {
+    //                     responsive: true,
+    //                     maintainAspectRatio: false,
+    //                     scales: {
+    //                         x: {
+    //                             ticks: { color: 'white' }
+    //                         },
+    //                         y: {
+    //                             beginAtZero: true,
+    //                             max: 100,
+    //                             title: {
+    //                                 display: true,
+    //                                 text: 'Uso (%)',
+    //                                 color: 'white'
+    //                             },
+    //                             ticks: { color: 'white' },
+    //                         }
+    //                     },
+    //                     plugins: {
+    //                         legend: {
+    //                             labels: {
+    //                                 color: 'white',
+    //                                 font: {
+    //                                     size: 16
+    //                                 }
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             })
+    //         })
+    //         .catch(erro => console.error("ERRO:", erro));
+    // };
 </script>
