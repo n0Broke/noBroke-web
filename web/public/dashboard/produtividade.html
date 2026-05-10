@@ -31,6 +31,7 @@
     <!-- Importar o Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
 </head>
 
 <body onload="verificarModo()">
@@ -130,9 +131,9 @@
                 <div class="header-esquerdo">
                     <div class="header-esquerdo01">
                         <h3 class="servidor-name" id="server-name">Produtividade da Equipe</h3>
-                        
+
                         <p class="equipe-operacao"> Equipe Operando </p>
-                       
+
                     </div>
 
 
@@ -162,17 +163,15 @@
                             <button class="botao-recarregar" onclick="window.location.reload()"><img id="logoAlerta"
                                     src="../assets/svg/loading-svgrepo-com.svg" alt=""
                                     style="width: 22px; color: white;">
-                            <span>Atualizar</span></button>
+                                <span>Atualizar</span></button>
 
-                            <button class="botao-relatorio"><img id="logoAlerta"
-                                    src="../assets/icon/dowload.png" alt=""
+                            <button class="botao-relatorio"><img id="logoAlerta" src="../assets/icon/dowload.png" alt=""
                                     style="width: 22px;">
-                            <span>Exportar Relatório</span></button>
+                                <span>Exportar Relatório</span></button>
 
-                             <button class="botao-detalhes"><img id="logoAlerta"
-                                    src="../assets/icon/view.png" alt=""
+                            <button class="botao-detalhes"><img id="logoAlerta" src="../assets/icon/view.png" alt=""
                                     style="width: 22px;">
-                            <span>Exportar Relatório</span></button>
+                                <span>Exportar Relatório</span></button>
                         </div>
                     </div>
                 </div>
@@ -187,11 +186,11 @@
                         <h3>Indicadores consolidados de produtividade</h3>
                     </div>
                 </div>
-                
+
 
                 <div class="kpi">
                     <div class="kpi-box">
-                        <img src="../assets/icon/check-mark.png" alt="" width="15px" height="15px" class="kpi-img">
+                        <img src="../assets/icon/check-mark.png" alt="" width="20px" height="20px" class="kpi-img">
 
                         <div class="container-texto-kpi">
                             <p class="kpi-valor"> 300 </p>
@@ -201,7 +200,7 @@
                     </div>
 
                     <div class="kpi-box">
-                        <img src="../assets/icon/check-mark.png" alt="" width="15px" height="15px" class="kpi-img">
+                        <img src="../assets/icon/stopwatch.png" alt="" width="20px" height="20px" class="kpi-img">
 
                         <div class="container-texto-kpi">
                             <p class="kpi-valor"> 27min </p>
@@ -210,7 +209,417 @@
 
                         </div>
                     </div>
+
+                    <div class="kpi-box">
+                        <img src="../assets/icon/notification.png" alt="" width="20px" height="20px"
+                            class="kpi-img-alerta">
+
+                        <div class="container-texto-kpi">
+                            <p class="kpi-valor"> 27min </p>
+                            <p class="kpi-texto">MTTR MÉDIO</p>
+                            <p class="kpi-texto-sub">tempo médio de resolução</p>
+
+                        </div>
+                    </div>
+
+                    <div class="kpi-box">
+                        <img src="../assets/icon/speedometer.png" alt="" width="20px" height="20px" class="kpi-img">
+
+                        <div class="container-texto-kpi">
+                            <p class="kpi-valor"> 94,2% </p>
+                            <p class="kpi-texto">TAXA SLA</p>
+                            <p class="kpi-texto-sub">dentro do acordo</p>
+
+                        </div>
+                    </div>
+
+                    <div class="kpi-box">
+                        <img src="../assets/icon/trend.png" alt="" width="20px" height="20px" class="kpi-img">
+
+                        <div class="container-texto-kpi">
+                            <p class="kpi-valor"> 87 </p>
+                            <p class="kpi-texto">PRODUTIVIDADE GERAL</p>
+                            <p class="kpi-texto-sub">score consolidado</p>
+
+                        </div>
+                    </div>
+
+                    <div class="kpi-box">
+                        <img src="../assets/icon/pulse (1).png" alt="" width="20px" height="20px" class="kpi-img-carga">
+
+                        <div class="container-texto-kpi">
+                            <p class="kpi-valor"> 72% </p>
+                            <p class="kpi-texto">CARGA DE TRABALHO</p>
+                            <p class="kpi-texto-sub">capacidade utilizada</p>
+
+                        </div>
+                    </div>
                 </div>
+            </div>
+
+            <div class="conteudo-dash-flex">
+                <div class="container-tabela">
+                    <div class="tabela-titulo">
+                        <h2>Desempenho por Colaborador</h2>
+                        <h3>Ranking ordenável por métrica de produtividade</h3>
+                    </div>
+
+                    <div class="teste">
+                        <table cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>COLABORADOR</th>
+                                    <th>Resolvidos</th>
+                                    <th>MTTR</th>
+                                    <th>SLA</th>
+                                    <th>Em aberto</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="colaborador">
+                                            <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com.svg"
+                                                alt="" width="30px">
+
+                                            <div class="colaborador-info">
+                                                <p class="colaborador-nome">Marina Albuquerque</p>
+                                                <p class="colaborador-area">Tech Lead</p>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="colaborador-resolvidos">48</td>
+                                    <td class="colaborador-mttr">22min</td>
+                                    <td class="colaborador-sla">98%</td>
+                                    <td class="colaborador-aberto">3</td>
+                                    <td class="colaborador-status">Alto</td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <div class="colaborador">
+                                            <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com.svg"
+                                                alt="" width="30px">
+
+                                            <div class="colaborador-info">
+                                                <p class="colaborador-nome">
+                                                    Rafael Soares</p>
+                                                <p class="colaborador-area">SRE Sênior</p>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="colaborador-resolvidos">42</td>
+                                    <td class="colaborador-mttr">25min</td>
+                                    <td class="colaborador-sla">96%</td>
+                                    <td class="colaborador-aberto">4</td>
+                                    <td class="colaborador-status">Alto</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="colaborador">
+                                            <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com.svg"
+                                                alt="" width="30px">
+
+                                            <div class="colaborador-info">
+                                                <p class="colaborador-nome">Camila Tavares</p>
+                                                <p class="colaborador-area">Analista NOC</p>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="colaborador-resolvidos">39</td>
+                                    <td class="colaborador-mttr">28min</td>
+                                    <td class="colaborador-sla">94%</td>
+                                    <td class="colaborador-aberto">5</td>
+                                    <td class="colaborador-status">Alto</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="colaborador">
+                                            <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com.svg"
+                                                alt="" width="30px">
+
+                                            <div class="colaborador-info">
+                                                <p class="colaborador-nome">Pedro Henrique</p>
+                                                <p class="colaborador-area">SRE Pleno</p>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="colaborador-resolvidos">31</td>
+                                    <td class="colaborador-mttr">34min</td>
+                                    <td class="colaborador-sla">89%</td>
+                                    <td class="colaborador-aberto">7</td>
+                                    <td class="colaborador-status">Médio</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="colaborador">
+                                            <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com.svg"
+                                                alt="" width="30px">
+
+                                            <div class="colaborador-info">
+                                                <p class="colaborador-nome">Larissa Moreno</p>
+                                                <p class="colaborador-area">Analista Infra</p>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="colaborador-resolvidos">28</td>
+                                    <td class="colaborador-mttr">31min</td>
+                                    <td class="colaborador-sla">92%</td>
+                                    <td class="colaborador-aberto">4</td>
+                                    <td class="colaborador-status">Médio</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="colaborador">
+                                            <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com.svg"
+                                                alt="" width="30px">
+
+                                            <div class="colaborador-info">
+                                                <p class="colaborador-nome">Larissa Moreno</p>
+                                                <p class="colaborador-area">Analista Infra</p>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="colaborador-resolvidos">28</td>
+                                    <td class="colaborador-mttr">31min</td>
+                                    <td class="colaborador-sla">92%</td>
+                                    <td class="colaborador-aberto">4</td>
+                                    <td class="colaborador-status">Médio</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="colaborador">
+                                            <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com.svg"
+                                                alt="" width="30px">
+
+                                            <div class="colaborador-info">
+                                                <p class="colaborador-nome">Bruno Carvalho</p>
+                                                <p class="colaborador-area">SRE Júnior</p>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="colaborador-resolvidos">22</td>
+                                    <td class="colaborador-mttr">41min</td>
+                                    <td class="colaborador-sla">85%</td>
+                                    <td class="colaborador-aberto">9</td>
+                                    <td class="colaborador-status">Médio</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="colaborador">
+                                            <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com.svg"
+                                                alt="" width="30px">
+
+                                            <div class="colaborador-info">
+                                                <p class="colaborador-nome">Diego Fontes</p>
+                                                <p class="colaborador-area">Analista NOC</p>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="colaborador-resolvidos">18</td>
+                                    <td class="colaborador-mttr">52min</td>
+                                    <td class="colaborador-sla">78%</td>
+                                    <td class="colaborador-aberto">12</td>
+                                    <td class="colaborador-status">Baixo</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="colaborador">
+                                            <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com.svg"
+                                                alt="" width="30px">
+
+                                            <div class="colaborador-info">
+                                                <p class="colaborador-nome">Juliana Reis</p>
+                                                <p class="colaborador-area">Estagiária</p>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="colaborador-resolvidos">12</td>
+                                    <td class="colaborador-mttr">58min</td>
+                                    <td class="colaborador-sla">74%</td>
+                                    <td class="colaborador-aberto">6</td>
+                                    <td class="colaborador-status">Baixo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <div class="grafico">
+
+                    <div class="grafico-titulo">
+                        <div class="grafico-titulo-column">
+                            <p class="grafico-carga">Distribuição de Carga</p>
+                            <p class="grafico-tarefa">Tarefas em aberto vs. capacidade ideal (10)</p>
+                        </div>
+
+                        <div class="grafico-titulo-sobrecarga">
+                            <p>2 Sobrecarga</p>
+                        </div>
+
+                    </div>
+
+
+                    <div style="position: relative; height: 350px; width: 100%; max-width: 600px;">
+                        <canvas id="meuGrafico"></canvas>
+                    </div>
+
+                    <div class="legenda-alertas">
+                        <div class="item-legenda">
+                            <span class="cor equilibrado"></span>
+                            <p>Equilibrado</p>
+                        </div>
+
+                        <div class="item-legenda">
+                            <span class="cor atencao"></span>
+                            <p>Atenção</p>
+                        </div>
+
+                        <div class="item-legenda">
+                            <span class="cor sobrecarga"></span>
+                            <p>Sobrecarga</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div  class="container-grafico-resposta">
+                <div>
+                    <p class="texto-grafico">Tempo de Resolução</p>
+                    <p class="evolucao-grafico">Evolução nos últimos 14 dias — minutos</p>
+                </div>
+
+                <div class="grafico-resposta">
+                <canvas id="meuGraficoLinha"></canvas>
+                </div>
+            </div>
+
+            <div class="conteudo-dash-flex">
+                <div class="insights">
+                    <div class="container-insights-titulo">
+                        <div class="container-titulo">
+                            <img src="../assets/icon/stars.png" alt="" class="imagem-titulo" width="20px" height="20px">
+                            <div class="bloco-titulo">
+                                <h2>Insights Inteligentes</h2>
+                                <h3>Análise automatizada para tomada de decisão</h3>
+                            </div>
+
+                        </div>
+
+                        <div class="insight-qtd">
+                            <p>5 Insights </p>
+                        </div>
+                    </div>
+
+                    <div class="container-texto-insights">
+                        <div class="texto-insights">
+                            <img src="../assets/icon/trend.png" alt="" width="20px" height="20px" class="kpi-img">
+
+                            <p>A equipe apresentou melhora de 18% no tempo médio de resolução em relação à semana
+                                anterior.
+                            </p>
+                        </div>
+
+                        <div class="texto-insights">
+                            <img src="../assets/icon/warning.png" alt="" width="20px" height="20px" class="img-warning">
+
+                            <p>Sobrecarga identificada em Diego Fontes e Bruno Carvalho — recomenda-se redistribuir 4
+                                tarefas.</p>
+                        </div>
+
+                        <div class="texto-insights">
+                            <img src="../assets/icon/bolt.png" alt="" width="20px" height="20px" class="kpi-img">
+
+                            <p>Alta eficiência no tratamento de incidentes críticos (92%), acima da meta trimestral de
+                                85%.
+                            </p>
+                        </div>
+
+                        <div class="texto-insights">
+                            <img src="../assets/icon/right-down.png" alt="" width="24px" height="24px"
+                                class="img-queda">
+
+                            <p>Queda de 9% na produtividade durante janelas de alta demanda (10h–12h).</p>
+                        </div>
+
+                        <div class="texto-insights">
+                            <img src="../assets/icon/user.png" alt="" width="24px" height="24px" class="img-users">
+
+                            <p>Distribuição de tarefas desigual: top 3 colaboradores absorvem 51% dos chamados.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alerta-produtividade">
+                    <div class="container-insights-titulo">
+                        <div class="container-titulo">
+                            <img src="../assets/icon/bell (1).png" alt="" class="imagem-titulo-sino" width="20px"
+                                height="20px">
+                            <div class="bloco-titulo">
+                                <h2>Alertas de Produtividade</h2>
+                                <h3>Pontos de atenção priorizados</h3>
+                            </div>
+
+                        </div>
+
+                        <div class="alertas-qtd alto">
+                            <p>2 Alertas </p>
+                        </div>
+                    </div>
+
+                    <div class="container-texto-alerta">
+                        <div class="texto-alerta">
+                            <div class="itens-flex">
+                                <div class="item-legenda-alerta">
+                                    <span class="cor-alerta sobrecarga"></span>
+                                    <p>Baixa performance contínua</p>
+                                </div>
+                                <div class="alertas-qtd alto">
+                                    <p> Alto </p>
+                                </div>
+                            </div>
+                            <div class="infos-col">
+                                <p class="nome-col-alerta"> Diego Fontes </p>
+                                <p class="texto-alerta-info">MTTR 92% acima da média da equipe nas últimas 2 semanas.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="texto-alerta">
+                            <div class="itens-flex">
+                                <div class="item-legenda-alerta">
+                                    <span class="cor-alerta atencao"></span>
+                                    <p>Acúmulo de tarefas</p>
+                                </div>
+                                <div class="alertas-qtd medio">
+                                    <p> Médio </p>
+                                </div>
+                            </div>
+                            <div class="infos-col">
+                                <p class="nome-col-alerta"> Diego Fontes </p>
+                                <p class="texto-alerta-info">MTTR 92% acima da média da equipe nas últimas 2 semanas.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
             <!-- <div class="tabela-container">
                 <table class="tabela-servidores" style="background-color: var(--pretoClaro);">
@@ -364,163 +773,127 @@
         cardAlerta.style.display = "none"
     }
 
-    // criarGrafico();
-    // function criarGrafico() {
-    //     // SUBSTITUIÇÃO: URL direta do arquivo no S3
-    //     const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
-    //     let labels = []
-    //     let data = []
 
-    //     fetch(urlS3)
-    //         .then(res => {
-    //             if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
-    //             return res.json();
-    //         })
-    //         .then(servidores => {
-    //             for (i = 0; i <= 5; i++) {
-    //                 var registro = servidores[i];
-    //                 labels.push(registro.timestamp.split(' ')[1]);
-    //                 data.push(registro.cpu_percent);
-    //             }
 
-    //             console.log('----------------------------------------------')
-    //             console.log('O gráfico será plotado com os respectivos valores:')
-    //             console.log('Labels:')
-    //             console.log(labels)
-    //             console.log('Dados:')
-    //             console.log(data)
-    //             console.log('----------------------------------------------')
+    const ctx = document.getElementById('meuGrafico');
 
-    //             const ctx = document.getElementById('grafico');
-    //             new Chart(ctx, {
-    //                 type: 'line',
-    //                 data: {
-    //                     labels: [],
-    //                     datasets: [
-    //                         {
-    //                             label: 'CPU (%)',
-    //                             data: [],
-    //                             borderColor: 'rgb(33, 196, 93)',
-    //                             backgroundColor: 'rgba(33, 196, 93, 0.5)',
-    //                             tension: 0.3
-    //                         }
-    //                     ]
-    //                 },
-    //                 options: {
-    //                     responsive: true,
-    //                     maintainAspectRatio: false,
-    //                     scales: {
-    //                         x: {
-    //                             ticks: { color: 'white' }
-    //                         },
-    //                         y: {
-    //                             beginAtZero: true,
-    //                             max: 100,
-    //                             title: {
-    //                                 display: true,
-    //                                 text: 'Uso (%)',
-    //                                 color: 'white'
-    //                             },
-    //                             ticks: { color: 'white' },
-    //                         }
-    //                     },
-    //                     plugins: {
-    //                         legend: {
-    //                             labels: {
-    //                                 color: 'white',
-    //                                 font: {
-    //                                     size: 16
-    //                                 }
-    //                             }
-    //                         }
-    //                     }
-    //                 }
-    //             })
-    //         })
-    //         .catch(erro => console.error("ERRO:", erro));
-    // };
-
-    const ctx = document.getElementById('grafico');
     new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
-            labels: ['10h', '11h', '12h', '13h', '14h', '15h'],
-            datasets: [
-                {
-                    label: 'CPU (%)',
-                    data: [20, 20, 25, 28, 35, 80],
-                    borderColor: 'rgb(33, 196, 93)',
-                    backgroundColor: 'rgba(33, 196, 93, 0.5)',
-                    tension: 0.3
-                }
-            ]
+            labels: ['MA', 'RS', 'CT', 'PH', 'LM', 'BC', 'DF', 'JR'],
+            datasets: [{
+                data: [3, 4, 5, 7, 4, 9, 12, 6],
+
+                categoryPercentage: 0.8,
+                barPercentage: 0.9,
+
+                backgroundColor: [
+                    '#41d17d',
+                    '#41d17d',
+                    '#41d17d',
+                    '#f0c328',
+                    '#41d17d',
+                    '#ff4d57',
+                    '#ff4d57',
+                    '#f0c328'
+                ],
+
+                borderRadius: 5,
+                borderSkipped: false
+            }]
         },
+
         options: {
+            indexAxis: 'y',
+
             responsive: true,
+
             maintainAspectRatio: false,
-            scales: {
-                x: {
-                    ticks: { color: 'white' }
-                },
-                y: {
-                    beginAtZero: true,
-                    max: 100,
-                    title: {
-                        display: true,
-                        text: 'Uso (%)',
-                        color: 'white'
-                    },
-                    ticks: { color: 'white' },
-                }
-            },
+
             plugins: {
                 legend: {
-                    labels: {
-                        color: 'white',
-                        font: {
-                            size: 16
-                        }
+                    display: false
+                }
+            },
+
+            scales: {
+                x: {
+                    beginAtZero: true,
+
+                    grid: {
+                        color: '#2b2f3a',
+                        borderDash: [4, 4]
+                    },
+
+                    ticks: {
+                        color: '#9ca3af'
+                    }
+                },
+
+                y: {
+                    grid: {
+                        display: false
+                    },
+
+                    ticks: {
+                        color: '#9ca3af'
                     }
                 }
             }
         }
-    })
+    });
 
-    carregarServidores();
+    const ctxa = document.getElementById('meuGraficoLinha');
 
-    setInterval(carregarServidores, 30000);
-    function carregarServidores() {
-        let linhas = '';
-        // SUBSTITUIÇÃO: URL direta do arquivo no S3
-        const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
+    // 1. Criar o gradiente para o preenchimento (fill)
+    const gradient = ctxa.getContext('2d').createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(54, 162, 235, 0.4)'); // Azul mais visível no topo
+    gradient.addColorStop(1, 'rgba(54, 162, 235, 0)');   // Transparente na base
 
-        fetch(urlS3)
-            .then(res => {
-                if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
-                return res.json();
-            })
-            .then(servidores => {
-                const tabela = document.getElementById("corpo-tabela");
+    new Chart(ctxa, {
+        type: 'line',
+        data: {
+            labels: ['D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10', 'D11', 'D12', 'D13', 'D14'],
+            datasets: [{
+                label: 'Tempo de Resolução',
+                data: [38, 39, 39, 38, 38, 36, 38, 35, 36, 32, 32, 28, 25, 25],
 
-                servidores.sort((a, b) => (b.cpu_percent || 0) - (a.cpu_percent || 0));
-                servidores.forEach(s => {
-                    const procRelativo = parseFloat(s.processo_maior_consumo.split(' ')[4].replace('%', '')) || 0;
-                    const usoRealCalculado = (procRelativo / 100) * s.cpu_percent;
-                    linhas += `
-                <tr>
-                    <td><strong>${s.home_broker}</strong></td>
-                    <td>${s.status || "Ativo"}</td>
-                    <td>${s.cpu_percent || 0}%</td>
-                    <td>${s.total_processos || 0}</td>
-                    <td>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</td>
-                    <td>${usoRealCalculado.toFixed(1) || 0}%</td>
-                    <td><button>Ver detalhes</button></td>
-                </tr>`;
-                });
+                // Estilo da Linha
+                borderColor: '#36a2eb',
+                borderWidth: 2,
+                tension: 0.4,           // Suaviza a curva (deixa arredondado)
+                pointRadius: 0,         // Esconde os pontos para ficar limpo como na imagem
 
-                tabela.innerHTML = linhas;
+                // Estilo do Preenchimento
+                fill: true,
+                backgroundColor: gradient, // Usa o gradiente que criamos acima
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false } // Esconde a legenda
+            },
+            scales: {
+                x: {
+                    grid: { display: false }, // Esconde as linhas verticais
+                    ticks: { color: '#9ca3af' }
+                },
+                y: {
+                    beginAtZero: true,
+                    max: 40,
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)', // Linhas horizontais bem discretas
+                        borderDash: [5, 5]                  // Deixa as linhas pontilhadas
+                    },
+                    ticks: {
+                        color: '#9ca3af',
+                        stepSize: 10
+                    }
+                }
+            }
+        }
+    });
 
-            })
-            .catch(erro => console.error("ERRO:", erro));
-    }
 </script>
