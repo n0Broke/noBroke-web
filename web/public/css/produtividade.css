@@ -480,7 +480,7 @@ td:first-child {
     margin-bottom: 20px;
 }
 
-.texto-insights p,  {
+.texto-insights p   {
     font-size: 14px;
     color: white;
 }
@@ -586,5 +586,4 @@ p {
 span {
     color: var(--branco);
 }
-
 
