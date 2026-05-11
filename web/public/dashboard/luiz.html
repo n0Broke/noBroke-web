@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | noBroke</title>
+    <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
+
+    <script src="./js/sessao.js"></script>
+    <script>
+        (function () {
+            const modo = sessionStorage.getItem("MODO");
+
+            if (modo == 1) {
+                document.documentElement.style.setProperty('--preto', '#F2F2F2');
+                document.documentElement.style.setProperty('--branco', '#000');
+                document.documentElement.style.setProperty('--pretoClaro', '#fff');
+                document.documentElement.style.setProperty('--brancoCinza', '#1D2025');
+                document.documentElement.style.setProperty('--bordas', '#b5b5b5');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../css/luiz.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/dashResponsivo.css">
+
+    <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Importar o Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body onload="verificarModo()">
+    <div class="container-fluid">
+        <div class="row min-vh-100">
+            <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
+                <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
+                    <span>X</span>
+                </div>
+                <div class="logo-container">
+                    <img id="imgLogo" class="logo-dash img-fluid"
+                        src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
+                </div>
+                <!-- Side Bar - Botões -->
+                <div class="menu_centro">
+                    <!-- Sidebar - Parte 01 -->
+                    <div class="menu01">
+                        <h4 class="titulo_sidebar">PRINCIPAL</h4>
+                        <!-- Página atual -->
+                        <button class="btn-nobroke btn-active">
+                            <span class="icon">
+                                <img id="iconAtual" src="../assets/icon/icons-dashboard/painel-de-controle-hover.png">
+                            </span>
+                            <span class="texto">Dashboard</span>
+                        </button>
+
+                        <a href="servidores.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
+                            </span>
+                            <span class="texto">Servidores</span>
+                        </a>
+
+                        <a href="Alertas.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/notificacao.png">
+                            </span>
+                            <span class="texto">Alertas</span>
+                        </a>
+
+                        <div id="div_relatorios">
+                            <a href="Relatorios.html" class="btn-nobroke">
+                                <span class="icon">
+                                    <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                                </span>
+                                <span class="texto">Relatórios</span>
+                            </a>
+                        </div>
+
+                        <a href="monitoramento.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                            </span>
+                            <span class="texto">Monitoramento</span>
+                        </a>
+                    </div>
+                    <!-- ============================ -->
+                    <div class="menu02">
+                        <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
+
+                        <a href="Configurações.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/config.png">
+                            </span>
+                            <span class="texto">Configurações</span>
+                        </a>
+
+                        <a href="suporte.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
+                            </span>
+                            <span class="texto">Suporte</span>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="user-profile" onclick="window.location.href = 'Configurações.html?aba=perfil'">
+                    <div class="profile-img">
+                        <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil">
+                    </div>
+                    <div class="user-infos">
+                        <p class="username" id="usuario" style="color: var(--branco);"></p>
+                        <span class="cargo" id="cargoFunc" style="color: var(--branco);">Gerente de Infra</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
+                <div class="header-responsividade">
+                    <div>
+                        <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
+                            style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
+                        <span style="color: #7D8999;">Dashboard > Previsão de uso de RAM</span>
+                    </div>
+                    <div id="iconeModo">
+                        <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
+                            style="width: 40px; cursor: pointer; margin-right: 20px;">
+                    </div>
+                </div>
+                <div class="header-topo" style="margin-bottom: 0px;">
+                    <div class="header-esquerdo">
+                        <div class="header-pag-ram">
+                            <h3 class="servidor-name" id="server-name">SRV-DEV-HB-01</h3>
+                            
+                        </div>
+                            <h3 class="descricao-dash" style="color: #b4b4b4;"
+                            >Correlação RAM ↔ SWAP • Janela: última <span>1h</span> • Fonte: dados de exemplo
+                        </h3>              
+                    </div>
+                    <div class="header-topo-direita">
+                        <p class="status-monitoramento" style="margin-right: 10px;">
+                            <span class="dot-pulsante"></span>ao vivo</p>
+                        <button class="botao-alerta"><img id="logoAlerta" src="../assets/svg/bell-svgrepo-com.svg"
+                                alt="" style="width: 22px; color: white;" onclick="window.location.href='Alertas.html'">
+                            Alertas</button>
+                        <button class="botao-exportar"><img src="../assets/svg/download-minimalistic-svgrepo-com.svg"
+                                alt="" style="width: 22px; color: white;"> Exportar</button>
+                    </div>
+                </div>
+
+                <div class="conteudo-dash01">
+                    <div class="cards-geral">
+                        <div class="cards-kpi">
+                            <div class="titulo-cards">
+                                <h1 class="card01-info" style="color: #b4b4b4; font-size: 15px;">
+                                    RAM atual / prevista (60 min)</h1>
+                                </div>
+                                <div class="conteudo-abaixo-cards">
+                                    <h1 id="Valor_RAM">69.4%</h1>
+                                    <h4>Projeção:
+                                        <span id="Projecao_RAM">86.4</span>%
+                                    </h4>
+                                </div>
+                            </div>
+                            <img src="../assets/luiz/cardiogram-laranja-svgrepo-com.svg" alt="">
+                    </div>
+                    <div class="cards-geral">
+                        <div class="cards-kpi">
+                            <div class="titulo-cards">
+                                <h1 class="card01-info" style="color: #b4b4b4; font-size: 15px;">
+                                    Tendência (%/min)</h1>
+                                </div>
+                                <div class="conteudo-abaixo-cards">
+                                    <h1 id="tendencia_min">+0.26 %/min</h1>
+                                    <h4>Subindo • +
+                                        <span id="projecao_minuto">15.4%/h</span>
+                                    </h4>
+                                </div>
+                            </div>
+                            <img src="../assets/luiz/arrow-right-laranja-297-svgrepo-com.svg" alt="">
+                        </div>
+                    <div class="cards-geral">
+                        <div class="cards-kpi">
+                            <div class="titulo-cards">
+                                <h1 class="card01-info" style="color: #b4b4b4; font-size: 15px;">
+                                    Correlação RAM ↔ SWAP</h1>
+                                </div>
+                                <div class="conteudo-abaixo-cards">
+                                    <h1 id="Correlacao_RAM">0.95</h1>
+                                    <h4>Pressão de memória:
+                                        <span id="Projecao_RAM">Forte</span>
+                                    </h4>
+                                </div>
+                            </div>
+                            <img src="../assets/luiz/swap-svgrepo-com.svg" alt="">
+                        </div>
+                        <div class="cards-geral">
+                            <div class="cards-kpi">
+                                <div class="titulo-cards">
+                                    <h1 class="card01-info" style="color: #b4b4b4; font-size: 15px;">
+                                        ETA até saturação</h1>
+                                    </div>
+                                    <div class="conteudo-abaixo-cards">
+                                        <h1 id="Tempo_ETA">1h 23min</h1>
+                                        <h4>100% em
+                                            <span id="Projecao_RAM">2h 5min</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <img src="../assets/luiz/warning-cinza-svgrepo-com.svg" alt="">
+                            </div>
+                </div>
+
+                <div class="conteudo-dash02">
+                    <div class="cards-grafico">
+                        <div class="card-RAM">
+                            <h4 class="titulo-grafico">RAM observada + prevista</h4>
+                            <h2 style="color: #b4b4b4; font-size: 15px;">
+                                Linha cheia = observado • Linha tracejada = previsão linear (próximos 60 min)</h2>
+                            <div class="dashboard-grafico01">
+                                <canvas id="grafico01"></canvas>
+                            </div>
+                            <div class="legenda-grafico">
+                                <img src="../assets/luiz/vector-laranja-svgrepo-com.svg" alt="">
+                                <span class="legenda-ram">RAM observada</span>
+                                <img src="../assets/luiz/vector-amarelo-svgrepo-com.svg" alt="">
+                                <span class="legenda-prevista">RAM prevista</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="conteudo-dash03">
+                    <div class="swap-servidor">
+                        <h4 class="componentes-titulo titulo-dashboards">Memória SWAP</h4>
+                        <h2 style="color: #b4b4b4; font-size: 15px;">
+                            Indicador de pressão sobre a RAM</h2>
+                        <div class="dashboard-grafico02">
+                            <canvas id="grafico02"></canvas>
+                        </div>
+
+                    </div>
+                    <!-- Parte das Legendas - Canto da Direita -->
+                    <div class="dados-servidor">
+                        <div class="card-amostras">
+                            <div class="header-amostras-card">
+                                <p>Últimas Amostras</p>
+                                <span>10 leituras mais recentes</span>
+                            </div>
+                            <div class="ultimas-amostras">
+                                <div class="info-amostras">
+                                    <div class="infos-escrita-amostras">
+                                        <p>Horário</p>
+                                        <div class="linha-amostras">
+                                            <span>RAM</span>
+                                            <span>SWAP</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="resultados_amostras" id="resultado-ultimas-amostras"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+    const nomeCompleto = sessionStorage.NOME_USUARIO
+    // const partes = nomeCompleto.trim().split(" ");
+    // const primeiroNome = partes[0];
+    // usuario.innerHTML = primeiroNome;
+    // cargoFunc.innerHTML = sessionStorage.FUNCAO;
+
+    const root = document.documentElement;
+    const imgModo = document.getElementById("imgModo");
+    const imgLogo = document.getElementById("imgLogo");
+    const imgUser = document.getElementById("imgUser");
+    const logoAlerta = document.getElementById("logoAlerta");
+    const sidebar = document.getElementById("div_lateralAberta");
+
+
+    let modoEscuro = false;
+
+    imgModo.addEventListener("click", mudarModo);
+
+    function fecharAbrirLateral() {
+        const conteudo = document.getElementById("telaPrincipal");
+
+        sidebar.classList.toggle("compacta");
+        conteudo.classList.toggle("expandido");
+
+        if (sidebar.classList.contains("compacta")) {
+            sessionStorage.LATERAL = 1;
+            if (modoEscuro) {
+                imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
+            } else {
+                imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+            }
+        } else {
+            sessionStorage.LATERAL = 0;
+            if (modoEscuro) {
+                imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+            } else {
+                imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+            }
+        }
+    }
+
+    function mudarModo() {
+        modoEscuro = !modoEscuro;
+
+        if (modoEscuro) {
+            sessionStorage.MODO = 1;
+            root.style.setProperty('--preto', '#F2F2F2');
+            root.style.setProperty('--branco', '#000');
+            root.style.setProperty('--pretoClaro', '#fff');
+            root.style.setProperty('--brancoCinza', '#1D2025');
+            root.style.setProperty('--bordas', '#b5b5b5');
+            root.style.setProperty('--branco-transparente', '#0000007c');
+            imgModo.src = "../assets/icon/icons-dashboard/lua-crescente.png";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg"
+            logoAlerta.src = "../assets/svg/alertas/bell-svgrepo-com-preto.svg";
+            if (sidebar.classList.contains("compacta")) {
+                if (modoEscuro) {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
+                } else {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+                }
+            } else {
+                if (modoEscuro) {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+                } else {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+                }
+            }
+        } else {
+            sessionStorage.MODO = 0;
+            root.style.setProperty('--branco', '#fff');
+            root.style.setProperty('--preto', '#000');
+            root.style.setProperty('--pretoClaro', '#1D2025');
+            root.style.setProperty('--brancoCinza', '#b5b5b5');
+            root.style.setProperty('--bordas', '#3a3f45');
+            root.style.setProperty('--branco-transparente', '#ffffff7e');
+            imgModo.src = "../assets/icon/icons-dashboard/brilho-do-sol.png";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg"
+            logoAlerta.src = "../assets/svg/alertas/bell-svgrepo-com.svg";
+            if (sidebar.classList.contains("compacta")) {
+                if (modoEscuro) {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
+                } else {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+                }
+            } else {
+                if (modoEscuro) {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+                } else {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+                }
+            }
+        }
+    }
+
+    function verificarModo() {
+        if (sessionStorage.MODO == 1) {
+            mudarModo()
+        }
+        if (sessionStorage.LATERAL == 1) {
+            fecharAbrirLateral()
+        }
+
+        if (sessionStorage.FK_FUNCAO != 1) {
+            const divRelatorios = document.getElementById("div_relatorios");
+            divRelatorios.style.display = "none";
+            sessionStorage.FUNCAO = "Analista de Infra";
+        } else {
+            sessionStorage.FUNCAO = "Gestor de Infra";
+        }
+    }
+
+
+
+    // ==================================================================================
+    // __________________________________________________________________________________
+    // Criação dos Gráficos Aqui!!
+
+    // Buscando ID dos gŕaficos e criando variáveis deles
+    const graficoRAM = document.getElementById('grafico01').getContext('2d');
+    const graficoSWAP = document.getElementById('grafico02').getContext('2d');
+
+    const gradienteRAM = graficoRAM.createLinearGradient(0, 0, 0, 400);
+    gradienteRAM.addColorStop(0, 'rgba(249, 115, 22, 0.4)'); 
+    gradienteRAM.addColorStop(1, 'rgba(29, 32, 37, 0)');   
+
+    const grandienteSWAP = graficoSWAP.createLinearGradient(0,0,0,400);
+    grandienteSWAP.addColorStop(0, 'rgba(251,191,36, 0.4)');
+    grandienteSWAP.addColorStop(1, 'rgba(29, 32, 37, 0)')
+    
+    new Chart(graficoRAM, {
+        type: 'line',
+        data: {
+            // Labels formatadas como no exemplo (HH:mm)
+            labels: ['11:55 AM', '12:05 PM', '12:15 PM', '12:25 PM', '12:35 PM', '12:45 PM', '12:55 PM', '01:05 PM', '01:15 PM'],
+            datasets: [{
+                label: 'Uso da RAM (%)',
+                // O último valor (85) será o início da nossa linha tracejada (previsão)
+                data: [55, 58, 54, 62, 65, 63, 70, 75, 85],
+
+                fill: true,
+                backgroundColor: gradienteRAM,
+                borderColor: '#f97316',
+                borderWidth: 2,
+                tension: 0.4,
+
+                // Função para mudar a cor da borda da bolinha (para não ficar com contorno diferente entre segmento e o valor normal)
+                pointBorderColor: (ctx) => {
+                    return ctx.dataIndex >= 6 ? '#fbbf24' : '#f97316';
+                },
+                // Lógica para transformar a linha em tracejada na previsão
+                segment: {
+                    borderDash: ctx => ctx.p0DataIndex >= 6 ? [5, 5] : undefined,
+                    borderColor: ctx => ctx.p0DataIndex >= 6 ? '#fbbf24' : undefined
+                }
+
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    grid: {
+                        display: true,
+                        color: 'rgba(255, 255, 255, 0.1)', // Linhas verticais sutis
+                        borderDash: [5, 5]
+                    },
+                    ticks: { color: '#94a3b8' }
+                },
+                y: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 100,
+                    ticks: {
+                        stepSize: 25,
+                        color: '#94a3b8',
+                        callback: (value) => value + '%' // Adiciona o % no eixo Y
+                    },
+                    grid: {
+                        display: true,
+                        color: 'rgba(255, 255, 255, 0.1)', // Linhas horizontais sutis
+                        borderDash: [5, 5]
+                    }
+                }
+            },
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+
+    new Chart(graficoSWAP, {
+        type: 'line', // O tipo de gráfico.
+        // Dando os dados
+        data: {
+            labels: ['11:55 AM', '12:05 PM', '12:15 PM', '12:25 PM', '12:35 PM', '12:45 PM', '12:55 PM', '01:05 PM', '01:15 PM'],
+
+            datasets: [{
+                label: 'Uso da SWAP (%)',
+                data: [48, 52, 60, 64, 66, 72, 72],
+
+
+                fill: true,
+                backgroundColor: grandienteSWAP,
+                borderColor: '#fbbf24',
+                borderWidth: 2,
+                tension: 0.4,
+                tension: 0.5,
+            }]
+        },
+       options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    grid: {
+                        display: true,
+                        color: 'rgba(255, 255, 255, 0.1)', // Linhas verticais sutis
+                        borderDash: [5, 5]
+                    },
+                    ticks: { color: '#94a3b8' }
+                },
+                y: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 100,
+                    ticks: {
+                        stepSize: 25,
+                        color: '#94a3b8',
+                        callback: (value) => value + '%' // Adiciona o % no eixo Y
+                    },
+                    grid: {
+                        display: true,
+                        color: 'rgba(255, 255, 255, 0.1)', // Linhas horizontais sutis
+                        borderDash: [5, 5]
+                    }
+                }
+            },
+            plugins: {
+                legend: { display: false } // Esconde a legenda para focar no gráfico
+            }
+        }
+    });
+
+
+    // __________________________________________________________________________________
+    // ==================================================================================
+
+
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    let proximaAtualizacao;
+
+    window.onload = function () {
+
+        const usuario = document.getElementById("usuario");
+        usuario.innerHTML = `Olá <b>${sessionStorage.NOME_USUARIO}</b>, boas vindas.`;
+        if (sessionStorage.FK_ADM != "null") {
+            admMenu.style.display = "none";
+        }
+
+    }
+
+    // Função pra trocar o Ícone quando for passar o mouse por cima (vulgo hover)
+    function iconTrade() {
+        document.getElementById("iconAtual").src
+    }
+
+    // ==========================================================================
+
+    function logout() {
+        sessionStorage.clear()
+        window.location = 'index.html';
+    }
+
+    console.log('----------------------------------------------')
+    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+    console.log(resposta)
+
+    // Inserindo valores recebidos em estrutura para plotar o gráfico
+    for (i = 0; i < resposta.length; i++) {
+        var registro = resposta[i];
+        labels.push(registro.momento_grafico);
+        dados.datasets[0].data.push(registro.umidade);
+        dados.datasets[1].data.push(registro.temperatura);
+    }
+
+    console.log('----------------------------------------------')
+    console.log('O gráfico será plotado com os respectivos valores:')
+    console.log('Labels:')
+    console.log(labels)
+    console.log('Dados:')
+    console.log(dados.datasets)
+    console.log('----------------------------------------------')
+
+    // Criando estrutura para plotar gráfico - config
+    const config = {
+        type: 'line',
+        data: dados,
+    };
+</script>
