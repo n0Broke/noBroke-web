@@ -353,116 +353,7 @@
                                 </div>
                             </div>
                             <!-- Daqui pra baixo o Scroll de funcionários -->
-                            <div class="equipeScroll">
-                                <div class="equipeUsuarios usuario01">
-                                    <div class="funcionario-esquerda">
-                                        <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com-hover.svg"
-                                            alt="profile-pic" class="equipeUsuarioFoto">
-                                        <div class="funcionarioDados">
-                                            <h4 class="username">Douglas</h4>
-                                            <span class="useremail">Douglas@outlook.com.br</span>
-                                        </div>
-                                    </div>
-                                    <div class="funcionario-direita">
-                                        <div class="funcionarioCargo">
-                                            <h6>Gerente</h6>
-                                            <span>Infraestrutura</span>
-                                        </div>
-                                        <span class="statusFuncionario">Ativo</span>
-                                        <img class="imgLapis" src="../assets/svg/configuracoes/pen-svgrepo-com.svg"
-                                            alt="personalizarFuncionario">
-                                        <img src="../assets/svg/configuracoes/trash-alt-svgrepo-com.svg"
-                                            alt="excluirFuncionario">
-                                    </div>
-                                </div>
-
-                                <div class="equipeUsuarios usuario02">
-                                    <div class="funcionario-esquerda">
-                                        <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com-hover.svg"
-                                            alt="profile-pic" class="equipeUsuarioFoto">
-                                        <div class="funcionarioDados">
-                                            <h4>Lucas</h4>
-                                            <span>Lucas@outlook.com.br</span>
-                                        </div>
-                                    </div>
-                                    <div class="funcionario-direita">
-                                        <div class="funcionarioCargo">
-                                            <h6>Análista</h6>
-                                            <span>Infraestrutura</span>
-                                        </div>
-                                        <span class="statusFuncionario">Ativo</span>
-                                        <img class="imgLapis" src="../assets/svg/configuracoes/pen-svgrepo-com.svg"
-                                            alt="personalizarFuncionario">
-                                        <img src="../assets/svg/configuracoes/trash-alt-svgrepo-com.svg"
-                                            alt="excluirFuncionario">
-                                    </div>
-                                </div>
-
-                                <div class="equipeUsuarios usuario03">
-                                    <div class="funcionario-esquerda">
-                                        <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com-hover.svg"
-                                            alt="profile-pic" class="equipeUsuarioFoto">
-                                        <div class="funcionarioDados">
-                                            <h4>Luiz</h4>
-                                            <span>Luiz@outlook.com.br</span>
-                                        </div>
-                                    </div>
-                                    <div class="funcionario-direita">
-                                        <div class="funcionarioCargo">
-                                            <h6>Análista</h6>
-                                            <span>Infraestrutura</span>
-                                        </div>
-                                        <span class="statusFuncionario">Ativo</span>
-                                        <img class="imgLapis" src="../assets/svg/configuracoes/pen-svgrepo-com.svg"
-                                            alt="personalizarFuncionario">
-                                        <img src="../assets/svg/configuracoes/trash-alt-svgrepo-com.svg"
-                                            alt="excluirFuncionario">
-                                    </div>
-                                </div>
-
-                                <div class="equipeUsuarios usuario04">
-                                    <div class="funcionario-esquerda">
-                                        <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com-hover.svg"
-                                            alt="profile-pic" class="equipeUsuarioFoto">
-                                        <div class="funcionarioDados">
-                                            <h4>Rafaela</h4>
-                                            <span>Rafael@outlook.com.br</span>
-                                        </div>
-                                    </div>
-                                    <div class="funcionario-direita">
-                                        <div class="funcionarioCargo">
-                                            <h6>Gerente</h6>
-                                            <span>Infraestrutura</span>
-                                        </div>
-                                        <span class="statusFuncionario">Ativo</span>
-                                        <img class="imgLapis" src="../assets/svg/configuracoes/pen-svgrepo-com.svg"
-                                            alt="personalizarFuncionario">
-                                        <img src="../assets/svg/configuracoes/trash-alt-svgrepo-com.svg"
-                                            alt="excluirFuncionario">
-                                    </div>
-                                </div>
-
-                                <div class="equipeUsuarios usuario05">
-                                    <div class="funcionario-esquerda">
-                                        <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com-hover.svg"
-                                            alt="profile-pic" class="equipeUsuarioFoto">
-                                        <div class="funcionarioDados">
-                                            <h4>Luiza</h4>
-                                            <span>Luiza@outlook.com.br</span>
-                                        </div>
-                                    </div>
-                                    <div class="funcionario-direita">
-                                        <div class="funcionarioCargo">
-                                            <h6>Análista</h6>
-                                            <span>Infraestrutura</span>
-                                        </div>
-                                        <span class="statusFuncionario">Ativo</span>
-                                        <img class="imgLapis" src="../assets/svg/configuracoes/pen-svgrepo-com.svg"
-                                            alt="personalizarFuncionario">
-                                        <img src="../assets/svg/configuracoes/trash-alt-svgrepo-com.svg"
-                                            alt="excluirFuncionario">
-                                    </div>
-                                </div>
+                            <div class="equipeScroll" id="equipeScroll">
                                 <!-- --------------------------------------------------------------------- -->
                             </div>
                         </div>
@@ -652,6 +543,13 @@
                     </div>
                 </div>
                 <div class="popUpFuncionario-Senha">
+                    <label class="label-title d-flex justify-content-start" for="formGroupExampleInput"
+                        class="form-label">
+                        <h6>CPF do Administrador*</h6>
+                    </label>
+                    <input type="text" maxlength="11" id="cpfAdm_input" placeholder="Ex.: 123.456.789-00" />
+                </div>
+                <div class="popUpFuncionario-Senha">
                     <h6>Senha</h6>
                     <input type="password" id="senhaFunc_input" placeholder="Insira a Senha do Usuário">
                 </div>
@@ -683,6 +581,7 @@
     const usuario = document.querySelectorAll('.username')
     const emailUsuario = document.querySelectorAll('.useremail')
     const cargo = document.querySelectorAll('.cargoFunc')
+    const tabela = document.getElementById("corpo-tabela");
 
     usuario.forEach(usuario => {
         usuario.innerHTML = primeiroNome;
@@ -904,6 +803,10 @@
     // ===================================================================
     // Função de Cadastrar Funcionário
 
+    window.addEventListener("load", () => { // quando a pagina carregar lista os func
+        listarFuncionarios();
+    });
+
     function cadastrarFunc() {
         console.log("Entrei no Cadastrar Funcionário")
         //Recupere o valor da nova input pelo nome do id
@@ -911,12 +814,15 @@
         var nomeFuncVar = nomeFunc_input.value.trim();
         var emailFuncVar = emailFunc_input.value.trim();
         var cargoFuncVar = cargosEscolher_input.value.trim();
+        var cpfFuncVar = cpfAdm_input.value.trim();
         var senhaFuncVar = senhaFunc_input.value.trim();
+
 
         console.log(
             nomeFuncVar,
             emailFuncVar,
             cargoFuncVar,
+            cpfFuncVar,
             senhaFuncVar
         );
 
@@ -925,7 +831,9 @@
             nomeFuncVar == "" ||
             emailFuncVar == "" ||
             cargoFuncVar == "#" ||
+            cpfFuncVar == "" ||
             senhaFuncVar == ""
+
         ) {
             alert("Mensagem de Erro! Algum Campo está em branco!");
             return false;
@@ -995,6 +903,7 @@
                 nomeFuncServer: nomeFuncVar,
                 emailFuncServer: emailFuncVar,
                 cargoFuncServer: cargoFuncVar,
+                cpfFuncServer: cpfFuncVar,
                 senhaFuncServer: senhaFuncVar,
                 idAdmServer: sessionStorage.getItem("ID_USUARIO"),
                 idEmpresaServer: sessionStorage.getItem("FK_EMPRESA"),
@@ -1005,12 +914,11 @@
 
                 if (resposta.ok) {
                     console.log("Entrei no fetch")
+                    fecharFunc();
 
-                    setTimeout(() => {
-                        window.location.href = "Configurações.html";
-                    }, "2000");
+                    listarFuncionarios();
                 } else {
-                    console.log(nomeFuncVar, emailFuncVar, cargoFuncVar, senhaFuncVar);
+                    console.log(nomeFuncVar, emailFuncVar, cargoFuncVar, cpfFuncServer, senhaFuncVar);
                     throw "Houve um erro ao tentar realizar o Cadastro do Funcionário!";
                 }
             })
@@ -1020,5 +928,44 @@
 
         return false;
     }
+
+    function listarFuncionarios() {
+        fetch("/cadastroFuncionario/listar")
+            .then(res => res.json())
+            .then(funcionarios => {
+                var linhas = "";
+
+                funcionarios.forEach(f => {
+                    linhas += `
+                <div class="equipeUsuarios">
+                                    <div class="funcionario-esquerda">
+                                    
+                                        <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com-hover.svg"
+                                            alt="profile-pic" class="equipeUsuarioFoto">
+                                        <div class="funcionarioDados">
+                                            <h4 class="username">${f.nome}</h4>
+                                            <span class="useremail">${f.email}</span>
+                                        </div>
+                                    </div>
+                                    <div class="funcionario-direita">
+                                        <div class="funcionarioCargo">
+                                            <h6>${f.nome_funcao}</h6>
+                                        </div>
+                                        <span class="statusFuncionario">${f.status}</span>
+                                        <img class="imgLapis" src="../assets/svg/configuracoes/pen-svgrepo-com.svg"
+                                            alt="personalizarFuncionario">
+                                        <img src="../assets/svg/configuracoes/trash-alt-svgrepo-com.svg"
+                                            alt="excluirFuncionario">
+                                    </div>
+                                </div>
+                `
+
+                })
+
+                document.getElementById("equipeScroll").innerHTML = linhas;
+            });
+    }
+
+
     // =============================================
 </script>

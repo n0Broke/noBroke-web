@@ -8,6 +8,7 @@ function cadastrar(req, res) {
   var idAdm = req.body.idAdmServer;
   var cargoFunc = req.body.cargoFuncServer; 
   var idEmpresa = req.body.idEmpresaServer;
+  var cpf = req.body.cpfFuncServer;
 
   // Faça as validações dos valores
   if (nome == undefined) {
@@ -21,11 +22,13 @@ function cadastrar(req, res) {
   } else if (cargoFunc == undefined) {
     res.status(400).send("Seu Cargo está undefined!");
   } else if (idEmpresa == undefined) {
-    res.status(400).send("Seu ID de Empresa está undefined!");
-  } else {
+    res.status(400).send("Seu ID de Empresa está undefined!"); 
+  } else if (cpf == undefined) {
+    res.status(400).send("CPF está undefined!");
+   } else {
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
     cadastroFuncionarioModel
-      .cadastrar(nome, email, senha, idAdm, cargoFunc, idEmpresa)
+      .cadastrar(nome, email, cpf, senha, idAdm, cargoFunc, idEmpresa)
       .then(function (resultado) {
         res.json(resultado);
       })
@@ -40,6 +43,18 @@ function cadastrar(req, res) {
   }
 }
 
+function listar(req, res) {
+  cadastroFuncionarioModel.listar()
+    .then(function(resultado) {
+      res.json(resultado)
+    })
+    .catch(function(erro) {
+      console.log(erro);
+      res.status(500).send(erro);
+    });
+}
+
 module.exports = {
   cadastrar,
+  listar
 };

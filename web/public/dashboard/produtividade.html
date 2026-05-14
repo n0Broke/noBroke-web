@@ -149,10 +149,10 @@
                             <div class="header-botoes-dia">
                                 <button class="botao-dia"> Hoje </button>
                                 <button class="botao-dia botao-selecionado"> Última Semana</button>
-                                <button class="botao-dia"> Último Mês </button>
+                                <button class="botao-dia"> Último Mês </button>                             
                             </div>
 
-
+                            
                             <select name="" id="" class="select-atividades">
                                 <option value="" selected>Todas Atividades</option>
                                 <option value="">Incidentes</option>
@@ -472,7 +472,7 @@
 
 
                     <div style="position: relative; height: 350px; width: 100%; max-width: 600px;">
-                        <canvas id="meuGrafico"></canvas>
+                        <canvas id="GraficoBarra"></canvas>
                     </div>
 
                     <div class="legenda-alertas">
@@ -504,7 +504,7 @@
                 </div>
 
                 <div class="grafico-resposta">
-                <canvas id="meuGraficoLinha"></canvas>
+                <canvas id="GraficoLinha"></canvas>
                 </div>
             </div>
 
@@ -621,23 +621,6 @@
 
 
             </div>
-            <!-- <div class="tabela-container">
-                <table class="tabela-servidores" style="background-color: var(--pretoClaro);">
-                    <thead>
-                        <tr>
-                            <th>Servidor</th>
-                            <th>Status</th>
-                            <th>uso de CPU (%)</th>
-                            <th>Processos</th>
-                            <th>Proc com maior uso de CPU</th>
-                            <th>Uso da CPU pelo maior processo</th>
-                            <th>Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="corpo-tabela">
-                    </tbody>
-                </table>
-            </div> -->
         </div>
     </div>
     <div class="card-alertaGeral" id="div_alertaGeral">
@@ -775,7 +758,7 @@
 
 
 
-    const ctx = document.getElementById('meuGrafico');
+    const ctx = document.getElementById('GraficoBarra');
 
     new Chart(ctx, {
         type: 'bar',
@@ -843,12 +826,11 @@
         }
     });
 
-    const ctxa = document.getElementById('meuGraficoLinha');
+    const ctxa = document.getElementById('GraficoLinha');
 
-    // 1. Criar o gradiente para o preenchimento (fill)
     const gradient = ctxa.getContext('2d').createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(54, 162, 235, 0.4)'); // Azul mais visível no topo
-    gradient.addColorStop(1, 'rgba(54, 162, 235, 0)');   // Transparente na base
+    gradient.addColorStop(0, 'rgba(54, 162, 235, 0.4)'); 
+    gradient.addColorStop(1, 'rgba(54, 162, 235, 0)'); 
 
     new Chart(ctxa, {
         type: 'line',
@@ -858,34 +840,32 @@
                 label: 'Tempo de Resolução',
                 data: [38, 39, 39, 38, 38, 36, 38, 35, 36, 32, 32, 28, 25, 25],
 
-                // Estilo da Linha
                 borderColor: '#36a2eb',
                 borderWidth: 2,
-                tension: 0.4,           // Suaviza a curva (deixa arredondado)
-                pointRadius: 0,         // Esconde os pontos para ficar limpo como na imagem
+                tension: 0.4,     
+                pointRadius: 0,  
 
-                // Estilo do Preenchimento
                 fill: true,
-                backgroundColor: gradient, // Usa o gradiente que criamos acima
+                backgroundColor: gradient, 
             }]
         },
         options: {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: { display: false } // Esconde a legenda
+                legend: { display: false } 
             },
             scales: {
                 x: {
-                    grid: { display: false }, // Esconde as linhas verticais
+                    grid: { display: false }, 
                     ticks: { color: '#9ca3af' }
                 },
                 y: {
                     beginAtZero: true,
                     max: 40,
                     grid: {
-                        color: 'rgba(255, 255, 255, 0.05)', // Linhas horizontais bem discretas
-                        borderDash: [5, 5]                  // Deixa as linhas pontilhadas
+                        color: 'rgba(255, 255, 255, 0.05)',
+                        borderDash: [5, 5]                 
                     },
                     ticks: {
                         color: '#9ca3af',

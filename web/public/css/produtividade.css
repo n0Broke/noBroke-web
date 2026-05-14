@@ -18,7 +18,8 @@
     border-radius: 10px;
 }
 
-.header-esquerdo-prod{
+.header-esquerdo-prod, 
+.colaborador-info{
     display: flex;
     flex-direction: column;
 
@@ -263,10 +264,6 @@ td:first-child {
     align-items: center;
 }
 
-.colaborador-info {
-    display: flex;
-    flex-direction: column;
-}
 
 .colaborador-nome {
     font-weight: 500;
@@ -274,12 +271,10 @@ td:first-child {
     white-space: nowrap;
 }
 
-.colaborador-area {
-    font-size: 12px;
-}
 
 .colaborador-resolvidos,
 .colaborador-mttr,
+.colaborador-area,
 .colaborador-sla,
 .colaborador-aberto,
 .colaborador-status {
@@ -587,3 +582,48 @@ span {
     color: var(--branco);
 }
 
+
+@media (max-width: 500px) {
+   .header-atualizacao, .container-header-opc {
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    align-items: center;
+   }
+
+   .header-atualizacao p {
+    font-size: 12px;
+   }
+
+   .header-botoes-dia {
+    width: 300px;
+    padding: 0;
+    height: 30px;
+   }
+
+   .select-atividades ,.botao-recarregar, .botao-relatorio, .botao-detalhes{
+    width: 50%;
+    text-align: center;
+   }
+
+   .kpi { 
+    flex-wrap: wrap;
+    flex-direction: column;
+    display: flex;
+   }
+
+   .kpi-box {
+    width: 40px !important;
+    display: flex;
+    flex-direction: column;
+   }
+
+ 
+   
+
+   
+}
+
+@media (min-width: 501px) and (max-width: 1599px) {
+    
+}
