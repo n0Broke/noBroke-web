@@ -581,7 +581,34 @@ p {
 span {
     color: var(--branco);
 }
+.titulo-cards-servidores {
+    gap:10px ;
+    display: flex;
+    align-items: center;
+}
 
+
+.alinhar-dash ,.kpi-relatorio{
+    margin-top: 20px;
+}
+
+.scroll-tabela {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #a4a4a4;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff5500;
+    border-radius: 5px;
+}
 
 @media (max-width: 500px) {
    .header-atualizacao, .container-header-opc {
