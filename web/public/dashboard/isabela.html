@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | noBroke</title>
+    <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
+
+    <script src="./js/sessao.js"></script>
+    <script>
+        (function () {
+            const modo = sessionStorage.getItem("MODO");
+
+            if (modo == 1) {
+                document.documentElement.style.setProperty('--preto', '#F2F2F2');
+                document.documentElement.style.setProperty('--branco', '#000');
+                document.documentElement.style.setProperty('--pretoClaro', '#fff');
+                document.documentElement.style.setProperty('--brancoCinza', '#1D2025');
+                document.documentElement.style.setProperty('--bordas', '#b5b5b5');
+            }
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../css/isa.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/dashResponsivo.css">
+
+    <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Importar o Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body onload="verificarModo()">
+    <div class="container-fluid">
+        <div class="row min-vh-100">
+            <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
+                <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
+                    <span>X</span>
+                </div>
+                <div class="logo-container">
+                    <img id="imgLogo" class="logo-dash img-fluid"
+                        src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
+                </div>
+                <!-- Side Bar - Botões -->
+                <div class="menu_centro">
+                    <!-- Sidebar - Parte 01 -->
+                    <div class="menu01">
+                        <h4 class="titulo_sidebar">PRINCIPAL</h4>
+                        <!-- Página atual -->
+                        <button class="btn-nobroke btn-active">
+                            <span class="icon">
+                                <img id="iconAtual" src="../assets/icon/icons-dashboard/painel-de-controle-hover.png">
+                            </span>
+                            <span class="texto">Dashboard</span>
+                        </button>
+
+                        <a href="servidores.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
+                            </span>
+                            <span class="texto">Servidores</span>
+                        </a>
+
+                        <a href="Alertas.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/notificacao.png">
+                            </span>
+                            <span class="texto">Alertas</span>
+                        </a>
+
+                        <div id="div_relatorios">
+                            <a href="produtividade.html" class="btn-nobroke">
+                                <span class="icon">
+                                    <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                                </span>
+                                <span class="texto">Equipe</span>
+                            </a>
+                        </div>
+
+                        <a href="monitoramento.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                            </span>
+                            <span class="texto">Monitoramento</span>
+                        </a>
+                    </div>
+                    <!-- ============================ -->
+                    <div class="menu02">
+                        <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
+
+                        <a href="Configurações.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/config.png">
+                            </span>
+                            <span class="texto">Configurações</span>
+                        </a>
+
+                        <a href="suporte.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
+                            </span>
+                            <span class="texto">Suporte</span>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="user-profile" onclick="window.location.href = 'Configurações.html?aba=perfil'">
+                    <div class="profile-img">
+                        <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil">
+                    </div>
+                    <div class="user-infos">
+                        <p class="username" id="usuario" style="color: var(--branco);"></p>
+                        <span class="cargo" id="cargoFunc" style="color: var(--branco);">Gerente de Infra</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Header 1-->
+            <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
+                <div class="header-responsividade">
+                    <div>
+                        <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
+                            style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
+
+                        <span style="color: #7D8999;">
+                            Dashboard > Monitoramento HTTP
+                        </span>
+                    </div>
+
+                    <div id="iconeModo">
+                        <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
+                            style="width: 40px; cursor: pointer; margin-right: 20px;">
+                    </div>
+                </div>
+
+                <!-- header 2 -->
+                <div class="header-http">
+
+                    <div class="header-esquerdo">
+
+                        <div class="header-http-titulo">
+                            <h3 class="servidor-name" id="server-name">
+                                SRV-DEV-HB-01
+                            </h3>
+                        </div>
+
+                        <h3 class="descricao-http">
+                            Análise de requisições HTTP e impacto de incidentes
+                            de infraestrutura nas operações financeiras.
+                        </h3>
+
+                    </div>
+
+                    <div class="header-http-direita">
+
+                        <button class="botao-alerta">
+                            <img id="logoAlerta" src="../assets/svg/bell-svgrepo-com.svg" style="width: 22px;"
+                                onclick="window.location.href='Alertas.html'">
+
+                            Alertas
+                        </button>
+
+                        <button class="botao-exportar">
+
+                            <img src="../assets/svg/download-minimalistic-svgrepo-com.svg" style="width: 22px;">
+
+                            Exportar
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <hr style="width: 100%; color: #18191b; height: 1px;">
+
+                <!-- KPI -->
+                <div class="body-kpi">
+
+                    <!-- KPI 1 -->
+                    <div class="kpi-http">
+
+                        <div class="conteudo-kpi-esquerda">
+
+                            <p>Volume de requisições</p>
+
+                            <span style="font-size: xx-large;">
+                                26.7M
+                            </span>
+
+                            <span>
+                                janela atual
+                            </span>
+
+                            <div class="legenda-kpi">
+                                <span>+12% últimos 15 min</span>
+                            </div>
+
+                        </div>
+
+                        <div class="imagem-kpi-direita">
+                            <img src="../assets/isabela/elevacao.png">
+                        </div>
+
+                    </div>
+
+                    <!-- KPI 2 -->
+                    <div class="kpi-http">
+
+                        <div class="conteudo-kpi-esquerda">
+
+                            <p>Latência p95 ordens</p>
+
+                            <span style="font-size: xx-large;">
+                                62ms
+                            </span>
+
+                            <span>
+                                95% abaixo desse tempo
+                            </span>
+
+                            <div class="legenda-kpi">
+                                <span>+18ms últimos 15 min</span>
+                            </div>
+
+                        </div>
+
+                        <div class="imagem-kpi-direita">
+                            <img src="../assets/isabela/instantaneo.png">
+                        </div>
+
+                    </div>
+
+                    <!-- KPI 3 -->
+                    <div class="kpi-http">
+
+                        <div class="conteudo-kpi-esquerda">
+
+                            <p>Ordens com sucesso</p>
+
+                            <span style="font-size: xx-large;">
+                                92.1%
+                            </span>
+
+                            <span>
+                                184.320 executadas
+                            </span>
+
+                            <div class="legenda-kpi">
+                                <span>+5% últimos 15 min</span>
+                            </div>
+
+                        </div>
+
+                        <div class="imagem-kpi-direita">
+                            <img src="../assets/isabela/marca-de-verificacao.png">
+                        </div>
+
+                    </div>
+
+                    <!-- KPI 4 -->
+                    <div class="kpi-http">
+
+                        <div class="conteudo-kpi-esquerda">
+
+                            <p>Respostas HTTP 5xx</p>
+
+                            <span style="font-size: xx-large;">
+                                4.831
+                            </span>
+
+                            <span>
+                                erros internos no período
+                            </span>
+
+                            <div class="legenda-kpi">
+                                <span>+34% últimos 15 min</span>
+                            </div>
+
+                        </div>
+
+                        <div class="imagem-kpi-direita">
+                            <img src="../assets/isabela/simbolo-de-alerta.png">
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Filtros -->
+                <div class="filtros">
+
+                    <div class="filtros-botoes">
+
+                        <button class="ativo">15min</button>
+                        <button>1h</button>
+                        <button>6h</button>
+                        <button>24h</button>
+
+                    </div>
+
+                </div>
+
+                <!-- Graficos -->
+                <div class="body-graficos">
+
+                    <div class="grafico-http-grande">
+
+                        <h3>Volume de requisições HTTP</h3>
+
+                        <p>
+                            Picos correlacionados com janelas de stress de hardware
+                        </p>
+
+                        <canvas id="graficoVolume"></canvas>
+
+                    </div>
+
+                    <div class="grafico-http-pequeno">
+
+                        <h3>Latência p95 — ordens</h3>
+
+                        <p>
+                            Aumento sustentado indica degradação
+                        </p>
+
+                        <canvas id="graficoLatencia"></canvas>
+
+                    </div>
+
+                </div>
+
+                
+                <div class="body-graficos">
+
+                    <div class="grafico-http-pequeno">
+
+                        <h3>Status das ordens</h3>
+
+                        <p>
+                            Negócio vs falha técnica
+                        </p>
+
+                        <canvas id="graficoStatus"></canvas>
+
+                    </div>
+
+                    <div class="grafico-http-pequeno">
+
+                        <h3>Distribuição de erros 5xx</h3>
+
+                        <p>
+                            Por código
+                        </p>
+
+                        <canvas id="graficoErrosBarras"></canvas>
+
+                    </div>
+
+                    <div class="grafico-http-pequeno">
+
+                        <h3>Distribuição de erros 5xx</h3>
+
+                        <p>
+                            Série temporal
+                        </p>
+
+                        <canvas id="graficoErrosLinha"></canvas>
+
+                    </div>
+
+                </div>
+
+                <!-- Legenda -->
+                <div class="body-graficos">
+
+                    <div class="grafico-http-grande">
+
+                        <h3>Legenda & referências</h3>
+
+                        <p>
+                            Cores, severidades, SLA e glossário usados neste painel
+                        </p>
+
+                        <div class="legendas-body">
+
+                            <div class="legenda-http">
+
+                                <span>Status HTTP</span>
+
+                                <span style="color: green;">2xx</span>
+                                <p>Sucesso requisição processada</p>
+
+                                <span style="color: yellow;">3xx</span>
+                                <p>Redirecionamento</p>
+
+                                <span style="color: orange;">4xx</span>
+                                <p>Erro do cliente</p>
+
+                                <span style="color: red;">5xx</span>
+                                <p>Erro do servidor</p>
+
+                            </div>
+
+                            <div class="legenda-http">
+
+                                <span>Severidade</span>
+
+                                <span style="color: red;">Crítico</span>
+                                <p>Impacto direto em ordens</p>
+
+                                <span style="color: yellow;">Atenção</span>
+                                <p>Latência elevada</p>
+
+                                <span style="color: green;">Saudável</span>
+                                <p>Dentro do SLA</p>
+
+                            </div>
+
+                            <div class="legenda-http">
+
+                                <span>SLA</span>
+
+                                <span style="color: yellow;">p95 > 500ms</span>
+                                <p>Atenção</p>
+
+                                <span style="color: red;">p95 > 800ms</span>
+                                <p>Crítico</p>
+
+                                <span style="color: red;">Erro 5xx > 1%</span>
+                                <p>Crítico</p>
+
+                            </div>
+
+                            <div class="legenda-http">
+
+                                <span>Glossário</span>
+
+                                <span>RPS — Requisições por segundo</span>
+                                <span>p95 — Percentil 95</span>
+                                <span>5xx — Erros do servidor</span>
+                                <span>SLA — Nível de serviço</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+</body>
+
+<script>
+
+    const nomeCompleto = sessionStorage.NOME_USUARIO
+    // const partes = nomeCompleto.trim().split(" ");
+    // const primeiroNome = partes[0];
+    // usuario.innerHTML = primeiroNome;
+    // cargoFunc.innerHTML = sessionStorage.FUNCAO;
+
+    const root = document.documentElement;
+    const imgModo = document.getElementById("imgModo");
+    const imgLogo = document.getElementById("imgLogo");
+    const imgUser = document.getElementById("imgUser");
+    const logoAlerta = document.getElementById("logoAlerta");
+    const sidebar = document.getElementById("div_lateralAberta");
+
+
+    let modoEscuro = false;
+
+    imgModo.addEventListener("click", mudarModo);
+
+    function fecharAbrirLateral() {
+        const conteudo = document.getElementById("telaPrincipal");
+
+        sidebar.classList.toggle("compacta");
+        conteudo.classList.toggle("expandido");
+
+        if (sidebar.classList.contains("compacta")) {
+            sessionStorage.LATERAL = 1;
+            if (modoEscuro) {
+                imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
+            } else {
+                imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+            }
+        } else {
+            sessionStorage.LATERAL = 0;
+            if (modoEscuro) {
+                imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+            } else {
+                imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+            }
+        }
+    }
+
+    function mudarModo() {
+        modoEscuro = !modoEscuro;
+
+        if (modoEscuro) {
+            sessionStorage.MODO = 1;
+            root.style.setProperty('--preto', '#F2F2F2');
+            root.style.setProperty('--branco', '#000');
+            root.style.setProperty('--pretoClaro', '#fff');
+            root.style.setProperty('--brancoCinza', '#1D2025');
+            root.style.setProperty('--bordas', '#b5b5b5');
+            root.style.setProperty('--branco-transparente', '#0000007c');
+            imgModo.src = "../assets/icon/icons-dashboard/lua-crescente.png";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg"
+            logoAlerta.src = "../assets/svg/alertas/bell-svgrepo-com-preto.svg";
+            if (sidebar.classList.contains("compacta")) {
+                if (modoEscuro) {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
+                } else {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+                }
+            } else {
+                if (modoEscuro) {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+                } else {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+                }
+            }
+        } else {
+            sessionStorage.MODO = 0;
+            root.style.setProperty('--branco', '#fff');
+            root.style.setProperty('--preto', '#000');
+            root.style.setProperty('--pretoClaro', '#1D2025');
+            root.style.setProperty('--brancoCinza', '#b5b5b5');
+            root.style.setProperty('--bordas', '#3a3f45');
+            root.style.setProperty('--branco-transparente', '#ffffff7e');
+            imgModo.src = "../assets/icon/icons-dashboard/brilho-do-sol.png";
+            imgUser.src = "../assets/icon/user-circle-svgrepo-com.svg"
+            logoAlerta.src = "../assets/svg/alertas/bell-svgrepo-com.svg";
+            if (sidebar.classList.contains("compacta")) {
+                if (modoEscuro) {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
+                } else {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png"
+                }
+            } else {
+                if (modoEscuro) {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/logoPreto.png";
+                } else {
+                    imgLogo.src = "../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png";
+                }
+            }
+        }
+    }
+
+    function verificarModo() {
+        if (sessionStorage.MODO == 1) {
+            mudarModo()
+        }
+        if (sessionStorage.LATERAL == 1) {
+            fecharAbrirLateral()
+        }
+
+        if (sessionStorage.FK_FUNCAO != 1) {
+            const divRelatorios = document.getElementById("div_relatorios");
+            divRelatorios.style.display = "none";
+            sessionStorage.FUNCAO = "Analista de Infra";
+        } else {
+            sessionStorage.FUNCAO = "Gestor de Infra";
+        }
+    }
+
+
+
+    const labelsTempo = [
+        "17:00", "17:15", "17:30", "17:45", "18:00", "18:15", "18:30", "18:45", "19:00", "19:15", "19:30", "19:45", "20:00"
+    ];
+
+    const configBase = {
+        responsive: true,
+        plugins: {
+            legend: { display: false }
+        },
+        scales: {
+            x: {
+                ticks: { color: "#9ca3af" },
+                grid: { color: "#1f2937" }
+            },
+            y: {
+                ticks: { color: "#9ca3af" },
+                grid: { color: "#1f2937" }
+            }
+        }
+    };
+
+    // Volume HTTP
+    new Chart(document.getElementById("graficoVolume"), {
+        type: "line",
+        data: {
+            labels: labelsTempo,
+            datasets: [{
+                data: [270, 300, 290, 250, 220, 270, 310, 300, 260, 230, 330, 390, 310, 250],
+                borderColor: "#ff7a00",
+                backgroundColor: "rgba(255, 122, 0, 0.18)",
+                fill: true,
+                tension: 0.4,
+                pointRadius: 0,
+                borderWidth: 3
+            }]
+        },
+        options: configBase
+    });
+
+    // Latência p95
+    new Chart(document.getElementById("graficoLatencia"), {
+        type: "line",
+        data: {
+            labels: labelsTempo,
+            datasets: [{
+                data: [52, 58, 47, 50, 59, 48, 52, 88, 82, 50, 55, 54, 48, 56],
+                borderColor: "#ffc400",
+                backgroundColor: "rgba(255, 196, 0, 0.12)",
+                fill: false,
+                tension: 0.35,
+                pointRadius: 0,
+                borderWidth: 3
+            }]
+        },
+        options: {
+            ...configBase,
+            scales: {
+                ...configBase.scales,
+                y: {
+                    ticks: {
+                        color: "#9ca3af",
+                        callback: value => value + "ms"
+                    },
+                    grid: { color: "#1f2937" }
+                }
+            }
+        }
+    });
+
+    // Status das ordens
+    new Chart(document.getElementById("graficoStatus"), {
+        type: "doughnut",
+        data: {
+            labels: [
+                "Executadas com sucesso",
+                "Rejeitadas regra de negócio",
+                "Falhadas erro técnico"
+            ],
+            datasets: [{
+                data: [92.2, 6.2, 1.6],
+                backgroundColor: ["#35d26f", "#ffc400", "#ff3045"],
+                borderColor: "#0b0d10",
+                borderWidth: 5,
+                cutout: "68%"
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: "right",
+                    labels: {
+                        color: "#d1d5db",
+                        usePointStyle: true,
+                        padding: 18
+                    }
+                }
+            }
+        }
+    });
+
+    // Erros 5xx barras
+    new Chart(document.getElementById("graficoErrosBarras"), {
+        type: "bar",
+        data: {
+            labels: ["500", "501", "502", "503", "504", "505"],
+            datasets: [{
+                data: [2050, 1020, 1320, 480, 230, 430],
+                backgroundColor: ["#ff3045", "#ffc400", "#ff3045", "#ff7a00"],
+                borderRadius: 8
+            }]
+        },
+        options: configBase
+    });
+
+    // Erros 5xx linha
+    new Chart(document.getElementById("graficoErrosLinha"), {
+        type: "line",
+        data: {
+            labels: labelsTempo,
+            datasets: [{
+                data: [35, 28, 40, 30, 36, 32, 38, 34, 30, 180, 90, 200, 28, 32],
+                borderColor: "#ff3045",
+                fill: false,
+                tension: 0.3,
+                pointRadius: 0,
+                borderWidth: 3
+            }]
+        },
+        options: configBase
+    });
+</script>
+
+</html>
