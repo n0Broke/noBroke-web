@@ -7,7 +7,8 @@
 
     <title>Home | noBroke</title>
     <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
-
+    <script src="meu-grafico.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/sessao.js"></script>
     <script>
         (function () {
@@ -60,11 +61,11 @@
                     </a>
 
                     <div id="div_relatorios">
-                        <a href="produtividade.html" class="btn-nobroke">
+                        <a href="Relatorios.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
                             </span>
-                            <span class="texto">Equipe</span>
+                            <span class="texto">Relatórios</span>
                         </a>
                     </div>
 
@@ -172,7 +173,15 @@
                 </div>
             </div>
 
-            <div class="barra-pesquisa">
+            <div id="grafico" style="height: 35%;">
+
+                <h1 style="color: white; font-size: 120%;">COMPONENTES QUE ATINGIRAM O ESTADO CRÍTICO:</h1>
+                <canvas id="myChart" style="width: 90%;"></canvas>
+
+            </div>
+
+
+            <div class="barra-pesquisa" style = "display: flex; margin-top: 5%;">
                 <input type="search" id="busca" list="lista_servidores" placeholder="🔍 Digite o nome do servidor"
                     oninput="buscarServidor(this.value)">
 
@@ -184,24 +193,44 @@
                 </datalist>
                 <button>Todos</button><button>Produção</button><button>Staging</button><button>DR</button><button>Desenvolvimento</button>
             </div>
-            <div class="tabela-container">
-                <table class="tabela-servidores" style="background-color: var(--pretoClaro);">
-                    <thead>
-                        <tr>
+
+            <div class="tabela-container" style="display: flex; flex-direction: row; gap: 10px; margin-top: 2%">
+                <table class="tabela-servidores" id = "tabelaCriticos"
+                    style="background-color: var(--pretoClaro);border-radius: 12px; border: none;">
+                    <thead">
+                        <tr style="display: flex; justify-content: space-around;">
                             <th>Servidor</th>
                             <th>Status</th>
                             <th>Data</th>
                             <th>CPU</th>
                             <th>RAM</th>
                             <th>Disco</th>
-                            <th>Total de Processos</th>
-                            <th>Proc maior consumo</th>
-                            <th>Ações</th>
                         </tr>
-                    </thead>
 
-                    <tbody id="corpo-tabela">
-                    </tbody>
+                        </thead>
+
+                        <tbody id="corpo-tabela" style="font-size: 12px;">
+                        </tbody>
+                </table>
+            </div>
+
+             <div class="tabela-container2" id = "tabelaGerais" style="display: flex; flex-direction: row; gap: 10px; margin-top: 2%">
+                <table class="tabela-servidores"
+                    style="background-color: var(--pretoClaro);border-radius: 12px; border: none;">
+                    <thead">
+                        <tr style="display: flex; justify-content: space-around;">
+                            <th>Servidor</th>
+                            <th>Status</th>
+                            <th>Data</th>
+                            <th>CPU</th>
+                            <th>RAM</th>
+                            <th>Disco</th>
+                        </tr>
+
+                        </thead>
+
+                        <tbody id="corpo-tabela" style="font-size: 12px;">
+                        </tbody>
                 </table>
             </div>
 
@@ -691,6 +720,7 @@
                         </div>
                     </div>
 
+
                     <div class="popUpFuncionario-confirmarServidor">
                         <button class="btnPopUp01" onclick="voltarFunc2()">← Voltar</button>
                         <button class="btnPopUp02" onclick="cadastrarServidor()" style="color: white;">Cadastrar
@@ -698,23 +728,69 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
     </div>
 
-    <div class="card-alertaGeral" id="div_alertaGeral">
-    </div>
+
+
     </div>
     </div>
 </body>
 
 </html>
 <script>
-    // const nomeCompleto = sessionStorage.NOME_USUARIO
-    // const partes = nomeCompleto.trim().split(" ");
-    // const primeiroNome = partes[0];
-    // usuario.innerHTML = primeiroNome;
-    // cargoFunc.innerHTML = sessionStorage.FUNCAO;
+    window.onload = criticidade();
+    function criticidade() {
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: { color: 'white' }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Uso (%)',
+                            color: 'white'
+                        },
+                        ticks: { color: 'white' },
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white',
+                            font: {
+                                size: 16
+                            }
+                        }
+                    }
+                }
+            }
+        })
+
+    };
+
+
+
+
 
     function normalizar(texto) {
         return texto
@@ -1103,11 +1179,11 @@
                                 <td style="color: red;"><strong>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</strong></td>
                                 <td><button onclick="alert('${s.home_broker}')">Ver detalhes</button></td>
                             </tr>`;
-                            totalServidores++
-                            totalCritico++
+                        totalServidores++
+                        totalCritico++
                     } else {
                         linhas += `
-                            <tr>
+                            <tr onclick="alert('${s.home_broker}')>
                                 <td><strong>${s.home_broker}</strong></td>
                                 <td><strong>${s.status || "Normal"}</strong></td>
                                 <td><strong>${s.timestamp}</strong></td>
@@ -1116,9 +1192,9 @@
                                 <td><strong>${s.disk_percent || 0}%</strong></td>
                                 <td><strong>${s.total_processos || 0}</td>
                                 <td><strong>${s.processo_maior_consumo.split(' ')[0] || "Desconhecido"}</strong></td>
-                                <td><button onclick="alert('${s.home_broker}')">Ver detalhes</button></td>
+                                <td><button ">Ver detalhes</button></td>
                             </tr>`;
-                            totalServidores++
+                        totalServidores++
                     }
 
                 });
