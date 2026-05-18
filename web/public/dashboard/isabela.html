@@ -187,16 +187,10 @@
 
                             <p>Volume de requisições</p>
 
-                            <span style="font-size: xx-large;">
-                                26.7M
-                            </span>
-
-                            <span>
-                                janela atual
-                            </span>
+                            <span id="kpiVolume" style="font-size: xx-large;"></span>
 
                             <div class="legenda-kpi">
-                                <span>+12% últimos 15 min</span>
+                                <span id="variacaoVolume"> últimos 15 min</span>
                             </div>
 
                         </div>
@@ -214,16 +208,10 @@
 
                             <p>Latência p95 ordens</p>
 
-                            <span style="font-size: xx-large;">
-                                62ms
-                            </span>
-
-                            <span>
-                                95% abaixo desse tempo
-                            </span>
+                            <span id="kpiLatencia" style="font-size: xx-large;"></span>
 
                             <div class="legenda-kpi">
-                                <span>+18ms últimos 15 min</span>
+                                <span id="variacaoLatencia"> últimos 15 min</span>
                             </div>
 
                         </div>
@@ -241,16 +229,10 @@
 
                             <p>Ordens com sucesso</p>
 
-                            <span style="font-size: xx-large;">
-                                92.1%
-                            </span>
-
-                            <span>
-                                184.320 executadas
-                            </span>
+                            <span id="kpiSucesso" style="font-size: xx-large;"></span>
 
                             <div class="legenda-kpi">
-                                <span>+5% últimos 15 min</span>
+                                <span id="variacaoSucesso"> últimos 15 min</span>
                             </div>
 
                         </div>
@@ -268,16 +250,10 @@
 
                             <p>Respostas HTTP 5xx</p>
 
-                            <span style="font-size: xx-large;">
-                                4.831
-                            </span>
-
-                            <span>
-                                erros internos no período
-                            </span>
+                            <span id="kpiOrdens" style="font-size: xx-large;"></span>
 
                             <div class="legenda-kpi">
-                                <span>+34% últimos 15 min</span>
+                                <span id="variacao5xx"> últimos 15 min</span>
                             </div>
 
                         </div>
@@ -285,20 +261,6 @@
                         <div class="imagem-kpi-direita">
                             <img src="../assets/isabela/simbolo-de-alerta.png">
                         </div>
-
-                    </div>
-
-                </div>
-
-                <!-- Filtros -->
-                <div class="filtros">
-
-                    <div class="filtros-botoes">
-
-                        <button class="ativo">15min</button>
-                        <button>1h</button>
-                        <button>6h</button>
-                        <button>24h</button>
 
                     </div>
 
@@ -333,7 +295,7 @@
 
                 </div>
 
-                
+
                 <div class="body-graficos">
 
                     <div class="grafico-http-pequeno">
@@ -569,12 +531,6 @@
         }
     }
 
-
-
-    const labelsTempo = [
-        "17:00", "17:15", "17:30", "17:45", "18:00", "18:15", "18:30", "18:45", "19:00", "19:15", "19:30", "19:45", "20:00"
-    ];
-
     const configBase = {
         responsive: true,
         plugins: {
@@ -592,116 +548,204 @@
         }
     };
 
-    // Volume HTTP
-    new Chart(document.getElementById("graficoVolume"), {
-        type: "line",
-        data: {
-            labels: labelsTempo,
-            datasets: [{
-                data: [270, 300, 290, 250, 220, 270, 310, 300, 260, 230, 330, 390, 310, 250],
-                borderColor: "#ff7a00",
-                backgroundColor: "rgba(255, 122, 0, 0.18)",
-                fill: true,
-                tension: 0.4,
-                pointRadius: 0,
-                borderWidth: 3
-            }]
-        },
-        options: configBase
-    });
+    // Inicio dash dinamica
 
-    // Latência p95
-    new Chart(document.getElementById("graficoLatencia"), {
-        type: "line",
-        data: {
-            labels: labelsTempo,
-            datasets: [{
-                data: [52, 58, 47, 50, 59, 48, 52, 88, 82, 50, 55, 54, 48, 56],
-                borderColor: "#ffc400",
-                backgroundColor: "rgba(255, 196, 0, 0.12)",
-                fill: false,
-                tension: 0.35,
-                pointRadius: 0,
-                borderWidth: 3
-            }]
-        },
-        options: {
-            ...configBase,
-            scales: {
-                ...configBase.scales,
-                y: {
-                    ticks: {
-                        color: "#9ca3af",
-                        callback: value => value + "ms"
-                    },
-                    grid: { color: "#1f2937" }
-                }
+    async function carregarDados() {
+
+        const resposta = await fetch("/s3/client");
+
+        const dados = await resposta.json();
+
+        const ultimo = dados[dados.length - 1];
+
+        document.getElementById("kpiVolume").innerText =
+            ultimo.total_volume;
+
+        document.getElementById("kpiLatencia").innerText =
+            ultimo.latencia_p95_ordens + " ms";
+
+        document.getElementById("kpiSucesso").innerText =
+            ultimo.porcentagem_sucesso_ordens + "%";
+
+        document.getElementById("kpiOrdens").innerText =
+            ultimo.contador_5xx;
+
+        document.getElementById("variacaoVolume").innerText =
+            ultimo.variacao_volume + "% últimos 15 min";
+
+        document.getElementById("variacaoLatencia").innerText =
+            ultimo.variacao_latencia_p95 + "ms últimos 15 min";
+
+        document.getElementById("variacaoSucesso").innerText =
+            ultimo.variacao_sucesso + "% últimos 15 min";
+
+        document.getElementById("variacao5xx").innerText =
+            ultimo.variacao_5xx + "% últimos 15 min";
+
+
+        const labels = [];
+
+        for (let i = 0; i < dados.length; i++) {
+
+            labels.push(dados[i].timestamp);
+
+        }
+
+        const volume = []
+
+        for (let i = 0; i < dados.length; i++) {
+
+            volume.push(dados[i].total_volume);
+
+        }
+
+        const latencia = []
+
+        for (let i = 0; i < dados.length; i++) {
+
+            latencia.push(dados[i].latencia_p95_ordens);
+
+        }
+
+        const ordens = [];
+
+        for (let i = 0; i < dados.length; i++) {
+            if (dados[i].categoria == "ordens") {
+                ordens.push(dados[i]);
             }
         }
-    });
 
-    // Status das ordens
-    new Chart(document.getElementById("graficoStatus"), {
-        type: "doughnut",
-        data: {
-            labels: [
-                "Executadas com sucesso",
-                "Rejeitadas regra de negócio",
-                "Falhadas erro técnico"
-            ],
-            datasets: [{
-                data: [92.2, 6.2, 1.6],
-                backgroundColor: ["#35d26f", "#ffc400", "#ff3045"],
-                borderColor: "#0b0d10",
-                borderWidth: 5,
-                cutout: "68%"
-            }]
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: "right",
-                    labels: {
-                        color: "#d1d5db",
-                        usePointStyle: true,
-                        padding: 18
+        let sucesso = 0;
+        let erroNegocio = 0;
+        let erroTecnico = 0;
+
+        for (let i = 0; i < ordens.length; i++) {
+
+            if (ordens[i].tipo_status == "sucesso") {
+                sucesso++;
+            }
+
+            if (ordens[i].tipo_status == "erro_cliente") {
+                erroNegocio++;
+            }
+
+            if (ordens[i].tipo_status == "erro_servidor") {
+                erroTecnico++;
+            }
+        }
+        
+        const erros5xxLinha = []
+
+        for (let i = 0; i < dados.length; i++) {
+            erros5xxLinha.push(dados[i].contador_5xx);
+
+        }
+
+        const contagemStatus = {};
+
+        new Chart(document.getElementById("graficoVolume"), {
+            type: "line",
+
+            data: {
+                labels: labels,
+
+                datasets: [{
+                    label: "Volume de Requisições",
+                    data: volume
+                }]
+            }
+        });
+
+        new Chart(document.getElementById("graficoLatencia"), {
+            type: "line",
+
+            data: {
+                labels: labels,
+
+                datasets: [{
+                    label: "Latência P95",
+                    data: latencia
+                }]
+            }
+        });
+
+        new Chart(document.getElementById("graficoStatus"), {
+            type: "doughnut",
+            data: {
+                labels: [
+                    "Executadas com sucesso",
+                    "Falhas parte Cliente",
+                    "Falhadas erro técnico"
+                ],
+                datasets: [{
+                    data: [sucesso, erroNegocio, erroTecnico],
+                    backgroundColor: ["#35d26f", "#ffc400", "#ff3045"],
+                    borderColor: "#0b0d10",
+                    borderWidth: 5,
+                    cutout: "68%"
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: "right",
+                        labels: {
+                            color: "#d1d5db",
+                            usePointStyle: true,
+                            padding: 18
+                        }
                     }
                 }
             }
-        }
-    });
+        });
 
-    // Erros 5xx barras
-    new Chart(document.getElementById("graficoErrosBarras"), {
-        type: "bar",
-        data: {
-            labels: ["500", "501", "502", "503", "504", "505"],
-            datasets: [{
-                data: [2050, 1020, 1320, 480, 230, 430],
-                backgroundColor: ["#ff3045", "#ffc400", "#ff3045", "#ff7a00"],
-                borderRadius: 8
-            }]
-        },
-        options: configBase
-    });
+        new Chart(document.getElementById("graficoErrosLinha"), {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: "Erros 5xx",
+                    data: erros5xxLinha,
+                    borderColor: "#ff3045",
+                    fill: false,
+                    tension: 0.3,
+                    pointRadius: 0,
+                    borderWidth: 3
+                }]
+            },
+            options: configBase
+        });
 
-    // Erros 5xx linha
-    new Chart(document.getElementById("graficoErrosLinha"), {
-        type: "line",
-        data: {
-            labels: labelsTempo,
-            datasets: [{
-                data: [35, 28, 40, 30, 36, 32, 38, 34, 30, 180, 90, 200, 28, 32],
-                borderColor: "#ff3045",
-                fill: false,
-                tension: 0.3,
-                pointRadius: 0,
-                borderWidth: 3
-            }]
-        },
-        options: configBase
-    });
+        dados.forEach(i => {
+            if (i.status_code >= 500 && i.status_code <= 599) {
+                contagemStatus[i.status_code] = (contagemStatus[i.status_code] || 0) + 1;
+            }
+        });
+
+
+        const labelsStatus = Object.keys(contagemStatus);
+        const valoresStatus = Object.values(contagemStatus);
+
+        new Chart(document.getElementById("graficoErrosBarras"), {
+            type: "bar",
+            data: {
+                labels: labelsStatus,
+                datasets: [{
+                    label: "Quantidade por status 5xx",
+                    data: valoresStatus,
+                    backgroundColor: ["#ff3045", "#ffc400", "#ff3045", "#ff7a00"],
+                    borderRadius: 8
+                }]
+            },
+            options: configBase
+        });
+    }
+
+    carregarDados();
+
+    // Fim dash dinamica
+
 </script>
 
 </html>
