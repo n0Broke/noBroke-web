@@ -261,7 +261,6 @@
             <div class="conteudo-dash03">
                 <div class="componentes-servidor">
                     <h4 class="componentes-titulo">Componentes Monitorados</h4>
-
                     <div class="parte-componentes">
                         <div class="componente-monitorado componente01">
                             <div class="componente-infos">
@@ -366,7 +365,6 @@
                                     style="width: 18px;">
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- Parte das Legendas - Canto da Direita -->
@@ -415,7 +413,7 @@
     // const primeiroNome = partes[0];
     // usuario.innerHTML = primeiroNome;
     // cargoFunc.innerHTML = sessionStorage.FUNCAO;
-    nomeServidor.innerHTML = sessionStorage.NOME_SERVIDOR;
+    // nomeServidor.innerHTML = sessionStorage.NOME_SERVIDOR;
 
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");
@@ -453,7 +451,6 @@
 
     function mudarModo() {
         modoEscuro = !modoEscuro;
-
         if (modoEscuro) {
             sessionStorage.MODO = 1;
             root.style.setProperty('--preto', '#F2F2F2');

@@ -976,7 +976,7 @@
             console.log("As informaçoes do servidor não foram preenchidas corretamente!")
 
         } else {
-            fetch("http://localhost:3333/cadastrarServidor", {
+            fetch("/servidores/cadastrarServidor", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -1065,9 +1065,7 @@
                 fk_formato,
                 nome_componente: nome,
                 valor_min_critico: minimo,
-                valor_max_critico: maximo,
-                valor_min_atencao: minimo,
-                valor_max_atencao: maximo
+                valor_max_critico: maximo
             });
         });
 
@@ -1085,7 +1083,7 @@
             return;
         }
 
-        fetch("http://localhost:3333/componente", {
+        fetch("/componente/cadastrarComponente", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

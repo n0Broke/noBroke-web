@@ -4,7 +4,7 @@ var router = express.Router();
 var servidorController = require("../controllers/servidorController");
 
 
-router.post("/", function (req, res) {
+router.post("/cadastrarServidor", function (req, res) {
     console.log("BODY:", req.body);
     servidorController.cadastrarServidor(req, res);
 });

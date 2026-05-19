@@ -21,7 +21,7 @@ var componenteRouter = require("./src/routes/cadastroComponente");
 var cadastroFuncionarioRouter = require("./src/routes/cadastroFuncionario");
 var cadastroEmpresaRouter = require("./src/routes/cadastroEmpresa");
 var cadastroAdmRouter = require("./src/routes/cadastroAdm");
-var servidor = require("./src/routes/servidor");
+var servidorRouter = require("./src/routes/servidor");
 var s3Router = require("./src/routes/s3");
 
 
@@ -39,9 +39,8 @@ app.use("/avisos", avisosRouter);
 app.use("/cadastroFuncionario", cadastroFuncionarioRouter);
 app.use("/cadastroEmpresa", cadastroEmpresaRouter);
 app.use("/cadastroAdm", cadastroAdmRouter);
-app.use("/cadastrarServidor",servidor);
 app.use("/componente", componenteRouter);
-app.use("/servidores", servidor);
+app.use("/servidores", servidorRouter);
 app.use("/s3", s3Router);
 
 app.listen(PORTA_APP, function() {
