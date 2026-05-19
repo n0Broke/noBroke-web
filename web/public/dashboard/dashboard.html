@@ -48,7 +48,7 @@
                     <h4 class="titulo_sidebar">PRINCIPAL</h4>
                     <button class="btn-nobroke btn-active">
                         <span class="icon">
-                            <img id="iconAtual" src="../assets/icon/icons-dashboard/servidores-de-hospedagem-hover.png">
+                            <img id="iconAtual" src="../assets/icon/icons-dashboard/painel-de-controle-hover.png">
                         </span>
                         <span class="texto">Home</span>
                     </button>
@@ -59,13 +59,13 @@
                         </span>
                         <span class="texto">Alertas</span>
                     </a>
-
+                    
                     <div id="div_relatorios">
-                        <a href="Relatorios.html" class="btn-nobroke">
+                        <a href="produtividade.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
                             </span>
-                            <span class="texto">Relatórios</span>
+                            <span class="texto">Equipe</span>
                         </a>
                     </div>
 
@@ -181,7 +181,7 @@
             </div>
 
 
-            <div class="barra-pesquisa" style = "display: flex; margin-top: 5%;">
+            <div class="barra-pesquisa" style="display: flex; margin-top: 5%;">
                 <input type="search" id="busca" list="lista_servidores" placeholder="🔍 Digite o nome do servidor"
                     oninput="buscarServidor(this.value)">
 
@@ -195,7 +195,7 @@
             </div>
 
             <div class="tabela-container" style="display: flex; flex-direction: row; gap: 10px; margin-top: 2%">
-                <table class="tabela-servidores" id = "tabelaCriticos"
+                <table class="tabela-servidores" id="tabelaCriticos"
                     style="background-color: var(--pretoClaro);border-radius: 12px; border: none;">
                     <thead">
                         <tr style="display: flex; justify-content: space-around;">
@@ -214,7 +214,8 @@
                 </table>
             </div>
 
-             <div class="tabela-container2" id = "tabelaGerais" style="display: flex; flex-direction: row; gap: 10px; margin-top: 2%">
+            <div class="tabela-container2" id="tabelaGerais"
+                style="display: flex; flex-direction: row; gap: 10px; margin-top: 2%">
                 <table class="tabela-servidores"
                     style="background-color: var(--pretoClaro);border-radius: 12px; border: none;">
                     <thead">
@@ -250,7 +251,7 @@
 
                     <div class="popUpFuncionario-SenhaServidor">
                         <span>Nome do Servidor</span>
-                        <input id="input_nome_servidor" type="text" placeholder="SRV-PROD-API-01">
+                        <input style="width: 95%" id="input_nome_servidor" type="text" placeholder="SRV-PROD-API-01">
                     </div>
 
 
@@ -300,12 +301,12 @@
 
                     <div class="popUpFuncionario-SenhaServidor">
                         <span>Localização (Data Center)</span>
-                        <input id="input_localizacao_servidor" type="text" placeholder="São Paulo — SP1-DC">
+                        <input style="width: 95%" id="input_localizacao_servidor" type="text" placeholder="São Paulo — SP1-DC">
                     </div>
 
                     <div class="popUpFuncionario-confirmarServidor">
                         <button class="btnPopUp01" onclick="fecharFunc()">Cancelar</button>
-                        <button class="btnPopUp02" onclick="addFunc3()" style="color: white;">Próximo <img width="20px"
+                        <button class="btnPopUp02" onclick="addFunc3()" style="display: flex; color: white; justify-content: space-around; width: 100px; margin-top: 10px; align-items: center;">Próximo <img width="20px"
                                 src="../assets/svg/seta-direita.png" alt=""></button>
                     </div>
                 </div>
@@ -730,12 +731,6 @@
             </div>
 
         </div>
-
-    </div>
-
-
-
-    </div>
     </div>
 </body>
 
@@ -787,10 +782,6 @@
         })
 
     };
-
-
-
-
 
     function normalizar(texto) {
         return texto
@@ -959,7 +950,6 @@
     }
 
     function cadastrarServidor() {
-
         var nomeServidor = input_nome_servidor.value;
         var SOServidor = input_SO_servidor.value;
         var numeroSerialServidor = numero_serial_servidor.value;
@@ -1223,9 +1213,7 @@
                         jaAdicionados.push(s.home_broker);
                     }
                 });
-
                 lista_servidores.innerHTML = linhas;
-
             })
             .catch(erro => console.error("ERRO:", erro));
     }

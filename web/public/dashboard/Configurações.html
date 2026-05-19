@@ -27,16 +27,13 @@
 
     <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
     <!-- Importar o Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body onload="verificarModo()">
-    <div class="row min-vh-100">
-        <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
+    <div class="containerPai">
+        <div class="sidebar" id="div_lateralAberta">
             <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
                 <span>X</span>
             </div>
@@ -112,7 +109,7 @@
         </div>
         <!-- ================================================================= -->
 
-        <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
+        <div class="conteudo-dash" style="overflow-x: hidden;" id="telaPrincipal">
             <div class="header-responsividade">
                 <div>
                     <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
@@ -151,6 +148,11 @@
                         <img src="../assets/svg/configuracoes/team-svgrepo-com.svg" width="25px" alt="iconConfig">
                         <span>Equipe</span>
                     </div>
+                    <div class="configuracaoEscolha" id="div_servers">
+                        <img src="../assets/svg/configuracoes/server-minimalistic-svgrepo-com.svg" width="30px"
+                            alt="iconConfig">
+                        <span>Atualizar meus Servidores</span>
+                    </div>
                     <div class="configuracaoEscolha">
                         <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com.svg" width="25px"
                             alt="iconConfig">
@@ -172,7 +174,6 @@
                                 <option selected disabled value="#">Selecione uma Opção</option>
                                 <option value="America/Sao_Paulo">America/Sao_Paulo (UTC-3)</option>
                             </select>
-                            <hr style="width: 100%; height: 2px; color: #7D8999;">
                             <div class="configGeralInferior">
                                 <div class="geralEsquerda">
                                     <h6>Modo Manutenção</h6>
@@ -228,7 +229,6 @@
                                 <input type="text" style="background-color: var(--cinzaClaro);">
                                 <button>+ Adicionar Destinatário</button>
                             </div>
-                            <hr style="width: 100%; height: 2px; color: #b4b4b4;">
                             <div class="conteudoNotificacao-linha">
                                 <div class="conteudoNotificacao-esquerda">
                                     <h4>Slack</h4>
@@ -247,7 +247,6 @@
                                     <option selected disabled value="#">Selecione uma Opção</option>
                                 </select>
                             </div>
-                            <hr style="width: 100%; height: 2px; color: #b4b4b4;">
                             <div class="conteudoNotificacao-linha">
                                 <div class="conteudoNotificacao-esquerda">
                                     <h4>SMS</h4>
@@ -315,7 +314,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <hr style="width: 100%; height: 2px; color: #b4b4b4;">
                             <div class="conteudoNotificacao-linha">
                                 <div class="conteudoNotificacao-frequencia">
                                     <h4>Frequência de resumo diário</h4>
@@ -402,6 +400,525 @@
                         </div>
                     </div>
                     <!-- ======================================== -->
+                    <!-- Adicionar Servidor  -->
+                    <div class="configuracoesServer configPagEscolhido" style="display: none;">
+                        <div class="cardConfiguracao" style="flex-direction: column;" id="popUpCadastrarServidor">
+                            <div class="headerPopUpFuncionarioServidor">
+                                <div class="headerPopUp-esquerdaServidor">
+                                    <h4>Cadastro de Servidor</h4>
+                                    <div
+                                        style="display: flex; flex-direction: row; justify-content: space-around; width: 160px; align-items: center;">
+                                        <div class="componente-box" style="border: none; margin: 0; padding: 0;">
+                                            <label class="checkbox-container">
+                                                <input type="checkbox" onchange="AttOuAdd(this, `atualizar`)">
+                                                <p class="checkmark"></p>
+                                            </label>
+
+                                            <div class="componente-config">
+                                                <div class="limites">
+                                                    <div style="width: 250px;">
+                                                        <p>Qual servidor gostaria de atualizar?</p>
+                                                        <input type="search" id="busca" list="lista_servidores"
+                                                            placeholder="🔍 Digite o nome do servidor"
+                                                            oninput="buscarServidor(this.value)">
+
+                                                        <datalist id="lista_servidores">
+                                                            <option value="SRV-DEV-HB-01">
+                                                            <option value="SRV-DEV-HB-02">
+                                                            <option value="SRV-DEV-HB-03">
+                                                            <option value="SRV-DEV-HB-04">
+                                                        </datalist>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p id="fraseAdd">Atualizar Servidor</p>
+                                    </div>
+                                    <br>
+                                    <div
+                                        style="display: flex; flex-direction: row; justify-content: space-around; width: 160px;">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" id="checkCadastrar" checked
+                                                onchange="AttOuAdd(this, `adicionar`)">
+                                            <p class="checkmark"></p>
+                                        </label>
+                                        <p>Cadastrar Servidor</p>
+                                    </div>
+                                    <br>
+                                    <span>Passo 1 de 2 — Informações do servidor</span>
+                                </div>
+                            </div>
+
+                            <div class="popUpFuncionario-SenhaServidor">
+                                <p>Nome do Servidor</p>
+                                <input style="width: 95%" id="input_nome_servidor" type="text"
+                                    placeholder="SRV-PROD-API-01">
+                            </div>
+
+                            <div class="popUpFuncionario-dadosServidor">
+                                <div class="popUpFuncionario-inserirDados-esquerdaServidor" style="width: 50%;">
+                                    <p>Sistema Operacional</p>
+                                    <input id="input_SO_servidor" type="text" placeholder="Ubuntu 22.04 LTS">
+                                </div>
+
+                                <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
+                                    <p>Número Serial</p>
+                                    <input id="numero_serial_servidor" type="text" placeholder="SN-XXXXXXX">
+                                </div>
+                            </div>
+
+                            <div class="popUpFuncionario-dadosServidor">
+                                <div class="popUpFuncionario-inserirDados-esquerdaServidor" style="width: 50%;">
+                                    <p>Hostname</p>
+                                    <input id="input_hostname_servidor" type="text" placeholder="host.nobroke.io">
+                                </div>
+
+                                <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
+                                    <p>Endereço IP</p>
+                                    <input id="input_endereco_servidor" type="text" placeholder="10.0.1.100">
+                                </div>
+                            </div>
+
+                            <div class="popUpFuncionario-dadosServidor portaSSH">
+                                <div class="popUpFuncionario-inserirDados-esquerda" style="width: 50%;">
+                                    <p>Porta SSH</p>
+                                    <input id="input_portaSSH_servidor" type="text" placeholder="22">
+                                </div>
+
+                                <div class="popUpFuncionario-inserirDados-direitaServidor" style="width: 50%;">
+                                    <p>Ambiente</p>
+                                    <select id="select_ambiente">
+                                        <option value="1">Produção</option>
+                                        <option value="2">Staging</option>
+                                        <option value="3">DR</option>
+                                        <option value="4">Desenvolvimento</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="popUpFuncionario-SenhaServidor">
+                                <p>Localização (Data Center)</p>
+                                <input style="width: 95%" id="input_localizacao_servidor" type="text"
+                                    placeholder="São Paulo — SP1-DC">
+                            </div>
+                            <div class="btnCargos"
+                                style="justify-content: space-between; width: 95%; align-items: center;">
+                                <div id="msgErro">
+                                </div>
+                                <button class="btnCargos02" onclick="addFunc3()"
+                                    style="display: flex; color: white; justify-content: space-around; width: 100px; margin-top: 10px;">Próximo
+                                    <img width="20px" src="../assets/svg/seta-direita.png" alt=""></button>
+                            </div>
+                        </div>
+
+                        <div class="cardConfiguracao adicionarOver"
+                            style="display: none; flex-direction: column; overflow-y: auto;"
+                            id="popUpCadastrarComponente">
+                            <div class="headerPopUpFuncionarioServidor">
+                                <div class="headerPopUp-esquerdaServidor">
+                                    <h4>Cadastro de Servidor</h4>
+                                    <p>Passo 2 de 2 — Componentes monitorados</p>
+                                </div>
+                            </div>
+
+                            <div class="barra-progresso-servidor">
+                                <div class="barra-progresso-preenchida"></div>
+                            </div>
+
+                            <div class="grupo-componente">
+                                <h4>CPU (Processador)</h4>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+
+                                        <p class="titulo-componente">Uso geral</p>
+
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">porcentagem (%)</p>
+                                            <p class="badge-intervalo">0 a 100</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="componente-config">
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p>
+                                                <input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p>
+                                                <input type="number" value="80">
+                                            </div>
+                                            <div>
+                                                <p>CAPACIDADE</p>
+                                                <input type="number" value="3.7" placeholder="Frequência em Ghz">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+
+                                        <p class="titulo-componente">Temperatura</p>
+
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">temperatura (°C)</p>
+                                            <p class="badge-intervalo">20 a 95</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="componente-config">
+
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p>
+                                                <input type="number" value="20">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p>
+                                                <input type="number" value="85">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grupo-componente">
+                                <h4>Memória</h4>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+
+                                        <p class="titulo-componente">Memória RAM</p>
+
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">valor absoluto</p>
+                                            <p class="badge-intervalo">0 a 64 GB</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="componente-config">
+
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p>
+                                                <input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p>
+                                                <input type="number" value="64">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+
+                                        <p class="titulo-componente">Memória disponível RAM</p>
+
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">valor absoluto</p>
+                                            <p class="badge-intervalo">0 a 64 GB</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="componente-config">
+
+
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p>
+                                                <input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p>
+                                                <input type="number" value="32">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+
+                                        <p class="titulo-componente">Uso de swap</p>
+
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">porcentagem (%)</p>
+                                            <p class="badge-intervalo">0 a 100</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="componente-config">
+
+
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p>
+                                                <input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p>
+                                                <input type="number" value="70">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="grupo-componente">
+                                <h4>Disco (Armazenamento)</h4>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+
+                                        <p class="titulo-componente">Partições</p>
+
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">valor absoluto</p>
+                                            <p class="badge-intervalo">1 a 20</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="componente-config">
+
+
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p>
+                                                <input type="number" value="1">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p>
+                                                <input type="number" value="10">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+
+                                        <p class="titulo-componente">Uso de disco</p>
+
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">porcentagem (%)</p>
+                                            <p class="badge-intervalo">0 a 100</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="componente-config">
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p>
+                                                <input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p>
+                                                <input type="number" value="85">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+
+                                        <p class="titulo-componente">Latência de disco</p>
+
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">tempo (ms)</p>
+                                            <p class="badge-intervalo">0 a 300</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="componente-config">
+
+
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p>
+                                                <input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p>
+                                                <input type="number" value="120">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="grupo-componente">
+                                <h4>Rede</h4>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+
+                                        <p class="titulo-componente">Volume de dados enviados/recebidos</p>
+
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">por segundo</p>
+                                            <p class="badge-intervalo">0 a 1 GB/s</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="componente-config">
+
+
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p>
+                                                <input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p>
+                                                <input type="number" value="1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+
+                                        <p class="titulo-componente">Latência da rede</p>
+
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">média</p>
+                                            <p class="badge-intervalo">0 a 500 ms</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="componente-config">
+
+
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p>
+                                                <input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p>
+                                                <input type="number" value="150">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="grupo-componente">
+                                <h4>Processos</h4>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+
+                                        <p class="titulo-componente">Número de CPUs em uso</p>
+
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">contagem</p>
+                                            <p class="badge-intervalo">0 a 128</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="componente-config">
+
+
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p>
+                                                <input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p>
+                                                <input type="number" value="64">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+
+                                        <p class="titulo-componente">Processo com mais gasto</p>
+
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">RAM gasta</p>
+                                            <p class="badge-intervalo">0 a 100(%)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="componente-config">
+                                        <div class="limites">
+                                            <div>
+                                                <p>Qtd processos desejados</p>
+                                                <input type="number" value="0">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="btnCargos" style="justify-content: space-between; width: 100%;">
+                                <button class="btnCargos01" onclick="voltarFunc2()">← Voltar</button>
+                                <button class="btnCargos02" onclick="cadastrarServidor()"
+                                    style="color: white;">Cadastrar
+                                    Servidor</button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ======================================== -->
                     <!-- Configurações - Meu Perfil -->
                     <div class="configuracoesPerfil configPagEscolhido" style="display: none;">
                         <!-- ________________________________________-- -->
@@ -415,29 +932,28 @@
                                 </div>
                                 <div class="perfilNomeCargo">
                                     <h4 class="username">Douglas</h4>
-                                    <h6 class="cargoFunc">Gerente</h6>
+                                    <h4 class="cargoFunc">Gerente</h4>
                                     <span>Departamento de Infraestrutura</span>
                                 </div>
                             </div>
-                            <hr style="width: 100%; height: 2px; color: #b4b4b4;">
                             <div class="dadosPerfil">
                                 <div class="dadosPerfil-input">
                                     <div class="dadosPerfil-esquerda">
-                                        <h6>Nome Completo</h6>
+                                        <h4>Nome Completo</h4>
                                         <input type="text" id="userNomeCompleto" value="Douglas">
                                     </div>
                                     <div class="dadosPerfil-direita">
-                                        <h6>Email</h6>
+                                        <h4>Email</h4>
                                         <input type="text" class="useremail" value="Douglas@outlook.com">
                                     </div>
                                 </div>
                                 <div class="dadosPerfil-input">
                                     <div class="dadosPerfil-esquerda">
-                                        <h6>Telefone</h6>
+                                        <h4>Telefone</h4>
                                         <input type="text" value="(11) 98374-2734">
                                     </div>
                                     <div class="dadosPerfil-direita">
-                                        <h6>Cargo</h6>
+                                        <h4>Cargo</h4>
                                         <input disabled type="text" class="cargoFunc" value="Gerente">
                                     </div>
                                 </div>
@@ -450,17 +966,17 @@
                             <div class="segurancaPerfil">
                                 <div class="segurancaPerfil-input">
                                     <div class="segurancaInput-esquerda">
-                                        <h6>Senha Atual</h6>
+                                        <h4>Senha Atual</h4>
                                         <input type="text" placeholder="*************">
                                     </div>
                                 </div>
                                 <div class="segurancaPerfil-input">
                                     <div class="segurancaInput-esquerda">
-                                        <h6>Nova Senha</h6>
+                                        <h4>Nova Senha</h4>
                                         <input type="text" placeholder="Mínimo de 8 Caracteres">
                                     </div>
                                     <div class="segurancaInput-direita">
-                                        <h6>Confirmar Nova Senha</h6>
+                                        <h4>Confirmar Nova Senha</h4>
                                         <input type="text" placeholder="Repita a nova senha">
                                     </div>
                                 </div>
@@ -470,22 +986,21 @@
                         <div class="cardsPerfil cardPerfil03">
                             <h4>Sessão e Atividade</h4>
                             <span>Informações sobre seu acesso ao sistema</span>
-                            <hr style="width: 100%; height: 2px; color: #b4b4b4;">
                             <div class="sessaoLinhas">
                                 <span style="color: var(--branco);">Último Login</span>
-                                <h6>28/03/2026 às 08:42</h6>
+                                <h4>28/03/2026 às 08:42</h4>
                             </div>
                             <div class="sessaoLinhas">
                                 <span style="color: var(--branco);">IP do acesso atual</span>
-                                <h6>192.168.1.105</h6>
+                                <h4>192.168.1.105</h4>
                             </div>
                             <div class="sessaoLinhas">
                                 <span style="color: var(--branco);">Navegador</span>
-                                <h6>Chrome 124.0 — Windows 11</h6>
+                                <h4>Chrome 124.0 — Windows 11</h4>
                             </div>
                             <div class="sessaoLinhas">
                                 <span style="color: var(--branco);">Membro desde</span>
-                                <h6>15/01/2025</h6>
+                                <h4>15/01/2025</h4>
                             </div>
                         </div>
                         <div class="perfilBotoes">
@@ -496,11 +1011,8 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ======================================== -->
                 </div>
             </div>
-        </div>
-        <div class="card-alertaGeral" id="div_alertaGeral">
         </div>
         <!-- =================================== -->
         <!-- PopUps - Adicionar Funcionários -->
@@ -517,11 +1029,11 @@
                 </div>
                 <div class="popUpFuncionario-dados">
                     <div class="popUpFuncionario-inserirDados-esquerda">
-                        <h6>Nome</h6>
+                        <h4>Nome</h4>
                         <input type="text" id="nomeFunc_input" placeholder="Nome Completo">
                     </div>
                     <div class="popUpFuncionario-inserirDados-direita">
-                        <h6>Email</h6>
+                        <h4>Email</h4>
                         <input type="text" id="emailFunc_input" placeholder="email@empresa">
                     </div>
                 </div>
@@ -547,11 +1059,13 @@
                         class="form-label">
                         <h6>CPF do Administrador*</h6>
                     </label>
-                    <input type="text" maxlength="11" id="cpfAdm_input" placeholder="Ex.: 123.456.789-00" />
+                    <input style="width: 95%" type="text" maxlength="11" id="cpfAdm_input"
+                        placeholder="Ex.: 123.456.789-00" />
                 </div>
                 <div class="popUpFuncionario-Senha">
                     <h6>Senha</h6>
-                    <input type="password" id="senhaFunc_input" placeholder="Insira a Senha do Usuário">
+                    <input style="width: 95%" type="password" id="senhaFunc_input"
+                        placeholder="Insira a Senha do Usuário">
                 </div>
                 <div class="popUpFuncionarioEnviar">
                     <div class="popUpConfirmacao-esquerda">
@@ -568,33 +1082,32 @@
                 </div>
             </div>
         </div>
-    </div>
-    <!-- =================================== -->
+        <!-- =================================== -->
     </div>
 </body>
 
 </html>
 <script>
-    const nomeCompleto = sessionStorage.NOME_USUARIO
-    const partes = nomeCompleto.trim().split(" ");
-    const primeiroNome = partes[0];
-    const usuario = document.querySelectorAll('.username')
-    const emailUsuario = document.querySelectorAll('.useremail')
-    const cargo = document.querySelectorAll('.cargoFunc')
-    const tabela = document.getElementById("corpo-tabela");
+    // const nomeCompleto = sessionStorage.NOME_USUARIO
+    // const partes = nomeCompleto.trim().split(" ");
+    // const primeiroNome = partes[0];
+    // const usuario = document.querySelectorAll('.username')
+    // const emailUsuario = document.querySelectorAll('.useremail')
+    // const cargo = document.querySelectorAll('.cargoFunc')
+    // const tabela = document.getElementById("corpo-tabela");
 
-    usuario.forEach(usuario => {
-        usuario.innerHTML = primeiroNome;
-    });
-    emailUsuario.forEach(emailUsuario => {
-        emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO;
-        emailUsuario.value = sessionStorage.EMAIL_USUARIO;
-    });
-    cargo.forEach(cargo => {
-        cargo.innerHTML = sessionStorage.FUNCAO;
-        cargo.value = sessionStorage.FUNCAO;
-    });
-    userNomeCompleto.value = nomeCompleto;
+    // usuario.forEach(usuario => {
+    //     usuario.innerHTML = primeiroNome;
+    // });
+    // emailUsuario.forEach(emailUsuario => {
+    //     emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO;
+    //     emailUsuario.value = sessionStorage.EMAIL_USUARIO;
+    // });
+    // cargo.forEach(cargo => {
+    //     cargo.innerHTML = sessionStorage.FUNCAO;
+    //     cargo.value = sessionStorage.FUNCAO;
+    // });
+    // userNomeCompleto.value = nomeCompleto;
 
     // ===================================================================
     // Função Abrir e fechar PopUp de Cadastrar Funcionário
@@ -616,15 +1129,12 @@
 
     // ===================================================================
 
-
-
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");
     const imgLogo = document.getElementById("imgLogo");
     const imgUser = document.getElementById("imgUser");
     const imagensLapis = document.querySelectorAll('.imgLapis');
     const sidebar = document.getElementById("div_lateralAberta");
-    const cardAlerta = document.getElementById("div_alertaGeral")
 
     imgModo.addEventListener("click", mudarModo);
     let modoEscuro = false;
@@ -651,7 +1161,6 @@
             }
         }
     }
-
 
     function mudarModo() {
         modoEscuro = !modoEscuro;
@@ -711,7 +1220,7 @@
 
     function verificarModo() {
         const botoesEscolha = document.querySelectorAll('.configuracaoEscolha');
-        botoesEscolha[3].click();
+        botoesEscolha[4].click();
 
         if (sessionStorage.MODO == 1) {
             mudarModo()
@@ -719,44 +1228,22 @@
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
         }
-        if (sessionStorage.ALERTA == 0) {
-            cardAlerta.style.display = "none"
-        } else {
-            cardAlerta.innerHTML = `<div class="box-cardAlerta">
-                    <div class="titulo-pai">
-                        <div class="titulo-alerta">
-                            <img src="../assets/svg/alertas/warning.png">
-                            <span>ALERTA</span>
-                        </div>
-                        <div class="fecharCard">
-                            <span onclick="fecharAlerta()">X</span>
-                        </div>
-                    </div>
-                    <div class="corpo-alerta">
-                        <span>2 Alertas Críticos</span>
-                        <a href="Alertas.html">Clique aqui para ver mais informações!</a>
-                    </div>
-                </div>`
-        }
-        if (sessionStorage.FK_FUNCAO != 1) {
-            const divRelatorios = document.getElementById("div_relatorios");
-            const divGeral = document.getElementById("div_geral");
-            const divNotifi = document.getElementById("div_notifi");
-            const divEquipe = document.getElementById("div_equipe");
-            divRelatorios.style.display = "none";
-            divGeral.style.display = "none";
-            divNotifi.style.display = "none";
-            divEquipe.style.display = "none";
-            sessionStorage.FUNCAO = "Analista de Infra";
-        } else {
-            sessionStorage.FUNCAO = "Gestor de Infra";
-        }
+        // if (sessionStorage.FK_FUNCAO != 1) {
+        //     const divRelatorios = document.getElementById("div_relatorios");
+        //     const divGeral = document.getElementById("div_geral");
+        //     const divNotifi = document.getElementById("div_notifi");
+        //     const divEquipe = document.getElementById("div_equipe");
+        //     const divServers = document.getElementById("div_servers");
+        //     divRelatorios.style.display = "none";
+        //     divGeral.style.display = "none";
+        //     divNotifi.style.display = "none";
+        //     divEquipe.style.display = "none";
+        //     divServers.style.display = "none";
+        //     sessionStorage.FUNCAO = "Analista de Infra";
+        // } else {
+        //     sessionStorage.FUNCAO = "Gestor de Infra";
+        // }
     }
-
-    function fecharAlerta() {
-        cardAlerta.style.display = "none"
-    }
-
     // ===================================================================
     // Função de Escolher
     // Aqui pega todos os "botões" que têm a classe configuracaoEscolha no "Documento"
@@ -776,8 +1263,12 @@
                 let img = b.querySelector('img');
 
                 // Se o src da imagem tiver '-hover.svg' nós tira o '-hover' para voltar sem hover
-                if (img.src.includes('-hover.svg')) {
-                    img.src = img.src.replace('-hover.svg', '.svg');
+                if (img.src.includes('-hover.svg') || img.src.includes('-hover.png')) {
+                    if (img.src.includes('-hover.svg')) {
+                        img.src = img.src.replace('-hover.svg', '.svg');
+                    } else {
+                        img.src = img.src.replace('-hover.png', '.png');
+                    }
                 }
             });
             // Adiciona a classe no botão que foi clicado
@@ -787,8 +1278,12 @@
             let imgClicada = botao.querySelector('img');
 
             // Troca o final '.svg' por '-hover.svg' apenas caso não inclua -hover na mesma (por isso do !)
-            if (!imgClicada.src.includes('-hover.svg')) {
-                imgClicada.src = imgClicada.src.replace('.svg', '-hover.svg');
+            if (!imgClicada.src.includes('-hover.svg') || !imgClicada.src.includes('-hover.png')) {
+                if (!imgClicada.src.includes('-hover.svg')) {
+                    imgClicada.src = imgClicada.src.replace('.svg', '-hover.svg');
+                } else {
+                    imgClicada.src = imgClicada.src.replace('.png', '-hover.png');
+                }
             }
 
             // Esconde todas as páginas
@@ -800,6 +1295,49 @@
             configuracoesGerais[index].style.display = 'flex';
         });
     });
+
+    function AbrirComponente(checkbox) {
+        const box = checkbox.closest(".componente-box");
+        const config = box.querySelector(".componente-config");
+
+        if (checkbox.checked) {
+            config.classList.add("ativo");
+        } else {
+            config.classList.remove("ativo");
+        }
+    }
+
+    var atualizarServidor = false;
+
+    function AttOuAdd(checkbox, infoOpcao) {
+        const box = checkbox.closest(".componente-box");
+        if (checkbox.checked) {
+            if (infoOpcao == "atualizar") {
+                const config = box.querySelector(".componente-config");
+                config.classList.add("ativo");
+                fraseAdd.innerHTML = ""
+                document.getElementById('checkCadastrar').checked = false;
+                document.getElementById('checkCadastrar').disabled = true;
+                atualizarServidor = true;
+            } else if (infoOpcao == "adicionar") {
+                input_nome_servidor.value = "";
+                input_SO_servidor.value = "";
+                numero_serial_servidor.value = "";
+                input_hostname_servidor.value = "";
+                input_endereco_servidor.value = "";
+                input_portaSSH_servidor.value = "";
+                select_ambiente.value = "";
+                input_localizacao_servidor.value = "";
+                atualizarServidor = false;
+            }
+        } else {
+            const config = box.querySelector(".componente-config");
+            config.classList.remove("ativo");
+            fraseAdd.innerHTML = "Atualizar Servidor"
+            document.getElementById('checkCadastrar').disabled = false;
+            atualizarServidor = false;
+        }
+    }
     // ===================================================================
     // Função de Cadastrar Funcionário
 
@@ -966,6 +1504,257 @@
             });
     }
 
+    function addFunc3() {
+        if (input_nome_servidor.value == "" ||
+            input_SO_servidor.value == "" ||
+            numero_serial_servidor.value == "" ||
+            input_hostname_servidor.value == "" ||
+            input_endereco_servidor.value == "" ||
+            input_portaSSH_servidor.value == "" ||
+            select_ambiente.value == "" ||
+            input_localizacao_servidor.value == "") {
+            msgErro.innerHTML = `<p style="color: red">Preencha todos os campos para prosseguir<p>`
+            setTimeout(function () {
+                msgErro.innerHTML = "";
+            }, 1000);
+        } else {
+            if(atualizarComponente){
+                document.getElementById('popUpCadastrarComponente').style.display = 'flex';
+                document.getElementById('popUpCadastrarServidor').style.display = 'none';
+            }
+        }
+    }
+    function fecharFunc2() {
+        document.getElementById('popUpCadastrarComponente').style.display = 'none';
+    }
+    function voltarFunc2() {
+        document.getElementById('popUpCadastrarComponente').style.display = 'none';
+        document.getElementById('popUpCadastrarServidor').style.display = 'flex';
+    }
 
-    // =============================================
+    pesquisarServidores();
+    function pesquisarServidores() {
+        var linhas = ''
+        const jaAdicionados = [];
+
+        fetch("/servidores/listarServidor", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                id_empresa: 1,
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+                return resposta.json();
+            })
+
+            .then(servidores => {
+                servidores.forEach(s => {
+                    if (!jaAdicionados.includes(s.nome)) {
+                        linhas += `<option value="${s.nome}">`
+                        jaAdicionados.push(s.nome);
+                    }
+                    lista_servidores.innerHTML = linhas;
+                });
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+    }
+
+    var idServidorSelecionado = 0;
+    function buscarServidor(nomeServidor) {
+        fetch("/servidores/listarServidor", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                id_empresa: 1,
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+                return resposta.json();
+            })
+
+            .then(s => {
+                for (let i = 0; i < s.length; i++) {
+                    if (nomeServidor == s[i].nome) {
+                        idServidorSelecionado = s[i].id_servidor;
+                        input_nome_servidor.value = s[i].nome;
+                        input_SO_servidor.value = s[i].sistema_operacional;
+                        numero_serial_servidor.value = s[i].portaSerial;
+                        input_hostname_servidor.value = s[i].hostServer;
+                        input_endereco_servidor.value = s[i].endereco;
+                        input_portaSSH_servidor.value = s[i].chaveSSH;
+                        select_ambiente.value = s[i].ambiente;
+                        input_localizacao_servidor.value = s[i].localizacao;
+                        break;
+                    }
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
+
+    function cadastrarServidor() {
+        var nomeServidor = input_nome_servidor.value;
+        var SOServidor = input_SO_servidor.value;
+        var numeroSerialServidor = numero_serial_servidor.value;
+        var HostServidor = input_hostname_servidor.value;
+        var enderecoServidor = input_endereco_servidor.value;
+        var portaSSHservidor = input_portaSSH_servidor.value;
+        var ambienteServidor = select_ambiente.value;
+        var localizacaoServidor = input_localizacao_servidor.value;
+        var fk_empresa = sessionStorage.getItem('FK_EMPRESA');
+
+        var dadosEnviar = {
+            nomeServer: nomeServidor,
+            SOServer: SOServidor,
+            SerialServer: numeroSerialServidor,
+            hostServer: HostServidor,
+            enderecoIPServer: enderecoServidor,
+            SSHServer: portaSSHservidor,
+            ambienteServer: ambienteServidor,
+            localizacaoServer: localizacaoServidor,
+            fk_empresaServer: fk_empresa
+        };
+
+
+        if (nomeServidor == "" || nomeServidor == "" || numeroSerialServidor == "" ||
+            HostServidor == "" || enderecoServidor == "" || portaSSHservidor == "" || localizacaoServidor == "") {
+            console.log("As informaçoes do servidor não foram preenchidas corretamente!")
+
+        } else {
+            var qualFuncao = "/cadastrarServidor"
+            if (atualizarServidor) {
+                qualFuncao = "/atualizarServidor"
+                dadosEnviar.idServidorServer = idServidorSelecionado;
+            }
+            fetch(`/servidores${qualFuncao}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(dadosEnviar)
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+                    if (!resposta.ok) {
+                        throw "Erro ao cadastrar/atualizar servidor";
+                    }
+                    return resposta.json();
+                })
+                .then(function (data) {
+                    console.log("DATA:", data);
+
+                    var idServidor = data.idServidor;
+                    sessionStorage.setItem('idServidor', idServidor);
+
+                    console.log("ID DO SERVIDOR:", idServidor);
+                    cadastrarComponente()
+
+                })
+                .catch(function (erro) {
+                    console.log("#ERRO:", erro);
+                })
+        }
+    }
+
+    function cadastrarComponente() {
+        var componentes = [];
+        document.querySelectorAll(".componente-box").forEach(box => {
+
+            var checkbox = box.querySelector("input[type='checkbox']");
+            if (!checkbox || !checkbox.checked) return;
+
+            var grupo = box.closest(".grupo-componente")
+                .querySelector("h6")
+                ?.innerText;
+
+            var grupoNormalizado = normalizar(grupo);
+
+            var fk_componente = mapaComponentes[grupoNormalizado];
+
+            console.log("Grupo:", grupo, "→", grupoNormalizado, "→ FK:", fk_componente);
+
+            var inputs = box.querySelectorAll(".limites input");
+
+            var minimo = Number(inputs[0]?.value);
+            var maximo = Number(inputs[1]?.value);
+
+            var nome = box.querySelector(".titulo-componente")?.innerText;
+
+            var tipo = box.querySelector(".botoes-metrica .ativo")?.innerText;
+
+            let fk_formato = null;
+
+            if (tipo?.includes("%")) fk_formato = 1;
+            else if (tipo?.includes("GHz")) fk_formato = 2;
+            else if (tipo?.includes("GB")) fk_formato = 3;
+            else if (tipo?.includes("ms")) fk_formato = 4;
+            else if (tipo?.includes("°C")) fk_formato = 5;
+            else fk_formato = 1;
+
+            componentes.push({
+                fk_componente,
+                fk_formato,
+                nome_componente: nome,
+                valor_min_critico: minimo,
+                valor_max_critico: maximo
+            });
+        });
+
+        console.log("COMPONENTES:", componentes);
+
+        var idServidor = sessionStorage.getItem('idServidor');
+
+        if (!idServidor) {
+            console.log("idServidor não encontrado");
+            return;
+        }
+
+        if (componentes.length === 0) {
+            console.log("Nenhum componente selecionado");
+            return;
+        }
+
+        fetch("/componente/cadastrarComponente", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idServidor,
+                componentes
+            })
+        })
+            .then(res => {
+                if (!res.ok) throw "Erro ao cadastrar componentes";
+                return res.json();
+            })
+            .then(data => {
+
+                console.log("RESPOSTA:", data);
+
+                sessionStorage.setItem(
+                    "idsTipo",
+                    JSON.stringify(data.idsTipo)
+                );
+
+                document.getElementById('popUpCadastrarComponente').style.display = 'none';
+                alert("Cadastro realizado!")
+                fecharFunc2();
+
+            })
+            .catch(err => {
+                console.log("ERRO:", err);
+            });
+    }
 </script>

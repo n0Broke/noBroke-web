@@ -18,6 +18,13 @@ function cadastrar(nomeServidor,SOservidor,serialServidor,hostServidor,enderecoS
   return database.executar(instrucaoSql);
 }
 
+function atualizar(idServidorAtual, nomeServidor,SOservidor,serialServidor,hostServidor,enderecoServidor,sshServidor,ambienteServidor,localizacaoServidor,fk_empresa){
+  var instrucaoSql = `
+  UPDATE servidor SET nome = '${nomeServidor}', sistema_operacional = '${SOservidor}', portaSerial = '${serialServidor}', hostServer = '${hostServidor}', endereco = '${enderecoServidor}', chaveSSH = '${sshServidor}', ambiente = '${ambienteServidor}', localizacao = '${localizacaoServidor}' WHERE id_servidor = '${idServidorAtual}';`;
+  console.log("Executando SQL:\n" + instrucaoSql);
+  return database.executar(instrucaoSql);
+}
+
 function listar(fk_empresa) {
   var instrucao = `SELECT * FROM servidor Where fk_empresa = ${fk_empresa}`;
   return database.executar(instrucao);
@@ -25,5 +32,6 @@ function listar(fk_empresa) {
 
 module.exports = {
   cadastrar,
+  atualizar,
   listar
 };
