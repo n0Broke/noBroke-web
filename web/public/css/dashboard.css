@@ -932,6 +932,8 @@ tbody td {
     padding: 6px 12px;
     border-radius: 6px;
     cursor: pointer;
+
+    transition: all 0.5s ease;
 }
 
 .info-direita button:hover {
@@ -942,17 +944,36 @@ tbody td {
 .cards-conteudo-seguranca {
     padding: auto;
     background-color: var(--pretoClaro);
+    min-height: 80px;
     border-radius: 6px;
     display: flex;
+    align-items: center;
     flex-direction: row;
     gap: 8px;
     width: 100%;
     height: 100%;
     border: 1px solid var(--bordas);
+    cursor: pointer;
 
     padding: 14px 12px;
 
     transition: all 0.25s ease;
+}
+
+.conteudo-dash01 a {
+    width: 100%;
+}
+
+.texto-lado strong {
+    transition: all 0.25s ease;
+}
+
+.cards-conteudo-seguranca:hover {
+    border: 1px solid #f9701573;
+}
+
+.cards-conteudo-seguranca:hover .texto-lado strong {
+    color: var(--laranja);
 }
 
 .score-pontuacao {
@@ -971,6 +992,7 @@ tbody td {
 }
 
 .texto-lado {
+    /* background-color: white; */
     display: flex;
     flex-direction: column;
     color: var(--branco);
@@ -978,6 +1000,7 @@ tbody td {
 
 .texto-lado p {
     color: gray;
+    margin: 0;
 }
 
 .acoes-card-seguranca {
@@ -1015,6 +1038,7 @@ tbody td {
 
 .Tabela-suporte table {
     width: 100%;
+    border-radius: 6px;
     border-collapse: collapse;
     background-color: var(--pretoClaro);
     color: var(--branco);
@@ -1056,14 +1080,17 @@ tbody td {
     color: var(--branco);
 }
 
-.form-contato input {
+.form-contato input, .form-contato textarea {
     background-color: var(--pretoC);
     border: 1px solid var(--bordas);
+    padding: 4px 10px;
     border-radius: 10px;
     color: var(--branco);
+
+    transition: all 0.25s ease;
 }
 
-.form-contato input:hover {
+.form-contato input:hover, .form-contato textarea:hover {
     border: 1px solid #ff6a00;
 }
 
@@ -1076,6 +1103,8 @@ tbody td {
     color: var(--branco);
     font-weight: 500;
     cursor: pointer;
+
+    transition: all 0.25s ease;
 }
 
 .form-contato button:hover {
