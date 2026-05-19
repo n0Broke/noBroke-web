@@ -1,49 +1,65 @@
-// Adicione esta rota no seu arquivo de backend de suporte do Express
 const express = require("express");
 const router = express.Router();
 
 router.get("/buscar-chamados", async (req, res) => {
-    // Configurações do seu Jira (Mude para os seus dados do painel da Atlassian)
-    const JIRA_DOMAIN = "";  // Dominio sem https
-    const JIRA_EMAIL = ""; // Email
-    const JIRA_TOKEN = ""; // API Token
-    const JIRA_PROJECT_KEY = ""; // Sigla
+    const JIRA_DOMAIN = "";  
+    const JIRA_EMAIL = ""; 
+    const JIRA_TOKEN = "".trim();
+    const JIRA_PROJECT_KEY = ""; 
 
-    // Autenticação Basic em Base64 exigida pela Atlassian
-    const auth = Buffer.from(`${JIRA_EMAIL}:${JIRA_TOKEN}`).toString("base64");
+    const auth = Buffer.from(`${JIRA_EMAIL}:${JIRA_TOKEN}`, "utf-8").toString("base64");
 
-    // JQL (Query do Jira): Busca tarefas no projeto específico que não estão concluídas
-    const jql = `project=${JIRA_PROJECT_KEY} AND status != Done ORDER BY created DESC`;
+    // Mantendo a busca de tudo que não está Concluído (Done)
+    const jqlQuery = `project = '${JIRA_PROJECT_KEY}' AND status != 'Done' ORDER BY created DESC`;
+    const urlNova = `https://${JIRA_DOMAIN}/rest/api/3/search/jql`;
 
     try {
-        const response = await fetch(`https://${JIRA_DOMAIN}/rest/api/3/search?jql=${encodeURIComponent(jql)}`, {
-            method: "GET",
+        const response = await fetch(urlNova, {
+            method: "POST", 
             headers: {
                 "Authorization": `Basic ${auth}`,
-                "Accept": "application/json"
-            }
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                "jql": jqlQuery,
+                "maxResults": 50,
+                // O SEGREDO ESTÁ AQUI: Forçar o Jira a trazer os dados dos campos!
+                "fields": ["summary", "created"] 
+            })
         });
 
         if (!response.ok) {
+            const textoErro = await response.text();
+            console.error(`=> Detalhes da recusa do Jira [Status ${response.status}]:`, textoErro);
             throw new Error(`Erro Jira API: ${response.status}`);
         }
 
         const data = await response.json();
+        const listaIssues = data.issues || data.results || [];
 
-        // Mapeia o JSON bruto e complexo do Jira para o formato limpo que seu HTML precisa
-        const chamadosFormatados = data.issues.map(issue => {
-            const dataCriacao = new Date(issue.fields.created);
+        if (listaIssues.length === 0) {
+            return res.status(200).json([]);
+        }
+
+        const chamadosFormatados = listaIssues.map(issue => {
+            const dataCriacao = new Date(issue.fields?.created);
+            
+            // O issue.key costuma vir por padrão (Ex: NOB-35)
+            const chaveIssue = issue.key || `NOB-${issue.id}`; 
+
             return {
-                titulo: issue.fields.summary, // Ex: "RAM Acima do Limite Crítico"
-                dataHora: dataCriacao.toLocaleDateString('pt-BR') + ' ' + dataCriacao.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }),
-                link: `https://${JIRA_DOMAIN}/browse/${issue.key}` // Link direto para abrir o chamado
+                titulo: issue.fields?.summary || "Chamado sem título", 
+                dataHora: issue.fields?.created ? dataCriacao.toLocaleDateString('pt-BR') + ' ' + dataCriacao.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : "Sem data",
+                link: `https://${JIRA_DOMAIN}/browse/${chaveIssue}` 
             };
         });
 
+        // Retorna a lista linda para o seu HTML montar as linhas da tabela
         res.status(200).json(chamadosFormatados);
 
     } catch (error) {
-        console.error("Erro ao buscar do Jira:", error);
+        console.error("Erro interno ao buscar do Jira:", error.message);
         res.status(500).send("Erro interno ao processar chamados");
     }
 });
