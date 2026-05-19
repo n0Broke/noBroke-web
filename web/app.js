@@ -23,6 +23,7 @@ var cadastroEmpresaRouter = require("./src/routes/cadastroEmpresa");
 var cadastroAdmRouter = require("./src/routes/cadastroAdm");
 var servidorRouter = require("./src/routes/servidor");
 var s3Router = require("./src/routes/s3");
+var suporteListarRouter = require("./src/routes/suporteListar");
 
 
 
@@ -42,6 +43,7 @@ app.use("/cadastroAdm", cadastroAdmRouter);
 app.use("/componente", componenteRouter);
 app.use("/servidores", servidorRouter);
 app.use("/s3", s3Router);
+app.use("/suporte", suporteListarRouter);
 
 app.listen(PORTA_APP, function() {
     console.log(`
