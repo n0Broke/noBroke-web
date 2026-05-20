@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 
+// Acima ele baixa oque é requerido para funcionar as rotas
+
+// Define a rota GET para buscar os chamados do Jira (preencha as informações de autenticação e projeto no Jira)
 router.get("/buscar-chamados", async (req, res) => {
     const JIRA_DOMAIN = "";  
     const JIRA_EMAIL = ""; 
@@ -29,6 +32,7 @@ router.get("/buscar-chamados", async (req, res) => {
             })
         });
 
+        // Se a resposta nãi der certo, devolve uma mensagem no console e não busca nada
         if (!response.ok) {
             const textoErro = await response.text();
             console.error(`=> Detalhes da recusa do Jira [Status ${response.status}]:`, textoErro);
@@ -48,6 +52,7 @@ router.get("/buscar-chamados", async (req, res) => {
             // O issue.key costuma vir por padrão (Ex: NOB-35)
             const chaveIssue = issue.key || `NOB-${issue.id}`; 
 
+            // Retorna o titulo, data/hora formatada e o link para o Jira (com um fallback caso algum campo esteja faltando)
             return {
                 titulo: issue.fields?.summary || "Chamado sem título", 
                 dataHora: issue.fields?.created ? dataCriacao.toLocaleDateString('pt-BR') + ' ' + dataCriacao.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) : "Sem data",
@@ -55,9 +60,10 @@ router.get("/buscar-chamados", async (req, res) => {
             };
         });
 
-        // Retorna a lista linda para o seu HTML montar as linhas da tabela
+        // Retorna a lista pro HTML
         res.status(200).json(chamadosFormatados);
 
+        // Caso der erro, avisa no console e devolve um erro 500 pro usuário
     } catch (error) {
         console.error("Erro interno ao buscar do Jira:", error.message);
         res.status(500).send("Erro interno ao processar chamados");
