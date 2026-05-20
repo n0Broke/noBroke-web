@@ -408,7 +408,7 @@
                                     <h4>Cadastro de Servidor</h4>
                                     <div
                                         style="display: flex; flex-direction: row; justify-content: space-around; width: 160px; align-items: center;">
-                                        <div class="componente-box" style="border: none; margin: 0; padding: 0;">
+                                        <div class="atualizar-box" style="border: none; margin: 0; padding: 0;">
                                             <label class="checkbox-container">
                                                 <input type="checkbox" onchange="AttOuAdd(this, `atualizar`)">
                                                 <p class="checkmark"></p>
@@ -534,7 +534,7 @@
                                             <p class="checkmark"></p>
                                         </label>
 
-                                        <p class="titulo-componente">Uso geral</p>
+                                        <p class="titulo-componente">CPU</p>
 
                                         <div class="tipo-metrica">
                                             <p class="badge-metrica">porcentagem (%)</p>
@@ -551,40 +551,6 @@
                                             <div>
                                                 <p>LIMITE MÁXIMO</p>
                                                 <input type="number" value="80">
-                                            </div>
-                                            <div>
-                                                <p>CAPACIDADE</p>
-                                                <input type="number" value="3.7" placeholder="Frequência em Ghz">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="componente-box">
-                                    <div class="componente-topo">
-                                        <label class="checkbox-container">
-                                            <input type="checkbox" onchange="AbrirComponente(this)">
-                                            <p class="checkmark"></p>
-                                        </label>
-
-                                        <p class="titulo-componente">Temperatura</p>
-
-                                        <div class="tipo-metrica">
-                                            <p class="badge-metrica">temperatura (°C)</p>
-                                            <p class="badge-intervalo">20 a 95</p>
-                                        </div>
-                                    </div>
-
-                                    <div class="componente-config">
-
-                                        <div class="limites">
-                                            <div>
-                                                <p>LIMITE MÍNIMO</p>
-                                                <input type="number" value="20">
-                                            </div>
-                                            <div>
-                                                <p>LIMITE MÁXIMO</p>
-                                                <input type="number" value="85">
                                             </div>
                                         </div>
                                     </div>
@@ -1310,7 +1276,7 @@
     var atualizarServidor = false;
 
     function AttOuAdd(checkbox, infoOpcao) {
-        const box = checkbox.closest(".componente-box");
+        const box = checkbox.closest(".atualizar-box");
         if (checkbox.checked) {
             if (infoOpcao == "atualizar") {
                 const config = box.querySelector(".componente-config");
@@ -1518,10 +1484,10 @@
                 msgErro.innerHTML = "";
             }, 1000);
         } else {
-            if(atualizarComponente){
+            if(atualizarServidor){
                 document.getElementById('popUpCadastrarComponente').style.display = 'flex';
                 document.getElementById('popUpCadastrarServidor').style.display = 'none';
-            }
+           }
         }
     }
     function fecharFunc2() {
@@ -1632,12 +1598,12 @@
             console.log("As informaçoes do servidor não foram preenchidas corretamente!")
 
         } else {
-            var qualFuncao = "/cadastrarServidor"
+            var qualFuncao = "cadastrarServidor"
             if (atualizarServidor) {
-                qualFuncao = "/atualizarServidor"
+                qualFuncao = "atualizarServidor"
                 dadosEnviar.idServidorServer = idServidorSelecionado;
             }
-            fetch(`/servidores${qualFuncao}`, {
+            fetch(`/servidores/${qualFuncao}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -1649,17 +1615,8 @@
                     if (!resposta.ok) {
                         throw "Erro ao cadastrar/atualizar servidor";
                     }
-                    return resposta.json();
-                })
-                .then(function (data) {
-                    console.log("DATA:", data);
-
-                    var idServidor = data.idServidor;
-                    sessionStorage.setItem('idServidor', idServidor);
-
-                    console.log("ID DO SERVIDOR:", idServidor);
                     cadastrarComponente()
-
+                    return resposta.json();
                 })
                 .catch(function (erro) {
                     console.log("#ERRO:", erro);
@@ -1667,15 +1624,29 @@
         }
     }
 
+    function normalizar(texto) {
+        return texto
+            ?.trim()
+            .replace(/\s+/g, " ")
+            .toLowerCase();
+    }
+
+    const mapaComponentes = {
+        "cpu (processador)": 1,
+        "memória": 2,
+        "disco (armazenamento)": 3,
+        "rede": 4,
+        "processos": 5
+    };
+
     function cadastrarComponente() {
         var componentes = [];
         document.querySelectorAll(".componente-box").forEach(box => {
-
             var checkbox = box.querySelector("input[type='checkbox']");
             if (!checkbox || !checkbox.checked) return;
 
             var grupo = box.closest(".grupo-componente")
-                .querySelector("h6")
+                .querySelector("h4")
                 ?.innerText;
 
             var grupoNormalizado = normalizar(grupo);
@@ -1715,7 +1686,7 @@
 
         var idServidor = sessionStorage.getItem('idServidor');
 
-        if (!idServidor) {
+        if (!idServidor && !atualizarServidor) {
             console.log("idServidor não encontrado");
             return;
         }
@@ -1725,7 +1696,13 @@
             return;
         }
 
-        fetch("/componente/cadastrarComponente", {
+        var qualFuncao = "cadastrarComponente"
+            if (atualizarServidor) {
+                qualFuncao = "atualizarComponente"
+                idServidor = idServidorSelecionado;
+            }
+
+        fetch(`/componente/${qualFuncao}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -1740,18 +1717,14 @@
                 return res.json();
             })
             .then(data => {
-
                 console.log("RESPOSTA:", data);
 
-                sessionStorage.setItem(
-                    "idsTipo",
-                    JSON.stringify(data.idsTipo)
-                );
+                body: JSON.stringify({
+                idServidor,
+                componentes
+            })
 
-                document.getElementById('popUpCadastrarComponente').style.display = 'none';
                 alert("Cadastro realizado!")
-                fecharFunc2();
-
             })
             .catch(err => {
                 console.log("ERRO:", err);

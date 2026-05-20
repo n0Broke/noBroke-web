@@ -9,4 +9,11 @@ router.post("/cadastrarComponente", function (req, res) {
     return componenteController.cadastrarComponente(req, res);
 });
 
+router.post("/atualizarComponente", function (req, res) {
+    console.log("BODY COMPLETO:", req.body);
+    console.log("COMPONENTES:", req.body.componentes);
+
+    return componenteController.atualizarComponente(req, res);
+});
+
 module.exports = router;
