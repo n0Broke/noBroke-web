@@ -1,9 +1,5 @@
 @import url('dashboard.css');
-
-*{
-    overflow: hidden !important;
-}
-
+ 
 :root {
     --branco: #fff;
     --brancoCinza: #F2F2F2;
@@ -83,7 +79,7 @@
 .cards-rede {
     display: flex;
     justify-content: space-between;
-    height: 12%;
+    height: fit-content;
     gap: 12px;
 }
 
@@ -121,6 +117,19 @@
     color: var(--branco);
     margin: 0;
 }
+
+.card-rede01 h2 {
+    color: var(--vermelho);
+}
+
+.card-rede02 h2 {
+    color: var(--laranja);
+}
+
+.card-rede03 h2 {
+    color: var(--amarelo);
+}
+
 
 /* ================================================ */
 /* Gráficos - Estilização */
@@ -162,9 +171,18 @@
 /* Estilização Gráficos Individuais */
 /* Gráfico 01 - Latência */
 
+.graficos-richard {
+    display: flex;
+    flex-direction: column;
+    margin-top: 6px;
+    margin-bottom: 0px;
+    gap: 6px;
+}
+
+
 .card-grafico01 {
-    max-height: 300px;
-    height: 100%;
+    max-height: 400px;
+    height: 300px;
 }
 
 .card-grafico01 canvas {
@@ -173,7 +191,7 @@
 }
 
 .card-grafico02 {
-    max-height: 250px;
+    max-height: 350px;
     height: 100%;
 }
 
@@ -183,7 +201,7 @@
 }
 
 .card-grafico03 {
-    max-height: 250px;
+    max-height: 350px;
     height: 100%;
 }
 
@@ -192,12 +210,45 @@
     padding: 10px 0px;
 }
 
-.card-grafico04 {
-    max-height: 250px;
-    height: 100%;
-}
+/* ============================================ */
+/* Responsividade da Página */
+@media (max-width: 900px) {
+    .header-conteudo-dash {
+        flex-direction: column;
+        align-items: start;
+        gap: 12px;
+    }
+    .conteudo-dash {
+        height: auto !important;
+        overflow-y: auto !important;
+    }
 
-.card-grafico04 canvas {
-    width: 100%;
-    padding: 10px 0px;
+    .cards-rede {
+        flex-direction: column;
+    }
+
+    .cards-rede {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .card-rede {
+        max-width: 87.5%;
+        width: 100%;
+    }
+
+    .graficos-rede-dupla {
+        flex-direction: column;
+        max-width: 87.5%;
+    }
+
+    .card-grafico02, .card-grafico03 {
+        max-width: 100%;
+        width: 100%;
+        max-height: 300px;
+    }
+
+    #grafico02, #grafico03 {
+        height: 92.5% !important;
+    }
 }

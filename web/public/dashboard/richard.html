@@ -148,40 +148,45 @@
             <!-- Conteúdo da Dashboard - KPI's -->
             <div class="cards-rede">
                 <div class="card-rede card-rede01">
+                    <h4>Perda de Pacote</h4>
+                    <h2>0.4%</h2>
+                </div>
+                <div class="card-rede card-rede02">
                     <h4>Pico de Latência - 1h</h4>
                     <h2>28ms</h2>
                 </div>
-                <div class="card-rede card-rede02">
+                <div class="card-rede card-rede03">
                     <h4>Jitter - Variação Tempo chegada de Pacotes</h4>
                     <h2>3.4ms</h2>
                 </div>
-                <div class="card-rede card-rede03">
-                    <h4>Quantidade de Alertas</h4>
-                    <h2>0</h2>
+                <div class="card-rede card-rede04">
+                    <h4>Latência Média</h4>
+                    <h2>35.6ms</h2>
                 </div>
             </div>
-            <!-- ========================================================= -->
-            <!-- Conteúdo da Dashboard - Gráfico de Latência -->
-            <div class="card-grafico-redeCentral card-grafico01">
-                <h4 class="titulo-grafico">Latência de Rede (60s)</h4>
-                <canvas id="grafico01"></canvas>
-            </div>
-            <!-- ========================================================= -->
-            <!-- Conteúdo da Dashboard - Gráfico de Bubbles -->
-           
-            <!-- ========================================================= -->
-            <!-- Conteúdo da Dashboard - Gráficos (Pacotes recebidos e enviados) -->
-            <div class="graficos-rede-dupla">
-                <div class="card-grafico-rede card-grafico03">
-                    <h4 class="titulo-grafico">Network Receive [RECV] - 60s</h4>
-                    <canvas id="grafico03"></canvas>
+            <div class="graficos-richard">
+                <!-- ========================================================= -->
+                <!-- Conteúdo da Dashboard - Gráfico de Latência -->
+                <div class="card-grafico-redeCentral card-grafico01">
+                    <h4 class="titulo-grafico">Latência de Rede</h4>
+                    <canvas id="grafico01"></canvas>
                 </div>
-                <div class="card-grafico-rede card-grafico04">
-                    <h4 class="titulo-grafico">Network Seny [SENT] - 60s</h4>
-                    <canvas id="grafico04"></canvas>
+                <!-- ========================================================= -->
+                <!-- Conteúdo da Dashboard - Gráficos (Pacotes recebidos e enviados) -->
+                <div class="graficos-rede-dupla">
+                    <div class="card-grafico-rede card-grafico02">
+                        <h4 class="titulo-grafico">Transferência de Dados - Upload e Download</h4>
+                        <canvas id="grafico02"></canvas>
+                    </div>
+                    <!-- ========================================================= -->
+                    <!-- Conteúdo da Dashboard - Gráfico Jitter -->
+                    <div class="card-grafico-rede card-grafico03">
+                        <h4 class="titulo-grafico">Jitter (Variação do Tempo de Chegada dos Pacotes)</h4>
+                        <canvas id="grafico03"></canvas>
+                    </div>
                 </div>
+                <!-- ========================================================= -->
             </div>
-            <!-- ========================================================= -->
         </div>
     </div>
     <div class="card-alertaGeral" id="div_alertaGeral">
@@ -358,9 +363,8 @@
 
     // Buscando ID dos gŕaficos e criando variáveis deles
     const graficoLatencia = document.getElementById('grafico01');
-    const graficoAlertas = document.getElementById('grafico02');
-    const graficoPackRecv = document.getElementById('grafico03');
-    const graficoPackSent = document.getElementById('grafico04');
+    const graficoTransferencia = document.getElementById('grafico02');
+    const graficoJitter = document.getElementById('grafico03');
 
     // Dando informações pra esses gráficos
     // Primeiro o de Latência de Rede
@@ -445,70 +449,9 @@
     });
 
     // =====================================================
-    // Gráfico de Distribuição de Latência pelo Tempo
+    // Gráfico - Pacotes/Network Recebido e Enviado
 
-    const chartAlertas = new Chart(graficoAlertas, {
-        type: 'bar',
-
-        data: {
-            labels: ['Baixo', 'Alerta', 'Crítico'], // Nome das Colunas deitado (x)
-
-            datasets: [{
-                label: 'Quantidade de Alertas', // Título do Gráfico
-
-                data: [12, 5, 2],
-
-                // Cor do backgorund
-                backgroundColor: [
-                    '#21c45d', // Azul
-                    '#F8CA15', // Amarelo
-                    '#ff3b30'  // Vermelho
-                ],
-
-                borderRadius: 8, // Borda das Colunas (curva)
-                borderWidth: 0 // Borda grossura
-            }]
-        },
-
-        options: {
-            responsive: true, // Responsivo né, pra n ficar expandindo sem parar
-            maintainAspectRatio: false, // Responsivo também pra n expandir sem parar
-
-            plugins: {
-                legend: {
-                    display: false // Pra n precisar mostrar legenda
-                }
-            },
-
-            scales: {
-                x: {
-                    grid: {
-                        display: false
-                    }
-                },
-
-                y: {
-                    beginAtZero: true,
-                    min: 0,
-                    max: 20,
-
-                    grid: {
-                        color: getComputedStyle(document.documentElement)
-                            .getPropertyValue('--linhasChart')
-                    },
-
-                    ticks: {
-                        stepSize: 2
-                    }
-                }
-            }
-        }
-    });
-
-    // ===================================================================
-    // Gráfico - Pacotes/Network Recebido
-
-    const chartPackRecv = new Chart(graficoPackRecv, {
+    const chartTransferencia = new Chart(graficoTransferencia, {
         type: 'line', // O tipo de gráfico.
         // Dando os dados
         data: {
@@ -523,7 +466,7 @@
                 // Nome da Legenda e que aparece encima
                 label: 'Pacotes Recebidos (KBs)',
 
-                // Dados que vão ser plotados no gráfico
+                // Dados que vão ser plotados no gráfico de dados recebidos
                 data: [
                     118, 142, 97, 155, 133, 171, 160, 120, 188, 149,
                     210, 175, 165, 193, 140, 225, 205, 158, 240, 180,
@@ -536,13 +479,6 @@
                 // Cor da Linha
                 borderColor: '#21c45d',
 
-                // Fundo que fica abaixo da Linha (deixei transparente usando rgba)
-                backgroundColor: 'rgba(33, 196, 93, 0.15)',
-
-
-                // Esse comando vai servir pra realmente preencher abaixo da linha
-                fill: true,
-
                 // Grossura da linha
                 borderWidth: 2,
 
@@ -550,82 +486,22 @@
                 // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
                 tension: 0.5,
                 pointBackgroundColor: '#21c45d', // Deixa o fundo da bolinha preenchido (tudo q tiver point antes afeta os pontos)
-            }]
-        },
-
-        // OPTIONS: São os ajustes gerais do desenho do gráfico
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    grid: {
-                        display: false
-                    },
-                    ticks: {
-                        stepSize: 20,
-                        maxTicksLimit: 60
-                    }
-                },
-                y: {
-                    // Garante que a lateral esquerda comece do número ZERO. 
-                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
-                    beginAtZero: true,
-                    min: 0,
-                    max: 500,
-
-                    ticks: {
-                        stepSize: 50 // Faz ir de 50 em 50
-                        // Use maxTicksLimit pra definir limite de quantos dados vai aparecer em X
-                    },
-
-                    grid: {
-                        display: true,
-                        color: getComputedStyle(document.documentElement)
-                            .getPropertyValue('--linhasChart')
-                    }
-                }
-            }
-        }
-    });
-
-    // ===================================================================
-    // Gráfico - Pacotes/Network Enviado
-
-    const chartPackSent = new Chart(graficoPackSent, {
-        type: 'line', // O tipo de gráfico.
-        // Dando os dados
-        data: {
-
-            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
-            // Vai aparecer até 60 linhas, criando um array de até 60 de tamanho
-            // Depois pega o valor atual e soma com +1 como se fosse uma função
-            labels: Array.from({ length: 60 }, (_, i) => `${i + 1}s`),
-
-            // DataSet: As linhas, sua legenda e etc
-            datasets: [{
+            }, {
                 // Nome da Legenda e que aparece encima
                 label: 'Pacotes Enviados (KBs)',
 
-                // Dados que vão ser plotados no gráfico
+                // Dados que vão ser plotados no gráfico de pacotes enviados
                 data: [
-                    105, 120, 88, 130, 115, 140, 125, 95, 150, 118,
-                    160, 135, 122, 145, 110, 170, 155, 130, 180, 140,
-                    190, 150, 175, 128, 200, 165, 185, 140, 210, 155,
-                    195, 170, 220, 145, 205, 230, 160, 215, 240, 175,
-                    225, 150, 250, 180, 235, 160, 260, 190, 200, 245,
-                    210, 175, 270, 185, 230, 160, 280, 200, 240, 180
+                    45, 62, 55, 78, 63, 91, 80, 50, 108, 89,
+                    130, 115, 105, 133, 90, 155, 145, 118, 170, 130,
+                    190, 140, 170, 125, 215, 160, 190, 145, 230, 170,
+                    215, 190, 240, 160, 205, 260, 180, 230, 280, 210,
+                    240, 190, 300, 220, 260, 180, 310, 250, 220, 280,
+                    290, 240, 315, 200, 320, 260, 280, 210, 330, 270
                 ],
 
                 // Cor da Linha
                 borderColor: '#F8CA15',
-
-                // Fundo que fica abaixo da Linha (deixei transparente usando rgba)
-                backgroundColor: 'rgba(248, 202, 21, 0.15)',
-
-
-                // Esse comando vai servir pra realmente preencher abaixo da linha
-                fill: true,
 
                 // Grossura da linha
                 borderWidth: 2,
@@ -659,7 +535,91 @@
                     max: 500,
 
                     ticks: {
-                        stepSize: 50 // Faz ir de 20 em 20 a porcentagem
+                        stepSize: 100 // Faz ir de 50 em 50
+                        // Use maxTicksLimit pra definir limite de quantos dados vai aparecer em X
+                    },
+
+                    grid: {
+                        display: true,
+                        color: getComputedStyle(document.documentElement)
+                            .getPropertyValue('--linhasChart')
+                    }
+                }
+            }
+        }
+    });
+
+    // ===================================================================
+    // Gráfico - Jitter
+
+    const chartJitter = new Chart(graficoJitter, {
+        type: 'line', // O tipo de gráfico.
+        // Dando os dados
+        data: {
+
+            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
+            // Vai aparecer até 60 linhas, criando um array de até 60 de tamanho
+            // Depois pega o valor atual e soma com +1 como se fosse uma função
+            labels: Array.from({ length: 60 }, (_, i) => `${i + 1}s`),
+
+            // DataSet: As linhas, sua legenda e etc
+            datasets: [{
+                // Nome da Legenda e que aparece encima
+                label: 'Jitter (ms)',
+
+                // Dados que vão ser plotados no gráfico
+                data: [
+                    12, 18, 15, 45, 12, 14, 22, 10, 65, 14,
+                    16, 25, 12, 18, 11, 85, 20, 15, 22, 14,
+                    12, 30, 18, 12, 55, 16, 14, 20, 32, 15,
+                    14, 42, 16, 12, 18, 95, 22, 14, 18, 12,
+                    15, 22, 14, 18, 35, 12, 16, 48, 14, 12,
+                    25, 18, 75, 14, 22, 12, 16, 30, 18, 14
+                ],
+
+                // Cor da Linha
+                borderColor: '#DC2828',
+
+                // Fundo que fica abaixo da Linha (deixei transparente usando rgba)
+                backgroundColor: 'rgba(220, 40, 40, 0.188)',
+
+
+                // Esse comando vai servir pra realmente preencher abaixo da linha
+                fill: true,
+
+                // Grossura da linha
+                borderWidth: 2,
+
+                // Tension serve pra medir a tensão da Linha do gráfico.
+                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
+                tension: 0.5,
+                pointBackgroundColor: '#DC2828', // Deixa o fundo da bolinha preenchido (tudo q tiver point antes afeta os pontos)
+            }]
+        },
+
+        // OPTIONS: São os ajustes gerais do desenho do gráfico
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        stepSize: 20,
+                        maxTicksLimit: 60
+                    }
+                },
+                y: {
+                    // Garante que a lateral esquerda comece do número ZERO. 
+                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
+                    beginAtZero: true,
+                    min: 0,
+                    max: 100,
+
+                    ticks: {
+                        stepSize: 20 // Faz ir de 20 em 20 a porcentagem
                         // Use maxTicksLimit pra definir limite de quantos dados vai aparecer em X
                     },
 
