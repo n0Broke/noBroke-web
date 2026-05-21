@@ -351,22 +351,26 @@
         const ultimo = dados[dados.length - 1];
 
         // =============================================================
-        // KPIs da Página abaixo
+        // KPIs da Página abaixo (definindo os dados da KPI usando dados da S3)
 
+        // Pega todas as Latência de Resposta (ms) e coloca em um array para calcular o pico e a média
         const todasLatencias = [];
         for (let i = 0; i < dados.length; i++) {
-            todasLatencias.push(dados[i].latencia_ms);
+            todasLatencias.push(dados[i].latencia_resposta_ms); // Adiciona a latência de resposta do registro atual na lista de JS
         }
+        // Calcula o pico e a média usando os dados das listas de latencia
         const picoLatencia = Math.max(...todasLatencias);
         const mediaLatencia = (todasLatencias.reduce((a, b) => a + b, 0) / todasLatencias.length).toFixed(1);
 
+        // Pega todas as Jitter (ms) e coloca em uma lista para calcular a média
         const todosJitters = [];
         for (let i = 0; i < dados.length; i++) {
-            todosJitters.push(dados[i].jitter_ms);
+            todosJitters.push(dados[i].jitter_ms); // "Empurra" o valor do jitter do registro atual para a lista de JS
         }
+        // Média da Jitter usando os dados da lista de jitter
         const mediaJitter = (todosJitters.reduce((a, b) => a + b, 0) / todosJitters.length).toFixed(1);
 
-        document.getElementById("kpi-perda").innerText = ultimo.packet_loss + "%";
+        document.getElementById("kpi-perda").innerText = ultimo.packet_loss_percent + "%";
         document.getElementById("kpi-pico").innerText = picoLatencia + "ms";
         document.getElementById("kpi-jitter").innerText = mediaJitter + "ms";
         document.getElementById("kpi-latencia").innerText = mediaLatencia + "ms";
@@ -380,20 +384,30 @@
 
         // =============================================================
         // Arrays de dados
-
+        
         const dataLatencia = [];
         for (let i = 0; i < dados.length; i++) {
-            dataLatencia.push(dados[i].latencia_ms);
+            dataLatencia.push(dados[i].latencia_resposta_ms);
         }
 
         const dataDownload = [];
         for (let i = 0; i < dados.length; i++) {
-            dataDownload.push(dados[i].bytes_recv);
+            dataDownload.push(dados[i].net_bytes_recv_gb);
         }
 
         const dataUpload = [];
         for (let i = 0; i < dados.length; i++) {
-            dataUpload.push(dados[i].bytes_sent);
+            dataUpload.push(dados[i].net_bytes_sent_gb);
+        }
+
+        const dataDownloadMbs = [];
+        for (let i = 0; i < dados.length; i++) {
+            dataDownloadMbs.push(dados[i].download_mbps);
+        }
+
+        const dataUploadMbs = [];
+        for (let i = 0; i < dados.length; i++) {
+            dataUploadMbs.push(dados[i].upload_mbps);
         }
 
         const dataJitter = [];
