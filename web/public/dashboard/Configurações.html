@@ -109,9 +109,9 @@
         </div>
         <!-- ================================================================= -->
 
-        <div class="conteudo-dash" style="overflow-x: hidden;" id="telaPrincipal">
+        <div class="conteudo-dash" style="overflow: hidden;" id="telaPrincipal">
             <div class="header-responsividade">
-                <div>
+                <div style="display: flex; align-items: center; gap: 5px;">
                     <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
                         style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
                     <a href="dashboard.html">Dashboard</a>
@@ -451,8 +451,11 @@
 
                             <div class="popUpFuncionario-SenhaServidor">
                                 <p>Nome do Servidor</p>
-                                <input style="width: 95%" id="input_nome_servidor" type="text"
-                                    placeholder="SRV-PROD-API-01">
+                                <div style="display: flex; gap: 5px;">
+                                    <input style="width: 50px;" disabled id="input_prefix_servidor" type="text" value="NB">
+                                    <input id="input_nome_servidor" type="text"
+                                        placeholder="SRV-PROD-API-01">
+                                </div>
                             </div>
 
                             <div class="popUpFuncionario-dadosServidor">
@@ -504,7 +507,7 @@
                                 style="justify-content: space-between; width: 95%; align-items: center;">
                                 <div id="msgErro">
                                 </div>
-                                <button class="btnCargos02" onclick="addFunc3()"
+                                <button class="btnCargos02" id="btnProximo" onclick="addFunc3()"
                                     style="display: flex; color: white; justify-content: space-around; width: 100px; margin-top: 10px;">Próximo
                                     <img width="20px" src="../assets/svg/seta-direita.png" alt=""></button>
                             </div>
@@ -898,25 +901,26 @@
                                 </div>
                                 <div class="perfilNomeCargo">
                                     <h4 class="username">Douglas</h4>
-                                    <h4 class="cargoFunc">Gerente</h4>
-                                    <span>Departamento de Infraestrutura</span>
+                                    <h4 id="funcao">Gerente</h4>
+                                    <span class="dep">Departamento de Infraestrutura</span>
                                 </div>
                             </div>
                             <div class="dadosPerfil">
                                 <div class="dadosPerfil-input">
                                     <div class="dadosPerfil-esquerda">
                                         <h4>Nome Completo</h4>
-                                        <input type="text" id="userNomeCompleto" value="Douglas">
+                                        <input type="text" id="nome_input" value="Douglas">
                                     </div>
                                     <div class="dadosPerfil-direita">
                                         <h4>Email</h4>
-                                        <input type="text" class="useremail" value="Douglas@outlook.com">
+                                        <input type="text" class="useremail" id="email_input"
+                                            value="Douglas@outlook.com">
                                     </div>
                                 </div>
                                 <div class="dadosPerfil-input">
                                     <div class="dadosPerfil-esquerda">
-                                        <h4>Telefone</h4>
-                                        <input type="text" value="(11) 98374-2734">
+                                        <h4>CPF</h4>
+                                        <input disabled type="text" id="input_cpf" value="999.***.***-58">
                                     </div>
                                     <div class="dadosPerfil-direita">
                                         <h4>Cargo</h4>
@@ -933,47 +937,31 @@
                                 <div class="segurancaPerfil-input">
                                     <div class="segurancaInput-esquerda">
                                         <h4>Senha Atual</h4>
-                                        <input type="text" placeholder="*************">
+                                        <input type="password" id="senha_input" placeholder="*************">
                                     </div>
                                 </div>
                                 <div class="segurancaPerfil-input">
                                     <div class="segurancaInput-esquerda">
                                         <h4>Nova Senha</h4>
-                                        <input type="text" placeholder="Mínimo de 8 Caracteres">
+                                        <input type="password" id="senhaNova_input"
+                                            placeholder="Mínimo de 8 Caracteres">
                                     </div>
                                     <div class="segurancaInput-direita">
                                         <h4>Confirmar Nova Senha</h4>
-                                        <input type="text" placeholder="Repita a nova senha">
+                                        <input type="password" id="confirmacao_senha_input"
+                                            placeholder="Repita a nova senha">
                                     </div>
                                 </div>
                             </div>
+                            <div id="div_erro">
+                            </div>
                         </div>
                         <!-- ________________________________________-- -->
-                        <div class="cardsPerfil cardPerfil03">
-                            <h4>Sessão e Atividade</h4>
-                            <span>Informações sobre seu acesso ao sistema</span>
-                            <div class="sessaoLinhas">
-                                <span style="color: var(--branco);">Último Login</span>
-                                <h4>28/03/2026 às 08:42</h4>
-                            </div>
-                            <div class="sessaoLinhas">
-                                <span style="color: var(--branco);">IP do acesso atual</span>
-                                <h4>192.168.1.105</h4>
-                            </div>
-                            <div class="sessaoLinhas">
-                                <span style="color: var(--branco);">Navegador</span>
-                                <h4>Chrome 124.0 — Windows 11</h4>
-                            </div>
-                            <div class="sessaoLinhas">
-                                <span style="color: var(--branco);">Membro desde</span>
-                                <h4>15/01/2025</h4>
-                            </div>
-                        </div>
                         <div class="perfilBotoes">
                             <button class="btnPerfil02" onclick="sairPerfil()">Sair</button>
                             <div class="div">
                                 <button class="btnPerfil01">Cancelar</button>
-                                <button class="btnPerfil02">Salvar Configurações</button>
+                                <button class="btnPerfil02" onclick="attUsuario()">Salvar Configurações</button>
                             </div>
                         </div>
                     </div>
@@ -1054,26 +1042,28 @@
 
 </html>
 <script>
-    // const nomeCompleto = sessionStorage.NOME_USUARIO
-    // const partes = nomeCompleto.trim().split(" ");
-    // const primeiroNome = partes[0];
-    // const usuario = document.querySelectorAll('.username')
-    // const emailUsuario = document.querySelectorAll('.useremail')
-    // const cargo = document.querySelectorAll('.cargoFunc')
-    // const tabela = document.getElementById("corpo-tabela");
+    const nomeCompleto = sessionStorage.NOME_USUARIO
+    const partes = nomeCompleto.trim().split(" ");
+    const primeiroNome = partes[0];
+    const usuario = document.querySelectorAll('.username')
+    const emailUsuario = document.querySelectorAll('.useremail')
+    const cargo = document.querySelectorAll('.cargoFunc')
+    const tabela = document.getElementById("corpo-tabela");
+    document.getElementById("funcao").value = sessionStorage.FUNCAO;
 
-    // usuario.forEach(usuario => {
-    //     usuario.innerHTML = primeiroNome;
-    // });
-    // emailUsuario.forEach(emailUsuario => {
-    //     emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO;
-    //     emailUsuario.value = sessionStorage.EMAIL_USUARIO;
-    // });
-    // cargo.forEach(cargo => {
-    //     cargo.innerHTML = sessionStorage.FUNCAO;
-    //     cargo.value = sessionStorage.FUNCAO;
-    // });
-    // userNomeCompleto.value = nomeCompleto;
+    usuario.forEach(usuario => {
+        usuario.innerHTML = primeiroNome;
+    });
+    emailUsuario.forEach(emailUsuario => {
+        emailUsuario.innerHTML = sessionStorage.EMAIL_USUARIO;
+        emailUsuario.value = sessionStorage.EMAIL_USUARIO;
+    });
+    cargo.forEach(cargo => {
+        cargo.innerHTML = sessionStorage.CARGO;
+        cargo.value = sessionStorage.CARGO;
+    });
+    input_cpf.value = sessionStorage.CPF;
+    nome_input.value = nomeCompleto;
 
     // ===================================================================
     // Função Abrir e fechar PopUp de Cadastrar Funcionário
@@ -1194,21 +1184,21 @@
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
         }
-        // if (sessionStorage.FK_FUNCAO != 1) {
-        //     const divRelatorios = document.getElementById("div_relatorios");
-        //     const divGeral = document.getElementById("div_geral");
-        //     const divNotifi = document.getElementById("div_notifi");
-        //     const divEquipe = document.getElementById("div_equipe");
-        //     const divServers = document.getElementById("div_servers");
-        //     divRelatorios.style.display = "none";
-        //     divGeral.style.display = "none";
-        //     divNotifi.style.display = "none";
-        //     divEquipe.style.display = "none";
-        //     divServers.style.display = "none";
-        //     sessionStorage.FUNCAO = "Analista de Infra";
-        // } else {
-        //     sessionStorage.FUNCAO = "Gestor de Infra";
-        // }
+        if (sessionStorage.FUNCAO != "Administrador") {
+            const divRelatorios = document.getElementById("div_relatorios");
+            const divGeral = document.getElementById("div_geral");
+            const divNotifi = document.getElementById("div_notifi");
+            const divEquipe = document.getElementById("div_equipe");
+            const divServers = document.getElementById("div_servers");
+            divRelatorios.style.display = "none";
+            divGeral.style.display = "none";
+            divNotifi.style.display = "none";
+            divEquipe.style.display = "none";
+            divServers.style.display = "none";
+            sessionStorage.CARGO = "Analista de Infra";
+        } else {
+            sessionStorage.CARGO = "Gestor de Infra";
+        }
     }
     // ===================================================================
     // Função de Escolher
@@ -1478,16 +1468,16 @@
             input_endereco_servidor.value == "" ||
             input_portaSSH_servidor.value == "" ||
             select_ambiente.value == "" ||
-            input_localizacao_servidor.value == "") {
+            input_localizacao_servidor.value == "" ) {
             msgErro.innerHTML = `<p style="color: red">Preencha todos os campos para prosseguir<p>`
             setTimeout(function () {
                 msgErro.innerHTML = "";
             }, 1000);
         } else {
-            if(atualizarServidor){
+            if (atualizarServidor) {
                 document.getElementById('popUpCadastrarComponente').style.display = 'flex';
                 document.getElementById('popUpCadastrarServidor').style.display = 'none';
-           }
+            }
         }
     }
     function fecharFunc2() {
@@ -1570,7 +1560,9 @@
     }
 
     function cadastrarServidor() {
-        var nomeServidor = input_nome_servidor.value;
+        var prefixo = document.getElementById('input_prefix_servidor').value;
+        var nomeDigitado = input_nome_servidor.value;
+        var nomeServidor = prefixo + '-' + nomeDigitado;
         var SOServidor = input_SO_servidor.value;
         var numeroSerialServidor = numero_serial_servidor.value;
         var HostServidor = input_hostname_servidor.value;
@@ -1697,10 +1689,10 @@
         }
 
         var qualFuncao = "cadastrarComponente"
-            if (atualizarServidor) {
-                qualFuncao = "atualizarComponente"
-                idServidor = idServidorSelecionado;
-            }
+        if (atualizarServidor) {
+            qualFuncao = "atualizarComponente"
+            idServidor = idServidorSelecionado;
+        }
 
         fetch(`/componente/${qualFuncao}`, {
             method: "POST",
@@ -1720,14 +1712,170 @@
                 console.log("RESPOSTA:", data);
 
                 body: JSON.stringify({
-                idServidor,
-                componentes
-            })
+                    idServidor,
+                    componentes
+                })
 
                 alert("Cadastro realizado!")
             })
             .catch(err => {
                 console.log("ERRO:", err);
             });
+    }
+
+    function attUsuario() {
+        var nomeVar = nome_input.value.trim();
+        var emailVar = email_input.value.trim();
+        var idUsuario = sessionStorage.ID_USUARIO;
+        var senhaVar = senha_input.value.trim();
+        var senhaNovaVar = senhaNova_input.value.trim();
+        var confirmacaoSenhaVar = confirmacao_senha_input.value.trim();
+
+        console.log(
+            idUsuario,
+            nomeVar,
+            emailVar,
+            senhaNovaVar,
+            senhaVar,
+            confirmacaoSenhaVar,
+        );
+
+        // Verificando senha e email
+        if (
+            nomeVar == "" ||
+            emailVar == "" ||
+            senhaNovaVar == "" ||
+            senhaVar == "" ||
+            confirmacaoSenhaVar == ""
+        ) {
+            div_erro.innerHTML = `<p style="color: red">Preencha todos os campos para prosseguir!<p>`
+            return false;
+        } else {
+            // tratativa da senha
+            let numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+            let caractereEsperial = [
+                "!",
+                "@",
+                "#",
+                '"',
+                "$",
+                "%",
+                "¨",
+                "&",
+                "*",
+                "(",
+                ")",
+                "-",
+                "+",
+            ];
+            //let contemNumeros = false;
+            let contemCaractereEspecial = false;
+
+            if (senhaNovaVar == senhaVar) {
+                div_erro.innerHTML = `<p style="color: red">A nova senha precisa ser diferente da antiga<p>`
+            }
+
+            for (i = 0; i < senhaNovaVar.length; i++) {
+                if (senhaNovaVar.includes(numeros[i])) {
+                    contemNumeros = true;
+                    break;
+                }
+            }
+            if (contemNumeros == false) {
+                div_erro.innerHTML = `<p style="color: red">A senha precisa ter números!<p>`
+            }
+
+            for (i = 0; i < senhaNovaVar.length; i++) {
+                if (senhaNovaVar.includes(caractereEsperial[i])) {
+                    contemCaractereEspecial = true;
+                    break;
+                }
+            }
+            if (contemCaractereEspecial == false) {
+                div_erro.innerHTML = `<p style="color: red">A nova senha precisa ter algum caractere especial<p>`
+            }
+
+            if (
+                senhaNovaVar < 8 ||
+                senhaNovaVar != confirmacaoSenhaVar
+                //!contemNumeros ||
+                //!contemCaractereEspecial
+            ) {
+                console.log("Caiu na validação da senha!");
+                console.log(
+                    "A senha deve ter mais que 8 caracteres. As senhas devem ser iguais. A senha deve conter caracteres especiais",
+                );
+                div_erro.innerHTML = `<p style="color: red">A senha precisa ter mais de 8 digitos e serem iguais<p>`
+                return false;
+            }
+
+            var idEmpresa = sessionStorage.FK_EMPRESA;
+            console.log("idEmpresa:", idEmpresa);
+
+            // Enviando o valor da nova input
+            fetch("/cadastroFuncionario/atualizarFunc", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    // crie um atributo que recebe o valor recuperado aqui
+                    // Agora vá para o arquivo routes/usuario.js
+                    idUsuarioServer: idUsuario,
+                    nomeServer: nomeVar,
+                    emailServer: emailVar,
+                    senhaServer: senhaVar,
+                    senhaNovaServer: senhaNovaVar,
+                    idEmpresaServer: idEmpresa,
+                }),
+            })
+                .then(function (resposta) {
+                    console.log("resposta: ", resposta);
+
+                    if (resposta.ok) {
+                        console.log(resposta)
+                        console.log("Entrei no fetch")
+                        div_erro.innerHTML = `<p style="color: white">Usuario atualizado com sucesso! Recarregando a página...<p>`
+                        sessionStorage.EMAIL_USUARIO = emailVar;
+                        sessionStorage.NOME_USUARIO = nomeVar;
+
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, "1000");
+                    } else {
+                        console.log(nomeVar, emailVar, senhaNovaVar);
+                        throw "Houve um erro ao tentar atualizar os dados!";
+                    }
+                })
+                .catch(function (resposta) {
+                    console.log(`#ERRO: ${resposta}`);
+                });
+
+            return false;
+        }
+    }
+
+    window.onload = function () {
+        var fk_empresa = sessionStorage.getItem('FK_EMPRESA');
+        var inputPrefix = document.getElementById('input_prefix_servidor');
+        var btnProximo = document.getElementById('btnProximo'); // Botão "Próximo"
+
+        if (!fk_empresa || fk_empresa === 'null' || fk_empresa === null) {
+            inputPrefix.value = 'NBnull';
+            inputPrefix.style.color = '#DC2828';
+
+            btnProximo.disabled = true;
+            btnProximo.style.opacity = '0.5';
+            btnProximo.style.cursor = 'not-allowed';
+
+            alert('Erro: FK_EMPRESA não encontrada. Entre em contato com o suporte.');
+        } else {
+            inputPrefix.value = 'NB' + fk_empresa;
+            inputPrefix.style.color = '#b4b4b4';
+
+            btnProximo.disabled = false;
+            btnProximo.style.opacity = '1';
+            btnProximo.style.cursor = 'pointer';
+        }
     }
 </script>

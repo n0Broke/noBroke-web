@@ -2774,7 +2774,7 @@ h6 {
 .popUpFuncionario-dadosServidor input,
 .popUpFuncionario-dadosServidor select,
 .popUpFuncionario-SenhaServidor input {
-    /* width: 100%; */
+    width: 95%;
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
     border-radius: 6px;
