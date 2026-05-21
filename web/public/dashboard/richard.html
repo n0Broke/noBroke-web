@@ -149,19 +149,19 @@
             <div class="cards-rede">
                 <div class="card-rede card-rede01">
                     <h4>Perda de Pacote</h4>
-                    <h2>0.4%</h2>
+                    <h2 id="kpi-perda">--</h2>
                 </div>
                 <div class="card-rede card-rede02">
                     <h4>Pico de Latência - 1h</h4>
-                    <h2>28ms</h2>
+                    <h2 id="kpi-pico">--</h2>
                 </div>
                 <div class="card-rede card-rede03">
                     <h4>Jitter - Variação Tempo chegada de Pacotes</h4>
-                    <h2>3.4ms</h2>
+                    <h2 id="kpi-jitter">--</h2>
                 </div>
                 <div class="card-rede card-rede04">
                     <h4>Latência Média</h4>
-                    <h2>35.6ms</h2>
+                    <h2 id="kpi-latencia">--</h2>
                 </div>
             </div>
             <div class="graficos-richard">
@@ -233,10 +233,6 @@
         }
     }
 
-    // Alterna entre modo claro e escuro, atualizando:
-    // Variáveis CSS (cores)
-    // Ícones (modo, usuário, logo)
-    // Estado salvo no sessionStorage
     function mudarModo() {
         modoEscuro = !modoEscuro;
 
@@ -251,7 +247,6 @@
             imgModo.src = "../assets/icon/icons-dashboard/lua-crescente.png";
             imgUser.src = "../assets/icon/user-circle-svgrepo-com-preto.svg";
             imgVoltar.src = "../assets/richard/arrow-u-up-left-svgrepo-com-escuro.svg";
-            // Atualiza a logo dependendo do modo (claro/escuro) e do estado da sidebar (compacta ou expandida)
             if (sidebar.classList.contains("compacta")) {
                 if (modoEscuro) {
                     imgLogo.src = "../assets/imgs-logo-nobroke/logo-menor-preto.png"
@@ -266,9 +261,6 @@
                 }
             }
         } else {
-            // MODO: 0 = claro | 1 = escuro
-            // LATERAL: 0 = expandida | 1 = compacta
-            // ALERTA: controla exibição do card de alerta
             sessionStorage.MODO = 0;
             root.style.setProperty('--branco', '#fff');
             root.style.setProperty('--preto', '#000');
@@ -298,27 +290,21 @@
             .getPropertyValue('--linhasChart');
 
         chartLatencia.options.scales.y.grid.color = novaCor;
-        chartAlertas.options.scales.y.grid.color = novaCor;
-        chartPackRecv.options.scales.y.grid.color = novaCor;
-        chartPackSent.options.scales.y.grid.color = novaCor;
+        chartTransferencia.options.scales.y.grid.color = novaCor;
+        chartJitter.options.scales.y.grid.color = novaCor;
 
         chartLatencia.update();
-        chartAlertas.update();
-        chartPackRecv.update();
-        chartPackSent.update();
+        chartTransferencia.update();
+        chartJitter.update();
     }
 
-    // Inicializa o estado da dashboard com base no sessionStorage:
     function verificarModo() {
-        // Aplica modo (claro/escuro)
         if (sessionStorage.MODO == 1) {
             mudarModo()
         }
-        // Define estado da sidebar
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
         }
-        // Controla exibição de alertas
         if (sessionStorage.ALERTA == 0) {
             cardAlerta.style.display = "none"
         } else {
@@ -338,7 +324,6 @@
                     </div>
                 </div>`
         }
-        // Ajusta permissões de acesso (relatórios)
         if (sessionStorage.FK_FUNCAO != 1) {
             const divRelatorios = document.getElementById("div_relatorios");
             divRelatorios.style.display = "none";
@@ -348,290 +333,204 @@
         }
     }
 
-    // Fecha o card de alerta
     function fecharAlerta() {
         cardAlerta.style.display = "none"
     }
-    // =======================================================
-    // Abaixo função de carregar as redes e adversos
-
-
 
     // =======================================================
-    // _______________________________________________________
-    // Criação dos Gráficos Aqui!!
+    // Criação dos Gráficos — buscando dados do S3
 
-    // Buscando ID dos gŕaficos e criando variáveis deles
-    const graficoLatencia = document.getElementById('grafico01');
-    const graficoTransferencia = document.getElementById('grafico02');
-    const graficoJitter = document.getElementById('grafico03');
+    let chartLatencia, chartTransferencia, chartJitter;
 
-    // Dando informações pra esses gráficos
-    // Primeiro o de Latência de Rede
-    const chartLatencia = new Chart(graficoLatencia, {
-        type: 'line', // O tipo de gráfico.
-        // Dando os dados
-        data: {
+    async function carregarDados() {
 
-            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
-            // Vai aparecer até 60 linhas, criando um array de até 60 de tamanho
-            // Depois pega o valor atual e soma com +1 como se fosse uma função
-            labels: Array.from({ length: 60 }, (_, i) => `${i + 1}s`),
+        const resposta = await fetch("/s3/richard");
 
-            // DataSet: As linhas, sua legenda e etc
-            datasets: [{
-                // Nome da Legenda e que aparece encima
-                label: 'Latência (ms)',
+        const dados = await resposta.json();
 
-                // Dados que vão ser plotados no gráfico
-                data: [
-                    12, 18, 25, 30, 22, 40, 35, 28, 33, 27,
-                    45, 50, 38, 42, 60, 55, 48, 52, 47, 65,
-                    70, 58, 62, 75, 68, 80, 72, 66, 78, 85,
-                    90, 88, 76, 82, 95, 100, 92, 87, 105, 110,
-                    98, 102, 115, 108, 120, 112, 99, 93, 84, 79,
-                    73, 67, 59, 53, 46, 39, 31, 24, 16, 10
-                ],
+        const ultimo = dados[dados.length - 1];
 
-                // Cor da Linha
-                borderColor: '#F97015',
+        // =============================================================
+        // KPIs da Página abaixo
 
-                // Fundo que fica abaixo da Linha (deixei transparente usando rgba)
-                backgroundColor: 'rgba(249, 112, 21, 0.15)',
+        const todasLatencias = [];
+        for (let i = 0; i < dados.length; i++) {
+            todasLatencias.push(dados[i].latencia_ms);
+        }
+        const picoLatencia = Math.max(...todasLatencias);
+        const mediaLatencia = (todasLatencias.reduce((a, b) => a + b, 0) / todasLatencias.length).toFixed(1);
 
+        const todosJitters = [];
+        for (let i = 0; i < dados.length; i++) {
+            todosJitters.push(dados[i].jitter_ms);
+        }
+        const mediaJitter = (todosJitters.reduce((a, b) => a + b, 0) / todosJitters.length).toFixed(1);
 
-                // Esse comando vai servir pra realmente preencher abaixo da linha
-                fill: true,
+        document.getElementById("kpi-perda").innerText = ultimo.packet_loss + "%";
+        document.getElementById("kpi-pico").innerText = picoLatencia + "ms";
+        document.getElementById("kpi-jitter").innerText = mediaJitter + "ms";
+        document.getElementById("kpi-latencia").innerText = mediaLatencia + "ms";
 
-                // Grossura da linha
-                borderWidth: 2,
+        // =============================================================
+        // Labels (exibem o horário de cada medição, extraído do timestamp)
+        const labels = [];
+        for (let i = 0; i < dados.length; i++) {
+            labels.push(dados[i].timestamp.split(' ')[1]);
+        }
 
-                // Tension serve pra medir a tensão da Linha do gráfico.
-                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
-                tension: 0.5,
-                pointBackgroundColor: '#F97015', // Deixa o fundo da bolinha preenchido (tudo q tiver point antes afeta os pontos)
-            }]
-        },
+        // =============================================================
+        // Arrays de dados
 
-        // OPTIONS: São os ajustes gerais do desenho do gráfico
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    grid: {
-                        display: false
+        const dataLatencia = [];
+        for (let i = 0; i < dados.length; i++) {
+            dataLatencia.push(dados[i].latencia_ms);
+        }
+
+        const dataDownload = [];
+        for (let i = 0; i < dados.length; i++) {
+            dataDownload.push(dados[i].bytes_recv);
+        }
+
+        const dataUpload = [];
+        for (let i = 0; i < dados.length; i++) {
+            dataUpload.push(dados[i].bytes_sent);
+        }
+
+        const dataJitter = [];
+        for (let i = 0; i < dados.length; i++) {
+            dataJitter.push(dados[i].jitter_ms);
+        }
+
+        // =============================================================
+        // Configurações dos gráficos
+        // Gráfico 01 — Latência
+
+        chartLatencia = new Chart(document.getElementById('grafico01'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Latência (ms)',
+                    data: dataLatencia,
+                    borderColor: '#F97015',
+                    backgroundColor: 'rgba(249, 112, 21, 0.15)',
+                    fill: true,
+                    borderWidth: 2,
+                    tension: 0.5,
+                    pointBackgroundColor: '#F97015'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { maxTicksLimit: 60 }
                     },
-                    ticks: {
-                        maxTicksLimit: 60
-                    }
-                },
-                y: {
-                    // Garante que a lateral esquerda comece do número ZERO. 
-                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
-                    beginAtZero: true,
-                    min: 0,
-                    max: 160,
-
-                    ticks: {
-                        stepSize: 20 // Faz ir de 20 em 20 a porcentagem
-                        // Use maxTicksLimit pra definir limite de quantos dados vai aparecer em X
-                    },
-
-                    grid: {
-                        display: true,
-                        color: getComputedStyle(document.documentElement)
-                            .getPropertyValue('--linhasChart')
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 160,
+                        ticks: { stepSize: 20 },
+                        grid: {
+                            display: true,
+                            color: getComputedStyle(document.documentElement).getPropertyValue('--linhasChart')
+                        }
                     }
                 }
             }
-        }
-    });
+        });
 
-    // =====================================================
-    // Gráfico - Pacotes/Network Recebido e Enviado
+        // =============================================================
+        // Gráfico 02 — Transferência de Dados (Upload e Download)
 
-    const chartTransferencia = new Chart(graficoTransferencia, {
-        type: 'line', // O tipo de gráfico.
-        // Dando os dados
-        data: {
-
-            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
-            // Vai aparecer até 60 linhas, criando um array de até 60 de tamanho
-            // Depois pega o valor atual e soma com +1 como se fosse uma função
-            labels: Array.from({ length: 60 }, (_, i) => `${i + 1}s`),
-
-            // DataSet: As linhas, sua legenda e etc
-            datasets: [{
-                // Nome da Legenda e que aparece encima
-                label: 'Pacotes Recebidos (KBs)',
-
-                // Dados que vão ser plotados no gráfico de dados recebidos
-                data: [
-                    118, 142, 97, 155, 133, 171, 160, 120, 188, 149,
-                    210, 175, 165, 193, 140, 225, 205, 158, 240, 180,
-                    260, 190, 230, 175, 285, 210, 250, 195, 310, 220,
-                    295, 260, 340, 230, 275, 360, 250, 310, 390, 280,
-                    320, 260, 410, 300, 370, 240, 430, 330, 290, 360,
-                    380, 310, 420, 270, 450, 340, 390, 300, 470, 360
-                ],
-
-                // Cor da Linha
-                borderColor: '#21c45d',
-
-                // Grossura da linha
-                borderWidth: 2,
-
-                // Tension serve pra medir a tensão da Linha do gráfico.
-                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
-                tension: 0.5,
-                pointBackgroundColor: '#21c45d', // Deixa o fundo da bolinha preenchido (tudo q tiver point antes afeta os pontos)
-            }, {
-                // Nome da Legenda e que aparece encima
-                label: 'Pacotes Enviados (KBs)',
-
-                // Dados que vão ser plotados no gráfico de pacotes enviados
-                data: [
-                    45, 62, 55, 78, 63, 91, 80, 50, 108, 89,
-                    130, 115, 105, 133, 90, 155, 145, 118, 170, 130,
-                    190, 140, 170, 125, 215, 160, 190, 145, 230, 170,
-                    215, 190, 240, 160, 205, 260, 180, 230, 280, 210,
-                    240, 190, 300, 220, 260, 180, 310, 250, 220, 280,
-                    290, 240, 315, 200, 320, 260, 280, 210, 330, 270
-                ],
-
-                // Cor da Linha
-                borderColor: '#F8CA15',
-
-                // Grossura da linha
-                borderWidth: 2,
-
-                // Tension serve pra medir a tensão da Linha do gráfico.
-                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
-                tension: 0.5,
-                pointBackgroundColor: '#F8CA15', // Deixa o fundo da bolinha preenchido (tudo q tiver point antes afeta os pontos)
-            }]
-        },
-
-        // OPTIONS: São os ajustes gerais do desenho do gráfico
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    grid: {
-                        display: false
+        chartTransferencia = new Chart(document.getElementById('grafico02'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Download (KB/s)',
+                        data: dataDownload,
+                        borderColor: '#21c45d',
+                        borderWidth: 2,
+                        tension: 0.5,
+                        pointBackgroundColor: '#21c45d'
                     },
-                    ticks: {
-                        stepSize: 20,
-                        maxTicksLimit: 60
+                    {
+                        label: 'Upload (KB/s)',
+                        data: dataUpload,
+                        borderColor: '#F8CA15',
+                        borderWidth: 2,
+                        tension: 0.5,
+                        pointBackgroundColor: '#F8CA15'
                     }
-                },
-                y: {
-                    // Garante que a lateral esquerda comece do número ZERO. 
-                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
-                    beginAtZero: true,
-                    min: 0,
-                    max: 500,
-
-                    ticks: {
-                        stepSize: 100 // Faz ir de 50 em 50
-                        // Use maxTicksLimit pra definir limite de quantos dados vai aparecer em X
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { stepSize: 20, maxTicksLimit: 60 }
                     },
-
-                    grid: {
-                        display: true,
-                        color: getComputedStyle(document.documentElement)
-                            .getPropertyValue('--linhasChart')
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 500,
+                        ticks: { stepSize: 100 },
+                        grid: {
+                            display: true,
+                            color: getComputedStyle(document.documentElement).getPropertyValue('--linhasChart')
+                        }
                     }
                 }
             }
-        }
-    });
+        });
 
-    // ===================================================================
-    // Gráfico - Jitter
+        // =============================================================
+        // Gráfico 03 — Jitter
 
-    const chartJitter = new Chart(graficoJitter, {
-        type: 'line', // O tipo de gráfico.
-        // Dando os dados
-        data: {
-
-            // Labels: Os textos no Eixo X (aparecem embaixo do Gráfico)
-            // Vai aparecer até 60 linhas, criando um array de até 60 de tamanho
-            // Depois pega o valor atual e soma com +1 como se fosse uma função
-            labels: Array.from({ length: 60 }, (_, i) => `${i + 1}s`),
-
-            // DataSet: As linhas, sua legenda e etc
-            datasets: [{
-                // Nome da Legenda e que aparece encima
-                label: 'Jitter (ms)',
-
-                // Dados que vão ser plotados no gráfico
-                data: [
-                    12, 18, 15, 45, 12, 14, 22, 10, 65, 14,
-                    16, 25, 12, 18, 11, 85, 20, 15, 22, 14,
-                    12, 30, 18, 12, 55, 16, 14, 20, 32, 15,
-                    14, 42, 16, 12, 18, 95, 22, 14, 18, 12,
-                    15, 22, 14, 18, 35, 12, 16, 48, 14, 12,
-                    25, 18, 75, 14, 22, 12, 16, 30, 18, 14
-                ],
-
-                // Cor da Linha
-                borderColor: '#DC2828',
-
-                // Fundo que fica abaixo da Linha (deixei transparente usando rgba)
-                backgroundColor: 'rgba(220, 40, 40, 0.188)',
-
-
-                // Esse comando vai servir pra realmente preencher abaixo da linha
-                fill: true,
-
-                // Grossura da linha
-                borderWidth: 2,
-
-                // Tension serve pra medir a tensão da Linha do gráfico.
-                // Quanto menor, mais reto vai de um ponto ao outro, o contrário se aplica
-                tension: 0.5,
-                pointBackgroundColor: '#DC2828', // Deixa o fundo da bolinha preenchido (tudo q tiver point antes afeta os pontos)
-            }]
-        },
-
-        // OPTIONS: São os ajustes gerais do desenho do gráfico
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    grid: {
-                        display: false
+        chartJitter = new Chart(document.getElementById('grafico03'), {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Jitter (ms)',
+                    data: dataJitter,
+                    borderColor: '#DC2828',
+                    backgroundColor: 'rgba(220, 40, 40, 0.188)',
+                    fill: true,
+                    borderWidth: 2,
+                    tension: 0.5,
+                    pointBackgroundColor: '#DC2828'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: { display: false },
+                        ticks: { stepSize: 20, maxTicksLimit: 60 }
                     },
-                    ticks: {
-                        stepSize: 20,
-                        maxTicksLimit: 60
-                    }
-                },
-                y: {
-                    // Garante que a lateral esquerda comece do número ZERO. 
-                    // Se não colocar isso, o fundo pintado pode ficar flutuando.
-                    beginAtZero: true,
-                    min: 0,
-                    max: 100,
-
-                    ticks: {
-                        stepSize: 20 // Faz ir de 20 em 20 a porcentagem
-                        // Use maxTicksLimit pra definir limite de quantos dados vai aparecer em X
-                    },
-
-                    grid: {
-                        display: true,
-                        color: getComputedStyle(document.documentElement)
-                            .getPropertyValue('--linhasChart')
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 100,
+                        ticks: { stepSize: 20 },
+                        grid: {
+                            display: true,
+                            color: getComputedStyle(document.documentElement).getPropertyValue('--linhasChart')
+                        }
                     }
                 }
             }
-        }
-    });
+        });
+    }
 
+    carregarDados();
 
 </script>
