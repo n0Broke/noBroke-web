@@ -31,7 +31,7 @@
     <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
 </head>
 
-<body onload="verificarModo(), carregarServidores()">
+<body onload="verificarModo(), carregarServidores(), buscarPrefixo()">
     <div class="containerPai">
         <div class="sidebar" id="div_lateralAberta">
             <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
@@ -252,9 +252,8 @@
                     <div class="popUpFuncionario-SenhaServidor">
                         <span>Nome do Servidor</span>
                         <div class="inputs_digitar_servidor" style="display: flex;">
-                            <input disabled id="input_prefix_servidor" type="text">
-                            <input id="input_nome_servidor" type="text"
-                                placeholder="SRV-PROD-API-01">
+                            <input disabled id="input_prefix_servidor" type="text" value="NB">
+                            <input id="input_nome_servidor" type="text" placeholder="SRV-PROD-API-01">
                         </div>
                     </div>
 
@@ -742,7 +741,34 @@
 
 </html>
 <script>
-    window.onload = criticidade();
+    window.onload = function () {
+        criticidade();
+
+        var fk_empresa = sessionStorage.getItem('FK_EMPRESA');
+        var inputPrefix = document.getElementById('input_prefix_servidor');
+        var btnProximo = document.querySelector('.btnPopUp02'); // Botão "Próximo"
+
+        if (!fk_empresa || fk_empresa === 'null' || fk_empresa === null) {
+            inputPrefix.value = 'NBnull';
+            inputPrefix.style.color = '#DC2828';
+
+            btnProximo.disabled = true;
+            btnProximo.style.opacity = '0.5';
+            btnProximo.style.cursor = 'not-allowed';
+
+            alert('Erro: FK_EMPRESA não encontrada. Entre em contato com o suporte.');
+        } else {
+            inputPrefix.value = 'NB' + fk_empresa;
+            inputPrefix.style.color = '#b4b4b4';
+
+            btnProximo.disabled = false;
+            btnProximo.style.opacity = '1';
+            btnProximo.style.cursor = 'pointer';
+        }
+    }
+
+
+
     function criticidade() {
         const ctx = document.getElementById('myChart');
 
@@ -814,6 +840,12 @@
         document.getElementById('popUpCadastrarServidor').style.display = 'flex';
     }
     function addFunc3() {
+        var prefixo = document.getElementById('input_prefix_servidor').value;
+        if (prefixo === 'NBnull' || !prefixo) {
+            alert('Erro: Fk_empresa inválida. Não foi possível cadastrar o servidor.');
+            return;
+        }
+
         document.getElementById('popUpCadastrarComponente').style.display = 'flex';
         document.getElementById('popUpCadastrarServidor').style.display = 'none';
     }
@@ -956,7 +988,11 @@
     }
 
     function cadastrarServidor() {
-        var nomeServidor = input_nome_servidor.value;
+        var prefixo = document.getElementById('input_prefix_servidor').value;
+        var nomeDigitado = input_nome_servidor.value;
+        var nomeServidor = prefixo + '-' + nomeDigitado;
+        console.log("Nome do Servidor Cadastrado:", nomeServidor);
+        // _______________________________________________
         var SOServidor = input_SO_servidor.value;
         var numeroSerialServidor = numero_serial_servidor.value;
         var HostServidor = input_hostname_servidor.value;
