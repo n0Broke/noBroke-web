@@ -59,7 +59,7 @@
                         </span>
                         <span class="texto">Alertas</span>
                     </a>
-                    
+
                     <div id="div_relatorios">
                         <a href="produtividade.html" class="btn-nobroke">
                             <span class="icon">
@@ -251,7 +251,11 @@
 
                     <div class="popUpFuncionario-SenhaServidor">
                         <span>Nome do Servidor</span>
-                        <input style="width: 95%" id="input_nome_servidor" type="text" placeholder="SRV-PROD-API-01">
+                        <div class="inputs_digitar_servidor" style="display: flex; max-width: 400px;">
+                            <input id="input_prefix_servidor" type="text">
+                            <input id="input_nome_servidor" type="text"
+                                placeholder="SRV-PROD-API-01">
+                        </div>
                     </div>
 
 
@@ -301,13 +305,15 @@
 
                     <div class="popUpFuncionario-SenhaServidor">
                         <span>Localização (Data Center)</span>
-                        <input style="width: 95%" id="input_localizacao_servidor" type="text" placeholder="São Paulo — SP1-DC">
+                        <input style="width: 95%" id="input_localizacao_servidor" type="text"
+                            placeholder="São Paulo — SP1-DC">
                     </div>
 
                     <div class="popUpFuncionario-confirmarServidor">
                         <button class="btnPopUp01" onclick="fecharFunc()">Cancelar</button>
-                        <button class="btnPopUp02" onclick="addFunc3()" style="display: flex; color: white; justify-content: space-around; width: 100px; margin-top: 10px; align-items: center;">Próximo <img width="20px"
-                                src="../assets/svg/seta-direita.png" alt=""></button>
+                        <button class="btnPopUp02" onclick="addFunc3()"
+                            style="display: flex; color: white; justify-content: space-around; width: 100px; margin-top: 10px; align-items: center;">Próximo
+                            <img width="20px" src="../assets/svg/seta-direita.png" alt=""></button>
                     </div>
                 </div>
             </div>

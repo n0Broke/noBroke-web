@@ -2472,7 +2472,7 @@ h6 {
 .popUpFuncionario-dados input,
 .popUpFuncionario-dados select,
 .popUpFuncionario-Senha input {
-    min-width: 85%;
+    /* min-width: 85%; */
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
     border-radius: 6px;
@@ -2480,6 +2480,21 @@ h6 {
 
     color: var(--branco);
     transition: all 0.25s ease;
+}
+
+.inputs_digitar_servidor {
+    display: flex;
+    gap: 6px;
+    max-width: max-content;
+}
+
+#input_prefix_servidor {
+    max-width: 30%;
+    width: 100%;
+}
+
+#input_nome_servidor {
+    width: 800px;
 }
 
 .popUpFuncionario-dados input:focus,
@@ -2750,7 +2765,7 @@ h6 {
 .popUpFuncionario-dadosServidor input,
 .popUpFuncionario-dadosServidor select,
 .popUpFuncionario-SenhaServidor input {
-    min-width: 90%;
+    width: 100%;
     background-color: var(--pretoClaro);
     border: 1px solid var(--bordas);
     border-radius: 6px;
