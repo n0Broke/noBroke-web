@@ -60,28 +60,12 @@
                             <span class="texto">Dashboard</span>
                         </button>
 
-                        <a href="servidores.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
-                            </span>
-                            <span class="texto">Servidores</span>
-                        </a>
-
                         <a href="Alertas.html" class="btn-nobroke">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/notificacao.png">
                             </span>
                             <span class="texto">Alertas</span>
                         </a>
-
-                        <div id="div_relatorios">
-                            <a href="produtividade.html" class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
-                                </span>
-                                <span class="texto">Equipe</span>
-                            </a>
-                        </div>
 
                         <a href="monitoramento.html" class="btn-nobroke">
                             <span class="icon">
@@ -163,9 +147,9 @@
                                     RAM atual / prevista (60 min)</h1>
                                 </div>
                                 <div class="conteudo-abaixo-cards">
-                                    <h1 id="Valor_RAM">69.4%</h1>
+                                    <h1><span id="Valor_RAM">-</span></h1>
                                     <h4>Projeção:
-                                        <span id="Projecao_RAM">86.4</span>%
+                                        <span id="Projecao_RAM">-</span>
                                     </h4>
                                 </div>
                             </div>
@@ -178,8 +162,8 @@
                                     Tendência (%/min)</h1>
                                 </div>
                                 <div class="conteudo-abaixo-cards">
-                                    <h1 id="tendencia_min">+0.26 %/min</h1>
-                                    <h4>Subindo • +
+                                    <h1><span id="tendencia_min">-</span> %/min</h1>
+                                    <h4><span id="status_projecao">Subindo • +</span>
                                         <span id="projecao_minuto">15.4%/h</span>
                                     </h4>
                                 </div>
@@ -193,9 +177,9 @@
                                     Correlação RAM ↔ SWAP</h1>
                                 </div>
                                 <div class="conteudo-abaixo-cards">
-                                    <h1 id="Correlacao_RAM">0.95</h1>
+                                    <h1> <span id="Correlacao_RAM">-</span></h1>
                                     <h4>Pressão de memória:
-                                        <span id="Projecao_RAM">Forte</span>
+                                        <span id="Correlacao_dale">Forte</span>
                                     </h4>
                                 </div>
                             </div>
@@ -208,9 +192,9 @@
                                         ETA até saturação</h1>
                                     </div>
                                     <div class="conteudo-abaixo-cards">
-                                        <h1 id="Tempo_ETA">1h 23min</h1>
+                                        <h1><span id="Tempo_ETA">-</span></h1>
                                         <h4>100% em
-                                            <span id="Projecao_RAM">2h 5min</span>
+                                            <span id="">2h 5min</span>
                                         </h4>
                                     </div>
                                 </div>
@@ -398,141 +382,273 @@
     // Criação dos Gráficos Aqui!!
 
     // Buscando ID dos gŕaficos e criando variáveis deles
-    const graficoRAM = document.getElementById('grafico01').getContext('2d');
-    const graficoSWAP = document.getElementById('grafico02').getContext('2d');
-
-    const gradienteRAM = graficoRAM.createLinearGradient(0, 0, 0, 400);
-    gradienteRAM.addColorStop(0, 'rgba(249, 115, 22, 0.4)'); 
-    gradienteRAM.addColorStop(1, 'rgba(29, 32, 37, 0)');   
-
-    const grandienteSWAP = graficoSWAP.createLinearGradient(0,0,0,400);
-    grandienteSWAP.addColorStop(0, 'rgba(251,191,36, 0.4)');
-    grandienteSWAP.addColorStop(1, 'rgba(29, 32, 37, 0)')
     
-    new Chart(graficoRAM, {
-        type: 'line',
-        data: {
-            // Labels formatadas como no exemplo (HH:mm)
-            labels: ['11:55 AM', '12:05 PM', '12:15 PM', '12:25 PM', '12:35 PM', '12:45 PM', '12:55 PM', '01:05 PM', '01:15 PM'],
-            datasets: [{
-                label: 'Uso da RAM (%)',
-                // O último valor (85) será o início da nossa linha tracejada (previsão)
-                data: [55, 58, 54, 62, 65, 63, 70, 75, 85],
+    const labelTEMPO = [];
+    const labelRAM = [];
+    const dadosRAM = [];
+    const labelSWAP = [];
+    const dadosSWAP = [];
 
-                fill: true,
-                backgroundColor: gradienteRAM,
-                borderColor: '#f97316',
-                borderWidth: 2,
-                tension: 0.4,
 
-                // Função para mudar a cor da borda da bolinha (para não ficar com contorno diferente entre segmento e o valor normal)
-                pointBorderColor: (ctx) => {
-                    return ctx.dataIndex >= 6 ? '#fbbf24' : '#f97316';
-                },
-                // Lógica para transformar a linha em tracejada na previsão
-                segment: {
-                    borderDash: ctx => ctx.p0DataIndex >= 6 ? [5, 5] : undefined,
-                    borderColor: ctx => ctx.p0DataIndex >= 6 ? '#fbbf24' : undefined
-                }
+async function carregarJSON() {
+    try {
+        const resposta = await fetch('/s3/buscar_RAM');
 
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    grid: {
-                        display: true,
-                        color: 'rgba(255, 255, 255, 0.1)', // Linhas verticais sutis
-                        borderDash: [5, 5]
-                    },
-                    ticks: { color: '#94a3b8' }
-                },
-                y: {
-                    beginAtZero: true,
-                    min: 0,
-                    max: 100,
-                    ticks: {
-                        stepSize: 25,
-                        color: '#94a3b8',
-                        callback: (value) => value + '%' // Adiciona o % no eixo Y
-                    },
-                    grid: {
-                        display: true,
-                        color: 'rgba(255, 255, 255, 0.1)', // Linhas horizontais sutis
-                        borderDash: [5, 5]
-                    }
-                }
-            },
-            plugins: {
-                legend: { display: false }
+        if (!resposta.ok) {
+            throw new Error(`Erro na requisição: ${resposta.status}`);
+        }
+
+        const respostaJSON = await resposta.json();
+        const dados = Array.isArray(respostaJSON) ? respostaJSON : [respostaJSON];
+
+        if (!dados.length) {
+            console.warn('Nenhum dado recebido para o gráfico');
+            return;
+        }
+
+        // Ordena pelo timestamp
+        dados.sort(function (a, b) {
+            return a.timestamp.localeCompare(b.timestamp);
+        });
+
+        // Pega os últimos 9 registros
+        const ultimos9Registros = dados.slice(-9);
+
+        if (!ultimos9Registros.length) {
+            console.warn('Não há registros suficientes para a plotagem do gráfico');
+            return;
+        }
+
+        const ultimoRegistro = ultimos9Registros[ultimos9Registros.length - 1];
+
+        document.getElementById("tendencia_min").innerText =
+            ultimoRegistro.tendencia_ram_por_minuto;
+
+        document.getElementById("Valor_RAM").innerHTML =
+            ultimoRegistro.ram_percent + "%";
+        document.getElementById("Projecao_RAM").innerHTML =
+            ultimoRegistro.proj1 + "%";
+
+        document.getElementById("Tempo_ETA").innerHTML =
+            ultimoRegistro.ETA;
+
+        document.getElementById("Correlacao_RAM").innerHTML =
+            ultimoRegistro.correlacao_ram_swap;
+        // Arrays do histórico
+        const labelsHistorico = [];
+        const historicoRAM = [];
+        const historicoSWAP = [];
+
+        for (let i = 0; i < ultimos9Registros.length; i++) {
+            const registro = ultimos9Registros[i];
+
+            labelsHistorico.push(registro.hora_registro);
+            historicoRAM.push(Number(registro.ram_percent));
+            historicoSWAP.push(Number(registro.swap_percent));
+        }
+
+        // Projeções da RAM
+        const projecoesRAM = [];
+        for (let i = 1; i <= 5; i++) {
+            const valor = ultimoRegistro["proj" + i];
+
+            if (valor !== null && valor !== undefined && valor !== "") {
+                projecoesRAM.push(Number(valor));
             }
         }
-    });
 
-    new Chart(graficoSWAP, {
-        type: 'line', // O tipo de gráfico.
-        // Dando os dados
-        data: {
-            labels: ['11:55 AM', '12:05 PM', '12:15 PM', '12:25 PM', '12:35 PM', '12:45 PM', '12:55 PM', '01:05 PM', '01:15 PM'],
+        // Labels futuros sem formatar data
+        // Se quiser, pode trocar "P+1" por "Proj 1"
+        const labelsFuturos = [];
+        for (let i = 1; i <= projecoesRAM.length; i++) {
+            labelsFuturos.push("P+" + i);
+        }
 
-            datasets: [{
-                label: 'Uso da SWAP (%)',
-                data: [48, 52, 60, 64, 66, 72, 72],
+        // Junta histórico + projeção para RAM
+        const labelsRAM = [];
+        const dadosRAM = [];
+
+        for (let i = 0; i < labelsHistorico.length; i++) {
+            labelsRAM.push(labelsHistorico[i]);
+            dadosRAM.push(historicoRAM[i]);
+        }
+
+        for (let i = 0; i < labelsFuturos.length; i++) {
+            labelsRAM.push(labelsFuturos[i]);
+        }
+
+        for (let i = 0; i < projecoesRAM.length; i++) {
+            dadosRAM.push(projecoesRAM[i]);
+        }
+
+        // SWAP só histórico
+        const labelsSWAP = [];
+        const dadosSWAP = [];
+
+        for (let i = 0; i < labelsHistorico.length; i++) {
+            labelsSWAP.push(labelsHistorico[i]);
+            dadosSWAP.push(historicoSWAP[i]);
+        }
+
+        // A previsão começa a partir do último ponto histórico
+        const inicioPrevisao = historicoRAM.length - 1;
+
+        const ctxRAM = document.getElementById('grafico01').getContext('2d');
+        const ctxSWAP = document.getElementById('grafico02').getContext('2d');
+
+        const gradienteRAM = ctxRAM.createLinearGradient(0, 0, 0, 400);
+        gradienteRAM.addColorStop(0, 'rgba(249, 115, 22, 0.4)');
+        gradienteRAM.addColorStop(1, 'rgba(29, 32, 37, 0)');
+
+        const gradienteSWAP = ctxSWAP.createLinearGradient(0, 0, 0, 400);
+        gradienteSWAP.addColorStop(0, 'rgba(251, 191, 36, 0.4)');
+        gradienteSWAP.addColorStop(1, 'rgba(29, 32, 37, 0)');
 
 
-                fill: true,
-                backgroundColor: grandienteSWAP,
-                borderColor: '#fbbf24',
-                borderWidth: 2,
-                tension: 0.4,
-                tension: 0.5,
-            }]
-        },
-       options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            scales: {
-                x: {
-                    grid: {
-                        display: true,
-                        color: 'rgba(255, 255, 255, 0.1)', // Linhas verticais sutis
-                        borderDash: [5, 5]
+        chartRAM = new Chart(ctxRAM, {
+            type: 'line',
+            data: {
+                labels: labelsRAM,
+                datasets: [{
+                    label: 'Uso da RAM (%)',
+                    data: dadosRAM,
+                    fill: true,
+                    backgroundColor: gradienteRAM,
+                    borderColor: '#f97316',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+
+                    pointBackgroundColor: function (ctx) {
+                        return ctx.dataIndex > inicioPrevisao ? '#fbbf24' : '#f97316';
                     },
-                    ticks: { color: '#94a3b8' }
+                    pointBorderColor: function (ctx) {
+                        return ctx.dataIndex > inicioPrevisao ? '#fbbf24' : '#f97316';
+                    },
+
+                    segment: {
+                        borderDash: function (ctx) {
+                            return ctx.p0DataIndex >= inicioPrevisao ? [6, 6] : undefined;
+                        },
+                        borderColor: function (ctx) {
+                            return ctx.p0DataIndex >= inicioPrevisao ? '#fbbf24' : '#f97316';
+                        }
+                    }
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: {
+                            display: true,
+                            color: 'rgba(255, 255, 255, 0.1)',
+                            borderDash: [5, 5]
+                        },
+                        ticks: {
+                            color: '#94a3b8'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            stepSize: 25,
+                            color: '#94a3b8',
+                            callback: function (value) {
+                                return value + '%';
+                            }
+                        },
+                        grid: {
+                            display: true,
+                            color: 'rgba(255, 255, 255, 0.1)',
+                            borderDash: [5, 5]
+                        }
+                    }
                 },
-                y: {
-                    beginAtZero: true,
-                    min: 0,
-                    max: 100,
-                    ticks: {
-                        stepSize: 25,
-                        color: '#94a3b8',
-                        callback: (value) => value + '%' // Adiciona o % no eixo Y
-                    },
-                    grid: {
-                        display: true,
-                        color: 'rgba(255, 255, 255, 0.1)', // Linhas horizontais sutis
-                        borderDash: [5, 5]
+                plugins: {
+                    legend: {
+                        display: false
                     }
                 }
-            },
-            plugins: {
-                legend: { display: false } // Esconde a legenda para focar no gráfico
             }
-        }
-    });
+        });
 
+        // =========================
+        // GRÁFICO SWAP
+        // =========================
+        chartSWAP = new Chart(ctxSWAP, {
+            type: 'line',
+            data: {
+                labels: labelsSWAP,
+                datasets: [{
+                    label: 'Uso da SWAP (%)',
+                    data: dadosSWAP,
+                    fill: true,
+                    backgroundColor: gradienteSWAP,
+                    borderColor: '#fbbf24',
+                    borderWidth: 2,
+                    tension: 0.5,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    pointBackgroundColor: '#fbbf24',
+                    pointBorderColor: '#fbbf24'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        grid: {
+                            display: true,
+                            color: 'rgba(255, 255, 255, 0.1)',
+                            borderDash: [5, 5]
+                        },
+                        ticks: {
+                            color: '#94a3b8'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        min: 0,
+                        max: 100,
+                        ticks: {
+                            stepSize: 25,
+                            color: '#94a3b8',
+                            callback: function (value) {
+                                return value + '%';
+                            }
+                        },
+                        grid: {
+                            display: true,
+                            color: 'rgba(255, 255, 255, 0.1)',
+                            borderDash: [5, 5]
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+    } catch (erro) {
+        console.error("Erro ao carregar os gráficos:", erro);
+    }
+}
 
     // __________________________________________________________________________________
     // ==================================================================================
-
-
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-
+    
+    
     let proximaAtualizacao;
-
+    
     window.onload = function () {
 
         const usuario = document.getElementById("usuario");
@@ -555,29 +671,6 @@
         window.location = 'index.html';
     }
 
-    console.log('----------------------------------------------')
-    console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
-    console.log(resposta)
-
-    // Inserindo valores recebidos em estrutura para plotar o gráfico
-    for (i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
-        labels.push(registro.momento_grafico);
-        dados.datasets[0].data.push(registro.umidade);
-        dados.datasets[1].data.push(registro.temperatura);
-    }
-
-    console.log('----------------------------------------------')
-    console.log('O gráfico será plotado com os respectivos valores:')
-    console.log('Labels:')
-    console.log(labels)
-    console.log('Dados:')
-    console.log(dados.datasets)
-    console.log('----------------------------------------------')
-
-    // Criando estrutura para plotar gráfico - config
-    const config = {
-        type: 'line',
-        data: dados,
-    };
+    console.log('Configurações do gráfico:')
+    carregarJSON();
 </script>

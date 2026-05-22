@@ -70,4 +70,25 @@ router.get("/pegarDados", async (req, res) => {
     }
 });
 
+
+router.get("/buscar_RAM", async (req,res) => {
+    try{
+        const get_json = new GetObjectCommand({
+            Bucket: process.env.AWS_BUCKET_NAME,
+            Key: "CLIENT/luiz.json" 
+        });
+
+        const resp = await s3.send(get_json);
+        const porra = await resp.Body.transformToString();
+
+        res.json(JSON.parse(porra));
+    } catch (e) {
+        console.error("Erro S3:", e);
+
+        res.status(500).json({
+            e: "Erro ao buscar dados do S3"
+        });
+    }
+});
+
 module.exports = router;
