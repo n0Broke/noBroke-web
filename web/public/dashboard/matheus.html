@@ -115,7 +115,7 @@
         <div class="conteudo-dash" id="telaPrincipal">
             <!-- Header do Conteudo da Dashboard -->
             <div class="header-responsividade">
-                <div>
+                <div style="display: flex; align-items: center; gap: 10px;">
                     <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
                         style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
                     <span style="color: #7D8999;">noBroke Server Monitor</span>
@@ -133,15 +133,6 @@
                                 src="../assets/svg/circle-svgrepo-com.svg" alt="simbolo-operacional"
                                 style="width: 8px;">Operacional</p>
                         <p class="tipo-servidor" style="border-radius: 4px;">Desenvolvimento</p>
-                    </div>
-                    <div class="header-esquerdo02">
-                        <p class="ip-servidor">192.168.***.42</p>
-                        <p>|</p>
-                        <p class="localizacao-servidor">São Paulo - SP</p>
-                        <p>|</p>
-                        <p class="coleta-servidor" style="align-items: center;"><img
-                                src="../assets/svg/loading-svgrepo-com.svg" alt="carregar" style="width: 25px;">6s atrás
-                        </p>
                     </div>
                 </div>
                 <div class="header-direita">
@@ -231,7 +222,7 @@
                     <!-- ___________________________________ -->
                     <!-- Gráfico - CPU -->
                     <div class="card-grafico">
-                        <h4 class="titulo-grafico">CPU (24h)</h4>
+                        <h4 class="titulo-grafico">CPU (1h)</h4>
                         <div id="container-grafico01">
                             <canvas id="grafico01"></canvas>
                         </div>
@@ -239,7 +230,7 @@
                     <!-- ___________________________________ -->
                     <!-- Gráfico - CPU -->
                     <div class="card-grafico">
-                        <h4 class="titulo-grafico">Memória RAM (24h)</h4>
+                        <h4 class="titulo-grafico">Memória RAM (1h)</h4>
                         <div id="container-grafico02">
                             <canvas id="grafico02"></canvas>
                         </div>
@@ -247,7 +238,7 @@
                     <!-- ___________________________________ -->
                     <!-- Gráfico - CPU -->
                     <div class="card-grafico">
-                        <h4 class="titulo-grafico">Latência (24h)</h4>
+                        <h4 class="titulo-grafico">Latência (1h)</h4>
                         <div id="container-grafico03">
                             <canvas id="grafico03"></canvas>
                         </div>
@@ -259,10 +250,20 @@
             <!-- Última parte da Dashboard - Alertas e Componentes -->
 
             <div class="conteudo-dash03">
+                <div class="card-grafico">
+                    <h4 class="titulo-grafico">Componente Selecionado</h4>
+                    <div id="container-grafico04">
+                        <canvas id="grafico04"></canvas>
+                    </div>
+                </div>
                 <div class="componentes-servidor">
                     <h4 class="componentes-titulo">Componentes Monitorados</h4>
                     <div class="parte-componentes">
-                        <div class="componente-monitorado componente01">
+                        <div class="componente-monitorado componente"
+                            style="cursor: default; border: none; justify-content: center;">
+                            <p>↓ SELECIONE ABAIXO O COMPONENTE QUE GOSTARIA DE MONITORAR ↓</p>
+                        </div>
+                        <div class="componente-monitorado componente">
                             <div class="componente-infos">
                                 <img src="../assets/svg/circle-svgrepo-com-alert2.svg" alt="status" style="width: 6px;">
                                 <img src="../assets/svg/cpu-bolt-svgrepo-com.svg" alt="cpu" style="width: 20px;">
@@ -279,7 +280,7 @@
                                     style="width: 18px;">
                             </div>
                         </div>
-                        <div class="componente-monitorado componente02">
+                        <div class="componente-monitorado componente">
                             <div class="componente-infos">
                                 <img src="../assets/svg/circle-svgrepo-com-alert3.svg" alt="status" style="width: 6px;">
                                 <img src="../assets/svg/ram-memory-svgrepo-com.svg" alt="cpu" style="width: 20px;">
@@ -296,7 +297,7 @@
                                     style="width: 18px;">
                             </div>
                         </div>
-                        <div class="componente-monitorado componente03">
+                        <div class="componente-monitorado componente">
                             <div class="componente-infos">
                                 <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status" style="width: 6px;">
                                 <img src="../assets/svg/hard-disk-svgrepo-com.svg" alt="cpu" style="width: 20px;">
@@ -313,7 +314,7 @@
                                     style="width: 18px;">
                             </div>
                         </div>
-                        <div class="componente-monitorado componente04">
+                        <div class="componente-monitorado componente">
                             <div class="componente-infos">
                                 <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status" style="width: 6px;">
                                 <img src="../assets/svg/speedometer-graph-infographic-data-element-svgrepo-com.svg"
@@ -331,74 +332,9 @@
                                     style="width: 18px;">
                             </div>
                         </div>
-                        <div class="componente-monitorado componente05">
-                            <div class="componente-infos">
-                                <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status" style="width: 6px;">
-                                <img src="../assets/svg/heart-rate-svgrepo-com.svg" alt="cpu" style="width: 20px;">
-                                <p id="componente-info01">Heartbeat</p>
-                            </div>
-                            <div class="componente-status">
-                                <p>Ativo</p>
-                            </div>
-                            <div class="componente-metrica">
-                                <span>Contínuo</span>
-                            </div>
-                            <div class="componente-status-icon">
-                                <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert1.svg" alt="alerta"
-                                    style="width: 18px;">
-                            </div>
-                        </div>
-                        <div class="componente-monitorado componente06">
-                            <div class="componente-infos">
-                                <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status" style="width: 6px;">
-                                <img src="../assets/svg/heart-rate-svgrepo-com.svg" alt="cpu" style="width: 20px;">
-                                <p id="componente-info01">Disponib.</p>
-                            </div>
-                            <div class="componente-status">
-                                <p>99.97%</p>
-                            </div>
-                            <div class="componente-metrica">
-                                <span>≥99%</span>
-                            </div>
-                            <div class="componente-status-icon">
-                                <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert1.svg" alt="alerta"
-                                    style="width: 18px;">
-                            </div>
-                        </div>
                     </div>
                 </div>
-                <!-- Parte das Legendas - Canto da Direita -->
-                <div class="legendas-servidor">
-                    <div class="card-alertas">
-                        <div class="header-alertas-card">
-                            <p>Alertas Recentes</p>
-                            <span>3 Alertas</span>
-                        </div>
-                        <div class="alertas-recentes">
-                            <div class="info-alerta alerta01">
-                                <img src="../assets/svg/alert-2-svgrepo-com.svg" alt="alert" style="width: 20px;">
-                                <div class="infos-escrita-alerta">
-                                    <p>Memória RAM: Acima do Limite</p>
-                                    <span>RAM - 12:30</span>
-                                </div>
-                            </div>
-                            <div class="info-alerta alerta02">
-                                <img src="../assets/svg/alert-svgrepo-com.svg" alt="alert" style="width: 20px;">
-                                <div class="infos-escrita-alerta">
-                                    <p>CPU: Alcançando o limite</p>
-                                    <span>CPU - 13:00</span>
-                                </div>
-                            </div>
-                            <div class="info-alerta alerta02">
-                                <img src="../assets/svg/alert-svgrepo-com.svg" alt="alert" style="width: 20px;">
-                                <div class="infos-escrita-alerta">
-                                    <p>Memória RAM: Alcançando o limite</p>
-                                    <span>RAM - 12:00</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
@@ -541,7 +477,7 @@
         console.log(dados);
     }
 
-    function plotarDados(dados){
+    function plotarDados(dados) {
         porcentagemCPU = dados[dados.length - 1].cpu_percent;
         document.getElementById("porcCPU").innerHTML = `${porcentagemCPU}%`
         porcentagemRAM = dados[dados.length - 1].ram_percent;
@@ -570,10 +506,14 @@
         let dataRAM = []
         let labelsLatencia = []
         let dataLatencia = []
+        let corVerde = 'rgba(40, 167, 69, 0.8)';
+        let verdeClaro = 'rgba(40, 167, 69, 0.3)';
+        let corVermelha = 'rgba(220, 53, 69, 0.8)';
+        let vermelhoClaro = 'rgba(220, 53, 69, 0.3)';
 
         for (i = 0; i < dadosRecentes.length; i++) {
             var registro = dadosRecentes[i];
-            labelsCPU.push(registro.timestamp.split(' ')[1]);
+            labelsCPU.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
             dataCPU.push(registro.cpu_percent);
         }
 
@@ -594,8 +534,9 @@
                     {
                         label: 'CPU (%)',
                         data: dataCPU,
-                        borderColor: 'rgb(33, 196, 93)',
-                        backgroundColor: 'rgba(33, 196, 93, 0.5)',
+                        borderColor: 'rgba(40, 167, 69, 0.8)',
+                        backgroundColor: 'rgba(40, 167, 69, 0.3)',
+                        borderWidth: 2, // Espessura da linhaborderColor: 'rgb(33, 196, 93)',
                         tension: 0.3
                     }
                 ]
@@ -633,7 +574,7 @@
 
         for (i = 0; i < dadosRecentes.length; i++) {
             var registro = dadosRecentes[i];
-            labelsRAM.push(registro.timestamp.split(' ')[1]);
+            labelsRAM.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
             dataRAM.push(registro.ram_percent);
         }
 
@@ -654,8 +595,8 @@
                     {
                         label: 'RAM (%)',
                         data: dataRAM,
-                        borderColor: 'rgb(33, 196, 93)',
-                        backgroundColor: 'rgba(33, 196, 93, 0.5)',
+                        borderColor: corVermelha,
+                        backgroundColor: vermelhoClaro,
                         tension: 0.3
                     }
                 ]
@@ -693,7 +634,7 @@
 
         for (i = 0; i < dadosRecentes.length; i++) {
             var registro = dadosRecentes[i];
-            labelsLatencia.push(registro.timestamp.split(' ')[1]);
+            labelsLatencia.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
             dataLatencia.push(registro.latencia_resposta_ms);
         }
 
@@ -714,8 +655,8 @@
                     {
                         label: 'Latência MS',
                         data: dataLatencia,
-                        borderColor: 'rgb(33, 196, 93)',
-                        backgroundColor: 'rgba(33, 196, 93, 0.5)',
+                        borderColor: corVermelha,
+                        backgroundColor: vermelhoClaro,
                         tension: 0.3
                     }
                 ]
