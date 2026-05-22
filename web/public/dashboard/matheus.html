@@ -140,12 +140,14 @@
                         <p class="localizacao-servidor">São Paulo - SP</p>
                         <p>|</p>
                         <p class="coleta-servidor" style="align-items: center;"><img
-                            src="../assets/svg/loading-svgrepo-com.svg" alt="carregar" style="width: 25px;">6s atrás</p>
+                                src="../assets/svg/loading-svgrepo-com.svg" alt="carregar" style="width: 25px;">6s atrás
+                        </p>
                     </div>
                 </div>
                 <div class="header-direita">
-                    <button class="botao-atualizar" onclick="window.location.reload()"><img src="../assets/svg/loading-svgrepo-com.svg" alt=""
-                            style="width: 22px; color: white;"> Atualizar</button>
+                    <button class="botao-atualizar" onclick="window.location.reload()"><img
+                            src="../assets/svg/loading-svgrepo-com.svg" alt="" style="width: 22px; color: white;">
+                        Atualizar</button>
                 </div>
             </div>
             <!-- ========================================================= -->
@@ -159,7 +161,7 @@
                         <span class="card01-info" style="color: #b4b4b4; font-size: 10px;">8 Cores</span>
                     </div>
                     <div class="conteudo-abaixo-cards">
-                        <h1>65%</h1>
+                        <h1 id="porcCPU">65%</h1>
                         <h4>CPU (30 min)</h4>
                         <div class="linha-cards">
                             <div class="linha-preenchida01"
@@ -178,7 +180,7 @@
                         <span class="card02-info" style="color: #b4b4b4; font-size: 10px;">12.3 / 16 GB</span>
                     </div>
                     <div class="conteudo-abaixo-cards">
-                        <h1>72%</h1>
+                        <h1 id="porcRAM">72%</h1>
                         <h4>Memória RAM (30 min)</h4>
                         <div class="linha-cards">
                             <div class="linha-preenchida01"
@@ -197,7 +199,7 @@
                         <span class="card03-info" style="color: #b4b4b4; font-size: 10px;">234 / 512 GB</span>
                     </div>
                     <div class="conteudo-abaixo-cards">
-                        <h1>60%</h1>
+                        <h1 id="porcDisco">60%</h1>
                         <h4>Disco (30 min)</h4>
                         <div class="linha-cards">
                             <div class="linha-preenchida01"
@@ -217,16 +219,8 @@
                         <span class="card04-info" style="color: #b4b4b4; font-size: 10px;">Média 5min</span>
                     </div>
                     <div class="conteudo-abaixo-cards">
-                        <h1>38ms</h1>
+                        <h1 id="porcLatencia">38ms</h1>
                         <h4>Latência (30 min)</h4>
-                        <div class="linha-cards">
-                            <div class="linha-preenchida01"
-                                style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 120%; height: 5px; background-color: #21C45D;">
-                            </div>
-                            <div class="linha-faltando01"
-                                style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 88%; height: 5px; background-color: rgb(45, 50, 57);">
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -236,21 +230,27 @@
                 <div class="cards-grafico">
                     <!-- ___________________________________ -->
                     <!-- Gráfico - CPU -->
-                    <div class="card-grafico card-grafico01">
+                    <div class="card-grafico">
                         <h4 class="titulo-grafico">CPU (24h)</h4>
-                        <canvas id="grafico01"></canvas>
+                        <div id="container-grafico01">
+                            <canvas id="grafico01"></canvas>
+                        </div>
                     </div>
                     <!-- ___________________________________ -->
                     <!-- Gráfico - CPU -->
-                    <div class="card-grafico card-grafico02">
+                    <div class="card-grafico">
                         <h4 class="titulo-grafico">Memória RAM (24h)</h4>
-                        <canvas id="grafico02"></canvas>
+                        <div id="container-grafico02">
+                            <canvas id="grafico02"></canvas>
+                        </div>
                     </div>
                     <!-- ___________________________________ -->
                     <!-- Gráfico - CPU -->
-                    <div class="card-grafico card-grafico03">
+                    <div class="card-grafico">
                         <h4 class="titulo-grafico">Latência (24h)</h4>
-                        <canvas id="grafico03"></canvas>
+                        <div id="container-grafico03">
+                            <canvas id="grafico03"></canvas>
+                        </div>
                     </div>
                     <!-- ___________________________________ -->
                 </div>
@@ -408,11 +408,11 @@
 
 </html>
 <script>
-    // const nomeCompleto = sessionStorage.NOME_USUARIO
-    // const partes = nomeCompleto.trim().split(" ");
-    // const primeiroNome = partes[0];
-    // usuario.innerHTML = primeiroNome;
-    // cargoFunc.innerHTML = sessionStorage.FUNCAO;
+    const nomeCompleto = sessionStorage.NOME_USUARIO
+    const partes = nomeCompleto.trim().split(" ");
+    const primeiroNome = partes[0];
+    usuario.innerHTML = primeiroNome;
+    cargoFunc.innerHTML = sessionStorage.FUNCAO;
     // nomeServidor.innerHTML = sessionStorage.NOME_SERVIDOR;
 
     const root = document.documentElement;
@@ -507,240 +507,248 @@
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
         }
-        if (sessionStorage.ALERTA == 0) {
-            cardAlerta.style.display = "none"
-        } else {
-            cardAlerta.innerHTML = `<div class="box-cardAlerta">
-                    <div class="titulo-pai">
-                        <div class="titulo-alerta">
-                            <img src="../assets/svg/alertas/warning.png">
-                            <span>ALERTA</span>
-                        </div>
-                        <div class="fecharCard">
-                            <span onclick="fecharAlerta()">X</span>
-                        </div>
-                    </div>
-                    <div class="corpo-alerta">
-                        <span>2 Alertas Críticos</span>
-                        <a href="Alertas.html">Clique aqui para ver mais informações!</a>
-                    </div>
-                </div>`
-        }
-        if (sessionStorage.FK_FUNCAO != 1) {
-            const divRelatorios = document.getElementById("div_relatorios");
-            divRelatorios.style.display = "none";
-            sessionStorage.FUNCAO = "Analista de Infra";
-        } else {
-            sessionStorage.FUNCAO = "Gestor de Infra";
-        }
+        // if (sessionStorage.ALERTA == 0) {
+        //     cardAlerta.style.display = "none"
+        // } else {
+        //     cardAlerta.innerHTML = `<div class="box-cardAlerta">
+        //             <div class="titulo-pai">
+        //                 <div class="titulo-alerta">
+        //                     <img src="../assets/svg/alertas/warning.png">
+        //                     <span>ALERTA</span>
+        //                 </div>
+        //                 <div class="fecharCard">
+        //                     <span onclick="fecharAlerta()">X</span>
+        //                 </div>
+        //             </div>
+        //             <div class="corpo-alerta">
+        //                 <span>2 Alertas Críticos</span>
+        //                 <a href="Alertas.html">Clique aqui para ver mais informações!</a>
+        //             </div>
+        //         </div>`
+        // }
     }
 
     function fecharAlerta() {
         cardAlerta.style.display = "none"
     }
 
+    carregarDados();
+    async function carregarDados() {
+        const resposta = await fetch("/s3/pegarDados");
+        const dados = await resposta.json();
+        criarGrafico(dados);
+        plotarDados(dados);
+        console.log(dados);
+    }
+
+    function plotarDados(dados){
+        porcentagemCPU = dados[dados.length - 1].cpu_percent;
+        document.getElementById("porcCPU").innerHTML = `${porcentagemCPU}%`
+        porcentagemRAM = dados[dados.length - 1].ram_percent;
+        document.getElementById("porcRAM").innerHTML = `${porcentagemRAM}%`
+        porcentagemDisco = dados[dados.length - 1].disk_percent;
+        document.getElementById("porcDisco").innerHTML = `${porcentagemDisco}%`
+        porcentagemLatencia = dados[dados.length - 1].latencia_resposta_ms;
+        document.getElementById("porcLatencia").innerHTML = `${porcentagemLatencia} ms  `
+    }
     // ==================================================================================
     // __________________________________________________________________________________
     // Criação dos Gráficos Aqui!!
+    let chartCPU;
+    let chartRAM;
+    let chartLatencia;
 
-    criarGrafico();
-    function criarGrafico() {
+    function criarGrafico(dados) {
+        document.getElementById('container-grafico01').innerHTML = '<canvas id="grafico01"></canvas>';
+        document.getElementById('container-grafico02').innerHTML = '<canvas id="grafico02"></canvas>';
+        document.getElementById('container-grafico03').innerHTML = '<canvas id="grafico03"></canvas>';
+        var dadosRecentes = dados.slice(-8);
         // SUBSTITUIÇÃO: URL direta do arquivo no S3
-        const urlS3 = "https://s3-bucket-projeto-unico.s3.us-east-1.amazonaws.com/CLIENT/client.json";
         let labelsCPU = []
         let dataCPU = []
         let labelsRAM = []
         let dataRAM = []
-        let labelsDisco = []
-        let dataDisco = []
+        let labelsLatencia = []
+        let dataLatencia = []
 
-        fetch(urlS3)
-            .then(res => {
-                if (!res.ok) throw new Error("Erro ao acessar o S3. Verifique o CORS e se o arquivo é público.");
-                return res.json();
-            })
-            .then(servidores => {
-                
-                for (i = 0; i <= 7; i++) {
-                    var registro = servidores[i];
-                    labelsCPU.push(registro.timestamp.split(' ')[1]);
-                    dataCPU.push(registro.cpu_percent);
-                }
+        for (i = 0; i < dadosRecentes.length; i++) {
+            var registro = dadosRecentes[i];
+            labelsCPU.push(registro.timestamp.split(' ')[1]);
+            dataCPU.push(registro.cpu_percent);
+        }
 
-                console.log('----------------------------------------------')
-                console.log('O gráfico será plotado com os respectivos valores:')
-                console.log('Labels:')
-                console.log(labelsCPU)
-                console.log('Dados:')
-                console.log(dataCPU)
-                console.log('----------------------------------------------')
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labelsCPU)
+        console.log('Dados:')
+        console.log(dataCPU)
+        console.log('----------------------------------------------')
 
-                const ctxCPU = document.getElementById('grafico01');
-                new Chart(ctxCPU, {
-                    type: 'line',
-                    data: {
-                        labels: labelsCPU,
-                        datasets: [
-                            {
-                                label: 'CPU (%)',
-                                data: dataCPU,
-                                borderColor: 'rgb(33, 196, 93)',
-                                backgroundColor: 'rgba(33, 196, 93, 0.5)',
-                                tension: 0.3
-                            }
-                        ]
+        const ctxCPU = document.getElementById('grafico01');
+        chartCPU = new Chart(ctxCPU, {
+            type: 'line',
+            data: {
+                labels: labelsCPU,
+                datasets: [
+                    {
+                        label: 'CPU (%)',
+                        data: dataCPU,
+                        borderColor: 'rgb(33, 196, 93)',
+                        backgroundColor: 'rgba(33, 196, 93, 0.5)',
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: { color: 'white' }
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            x: {
-                                ticks: { color: 'white' }
-                            },
-                            y: {
-                                beginAtZero: true,
-                                max: 100,
-                                title: {
-                                    display: true,
-                                    text: 'Uso (%)',
-                                    color: 'white'
-                                },
-                                ticks: { color: 'white' },
-                            }
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Uso (%)',
+                            color: 'white'
                         },
-                        plugins: {
-                            legend: {
-                                labels: {
-                                    color: 'white',
-                                    font: {
-                                        size: 16
-                                    }
-                                }
+                        ticks: { color: 'white' },
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white',
+                            font: {
+                                size: 16
                             }
                         }
                     }
-                })
-
-                for (i = 0; i <= 7; i++) {
-                    var registro = servidores[i];
-                    labelsRAM.push(registro.timestamp.split(' ')[1]);
-                    dataRAM.push(registro.ram_percent);
                 }
+            }
+        })
 
-                console.log('----------------------------------------------')
-                console.log('O gráfico será plotado com os respectivos valores:')
-                console.log('Labels:')
-                console.log(labelsRAM)
-                console.log('Dados:')
-                console.log(dataRAM)
-                console.log('----------------------------------------------')
+        for (i = 0; i < dadosRecentes.length; i++) {
+            var registro = dadosRecentes[i];
+            labelsRAM.push(registro.timestamp.split(' ')[1]);
+            dataRAM.push(registro.ram_percent);
+        }
 
-                const ctxRAM = document.getElementById('grafico02');
-                new Chart(ctxRAM, {
-                    type: 'line',
-                    data: {
-                        labels: labelsRAM,
-                        datasets: [
-                            {
-                                label: 'CPU (%)',
-                                data: dataRAM,
-                                borderColor: 'rgb(33, 196, 93)',
-                                backgroundColor: 'rgba(33, 196, 93, 0.5)',
-                                tension: 0.3
-                            }
-                        ]
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labelsRAM)
+        console.log('Dados:')
+        console.log(dataRAM)
+        console.log('----------------------------------------------')
+
+        const ctxRAM = document.getElementById('grafico02');
+        chartRAM = new Chart(ctxRAM, {
+            type: 'line',
+            data: {
+                labels: labelsRAM,
+                datasets: [
+                    {
+                        label: 'RAM (%)',
+                        data: dataRAM,
+                        borderColor: 'rgb(33, 196, 93)',
+                        backgroundColor: 'rgba(33, 196, 93, 0.5)',
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: { color: 'white' }
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            x: {
-                                ticks: { color: 'white' }
-                            },
-                            y: {
-                                beginAtZero: true,
-                                max: 100,
-                                title: {
-                                    display: true,
-                                    text: 'Uso (%)',
-                                    color: 'white'
-                                },
-                                ticks: { color: 'white' },
-                            }
+                    y: {
+                        beginAtZero: true,
+                        max: 100,
+                        title: {
+                            display: true,
+                            text: 'Uso (%)',
+                            color: 'white'
                         },
-                        plugins: {
-                            legend: {
-                                labels: {
-                                    color: 'white',
-                                    font: {
-                                        size: 16
-                                    }
-                                }
+                        ticks: { color: 'white' },
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white',
+                            font: {
+                                size: 16
                             }
                         }
                     }
-                })
-
-                for (i = 0; i <= 7; i++) {
-                    var registro = servidores[i];
-                    labelsRAM.push(registro.timestamp.split(' ')[1]);
-                    dataDisco.push(registro.disk_percent);
                 }
+            }
+        })
 
-                console.log('----------------------------------------------')
-                console.log('O gráfico será plotado com os respectivos valores:')
-                console.log('Labels:')
-                console.log(labelsRAM)
-                console.log('Dados:')
-                console.log(dataDisco)
-                console.log('----------------------------------------------')
+        for (i = 0; i < dadosRecentes.length; i++) {
+            var registro = dadosRecentes[i];
+            labelsLatencia.push(registro.timestamp.split(' ')[1]);
+            dataLatencia.push(registro.latencia_resposta_ms);
+        }
 
-                const ctxDisco = document.getElementById('grafico03');
-                new Chart(ctxDisco, {
-                    type: 'line',
-                    data: {
-                        labels: labelsRAM,
-                        datasets: [
-                            {
-                                label: 'CPU (%)',
-                                data: dataDisco,
-                                borderColor: 'rgb(33, 196, 93)',
-                                backgroundColor: 'rgba(33, 196, 93, 0.5)',
-                                tension: 0.3
-                            }
-                        ]
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labelsLatencia)
+        console.log('Dados:')
+        console.log(dataLatencia)
+        console.log('----------------------------------------------')
+
+        const ctxDisco = document.getElementById('grafico03');
+        chartLatencia = new Chart(ctxDisco, {
+            type: 'line',
+            data: {
+                labels: labelsLatencia,
+                datasets: [
+                    {
+                        label: 'Latência MS',
+                        data: dataLatencia,
+                        borderColor: 'rgb(33, 196, 93)',
+                        backgroundColor: 'rgba(33, 196, 93, 0.5)',
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        ticks: { color: 'white' }
                     },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            x: {
-                                ticks: { color: 'white' }
-                            },
-                            y: {
-                                beginAtZero: true,
-                                max: 100,
-                                title: {
-                                    display: true,
-                                    text: 'Uso (%)',
-                                    color: 'white'
-                                },
-                                ticks: { color: 'white' },
-                            }
+                    y: {
+                        beginAtZero: true,
+                        max: 10000,
+                        title: {
+                            display: true,
+                            text: 'Uso MS',
+                            color: 'white'
                         },
-                        plugins: {
-                            legend: {
-                                labels: {
-                                    color: 'white',
-                                    font: {
-                                        size: 16
-                                    }
-                                }
+                        ticks: { color: 'white' },
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white',
+                            font: {
+                                size: 16
                             }
                         }
                     }
-                })
-            })
-            .catch(erro => console.error("ERRO:", erro));
-    };
+                }
+            }
+        })
+    }
 </script>
