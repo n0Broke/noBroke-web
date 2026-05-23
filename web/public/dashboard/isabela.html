@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard | noBroke</title> 
+    <title>Dashboard | noBroke</title>
     <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
 
     <script src="./js/sessao.js"></script>
@@ -163,14 +163,6 @@
 
                             Alertas
                         </button>
-
-                        <button class="botao-exportar">
-
-                            <img src="../assets/svg/download-minimalistic-svgrepo-com.svg" style="width: 22px;">
-
-                            Exportar
-                        </button>
-
                     </div>
 
                 </div>
@@ -277,7 +269,9 @@
                             Picos correlacionados com janelas de stress de hardware
                         </p>
 
-                        <abbr title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                        <abbr
+                            title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
+                                style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
 
                         <canvas id="graficoVolume"></canvas>
 
@@ -291,7 +285,8 @@
                             Aumento sustentado indica degradação
                         </p>
 
-                        <abbr title="Latencia de 95% das requisições de ordens atualizadas de 15 em 15 minutos"><img style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                        <abbr title="Latencia de 95% das requisições de ordens atualizadas de 15 em 15 minutos"><img
+                                style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
 
                         <canvas id="graficoLatencia"></canvas>
 
@@ -310,7 +305,9 @@
                             Negócio vs falha técnica
                         </p>
 
-                        <abbr title="Status das requisições de ordens realizadas: Executadas com sucesso = Requisições de ordens que foram realizadas com sucesso dentro desse periodo. Falhas parte cliente = Falhas que ocorreram por parte do cliente, ou seja, erros 4xx. Falhas de erro tecnico = Falhas que ocorreram por conta dos servidores home brokers, ou seja, respostas 5xx"><img style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                        <abbr
+                            title="Executadas com sucesso = ordens processadas corretamente (2xx) | Falhas parte cliente = erros causados pelo cliente (4xx) | Falhas erro técnico = erros causados pelos servidores home broker (5xx)"><img
+                                style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
 
                         <canvas id="graficoStatus"></canvas>
 
@@ -324,7 +321,9 @@
                             Por código
                         </p>
 
-                        <abbr title="Distribuição de erros http 5xx comparando por cada codigo"><img style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                        <abbr
+                            title="500 — erro interno do servidor | 501 — funcionalidade não suportada | 502 — resposta inválida entre servidores | 503 — serviço indisponível/sobrecarga | 504 — tempo de resposta excedido | 505 — versão HTTP não suportada"><img
+                                style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
 
                         <canvas id="graficoErrosBarras"></canvas>
 
@@ -339,92 +338,14 @@
                         </p>
 
 
-                        <abbr title="Distribuição de erros http 5xx de 15 em 15 minutos"><img style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                        <abbr title="Distribuição de erros http 5xx de 15 em 15 minutos"><img style="width: 30px;"
+                                src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
 
                         <canvas id="graficoErrosLinha"></canvas>
 
                     </div>
 
                 </div>
-
-                <!-- Legenda -->
-                <div class="body-graficos">
-
-                    <div class="grafico-http-grande">
-
-                        <h3>Legenda & referências</h3>
-
-                        <p>
-                            Cores, severidades, SLA e glossário usados neste painel
-                        </p>
-
-                        <div class="legendas-body">
-
-                            <div class="legenda-http">
-
-                                <span>Status HTTP</span>
-
-                                <span style="color: green;">2xx</span>
-                                <p>Sucesso requisição processada</p>
-
-                                <span style="color: yellow;">3xx</span>
-                                <p>Redirecionamento</p>
-
-                                <span style="color: orange;">4xx</span>
-                                <p>Erro do cliente</p>
-
-                                <span style="color: red;">5xx</span>
-                                <p>Erro do servidor</p>
-
-                            </div>
-
-                            <div class="legenda-http">
-
-                                <span>Severidade</span>
-
-                                <span style="color: red;">Crítico</span>
-                                <p>Impacto direto em ordens</p>
-
-                                <span style="color: yellow;">Atenção</span>
-                                <p>Latência elevada</p>
-
-                                <span style="color: green;">Saudável</span>
-                                <p>Dentro do SLA</p>
-
-                            </div>
-
-                            <div class="legenda-http">
-
-                                <span>SLA</span>
-
-                                <span style="color: yellow;">p95 > 500ms</span>
-                                <p>Atenção</p>
-
-                                <span style="color: red;">p95 > 800ms</span>
-                                <p>Crítico</p>
-
-                                <span style="color: red;">Erro 5xx > 1%</span>
-                                <p>Crítico</p>
-
-                            </div>
-
-                            <div class="legenda-http">
-
-                                <span>Glossário</span>
-
-                                <span>RPS — Requisições por segundo</span>
-                                <span>p95 — Percentil 95</span>
-                                <span>5xx — Erros do servidor</span>
-                                <span>SLA — Nível de serviço</span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
             </div>
 </body>
 
@@ -574,44 +495,48 @@
 
             if (dados[i].id_servidor == id_servidor) {
 
-            dadosServidor.push(dados[i]);
+                dadosServidor.push(dados[i]);
+
+            }
 
         }
 
-    }
-
         const ultimo = dadosServidor[dadosServidor.length - 1];
 
-        document.getElementById("kpiVolume").innerText =
-            ultimo.total_volume;
+        document.getElementById("kpiVolume").innerText = ultimo.total_volume;
+        document.getElementById("kpiLatencia").innerText = ultimo.latencia_p95_ordens + " ms";
+        document.getElementById("kpiSucesso").innerText = ultimo.porcentagem_sucesso_ordens + "%";
+        document.getElementById("kpiOrdens").innerText = ultimo.contador_5xx;
 
-        document.getElementById("kpiLatencia").innerText =
-            ultimo.latencia_p95_ordens + " ms";
-
-        document.getElementById("kpiSucesso").innerText =
-            ultimo.porcentagem_sucesso_ordens + "%";
-
-        document.getElementById("kpiOrdens").innerText =
-            ultimo.contador_5xx;
+        function formatarVariacao(valor, unidade) {
+            if (valor > 0) {
+                return "+" + valor + unidade + " últimos 15 min";
+            } else {
+                return valor + unidade + " últimos 15 min";
+            }
+        }
 
         document.getElementById("variacaoVolume").innerText =
-            ultimo.variacao_volume + "% últimos 15 min";
+            formatarVariacao(ultimo.variacao_volume, "%");
 
         document.getElementById("variacaoLatencia").innerText =
-            ultimo.variacao_latencia_p95 + "ms últimos 15 min";
+            formatarVariacao(ultimo.variacao_latencia_p95, " ms");
 
         document.getElementById("variacaoSucesso").innerText =
-            ultimo.variacao_sucesso + "% últimos 15 min";
+            formatarVariacao(ultimo.variacao_sucesso, "%");
 
         document.getElementById("variacao5xx").innerText =
-            ultimo.variacao_5xx + "% últimos 15 min";
+            formatarVariacao(ultimo.variacao_5xx, "%");
+
 
 
         const labels = [];
 
         for (let i = 0; i < dadosServidor.length; i++) {
 
-            labels.push(dadosServidor[i].timestamp);
+            labels.push(
+                dadosServidor[i].timestamp.split(" ")[1].slice(0, 5)
+            );
 
         }
 
@@ -639,25 +564,10 @@
             }
         }
 
-        let sucesso = 0;
-        let erroNegocio = 0;
-        let erroTecnico = 0;
+        const sucesso = ultimo.qtd_sucesso;
+        const erroNegocio = ultimo.qtd_erro_cliente;
+        const erroTecnico = ultimo.qtd_erro_servidor;
 
-        for (let i = 0; i < ordens.length; i++) {
-
-            if (ordens[i].tipo_status == "sucesso") {
-                sucesso++;
-            }
-
-            if (ordens[i].tipo_status == "erro_cliente") {
-                erroNegocio++;
-            }
-
-            if (ordens[i].tipo_status == "erro_servidor") {
-                erroTecnico++;
-            }
-        }
-        
         const erros5xxLinha = []
 
         for (let i = 0; i < dadosServidor.length; i++) {
@@ -734,14 +644,14 @@
                     borderColor: "#ff3045",
                     fill: false,
                     tension: 0.3,
-                    pointRadius: 0,
+                    ppointRadius: 4,
                     borderWidth: 3
                 }]
             },
             options: configBase
         });
 
-       const labelsStatus = ["500", "501", "502", "503", "504", "505"];
+        const labelsStatus = ["500", "501", "502", "503", "504", "505"];
 
         const valoresStatus = [
             ultimo.erro_500,
