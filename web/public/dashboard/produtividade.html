@@ -49,12 +49,12 @@
                 <div class="menu01">
                     <h4 class="titulo_sidebar">PRINCIPAL</h4>
                     <!-- Página atual -->
-                    <a href="dashboard.html" class="btn-nobroke">
+                    <button class="btn-nobroke btn-active">
                         <span class="icon">
-                            <img src="../assets/icon/icons-dashboard/painel-de-controle.png">
+                            <img id="iconAtual" src="../assets/icon/icons-dashboard/painel-de-controle-hover.png">
                         </span>
                         <span class="texto">Home</span>
-                    </a>
+                    </button>
 
                     <a href="Alertas.html" class="btn-nobroke">
                         <span class="icon">
@@ -63,13 +63,14 @@
                         <span class="texto">Alertas</span>
                     </a>
 
-                    
-                    <button class="btn-nobroke btn-active">
-                        <span class="icon">
-                            <img id="iconAtual" src="../assets/icon/icons-dashboard/grafico-de-barras-hover.png">
-                        </span>
-                        <span class="texto">Equipe</span>
-                    </button>
+                    <div id="div_relatorios">
+                        <a href="produtividade.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                            </span>
+                            <span class="texto">Equipe</span>
+                        </a>
+                    </div>
 
                     <a href="monitoramento.html" class="btn-nobroke">
                         <span class="icon">
@@ -138,40 +139,21 @@
 
                     <div class="header-esquerdo-prod">
                         <div class="header-atualizacao">
-                            <p>Atualizado a <b>10 segundos</b></p>
+                            <p>Atualizado a  <b id="tempo-atualizacao">agora</b></p>
                             <p> Squad <b>Infra Trading</b></p>
                             <p class="alinhar-texto-imagem"> <img src="../assets/icon/group (1).png" alt=""
-                                    width="30px">8 Colaboradores</p>
-                        </div>
-
-                        <div class="container-header-opc">
-                            <div class="header-botoes-dia">
-                                <button class="botao-dia"> Hoje </button>
-                                <button class="botao-dia botao-selecionado"> Última Semana</button>
-                                <button class="botao-dia"> Último Mês </button>
-                            </div>
-
-
-                            <select name="" id="" class="select-atividades">
-                                <option value="" selected>Todas Atividades</option>
-                                <option value="">Incidentes</option>
-                                <option value="">Manutenção</option>
-                                <option value="">Monitoramento</option>
-                            </select>
+                                    width="30px"><span id="qtd-colaboradores"> ...</span> Colaboradores</p>
 
                             <button class="botao-recarregar" onclick="window.location.reload()"><img id="logoAlerta"
                                     src="../assets/svg/loading-svgrepo-com.svg" alt=""
                                     style="width: 22px; color: white;">
                                 <span>Atualizar</span></button>
 
-                            <button class="botao-relatorio"><img id="logoAlerta" src="../assets/icon/dowload.png" alt=""
-                                    style="width: 22px;">
-                                <span>Exportar Relatório</span></button>
-
-                            <button class="botao-detalhes"><img id="logoAlerta" src="../assets/icon/view.png" alt=""
-                                    style="width: 22px;">
-                                <span>Exportar Relatório</span></button>
+                            <a class="botao-relatorio" href="http://localhost:8080/api/relatorio/pdf"><img
+                                    id="logoAlerta" src="../assets/icon/dowload.png" alt="" style="width: 22px;">
+                                <span>Exportar Relatório por Colaborador </span></a>
                         </div>
+
                     </div>
                 </div>
 
@@ -192,19 +174,19 @@
                         <img src="../assets/icon/check-mark.png" alt="" width="20px" height="20px" class="kpi-img">
 
                         <div class="container-texto-kpi">
-                            <p class="kpi-valor"> 300 </p>
+                            <p class="kpi-valor" id="valor-incidentes"> ... </p>
                             <p class="kpi-texto">INCIDENTES RESOLVIDOS</p>
 
                         </div>
                     </div>
 
-                    <div class="kpi-box">
+                    <div class="mttr-kpi">
                         <img src="../assets/icon/stopwatch.png" alt="" width="20px" height="20px" class="kpi-img">
 
-                        <div class="container-texto-kpi">
-                            <p class="kpi-valor"> 27min </p>
-                            <p class="kpi-texto">MTTR Médio</p>
-                            <p class="kpi-texto-sub">tempo médio de resolução</p>
+                        <div class="container-texto-kpi ">
+                            <p class="kpi-valor mttr"> ... </p>
+                            <p class="kpi-texto">MTTR</p>
+                            <p class="kpi-texto-sub">tempo mais rápido e mais lento de resolução </p>
 
                         </div>
                     </div>
@@ -214,10 +196,8 @@
                             class="kpi-img-alerta">
 
                         <div class="container-texto-kpi">
-                            <p class="kpi-valor"> 27min </p>
-                            <p class="kpi-texto">MTTR MÉDIO</p>
-                            <p class="kpi-texto-sub">tempo médio de resolução</p>
-
+                            <p class="kpi-valor" id="valor-alertas"> ... </p>
+                            <p class="kpi-texto">Alertas Abertos</p>
                         </div>
                     </div>
 
@@ -225,20 +205,8 @@
                         <img src="../assets/icon/speedometer.png" alt="" width="20px" height="20px" class="kpi-img">
 
                         <div class="container-texto-kpi">
-                            <p class="kpi-valor"> 94,2% </p>
+                            <p class="kpi-valor"> ... </p>
                             <p class="kpi-texto">TAXA SLA</p>
-                            <p class="kpi-texto-sub">dentro do acordo</p>
-
-                        </div>
-                    </div>
-
-                    <div class="kpi-box">
-                        <img src="../assets/icon/trend.png" alt="" width="20px" height="20px" class="kpi-img">
-
-                        <div class="container-texto-kpi">
-                            <p class="kpi-valor"> 87 </p>
-                            <p class="kpi-texto">PRODUTIVIDADE GERAL</p>
-                            <p class="kpi-texto-sub">score consolidado</p>
 
                         </div>
                     </div>
@@ -247,16 +215,15 @@
                         <img src="../assets/icon/pulse (1).png" alt="" width="20px" height="20px" class="kpi-img-carga">
 
                         <div class="container-texto-kpi">
-                            <p class="kpi-valor"> 72% </p>
+                            <p class="kpi-valor"> ... </p>
                             <p class="kpi-texto">CARGA DE TRABALHO</p>
-                            <p class="kpi-texto-sub">capacidade utilizada</p>
 
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="conteudo-dash-flex" >
+            <div class="conteudo-dash-flex">
                 <div class="container-tabela">
                     <div class="tabela-titulo">
                         <h2>Desempenho por Colaborador</h2>
@@ -264,20 +231,17 @@
                     </div>
 
                     <div class="teste scroll-tabela"">
-                        <table cellpadding="0" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>COLABORADOR</th>
-                                    <th>Resolvidos</th>
-                                    <th>MTTR</th>
-                                    <th>SLA</th>
-                                    <th>Em aberto</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tbodyFuncionarios">
-                                
-                            </tbody>
+                        <table cellpadding=" 0" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>COLABORADOR</th>
+                                <th>Resolvidos</th>
+                                <th>Em aberto</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyFuncionarios">
+
+                        </tbody>
                         </table>
                     </div>
                 </div>
@@ -290,11 +254,6 @@
                             <p class="grafico-carga">Distribuição de Carga</p>
                             <p class="grafico-tarefa">Tarefas em aberto vs. capacidade ideal (10)</p>
                         </div>
-
-                        <div class="grafico-titulo-sobrecarga">
-                            <p>2 Sobrecarga</p>
-                        </div>
-
                     </div>
 
 
@@ -324,205 +283,7 @@
 
             </div>
 
-            <div class="container-grafico-resposta">
-                <div>
-                    <p class="texto-grafico">Tempo de Resolução</p>
-                    <p class="evolucao-grafico">Evolução nos últimos 14 dias — minutos</p>
-                </div>
 
-                <div class="grafico-resposta">
-                    <canvas id="GraficoLinha"></canvas>
-                </div>
-            </div>
-
-            <div class="conteudo-dash-flex">
-                <div class="insights">
-                    <div class="container-insights-titulo">
-                        <div class="container-titulo">
-                            <img src="../assets/icon/stars.png" alt="" class="imagem-titulo" width="20px" height="20px">
-                            <div class="bloco-titulo">
-                                <h2>Insights Inteligentes</h2>
-                                <h3>Análise automatizada para tomada de decisão</h3>
-                            </div>
-
-                        </div>
-
-                        <div class="insight-qtd">
-                            <p>5 Insights </p>
-                        </div>
-                    </div>
-
-                    <div class="container-texto-insights">
-                        <div class="texto-insights">
-                            <img src="../assets/icon/trend.png" alt="" width="20px" height="20px" class="kpi-img">
-
-                            <p>A equipe apresentou melhora de 18% no tempo médio de resolução em relação à semana
-                                anterior.
-                            </p>
-                        </div>
-
-                        <div class="texto-insights">
-                            <img src="../assets/icon/warning.png" alt="" width="20px" height="20px" class="img-warning">
-
-                            <p>Sobrecarga identificada em Diego Fontes e Bruno Carvalho — recomenda-se redistribuir 4
-                                tarefas.</p>
-                        </div>
-
-                        <div class="texto-insights">
-                            <img src="../assets/icon/bolt.png" alt="" width="20px" height="20px" class="kpi-img">
-
-                            <p>Alta eficiência no tratamento de incidentes críticos (92%), acima da meta trimestral de
-                                85%.
-                            </p>
-                        </div>
-
-                        <div class="texto-insights">
-                            <img src="../assets/icon/right-down.png" alt="" width="24px" height="24px"
-                                class="img-queda">
-
-                            <p>Queda de 9% na produtividade durante janelas de alta demanda (10h–12h).</p>
-                        </div>
-
-                        <div class="texto-insights">
-                            <img src="../assets/icon/user.png" alt="" width="24px" height="24px" class="img-users">
-
-                            <p>Distribuição de tarefas desigual: top 3 colaboradores absorvem 51% dos chamados.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="alerta-produtividade">
-                    <div class="container-insights-titulo">
-                        <div class="container-titulo">
-                            <img src="../assets/icon/bell (1).png" alt="" class="imagem-titulo-sino" width="20px"
-                                height="20px">
-                            <div class="bloco-titulo">
-                                <h2>Alertas de Produtividade</h2>
-                                <h3>Pontos de atenção priorizados</h3>
-                            </div>
-
-                        </div>
-
-                        <div class="alertas-qtd alto">
-                            <p>2 Alertas </p>
-                        </div>
-                    </div>
-
-                    <div class="container-texto-alerta">
-                        <div class="texto-alerta">
-                            <div class="itens-flex">
-                                <div class="item-legenda-alerta">
-                                    <span class="cor-alerta sobrecarga"></span>
-                                    <p>Baixa performance contínua</p>
-                                </div>
-                                <div class="alertas-qtd alto">
-                                    <p> Alto </p>
-                                </div>
-                            </div>
-                            <div class="infos-col">
-                                <p class="nome-col-alerta"> Diego Fontes </p>
-                                <p class="texto-alerta-info">MTTR 92% acima da média da equipe nas últimas 2 semanas.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="texto-alerta">
-                            <div class="itens-flex">
-                                <div class="item-legenda-alerta">
-                                    <span class="cor-alerta atencao"></span>
-                                    <p>Acúmulo de tarefas</p>
-                                </div>
-                                <div class="alertas-qtd medio">
-                                    <p> Médio </p>
-                                </div>
-                            </div>
-                            <div class="infos-col">
-                                <p class="nome-col-alerta"> Diego Fontes </p>
-                                <p class="texto-alerta-info">MTTR 92% acima da média da equipe nas últimas 2 semanas.
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="alinhar-dash">
-                <div class="container-titulo">
-                    <img src="../assets/icon/download.png" alt="" class="imagem-titulo" width="20px" height="20px">
-                    <div class="bloco-titulo">
-                        <h2>Relatórios de Produtividade</h2>
-                        <h3>Hub de relatórios gerenciais, agendamentos e exportações</h3>
-                    </div>
-
-                </div>
-                <div class="conteudo-dash01 kpi-relatorio">
-                    <div class="cards-conteudo-relatorios conteudo-relatorio card01">
-                        <div class="titulo-cards-servidores">
-                            <img class="imagem-titulo" src="../assets/icon/people.png" alt="cpu" width="20px"
-                                height="20px">
-                            <strong>Produtividade Geral da Equipe</strong>
-                        </div>
-                        <div class="conteudo-abaixo-cards">
-
-                            <p>Visão consolidada de desempenho, MTTR, SLA e score por colaborador.</p>
-                            <div class="acoes-card">
-                                <button class="btn-relatorio"><img class="card01-icon imgDonw"
-                                        src="../assets/svg/download-direto-branco.png" alt="cpu" style="width: 25px;">
-                                    PDF</button>
-                                <button class="btn-relatorio"><img class="card01-icon imgDonw"
-                                        src="../assets/svg/download-direto-branco.png" alt="cpu" style="width: 25px;">
-                                    CSV</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cards-conteudo-relatorios conteudo-relatorio card01">
-                        <div class="titulo-cards-servidores">
-                            <img class="imagem-titulo" src="../assets/icon/danger (1).png" alt="cpu" width="20px"
-                                height="20px">
-                            <strong>Incidentes e SLA</strong>
-                        </div>
-                        <div class="conteudo-abaixo-cards">
-
-                            <p>Detalhamento de incidentes resolvidos, descumprimentos de SLA e causas.
-                            </p>
-                            <div class="acoes-card">
-                                <button class="btn-relatorio"><img class="card01-icon imgDonw"
-                                        src="../assets/svg/download-direto-branco.png" alt="cpu" style="width: 25px;">
-                                    PDF</button>
-                                <button class="btn-relatorio"><img class="card01-icon imgDonw"
-                                        src="../assets/svg/download-direto-branco.png" alt="cpu" style="width: 25px;">
-                                    CSV</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="cards-conteudo-relatorios conteudo-relatorio card01">
-                        <div class="titulo-cards-servidores">
-                            <img class="imagem-titulo" src="../assets/icon/pulse (1).png" alt="cpu" width="20px"
-                                height="20px">
-                            <strong>Carga de Trabalho por Colaborador
-                            </strong>
-                        </div>
-                        <div class="conteudo-abaixo-cards">
-
-                            <p>Distribuição de tarefas, sobrecarga e capacidade ociosa do time.</p>
-                            <div class="acoes-card">
-                                <button class="btn-relatorio"><img class="card01-icon imgDonw"
-                                        src="../assets/svg/download-direto-branco.png" alt="cpu" style="width: 25px;">
-                                    PDF</button>
-                                <button class="btn-relatorio"><img class="card01-icon imgDonw"
-                                        src="../assets/svg/download-direto-branco.png" alt="cpu" style="width: 25px;">
-                                    CSV</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </div>
     <div class="card-alertaGeral" id="div_alertaGeral">
@@ -659,166 +420,170 @@
     }
 
 
+    var graficoBarra = null;
 
-    const ctx = document.getElementById('GraficoBarra');
+    function buscarDados() {
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['MA', 'RS', 'CT', 'PH', 'LM', 'BC', 'DF', 'JR'],
-            datasets: [{
-                data: [3, 4, 5, 7, 4, 9, 12, 6],
-
-                categoryPercentage: 0.8,
-                barPercentage: 0.9,
-
-                backgroundColor: [
-                    '#41d17d',
-                    '#41d17d',
-                    '#41d17d',
-                    '#f0c328',
-                    '#41d17d',
-                    '#ff4d57',
-                    '#ff4d57',
-                    '#f0c328'
-                ],
-
-                borderRadius: 5,
-                borderSkipped: false
-            }]
-        },
-
-        options: {
-            indexAxis: 'y',
-
-            responsive: true,
-
-            maintainAspectRatio: false,
-
-            plugins: {
-                legend: {
-                    display: false
+        fetch('http://localhost:8080/api/kpis')
+            .then(response => response.json())
+            .then(data => {
+                var elementoValor = document.getElementById('valor-incidentes');
+                if (elementoValor) {
+                    elementoValor.textContent = data.incidentesResolvidos || 0;
                 }
-            },
+            })
+            .catch(error => console.error("Erro nos incidentes:", error));
 
-            scales: {
-                x: {
-                    beginAtZero: true,
-
-                    grid: {
-                        color: '#2b2f3a',
-                        borderDash: [4, 4]
-                    },
-
-                    ticks: {
-                        color: '#9ca3af'
-                    }
-                },
-
-                y: {
-                    grid: {
-                        display: false
-                    },
-
-                    ticks: {
-                        color: '#9ca3af'
-                    }
+        fetch('http://localhost:8080/api/alertas-abertos')
+            .then(response => response.json())
+            .then(data => {
+                var elementoAlerta = document.getElementById('valor-alertas');
+                if (elementoAlerta) {
+                    elementoAlerta.textContent = data.alertasAbertos || 0;
                 }
-            }
-        }
-    });
+            })
+            .catch(error => console.error("Erro nos alertas:", error));
 
-    const ctxa = document.getElementById('GraficoLinha');
-
-    const gradient = ctxa.getContext('2d').createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(54, 162, 235, 0.4)');
-    gradient.addColorStop(1, 'rgba(54, 162, 235, 0)');
-
-    new Chart(ctxa, {
-        type: 'line',
-        data: {
-            labels: ['D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8', 'D9', 'D10', 'D11', 'D12', 'D13', 'D14'],
-            datasets: [{
-                label: 'Tempo de Resolução',
-                data: [38, 39, 39, 38, 38, 36, 38, 35, 36, 32, 32, 28, 25, 25],
-
-                borderColor: '#36a2eb',
-                borderWidth: 2,
-                tension: 0.4,
-                pointRadius: 0,
-
-                fill: true,
-                backgroundColor: gradient,
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false }
-            },
-            scales: {
-                x: {
-                    grid: { display: false },
-                    ticks: { color: '#9ca3af' }
-                },
-                y: {
-                    beginAtZero: true,
-                    max: 40,
-                    grid: {
-                        color: 'rgba(255, 255, 255, 0.05)',
-                        borderDash: [5, 5]
-                    },
-                    ticks: {
-                        color: '#9ca3af',
-                        stepSize: 10
-                    }
+        fetch('http://localhost:8080/api/mttr')
+            .then(response => response.json())
+            .then(data => {
+                var elemento = document.querySelector('.mttr-kpi .kpi-valor');
+                if (elemento) {
+                    elemento.textContent = data.maisRapido + "min (mais rapido) - " + data.maisLento + "min(mais lento)";
                 }
-            }
-        }
-    });
+            })
+            .catch(error => console.error("Erro no mttr:", error));
 
-    function listarFuncionarios() {
+        fetch('http://localhost:8080/api/sla')
+            .then(response => response.json())
+            .then(data => {
+                var elemento = document.querySelector('.kpi-box:nth-child(4) .kpi-valor');
+                if (elemento) {
+                    elemento.textContent = data.taxaSla + '%';
+                }
+            })
+            .catch(error => console.error("Erro no SLA:", error));
 
-        fetch("/cadastroFuncionario/listar")
-            .then(res => res.json())
-            .then(funcionarios => {
+        fetch('http://localhost:8080/api/membros')
+            .then(response => response.json())
+            .then(data => {
 
-                var linhas = "";
+                var labels = [];
+                var valores = [];
+                var cores = [];
 
-                funcionarios.forEach(f => {
+                var tbody = document.getElementById("tbodyFuncionarios");
+                tbody.innerHTML = "";
 
-                    linhas += `
+                var totalAbertos = 0;
+
+                var elementoColaboradores = document.getElementById('qtd-colaboradores');
+                if (elementoColaboradores) {
+                    elementoColaboradores.textContent = data.membros.length;
+                }
+
+                var agora = new Date();
+                var horas = agora.getHours().toString().padStart(2, '0');
+                var minutos = agora.getMinutes().toString().padStart(2, '0');
+                var segundos = agora.getSeconds().toString().padStart(2, '0');
+                var elementoTempo = document.getElementById('tempo-atualizacao');
+                if (elementoTempo) {
+                    elementoTempo.textContent = horas + ':' + minutos + ':' + segundos;
+                }
+
+                for (var i = 0; i < data.membros.length; i++) {
+                    var membro = data.membros[i];
+
+                    tbody.innerHTML += `
                     <tr>
                         <td>
                             <div class="colaborador">
-                                <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com.svg"
-                                    width="30px">
-
+                                <img src="../assets/svg/configuracoes/profile-round-1346-svgrepo-com.svg" width="30px">
                                 <div class="colaborador-info">
-                                    <p class="colaborador-nome">${f.nome}</p>
-                                    <p class="colaborador-area">${f.nome_funcao}</p>
+                                    <p class="colaborador-nome">${membro.nome}</p>
                                 </div>
                             </div>
                         </td>
-
-                        <td class="colaborador-resolvidos">0</td>
-                        <td class="colaborador-mttr">0min</td>
-                        <td class="colaborador-sla">0%</td>
-                        <td class="colaborador-aberto">0</td>
-                        <td class="colaborador-status">${f.status}</td>
+                        <td class="colaborador-resolvidos">${membro.resolvidos}</td>
+                        <td class="colaborador-aberto">${membro.abertos}</td>
                     </tr>
                 `;
+
+                    var partes = membro.nome.split(" ");
+                    var iniciais = '';
+                    if (partes.length >= 2) {
+                        iniciais = partes[0][0] + partes[1][0];
+                    } else {
+                        iniciais = partes[0][0];
+                    }
+                    labels.push(iniciais);
+
+                    var total = membro.abertos;
+                    valores.push(total);
+                    totalAbertos += total;
+
+                    var cor = '';
+                    if (total > 10) {
+                        cor = '#ff4d57';
+                    } else if (total >= 7) {
+                        cor = '#f0c328';
+                    } else {
+                        cor = '#41d17d';
+                    }
+                    cores.push(cor);
+                }
+
+                var capacidadeMaxima = data.membros.length * 10;
+                var carga = Math.round((totalAbertos / capacidadeMaxima) * 100);
+                var elementoCarga = document.querySelector('.kpi-box:nth-child(5) .kpi-valor');
+                if (elementoCarga) {
+                    elementoCarga.textContent = carga + '%';
+                }
+
+
+
+                var ctx = document.getElementById('GraficoBarra');
+                if (graficoBarra != null) {
+                    graficoBarra.destroy();
+                }
+                graficoBarra = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: valores,
+                            categoryPercentage: 0.8,
+                            barPercentage: 0.9,
+                            backgroundColor: cores,
+                            borderRadius: 5,
+                            borderSkipped: false
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            x: {
+                                beginAtZero: true,
+                                grid: { color: '#2b2f3a', borderDash: [4, 4] },
+                                ticks: { color: '#9ca3af' }
+                            },
+                            y: {
+                                grid: { display: false },
+                                ticks: { color: '#9ca3af' }
+                            }
+                        }
+                    }
                 });
-
-                document.getElementById("tbodyFuncionarios").innerHTML = linhas;
-
-            });
+            })
+            .catch(error => console.error("Erro:", error));
     }
 
-    listarFuncionarios();
-
-
+    buscarDados();
 
 
 
