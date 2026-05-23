@@ -195,6 +195,7 @@
 
 </html>
 <script>
+    var id_servidor = 3
     const limiteLatencia = 15;
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");
@@ -348,26 +349,38 @@
 
         const dados = await resposta.json();
 
-        const ultimo = dados[dados.length - 1];
+        const dadosServidor = [];
+
+        for (let i = 0; i < dados.length; i++) {
+
+            if (dados[i].id_servidor == id_servidor) {
+
+            dadosServidor.push(dados[i]);
+
+        }
+
+    }
+
+        const ultimo = dadosServidor[dadosServidor.length - 1];
 
         // =============================================================
-        // KPIs da Página abaixo (definindo os dados da KPI usando dados da S3)
+        // KPIs da Página abaixo (definindo os dadosServidor da KPI usando dadosServidor da S3)
 
         // Pega todas as Latência de Resposta (ms) e coloca em um array para calcular o pico e a média
         const todasLatencias = [];
-        for (let i = 0; i < dados.length; i++) {
-            todasLatencias.push(dados[i].latencia_resposta_ms); // Adiciona a latência de resposta do registro atual na lista de JS
+        for (let i = 0; i < dadosServidor.length; i++) {
+            todasLatencias.push(dadosServidor[i].latencia_resposta_ms); // Adiciona a latência de resposta do registro atual na lista de JS
         }
-        // Calcula o pico e a média usando os dados das listas de latencia
+        // Calcula o pico e a média usando os dadosServidor das listas de latencia
         const picoLatencia = Math.max(...todasLatencias);
         const mediaLatencia = (todasLatencias.reduce((a, b) => a + b, 0) / todasLatencias.length).toFixed(1);
 
         // Pega todas as Jitter (ms) e coloca em uma lista para calcular a média
         const todosJitters = [];
-        for (let i = 0; i < dados.length; i++) {
-            todosJitters.push(dados[i].jitter_ms); // "Empurra" o valor do jitter do registro atual para a lista de JS
+        for (let i = 0; i < dadosServidor.length; i++) {
+            todosJitters.push(dadosServidor[i].jitter_ms); // "Empurra" o valor do jitter do registro atual para a lista de JS
         }
-        // Média da Jitter usando os dados da lista de jitter
+        // Média da Jitter usando os dadosServidor da lista de jitter
         const mediaJitter = (todosJitters.reduce((a, b) => a + b, 0) / todosJitters.length).toFixed(1);
 
         document.getElementById("kpi-perda").innerText = ultimo.packet_loss_percent + "%";
@@ -378,41 +391,41 @@
         // =============================================================
         // Labels (exibem o horário de cada medição, extraído do timestamp)
         const labels = [];
-        for (let i = 0; i < dados.length; i++) {
-            labels.push(dados[i].timestamp.split(' ')[1]);
+        for (let i = 0; i < dadosServidor.length; i++) {
+            labels.push(dadosServidor[i].timestamp.split(' ')[1]);
         }
 
         // =============================================================
-        // Arrays de dados
+        // Arrays de dadosServidor
         
         const dataLatencia = [];
-        for (let i = 0; i < dados.length; i++) {
-            dataLatencia.push(dados[i].latencia_resposta_ms);
+        for (let i = 0; i < dadosServidor.length; i++) {
+            dataLatencia.push(dadosServidor[i].latencia_resposta_ms);
         }
 
         const dataDownload = [];
-        for (let i = 0; i < dados.length; i++) {
-            dataDownload.push(dados[i].net_bytes_recv_gb);
+        for (let i = 0; i < dadosServidor.length; i++) {
+            dataDownload.push(dadosServidor[i].net_bytes_recv_gb);
         }
 
         const dataUpload = [];
-        for (let i = 0; i < dados.length; i++) {
-            dataUpload.push(dados[i].net_bytes_sent_gb);
+        for (let i = 0; i < dadosServidor.length; i++) {
+            dataUpload.push(dadosServidor[i].net_bytes_sent_gb);
         }
 
         const dataDownloadMbs = [];
-        for (let i = 0; i < dados.length; i++) {
-            dataDownloadMbs.push(dados[i].download_mbps);
+        for (let i = 0; i < dadosServidor.length; i++) {
+            dataDownloadMbs.push(dadosServidor[i].download_mbps);
         }
 
         const dataUploadMbs = [];
-        for (let i = 0; i < dados.length; i++) {
-            dataUploadMbs.push(dados[i].upload_mbps);
+        for (let i = 0; i < dadosServidor.length; i++) {
+            dataUploadMbs.push(dadosServidor[i].upload_mbps);
         }
 
         const dataJitter = [];
-        for (let i = 0; i < dados.length; i++) {
-            dataJitter.push(dados[i].jitter_ms);
+        for (let i = 0; i < dadosServidor.length; i++) {
+            dataJitter.push(dadosServidor[i].jitter_ms);
         }
 
         // =============================================================
@@ -457,7 +470,7 @@
         });
 
         // =============================================================
-        // Gráfico 02 — Transferência de Dados (Upload e Download)
+        // Gráfico 02 — Transferência de DadosServidor (Upload e Download)
 
         chartTransferencia = new Chart(document.getElementById('grafico02'), {
             type: 'line',

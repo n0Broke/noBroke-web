@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dashboard | noBroke</title>
+    <title>Dashboard | noBroke</title> 
     <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
 
     <script src="./js/sessao.js"></script>
@@ -430,6 +430,7 @@
 
 <script>
 
+    var id_servidor = 3
     const nomeCompleto = sessionStorage.NOME_USUARIO
     // const partes = nomeCompleto.trim().split(" ");
     // const primeiroNome = partes[0];
@@ -567,7 +568,19 @@
 
         const dados = await resposta.json();
 
-        const ultimo = dados[dados.length - 1];
+        const dadosServidor = [];
+
+        for (let i = 0; i < dados.length; i++) {
+
+            if (dados[i].id_servidor == id_servidor) {
+
+            dadosServidor.push(dados[i]);
+
+        }
+
+    }
+
+        const ultimo = dadosServidor[dadosServidor.length - 1];
 
         document.getElementById("kpiVolume").innerText =
             ultimo.total_volume;
@@ -596,33 +609,33 @@
 
         const labels = [];
 
-        for (let i = 0; i < dados.length; i++) {
+        for (let i = 0; i < dadosServidor.length; i++) {
 
-            labels.push(dados[i].timestamp);
+            labels.push(dadosServidor[i].timestamp);
 
         }
 
         const volume = []
 
-        for (let i = 0; i < dados.length; i++) {
+        for (let i = 0; i < dadosServidor.length; i++) {
 
-            volume.push(dados[i].total_volume);
+            volume.push(dadosServidor[i].total_volume);
 
         }
 
         const latencia = []
 
-        for (let i = 0; i < dados.length; i++) {
+        for (let i = 0; i < dadosServidor.length; i++) {
 
-            latencia.push(dados[i].latencia_p95_ordens);
+            latencia.push(dadosServidor[i].latencia_p95_ordens);
 
         }
 
         const ordens = [];
 
-        for (let i = 0; i < dados.length; i++) {
-            if (dados[i].categoria == "ordens") {
-                ordens.push(dados[i]);
+        for (let i = 0; i < dadosServidor.length; i++) {
+            if (dadosServidor[i].categoria == "ordens") {
+                ordens.push(dadosServidor[i]);
             }
         }
 
@@ -647,8 +660,8 @@
         
         const erros5xxLinha = []
 
-        for (let i = 0; i < dados.length; i++) {
-            erros5xxLinha.push(dados[i].contador_5xx);
+        for (let i = 0; i < dadosServidor.length; i++) {
+            erros5xxLinha.push(dadosServidor[i].contador_5xx);
 
         }
 
@@ -728,15 +741,17 @@
             options: configBase
         });
 
-        dados.forEach(i => {
-            if (i.status_code >= 500 && i.status_code <= 599) {
-                contagemStatus[i.status_code] = (contagemStatus[i.status_code] || 0) + 1;
-            }
-        });
+       const labelsStatus = ["500", "501", "502", "503", "504", "505"];
 
+        const valoresStatus = [
+            ultimo.erro_500,
+            ultimo.erro_501,
+            ultimo.erro_502,
+            ultimo.erro_503,
+            ultimo.erro_504,
+            ultimo.erro_505
+        ];
 
-        const labelsStatus = Object.keys(contagemStatus);
-        const valoresStatus = Object.values(contagemStatus);
 
         new Chart(document.getElementById("graficoErrosBarras"), {
             type: "bar",
