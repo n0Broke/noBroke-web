@@ -196,22 +196,12 @@ canvas {
     margin-top: 20px;
 }
 
-.legendas-body {
+.titulo-grafico {
     display: flex;
     justify-content: space-between;
-    gap: 30px;
+    align-items: center;
 }
 
-.legenda-http {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.legenda-http span {
-    margin-top: 5px;
-}
-
-.legenda-kpi span {
-    color: white;
+.titulo-grafico img {
+    width: 22px;
 }

@@ -262,15 +262,16 @@
 
                     <div class="grafico-http-grande">
 
-                        <h3>Volume de requisições HTTP</h3>
+                        <div class="titulo-grafico">
+                            <h3>Volume de requisições HTTP</h3>
+                            <abbr
+                                title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
+                                    style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                        </div>
 
                         <p>
                             Picos correlacionados com janelas de stress de hardware
                         </p>
-
-                        <abbr
-                            title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
-                                style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
 
                         <canvas id="graficoVolume"></canvas>
 
@@ -278,14 +279,17 @@
 
                     <div class="grafico-http-pequeno">
 
-                        <h3>Latência p95 — ordens</h3>
+                        <div class="titulo-grafico">
+                            <h3>Latencia p95 - Ordens</h3>
+                            <abbr
+                                title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
+                                    style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                        </div>
 
                         <p>
                             Aumento sustentado indica degradação
                         </p>
 
-                        <abbr title="Latencia de 95% das requisições de ordens atualizadas de 15 em 15 minutos"><img
-                                style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
 
                         <canvas id="graficoLatencia"></canvas>
 
@@ -298,15 +302,18 @@
 
                     <div class="grafico-http-pequeno">
 
-                        <h3>Status das ordens</h3>
+                        <div class="titulo-grafico">
+                            <h3>Status das ordens</h3>
+                            <abbr
+                                title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
+                                    style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                        </div>
 
                         <p>
                             Negócio vs falha técnica
                         </p>
 
-                        <abbr
-                            title="Executadas com sucesso = ordens processadas corretamente (2xx) | Falhas parte cliente = erros causados pelo cliente (4xx) | Falhas erro técnico = erros causados pelos servidores home broker (5xx)"><img
-                                style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+
 
                         <canvas id="graficoStatus"></canvas>
 
@@ -314,15 +321,18 @@
 
                     <div class="grafico-http-pequeno">
 
-                        <h3>Distribuição de erros 5xx</h3>
+                        <div class="titulo-grafico">
+                            <h3>Distribuição de erros 5xx</h3>
+                            <abbr
+                                title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
+                                    style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                        </div>
 
                         <p>
                             Por código
                         </p>
 
-                        <abbr
-                            title="500 — erro interno do servidor | 501 — funcionalidade não suportada | 502 — resposta inválida entre servidores | 503 — serviço indisponível/sobrecarga | 504 — tempo de resposta excedido | 505 — versão HTTP não suportada"><img
-                                style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+
 
                         <canvas id="graficoErrosBarras"></canvas>
 
@@ -330,15 +340,18 @@
 
                     <div class="grafico-http-pequeno">
 
-                        <h3>Distribuição de erros 5xx</h3>
+                        <div class="titulo-grafico">
+                            <h3>Distribuição de erros 5xx</h3>
+                            <abbr
+                                title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
+                                    style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                        </div>
 
                         <p>
                             Série temporal
                         </p>
 
 
-                        <abbr title="Distribuição de erros http 5xx de 15 em 15 minutos"><img style="width: 30px;"
-                                src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
 
                         <canvas id="graficoErrosLinha"></canvas>
 
@@ -351,16 +364,16 @@
 <script>
 
     let proximaAtualizacao;
-    
+
     window.onload = function () {
 
-    verificarModo();
-    carregarDados();
+        verificarModo();
+        carregarDados();
 
-    const usuario = document.getElementById("usuario");
-    usuario.innerHTML = `Olá <b>${sessionStorage.NOME_USUARIO}</b>, boas vindas.`;
+        const usuario = document.getElementById("usuario");
+        usuario.innerHTML = `Olá <b>${sessionStorage.NOME_USUARIO}</b>, boas vindas.`;
 
-}
+    }
 
     // Função pra trocar o Ícone quando for passar o mouse por cima (vulgo hover)
     function iconTrade() {
@@ -519,7 +532,7 @@
         }
 
         const ultimo = dadosServidor[dadosServidor.length - 1];
-        document.getElementById("server-name").innerText =ultimo.home_broker;
+        document.getElementById("server-name").innerText = ultimo.home_broker;
         document.getElementById("kpiVolume").innerText = ultimo.total_volume;
         document.getElementById("kpiLatencia").innerText = ultimo.latencia_p95_ordens + " ms";
         document.getElementById("kpiSucesso").innerText = ultimo.porcentagem_sucesso_ordens + "%";
@@ -600,10 +613,47 @@
             data: {
                 labels: labels,
 
-                datasets: [{
-                    label: "Volume de Requisições",
-                    data: volume
-                }]
+                datasets: [
+                    {
+                        label: "Volume de Requisições",
+                        data: volume,
+                        borderColor: "#2ea8ff",
+                        backgroundColor: "#2ea8ff",
+                        tension: 0.3,
+                        pointRadius: 4,
+                        borderWidth: 3
+                    },
+                    {
+                        label: "Limite atenção",
+                        data: [700, 700, 700, 700, 700, 700, 700, 700],
+                        borderColor: "#FFC222",
+                        borderDash: [8, 5],
+                        pointRadius: 0,
+                        borderWidth: 2
+                    },
+                    {
+                        label: "Limite crítico",
+                        data: [900, 900, 900, 900, 900, 900, 900, 900],
+                        borderColor: "#ff3045",
+                        borderDash: [8, 5],
+                        pointRadius: 0,
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+
+                plugins: {
+                    legend: {
+                        position: "bottom",
+
+                        labels: {
+                            color: "#9ca3af",
+                            padding: 15
+                        }
+                    }
+                }
             }
         });
 
@@ -613,10 +663,44 @@
             data: {
                 labels: labels,
 
-                datasets: [{
-                    label: "Latência P95",
-                    data: latencia
-                }]
+                datasets: [
+                    {
+                        label: "Latência P95",
+                        data: latencia,
+                        borderColor: "#2ea8ff",
+                        tension: 0.3
+                    },
+                    {
+                        label: "Limite atenção",
+                        data: [500, 500, 500, 500, 500, 500, 500, 500],
+                        borderColor: "#FFC222",
+                        borderDash: [8, 5],
+                        pointRadius: 0,
+                        borderWidth: 2
+                    },
+                    {
+                        label: "Limite crítico",
+                        data: [800, 800, 800, 800, 800, 800, 800, 800],
+                        borderColor: "#ff3045",
+                        borderDash: [8, 5],
+                        pointRadius: 0,
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+
+                plugins: {
+                    legend: {
+                        position: "bottom",
+
+                        labels: {
+                            color: "#9ca3af",
+                            padding: 15
+                        }
+                    }
+                }
             }
         });
 
@@ -628,13 +712,15 @@
                     "Falhas parte Cliente",
                     "Falhadas erro técnico"
                 ],
-                datasets: [{
-                    data: [sucesso, erroNegocio, erroTecnico],
-                    backgroundColor: ["#35d26f", "#ffc400", "#ff3045"],
-                    borderColor: "#0b0d10",
-                    borderWidth: 5,
-                    cutout: "68%"
-                }]
+                datasets: [
+                    {
+                        data: [sucesso, erroNegocio, erroTecnico],
+                        backgroundColor: ["#35d26f", "#ffc400", "#ff3045"],
+                        borderColor: "#0b0d10",
+                        borderWidth: 5,
+                        cutout: "68%"
+                    }
+                ]
             },
             options: {
                 responsive: true,
@@ -655,17 +741,48 @@
             type: "line",
             data: {
                 labels: labels,
-                datasets: [{
-                    label: "Erros 5xx",
-                    data: erros5xxLinha,
-                    borderColor: "#ff3045",
-                    fill: false,
-                    tension: 0.3,
-                    pointRadius: 4,
-                    borderWidth: 3
-                }]
+                datasets: [
+                    {
+                        label: "Erros 5xx",
+                        data: erros5xxLinha,
+                        borderColor: "#ff3045",
+                        fill: false,
+                        tension: 0.3,
+                        pointRadius: 4,
+                        borderWidth: 3
+                    },
+                    {
+                        label: "Limite atenção",
+                        data: [80, 80, 80, 80, 80, 80, 80, 80],
+                        borderColor: "#FFC222",
+                        borderDash: [8, 5],
+                        pointRadius: 0,
+                        borderWidth: 2
+                    },
+                    {
+                        label: "Limite crítico",
+                        data: [100, 100, 100, 100, 100, 100, 100, 100],
+                        borderColor: "#ff3045",
+                        borderDash: [8, 5],
+                        pointRadius: 0,
+                        borderWidth: 2
+                    }
+                ]
             },
-            options: configBase
+            options: {
+                responsive: true,
+
+                plugins: {
+                    legend: {
+                        position: "bottom",
+
+                        labels: {
+                            color: "#9ca3af",
+                            padding: 15
+                        }
+                    }
+                }
+            }
         });
 
         const labelsStatus = ["500", "501", "502", "503", "504", "505"];
@@ -684,14 +801,49 @@
             type: "bar",
             data: {
                 labels: labelsStatus,
-                datasets: [{
-                    label: "Quantidade por status 5xx",
-                    data: valoresStatus,
-                    backgroundColor: ["#ff3045", "#ffc400", "#ff3045", "#ff7a00"],
-                    borderRadius: 8
-                }]
+                datasets: [
+                    {
+                        label: "Quantidade por status 5xx",
+                        data: valoresStatus,
+                        backgroundColor: ["#b86e14"],
+                        borderRadius: 8
+                    },
+                    {
+                        type: "line",
+                        label: "Limite atenção",
+                        data: [80, 80, 80, 80, 80, 80],
+                        borderColor: "#FFC222",
+                        borderDash: [8, 5],
+                        pointRadius: 0,
+                        borderWidth: 2,
+                        fill: false
+                    },
+                    {
+                        type: "line",
+                        label: "Limite crítico",
+                        data: [100, 100, 100, 100, 100, 100],
+                        borderColor: "#ff3045",
+                        borderDash: [8, 5],
+                        pointRadius: 0,
+                        borderWidth: 2,
+                        fill: false
+                    }
+                ]
             },
-            options: configBase
+            options: {
+                responsive: true,
+
+                plugins: {
+                    legend: {
+                        position: "bottom",
+
+                        labels: {
+                            color: "#9ca3af",
+                            padding: 15
+                        }
+                    }
+                }
+            }
         });
     }
 
