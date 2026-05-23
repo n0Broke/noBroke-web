@@ -163,6 +163,7 @@
 
                             Alertas
                         </button>
+
                     </div>
 
                 </div>
@@ -350,6 +351,23 @@
 </body>
 
 <script>
+
+    let proximaAtualizacao;
+    
+    window.onload = function () {
+
+        const usuario = document.getElementById("usuario");
+        usuario.innerHTML = `Olá <b>${sessionStorage.NOME_USUARIO}</b>, boas vindas.`;
+        if (sessionStorage.FK_ADM != "null") {
+            admMenu.style.display = "none";
+        }
+
+    }
+
+    // Função pra trocar o Ícone quando for passar o mouse por cima (vulgo hover)
+    function iconTrade() {
+        document.getElementById("iconAtual").src
+    }
 
     var id_servidor = 3
     const nomeCompleto = sessionStorage.NOME_USUARIO

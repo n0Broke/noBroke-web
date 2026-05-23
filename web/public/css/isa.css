@@ -170,11 +170,11 @@ body {
 }
 
 .grafico-http-grande {
-    flex: 7;
+    flex: 5;
 }
 
 .grafico-http-pequeno {
-    flex: 3;
+    flex: 5;
 }
 
 .grafico-http-grande h3,
