@@ -128,11 +128,7 @@
             <div class="header-conteudo-dash">
                 <div class="header-esquerdo">
                     <div class="header-esquerdo01">
-                        <h3 class="servidor-name" id="Nomeserver">SRV-DEV-HB-01</h3>
-                        <p class="status-servidor" style="border-radius: 18px;"><img
-                                src="../assets/svg/circle-svgrepo-com.svg" alt="simbolo-operacional"
-                                style="width: 8px;">Operacional</p>
-                        <p class="tipo-servidor" style="border-radius: 4px;">Desenvolvimento</p>
+                        <h3>Servidor: </h3><h3 class="servidor-name" id="nomeServidor">SRV-DEV-HB-01</h3>
                     </div>
                 </div>
                 <div class="header-direita">
@@ -149,16 +145,17 @@
                     <div class="titulo-cards">
                         <img class="card01-icon" src="../assets/svg/cpu-bolt-svgrepo-com.svg" alt="cpu"
                             style="width: 25px;">
-                        <span class="card01-info" style="color: #b4b4b4; font-size: 10px;">8 Cores</span>
+                        <span class="card01-info" style="color: #b4b4b4; font-size: 15px;">Limite <span
+                                id="limiteCPU"></span></span>
                     </div>
                     <div class="conteudo-abaixo-cards">
                         <h1 id="porcCPU">65%</h1>
-                        <h4>CPU (30 min)</h4>
+                        <h4>CPU (Última coleta)</h4>
                         <div class="linha-cards">
-                            <div class="linha-preenchida01"
-                                style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 67%; height: 5px; background-color: #E7B008;">
+                            <div id="linha_preenchidaCPU"
+                                style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 67%; height: 5px; background-color: #21C45D;">
                             </div>
-                            <div class="linha-faltando01"
+                            <div id="linha_faltandoCPU"
                                 style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 33%; height: 5px; background-color: rgb(45, 50, 57);">
                             </div>
                         </div>
@@ -168,16 +165,17 @@
                     <div class="titulo-cards">
                         <img class="card02-icon" src="../assets/svg/ram-memory-svgrepo-com.svg" alt="cpu"
                             style="width: 25px;">
-                        <span class="card02-info" style="color: #b4b4b4; font-size: 10px;">12.3 / 16 GB</span>
+                        <span class="card02-info" style="color: #b4b4b4; font-size: 15px;">Limite<span
+                                id="limiteRAM"></span></span>
                     </div>
                     <div class="conteudo-abaixo-cards">
                         <h1 id="porcRAM">72%</h1>
-                        <h4>Memória RAM (30 min)</h4>
+                        <h4>Memória RAM (Última coleta)</h4>
                         <div class="linha-cards">
-                            <div class="linha-preenchida01"
-                                style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 78%; height: 5px; background-color: #C42728;">
+                            <div id="linha_preenchidaRAM"
+                                style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 78%; height: 5px; background-color: #21C45D;">
                             </div>
-                            <div class="linha-faltando01"
+                            <div id="linha_faltandoRAM"
                                 style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 22%; height: 5px; background-color: rgb(45, 50, 57);">
                             </div>
                         </div>
@@ -187,31 +185,20 @@
                     <div class="titulo-cards">
                         <img class="card03-icon" src="../assets/svg/hard-disk-svgrepo-com.svg" alt="cpu"
                             style="width: 25px;">
-                        <span class="card03-info" style="color: #b4b4b4; font-size: 10px;">234 / 512 GB</span>
+                        <span class="card03-info" style="color: #b4b4b4; font-size: 15px;">Limite<span
+                                id="limiteDisco"></span></span>
                     </div>
                     <div class="conteudo-abaixo-cards">
                         <h1 id="porcDisco">60%</h1>
-                        <h4>Disco (30 min)</h4>
+                        <h4>Disco (Última coleta)</h4>
                         <div class="linha-cards">
-                            <div class="linha-preenchida01"
+                            <div id="linha_preenchidaDisco"
                                 style="border-top-left-radius: 4px; border-bottom-left-radius: 4px; width: 52%; height: 5px; background-color: #21C45D;">
                             </div>
-                            <div class="linha-faltando01"
+                            <div id="linha_faltandoDisco"
                                 style="border-top-right-radius: 4px; border-bottom-right-radius: 4px; width: 48%; height: 5px; background-color: rgb(45, 50, 57);">
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="cards-conteudo card04">
-                    <div class="titulo-cards">
-                        <img class="card04-icon"
-                            src="../assets/svg/speedometer-graph-infographic-data-element-svgrepo-com.svg" alt="cpu"
-                            style="width: 25px;">
-                        <span class="card04-info" style="color: #b4b4b4; font-size: 10px;">Média 5min</span>
-                    </div>
-                    <div class="conteudo-abaixo-cards">
-                        <h1 id="porcLatencia">38ms</h1>
-                        <h4>Latência (30 min)</h4>
                     </div>
                 </div>
             </div>
@@ -222,7 +209,7 @@
                     <!-- ___________________________________ -->
                     <!-- Gráfico - CPU -->
                     <div class="card-grafico">
-                        <h4 class="titulo-grafico">CPU (1h)</h4>
+                        <h4 class="titulo-grafico">CPU (%)</h4>
                         <div id="container-grafico01">
                             <canvas id="grafico01"></canvas>
                         </div>
@@ -230,7 +217,7 @@
                     <!-- ___________________________________ -->
                     <!-- Gráfico - CPU -->
                     <div class="card-grafico">
-                        <h4 class="titulo-grafico">Memória RAM (1h)</h4>
+                        <h4 class="titulo-grafico">Memória RAM (%)</h4>
                         <div id="container-grafico02">
                             <canvas id="grafico02"></canvas>
                         </div>
@@ -238,7 +225,7 @@
                     <!-- ___________________________________ -->
                     <!-- Gráfico - CPU -->
                     <div class="card-grafico">
-                        <h4 class="titulo-grafico">Latência (1h)</h4>
+                        <h4 class="titulo-grafico">Disco (%)</h4>
                         <div id="container-grafico03">
                             <canvas id="grafico03"></canvas>
                         </div>
@@ -468,24 +455,49 @@
         cardAlerta.style.display = "none"
     }
 
+    var limites = [];
     carregarDados();
     async function carregarDados() {
         const resposta = await fetch("/s3/pegarDados");
         const dados = await resposta.json();
-        criarGrafico(dados);
-        plotarDados(dados);
+        const ultimaColeta = dados[dados.length - 1]
+        var limites = [
+            ultimaColeta.limite_cpu_percent,
+            ultimaColeta.limite_ram_percent,
+            ultimaColeta.limite_disk_percent
+        ];
+        criarGrafico(dados, limites);
+        plotarDados(ultimaColeta, limites);
         console.log(dados);
+        console.log(limites);
     }
 
-    function plotarDados(dados) {
-        porcentagemCPU = dados[dados.length - 1].cpu_percent;
+    function plotarDados(dados, limites) {
+        document.getElementById("nomeServidor").innerHTML = dados.home_broker;
+        porcentagemCPU = dados.cpu_percent;
         document.getElementById("porcCPU").innerHTML = `${porcentagemCPU}%`
-        porcentagemRAM = dados[dados.length - 1].ram_percent;
+        porcentagemRAM = dados.ram_percent;
         document.getElementById("porcRAM").innerHTML = `${porcentagemRAM}%`
-        porcentagemDisco = dados[dados.length - 1].disk_percent;
+        porcentagemDisco = dados.disk_percent;
         document.getElementById("porcDisco").innerHTML = `${porcentagemDisco}%`
-        porcentagemLatencia = dados[dados.length - 1].latencia_resposta_ms;
-        document.getElementById("porcLatencia").innerHTML = `${porcentagemLatencia} ms  `
+        document.getElementById("limiteCPU").innerHTML = `  ${limites[0]}%`
+        document.getElementById("limiteRAM").innerHTML = `  ${limites[1]}%`
+        document.getElementById("limiteDisco").innerHTML = `    ${limites[2]}%`
+        document.getElementById("linha_preenchidaCPU").style.width = `${porcentagemCPU}%`
+        document.getElementById("linha_faltandoCPU").style.width = `${100 - porcentagemCPU}%`
+        document.getElementById("linha_preenchidaRAM").style.width = `${porcentagemRAM}%`
+        document.getElementById("linha_faltandoRAM").style.width = `${100 - porcentagemRAM}%`
+        document.getElementById("linha_preenchidaDisco").style.width = `${porcentagemDisco}%`
+        document.getElementById("linha_faltandoDisco").style.width = `${100 - porcentagemDisco}%`
+        if (porcentagemCPU > limites[0]) {
+            document.getElementById("linha_preenchidaCPU").style.backgroundColor = "#C42728"
+        }
+        if (porcentagemRAM > limites[1]) {
+            document.getElementById("linha_preenchidaRAM").style.backgroundColor = "#C42728"
+        }
+        if (porcentagemDisco > limites[2]) {
+            document.getElementById("linha_preenchidaDisco").style.backgroundColor = "#C42728"
+        }
     }
     // ==================================================================================
     // __________________________________________________________________________________
@@ -494,7 +506,7 @@
     let chartRAM;
     let chartLatencia;
 
-    function criarGrafico(dados) {
+    function criarGrafico(dados, limites) {
         document.getElementById('container-grafico01').innerHTML = '<canvas id="grafico01"></canvas>';
         document.getElementById('container-grafico02').innerHTML = '<canvas id="grafico02"></canvas>';
         document.getElementById('container-grafico03').innerHTML = '<canvas id="grafico03"></canvas>';
@@ -504,17 +516,20 @@
         let dataCPU = []
         let labelsRAM = []
         let dataRAM = []
-        let labelsLatencia = []
-        let dataLatencia = []
-        let corVerde = 'rgba(40, 167, 69, 0.8)';
-        let verdeClaro = 'rgba(40, 167, 69, 0.3)';
-        let corVermelha = 'rgba(220, 53, 69, 0.8)';
-        let vermelhoClaro = 'rgba(220, 53, 69, 0.3)';
+        let labelsDisco = []
+        let dataDisco = []
 
         for (i = 0; i < dadosRecentes.length; i++) {
             var registro = dadosRecentes[i];
             labelsCPU.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
             dataCPU.push(registro.cpu_percent);
+        }
+
+        var corLinhaCPU = 'rgba(40, 167, 69, 0.8)'
+        var corCaixaCPU = 'rgba(40, 167, 69, 0.3)'
+        if (dataCPU[6] >= limites[0]) {
+            corLinhaCPU = 'rgba(220, 53, 69, 0.8)'
+            corCaixaCPU = 'rgba(220, 53, 69, 0.3)'
         }
 
         console.log('----------------------------------------------')
@@ -534,9 +549,9 @@
                     {
                         label: 'CPU (%)',
                         data: dataCPU,
-                        borderColor: 'rgba(40, 167, 69, 0.8)',
-                        backgroundColor: 'rgba(40, 167, 69, 0.3)',
-                        borderWidth: 2, // Espessura da linhaborderColor: 'rgb(33, 196, 93)',
+                        borderColor: corLinhaCPU,
+                        backgroundColor: corCaixaCPU,
+                        borderWidth: 2,
                         tension: 0.3
                     }
                 ]
@@ -578,6 +593,13 @@
             dataRAM.push(registro.ram_percent);
         }
 
+        var corLinhaRAM = 'rgba(40, 167, 69, 0.8)'
+        var corCaixaRAM = 'rgba(40, 167, 69, 0.3)'
+        if (dataRAM[6] >= limites[1]) {
+            corLinhaRAM = 'rgba(220, 53, 69, 0.8)'
+            corCaixaRAM = 'rgba(220, 53, 69, 0.3)'
+        }
+
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
         console.log('Labels:')
@@ -595,8 +617,8 @@
                     {
                         label: 'RAM (%)',
                         data: dataRAM,
-                        borderColor: corVermelha,
-                        backgroundColor: vermelhoClaro,
+                        borderColor: corLinhaRAM,
+                        backgroundColor: corLinhaRAM,
                         tension: 0.3
                     }
                 ]
@@ -634,29 +656,36 @@
 
         for (i = 0; i < dadosRecentes.length; i++) {
             var registro = dadosRecentes[i];
-            labelsLatencia.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
-            dataLatencia.push(registro.latencia_resposta_ms);
+            labelsDisco.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
+            dataDisco.push(registro.disk_percent);
+        }
+
+        var corLinhaDisco = 'rgba(40, 167, 69, 0.8)'
+        var corCaixaDisco = 'rgba(40, 167, 69, 0.3)'
+        if (dataDisco[6] >= limites[2]) {
+            corLinhaDisco = 'rgba(220, 53, 69, 0.8)'
+            corCaixaDisco = 'rgba(220, 53, 69, 0.3)'
         }
 
         console.log('----------------------------------------------')
         console.log('O gráfico será plotado com os respectivos valores:')
         console.log('Labels:')
-        console.log(labelsLatencia)
+        console.log(labelsDisco)
         console.log('Dados:')
-        console.log(dataLatencia)
+        console.log(dataDisco)
         console.log('----------------------------------------------')
 
         const ctxDisco = document.getElementById('grafico03');
-        chartLatencia = new Chart(ctxDisco, {
+        chartDisco = new Chart(ctxDisco, {
             type: 'line',
             data: {
-                labels: labelsLatencia,
+                labels: labelsDisco,
                 datasets: [
                     {
-                        label: 'Latência MS',
-                        data: dataLatencia,
-                        borderColor: corVermelha,
-                        backgroundColor: vermelhoClaro,
+                        label: 'Disco (%)',
+                        data: dataDisco,
+                        borderColor: corLinhaDisco,
+                        backgroundColor: corCaixaDisco,
                         tension: 0.3
                     }
                 ]
