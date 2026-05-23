@@ -208,6 +208,9 @@ padding-right: 20px
     max-height: 100%;
     height: 100%;
 
+    height: 425px; 
+    max-height: 425px;
+
     transition: all 0.25s ease;
 }
 
@@ -245,6 +248,8 @@ padding-right: 20px
 
 .infos-escrita-amostras {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     flex-direction: Row;
     width: 100%;
     padding-bottom: 12px;
@@ -264,7 +269,6 @@ padding-right: 20px
 }
 
 .linha-amostras {
-    margin-left: 400px;
     display: flex;
     gap: 70px;
 }
