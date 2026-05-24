@@ -91,8 +91,22 @@ function listarComponentes(req, res) {
 
 }
 
+function pegarLimiteRAM(req, res) {
+    var idServidor = req.params.idServidor;
+
+    componenteModel.pegarLimiteRAM(idServidor)
+        .then(resultado => {
+            res.json(resultado);
+        })
+        .catch(erro => {
+            console.log(erro);
+            res.status(500).json(erro);
+        });
+}
+
 module.exports = {
     cadastrarComponente,
     atualizarComponente,
-    listarComponentes
+    listarComponentes,
+    pegarLimiteRAM
 };

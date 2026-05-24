@@ -98,8 +98,16 @@ function listarComponentes(idServidor) {
     return database.executar(sql);
 }
 
+function pegarLimiteRAM(idServidor){
+    var sql = `
+    SELECT valor_max_critico FROM tipo_componente WHERE fk_servidor = ${idServidor} AND nome_componente = 'ram_percent';
+    `
+
+    return database.executar(sql);
+}
 module.exports = {
     cadastrarComponente,
     atualizarComponente,
-    listarComponentes
+    listarComponentes,
+    pegarLimiteRAM
 };

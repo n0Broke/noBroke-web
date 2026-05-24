@@ -20,4 +20,8 @@ router.get("/listarComponentes/:idServidor", function (req, res) {
     componenteController.listarComponentes(req, res);
 });
 
+router.get("/pegarLimiteRAM/:idServidor", function (req, res) {
+    componenteController.pegarLimiteRAM(req, res);
+});
+
 module.exports = router;
