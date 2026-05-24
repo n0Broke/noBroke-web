@@ -33,6 +33,29 @@ router.get("/client", async (req, res) => {
     }
 });
 
+
+
+// Rota do Gabriuel
+router.get("/gabriel", async (req, res) => {
+    try {
+
+        const comando = new GetObjectCommand({
+            Bucket: process.env.AWS_BUCKET_NAME,
+            Key: "CLIENT/gabriel.json"
+        });
+
+        const resposta = await s3.send(comando);
+        const dados = await resposta.Body.transformToString();
+        res.json(JSON.parse(dados));
+
+    } catch (erro) {
+
+        console.error("Erro S3:", erro);
+        res.status(500).json({ erro: "Erro ao buscar dados do S3" });
+
+    }
+});
+
 // Rota do Richard  
 router.get("/richard", async (req, res) => {
     try {
