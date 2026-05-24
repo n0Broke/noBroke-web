@@ -452,9 +452,9 @@
                             <div class="popUpFuncionario-SenhaServidor">
                                 <p>Nome do Servidor</p>
                                 <div style="display: flex; gap: 5px;">
-                                    <input style="width: 50px;" disabled id="input_prefix_servidor" type="text" value="NB">
-                                    <input id="input_nome_servidor" type="text"
-                                        placeholder="SRV-PROD-API-01">
+                                    <input style="width: 50px;" disabled id="input_prefix_servidor" type="text"
+                                        value="NB">
+                                    <input id="input_nome_servidor" type="text" placeholder="SRV-PROD-API-01">
                                 </div>
                             </div>
 
@@ -879,6 +879,130 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="grupo-componente">
+                                <h4>Requisições HTTP</h4>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+                                        <p class="titulo-componente">Volume de requisições</p>
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">Picos correlacionados com janelas de stress de
+                                                hardware</p>
+                                        </div>
+                                    </div>
+                                    <div class="componente-config">
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p><input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p><input type="number" value="64">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+                                        <p class="titulo-componente">Latência p95 ordens</p>
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">Aumento sustentado indica degradação</p>
+                                        </div>
+                                    </div>
+                                    <div class="componente-config">
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p><input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p><input type="number" value="64">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+                                        <p class="titulo-componente">Status das ordens</p>
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">Negócio vs falha técnica</p>
+                                        </div>
+                                    </div>
+                                    <div class="componente-config">
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p><input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p><input type="number" value="64">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+                                        <p class="titulo-componente">Distribuição de erros 5xx</p>
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">Por código</p>
+                                        </div>
+                                    </div>
+                                    <div class="componente-config">
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p><input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p><input type="number" value="64">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="componente-box">
+                                    <div class="componente-topo">
+                                        <label class="checkbox-container">
+                                            <input type="checkbox" onchange="AbrirComponente(this)">
+                                            <p class="checkmark"></p>
+                                        </label>
+                                        <p class="titulo-componente">Erros 5xx por hora</p>
+                                        <div class="tipo-metrica">
+                                            <p class="badge-metrica">Série temporal</p>
+                                        </div>
+                                    </div>
+                                    <div class="componente-config">
+                                        <div class="limites">
+                                            <div>
+                                                <p>LIMITE MÍNIMO</p><input type="number" value="0">
+                                            </div>
+                                            <div>
+                                                <p>LIMITE MÁXIMO</p><input type="number" value="64">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
                             <div class="btnCargos" style="justify-content: space-between; width: 100%;">
                                 <button class="btnCargos01" onclick="voltarFunc2()">← Voltar</button>
                                 <button class="btnCargos02" onclick="cadastrarServidor()"
@@ -1461,23 +1585,25 @@
     }
 
     function addFunc3() {
-        if (input_nome_servidor.value == "" ||
+        if (
+            input_nome_servidor.value == "" ||
             input_SO_servidor.value == "" ||
             numero_serial_servidor.value == "" ||
             input_hostname_servidor.value == "" ||
             input_endereco_servidor.value == "" ||
             input_portaSSH_servidor.value == "" ||
             select_ambiente.value == "" ||
-            input_localizacao_servidor.value == "" ) {
+            input_localizacao_servidor.value == ""
+        ) {
             msgErro.innerHTML = `<p style="color: red">Preencha todos os campos para prosseguir<p>`
             setTimeout(function () {
                 msgErro.innerHTML = "";
             }, 1000);
         } else {
-            if (atualizarServidor) {
-                document.getElementById('popUpCadastrarComponente').style.display = 'flex';
-                document.getElementById('popUpCadastrarServidor').style.display = 'none';
-            }
+
+            document.getElementById('popUpCadastrarComponente').style.display = 'flex';
+            document.getElementById('popUpCadastrarServidor').style.display = 'none';
+
         }
     }
     function fecharFunc2() {
@@ -1607,8 +1733,11 @@
                     if (!resposta.ok) {
                         throw "Erro ao cadastrar/atualizar servidor";
                     }
-                    cadastrarComponente()
                     return resposta.json();
+                })
+                .then(function (data) {
+                    sessionStorage.setItem("idServidor", data.idServidor);
+                    cadastrarComponente();
                 })
                 .catch(function (erro) {
                     console.log("#ERRO:", erro);
@@ -1628,7 +1757,8 @@
         "memória": 2,
         "disco (armazenamento)": 3,
         "rede": 4,
-        "processos": 5
+        "requisições http": 5,
+        "processos": 6
     };
 
     function cadastrarComponente() {
