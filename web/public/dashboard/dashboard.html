@@ -7,8 +7,6 @@
 
     <title>Home | noBroke</title>
     <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
-    <script src="meu-grafico.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="./js/sessao.js"></script>
     <script>
         (function () {
@@ -29,9 +27,10 @@
     <link rel="stylesheet" href="../css/dashResponsivo.css">
 
     <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="verificarModo(), carregarServidores(), buscarPrefixo()">
+<body>
     <div class="containerPai">
         <div class="sidebar" id="div_lateralAberta">
             <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
@@ -996,9 +995,6 @@
         }
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
-        }
-        if (sessionStorage.ALERTA == 0) {
-            cardAlerta.style.display = "none"
         } else {
             cardAlerta.innerHTML = `<div class="box-cardAlerta">
                     <div class="titulo-pai">
@@ -1088,9 +1084,6 @@
                 })
                 .catch(function (erro) {
                     console.log("#ERRO:", erro);
-                })
-                .then(function (data) {
-                    carregarServidores();
                 })
         }
 
@@ -1190,14 +1183,9 @@
             });
     }
 
-    setInterval(carregarServidores, 30000);
-
-
-
-
-    function PuxarDados() {
-        const resposta =  fetch("/s3/gabriel");
-        var dados =  resposta.json();
+    async function PuxarDados() {
+        const resposta = await fetch("/s3/gabriel");
+        const dados = await resposta.json();
 
         const dadosFormatados = dados.map(item => ({
             id: item.id_servidor,
@@ -1223,7 +1211,7 @@
         */
         for(i = 0; i<dadosFormatados.length; i++){
             if(dadosFormatados[i].servidor == "luiz"){
-                sessionStorage.setItem('FK_EMPRESA' = dadosFormatados[i].id)
+                sessionStorage.setItem('FK_EMPRESA' == dadosFormatados[i].id)
             }
         }
 
@@ -1255,4 +1243,5 @@
         document.getElementById("total-servidores").textContent = dadosFormatados.length
         document.getElementById("total-componentes").textContent = componentes_totais.length
     }
+    verificarModo(),  buscarPrefixo()
 </script>

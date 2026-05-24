@@ -82,7 +82,7 @@ router.get("/pegarDados", async (req, res) => {
     try {
         const comando = new GetObjectCommand({
             Bucket: process.env.AWS_BUCKET_NAME,
-            Key: "CLIENT/client.json"
+            Key: "CLIENT/matheus.json"
         });
         const resposta = await s3.send(comando);
         const dados = await resposta.Body.transformToString();

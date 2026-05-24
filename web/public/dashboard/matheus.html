@@ -118,7 +118,7 @@
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
                         style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
-                    <span style="color: #7D8999;">noBroke Server Monitor</span>
+                    <span style="color: #7D8999;">noBroke Monitorar Servidor</span>
                 </div>
                 <div id="iconeModo">
                     <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
@@ -128,8 +128,10 @@
             <div class="header-conteudo-dash">
                 <div class="header-esquerdo">
                     <div class="header-esquerdo01">
-                        <h3>Servidor: </h3><h3 class="servidor-name" id="nomeServidor">SRV-DEV-HB-01</h3>
+                        <h3>Servidor: </h3>
+                        <h3 class="servidor-name" id="nomeServidor">SRV-DEV-HB-01</h3>
                     </div>
+                    <span style="color: var(--branco);">Monitoramento de CPU, RAM, Disco e outros componentes.</span>
                 </div>
                 <div class="header-direita">
                     <button class="botao-atualizar" onclick="window.location.reload()"><img
@@ -243,84 +245,19 @@
                         <canvas id="grafico04"></canvas>
                     </div>
                 </div>
-                <div class="componentes-servidor">
-                    <h4 class="componentes-titulo">Componentes Monitorados</h4>
-                    <div class="parte-componentes">
-                        <div class="componente-monitorado componente"
-                            style="cursor: default; border: none; justify-content: center;">
-                            <p>↓ SELECIONE ABAIXO O COMPONENTE QUE GOSTARIA DE MONITORAR ↓</p>
-                        </div>
-                        <div class="componente-monitorado componente">
-                            <div class="componente-infos">
-                                <img src="../assets/svg/circle-svgrepo-com-alert2.svg" alt="status" style="width: 6px;">
-                                <img src="../assets/svg/cpu-bolt-svgrepo-com.svg" alt="cpu" style="width: 20px;">
-                                <p id="componente-info01">CPU</p>
-                            </div>
-                            <div class="componente-status">
-                                <p>65%</p>
-                            </div>
-                            <div class="componente-metrica">
-                                <span>0-70%</span>
-                            </div>
-                            <div class="componente-status-icon">
-                                <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert2.svg" alt="alerta"
-                                    style="width: 18px;">
-                            </div>
-                        </div>
-                        <div class="componente-monitorado componente">
-                            <div class="componente-infos">
-                                <img src="../assets/svg/circle-svgrepo-com-alert3.svg" alt="status" style="width: 6px;">
-                                <img src="../assets/svg/ram-memory-svgrepo-com.svg" alt="cpu" style="width: 20px;">
-                                <p id="componente-info02">RAM</p>
-                            </div>
-                            <div class="componente-status">
-                                <p>72%</p>
-                            </div>
-                            <div class="componente-metrica">
-                                <span>0-70%</span>
-                            </div>
-                            <div class="componente-status-icon">
-                                <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert3.svg" alt="alerta"
-                                    style="width: 18px;">
-                            </div>
-                        </div>
-                        <div class="componente-monitorado componente">
-                            <div class="componente-infos">
-                                <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status" style="width: 6px;">
-                                <img src="../assets/svg/hard-disk-svgrepo-com.svg" alt="cpu" style="width: 20px;">
-                                <p id="componente-info01">Disco</p>
-                            </div>
-                            <div class="componente-status">
-                                <p>52%</p>
-                            </div>
-                            <div class="componente-metrica">
-                                <span>0-80%</span>
-                            </div>
-                            <div class="componente-status-icon">
-                                <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert1.svg" alt="alerta"
-                                    style="width: 18px;">
-                            </div>
-                        </div>
-                        <div class="componente-monitorado componente">
-                            <div class="componente-infos">
-                                <img src="../assets/svg/circle-svgrepo-com-alert1.svg" alt="status" style="width: 6px;">
-                                <img src="../assets/svg/speedometer-graph-infographic-data-element-svgrepo-com.svg"
-                                    alt="cpu" style="width: 20px;">
-                                <p id="componente-info01">Latência</p>
-                            </div>
-                            <div class="componente-status">
-                                <p>38ms</p>
-                            </div>
-                            <div class="componente-metrica">
-                                <span>0-50ms</span>
-                            </div>
-                            <div class="componente-status-icon">
-                                <img src="../assets/svg/graphic-arrow-button-svgrepo-com-alert1.svg" alt="alerta"
-                                    style="width: 18px;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <table class="tabela-monitoramento">
+                    <caption class="componentes-titulo">Componentes Monitorados (Selecione para visualizar)</caption>
+                    <thead>
+                        <tr class="cabecalho-tabela">
+                            <th>Componente</th>
+                            <th>Uso</th>
+                            <th>Limite</th>
+                            <th class="status-center">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaComponentes" class="parte-componentes">
+                    </tbody>
+                </table>
 
             </div>
         </div>
@@ -455,21 +392,42 @@
         cardAlerta.style.display = "none"
     }
 
+    let dados;
     var limites = [];
     carregarDados();
     async function carregarDados() {
         const resposta = await fetch("/s3/pegarDados");
-        const dados = await resposta.json();
+        dados = await resposta.json();
         const ultimaColeta = dados[dados.length - 1]
         var limites = [
             ultimaColeta.limite_cpu_percent,
             ultimaColeta.limite_ram_percent,
             ultimaColeta.limite_disk_percent
         ];
+        var componentesParaExibir = [];
         criarGrafico(dados, limites);
         plotarDados(ultimaColeta, limites);
+        for (var chave in ultimaColeta) {
+            if ((chave.includes("_percent") || chave.includes("_ms")) && !chave.includes("limite_")) {
+                var valorAtual = ultimaColeta[chave];
+                var chaveLimite = "limite_" + chave;
+                var valorLimite = ultimaColeta[chaveLimite];
+                var sufixo = "%";
+                if (chave.includes("_ms")) {
+                    sufixo = "ms";
+                }
+                var nomeExibicao = chave.replace("_percent", "").replace("_ms", "").toUpperCase();
+                componentesParaExibir.push({
+                    nome: nomeExibicao,
+                    valor: valorAtual + sufixo,
+                    limite: valorLimite + sufixo
+                });
+            }
+        }
+        criarLista(componentesParaExibir);
         console.log(dados);
         console.log(limites);
+        console.log(componentesParaExibir)
     }
 
     function plotarDados(dados, limites) {
@@ -510,7 +468,7 @@
         document.getElementById('container-grafico01').innerHTML = '<canvas id="grafico01"></canvas>';
         document.getElementById('container-grafico02').innerHTML = '<canvas id="grafico02"></canvas>';
         document.getElementById('container-grafico03').innerHTML = '<canvas id="grafico03"></canvas>';
-        var dadosRecentes = dados.slice(-8);
+        var dadosRecentes = dados.slice(-7);
         // SUBSTITUIÇÃO: URL direta do arquivo no S3
         let labelsCPU = []
         let dataCPU = []
@@ -518,11 +476,16 @@
         let dataRAM = []
         let labelsDisco = []
         let dataDisco = []
+        let limiteCPU = []
+        let limiteRAM = []
+        let limiteDisco = []
+
 
         for (i = 0; i < dadosRecentes.length; i++) {
             var registro = dadosRecentes[i];
             labelsCPU.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
             dataCPU.push(registro.cpu_percent);
+            limiteCPU.push(limites[0])
         }
 
         var corLinhaCPU = 'rgba(40, 167, 69, 0.8)'
@@ -553,6 +516,14 @@
                         backgroundColor: corCaixaCPU,
                         borderWidth: 2,
                         tension: 0.3
+                    },
+                    {
+                        label: "Limite crítico",
+                        data: limiteCPU,
+                        borderColor: "#ff3045",
+                        borderDash: [8, 5],
+                        pointRadius: 0,
+                        borderWidth: 2
                     }
                 ]
             },
@@ -591,6 +562,7 @@
             var registro = dadosRecentes[i];
             labelsRAM.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
             dataRAM.push(registro.ram_percent);
+            limiteRAM.push(limites[1])
         }
 
         var corLinhaRAM = 'rgba(40, 167, 69, 0.8)'
@@ -618,8 +590,16 @@
                         label: 'RAM (%)',
                         data: dataRAM,
                         borderColor: corLinhaRAM,
-                        backgroundColor: corLinhaRAM,
+                        backgroundColor: corCaixaRAM,
                         tension: 0.3
+                    },
+                    {
+                        label: "Limite crítico",
+                        data: limiteRAM,
+                        borderColor: "#ff3045",
+                        borderDash: [8, 5],
+                        pointRadius: 0,
+                        borderWidth: 2
                     }
                 ]
             },
@@ -658,6 +638,7 @@
             var registro = dadosRecentes[i];
             labelsDisco.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
             dataDisco.push(registro.disk_percent);
+            limiteDisco.push(limites[2])
         }
 
         var corLinhaDisco = 'rgba(40, 167, 69, 0.8)'
@@ -687,6 +668,14 @@
                         borderColor: corLinhaDisco,
                         backgroundColor: corCaixaDisco,
                         tension: 0.3
+                    },
+                    {
+                        label: "Limite crítico",
+                        data: limiteDisco,
+                        borderColor: "#ff3045",
+                        borderDash: [8, 5],
+                        pointRadius: 0,
+                        borderWidth: 2
                     }
                 ]
             },
@@ -699,10 +688,10 @@
                     },
                     y: {
                         beginAtZero: true,
-                        max: 10000,
+                        max: 100,
                         title: {
                             display: true,
-                            text: 'Uso MS',
+                            text: 'Uso (%)',
                             color: 'white'
                         },
                         ticks: { color: 'white' },
@@ -716,6 +705,147 @@
                                 size: 16
                             }
                         }
+                    }
+                }
+            }
+        })
+    }
+
+    function criarLista(lista) {
+        var linhas = '';
+
+        for (var i = 0; i < lista.length; i++) {
+            var comp = lista[i];
+
+            var numeroAtual = parseFloat(comp.valor);
+            var numeroLimite = parseFloat(comp.limite);
+
+            var imagemStatus = "circle-svgrepo-com-alert1.svg";
+            var imagemStatus2 = "graphic-arrow-button-svgrepo-com-alert1.svg";
+
+            if (numeroAtual > numeroLimite) {
+                imagemStatus = "circle-svgrepo-com-alert3.svg";
+                imagemStatus2 = "graphic-arrow-button-svgrepo-com-alert3.svg";
+            }
+
+            linhas += `
+                <tr class="linha-componente" onclick="criarGraficoSelecionado('${comp.nome}')">
+                    <td>
+                        <div class="componente-nome-wrapper">
+                            <img src="../assets/svg/${imagemStatus}" alt="status" class="status-bolinha">
+                            <p id="componente-info01_${i}">${comp.nome}</p>
+                        </div>
+                    </td>
+                    <td class="texto-bold">
+                        <p>${comp.valor}</p>
+                    </td>
+                    <td class="texto-limite">
+                        <span>${comp.limite}</span>
+                    </td>
+                    <td class="status-center">
+                        <img src="../assets/svg/${imagemStatus2}" alt="alerta" class="status-seta">
+                    </td>
+                </tr>
+                `;
+        }
+        document.getElementById("listaComponentes").innerHTML = linhas;
+    }
+
+    function criarGraficoSelecionado(componente) {
+        document.getElementById('container-grafico04').innerHTML = '<canvas id="grafico04"></canvas>';
+
+        var dadosRecentes = dados.slice(-7);
+
+        let labels = []
+        let data = []
+        let limite = []
+
+        // Identifica dinamicamente as chaves com base no componente clicado
+        var nomeMinusculo = componente.toLowerCase();
+        var ehLatencia = nomeMinusculo.includes('latencia') || nomeMinusculo.includes('ms');
+        var chavePercent = nomeMinusculo + (ehLatencia ? "_ms" : "_percent");
+        var chaveLimite = "limite_" + chavePercent;
+
+        for (i = 0; i < dadosRecentes.length; i++) {
+            var registro = dadosRecentes[i];
+
+            if (registro.timestamp) {
+                labels.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
+            } else {
+                labels.push(`${i}min`);
+            }
+
+            // Garante que o valor seja tratado como número flutuante limpo
+            var valorAtual = registro[chavePercent];
+            var valorLimite = registro[chaveLimite];
+            if (typeof valorAtual === 'string') valorAtual = parseFloat(valorAtual.replace(/[^\d.]/g, ''));
+            if (typeof valorLimite === 'string') valorLimite = parseFloat(valorLimite.replace(/[^\d.]/g, ''));
+
+            data.push(valorAtual || 0);
+            limite.push(valorLimite || 0);
+        }
+
+        var corLinha = 'rgba(40, 167, 69, 0.8)'
+        var corCaixa = 'rgba(40, 167, 69, 0.3)'
+
+        if (data[6] >= limite[6]) {
+            corLinha = 'rgba(220, 53, 69, 0.8)'
+            corCaixa = 'rgba(220, 53, 69, 0.3)'
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(data)
+        console.log('----------------------------------------------')
+
+        const ctx = document.getElementById('grafico04');
+
+        // Ajusta a escala do eixo Y e o título dinamicamente
+        var maxEixoY = ehLatencia ? undefined : 100;
+        var tituloEixoY = ehLatencia ? 'Tempo (ms)' : 'Uso (%)';
+
+        chartCPU = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: componente.toUpperCase(),
+                        data: data,
+                        borderColor: corLinha,
+                        backgroundColor: corCaixa,
+                        borderWidth: 2,
+                        tension: 0.3
+                    },
+                    {
+                        label: "Limite crítico",
+                        data: limite,
+                        borderColor: "#ff3045",
+                        borderDash: [8, 5],
+                        pointRadius: 0,
+                        borderWidth: 2,
+                        fill: false
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { ticks: { color: 'white' } },
+                    y: {
+                        beginAtZero: true,
+                        max: maxEixoY,
+                        title: { display: true, text: tituloEixoY, color: 'white' },
+                        ticks: { color: 'white' },
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: { color: 'white', font: { size: 16 } }
                     }
                 }
             }
