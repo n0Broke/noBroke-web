@@ -598,10 +598,71 @@
         const erroNegocio = ultimo.qtd_erro_cliente;
         const erroTecnico = ultimo.qtd_erro_servidor;
 
+        const respostaComponentes = await fetch(`/componente/listarComponentes/${id_servidor}`);
+
+        const componentes = await respostaComponentes.json();
+
         const erros5xxLinha = []
+        let limiteAtencaoVolumeLista = [];
+        let limiteCriticoVolumeLista = [];
+        let limiteAtencaoLatenciaLista = [];
+        let limiteCriticoLatenciaLista = [];
+        let limiteAtencao5xxLista = [];
+        let limiteCritico5xxLista = [];
 
         for (let i = 0; i < dadosServidor.length; i++) {
             erros5xxLinha.push(dadosServidor[i].contador_5xx);
+
+        }
+
+        let limiteAtencaoVolume = 0;
+        let limiteCriticoVolume = 0;
+        let limiteAtencaoLatencia = 0;
+        let limiteCriticoLatencia = 0;
+        let limiteAtencao5xx = 0;
+        let limiteCritico5xx = 0;
+
+        for (let i = 0; i < componentes.length; i++) {
+
+            if (componentes[i].nome_componente == "Volume de requisições") {
+
+                limiteAtencaoVolume =
+                    componentes[i].valor_max_critico - 20;
+
+                limiteCriticoVolume =
+                    componentes[i].valor_max_critico;
+            }
+            if (componentes[i].nome_componente == "Latência p95 ordens") {
+
+                limiteAtencaoLatencia =
+                    componentes[i].valor_max_critico - 20;
+
+                limiteCriticoLatencia =
+                    componentes[i].valor_max_critico;
+            }
+            if (
+                componentes[i].nome_componente ==
+                "Distribuição de erros 5xx"
+            ) {
+
+                limiteAtencao5xx =
+                    componentes[i].valor_max_critico - 20;
+
+                limiteCritico5xx =
+                    componentes[i].valor_max_critico;
+            }
+
+
+        }
+
+        for (let i = 0; i < labels.length; i++) {
+
+            limiteAtencaoVolumeLista.push(limiteAtencaoVolume);
+            limiteCriticoVolumeLista.push(limiteCriticoVolume);
+            limiteAtencaoLatenciaLista.push(limiteAtencaoLatencia);
+            limiteCriticoLatenciaLista.push(limiteCriticoLatencia);
+            limiteAtencao5xxLista.push(limiteAtencao5xx);
+            limiteCritico5xxLista.push(limiteCritico5xx);
 
         }
 
@@ -625,7 +686,7 @@
                     },
                     {
                         label: "Limite atenção",
-                        data: [700, 700, 700, 700, 700, 700, 700, 700],
+                        data: limiteAtencaoVolumeLista,
                         borderColor: "#FFC222",
                         borderDash: [8, 5],
                         pointRadius: 0,
@@ -633,7 +694,7 @@
                     },
                     {
                         label: "Limite crítico",
-                        data: [900, 900, 900, 900, 900, 900, 900, 900],
+                        data: limiteCriticoVolumeLista,
                         borderColor: "#ff3045",
                         borderDash: [8, 5],
                         pointRadius: 0,
@@ -672,7 +733,7 @@
                     },
                     {
                         label: "Limite atenção",
-                        data: [500, 500, 500, 500, 500, 500, 500, 500],
+                        data: limiteAtencaoLatenciaLista,
                         borderColor: "#FFC222",
                         borderDash: [8, 5],
                         pointRadius: 0,
@@ -680,7 +741,7 @@
                     },
                     {
                         label: "Limite crítico",
-                        data: [800, 800, 800, 800, 800, 800, 800, 800],
+                        data: limiteCriticoLatenciaLista,
                         borderColor: "#ff3045",
                         borderDash: [8, 5],
                         pointRadius: 0,
@@ -753,7 +814,7 @@
                     },
                     {
                         label: "Limite atenção",
-                        data: [80, 80, 80, 80, 80, 80, 80, 80],
+                        data: limiteAtencao5xxLista,
                         borderColor: "#FFC222",
                         borderDash: [8, 5],
                         pointRadius: 0,
@@ -761,7 +822,7 @@
                     },
                     {
                         label: "Limite crítico",
-                        data: [100, 100, 100, 100, 100, 100, 100, 100],
+                        data: limiteCritico5xxLista,
                         borderColor: "#ff3045",
                         borderDash: [8, 5],
                         pointRadius: 0,
@@ -811,7 +872,7 @@
                     {
                         type: "line",
                         label: "Limite atenção",
-                        data: [80, 80, 80, 80, 80, 80],
+                        data: limiteAtencao5xxLista,
                         borderColor: "#FFC222",
                         borderDash: [8, 5],
                         pointRadius: 0,
@@ -821,7 +882,7 @@
                     {
                         type: "line",
                         label: "Limite crítico",
-                        data: [100, 100, 100, 100, 100, 100],
+                        data: limiteCritico5xxLista,
                         borderColor: "#ff3045",
                         borderDash: [8, 5],
                         pointRadius: 0,

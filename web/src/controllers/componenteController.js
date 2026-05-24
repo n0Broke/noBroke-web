@@ -76,7 +76,23 @@ function atualizarComponente(req, res) {
         });
 }
 
+function listarComponentes(req, res) {
+
+    var idServidor = req.params.idServidor;
+
+    componenteModel.listarComponentes(idServidor)
+        .then(resultado => {
+            res.json(resultado);
+        })
+        .catch(erro => {
+            console.log(erro);
+            res.status(500).json(erro);
+        });
+
+}
+
 module.exports = {
     cadastrarComponente,
-    atualizarComponente
+    atualizarComponente,
+    listarComponentes
 };

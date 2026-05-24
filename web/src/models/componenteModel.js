@@ -87,7 +87,19 @@ async function atualizarComponente(idServidor, componentes) {
     };
 }
 
+function listarComponentes(idServidor) {
+
+    var sql = `
+        SELECT *
+        FROM tipo_componente
+        WHERE fk_servidor = ${idServidor};
+    `;
+
+    return database.executar(sql);
+}
+
 module.exports = {
     cadastrarComponente,
-    atualizarComponente
+    atualizarComponente,
+    listarComponentes
 };

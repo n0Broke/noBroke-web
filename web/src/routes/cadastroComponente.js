@@ -16,4 +16,8 @@ router.post("/atualizarComponente", function (req, res) {
     return componenteController.atualizarComponente(req, res);
 });
 
+router.get("/listarComponentes/:idServidor", function (req, res) {
+    componenteController.listarComponentes(req, res);
+});
+
 module.exports = router;
