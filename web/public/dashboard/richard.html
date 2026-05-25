@@ -312,9 +312,10 @@
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
         }
-        if (sessionStorage.ALERTA == 0) {
+        if (sessionStorage.QTD_ALERTAS == 0) {
             cardAlerta.style.display = "none"
         } else {
+            const qtdServidoresEmAlerta = sessionStorage.QTD_ALERTAS;
             cardAlerta.innerHTML = `<div class="box-cardAlerta">
                     <div class="titulo-pai">
                         <div class="titulo-alerta">
@@ -326,8 +327,8 @@
                         </div>
                     </div>
                     <div class="corpo-alerta">
-                        <span>2 Alertas Críticos</span>
-                        <a href="Alertas.html">Clique aqui para ver mais informações!</a>
+                        <span><span>${qtdServidoresEmAlerta}</span> Alertas Críticos</span>
+                        <a href="dashboard.html">Clique aqui para ver informações dos servidores!</a>
                     </div>
                 </div>`
         }

@@ -139,7 +139,7 @@
 
                     <div class="header-esquerdo-prod">
                         <div class="header-atualizacao">
-                            <p>Atualizado a  <b id="tempo-atualizacao">agora</b></p>
+                            <p>Atualizado a <b id="tempo-atualizacao">agora</b></p>
                             <p> Squad <b>Infra Trading</b></p>
                             <p class="alinhar-texto-imagem"> <img src="../assets/icon/group (1).png" alt=""
                                     width="30px"><span id="qtd-colaboradores"> ...</span> Colaboradores</p>
@@ -277,16 +277,9 @@
                             <p>Sobrecarga</p>
                         </div>
                     </div>
-
                 </div>
-
-
             </div>
-
-
         </div>
-    </div>
-    <div class="card-alertaGeral" id="div_alertaGeral">
     </div>
 </body>
 
@@ -299,7 +292,6 @@
     const imgLogo = document.getElementById("imgLogo");
     const imgUser = document.getElementById("imgUser");
     const sidebar = document.getElementById("div_lateralAberta");
-    const cardAlerta = document.getElementById("div_alertaGeral")
     const corPreto = ('--preto')
     const corBranca = ('--branco')
 
@@ -386,25 +378,6 @@
         }
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
-        }
-        if (sessionStorage.ALERTA == 0) {
-            cardAlerta.style.display = "none"
-        } else {
-            cardAlerta.innerHTML = `<div class="box-cardAlerta">
-                    <div class="titulo-pai">
-                        <div class="titulo-alerta">
-                            <img src="../assets/svg/alertas/warning.png">
-                            <span>ALERTA</span>
-                        </div>
-                        <div class="fecharCard">
-                            <span onclick="fecharAlerta()">X</span>
-                        </div>
-                    </div>
-                    <div class="corpo-alerta">
-                        <span>2 Alertas Críticos</span>
-                        <a href="Alertas.html">Clique aqui para ver mais informações!</a>
-                    </div>
-                </div>`
         }
         if (sessionStorage.FK_FUNCAO != 1) {
             const divRelatorios = document.getElementById("div_relatorios");

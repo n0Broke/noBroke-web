@@ -51,64 +51,64 @@
                 <div class="menu_centro">
                     <!-- Sidebar - Parte 01 -->
                     <div class="menu01">
-                    <h4 class="titulo_sidebar">PRINCIPAL</h4>
-                    <!-- Página atual -->
-                    <a href="dashboard.html" class="btn-nobroke">
-                        <span class="icon">
-                            <img src="../assets/icon/icons-dashboard/painel-de-controle.png">
-                        </span>
-                        <span class="texto">Home</span>
-                    </a>
-
-                    <a href="matheus.html" class="btn-nobroke">
-                        <span class="icon">
-                            <img id="iconAtual" src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
-                        </span>
-                        <span class="texto">Servidor</span>
-                    </a>
-
-                    <button href="luiz.html" class="btn-nobroke btn-active">
-                        <span class="icon">
-                            <img src="../assets/icon/icons-dashboard/grafico-de-barras-hover.png">
-                        </span>
-                        <span class="texto">Previsão Ram</span>
-                    </button>
-
-                    <div id="div_relatorios">
-                        <a href="richard.html" class="btn-nobroke">
+                        <h4 class="titulo_sidebar">PRINCIPAL</h4>
+                        <!-- Página atual -->
+                        <a href="dashboard.html" class="btn-nobroke">
                             <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/escudo.png">
+                                <img src="../assets/icon/icons-dashboard/painel-de-controle.png">
                             </span>
-                            <span class="texto">Rede</span>
+                            <span class="texto">Home</span>
+                        </a>
+
+                        <a href="matheus.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img id="iconAtual" src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
+                            </span>
+                            <span class="texto">Servidor</span>
+                        </a>
+
+                        <button href="luiz.html" class="btn-nobroke btn-active">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/grafico-de-barras-hover.png">
+                            </span>
+                            <span class="texto">Previsão Ram</span>
+                        </button>
+
+                        <div id="div_relatorios">
+                            <a href="richard.html" class="btn-nobroke">
+                                <span class="icon">
+                                    <img src="../assets/icon/icons-dashboard/escudo.png">
+                                </span>
+                                <span class="texto">Rede</span>
+                            </a>
+                        </div>
+
+                        <a href="isabela.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                            </span>
+                            <span class="texto">Requisicão</span>
                         </a>
                     </div>
+                    <!-- ============================ -->
+                    <div class="menu02">
+                        <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
 
-                    <a href="isabela.html" class="btn-nobroke">
-                        <span class="icon">
-                            <img src="../assets/icon/icons-dashboard/heart-rate.png">
-                        </span>
-                        <span class="texto">Requisicão</span>
-                    </a>
+                        <a href="Configurações.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/config.png">
+                            </span>
+                            <span class="texto">Configurações</span>
+                        </a>
+
+                        <a href="suporte.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
+                            </span>
+                            <span class="texto">Suporte</span>
+                        </a>
+                    </div>
                 </div>
-                <!-- ============================ -->
-                <div class="menu02">
-                    <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
-
-                    <a href="Configurações.html" class="btn-nobroke">
-                        <span class="icon">
-                            <img src="../assets/icon/icons-dashboard/config.png">
-                        </span>
-                        <span class="texto">Configurações</span>
-                    </a>
-
-                    <a href="suporte.html" class="btn-nobroke">
-                        <span class="icon">
-                            <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
-                        </span>
-                        <span class="texto">Suporte</span>
-                    </a>
-                </div>
-            </div>
 
                 <div class="user-profile" onclick="window.location.href = 'Configurações.html?aba=perfil'">
                     <div class="profile-img">
@@ -138,15 +138,16 @@
                     <div class="header-esquerdo">
                         <div class="header-pag-ram">
                             <h3 class="servidor-name" id="server-name">SRV-DEV-HB-01</h3>
-                            
+
                         </div>
-                            <h3 class="descricao-dash" style="color: #b4b4b4;"
-                            >Correlação RAM ↔ SWAP • Janela: última <span>1h</span> • Fonte: dados de exemplo
-                        </h3>              
+                        <h3 class="descricao-dash" style="color: #b4b4b4;">Correlação RAM ↔ SWAP • Janela: última
+                            <span>1h</span> • Fonte: dados de exemplo
+                        </h3>
                     </div>
                     <div class="header-topo-direita">
                         <p class="status-monitoramento" style="margin-right: 10px;">
-                            <span class="dot-pulsante"></span>ao vivo</p>
+                            <span class="dot-pulsante"></span>ao vivo
+                        </p>
                         <button class="botao-alerta"><img id="logoAlerta" src="../assets/svg/bell-svgrepo-com.svg"
                                 alt="" style="width: 22px; color: white;" onclick="window.location.href='Alertas.html'">
                             Alertas</button>
@@ -161,60 +162,60 @@
                             <div class="titulo-cards">
                                 <h1 class="card01-info" style="color: #b4b4b4; font-size: 15px;">
                                     RAM atual / prevista (60 min)</h1>
-                                </div>
-                                <div class="conteudo-abaixo-cards">
-                                    <h1><span id="Valor_RAM">-</span></h1>
-                                    <h4>Projeção:
-                                        <span id="Projecao_RAM">-</span>
-                                    </h4>
-                                </div>
                             </div>
-                            <img src="../assets/luiz/cardiogram-laranja-svgrepo-com.svg" alt="">
+                            <div class="conteudo-abaixo-cards">
+                                <h1><span id="Valor_RAM">-</span></h1>
+                                <h4>Projeção:
+                                    <span id="Projecao_RAM">-</span>
+                                </h4>
+                            </div>
+                        </div>
+                        <img src="../assets/luiz/cardiogram-laranja-svgrepo-com.svg" alt="">
                     </div>
                     <div class="cards-geral">
                         <div class="cards-kpi">
                             <div class="titulo-cards">
                                 <h1 class="card01-info" style="color: #b4b4b4; font-size: 15px;">
                                     Tendência (%/min)</h1>
-                                </div>
-                                <div class="conteudo-abaixo-cards">
-                                    <h1><span id="tendencia_min">-</span> %/min</h1>
-                                    <h4>Status do servidor: <span id="tendencia_hora">-</span>
-                                    </h4>
-                                </div>
                             </div>
-                            <img src="../assets/luiz/arrow-right-laranja-297-svgrepo-com.svg" alt="">
+                            <div class="conteudo-abaixo-cards">
+                                <h1><span id="tendencia_min">-</span> %/min</h1>
+                                <h4>Status do servidor: <span id="tendencia_hora">-</span>
+                                </h4>
+                            </div>
                         </div>
+                        <img src="../assets/luiz/arrow-right-laranja-297-svgrepo-com.svg" alt="">
+                    </div>
                     <div class="cards-geral">
                         <div class="cards-kpi">
                             <div class="titulo-cards">
                                 <h1 class="card01-info" style="color: #b4b4b4; font-size: 15px;">
                                     Correlação RAM ↔ SWAP</h1>
-                                </div>
-                                <div class="conteudo-abaixo-cards">
-                                    <h1> <span id="Correlacao_RAM">-</span></h1>
-                                    <h4>Pressão de memória:
-                                        <span id="Correlacao_dale">-</span>
-                                    </h4>
-                                </div>
                             </div>
-                            <img src="../assets/luiz/swap-svgrepo-com.svg" alt="">
+                            <div class="conteudo-abaixo-cards">
+                                <h1> <span id="Correlacao_RAM">-</span></h1>
+                                <h4>Pressão de memória:
+                                    <span id="Correlacao_dale">-</span>
+                                </h4>
+                            </div>
                         </div>
-                        <div class="cards-geral">
-                            <div class="cards-kpi">
-                                <div class="titulo-cards">
-                                    <h1 class="card01-info" style="color: #b4b4b4; font-size: 15px;">
-                                        ETA até saturação</h1>
-                                    </div>
-                                    <div class="conteudo-abaixo-cards">
-                                        <h1><span id="Tempo_ETA">-</span></h1>
-                                        <h4>Tempo estimado até a RAM atingir 100% do uso
-                                            <span id=""></span>
-                                        </h4>
-                                    </div>
-                                </div>
-                                <img src="../assets/luiz/warning-cinza-svgrepo-com.svg" alt="">
+                        <img src="../assets/luiz/swap-svgrepo-com.svg" alt="">
+                    </div>
+                    <div class="cards-geral">
+                        <div class="cards-kpi">
+                            <div class="titulo-cards">
+                                <h1 class="card01-info" style="color: #b4b4b4; font-size: 15px;">
+                                    ETA até saturação</h1>
                             </div>
+                            <div class="conteudo-abaixo-cards">
+                                <h1><span id="Tempo_ETA">-</span></h1>
+                                <h4>Tempo estimado até a RAM atingir 100% do uso
+                                    <span id=""></span>
+                                </h4>
+                            </div>
+                        </div>
+                        <img src="../assets/luiz/warning-cinza-svgrepo-com.svg" alt="">
+                    </div>
                 </div>
 
                 <div class="conteudo-dash02">
@@ -272,10 +273,12 @@
                                     </div>
                                 </div>
                                 <div class="ultimas-amostras-abaixo" id="resultado-ultimas-amostras">
-                            </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="card-alertaGeral" id="div_alertaGeral">
                 </div>
             </div>
 
@@ -287,10 +290,10 @@
 </html>
 <script>
     const nomeCompleto = sessionStorage.NOME_USUARIO
-    // const partes = nomeCompleto.trim().split(" ");
-    // const primeiroNome = partes[0];
-    // usuario.innerHTML = primeiroNome;
-    // cargoFunc.innerHTML = sessionStorage.FUNCAO;
+    const partes = nomeCompleto.trim().split(" ");
+    const primeiroNome = partes[0];
+    usuario.innerHTML = primeiroNome;
+    cargoFunc.innerHTML = sessionStorage.FUNCAO;
 
     const root = document.documentElement;
     const imgModo = document.getElementById("imgModo");
@@ -298,7 +301,7 @@
     const imgUser = document.getElementById("imgUser");
     const logoAlerta = document.getElementById("logoAlerta");
     const sidebar = document.getElementById("div_lateralAberta");
-
+    const cardAlerta = document.getElementById("div_alertaGeral")
 
     let modoEscuro = false;
 
@@ -388,7 +391,26 @@
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
         }
-
+        if (sessionStorage.QTD_ALERTAS == 0) {
+            cardAlerta.style.display = "none"
+        } else {
+            const qtdServidoresEmAlerta = sessionStorage.QTD_ALERTAS;
+            cardAlerta.innerHTML = `<div class="box-cardAlerta">
+                    <div class="titulo-pai">
+                        <div class="titulo-alerta">
+                            <img src="../assets/svg/alertas/warning.png">
+                            <span>ALERTA</span>
+                        </div>
+                        <div class="fecharCard">
+                            <span onclick="fecharAlerta()">X</span>
+                        </div>
+                    </div>
+                    <div class="corpo-alerta">
+                        <span><span>${qtdServidoresEmAlerta}</span> Alertas Críticos</span>
+                        <a href="dashboard.html">Clique aqui para ver informações dos servidores!</a>
+                    </div>
+                </div>`
+        }
         if (sessionStorage.FK_FUNCAO != 1) {
             const divRelatorios = document.getElementById("div_relatorios");
             divRelatorios.style.display = "none";
@@ -405,127 +427,127 @@
     // Criação dos Gráficos Aqui!!
 
     // Buscando ID dos gŕaficos e criando variáveis deles
-    
+
     const labelTEMPO = [];
     const labelRAM = [];
     const dados_RAM = [];
     const labelSWAP = [];
     const dados_SWAP = [];
 
-var id_servidor = 4;
+    var id_servidor = 4;
 
-async function carregarJSON() {
-    try {
-        const resposta = await fetch('/s3/buscar_RAM');
+    async function carregarJSON() {
+        try {
+            const resposta = await fetch('/s3/buscar_RAM');
 
-        if (!resposta.ok) {
-            throw new Error(`Erro na requisição: ${resposta.status}`);
-        }
+            if (!resposta.ok) {
+                throw new Error(`Erro na requisição: ${resposta.status}`);
+            }
 
-        const respostaJSON = await resposta.json();
-        const dados = Array.isArray(respostaJSON) ? respostaJSON : [respostaJSON];
+            const respostaJSON = await resposta.json();
+            const dados = Array.isArray(respostaJSON) ? respostaJSON : [respostaJSON];
 
-        if (!dados.length) {
-            console.warn('Nenhum dado recebido para o gráfico');
-            return;
-        }
+            if (!dados.length) {
+                console.warn('Nenhum dado recebido para o gráfico');
+                return;
+            }
 
-        dados.sort(function (a, b) {
-            return a.timestamp.localeCompare(b.timestamp);
-        });
+            dados.sort(function (a, b) {
+                return a.timestamp.localeCompare(b.timestamp);
+            });
 
-        const ultimos_10Registros = dados.slice(-10);
+            const ultimos_10Registros = dados.slice(-10);
 
-        if (!ultimos_10Registros.length) {
-            console.warn('Não há registros suficientes para a plotagem do gráfico');
-            return;
-        }
+            if (!ultimos_10Registros.length) {
+                console.warn('Não há registros suficientes para a plotagem do gráfico');
+                return;
+            }
 
-        const ultimo_Registro = ultimos_10Registros[ultimos_10Registros.length - 1];
+            const ultimo_Registro = ultimos_10Registros[ultimos_10Registros.length - 1];
 
-        document.getElementById("tendencia_min").innerText =
-            ultimo_Registro.tendencia_ram_por_minuto;
+            document.getElementById("tendencia_min").innerText =
+                ultimo_Registro.tendencia_ram_por_minuto;
 
-        document.getElementById("Valor_RAM").innerHTML =
-            ultimo_Registro.ram_percent + "%";
-        document.getElementById("Projecao_RAM").innerHTML =
-            ultimo_Registro.proj1 + "%";
+            document.getElementById("Valor_RAM").innerHTML =
+                ultimo_Registro.ram_percent + "%";
+            document.getElementById("Projecao_RAM").innerHTML =
+                ultimo_Registro.proj1 + "%";
 
-        document.getElementById("Tempo_ETA").innerHTML =
-            ultimo_Registro.ETA;
+            document.getElementById("Tempo_ETA").innerHTML =
+                ultimo_Registro.ETA;
 
-        document.getElementById("Correlacao_RAM").innerHTML =
-            ultimo_Registro.correlacao_ram_swap;
+            document.getElementById("Correlacao_RAM").innerHTML =
+                ultimo_Registro.correlacao_ram_swap;
 
-        const tendencia = ultimo_Registro.tendencia_ram_por_hora;
+            const tendencia = ultimo_Registro.tendencia_ram_por_hora;
 
-        if (tendencia > 0) {
-            document.getElementById("tendencia_hora").innerHTML =
-                ` Subindo • ${tendencia} %/h`;
-        } else {
-            document.getElementById("tendencia_hora").innerHTML =
-                ` Estável • ${tendencia} %/h`;
-        }
+            if (tendencia > 0) {
+                document.getElementById("tendencia_hora").innerHTML =
+                    ` Subindo • ${tendencia} %/h`;
+            } else {
+                document.getElementById("tendencia_hora").innerHTML =
+                    ` Estável • ${tendencia} %/h`;
+            }
 
-        const COR_RAM = '#22c55e';
-        if (ultimo_Registro.correlacao_ram_swap >= 0.7) {
-            document.getElementById("Correlacao_dale").innerHTML =
-                "Forte";
-            document.getElementById("Correlacao_RAM").style.color = "#ef4444";
-        } else if (ultimo_Registro.correlacao_ram_swap >= 0.4) {
-            document.getElementById("Correlacao_dale").innerHTML =
-                "Moderada";
-            document.getElementById("Correlacao_RAM").style.color = "#f59e0b";
-        } else {
-            document.getElementById("Correlacao_dale").innerHTML =
-                "Fraca";
-            document.getElementById("Correlacao_RAM").style.color = "#22c55e";
-        }
+            const COR_RAM = '#22c55e';
+            if (ultimo_Registro.correlacao_ram_swap >= 0.7) {
+                document.getElementById("Correlacao_dale").innerHTML =
+                    "Forte";
+                document.getElementById("Correlacao_RAM").style.color = "#ef4444";
+            } else if (ultimo_Registro.correlacao_ram_swap >= 0.4) {
+                document.getElementById("Correlacao_dale").innerHTML =
+                    "Moderada";
+                document.getElementById("Correlacao_RAM").style.color = "#f59e0b";
+            } else {
+                document.getElementById("Correlacao_dale").innerHTML =
+                    "Fraca";
+                document.getElementById("Correlacao_RAM").style.color = "#22c55e";
+            }
 
-        let etaBruto = ultimo_Registro.ETA; 
-        let minutosTotais = 0;
+            let etaBruto = ultimo_Registro.ETA;
+            let minutosTotais = 0;
 
-        let textoLimpo = etaBruto.replace("min", "").trim();
+            let textoLimpo = etaBruto.replace("min", "").trim();
 
-        if (textoLimpo.includes("h")) {
-        let partes = textoLimpo.split("h");
-    
-        let horas = Number(partes[0].trim());
-        let minutos = Number(partes[1].trim()); 
-    
-            minutosTotais = (horas * 60) + minutos;
-        } else {
-            minutosTotais = Number(textoLimpo);
-        }
+            if (textoLimpo.includes("h")) {
+                let partes = textoLimpo.split("h");
 
-        if (minutosTotais.ETA <= 15) {
-            document.getElementById("Tempo_ETA").style.color = "#ef4444";
-        } else if (minutosTotais.ETA <= 60) {
-            document.getElementById("Tempo_ETA").style.color = "#f59e0b";
-        } else {
-            document.getElementById("Tempo_ETA").style.color = "#22c55e";
-        }
+                let horas = Number(partes[0].trim());
+                let minutos = Number(partes[1].trim());
 
-        if(ultimo_Registro.tendencia_ram_por_minuto <= 0.1){
-            document.getElementById("tendencia_min").style.color = "#22c55e";
-        } else if (ultimo_Registro.tendencia_ram_por_minuto <= 0.5) {
-            document.getElementById("tendencia_min").style.color = "#f59e0b";
-        } else {
-            document.getElementById("tendencia_min").style.color = "#ef4444";
-        }
+                minutosTotais = (horas * 60) + minutos;
+            } else {
+                minutosTotais = Number(textoLimpo);
+            }
 
-        const labelsHistorico = [];
-        const historicoRAM = [];
-        const historicoSWAP = [];
+            if (minutosTotais.ETA <= 15) {
+                document.getElementById("Tempo_ETA").style.color = "#ef4444";
+            } else if (minutosTotais.ETA <= 60) {
+                document.getElementById("Tempo_ETA").style.color = "#f59e0b";
+            } else {
+                document.getElementById("Tempo_ETA").style.color = "#22c55e";
+            }
 
-        for (let i = 0; i < ultimos_10Registros.length; i++) {
-            const registro = ultimos_10Registros[i];
+            if (ultimo_Registro.tendencia_ram_por_minuto <= 0.1) {
+                document.getElementById("tendencia_min").style.color = "#22c55e";
+            } else if (ultimo_Registro.tendencia_ram_por_minuto <= 0.5) {
+                document.getElementById("tendencia_min").style.color = "#f59e0b";
+            } else {
+                document.getElementById("tendencia_min").style.color = "#ef4444";
+            }
 
-            labelsHistorico.push(registro.hora_registro);
-            historicoRAM.push(Number(registro.ram_percent));
-            historicoSWAP.push(Number(registro.swap_percent));
-            
-            document.getElementById("resultado-ultimas-amostras").innerHTML += `
+            const labelsHistorico = [];
+            const historicoRAM = [];
+            const historicoSWAP = [];
+
+            for (let i = 0; i < ultimos_10Registros.length; i++) {
+                const registro = ultimos_10Registros[i];
+
+                labelsHistorico.push(registro.hora_registro);
+                historicoRAM.push(Number(registro.ram_percent));
+                historicoSWAP.push(Number(registro.swap_percent));
+
+                document.getElementById("resultado-ultimas-amostras").innerHTML += `
                 <div class="info-amostras">
                     <div class="infos-escrita-amostras">
                         <p>${registro.hora_registro}</p>
@@ -536,126 +558,126 @@ async function carregarJSON() {
                     </div>
                 </div>
             `;
-        }
-
-        const projecoes_RAM = [];
-        for (let i = 1; i <= 5; i++) {
-            const valor = ultimo_Registro["proj" + i];
-
-            if (valor !== null && valor !== undefined && valor !== "") {
-                projecoes_RAM.push(Number(valor));
             }
-        }
 
-        const labels_Futuros = [];
-        for (let i = 1; i <= projecoes_RAM.length; i++) {
-            labels_Futuros.push("P+" + i);
-        }
+            const projecoes_RAM = [];
+            for (let i = 1; i <= 5; i++) {
+                const valor = ultimo_Registro["proj" + i];
 
-        const labelsGrafico1 = [];
+                if (valor !== null && valor !== undefined && valor !== "") {
+                    projecoes_RAM.push(Number(valor));
+                }
+            }
 
-        for (let i = 0; i < labelsHistorico.length; i++) {
-            labelsGrafico1.push(labelsHistorico[i]);
-        }
+            const labels_Futuros = [];
+            for (let i = 1; i <= projecoes_RAM.length; i++) {
+                labels_Futuros.push("P+" + i);
+            }
 
-        for (let i = 0; i < labels_Futuros.length; i++) {
-            labelsGrafico1.push(labels_Futuros[i]);
-        }
+            const labelsGrafico1 = [];
 
-        const dados_RAM = [];
+            for (let i = 0; i < labelsHistorico.length; i++) {
+                labelsGrafico1.push(labelsHistorico[i]);
+            }
 
-        for (let i = 0; i < historicoRAM.length; i++) {
-            dados_RAM.push(historicoRAM[i]);
-        }
+            for (let i = 0; i < labels_Futuros.length; i++) {
+                labelsGrafico1.push(labels_Futuros[i]);
+            }
 
-        for (let i = 0; i < projecoes_RAM.length; i++) {
-            dados_RAM.push(projecoes_RAM[i]);
-        }
+            const dados_RAM = [];
 
-        const dados_SWAP = [];
+            for (let i = 0; i < historicoRAM.length; i++) {
+                dados_RAM.push(historicoRAM[i]);
+            }
 
-        for (let i = 0; i < historicoSWAP.length; i++) {
-            dados_SWAP.push(historicoSWAP[i]);
-        }
+            for (let i = 0; i < projecoes_RAM.length; i++) {
+                dados_RAM.push(projecoes_RAM[i]);
+            }
 
-        for (let i = 0; i < projecoes_RAM.length; i++) {
-            dados_SWAP.push(null);
-        }
+            const dados_SWAP = [];
 
-        const inicioPrevisao = historicoRAM.length - 1;
+            for (let i = 0; i < historicoSWAP.length; i++) {
+                dados_SWAP.push(historicoSWAP[i]);
+            }
 
-        const faixasNomes = [
-            "10-20%",
-            "20-30%",
-            "30-40%",
-            "40-50%",
-            "50-60%",
-            "60-70%",
-            "70-80%",
-            "80-90%",
-            "90-100%"
-        ];
+            for (let i = 0; i < projecoes_RAM.length; i++) {
+                dados_SWAP.push(null);
+            }
 
-        const faixasChaves = [
-            "ram_10_20",
-            "ram_20_30",
-            "ram_30_40",
-            "ram_40_50",
-            "ram_50_60",
-            "ram_60_70",
-            "ram_70_80",
-            "ram_80_90",
-            "ram_90_100"
-        ];
+            const inicioPrevisao = historicoRAM.length - 1;
 
-        const respostaLimite = await fetch(`/componente/pegarLimiteRAM/${id_servidor}`);
-        const LimiteRAM = await respostaLimite.json();
-        const limiteRAM = Number(LimiteRAM[0].valor_max_critico);
-        const atencaoRAM = limiteRAM - 20;
+            const faixasNomes = [
+                "10-20%",
+                "20-30%",
+                "30-40%",
+                "40-50%",
+                "50-60%",
+                "60-70%",
+                "70-80%",
+                "80-90%",
+                "90-100%"
+            ];
 
-        let Limite_critico_RAM = []
-        let Limite_atencao_RAM = []
+            const faixasChaves = [
+                "ram_10_20",
+                "ram_20_30",
+                "ram_30_40",
+                "ram_40_50",
+                "ram_50_60",
+                "ram_60_70",
+                "ram_70_80",
+                "ram_80_90",
+                "ram_90_100"
+            ];
 
-        const dadosHistograma = [];
-        const coresHistograma = [];
+            const respostaLimite = await fetch(`/componente/pegarLimiteRAM/${id_servidor}`);
+            const LimiteRAM = await respostaLimite.json();
+            const limiteRAM = Number(LimiteRAM[0].valor_max_critico);
+            const atencaoRAM = limiteRAM - 20;
 
-        for (let i = 0; i < faixasChaves.length; i++) {
-            const valor = Number(ultimo_Registro[faixasChaves[i]]) || 0;
-            dadosHistograma.push(valor);
+            let Limite_critico_RAM = []
+            let Limite_atencao_RAM = []
 
-            if (i <= 2) {
-                coresHistograma.push("rgba(34, 197, 94, 0.7)");   
-            } else if (i <= 4) {
-                coresHistograma.push("rgba(250, 204, 21, 0.7)");  
-            } else if (i <= 6) {
-                coresHistograma.push("rgba(249, 115, 22, 0.7)");  
+            const dadosHistograma = [];
+            const coresHistograma = [];
+
+            for (let i = 0; i < faixasChaves.length; i++) {
+                const valor = Number(ultimo_Registro[faixasChaves[i]]) || 0;
+                dadosHistograma.push(valor);
+
+                if (i <= 2) {
+                    coresHistograma.push("rgba(34, 197, 94, 0.7)");
+                } else if (i <= 4) {
+                    coresHistograma.push("rgba(250, 204, 21, 0.7)");
+                } else if (i <= 6) {
+                    coresHistograma.push("rgba(249, 115, 22, 0.7)");
+                } else {
+                    coresHistograma.push("rgba(239, 68, 68, 0.7)");
+                }
+            }
+
+            const ctxRAM = document.getElementById('grafico01').getContext('2d');
+            const ctxHistograma = document.getElementById('grafico02').getContext('2d');
+
+            if (ultimo_Registro.ram_percent >= limiteRAM) {
+                document.getElementById("Valor_RAM").style.color = "#ef4444";
+            } else if (ultimo_Registro.ram_percent >= atencaoRAM) {
+                document.getElementById("Valor_RAM").style.color = "#f59e0b";
             } else {
-                coresHistograma.push("rgba(239, 68, 68, 0.7)");   
+                document.getElementById("Valor_RAM").style.color = "#22c55e";
             }
-        }
 
-        const ctxRAM = document.getElementById('grafico01').getContext('2d');
-        const ctxHistograma = document.getElementById('grafico02').getContext('2d');
+            if (ultimo_Registro.proj1 >= limiteRAM) {
+                document.getElementById("Projecao_RAM").style.color = "#ef4444";
+            } else if (ultimo_Registro.proj1 >= atencaoRAM) {
+                document.getElementById("Projecao_RAM").style.color = "#f59e0b";
+            } else {
+                document.getElementById("Projecao_RAM").style.color = "#22c55e";
+            }
 
-        if (ultimo_Registro.ram_percent >= limiteRAM) {
-            document.getElementById("Valor_RAM").style.color = "#ef4444";
-        } else if (ultimo_Registro.ram_percent >= atencaoRAM) {
-            document.getElementById("Valor_RAM").style.color = "#f59e0b";
-        } else {
-            document.getElementById("Valor_RAM").style.color = "#22c55e";
-        }
+            let COR_LINHA_RAM = '#22c55e'
+            let COR_GRADIENTE_RAM = 'rgba(34, 197, 94, 0.4)'
 
-        if (ultimo_Registro.proj1 >= limiteRAM) {
-            document.getElementById("Projecao_RAM").style.color = "#ef4444";
-        } else if (ultimo_Registro.proj1 >= atencaoRAM) {
-            document.getElementById("Projecao_RAM").style.color = "#f59e0b";
-        } else {
-            document.getElementById("Projecao_RAM").style.color = "#22c55e";
-        }
-
-        let COR_LINHA_RAM = '#22c55e'
-        let COR_GRADIENTE_RAM ='rgba(34, 197, 94, 0.4)'
-        
             if (ultimo_Registro.ram_percent >= limiteRAM) {
                 COR_LINHA_RAM = '#ef4444';
                 COR_GRADIENTE_RAM = 'rgba(239, 68, 68, 0.4)';
@@ -673,189 +695,189 @@ async function carregarJSON() {
                 document.getElementById("id_ram").src = "../assets/luiz/vector-verde-svgrepo-com.svg";
             }
 
-        const gradienteRAM = ctxRAM.createLinearGradient(0, 0, 0, 400);
-        gradienteRAM.addColorStop(0, COR_GRADIENTE_RAM);
-        gradienteRAM.addColorStop(1, 'rgba(29, 32, 37, 0)');
+            const gradienteRAM = ctxRAM.createLinearGradient(0, 0, 0, 400);
+            gradienteRAM.addColorStop(0, COR_GRADIENTE_RAM);
+            gradienteRAM.addColorStop(1, 'rgba(29, 32, 37, 0)');
 
-        const gradienteSWAP = ctxRAM.createLinearGradient(0, 0, 0, 400);
-        gradienteSWAP.addColorStop(0, 'rgba(59, 130, 246, 0.3)');
-        gradienteSWAP.addColorStop(1, 'rgba(29, 32, 37, 0)');
+            const gradienteSWAP = ctxRAM.createLinearGradient(0, 0, 0, 400);
+            gradienteSWAP.addColorStop(0, 'rgba(59, 130, 246, 0.3)');
+            gradienteSWAP.addColorStop(1, 'rgba(29, 32, 37, 0)');
 
-        chartRAM = new Chart(ctxRAM, {
-    type: 'line',
-    data: {
-        labels: labelsGrafico1,
-        datasets: [
-            {
-                label: 'RAM (%)',
-                data: dados_RAM,
-                fill: true,
-                backgroundColor: gradienteRAM,
-                borderColor: COR_LINHA_RAM,
-                borderWidth: 2,
-                tension: 0.4,
-                pointRadius: 4,
-                pointHoverRadius: 6,
+            chartRAM = new Chart(ctxRAM, {
+                type: 'line',
+                data: {
+                    labels: labelsGrafico1,
+                    datasets: [
+                        {
+                            label: 'RAM (%)',
+                            data: dados_RAM,
+                            fill: true,
+                            backgroundColor: gradienteRAM,
+                            borderColor: COR_LINHA_RAM,
+                            borderWidth: 2,
+                            tension: 0.4,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
 
-                pointBackgroundColor: function (ctx) {
-                    return ctx.dataIndex > inicioPrevisao
-                        ? '#999999'
-                        : COR_LINHA_RAM;
-                },
-                pointBorderColor: function (ctx) {
-                    return ctx.dataIndex > inicioPrevisao
-                        ? '#999999'
-                        : COR_LINHA_RAM;
-                },
+                            pointBackgroundColor: function (ctx) {
+                                return ctx.dataIndex > inicioPrevisao
+                                    ? '#999999'
+                                    : COR_LINHA_RAM;
+                            },
+                            pointBorderColor: function (ctx) {
+                                return ctx.dataIndex > inicioPrevisao
+                                    ? '#999999'
+                                    : COR_LINHA_RAM;
+                            },
 
-                segment: {
-                    borderash: function (ctx) {
-                        return ctx.p0DataIndex >= inicioPrevisao
-                            ? [6, 6]
-                            : undefined;
-                    },
-                    borderColor: function (ctx) {
-                        return ctx.p0DataIndex >= inicioPrevisao
-                            ? '#999999'
-                            : COR_LINHA_RAM;
-                    }
-                }
-            },
-            {
-                label: 'SWAP (%)',
-                data: dados_SWAP,
-                fill: true,
-                backgroundColor: gradienteSWAP,
-                borderColor: '#2460fb',
-                borderWidth: 2,
-                tension: 0.4,
-                pointRadius: 4,
-                pointHoverRadius: 6,
-                pointBackgroundColor: '#2460fb',
-                pointBorderColor: '#2460fb',
-                spanGaps: false
-            },
-            {
-                label: 'LIMITE',
-                data: Array(labelsGrafico1.length).fill(limiteRAM),
-                borderColor: '#FF0000',
-                borderWidth: 2,
-                borderDash: [10, 5],
-                pointRadius: 0,
-                fill: false,
-                tension: 0
-            },
-            {
-                label: 'ATENÇÃO',
-                data: Array(labelsGrafico1.length).fill(atencaoRAM),
-                borderColor: '#f59e0b',
-                borderWidth: 2,
-                borderDash: [10, 5],
-                pointRadius: 0,
-                fill: false,
-                tension: 0  
-            }
-        ]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-            x: {
-                grid: {
-                    display: true,
-                    color: 'rgba(255, 255, 255, 0.1)',
-                    borderDash: [5, 5]
-                },
-                ticks: {
-                    color: '#94a3b8'
-                }
-            },
-            y: {
-                beginAtZero: true,
-                min: 0,
-                max: 100,
-                ticks: {
-                    stepSize: 25,
-                    color: '#94a3b8',
-                    callback: function (value) {
-                        return value + '%';
-                    }
-                },
-                grid: {
-                    display: true,
-                    color: 'rgba(255, 255, 255, 0.1)',
-                    borderDash: [5, 5]
-                }
-            }
-        },
-        plugins: {
-            legend: {
-                display: false
-            }
-        }
-    }
-});
-        chartHistograma = new Chart(ctxHistograma, {
-            type: 'bar',
-            data: {
-                labels: faixasNomes,
-                datasets: [{
-                    label: 'Frequência nos últimos 24 registros',
-                    data: dadosHistograma,
-                    backgroundColor: coresHistograma,
-                    borderColor: coresHistograma,
-                    borderWidth: 1,
-                    borderRadius: 4
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        grid: {
-                            display: false
-                        },
-                        ticks: {
-                            color: '#94a3b8'
-                        }
-                    },
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            stepSize: 1,
-                            color: '#94a3b8',
-                            callback: function (value) {
-                                return value + 'x';
+                            segment: {
+                                borderash: function (ctx) {
+                                    return ctx.p0DataIndex >= inicioPrevisao
+                                        ? [6, 6]
+                                        : undefined;
+                                },
+                                borderColor: function (ctx) {
+                                    return ctx.p0DataIndex >= inicioPrevisao
+                                        ? '#999999'
+                                        : COR_LINHA_RAM;
+                                }
                             }
                         },
-                        grid: {
-                            display: true,
-                            color: 'rgba(255, 255, 255, 0.1)',
-                            borderDash: [5, 5]
+                        {
+                            label: 'SWAP (%)',
+                            data: dados_SWAP,
+                            fill: true,
+                            backgroundColor: gradienteSWAP,
+                            borderColor: '#2460fb',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            pointRadius: 4,
+                            pointHoverRadius: 6,
+                            pointBackgroundColor: '#2460fb',
+                            pointBorderColor: '#2460fb',
+                            spanGaps: false
+                        },
+                        {
+                            label: 'LIMITE',
+                            data: Array(labelsGrafico1.length).fill(limiteRAM),
+                            borderColor: '#FF0000',
+                            borderWidth: 2,
+                            borderDash: [10, 5],
+                            pointRadius: 0,
+                            fill: false,
+                            tension: 0
+                        },
+                        {
+                            label: 'ATENÇÃO',
+                            data: Array(labelsGrafico1.length).fill(atencaoRAM),
+                            borderColor: '#f59e0b',
+                            borderWidth: 2,
+                            borderDash: [10, 5],
+                            pointRadius: 0,
+                            fill: false,
+                            tension: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            grid: {
+                                display: true,
+                                color: 'rgba(255, 255, 255, 0.1)',
+                                borderDash: [5, 5]
+                            },
+                            ticks: {
+                                color: '#94a3b8'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            min: 0,
+                            max: 100,
+                            ticks: {
+                                stepSize: 25,
+                                color: '#94a3b8',
+                                callback: function (value) {
+                                    return value + '%';
+                                }
+                            },
+                            grid: {
+                                display: true,
+                                color: 'rgba(255, 255, 255, 0.1)',
+                                borderDash: [5, 5]
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
                         }
                     }
+                }
+            });
+            chartHistograma = new Chart(ctxHistograma, {
+                type: 'bar',
+                data: {
+                    labels: faixasNomes,
+                    datasets: [{
+                        label: 'Frequência nos últimos 24 registros',
+                        data: dadosHistograma,
+                        backgroundColor: coresHistograma,
+                        borderColor: coresHistograma,
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
                 },
-                plugins: {
-                    legend: {
-                        display: false
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                color: '#94a3b8'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1,
+                                color: '#94a3b8',
+                                callback: function (value) {
+                                    return value + 'x';
+                                }
+                            },
+                            grid: {
+                                display: true,
+                                color: 'rgba(255, 255, 255, 0.1)',
+                                borderDash: [5, 5]
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
                     }
                 }
-            }
-        });
+            });
 
-    } catch (erro) {
-        console.error("Erro ao carregar os gráficos:", erro);
+        } catch (erro) {
+            console.error("Erro ao carregar os gráficos:", erro);
+        }
     }
-}
 
     // __________________________________________________________________________________
     // ==================================================================================
-    
-    
+
+
     let proximaAtualizacao;
-    
+
     window.onload = function () {
 
         const usuario = document.getElementById("usuario");

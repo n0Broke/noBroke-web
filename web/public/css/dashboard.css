@@ -3031,6 +3031,7 @@ h6 {
 .card-alertaGeral {
     display: flex;
     height: 95%;
+    width: 80%;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
@@ -3046,7 +3047,7 @@ h6 {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 35%;
+    width: 40%;
     height: 35%;
     margin-right: 2%;
     border-radius: 5px;
