@@ -11,7 +11,7 @@
     <script src="./js/sessao.js"></script>
     <script>
         (function () {
-            const modo = sessionStorage.getItem("MODO");
+            var modo = sessionStorage.getItem("MODO");
 
             if (modo == 1) {
                 document.documentElement.style.setProperty('--preto', '#F2F2F2');
@@ -363,14 +363,14 @@
 
 <script>
 
-    let proximaAtualizacao;
+    var proximaAtualizacao;
 
     window.onload = function () {
 
         verificarModo();
         carregarDados();
 
-        const usuario = document.getElementById("usuario");
+        var usuario = document.getElementById("usuario");
         usuario.innerHTML = `Olá <b>${sessionStorage.NOME_USUARIO}</b>, boas vindas.`;
 
     }
@@ -380,26 +380,26 @@
         document.getElementById("iconAtual").src
     }
 
-    const nomeCompleto = sessionStorage.NOME_USUARIO
-    // const partes = nomeCompleto.trim().split(" ");
-    // const primeiroNome = partes[0];
+    var nomeCompleto = sessionStorage.NOME_USUARIO
+    // var partes = nomeCompleto.trim().split(" ");
+    // var primeiroNome = partes[0];
     // usuario.innerHTML = primeiroNome;
     // cargoFunc.innerHTML = sessionStorage.FUNCAO;
 
-    const root = document.documentElement;
-    const imgModo = document.getElementById("imgModo");
-    const imgLogo = document.getElementById("imgLogo");
-    const imgUser = document.getElementById("imgUser");
-    const logoAlerta = document.getElementById("logoAlerta");
-    const sidebar = document.getElementById("div_lateralAberta");
+    var root = document.documentElement;
+    var imgModo = document.getElementById("imgModo");
+    var imgLogo = document.getElementById("imgLogo");
+    var imgUser = document.getElementById("imgUser");
+    var logoAlerta = document.getElementById("logoAlerta");
+    var sidebar = document.getElementById("div_lateralAberta");
 
 
-    let modoEscuro = false;
+    var modoEscuro = false;
 
     imgModo.addEventListener("click", mudarModo);
 
     function fecharAbrirLateral() {
-        const conteudo = document.getElementById("telaPrincipal");
+        var conteudo = document.getElementById("telaPrincipal");
 
         sidebar.classList.toggle("compacta");
         conteudo.classList.toggle("expandido");
@@ -484,7 +484,7 @@
         }
 
         if (sessionStorage.FK_FUNCAO != 1) {
-            const divRelatorios = document.getElementById("div_relatorios");
+            var divRelatorios = document.getElementById("div_relatorios");
             divRelatorios.style.display = "none";
             sessionStorage.FUNCAO = "Analista de Infra";
         } else {
@@ -492,7 +492,7 @@
         }
     }
 
-    const configBase = {
+    var configBase = {
         responsive: true,
         plugins: {
             legend: { display: false }
@@ -515,11 +515,11 @@
 
     async function carregarDados() {
 
-        const resposta = await fetch("/s3/client");
+        var resposta = await fetch("/s3/client");
 
-        const dados = await resposta.json();
+        var dados = await resposta.json();
 
-        const dadosServidor = [];
+        var dadosServidor = [];
 
         for (let i = 0; i < dados.length; i++) {
 
@@ -531,7 +531,9 @@
 
         }
 
-        const ultimo = dadosServidor[dadosServidor.length - 1];
+        var ultimo = dadosServidor[dadosServidor.length - 1];
+
+
         document.getElementById("server-name").innerText = ultimo.home_broker;
         document.getElementById("kpiVolume").innerText = ultimo.total_volume;
         document.getElementById("kpiLatencia").innerText = ultimo.latencia_p95_ordens + " ms";
@@ -560,9 +562,9 @@
 
 
 
-        const labels = [];
+        var labels = [];
 
-        for (let i = 0; i < dadosServidor.length; i++) {
+        for (var i = 0; i < dadosServidor.length; i++) {
 
             labels.push(
                 dadosServidor[i].timestamp.split(" ")[1].slice(0, 5)
@@ -570,92 +572,78 @@
 
         }
 
-        const volume = []
+        var volume = []
 
-        for (let i = 0; i < dadosServidor.length; i++) {
+        for (var i = 0; i < dadosServidor.length; i++) {
 
             volume.push(dadosServidor[i].total_volume);
 
         }
 
-        const latencia = []
+        var latencia = []
 
-        for (let i = 0; i < dadosServidor.length; i++) {
+        for (var i = 0; i < dadosServidor.length; i++) {
 
             latencia.push(dadosServidor[i].latencia_p95_ordens);
 
         }
 
-        const ordens = [];
+        var ordens = [];
 
-        for (let i = 0; i < dadosServidor.length; i++) {
+        for (var i = 0; i < dadosServidor.length; i++) {
             if (dadosServidor[i].categoria == "ordens") {
                 ordens.push(dadosServidor[i]);
             }
         }
 
-        const sucesso = ultimo.qtd_sucesso;
-        const erroNegocio = ultimo.qtd_erro_cliente;
-        const erroTecnico = ultimo.qtd_erro_servidor;
+        var sucesso = ultimo.qtd_sucesso;
+        var erroNegocio = ultimo.qtd_erro_cliente;
+        var erroTecnico = ultimo.qtd_erro_servidor;
 
-        const respostaComponentes = await fetch(`/componente/listarComponentes/${id_servidor}`);
+        var respostaComponentes = await fetch(`/componente/listarComponentes/${id_servidor}`);
 
-        const componentes = await respostaComponentes.json();
+        var componentes = await respostaComponentes.json();
 
-        const erros5xxLinha = []
-        let limiteAtencaoVolumeLista = [];
-        let limiteCriticoVolumeLista = [];
-        let limiteAtencaoLatenciaLista = [];
-        let limiteCriticoLatenciaLista = [];
-        let limiteAtencao5xxLista = [];
-        let limiteCritico5xxLista = [];
+        var erros5xxLinha = []
+        var limiteAtencaoVolumeLista = [];
+        var limiteCriticoVolumeLista = [];
+        var limiteAtencaoLatenciaLista = [];
+        var limiteCriticoLatenciaLista = [];
+        var limiteAtencao5xxLista = [];
+        var limiteCritico5xxLista = [];
 
-        for (let i = 0; i < dadosServidor.length; i++) {
+        for (var i = 0; i < dadosServidor.length; i++) {
             erros5xxLinha.push(dadosServidor[i].contador_5xx);
 
         }
 
-        let limiteAtencaoVolume = 0;
-        let limiteCriticoVolume = 0;
-        let limiteAtencaoLatencia = 0;
-        let limiteCriticoLatencia = 0;
-        let limiteAtencao5xx = 0;
-        let limiteCritico5xx = 0;
+        var limiteAtencaoVolume = 0;
+        var limiteCriticoVolume = 0;
+        var limiteAtencaoLatencia = 0;
+        var limiteCriticoLatencia = 0;
+        var limiteAtencao5xx = 0;
+        var limiteCritico5xx = 0;
 
-        for (let i = 0; i < componentes.length; i++) {
+        for (var i = 0; i < componentes.length; i++) {
+            var nome = componentes[i].nome_componente.toLowerCase();
 
-            if (componentes[i].nome_componente == "Volume de requisições") {
-
-                limiteAtencaoVolume =
-                    componentes[i].valor_max_critico - 20;
-
-                limiteCriticoVolume =
-                    componentes[i].valor_max_critico;
-            }
-            if (componentes[i].nome_componente == "Latência p95 ordens") {
-
-                limiteAtencaoLatencia =
-                    componentes[i].valor_max_critico - 20;
-
-                limiteCriticoLatencia =
-                    componentes[i].valor_max_critico;
-            }
-            if (
-                componentes[i].nome_componente ==
-                "Distribuição de erros 5xx"
-            ) {
-
-                limiteAtencao5xx =
-                    componentes[i].valor_max_critico - 20;
-
-                limiteCritico5xx =
-                    componentes[i].valor_max_critico;
+            if (nome.includes("volume")) {
+                limiteAtencaoVolume = componentes[i].valor_max_critico - 20;
+                limiteCriticoVolume = componentes[i].valor_max_critico;
             }
 
+            if (nome.includes("latência") || nome.includes("latencia")) {
+                limiteAtencaoLatencia = componentes[i].valor_max_critico - 20;
+                limiteCriticoLatencia = componentes[i].valor_max_critico;
+            }
 
+            if (nome.includes("5xx")) {
+                limiteAtencao5xx = componentes[i].valor_max_critico - 20;
+                limiteCritico5xx = componentes[i].valor_max_critico;
+            }
         }
 
-        for (let i = 0; i < labels.length; i++) {
+        for (var i = 0; i < labels.length; i++) {
 
             limiteAtencaoVolumeLista.push(limiteAtencaoVolume);
             limiteCriticoVolumeLista.push(limiteCriticoVolume);
@@ -666,7 +654,43 @@
 
         }
 
-        const contagemStatus = {};
+        var corLinhaVolume = ''
+        var corLinhaLatencia = ''
+        var corLinhaErrosLinha = ''
+        var corLinhaErrosBarras = ''
+
+        var ultimoVolume = ultimo.total_volume
+        var ultimaLatencia = ultimo.latencia_p95_ordens
+        var ultimoErros5xx = ultimo.contador_5xx
+
+        if (ultimoVolume >= limiteCriticoVolumeLista[0]) {
+            corLinhaVolume = '#FF0000'
+        } else if (ultimoVolume >= limiteAtencaoVolumeLista[0]) {
+            corLinhaVolume = '#FFFF00'
+        } else {
+            corLinhaVolume = '#008000'
+        }
+
+        if (ultimaLatencia >= limiteCriticoLatenciaLista[0]) {
+            corLinhaLatencia = '#FF0000'
+        } else if (ultimaLatencia >= limiteAtencaoLatenciaLista[0]) {
+            corLinhaLatencia = '#FFFF00'
+        } else {
+            corLinhaLatencia = '#008000'
+        }
+
+        if (ultimoErros5xx >= limiteCritico5xxLista[0]) {
+            corLinhaErrosLinha = '#FF0000'
+            corLinhaErrosBarras = '#FF0000'
+        } else if (ultimoErros5xx >= limiteAtencao5xxLista[0]) {
+            corLinhaErrosLinha = '#FFFF00'
+            corLinhaErrosBarras = '#FFFF00'
+        } else {
+            corLinhaErrosLinha = '#008000'
+            corLinhaErrosBarras = '#008000'
+        }
+
+        var contagemStatus = {};
 
         new Chart(document.getElementById("graficoVolume"), {
             type: "line",
@@ -678,8 +702,8 @@
                     {
                         label: "Volume de Requisições",
                         data: volume,
-                        borderColor: "#2ea8ff",
-                        backgroundColor: "#2ea8ff",
+                        borderColor: corLinhaVolume,
+                        backgroundColor: corLinhaVolume,
                         tension: 0.3,
                         pointRadius: 4,
                         borderWidth: 3
@@ -687,7 +711,7 @@
                     {
                         label: "Limite atenção",
                         data: limiteAtencaoVolumeLista,
-                        borderColor: "#FFC222",
+                        borderColor: "#FFFF00",
                         borderDash: [8, 5],
                         pointRadius: 0,
                         borderWidth: 2
@@ -695,7 +719,7 @@
                     {
                         label: "Limite crítico",
                         data: limiteCriticoVolumeLista,
-                        borderColor: "#ff3045",
+                        borderColor: "#FF0000",
                         borderDash: [8, 5],
                         pointRadius: 0,
                         borderWidth: 2
@@ -728,7 +752,7 @@
                     {
                         label: "Latência P95",
                         data: latencia,
-                        borderColor: "#2ea8ff",
+                        borderColor: corLinhaLatencia,
                         tension: 0.3
                     },
                     {
@@ -806,7 +830,7 @@
                     {
                         label: "Erros 5xx",
                         data: erros5xxLinha,
-                        borderColor: "#ff3045",
+                        borderColor: corLinhaErrosLinha,
                         fill: false,
                         tension: 0.3,
                         pointRadius: 4,
@@ -846,9 +870,9 @@
             }
         });
 
-        const labelsStatus = ["500", "501", "502", "503", "504", "505"];
+        var labelsStatus = ["500", "501", "502", "503", "504", "505"];
 
-        const valoresStatus = [
+        var valoresStatus = [
             ultimo.erro_500,
             ultimo.erro_501,
             ultimo.erro_502,
@@ -866,7 +890,7 @@
                     {
                         label: "Quantidade por status 5xx",
                         data: valoresStatus,
-                        backgroundColor: ["#b86e14"],
+                        backgroundColor: corLinhaErrosBarras,
                         borderRadius: 8
                     },
                     {
