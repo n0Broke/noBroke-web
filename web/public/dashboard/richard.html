@@ -8,7 +8,7 @@
     <title>Dashboard | noBroke</title>
     <link rel="shortcut icon" href="../assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png" type="image/x-icon">
 
-    <script src="./js/sessao.js"></script>
+    <script src="../js/sessao.js"></script>
     <script>
         (function () {
             const modo = sessionStorage.getItem("MODO");
@@ -347,7 +347,7 @@
         // Pega o ID do servidor que está logado na sessão
         const idServidor = sessionStorage.ID_SERVIDOR;
 
-        
+
         const [respostaS3, respostaBanco] = await Promise.all([
             fetch("/s3/richard"),
             fetch(`/componente/listarComponentes/${idServidor}`)
@@ -360,22 +360,24 @@
         let limites = {
             latenciaMax: 100,
             latenciaMin: 10,
-            trafegoMax: 500 // Um único limite para Upload e Download
+            trafegoMax: 500
         };
 
-        // Pega nos dados do banco de dados os limites críticos de cada componente e atualiza o objeto "limites" com esses valores 
-        // (substituindo os valores padrão que estão definidos ali)
-        componentesLimiteBD.forEach(c => {
-            if (c.nome_componente == 'latencia_resposta_ms') {
-                limites.latenciaMax = c.valor_max_critico;
-                limites.latenciaMin = c.valor_min_critico;
-            } 
-            // No momento, os limites de upload e download são os mesmos, então ambos recebem o mesmo valor do 
-            // limite crítico definido para cada um dos componentes no banco de dados
-            else if (c.nome_componente == 'net_bytes_recv_gb' || c.nome_componente == 'net_bytes_sent_gb') {
-                limites.trafegoMax = c.valor_max_critico;
-            }
-        });
+        // Verificação de erros nas respostas do fetch e se os dados estão no formato esperado (array para componentesLimiteBD)
+        if (!respostaBanco.ok || !Array.isArray(componentesLimiteBD)) {
+            console.error("Erro Componentes BD:", componentesLimiteBD);
+        } else {
+            // Se der certo, ele percorre os componentesLimiteBD para encontrar os limites específicos de latência e tráfego,
+            // e atualiza o objeto limites com os valores do banco de dados, convertendo eles para Number (pois vão vir como string do banco)
+            componentesLimiteBD.forEach(c => {
+                if (c.nome_componente == 'latencia_resposta_ms') {
+                    limites.latenciaMax = Number(c.valor_max_critico); 
+                    limites.latenciaMin = Number(c.valor_min_critico); 
+                } else if (c.nome_componente == 'net_bytes_recv_gb' || c.nome_componente == 'net_bytes_sent_gb') {
+                    limites.trafegoMax = Number(c.valor_max_critico);  
+                }
+            });
+        }
 
         // Aqui ele pega os dados que forem referentes ao servidor logado (filtrando os dados do S3 usando o ID do servidor da sessão)
         const dadosServidor = dadosS3.filter(d => d.id_servidor == idServidor);
@@ -446,7 +448,7 @@
                     data: linhaMaxLatencia,
                     borderColor: '#DC2828', // Vermelho
                     borderDash: [5, 5],      // Linha Tracejada
-                    pointRadius: 0,          
+                    pointRadius: 0,
                     fill: false
                 },
                 {
@@ -469,8 +471,8 @@
                     y: {
                         beginAtZero: true,
                         min: 0,
-                        max: Math.max(160, limites.latenciaMax + 20),
-                        ticks: { stepSize: 20 },
+                        max: limites.latenciaMax + 100,
+                        ticks: { stepSize: 50 },
                         grid: {
                             display: true,
                             color: getComputedStyle(document.documentElement).getPropertyValue('--linhasChart')
@@ -508,8 +510,8 @@
                         label: 'Limite Crítico tráfego',
                         data: linhaTrafego,
                         borderColor: '#DC2828', // Vermelho
-                        borderDash: [5, 5],      
-                        pointRadius: 0,          
+                        borderDash: [5, 5],
+                        pointRadius: 0,
                         fill: false
                     }
                 ]
@@ -525,7 +527,7 @@
                     y: {
                         beginAtZero: true,
                         min: 0,
-                        max: Math.max(500, limites.trafegoMax + 100),
+                        max: limites.trafegoMax + 100,
                         ticks: { stepSize: 100 },
                         grid: {
                             display: true,
