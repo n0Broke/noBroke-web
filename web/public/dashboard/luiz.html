@@ -51,49 +51,65 @@
                 <div class="menu_centro">
                     <!-- Sidebar - Parte 01 -->
                     <div class="menu01">
-                        <h4 class="titulo_sidebar">PRINCIPAL</h4>
-                        <!-- Página atual -->
-                        <button class="btn-nobroke btn-active">
-                            <span class="icon">
-                                <img id="iconAtual" src="../assets/icon/icons-dashboard/painel-de-controle-hover.png">
-                            </span>
-                            <span class="texto">Dashboard</span>
-                        </button>
+                    <h4 class="titulo_sidebar">PRINCIPAL</h4>
+                    <!-- Página atual -->
+                    <a href="dashboard.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/painel-de-controle.png">
+                        </span>
+                        <span class="texto">Home</span>
+                    </a>
 
-                        <a href="Alertas.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/notificacao.png">
-                            </span>
-                            <span class="texto">Alertas</span>
-                        </a>
+                    <a href="matheus.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img id="iconAtual" src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
+                        </span>
+                        <span class="texto">Servidor</span>
+                    </a>
 
-                        <a href="monitoramento.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/heart-rate.png">
-                            </span>
-                            <span class="texto">Monitoramento</span>
-                        </a>
-                    </div>
-                    <!-- ============================ -->
-                    <div class="menu02">
-                        <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
+                    <button href="luiz.html" class="btn-nobroke btn-active">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/grafico-de-barras-hover.png">
+                        </span>
+                        <span class="texto">Previsão Ram</span>
+                    </button>
 
-                        <a href="Configurações.html" class="btn-nobroke">
+                    <div id="div_relatorios">
+                        <a href="richard.html" class="btn-nobroke">
                             <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/config.png">
+                                <img src="../assets/icon/icons-dashboard/escudo.png">
                             </span>
-                            <span class="texto">Configurações</span>
-                        </a>
-
-                        <a href="suporte.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
-                            </span>
-                            <span class="texto">Suporte</span>
+                            <span class="texto">Rede</span>
                         </a>
                     </div>
 
+                    <a href="isabela.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                        </span>
+                        <span class="texto">Requisicão</span>
+                    </a>
                 </div>
+                <!-- ============================ -->
+                <div class="menu02">
+                    <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
+
+                    <a href="Configurações.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/config.png">
+                        </span>
+                        <span class="texto">Configurações</span>
+                    </a>
+
+                    <a href="suporte.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
+                        </span>
+                        <span class="texto">Suporte</span>
+                    </a>
+                </div>
+            </div>
+
                 <div class="user-profile" onclick="window.location.href = 'Configurações.html?aba=perfil'">
                     <div class="profile-img">
                         <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil">
@@ -211,12 +227,16 @@
                                 <canvas id="grafico01"></canvas>
                             </div>
                             <div class="legenda-grafico">
-                                <img src="../assets/luiz/vector-azul-svgrepo-com.svg" alt="" id="id_ram">
-                                <span id="legenda_ram" style="color: #2460fb;" class="legenda-ram">RAM observada</span>
-                                <img src="../assets/luiz/vector-vinho-svgrepo-com.svg" alt="">
-                                <span class="legenda-ram" style="color: #be185d;">SWAP observada</span>
-                                <img src="../assets/luiz/vector-amarelo-svgrepo-com.svg" alt="">
-                                <span class="legenda-prevista">RAM prevista</span>
+                                <img src="../assets/luiz/vector-verde-svgrepo-com.svg" alt="" id="id_ram">
+                                <span id="legenda_ram" style="color: #22c55e;" class="legenda-ram">RAM observada</span>
+                                <img src="../assets/luiz/vector-azul-svgrepo-com.svg" alt="">
+                                <span class="legenda-ram" style="color: #2460fb;">SWAP observada</span>
+                                <img src="../assets/luiz/vector-cinza-svgrepo-com.svg" alt="">
+                                <span class="legenda-prevista" style="color: #999999;">RAM prevista</span>
+                                <img src="../assets/luiz/line-vermelho-dashed-svgrepo-com.svg" alt="">
+                                <span class="legenda-ram" style="color: #FF0000;">Limite Crítico</span>
+                                <img src="../assets/luiz/line-amarelo-dashed-svgrepo-com.svg" alt="">
+                                <span class="legenda-ram" style="color: #f59e0b;">Limite Crítico</span>
                             </div>
                         </div>
                     </div>
@@ -633,8 +653,28 @@ async function carregarJSON() {
             document.getElementById("Projecao_RAM").style.color = "#22c55e";
         }
 
+        let COR_LINHA_RAM = '#22c55e'
+        let COR_GRADIENTE_RAM ='rgba(34, 197, 94, 0.4)'
+        
+            if (ultimo_Registro.ram_percent >= limiteRAM) {
+                COR_LINHA_RAM = '#ef4444';
+                COR_GRADIENTE_RAM = 'rgba(239, 68, 68, 0.4)';
+                document.getElementById("legenda_ram").style.color = "#ef4444";
+                document.getElementById("id_ram").src = "../assets/luiz/vector-vermelho-svgrepo-com.svg";
+            } else if (ultimo_Registro.ram_percent >= atencaoRAM) {
+                COR_LINHA_RAM = '#f59e0b';
+                COR_GRADIENTE_RAM = 'rgba(250, 204, 21, 0.4)';
+                document.getElementById("legenda_ram").style.color = "#f59e0b";
+                document.getElementById("id_ram").src = "../assets/luiz/vector-amarelo-svgrepo-com.svg";
+            } else {
+                COR_LINHA_RAM = '#22c55e';
+                COR_GRADIENTE_RAM = 'rgba(34, 197, 94, 0.4)';
+                document.getElementById("legenda_ram").style.color = "#22c55e";
+                document.getElementById("id_ram").src = "../assets/luiz/vector-verde-svgrepo-com.svg";
+            }
+
         const gradienteRAM = ctxRAM.createLinearGradient(0, 0, 0, 400);
-        gradienteRAM.addColorStop(0, 'rgba(36,96,251, 0.4)');
+        gradienteRAM.addColorStop(0, COR_GRADIENTE_RAM);
         gradienteRAM.addColorStop(1, 'rgba(29, 32, 37, 0)');
 
         const gradienteSWAP = ctxRAM.createLinearGradient(0, 0, 0, 400);
@@ -651,7 +691,7 @@ async function carregarJSON() {
                 data: dados_RAM,
                 fill: true,
                 backgroundColor: gradienteRAM,
-                borderColor: '#2460fb',
+                borderColor: COR_LINHA_RAM,
                 borderWidth: 2,
                 tension: 0.4,
                 pointRadius: 4,
@@ -659,13 +699,13 @@ async function carregarJSON() {
 
                 pointBackgroundColor: function (ctx) {
                     return ctx.dataIndex > inicioPrevisao
-                        ? '#fbbf24'
-                        : '#2460fb';
+                        ? '#999999'
+                        : COR_LINHA_RAM;
                 },
                 pointBorderColor: function (ctx) {
                     return ctx.dataIndex > inicioPrevisao
-                        ? '#fbbf24'
-                        : '#2460fb';
+                        ? '#999999'
+                        : COR_LINHA_RAM;
                 },
 
                 segment: {
@@ -676,8 +716,8 @@ async function carregarJSON() {
                     },
                     borderColor: function (ctx) {
                         return ctx.p0DataIndex >= inicioPrevisao
-                            ? '#fbbf24'
-                            : '#2460fb';
+                            ? '#999999'
+                            : COR_LINHA_RAM;
                     }
                 }
             },
@@ -686,13 +726,13 @@ async function carregarJSON() {
                 data: dados_SWAP,
                 fill: true,
                 backgroundColor: gradienteSWAP,
-                borderColor: '#be185d',
+                borderColor: '#2460fb',
                 borderWidth: 2,
                 tension: 0.4,
                 pointRadius: 4,
                 pointHoverRadius: 6,
-                pointBackgroundColor: '#be185d',
-                pointBorderColor: '#be185d',
+                pointBackgroundColor: '#2460fb',
+                pointBorderColor: '#2460fb',
                 spanGaps: false
             },
             {
@@ -713,7 +753,7 @@ async function carregarJSON() {
                 borderDash: [10, 5],
                 pointRadius: 0,
                 fill: false,
-                tension: 0
+                tension: 0  
             }
         ]
     },
