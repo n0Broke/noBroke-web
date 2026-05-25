@@ -412,10 +412,10 @@
         try {
             const resposta = await fetch("/s3/pegarDados");
             const todosOsDados = await resposta.json();
-            if (sessionStorage.SERVIDOR.length != 0) {
-                const servidorAlvo = sessionStorage.getItem('SERVIDOR');
+            const servidorAlvo = sessionStorage.getItem('SERVIDOR');
+            console.log(servidorAlvo)
+            if (servidorAlvo != null && servidorAlvo != '' && servidorAlvo.length > 0) {
                 dados = todosOsDados.filter(servidor => servidor.home_broker === servidorAlvo);
-
                 div_modalServidor.style.display = 'none'
                 const ultimaColeta = dados[dados.length - 1]
                 var dataOriginal = ultimaColeta.timestamp;
@@ -457,6 +457,7 @@
                 console.log(limites);
                 console.log(componentesParaExibir)
             } else {
+                dados = todosOsDados;
                 div_modalServidor.style.display = 'flex'
                 div_modalServidor.innerHTML = `
                 <div class="pesquisa-servidor">
@@ -516,7 +517,7 @@
 
         if (servidorExiste) {
             div_resultadoBusca.innerHTML = `<br><span style="color: var(--branco);">Servidor encontrado, recarregando a tela...</span>`
-            sessionStorage.SERVIDOR = nomeServidorAtual;
+            sessionStorage.setItem('SERVIDOR', nomeServidorAtual);
             setTimeout(() => {
                 window.location.reload();
             }, 2000);
