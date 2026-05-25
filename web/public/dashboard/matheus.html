@@ -139,8 +139,13 @@
                     </div>
                     <span style="color: var(--branco);">Monitoramento de CPU, RAM, Disco e outros componentes.</span>
                 </div>
-                <div class="header-direita">
-                    <button class="botao-atualizar" onclick="window.location.reload()"><img
+                <div class="header-direita" style="display: flex; flex-direction: row; height: 40px; gap: 5px;">
+                    <button class="botao-atualizar" disabled
+                        style="background-color: var(--pretoClaro); border: 2px solid var(--bordas);">
+                        <span style="color: var(--branco);">Última coleta: <span id="horaUltimaColeta"
+                                style="font-weight: bold;">12:21</span></span>
+                    </button>
+                    <button class="botao-atualizar" style="cursor: pointer;" onclick="window.location.reload()"><img
                             src="../assets/svg/loading-svgrepo-com.svg" alt="" style="width: 22px; color: white;">
                         Atualizar</button>
                 </div>
@@ -266,17 +271,6 @@
                 </table>
             </div>
             <div id="div_modalServidor">
-                <div class="pesquisa-servidor">
-                    <h4 style="color: var(--branco);">Digite o nome do Servidor que deseja vizualizar:</h4>
-                    <div class="barra-pesquisa" style="display: flex; margin-top: 5%;">
-                        <input type="search" id="input_busca" list="lista_servidores"
-                            placeholder="🔍 Digite o nome do servidor">
-                        <button onclick="pesquisar()">Pesquisar</button>
-                    </div>
-                    <div>
-                        <datalist id="lista_servidores"></datalist>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -379,9 +373,6 @@
     }
 
     function verificarModo() {
-        if (sessionStorage.ID_SERVIDOR == null) {
-            div_modalServidor.style.display = "flex"
-        }
         if (sessionStorage.MODO == 1) {
             mudarModo()
         }
@@ -413,54 +404,125 @@
         cardAlerta.style.display = "none"
     }
 
-    let dados;
+    var dadosServidor = [];
+    var dados;
     var limites = [];
     carregarDados();
     async function carregarDados() {
-        const resposta = await fetch("/s3/pegarDados");
-        dados = await resposta.json();
-        const datalist = document.getElementById("lista_servidores");
-        let linhas = "";
+        try {
+            const resposta = await fetch("/s3/pegarDados");
+            const todosOsDados = await resposta.json();
+            if (sessionStorage.SERVIDOR.length != 0) {
+                const servidorAlvo = sessionStorage.getItem('SERVIDOR');
+                dados = todosOsDados.filter(servidor => servidor.home_broker === servidorAlvo);
+
+                div_modalServidor.style.display = 'none'
+                const ultimaColeta = dados[dados.length - 1]
+                var dataOriginal = ultimaColeta.timestamp;
+                const [dataPart, horaPart] = dataOriginal.split(" ");
+                const [ano, mes, dia] = dataPart.split("-");
+                const [hora, min] = horaPart.split(":");
+                const dataFormatada = `${hora}:${min} ${dia}/${mes}/${ano}`;
+                horaUltimaColeta.innerHTML = dataFormatada;
+
+                var limites = [
+                    ultimaColeta.limite_cpu_percent,
+                    ultimaColeta.limite_ram_percent,
+                    ultimaColeta.limite_disk_percent
+                ];
+
+                criarGrafico(dados, limites);
+                plotarDados(ultimaColeta, limites);
+                
+                var componentesParaExibir = [];
+                for (var chave in ultimaColeta) {
+                    if ((chave.includes("_percent") || chave.includes("_ms")) && !chave.includes("limite_")) {
+                        var valorAtual = ultimaColeta[chave];
+                        var chaveLimite = "limite_" + chave;
+                        var valorLimite = ultimaColeta[chaveLimite];
+                        var sufixo = "%";
+                        if (chave.includes("_ms")) {
+                            sufixo = "ms";
+                        }
+                        var nomeExibicao = chave.replace("_percent", "").replace("_ms", "").toUpperCase();
+                        componentesParaExibir.push({
+                            nome: nomeExibicao,
+                            valor: valorAtual + sufixo,
+                            limite: valorLimite + sufixo
+                        });
+                    }
+                }
+                criarLista(componentesParaExibir);
+                console.log(dadosServidor);
+                console.log(limites);
+                console.log(componentesParaExibir)
+            } else {
+                div_modalServidor.style.display = 'flex'
+                div_modalServidor.innerHTML = `
+                <div class="pesquisa-servidor">
+                    <h4 style="color: var(--branco);">Digite o nome do Servidor que deseja vizualizar:</h4>
+                    <div class="barra-pesquisa" style="display: flex; margin-top: 5%;">
+                        <input type="search" id="input_busca" list="lista_servidores"
+                            placeholder="🔍 Digite o nome do servidor">
+                        <button onclick="pesquisar()">Pesquisar</button>
+                    </div>
+                    <div id="div_resultadoBusca">
+
+                    </div>
+                    <div>
+                        <datalist id="lista_servidores"></datalist>
+                    </div>
+                </div>`
+                for (const item of dados) {
+                    if (item.home_broker == sessionStorage.SERVIDOR) {
+                        dadosServidor.push(item);
+                    }
+                }
+                const datalist = document.getElementById("lista_servidores");
+                let linhas = "";
+                const servidoresUnicos = new Set();
+                for (const item of dados) {
+                    if (item.home_broker) {
+                        servidoresUnicos.add(item.home_broker);
+                    }
+                }
+                for (const servidor of servidoresUnicos) {
+                    linhas += `<option value="${servidor}"></option>`;
+                }
+                datalist.innerHTML = linhas;
+            }
+        } catch (erro) {
+            console.error("Falha ao carregar dados do servidor:", erro.message);
+        }
+    }
+
+    function pesquisar() {
+        var nomePesquisa = input_busca.value
         const servidoresUnicos = new Set();
+        var nomeServidorAtual;
+        var servidorExiste = false
         for (const item of dados) {
             if (item.home_broker) {
                 servidoresUnicos.add(item.home_broker);
             }
         }
+
         for (const servidor of servidoresUnicos) {
-            linhas += `<option value="${servidor}"></option>`;
-        }
-        datalist.innerHTML = linhas;
-        const ultimaColeta = dados[dados.length - 1]
-        var limites = [
-            ultimaColeta.limite_cpu_percent,
-            ultimaColeta.limite_ram_percent,
-            ultimaColeta.limite_disk_percent
-        ];
-        var componentesParaExibir = [];
-        criarGrafico(dados, limites);
-        plotarDados(ultimaColeta, limites);
-        for (var chave in ultimaColeta) {
-            if ((chave.includes("_percent") || chave.includes("_ms")) && !chave.includes("limite_")) {
-                var valorAtual = ultimaColeta[chave];
-                var chaveLimite = "limite_" + chave;
-                var valorLimite = ultimaColeta[chaveLimite];
-                var sufixo = "%";
-                if (chave.includes("_ms")) {
-                    sufixo = "ms";
-                }
-                var nomeExibicao = chave.replace("_percent", "").replace("_ms", "").toUpperCase();
-                componentesParaExibir.push({
-                    nome: nomeExibicao,
-                    valor: valorAtual + sufixo,
-                    limite: valorLimite + sufixo
-                });
+            if (servidor == nomePesquisa) {
+                servidorExiste = true
+                nomeServidorAtual = servidor
             }
         }
-        criarLista(componentesParaExibir);
-        console.log(dados);
-        console.log(limites);
-        console.log(componentesParaExibir)
+
+        if (servidorExiste) {
+            div_resultadoBusca.innerHTML = `<br><span style="color: var(--branco);">Servidor encontrado, recarregando a tela...</span>`
+            sessionStorage.SERVIDOR = nomeServidorAtual;
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
+        } else {
+            div_resultadoBusca.innerHTML = `<br><span style="color: var(--branco);">Servidor não encontrado</span>`
+        }
     }
 
     function plotarDados(dados, limites) {
@@ -516,7 +578,7 @@
 
         for (i = 0; i < dadosRecentes.length; i++) {
             var registro = dadosRecentes[i];
-            labelsCPU.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
+            labelsCPU.push(`${registro.timestamp.split(' ')[1]}`);
             dataCPU.push(registro.cpu_percent);
             limiteCPU.push(limites[0])
         }
@@ -593,7 +655,7 @@
 
         for (i = 0; i < dadosRecentes.length; i++) {
             var registro = dadosRecentes[i];
-            labelsRAM.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
+            labelsRAM.push(`${registro.timestamp.split(' ')[1]}`);
             dataRAM.push(registro.ram_percent);
             limiteRAM.push(limites[1])
         }
@@ -669,7 +731,7 @@
 
         for (i = 0; i < dadosRecentes.length; i++) {
             var registro = dadosRecentes[i];
-            labelsDisco.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
+            labelsDisco.push(`${registro.timestamp.split(' ')[1]}`);
             dataDisco.push(registro.disk_percent);
             limiteDisco.push(limites[2])
         }
@@ -803,7 +865,7 @@
             var registro = dadosRecentes[i];
 
             if (registro.timestamp) {
-                labels.push(`${registro.timestamp.split(' ')[1].split(':')[1]}min`);
+                labels.push(`${registro.timestamp.split(' ')[1]}`);
             } else {
                 labels.push(`${i}min`);
             }

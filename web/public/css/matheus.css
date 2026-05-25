@@ -53,8 +53,26 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 200px;
-    width: 30%;
+    height: 300px;
+    width: 40%;
     background-color: var(--pretoClaro);
     border-radius: 8px;
+    font-size: 20px;
+}
+
+.barra-pesquisa{
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    gap: 5px;
+    flex-direction: row;
+}
+
+.barra-pesquisa input{
+    width: 100%;
+    font-size: 20px;
+}
+
+.barra-pesquisa button{
+    font-size: 20px;
 }
