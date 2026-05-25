@@ -29,336 +29,334 @@
 
     <link rel="icon" href="./assets/imgs-logo-nobroke/noBroke-menor-sem-fundo.png">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Importar o Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
-    <div class="container-fluid">
-        <div class="row min-vh-100">
-            <div class="col-12 col-md-3 col-lg-2 sidebar" id="div_lateralAberta">
-                <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
-                    <span>X</span>
-                </div>
-                <div class="logo-container">
-                    <img id="imgLogo" class="logo-dash img-fluid"
-                        src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
-                </div>
-                <!-- Side Bar - Botões -->
-                <div class="menu_centro">
-                    <!-- Sidebar - Parte 01 -->
-                    <div class="menu01">
-                        <h4 class="titulo_sidebar">PRINCIPAL</h4>
-                        <!-- Página atual -->
-                        <button class="btn-nobroke btn-active">
-                            <span class="icon">
-                                <img id="iconAtual" src="../assets/icon/icons-dashboard/painel-de-controle-hover.png">
-                            </span>
-                            <span class="texto">Dashboard</span>
-                        </button>
-
-                        <a href="servidores.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
-                            </span>
-                            <span class="texto">Servidores</span>
-                        </a>
-
-                        <a href="Alertas.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/notificacao.png">
-                            </span>
-                            <span class="texto">Alertas</span>
-                        </a>
-
-                        <div id="div_relatorios">
-                            <a href="produtividade.html" class="btn-nobroke">
-                                <span class="icon">
-                                    <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
-                                </span>
-                                <span class="texto">Equipe</span>
-                            </a>
-                        </div>
-
-                        <a href="monitoramento.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/heart-rate.png">
-                            </span>
-                            <span class="texto">Monitoramento</span>
-                        </a>
-                    </div>
-                    <!-- ============================ -->
-                    <div class="menu02">
-                        <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
-
-                        <a href="Configurações.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/config.png">
-                            </span>
-                            <span class="texto">Configurações</span>
-                        </a>
-
-                        <a href="suporte.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
-                            </span>
-                            <span class="texto">Suporte</span>
-                        </a>
-                    </div>
-
-                </div>
-                <div class="user-profile" onclick="window.location.href = 'Configurações.html?aba=perfil'">
-                    <div class="profile-img">
-                        <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil">
-                    </div>
-                    <div class="user-infos">
-                        <p class="username" id="usuario" style="color: var(--branco);"></p>
-                        <span class="cargo" id="cargoFunc" style="color: var(--branco);">Gerente de Infra</span>
-                    </div>
-                </div>
+<body onload="verificarModo()">
+    <div class="containerPai">
+        <div class="sidebar" id="div_lateralAberta">
+            <div class="botao-fechar" style="display: none;" onclick="fecharAbrirLateral()">
+                <span>X</span>
             </div>
-            <!-- Header 1-->
-            <div class="col-12 col-md-9 col-lg-10 conteudo-dash" id="telaPrincipal">
-                <div class="header-responsividade">
-                    <div>
-                        <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
-                            style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
-
-                        <span style="color: #7D8999;">
-                            Dashboard > Monitoramento HTTP
+            <div class="logo-container">
+                <img id="imgLogo" class="logo-dash img" src="../assets/imgs-logo-nobroke/noBroke-oficial-sem-fundo.png">
+            </div>
+            <!-- Side Bar - Botões -->
+            <div class="menu_centro">
+                <!-- Sidebar - Parte 01 -->
+                <div class="menu01">
+                    <h4 class="titulo_sidebar">PRINCIPAL</h4>
+                    <!-- Página atual -->
+                    <a href="dashboard.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/painel-de-controle.png">
                         </span>
+                        <span class="texto">Home</span>
+                    </a>
+
+                    <button class="btn-nobroke btn-active">
+                        <span class="icon">
+                            <img id="iconAtual" src="../assets/icon/icons-dashboard/servidores-de-hospedagem-hover.png">
+                        </span>
+                        <span class="texto">Servidor</span>
+                    </button>
+
+                    <a href="luiz.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                        </span>
+                        <span class="texto">Previsão Ram</span>
+                    </a>
+
+                    <div id="div_relatorios">
+                        <a href="richard.html" class="btn-nobroke">
+                            <span class="icon">
+                                <img src="../assets/icon/icons-dashboard/escudo.png">
+                            </span>
+                            <span class="texto">Rede</span>
+                        </a>
                     </div>
 
-                    <div id="iconeModo">
-                        <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
-                            style="width: 40px; cursor: pointer; margin-right: 20px;">
-                    </div>
+                    <a href="isabela.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/heart-rate.png">
+                        </span>
+                        <span class="texto">Requisicão</span>
+                    </a>
                 </div>
+                <!-- ============================ -->
+                <div class="menu02">
+                    <h4 class="titulo_sidebar">ADMINISTRAÇÃO</h4>
 
-                <!-- header 2 -->
-                <div class="header-http">
+                    <a href="Configurações.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/config.png">
+                        </span>
+                        <span class="texto">Configurações</span>
+                    </a>
 
-                    <div class="header-esquerdo">
-
-                        <div class="header-http-titulo">
-                            <h3 class="servidor-name" id="server-name"></h3>
-                        </div>
-
-                        <h3 class="descricao-http">
-                            Análise de requisições HTTP e impacto de incidentes
-                            de infraestrutura nas operações financeiras.
-                        </h3>
-
-                    </div>
-
-                    <div class="header-http-direita">
-
-                        <button class="botao-alerta">
-                            <img id="logoAlerta" src="../assets/svg/bell-svgrepo-com.svg" style="width: 22px;"
-                                onclick="window.location.href='Alertas.html'">
-
-                            Alertas
-                        </button>
-
-                    </div>
-
+                    <a href="suporte.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/ponto-de-interrogacao.png">
+                        </span>
+                        <span class="texto">Suporte</span>
+                    </a>
                 </div>
-
-                <hr style="width: 100%; color: #18191b; height: 1px;">
-
-                <!-- KPI -->
-                <div class="body-kpi">
-
-                    <!-- KPI 1 -->
-                    <div class="kpi-http">
-
-                        <div class="conteudo-kpi-esquerda">
-
-                            <p>Volume de requisições</p>
-
-                            <span id="kpiVolume" style="font-size: xx-large;"></span>
-
-                            <div class="legenda-kpi">
-                                <span id="variacaoVolume"> últimos 15 min</span>
-                            </div>
-
-                        </div>
-
-                        <div class="imagem-kpi-direita">
-                            <img src="../assets/isabela/elevacao.png">
-                        </div>
-
-                    </div>
-
-                    <!-- KPI 2 -->
-                    <div class="kpi-http">
-
-                        <div class="conteudo-kpi-esquerda">
-
-                            <p>Latência p95 ordens</p>
-
-                            <span id="kpiLatencia" style="font-size: xx-large;"></span>
-
-                            <div class="legenda-kpi">
-                                <span id="variacaoLatencia"> últimos 15 min</span>
-                            </div>
-
-                        </div>
-
-                        <div class="imagem-kpi-direita">
-                            <img src="../assets/isabela/instantaneo.png">
-                        </div>
-
-                    </div>
-
-                    <!-- KPI 3 -->
-                    <div class="kpi-http">
-
-                        <div class="conteudo-kpi-esquerda">
-
-                            <p>Ordens com sucesso</p>
-
-                            <span id="kpiSucesso" style="font-size: xx-large;"></span>
-
-                            <div class="legenda-kpi">
-                                <span id="variacaoSucesso"> últimos 15 min</span>
-                            </div>
-
-                        </div>
-
-                        <div class="imagem-kpi-direita">
-                            <img src="../assets/isabela/marca-de-verificacao.png">
-                        </div>
-
-                    </div>
-
-                    <!-- KPI 4 -->
-                    <div class="kpi-http">
-
-                        <div class="conteudo-kpi-esquerda">
-
-                            <p>Respostas HTTP 5xx</p>
-
-                            <span id="kpiOrdens" style="font-size: xx-large;"></span>
-
-                            <div class="legenda-kpi">
-                                <span id="variacao5xx"> últimos 15 min</span>
-                            </div>
-
-                        </div>
-
-                        <div class="imagem-kpi-direita">
-                            <img src="../assets/isabela/simbolo-de-alerta.png">
-                        </div>
-
-                    </div>
-
+                <!-- Fim dos Menus -->
+                <!-- ================================================================= -->
+                <!-- Parte do perfil -->
+            </div>
+            <div class="user-profile" onclick="window.location.href = 'Configurações.html?aba=perfil'">
+                <div class="profile-img">
+                    <img id="imgUser" src="../assets/icon/user-circle-svgrepo-com.svg" alt="Foto de perfil">
                 </div>
-
-                <!-- Graficos -->
-                <div class="body-graficos">
-
-                    <div class="grafico-http-grande">
-
-                        <div class="titulo-grafico">
-                            <h3>Volume de requisições HTTP</h3>
-                            <abbr
-                                title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
-                                    style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
-                        </div>
-
-                        <p>
-                            Picos correlacionados com janelas de stress de hardware
-                        </p>
-
-                        <canvas id="graficoVolume"></canvas>
-
-                    </div>
-
-                    <div class="grafico-http-pequeno">
-
-                        <div class="titulo-grafico">
-                            <h3>Latencia p95 - Ordens</h3>
-                            <abbr
-                                title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
-                                    style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
-                        </div>
-
-                        <p>
-                            Aumento sustentado indica degradação
-                        </p>
-
-
-                        <canvas id="graficoLatencia"></canvas>
-
-                    </div>
-
-                </div>
-
-
-                <div class="body-graficos">
-
-                    <div class="grafico-http-pequeno">
-
-                        <div class="titulo-grafico">
-                            <h3>Status das ordens</h3>
-                            <abbr
-                                title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
-                                    style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
-                        </div>
-
-                        <p>
-                            Negócio vs falha técnica
-                        </p>
-
-
-
-                        <canvas id="graficoStatus"></canvas>
-
-                    </div>
-
-                    <div class="grafico-http-pequeno">
-
-                        <div class="titulo-grafico">
-                            <h3>Distribuição de erros 5xx</h3>
-                            <abbr
-                                title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
-                                    style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
-                        </div>
-
-                        <p>
-                            Por código
-                        </p>
-
-
-
-                        <canvas id="graficoErrosBarras"></canvas>
-
-                    </div>
-
-                    <div class="grafico-http-pequeno">
-
-                        <div class="titulo-grafico">
-                            <h3>Distribuição de erros 5xx</h3>
-                            <abbr
-                                title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
-                                    style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
-                        </div>
-
-                        <p>
-                            Série temporal
-                        </p>
-
-
-
-                        <canvas id="graficoErrosLinha"></canvas>
-
-                    </div>
-
+                <div class="user-infos">
+                    <p class="username" id="usuario" style="color: var(--branco);">Douglas</p>
+                    <span class="cargo" id="cargoFunc" style="color: var(--branco);">Gerente de Infra</span>
                 </div>
             </div>
+        </div>
+        <!-- Header 1-->
+        <div class="conteudo-dash" id="telaPrincipal">
+            <div class="header-responsividade">
+                <div>
+                    <img src="../assets/svg/window-frame-svgrepo-com.svg" alt="dashboard-icon"
+                        style="width: 30px; cursor: pointer;" onclick="fecharAbrirLateral()">
+
+                    <span style="color: #7D8999;">
+                        Dashboard > Monitoramento HTTP
+                    </span>
+                </div>
+
+                <div id="iconeModo">
+                    <img id="imgModo" src="../assets/icon/icons-dashboard/brilho-do-sol.png"
+                        style="width: 40px; cursor: pointer; margin-right: 20px;">
+                </div>
+            </div>
+
+            <!-- header 2 -->
+            <div class="header-http">
+
+                <div class="header-esquerdo">
+
+                    <div class="header-http-titulo">
+                        <h3 class="servidor-name" id="server-name"></h3>
+                    </div>
+
+                    <h3 class="descricao-http">
+                        Análise de requisições HTTP e impacto de incidentes
+                        de infraestrutura nas operações financeiras.
+                    </h3>
+
+                </div>
+
+                <div class="header-http-direita">
+
+                    <button class="botao-alerta">
+                        <img id="logoAlerta" src="../assets/svg/bell-svgrepo-com.svg" style="width: 22px;"
+                            onclick="window.location.href='Alertas.html'">
+
+                        Alertas
+                    </button>
+
+                </div>
+
+            </div>
+
+            <hr style="width: 100%; color: #18191b; height: 1px;">
+
+            <!-- KPI -->
+            <div class="body-kpi">
+
+                <!-- KPI 1 -->
+                <div class="kpi-http">
+
+                    <div class="conteudo-kpi-esquerda">
+
+                        <p>Volume de requisições</p>
+
+                        <span id="kpiVolume" style="font-size: xx-large;"></span>
+
+                        <div class="legenda-kpi">
+                            <span id="variacaoVolume"> últimos 15 min</span>
+                        </div>
+
+                    </div>
+
+                    <div class="imagem-kpi-direita">
+                        <img src="../assets/isabela/elevacao.png">
+                    </div>
+
+                </div>
+
+                <!-- KPI 2 -->
+                <div class="kpi-http">
+
+                    <div class="conteudo-kpi-esquerda">
+
+                        <p>Latência p95 ordens</p>
+
+                        <span id="kpiLatencia" style="font-size: xx-large;"></span>
+
+                        <div class="legenda-kpi">
+                            <span id="variacaoLatencia"> últimos 15 min</span>
+                        </div>
+
+                    </div>
+
+                    <div class="imagem-kpi-direita">
+                        <img src="../assets/isabela/instantaneo.png">
+                    </div>
+
+                </div>
+
+                <!-- KPI 3 -->
+                <div class="kpi-http">
+
+                    <div class="conteudo-kpi-esquerda">
+
+                        <p>Ordens com sucesso</p>
+
+                        <span id="kpiSucesso" style="font-size: xx-large;"></span>
+
+                        <div class="legenda-kpi">
+                            <span id="variacaoSucesso"> últimos 15 min</span>
+                        </div>
+
+                    </div>
+
+                    <div class="imagem-kpi-direita">
+                        <img src="../assets/isabela/marca-de-verificacao.png">
+                    </div>
+
+                </div>
+
+                <!-- KPI 4 -->
+                <div class="kpi-http">
+
+                    <div class="conteudo-kpi-esquerda">
+
+                        <p>Respostas HTTP 5xx</p>
+
+                        <span id="kpiOrdens" style="font-size: xx-large;"></span>
+
+                        <div class="legenda-kpi">
+                            <span id="variacao5xx"> últimos 15 min</span>
+                        </div>
+
+                    </div>
+
+                    <div class="imagem-kpi-direita">
+                        <img src="../assets/isabela/simbolo-de-alerta.png">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Graficos -->
+            <div class="body-graficos">
+
+                <div class="grafico-http-grande">
+
+                    <div class="titulo-grafico">
+                        <h3>Volume de requisições HTTP</h3>
+                        <abbr
+                            title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
+                                style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                    </div>
+
+                    <p>
+                        Picos correlacionados com janelas de stress de hardware
+                    </p>
+
+                    <canvas id="graficoVolume"></canvas>
+
+                </div>
+
+                <div class="grafico-http-pequeno">
+
+                    <div class="titulo-grafico">
+                        <h3>Latencia p95 - Ordens</h3>
+                        <abbr
+                            title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
+                                style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                    </div>
+
+                    <p>
+                        Aumento sustentado indica degradação
+                    </p>
+
+
+                    <canvas id="graficoLatencia"></canvas>
+
+                </div>
+
+            </div>
+
+
+            <div class="body-graficos">
+
+                <div class="grafico-http-pequeno">
+
+                    <div class="titulo-grafico">
+                        <h3>Status das ordens</h3>
+                        <abbr
+                            title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
+                                style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                    </div>
+
+                    <p>
+                        Negócio vs falha técnica
+                    </p>
+
+
+
+                    <canvas id="graficoStatus"></canvas>
+
+                </div>
+
+                <div class="grafico-http-pequeno">
+
+                    <div class="titulo-grafico">
+                        <h3>Distribuição de erros 5xx</h3>
+                        <abbr
+                            title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
+                                style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                    </div>
+
+                    <p>
+                        Por código
+                    </p>
+
+
+
+                    <canvas id="graficoErrosBarras"></canvas>
+
+                </div>
+
+                <div class="grafico-http-pequeno">
+
+                    <div class="titulo-grafico">
+                        <h3>Distribuição de erros 5xx</h3>
+                        <abbr
+                            title="Volume de requisições gerais enviadas para o servidor atualizado de 15 em 15 minutos"><img
+                                style="width: 30px;" src="../assets/isabela/sinal-de-informacao.png" alt=""></abbr>
+                    </div>
+
+                    <p>
+                        Série temporal
+                    </p>
+
+
+
+                    <canvas id="graficoErrosLinha"></canvas>
+
+                </div>
+
+            </div>
+        </div>
 </body>
 
 <script>
@@ -370,8 +368,12 @@
         verificarModo();
         carregarDados();
 
-        var usuario = document.getElementById("usuario");
-        usuario.innerHTML = `Olá <b>${sessionStorage.NOME_USUARIO}</b>, boas vindas.`;
+        var nomeCompleto = sessionStorage.NOME_USUARIO;
+        var partes = nomeCompleto.trim().split(" ");
+        var primeiroNome = partes[0];
+
+        usuario.innerHTML = primeiroNome;
+        cargoFunc.innerHTML = sessionStorage.FUNCAO;
 
     }
 
@@ -482,14 +484,6 @@
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
         }
-
-        if (sessionStorage.FK_FUNCAO != 1) {
-            var divRelatorios = document.getElementById("div_relatorios");
-            divRelatorios.style.display = "none";
-            sessionStorage.FUNCAO = "Analista de Infra";
-        } else {
-            sessionStorage.FUNCAO = "Gestor de Infra";
-        }
     }
 
     var configBase = {
@@ -511,13 +505,15 @@
 
     // Inicio dash dinamica
 
-    var id_servidor = 3;
+    var id_servidor = null
 
     async function carregarDados() {
 
         var resposta = await fetch("/s3/client");
 
         var dados = await resposta.json();
+
+        id_servidor = dados[0].id_servidor;
 
         var dadosServidor = [];
 
