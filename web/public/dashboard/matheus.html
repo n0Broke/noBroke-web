@@ -48,34 +48,41 @@
                 <div class="menu01">
                     <h4 class="titulo_sidebar">PRINCIPAL</h4>
                     <!-- Página atual -->
-                    <button class="btn-nobroke btn-active">
+                    <a href="dashboard.html" class="btn-nobroke">
                         <span class="icon">
-                            <img id="iconAtual" src="../assets/icon/icons-dashboard/painel-de-controle-hover.png">
+                            <img src="../assets/icon/icons-dashboard/painel-de-controle.png">
                         </span>
                         <span class="texto">Home</span>
+                    </a>
+
+                    <button class="btn-nobroke btn-active">
+                        <span class="icon">
+                            <img id="iconAtual" src="../assets/icon/icons-dashboard/servidores-de-hospedagem-hover.png">
+                        </span>
+                        <span class="texto">Servidor</span>
                     </button>
 
-                    <a href="Alertas.html" class="btn-nobroke">
+                    <a href="luiz.html" class="btn-nobroke">
                         <span class="icon">
-                            <img src="../assets/icon/icons-dashboard/notificacao.png">
+                            <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
                         </span>
-                        <span class="texto">Alertas</span>
+                        <span class="texto">Previsão Ram</span>
                     </a>
 
                     <div id="div_relatorios">
-                        <a href="produtividade.html" class="btn-nobroke">
+                        <a href="richard.html" class="btn-nobroke">
                             <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                                <img src="../assets/icon/icons-dashboard/escudo.png">
                             </span>
-                            <span class="texto">Equipe</span>
+                            <span class="texto">Rede</span>
                         </a>
                     </div>
 
-                    <a href="monitoramento.html" class="btn-nobroke">
+                    <a href="isabela.html" class="btn-nobroke">
                         <span class="icon">
                             <img src="../assets/icon/icons-dashboard/heart-rate.png">
                         </span>
-                        <span class="texto">Monitoramento</span>
+                        <span class="texto">Requisicão</span>
                     </a>
                 </div>
                 <!-- ============================ -->
@@ -111,7 +118,6 @@
             </div>
         </div>
         <!-- ================================================================= -->
-
         <div class="conteudo-dash" id="telaPrincipal">
             <!-- Header do Conteudo da Dashboard -->
             <div class="header-responsividade">
@@ -258,7 +264,19 @@
                     <tbody id="listaComponentes" class="parte-componentes">
                     </tbody>
                 </table>
-
+            </div>
+            <div id="div_modalServidor">
+                <div class="pesquisa-servidor">
+                    <h4 style="color: var(--branco);">Digite o nome do Servidor que deseja vizualizar:</h4>
+                    <div class="barra-pesquisa" style="display: flex; margin-top: 5%;">
+                        <input type="search" id="input_busca" list="lista_servidores"
+                            placeholder="🔍 Digite o nome do servidor">
+                        <button onclick="pesquisar()">Pesquisar</button>
+                    </div>
+                    <div>
+                        <datalist id="lista_servidores"></datalist>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -361,6 +379,9 @@
     }
 
     function verificarModo() {
+        if (sessionStorage.ID_SERVIDOR == null) {
+            div_modalServidor.style.display = "flex"
+        }
         if (sessionStorage.MODO == 1) {
             mudarModo()
         }
@@ -398,6 +419,18 @@
     async function carregarDados() {
         const resposta = await fetch("/s3/pegarDados");
         dados = await resposta.json();
+        const datalist = document.getElementById("lista_servidores");
+        let linhas = "";
+        const servidoresUnicos = new Set();
+        for (const item of dados) {
+            if (item.home_broker) {
+                servidoresUnicos.add(item.home_broker);
+            }
+        }
+        for (const servidor of servidoresUnicos) {
+            linhas += `<option value="${servidor}"></option>`;
+        }
+        datalist.innerHTML = linhas;
         const ultimaColeta = dados[dados.length - 1]
         var limites = [
             ultimaColeta.limite_cpu_percent,

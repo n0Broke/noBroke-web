@@ -35,3 +35,26 @@
 .componentes-servidor{
     height: 100%;
 }
+
+#div_modalServidor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 100%;
+    width: 80%; 
+    z-index: 999;
+    backdrop-filter: blur(10px); /* CORREÇÃO: blur em vez de porcentagem */
+    background-color: rgba(0, 0, 0, 0.5); /* Adiciona um fundo escuro semi-transparente */
+}
+
+.pesquisa-servidor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 200px;
+    width: 30%;
+    background-color: var(--pretoClaro);
+    border-radius: 8px;
+}
