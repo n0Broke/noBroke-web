@@ -178,7 +178,7 @@
                                 <div class="conteudo-abaixo-cards">
                                     <h1> <span id="Correlacao_RAM">-</span></h1>
                                     <h4>Pressão de memória:
-                                        <span id="Correlacao_dale">Forte</span>
+                                        <span id="Correlacao_dale">-</span>
                                     </h4>
                                 </div>
                             </div>
@@ -192,8 +192,8 @@
                                     </div>
                                     <div class="conteudo-abaixo-cards">
                                         <h1><span id="Tempo_ETA">-</span></h1>
-                                        <h4>100% em
-                                            <span id="">2h 5min</span>
+                                        <h4>Tempo estimado até a RAM atingir 100% do uso
+                                            <span id=""></span>
                                         </h4>
                                     </div>
                                 </div>
@@ -211,8 +211,8 @@
                                 <canvas id="grafico01"></canvas>
                             </div>
                             <div class="legenda-grafico">
-                                <img src="../assets/luiz/vector-laranja-svgrepo-com.svg" alt="" id="id_ram">
-                                <span id="legenda_ram" class="legenda-ram">RAM observada</span>
+                                <img src="../assets/luiz/vector-azul-svgrepo-com.svg" alt="" id="id_ram">
+                                <span id="legenda_ram" style="color: #2460fb;" class="legenda-ram">RAM observada</span>
                                 <img src="../assets/luiz/vector-vinho-svgrepo-com.svg" alt="">
                                 <span class="legenda-ram" style="color: #be185d;">SWAP observada</span>
                                 <img src="../assets/luiz/vector-amarelo-svgrepo-com.svg" alt="">
@@ -447,6 +447,53 @@ async function carregarJSON() {
                 ` Estável • ${tendencia} %/h`;
         }
 
+        const COR_RAM = '#22c55e';
+        if (ultimo_Registro.correlacao_ram_swap >= 0.7) {
+            document.getElementById("Correlacao_dale").innerHTML =
+                "Forte";
+            document.getElementById("Correlacao_RAM").style.color = "#ef4444";
+        } else if (ultimo_Registro.correlacao_ram_swap >= 0.4) {
+            document.getElementById("Correlacao_dale").innerHTML =
+                "Moderada";
+            document.getElementById("Correlacao_RAM").style.color = "#f59e0b";
+        } else {
+            document.getElementById("Correlacao_dale").innerHTML =
+                "Fraca";
+            document.getElementById("Correlacao_RAM").style.color = "#22c55e";
+        }
+
+        let etaBruto = ultimo_Registro.ETA; 
+        let minutosTotais = 0;
+
+        let textoLimpo = etaBruto.replace("min", "").trim();
+
+        if (textoLimpo.includes("h")) {
+        let partes = textoLimpo.split("h");
+    
+        let horas = Number(partes[0].trim());
+        let minutos = Number(partes[1].trim()); 
+    
+            minutosTotais = (horas * 60) + minutos;
+        } else {
+            minutosTotais = Number(textoLimpo);
+        }
+
+        if (minutosTotais.ETA <= 15) {
+            document.getElementById("Tempo_ETA").style.color = "#ef4444";
+        } else if (minutosTotais.ETA <= 60) {
+            document.getElementById("Tempo_ETA").style.color = "#f59e0b";
+        } else {
+            document.getElementById("Tempo_ETA").style.color = "#22c55e";
+        }
+
+        if(ultimo_Registro.tendencia_ram_por_minuto <= 0.1){
+            document.getElementById("tendencia_min").style.color = "#22c55e";
+        } else if (ultimo_Registro.tendencia_ram_por_minuto <= 0.5) {
+            document.getElementById("tendencia_min").style.color = "#f59e0b";
+        } else {
+            document.getElementById("tendencia_min").style.color = "#ef4444";
+        }
+
         const labelsHistorico = [];
         const historicoRAM = [];
         const historicoSWAP = [];
@@ -570,8 +617,24 @@ async function carregarJSON() {
         const ctxRAM = document.getElementById('grafico01').getContext('2d');
         const ctxHistograma = document.getElementById('grafico02').getContext('2d');
 
+        if (ultimo_Registro.ram_percent >= limiteRAM) {
+            document.getElementById("Valor_RAM").style.color = "#ef4444";
+        } else if (ultimo_Registro.ram_percent >= atencaoRAM) {
+            document.getElementById("Valor_RAM").style.color = "#f59e0b";
+        } else {
+            document.getElementById("Valor_RAM").style.color = "#22c55e";
+        }
+
+        if (ultimo_Registro.proj1 >= limiteRAM) {
+            document.getElementById("Projecao_RAM").style.color = "#ef4444";
+        } else if (ultimo_Registro.proj1 >= atencaoRAM) {
+            document.getElementById("Projecao_RAM").style.color = "#f59e0b";
+        } else {
+            document.getElementById("Projecao_RAM").style.color = "#22c55e";
+        }
+
         const gradienteRAM = ctxRAM.createLinearGradient(0, 0, 0, 400);
-        gradienteRAM.addColorStop(0, 'rgba(249, 115, 22, 0.4)');
+        gradienteRAM.addColorStop(0, 'rgba(36,96,251, 0.4)');
         gradienteRAM.addColorStop(1, 'rgba(29, 32, 37, 0)');
 
         const gradienteSWAP = ctxRAM.createLinearGradient(0, 0, 0, 400);
@@ -588,7 +651,7 @@ async function carregarJSON() {
                 data: dados_RAM,
                 fill: true,
                 backgroundColor: gradienteRAM,
-                borderColor: '#f97316',
+                borderColor: '#2460fb',
                 borderWidth: 2,
                 tension: 0.4,
                 pointRadius: 4,
@@ -597,16 +660,16 @@ async function carregarJSON() {
                 pointBackgroundColor: function (ctx) {
                     return ctx.dataIndex > inicioPrevisao
                         ? '#fbbf24'
-                        : '#f97316';
+                        : '#2460fb';
                 },
                 pointBorderColor: function (ctx) {
                     return ctx.dataIndex > inicioPrevisao
                         ? '#fbbf24'
-                        : '#f97316';
+                        : '#2460fb';
                 },
 
                 segment: {
-                    borderDash: function (ctx) {
+                    borderash: function (ctx) {
                         return ctx.p0DataIndex >= inicioPrevisao
                             ? [6, 6]
                             : undefined;
@@ -614,7 +677,7 @@ async function carregarJSON() {
                     borderColor: function (ctx) {
                         return ctx.p0DataIndex >= inicioPrevisao
                             ? '#fbbf24'
-                            : '#f97316';
+                            : '#2460fb';
                     }
                 }
             },
