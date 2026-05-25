@@ -153,12 +153,16 @@
 
                 <div class="header-http-direita">
 
-                    <button class="botao-alerta">
+                    <button class="botao-alerta" onclick="AbrirAlerta()">
                         <img id="logoAlerta" src="../assets/svg/bell-svgrepo-com.svg" style="width: 22px;"
                             onclick="window.location.href='Alertas.html'">
 
                         Alertas
                     </button>
+
+                    <div class="caixa_alerta" id="caixa_alerta" style="display: none;">
+                        <span>opaaaa</span>
+                    </div>
 
                 </div>
 
@@ -517,7 +521,7 @@
 
         var dadosServidor = [];
 
-        for (let i = 0; i < dados.length; i++) {
+        for (var i = 0; i < dados.length; i++) {
 
             if (dados[i].id_servidor == id_servidor) {
 
@@ -528,6 +532,21 @@
         }
 
         var ultimo = dadosServidor[dadosServidor.length - 1];
+
+        function AbrirAlerta() {
+            var caixa = document.getElementById("caixa_alerta");
+
+            if (caixa.style.display == "none") {
+
+                caixa.style.display = "block";
+
+            } else {
+
+                caixa.style.display = "none";
+
+            }
+
+        }
 
 
         document.getElementById("server-name").innerText = ultimo.home_broker;
