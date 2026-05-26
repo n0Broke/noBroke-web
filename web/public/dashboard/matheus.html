@@ -407,16 +407,16 @@
 
     var dadosServidor = [];
     var dados;
+    var dadosComponentes;
     var limites = [];
     carregarDados();
     async function carregarDados() {
         try {
             const resposta = await fetch("/s3/pegarDados");
             const todosOsDados = await resposta.json();
-            const servidorAlvo = sessionStorage.getItem('SERVIDOR');
-            console.log(servidorAlvo)
-            if (servidorAlvo != null && servidorAlvo != '' && servidorAlvo.length > 0) {
-                dados = todosOsDados.filter(servidor => servidor.home_broker === servidorAlvo);
+            const servidorAlvo = sessionStorage.getItem('ID_SERVIDOR');
+            if (servidorAlvo != null && servidorAlvo.length > 0) {
+                dados = todosOsDados.filter(servidor => servidor.id_servidor == servidorAlvo);
                 div_modalServidor.style.display = 'none'
                 const ultimaColeta = dados[dados.length - 1]
                 var dataOriginal = ultimaColeta.timestamp;
@@ -425,37 +425,52 @@
                 const [hora, min] = horaPart.split(":");
                 const dataFormatada = `${hora}:${min} ${dia}/${mes}/${ano}`;
                 horaUltimaColeta.innerHTML = dataFormatada;
-
-                var limites = [
-                    ultimaColeta.limite_cpu_percent,
-                    ultimaColeta.limite_ram_percent,
-                    ultimaColeta.limite_disk_percent
-                ];
+                const dadosBD = await fetch(`/componente/pegarLimites/${servidorAlvo}`);
+                dadosComponentes = await dadosBD.json();
+                    
+                var limites = [0, 0, 0]
+                for (var i = 0; i < dadosComponentes.length; i++) {
+                    var limiteAtual = dadosComponentes[i];
+                    if (limiteAtual.nome_componente == 'cpu_percent') {
+                        limites[0] = limiteAtual.valor_max_critico
+                    }
+                    if (limiteAtual.nome_componente == 'ram_percent') {
+                        limites[1] = limiteAtual.valor_max_critico
+                    }
+                    if (limiteAtual.nome_componente == 'disk_percent') {
+                        limites[2] = limiteAtual.valor_max_critico
+                    }
+                }
 
                 criarGrafico(dados, limites);
                 plotarDados(ultimaColeta, limites);
-                
                 var componentesParaExibir = [];
+
                 for (var chave in ultimaColeta) {
-                    if ((chave.includes("_percent") || chave.includes("_ms")) && !chave.includes("limite_")) {
+                    if (chave.includes("_percent")) {
                         var valorAtual = ultimaColeta[chave];
-                        var chaveLimite = "limite_" + chave;
-                        var valorLimite = ultimaColeta[chaveLimite];
                         var sufixo = "%";
-                        if (chave.includes("_ms")) {
-                            sufixo = "ms";
+                        var nomeComponente = chave;
+                        var valorLimite = 0;
+
+                        for (var i = 0; i < dadosComponentes.length; i++) {
+                            var limiteAtual = dadosComponentes[i];
+                            if (limiteAtual.nome_componente === nomeComponente) {
+                                var limiteNumerico = parseFloat(limiteAtual.valor_max_critico);
+                                valorLimite = !isNaN(limiteNumerico) ? limiteNumerico.toFixed(1) : limiteAtual.valor_max_critico;
+                                break;
+                            }
                         }
-                        var nomeExibicao = chave.replace("_percent", "").replace("_ms", "").toUpperCase();
                         componentesParaExibir.push({
-                            nome: nomeExibicao,
+                            nome: nomeComponente,
                             valor: valorAtual + sufixo,
-                            limite: valorLimite + sufixo
+                            limite: valorLimite !== "N/A" ? valorLimite + sufixo : valorLimite
                         });
                     }
                 }
+
                 criarLista(componentesParaExibir);
                 console.log(dadosServidor);
-                console.log(limites);
                 console.log(componentesParaExibir)
             } else {
                 dados = todosOsDados;
@@ -476,7 +491,7 @@
                     </div>
                 </div>`
                 for (const item of dados) {
-                    if (item.home_broker == sessionStorage.SERVIDOR) {
+                    if (item.id_servidor == sessionStorage.ID_SERVIDOR) {
                         dadosServidor.push(item);
                     }
                 }
@@ -486,6 +501,7 @@
                 for (const item of dados) {
                     if (item.home_broker) {
                         servidoresUnicos.add(item.home_broker);
+
                     }
                 }
                 for (const servidor of servidoresUnicos) {
@@ -499,33 +515,28 @@
     }
 
     function pesquisar() {
-        var nomePesquisa = input_busca.value
-        const servidoresUnicos = new Set();
-        var nomeServidorAtual;
-        var servidorExiste = false
+        const nomePesquisa = input_busca.value;
+        let idEncontrado = null;
+
         for (const item of dados) {
-            if (item.home_broker) {
-                servidoresUnicos.add(item.home_broker);
+            if (item.home_broker && item.home_broker === nomePesquisa) {
+                idEncontrado = item.id_servidor;
+                break;
             }
         }
 
-        for (const servidor of servidoresUnicos) {
-            if (servidor == nomePesquisa) {
-                servidorExiste = true
-                nomeServidorAtual = servidor
-            }
-        }
+        if (idEncontrado !== null) {
+            div_resultadoBusca.innerHTML = `<br><span style="color: var(--branco);">Servidor encontrado, recarregando a tela...</span>`;
+            sessionStorage.setItem('ID_SERVIDOR', idEncontrado);
 
-        if (servidorExiste) {
-            div_resultadoBusca.innerHTML = `<br><span style="color: var(--branco);">Servidor encontrado, recarregando a tela...</span>`
-            sessionStorage.setItem('SERVIDOR', nomeServidorAtual);
             setTimeout(() => {
                 window.location.reload();
             }, 2000);
         } else {
-            div_resultadoBusca.innerHTML = `<br><span style="color: var(--branco);">Servidor não encontrado</span>`
+            div_resultadoBusca.innerHTML = `<br><span style="color: var(--branco);">Servidor não encontrado</span>`;
         }
     }
+
 
     function plotarDados(dados, limites) {
         document.getElementById("nomeServidor").innerHTML = dados.home_broker;
@@ -577,7 +588,6 @@
         let limiteRAM = []
         let limiteDisco = []
 
-
         for (i = 0; i < dadosRecentes.length; i++) {
             var registro = dadosRecentes[i];
             labelsCPU.push(`${registro.timestamp.split(' ')[1]}`);
@@ -587,7 +597,7 @@
 
         var corLinhaCPU = 'rgba(40, 167, 69, 0.8)'
         var corCaixaCPU = 'rgba(40, 167, 69, 0.3)'
-        if (dataCPU[6] >= limites[0]) {
+        if (dataCPU[6] >= parseFloat(limites[0])) {
             corLinhaCPU = 'rgba(220, 53, 69, 0.8)'
             corCaixaCPU = 'rgba(220, 53, 69, 0.3)'
         }
@@ -659,7 +669,7 @@
             var registro = dadosRecentes[i];
             labelsRAM.push(`${registro.timestamp.split(' ')[1]}`);
             dataRAM.push(registro.ram_percent);
-            limiteRAM.push(limites[1])
+            limiteRAM.push(parseFloat(limites[1]))
         }
 
         var corLinhaRAM = 'rgba(40, 167, 69, 0.8)'
@@ -735,7 +745,7 @@
             var registro = dadosRecentes[i];
             labelsDisco.push(`${registro.timestamp.split(' ')[1]}`);
             dataDisco.push(registro.disk_percent);
-            limiteDisco.push(limites[2])
+            limiteDisco.push(parseFloat(limites[2]))
         }
 
         var corLinhaDisco = 'rgba(40, 167, 69, 0.8)'
@@ -816,7 +826,7 @@
 
             var numeroAtual = parseFloat(comp.valor);
             var numeroLimite = parseFloat(comp.limite);
-            if(numeroLimite == undefined || numeroLimite == null || isNaN(numeroLimite)){
+            if (numeroLimite == undefined || numeroLimite == null || isNaN(numeroLimite)) {
                 numeroLimite = 0;
             }
 
@@ -855,18 +865,31 @@
         document.getElementById('container-grafico04').innerHTML = '<canvas id="grafico04"></canvas>';
 
         var dadosRecentes = dados.slice(-7);
+        var nomeComponente = componente.toLowerCase().trim();
 
-        let labels = []
-        let data = []
-        let limite = []
+        let labels = [];
+        let data = [];
+        let limite = [];
 
-        // Identifica dinamicamente as chaves com base no componente clicado
-        var nomeMinusculo = componente.toLowerCase();
-        var ehLatencia = nomeMinusculo.includes('latencia') || nomeMinusculo.includes('ms');
-        var chavePercent = nomeMinusculo + (ehLatencia ? "_ms" : "_percent");
-        var chaveLimite = "limite_" + chavePercent;
+        var valorLimite = 0;
+        if (typeof dadosComponentes !== 'undefined') {
+            for (var i = 0; i < dadosComponentes.length; i++) {
+                var itemAtual = dadosComponentes[i];
+                if (itemAtual.nome_componente == nomeComponente) {
+                    valorLimite = itemAtual.valor_max_critico;
+                    break;
+                }
+            }
+        }
 
-        for (i = 0; i < dadosRecentes.length; i++) {
+        if (typeof valorLimite === 'string') {
+            valorLimite = parseFloat(valorLimite.replace(/[^\d.]/g, ''));
+        }
+        if (valorLimite == undefined || valorLimite == null || isNaN(valorLimite)) {
+            valorLimite = 0;
+        }
+
+        for (var i = 0; i < dadosRecentes.length; i++) {
             var registro = dadosRecentes[i];
 
             if (registro.timestamp) {
@@ -875,40 +898,35 @@
                 labels.push(`${i}min`);
             }
 
-            var valorAtual = registro[chavePercent];
-            var valorLimite = registro[chaveLimite];
-            if(valorLimite == undefined || valorLimite == null || isNaN(valorLimite)){
-                valorLimite = 0;
+            var chavePercent = nomeComponente + "_percent";
+            var valorAtual = registro[chavePercent] !== undefined ? registro[chavePercent] : registro[nomeComponente];
+
+            if (typeof valorAtual === 'string') {
+                valorAtual = parseFloat(valorAtual.replace(/[^\d.]/g, ''));
             }
-            if (typeof valorAtual === 'string') valorAtual = parseFloat(valorAtual.replace(/[^\d.]/g, ''));
-            if (typeof valorLimite === 'string') valorLimite = parseFloat(valorLimite.replace(/[^\d.]/g, ''));
 
             data.push(valorAtual || 0);
             limite.push(valorLimite);
         }
 
-        var corLinha = 'rgba(40, 167, 69, 0.8)'
-        var corCaixa = 'rgba(40, 167, 69, 0.3)'
+        var corLinha = 'rgba(40, 167, 69, 0.8)';
+        var corCaixa = 'rgba(40, 167, 69, 0.3)';
+        var ultimaPosicao = data.length - 1;
 
-        if (data[6] >= limite[6]) {
-            corLinha = 'rgba(220, 53, 69, 0.8)'
-            corCaixa = 'rgba(220, 53, 69, 0.3)'
+        if (ultimaPosicao >= 0 && data[ultimaPosicao] >= limite[ultimaPosicao]) {
+            corLinha = 'rgba(220, 53, 69, 0.8)';
+            corCaixa = 'rgba(220, 53, 69, 0.3)';
         }
 
-        console.log('----------------------------------------------')
-        console.log('O gráfico será plotado com os respectivos valores:')
-        console.log('Labels:')
-        console.log(labels)
-        console.log('Dados:')
-        console.log(data)
-        console.log('----------------------------------------------')
+        console.log('----------------------------------------------');
+        console.log('O gráfico será plotado com os respectivos valores:');
+        console.log('Componente analisado:', nomeComponente);
+        console.log('Labels:', labels);
+        console.log('Dados:', data);
+        console.log('Limite aplicado:', valorLimite);
+        console.log('----------------------------------------------');
 
         const ctx = document.getElementById('grafico04');
-
-        // Ajusta a escala do eixo Y e o título dinamicamente
-        var maxEixoY = ehLatencia ? undefined : 100;
-        var tituloEixoY = ehLatencia ? 'Tempo (ms)' : 'Uso (%)';
-
         chartCPU = new Chart(ctx, {
             type: 'line',
             data: {
@@ -940,17 +958,15 @@
                     x: { ticks: { color: 'white' } },
                     y: {
                         beginAtZero: true,
-                        max: maxEixoY,
-                        title: { display: true, text: tituloEixoY, color: 'white' },
+                        max: 100,
+                        title: { display: true, text: 'Uso (%)', color: 'white' },
                         ticks: { color: 'white' },
                     }
                 },
                 plugins: {
-                    legend: {
-                        labels: { color: 'white', font: { size: 16 } }
-                    }
+                    legend: { labels: { color: 'white', font: { size: 16 } } }
                 }
             }
-        })
+        });
     }
 </script>

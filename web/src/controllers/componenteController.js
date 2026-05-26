@@ -104,9 +104,37 @@ function pegarLimiteRAM(req, res) {
         });
 }
 
+function pegarLimites(req, res) {
+    var idServidor = req.params.idServidor;
+
+    componenteModel.pegarLimites(idServidor)
+        .then(resultado => {
+            res.json(resultado);
+        })
+        .catch(erro => {
+            console.log(erro);
+            res.status(500).json(erro);
+        });
+}
+
+function pegarLimitesHome(req, res) {
+    var fkEmpresa = req.params.fkEmpresa;
+
+    componenteModel.pegarLimitesHome(fkEmpresa)
+        .then(resultado => {
+            res.json(resultado);
+        })
+        .catch(erro => {
+            console.log(erro);
+            res.status(500).json(erro);
+        });
+}
+
 module.exports = {
     cadastrarComponente,
     atualizarComponente,
     listarComponentes,
+    pegarLimites,
+    pegarLimitesHome,
     pegarLimiteRAM
 };

@@ -53,14 +53,14 @@
                         <span class="texto">Home</span>
                     </button>
 
-                    <a href="matheus.html" class="btn-nobroke">
+                    <a href="matheus.html" class="btn-nobroke sumir">
                         <span class="icon">
                             <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
                         </span>
                         <span class="texto">Servidor</span>
                     </a>
 
-                    <a href="luiz.html" class="btn-nobroke">
+                    <a href="luiz.html" class="btn-nobroke sumir">
                         <span class="icon">
                             <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
                         </span>
@@ -68,7 +68,7 @@
                     </a>
 
                     <div id="div_relatorios">
-                        <a href="richard.html" class="btn-nobroke">
+                        <a href="richard.html" class="btn-nobroke sumir">
                             <span class="icon">
                                 <img src="../assets/icon/icons-dashboard/escudo.png">
                             </span>
@@ -76,11 +76,18 @@
                         </a>
                     </div>
 
-                    <a href="isabela.html" class="btn-nobroke">
+                    <a href="isabela.html" class="btn-nobroke sumir">
                         <span class="icon">
                             <img src="../assets/icon/icons-dashboard/heart-rate.png">
                         </span>
                         <span class="texto">Requisicão</span>
+                    </a>
+
+                    <a href="produtividade.html" class="btn-nobroke" id="div_produ">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/team-building.png" style="width: 35px;">
+                        </span>
+                        <span class="texto">Produtividade</span>
                     </a>
                 </div>
                 <!-- ============================ -->
@@ -138,7 +145,7 @@
                             servidores da infraestrutura</p>
                     </div>
                 </div>
-                <div class="header-direita">
+                <div class="header-direita" id="botaoCadastrar">
                     <button class="botao-exportar" onclick="addFunc2()"><img
                             src="https://www.flaticon.com/br/icone-gratis/mais_3524388?related_id=3524388&origin=search"
                             alt="" style="width: 22px; color: white;">✚ Adicionar Servidor</button>
@@ -1123,6 +1130,7 @@
         }
     }
 
+    var ehAdm = false;
     function verificarModo() {
         if (sessionStorage.MODO == 1) {
             mudarModo()
@@ -1130,32 +1138,19 @@
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
         }
-        if (sessionStorage.ALERTA == 0) {
-            cardAlerta.style.display = "none"
-        } else {
-            const qtdServidoresEmAlerta = sessionStorage.QTD_ALERTAS;
-            cardAlerta.innerHTML = `<div class="box-cardAlerta">
-                    <div class="titulo-pai">
-                        <div class="titulo-alerta">
-                            <img src="../assets/svg/alertas/warning.png">
-                            <span>ALERTA</span>
-                        </div>
-                        <div class="fecharCard">
-                            <span onclick="fecharAlerta()">X</span>
-                        </div>
-                    </div>
-                    <div class="corpo-alerta">
-                        <span><span>${qtdServidoresEmAlerta}</span> Alertas Críticos</span>
-                        <a href="dashboard.html">Clique aqui para ver informações dos servidores!</a>
-                    </div>
-                </div>`
-        }
-        if (sessionStorage.FK_FUNCAO != 1) {
-            const divRelatorios = document.getElementById("div_relatorios");
+        if (sessionStorage.FUNCAO != "Administrador") {
+            const divRelatorios = document.getElementById("botaoCadastrar");
+            const divProdu = document.getElementById("div_produ");
             divRelatorios.style.display = "none";
-            sessionStorage.FUNCAO = "Analista de Infra";
+            divProdu.style.display = "none";
+            sessionStorage.CARGO = "Analista de Infra";
         } else {
-            sessionStorage.FUNCAO = "Gestor de Infra";
+            ehAdm = true;
+            const todasDivSumir = document.querySelectorAll(".sumir")
+            todasDivSumir.forEach(item => {
+                item.style.display = 'none';
+            });
+            sessionStorage.CARGO = "Gestor de Infra";
         }
     }
 
@@ -1324,18 +1319,32 @@
     async function PuxarDados() {
         const resposta = await fetch("/s3/gabriel");
         const dados = await resposta.json();
-        dadosFormatados = dados.map(item => ({
-            id: item.id_servidor,
-            servidor: item.home_broker,
-            cpu: item.cpu_percent,
-            ram: item.ram_percent,
-            disco: item.disk_percent,
-            limiteCpu: item.limite_cpu_percent,
-            limiteRam: item.limite_ram_percent,
-            limiteDisco: item.limite_disk_percent,
-            horario: item.timestamp,
-            status: "Normal"
-        }));
+        var idEmpresa = sessionStorage.getItem("FK_EMPRESA")
+        const dadosBD = await fetch(`/componente/pegarLimitesHome/${idEmpresa}`);
+        const dadosComponentes = await dadosBD.json();
+        dadosFiltrados = dados.filter(servidor => servidor.fk_empresa == idEmpresa);
+
+        dadosFormatados = dadosFiltrados.map(item => {
+            const limitesDoServidor = dadosComponentes.filter(lim => lim.fk_servidor === item.id_servidor);
+
+            const limiteCpu = limitesDoServidor.find(lim => lim.nome_componente === 'cpu_percent')?.valor_max_critico || 100;
+            const limiteRam = limitesDoServidor.find(lim => lim.nome_componente === 'ram_percent')?.valor_max_critico || 100;
+            const limiteDisco = limitesDoServidor.find(lim => lim.nome_componente === 'disk_percent')?.valor_max_critico || 100;
+
+            return {
+                id: item.id_servidor,
+                servidor: item.home_broker,
+                cpu: item.cpu_percent,
+                ram: item.ram_percent,
+                disco: item.disk_percent,
+                limiteCpu: limiteCpu,
+                limiteRam: limiteRam,
+                limiteDisco: limiteDisco,
+                horario: item.timestamp,
+                status: "Normal"
+            };
+        }).reverse();
+
         console.log(dadosFormatados);
         verificar(dadosFormatados);
     }
@@ -1390,9 +1399,11 @@
                         discoNormal++;
                     }
                 }
-                if(ehCritico){
+                if (ehCritico) {
                     servidores_criticos++;
                     dadosFormatados[i].status = "Crítico"
+                } else {
+                    servidores_saudaveis++
                 }
             }
         }
@@ -1474,7 +1485,11 @@
                 <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.cpu ?? "-"}%</div>
                 <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.ram ?? "-"}%</div>
                 <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.disco ?? "-"}%</div>
-            <div style="
+            `;
+
+            if (!ehAdm) {
+                linha.innerHTML += `
+                <div style="
                     padding:0 18px;
                     display:flex;   
                     align-items:center;
@@ -1487,7 +1502,18 @@
                     padding:10px 16px;
                     cursor:pointer;
                     font-weight:700;">Ver detalhes</button></div>
-            `;
+                    `
+            } else {
+                linha.innerHTML += `
+                <div style="
+                    padding:0 18px;
+                    display:flex;   
+                    align-items:center;
+                    justify-content:center;
+                    font-size: 20px;">
+                    Indisponível</div>
+                    `
+            }
             corpoTabela.appendChild(linha);
         }
     }

@@ -24,4 +24,12 @@ router.get("/pegarLimiteRAM/:idServidor", function (req, res) {
     componenteController.pegarLimiteRAM(req, res);
 });
 
+router.get("/pegarLimites/:idServidor", function (req, res) {
+    componenteController.pegarLimites(req, res);
+});
+
+router.get("/pegarLimitesHome/:fkEmpresa", function (req, res) {
+    componenteController.pegarLimitesHome(req, res);
+});
+
 module.exports = router;

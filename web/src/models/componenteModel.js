@@ -94,20 +94,41 @@ function listarComponentes(idServidor) {
         FROM tipo_componente
         WHERE fk_servidor = ${idServidor};
     `;
-
     return database.executar(sql);
 }
 
-function pegarLimiteRAM(idServidor){
+function pegarLimiteRAM(idServidor) {
     var sql = `
     SELECT valor_max_critico FROM tipo_componente WHERE fk_servidor = ${idServidor} AND nome_componente = 'ram_percent';
     `
-
     return database.executar(sql);
 }
+
+function pegarLimites(idServidor) {
+    var sql = `
+    SELECT nome_componente, valor_max_critico FROM tipo_componente WHERE fk_servidor = ${idServidor};
+    `
+    return database.executar(sql);
+}
+
+function pegarLimitesHome(fkEmpresa) {
+    var sql = `
+    SELECT 
+        tc.fk_servidor, 
+        tc.nome_componente, 
+        tc.valor_max_critico
+        FROM tipo_componente tc
+        JOIN servidor s ON tc.fk_servidor = s.id_servidor
+        WHERE s.fk_empresa = ${fkEmpresa};
+    `
+    return database.executar(sql);
+}
+
 module.exports = {
     cadastrarComponente,
     atualizarComponente,
     listarComponentes,
+    pegarLimites,
+    pegarLimitesHome,
     pegarLimiteRAM
 };
