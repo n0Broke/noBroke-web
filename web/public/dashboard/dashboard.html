@@ -994,7 +994,12 @@
         verificarModo();
         var fk_empresa = sessionStorage.getItem('FK_EMPRESA');
         var inputPrefix = document.getElementById('input_prefix_servidor');
-        var btnProximo = document.querySelector('.btnPopUp02'); // Botão "Próximo"
+        var btnProximo = document.querySelector('.btnPopUp02');
+        var nomeCompleto = sessionStorage.NOME_USUARIO;
+        var partes = nomeCompleto.trim().split(" ");
+        var primeiroNome = partes[0];
+        usuario.innerHTML = primeiroNome;
+        cargoFunc.innerHTML = sessionStorage.FUNCAO;
     }
 
     function normalizar(texto) {

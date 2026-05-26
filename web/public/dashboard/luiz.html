@@ -242,8 +242,6 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="conteudo-dash03">
                     <div class="swap-servidor">
                         <h4 class="componentes-titulo titulo-dashboards">Distribuição da RAM na janela</h4>
@@ -278,8 +276,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-alertaGeral" id="div_alertaGeral">
-                </div>
             </div>
 
         </div>
@@ -289,9 +285,9 @@
 
 </html>
 <script>
-    const nomeCompleto = sessionStorage.NOME_USUARIO
-    const partes = nomeCompleto.trim().split(" ");
-    const primeiroNome = partes[0];
+    var nomeCompleto = sessionStorage.NOME_USUARIO;
+    var partes = nomeCompleto.trim().split(" ");
+    var primeiroNome = partes[0];
     usuario.innerHTML = primeiroNome;
     cargoFunc.innerHTML = sessionStorage.FUNCAO;
 
@@ -301,7 +297,6 @@
     const imgUser = document.getElementById("imgUser");
     const logoAlerta = document.getElementById("logoAlerta");
     const sidebar = document.getElementById("div_lateralAberta");
-    const cardAlerta = document.getElementById("div_alertaGeral")
 
     let modoEscuro = false;
 
@@ -390,26 +385,6 @@
         }
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
-        }
-        if (sessionStorage.QTD_ALERTAS == 0) {
-            cardAlerta.style.display = "none"
-        } else {
-            const qtdServidoresEmAlerta = sessionStorage.QTD_ALERTAS;
-            cardAlerta.innerHTML = `<div class="box-cardAlerta">
-                    <div class="titulo-pai">
-                        <div class="titulo-alerta">
-                            <img src="../assets/svg/alertas/warning.png">
-                            <span>ALERTA</span>
-                        </div>
-                        <div class="fecharCard">
-                            <span onclick="fecharAlerta()">X</span>
-                        </div>
-                    </div>
-                    <div class="corpo-alerta">
-                        <span><span>${qtdServidoresEmAlerta}</span> Alertas Críticos</span>
-                        <a href="dashboard.html">Clique aqui para ver informações dos servidores!</a>
-                    </div>
-                </div>`
         }
         if (sessionStorage.FK_FUNCAO != 1) {
             const divRelatorios = document.getElementById("div_relatorios");
@@ -877,16 +852,6 @@
 
 
     let proximaAtualizacao;
-
-    window.onload = function () {
-
-        const usuario = document.getElementById("usuario");
-        usuario.innerHTML = `Olá <b>${sessionStorage.NOME_USUARIO}</b>, boas vindas.`;
-        if (sessionStorage.FK_ADM != "null") {
-            admMenu.style.display = "none";
-        }
-
-    }
 
     // Função pra trocar o Ícone quando for passar o mouse por cima (vulgo hover)
     function iconTrade() {

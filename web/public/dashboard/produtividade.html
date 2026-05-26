@@ -49,35 +49,19 @@
                 <div class="menu01">
                     <h4 class="titulo_sidebar">PRINCIPAL</h4>
                     <!-- Página atual -->
-                    <button class="btn-nobroke btn-active">
+                    <a href="dashboard.html" class="btn-nobroke">
                         <span class="icon">
-                            <img id="iconAtual" src="../assets/icon/icons-dashboard/painel-de-controle-hover.png">
+                            <img src="../assets/icon/icons-dashboard/painel-de-controle.png">
                         </span>
                         <span class="texto">Home</span>
+                    </a>
+
+                    <button class="btn-nobroke btn-active">
+                        <span class="icon">
+                            <img id="iconAtual" src="../assets/icon/icons-dashboard/team-building-hover.png">
+                        </span>
+                        <span class="texto">Produtividade</span>
                     </button>
-
-                    <a href="Alertas.html" class="btn-nobroke">
-                        <span class="icon">
-                            <img src="../assets/icon/icons-dashboard/notificacao.png">
-                        </span>
-                        <span class="texto">Alertas</span>
-                    </a>
-
-                    <div id="div_relatorios">
-                        <a href="produtividade.html" class="btn-nobroke">
-                            <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
-                            </span>
-                            <span class="texto">Equipe</span>
-                        </a>
-                    </div>
-
-                    <a href="monitoramento.html" class="btn-nobroke">
-                        <span class="icon">
-                            <img src="../assets/icon/icons-dashboard/heart-rate.png">
-                        </span>
-                        <span class="texto">Monitoramento</span>
-                    </a>
                 </div>
                 <!-- ============================ -->
                 <div class="menu02">
@@ -292,6 +276,11 @@
     const imgLogo = document.getElementById("imgLogo");
     const imgUser = document.getElementById("imgUser");
     const sidebar = document.getElementById("div_lateralAberta");
+    var nomeCompleto = sessionStorage.NOME_USUARIO;
+    var partes = nomeCompleto.trim().split(" ");
+    var primeiroNome = partes[0];
+    usuario.innerHTML = primeiroNome;
+    cargoFunc.innerHTML = sessionStorage.FUNCAO;
     const corPreto = ('--preto')
     const corBranca = ('--branco')
 
