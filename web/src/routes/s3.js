@@ -41,7 +41,7 @@ router.get("/gabriel", async (req, res) => {
 
         const comando = new GetObjectCommand({
             Bucket: process.env.AWS_BUCKET_NAME,
-            Key: "CLIENT/gabriel.json"
+            Key: "CLIENT/matheus.json"
         });
 
         const resposta = await s3.send(comando);

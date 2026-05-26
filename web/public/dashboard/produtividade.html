@@ -556,7 +556,9 @@
             .catch(error => console.error("Erro:", error));
     }
 
-    buscarDados();
+    setInterval(() => {
+        buscarDados();
+    }, 5000);
 
 
 

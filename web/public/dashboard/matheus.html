@@ -816,11 +816,14 @@
 
             var numeroAtual = parseFloat(comp.valor);
             var numeroLimite = parseFloat(comp.limite);
+            if(numeroLimite == undefined || numeroLimite == null || isNaN(numeroLimite)){
+                numeroLimite = 0;
+            }
 
             var imagemStatus = "circle-svgrepo-com-alert1.svg";
             var imagemStatus2 = "graphic-arrow-button-svgrepo-com-alert1.svg";
 
-            if (numeroAtual > numeroLimite) {
+            if (numeroAtual >= numeroLimite) {
                 imagemStatus = "circle-svgrepo-com-alert3.svg";
                 imagemStatus2 = "graphic-arrow-button-svgrepo-com-alert3.svg";
             }
@@ -837,7 +840,7 @@
                         <p>${comp.valor}</p>
                     </td>
                     <td class="texto-limite">
-                        <span>${comp.limite}</span>
+                        <span>${numeroLimite}%</span>
                     </td>
                     <td class="status-center">
                         <img src="../assets/svg/${imagemStatus2}" alt="alerta" class="status-seta">
@@ -872,14 +875,16 @@
                 labels.push(`${i}min`);
             }
 
-            // Garante que o valor seja tratado como número flutuante limpo
             var valorAtual = registro[chavePercent];
             var valorLimite = registro[chaveLimite];
+            if(valorLimite == undefined || valorLimite == null || isNaN(valorLimite)){
+                valorLimite = 0;
+            }
             if (typeof valorAtual === 'string') valorAtual = parseFloat(valorAtual.replace(/[^\d.]/g, ''));
             if (typeof valorLimite === 'string') valorLimite = parseFloat(valorLimite.replace(/[^\d.]/g, ''));
 
             data.push(valorAtual || 0);
-            limite.push(valorLimite || 0);
+            limite.push(valorLimite);
         }
 
         var corLinha = 'rgba(40, 167, 69, 0.8)'

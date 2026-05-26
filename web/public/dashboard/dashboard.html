@@ -335,7 +335,7 @@
                                         font-size: 20px;">
                                     <th>Servidor</th>
                                     <th>Status</th>
-                                    <th>Data</th>
+                                    <th>Data Última Coleta</th>
                                     <th>CPU</th>
                                     <th>RAM</th>
                                     <th>Disco</th>
@@ -1330,11 +1330,11 @@
             cpu: item.cpu_percent,
             ram: item.ram_percent,
             disco: item.disk_percent,
-            cpuCritica: item.cpuCritica,
-            ramCritica: item.ramCritica,
-            discoCritico: item.discoCritico,
-            status: item.status,
-            horario: item.timestamp
+            limiteCpu: item.limite_cpu_percent,
+            limiteRam: item.limite_ram_percent,
+            limiteDisco: item.limite_disk_percent,
+            horario: item.timestamp,
+            status: "Normal"
         }));
         console.log(dadosFormatados);
         verificar(dadosFormatados);
@@ -1356,34 +1356,43 @@
         for (i = 0; i < dadosFormatados.length; i++) {
             if (!nomes.includes(dadosFormatados[i].servidor)) {
                 nomes.push(dadosFormatados[i].servidor);
-                if (dadosFormatados[i].cpu != null) {
+                CPU = dadosFormatados[i].cpu;
+                limiteCPU = dadosFormatados[i].limiteCpu;
+                RAM = dadosFormatados[i].ram;
+                limiteRAM = dadosFormatados[i].limiteRam;
+                Disco = dadosFormatados[i].disco;
+                limiteDISCO = dadosFormatados[i].limiteDisco;
+                var ehCritico = false;
+                if (CPU != null) {
                     componentes_totais++;
-                    if (dadosFormatados[i].cpuCritica == "Crítico") {
+                    if (CPU >= limiteCPU) {
                         cpuCritica++;
+                        ehCritico = true;
                     } else {
                         cpuNormal++;
                     }
-                    if (dadosFormatados[i].ram != null) {
-                        componentes_totais++;
-                        if (dadosFormatados[i].ramCritica == "Crítico") {
-                            ramCritica++;
-                        } else {
-                            ramNormal++;
-                        }
-                    }
-                    if (dadosFormatados[i].disco != null) {
-                        componentes_totais++;
-                        if (dadosFormatados[i].discoCritico == "Crítico") {
-                            discoCritico++;
-                        } else {
-                            discoNormal++;
-                        }
-                    }
-                    if (dadosFormatados[i].status == "Crítico") {
-                        servidores_criticos++;
+                }
+                if (RAM != null) {
+                    componentes_totais++;
+                    if (RAM >= limiteRAM) {
+                        ramCritica++;
+                        ehCritico = true;
                     } else {
-                        servidores_saudaveis++;
+                        ramNormal++;
                     }
+                }
+                if (Disco != null) {
+                    componentes_totais++;
+                    if (Disco >= limiteDISCO) {
+                        discoCritico++;
+                        ehCritico = true;
+                    } else {
+                        discoNormal++;
+                    }
+                }
+                if(ehCritico){
+                    servidores_criticos++;
+                    dadosFormatados[i].status = "Crítico"
                 }
             }
         }
@@ -1462,9 +1471,9 @@
                     font-size: 20px;
                     color:${dado.status === "Crítico" ? "red" : "green"};">${dado.status}</div>
                 <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.horario}</div>
-                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.cpu ?? "-"}</div>
-                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.ram ?? "-"}</div>
-                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.disco ?? "-"}</div>
+                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.cpu ?? "-"}%</div>
+                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.ram ?? "-"}%</div>
+                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.disco ?? "-"}%</div>
             <div style="
                     padding:0 18px;
                     display:flex;   
