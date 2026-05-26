@@ -485,7 +485,7 @@
         if (sessionStorage.LATERAL == 1) {
             fecharAbrirLateral()
         }
-        if (sessionStorage.QTD_ALERTAS == 0) {
+        if (sessionStorage.QTD_ALERTAS == 0 || sessionStorage.QTD_ALERTAS == undefined) {
             cardAlerta.style.display = "none"
         } else {
             const qtdServidoresEmAlerta = sessionStorage.QTD_ALERTAS;

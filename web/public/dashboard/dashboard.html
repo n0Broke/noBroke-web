@@ -45,6 +45,7 @@
                 <!-- Sidebar - Parte 01 -->
                 <div class="menu01">
                     <h4 class="titulo_sidebar">PRINCIPAL</h4>
+                    <!-- Página atual -->
                     <button class="btn-nobroke btn-active">
                         <span class="icon">
                             <img id="iconAtual" src="../assets/icon/icons-dashboard/painel-de-controle-hover.png">
@@ -52,27 +53,34 @@
                         <span class="texto">Home</span>
                     </button>
 
-                    <a href="Alertas.html" class="btn-nobroke">
+                    <a href="matheus.html" class="btn-nobroke">
                         <span class="icon">
-                            <img src="../assets/icon/icons-dashboard/notificacao.png">
+                            <img src="../assets/icon/icons-dashboard/servidores-de-hospedagem.png">
                         </span>
-                        <span class="texto">Alertas</span>
+                        <span class="texto">Servidor</span>
+                    </a>
+
+                    <a href="luiz.html" class="btn-nobroke">
+                        <span class="icon">
+                            <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                        </span>
+                        <span class="texto">Previsão Ram</span>
                     </a>
 
                     <div id="div_relatorios">
-                        <a href="produtividade.html" class="btn-nobroke">
+                        <a href="richard.html" class="btn-nobroke">
                             <span class="icon">
-                                <img src="../assets/icon/icons-dashboard/grafico-de-barras.png">
+                                <img src="../assets/icon/icons-dashboard/escudo.png">
                             </span>
-                            <span class="texto">Equipe</span>
+                            <span class="texto">Rede</span>
                         </a>
                     </div>
 
-                    <a href="monitoramento.html" class="btn-nobroke">
+                    <a href="isabela.html" class="btn-nobroke">
                         <span class="icon">
                             <img src="../assets/icon/icons-dashboard/heart-rate.png">
                         </span>
-                        <span class="texto">Monitoramento</span>
+                        <span class="texto">Requisicão</span>
                     </a>
                 </div>
                 <!-- ============================ -->
@@ -137,7 +145,8 @@
                 </div>
             </div>
 
-            <div class="conteudo-dash01" style="display: flex;flex-wrap: wrap;gap: 18px;width: 100%;margin-top: 28px;justify-content: space-around;">
+            <div class="conteudo-dash01"
+                style="display: flex;flex-wrap: wrap;gap: 18px;width: 100%;margin-top: 28px;justify-content: space-around;">
 
                 <div class="cards-conteudo card01 card-server" style="width: 190px !important;height: 190px !important;background: var(--pretoClaro);
                     border-radius: 18px;
@@ -155,7 +164,9 @@
                     <div class="conteudo-abaixo-cards">
                         <h1 id="total-servidores" style="font-size: 48px;margin: 0;line-height: 1;font-weight: 800;">
                         </h1>
-                        <h4 style="font-size: 15px;line-height: 1.25;font-weight: 600;white-space: normal;word-break: break-word;max-width: 100%;">Total de servidores</h4>
+                        <h4
+                            style="font-size: 15px;line-height: 1.25;font-weight: 600;white-space: normal;word-break: break-word;max-width: 100%;">
+                            Total de servidores</h4>
                     </div>
                 </div>
 
@@ -175,7 +186,8 @@
                     <div class="conteudo-abaixo-cards">
                         <h1 id="total-componentes" style="font-size: 48px;margin: 0;line-height: 1;font-weight: 800;">
                         </h1>
-                        <h4 style="font-size: 18px; margin: 12px 0 0; color: white; line-height: 1.25;">Componentes</h4>
+                        <h4 style="font-size: 18px; margin: 12px 0 0; color: var(--branco); line-height: 1.25;">
+                            Componentes</h4>
                     </div>
                 </div>
 
@@ -194,8 +206,10 @@
                             alt="saudável" style="width: 36px;">
                     </div>
                     <div class="conteudo-abaixo-cards">
-                        <h1 id="serverSaudavel" style=" color: green; font-size: 48px;margin: 0;line-height: 1;font-weight: 800;"></h1>
-                        <h4 style=" font-size: 15px;margin: 0;line-height: 1.25;font-weight: 600;">Servidores saudáveis</h4>
+                        <h1 id="serverSaudavel"
+                            style=" color: green; font-size: 48px;margin: 0;line-height: 1;font-weight: 800;"></h1>
+                        <h4 style=" font-size: 15px;margin: 0;line-height: 1.25;font-weight: 600;">Servidores saudáveis
+                        </h4>
                     </div>
                 </div>
 
@@ -213,7 +227,8 @@
                             style="width: 36px;">
                     </div>
                     <div class="conteudo-abaixo-cards">
-                        <h1 id="serverCritico" style=" color: red;;   font-size: 48px;margin: 0;line-height: 1;font-weight: 800;">
+                        <h1 id="serverCritico"
+                            style=" color: red;;   font-size: 48px;margin: 0;line-height: 1;font-weight: 800;">
                         </h1>
                         <h4 style="font-size: 15px;margin: 0;line-height: 1.25;font-weight: 600;">Servidores
                             críticos</h4>
@@ -227,13 +242,14 @@
                             justify-content: space-between;
                             overflow: hidden;
                             box-shadow: 0 8px 20px rgba(0,0,0,.25);">
-                    
+
                     <div class="titulo-cards-servidores">
                         <img class="card01-icon" src="../assets/svg/alertas/done-ring-round-svgrepo-com.svg"
                             alt="saudável" style="width: 36px;">
                     </div>
                     <div class="conteudo-abaixo-cards">
-                        <h1 id="componentesSaudavel" style=" color: gren;   font-size: 48px;margin: 0;line-height: 1;font-weight: 800;">
+                        <h1 id="componentesSaudavel"
+                            style=" color: gren;   font-size: 48px;margin: 0;line-height: 1;font-weight: 800;">
                         </h1>
                         <h4 style="font-size: 15px;margin: 0;line-height: 1.25;font-weight: 600;">Componentes
                             saudáveis</h4>
@@ -256,98 +272,74 @@
                             style="width: 36px;">
                     </div>
                     <div class="conteudo-abaixo-cards">
-                        <h1 id="componentesCritico" style="  color: red;   font-size: 48px;margin: 0;line-height: 1;font-weight: 800;">
+                        <h1 id="componentesCritico"
+                            style="  color: red;   font-size: 48px;margin: 0;line-height: 1;font-weight: 800;">
                         </h1>
-                        <h4 style="  font-size: 15px;margin: 0;line-height: 1.25;font-weight: 600;">Componentes críticos</h4>
+                        <h4 style="  font-size: 15px;margin: 0;line-height: 1.25;font-weight: 600;">Componentes críticos
+                        </h4>
                     </div>
                 </div>
             </div>
 
-            <div id="graficos" style="width: 100%;height: 360px;background: var(--pretoClaro);border-radius: 18px;padding: 24px;width: 90% ;
-                    box-shadow: 0 8px 25px rgba(0,0,0,.2);
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    margin-left: 3%;">
-                <canvas id="myChart" style="width: 48%;"></canvas>
+            <div id="graficos"
+                style="width: 90%; height: 360px; background: var(--pretoClaro); border-radius: 18px; padding: 24px; box-shadow: 0 8px 25px rgba(0,0,0,.2); display: flex; justify-content: space-between; align-items: center; margin-left: 3%;">
+                <div id="graficoNormal"
+                    style="display: flex; width: 45%; height: 100%; justify-content: center; align-items: center;">
+                    <div style="position: relative; width: 100%; height: 100%; border-radius: 18px; padding: 15px;">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+                <div id="graficoCritico"
+                    style="display: none; width: 45%; height: 100%; justify-content: center; align-items: center;">
+                    <div style="position: relative; width: 100%; height: 100%; border-radius: 18px; padding: 15px;">
+                        <canvas id="myChart2"></canvas>
+                    </div>
+                </div>
+            </div>
 
-            </div>
-            <div style="width: 32%;display: flex;margin-left: 33%;height: 32%;background-color: var(--pretoClaro);border-radius: 18px;;">
-                <canvas id="myChart2"></canvas>
-            </div>
             <div class="barra-pesquisa" style="display: flex;align-items: center;gap: 16px;margin-top: 30px;background: var(--pretoClaro);
                         padding: 18px;
                         border-radius: 18px;
                         box-shadow: 0 8px 25px rgba(0,0,0,.2);">
                 <input type="search" id="input_busca" list="lista_servidores" placeholder="🔍 Digite o nome do servidor"
-                    style="flex: 1;height: 48px;border-radius: 12px;border: 1px solid rgba(255,255,255,.08);background: #11151b;
-                            color: white;
+                    style="flex: 1;height: 48px;border-radius: 12px;border: 1px solid var(--bordas);background: var(--pretoClaro);
+                            color: var(--branco);
                             padding: 0 18px;
-                            font-size: 15px;
+                            font-size: 20px;
                             outline: none;">
 
                 <button onclick="pesquisar()" style="height: 48px;padding: 0 24px;border: none;border-radius: 12px;background: #ff7a00;
-                        color: white;
+                        color: var(--branco);
                         font-weight: 700;
                         cursor: pointer;">Pesquisar</button>
 
-                <h1 style="color: white; margin-left: auto; font-size: 24px;">Lista de servidores:</h1>
             </div>
-
             <br>
-
-            <div class="tabela-container" id="tabelaServidores" style="display: flex; flex-direction: row;">
-                <table class="tabela-servidores" style="width: 100%;background: var(--pretoClaro);border-radius: 18px;
-                        overflow: hidden;
-                        border-collapse: collapse;
-                        box-shadow: 0 8px 25px rgba(0,0,0,.2);">
-                    <thead>
-                        <tr style="display: grid;grid-template-columns: 1.4fr 1fr 1.4fr .8fr .8fr .8fr 1fr;align-items: center;
-                        background: #11151b;
-                        color: white;
-                        min-height: 74px;
-                        border-bottom: 1px solid rgba(255,255,255,.08);
-                        font-size: 14px;
-                        font-weight: 700;">
-                            <th style="padding: 0 14px; text-align: left;">Servidor</th>
-                            <th style="padding: 0 14px; text-align: left;">Status</th>
-                            <th style="padding: 0 14px; text-align: left;">Data</th>
-                            <th style="padding: 0 14px; text-align: left;">CPU</th>
-                            <th style="padding: 0 14px; text-align: left;">RAM</th>
-                            <th style="padding: 0 14px; text-align: left;">Disco</th>
-                            <th style="padding: 0 14px; text-align: center;">Ações</th>
-                        </tr>
-                    </thead>
-                    <tbody id="corpo-tabela" style="font-size: 12px;">
-                    </tbody>
-                </table>
-            </div>
             <div style="display: flex;flex-direction: row;align-items: flex-start;gap: 24px;width: 100%;">
-
                 <div class="legendas-servidor" style="display: flex; width: 100%;">
-
-
                     <div class="tabela-container2" id="tabelaGerais" style="display: flex;gap: 10px;width: 100%;
                             background: var(--pretoClaro);
                             border-radius: 18px;
                             overflow: hidden;
-                            box-shadow: 0 8px 25px rgba(0,0,0,.2);">
+                            box-shadow: 0 8px 25px rgba(0,0,0,.2);
+                            border: 2px solid var(--bordas)">
                         <table class="tabela-servidores"
                             style="width: 100%; border-radius: 18px; border: none; border-collapse: collapse;">
                             <thead>
                                 <tr style="
                                         display: grid;
-                                        grid-template-columns: repeat(6, 1fr);
-                                        background: #11151b;
-                                        color: white;
+                                        grid-template-columns: 1fr 0.7fr 1fr 0.7fr 0.7fr 0.7fr 0.7fr;
+                                        background: var(--pretoClaro);
+                                        color: var(--branco);
                                         padding: 14px 0;
-                                        font-size: 14px;">
+                                        font-size: 20px;">
                                     <th>Servidor</th>
                                     <th>Status</th>
                                     <th>Data</th>
                                     <th>CPU</th>
                                     <th>RAM</th>
                                     <th>Disco</th>
+                                    <th style="text-align: center;">Ações</th>
                                 </tr>
                             </thead>
 
@@ -403,7 +395,7 @@
             border-radius: 12px;
 
             background: #ff7a00;
-            color: white;
+            color: var(--branco);
 
             font-size: 16px;
             font-weight: 700;
@@ -421,7 +413,7 @@
             border-radius: 12px;
 
             background: #1f8fff;
-            color: white;
+            color: var(--branco);
 
             font-size: 16px;
             font-weight: 700;
@@ -439,7 +431,7 @@
             border-radius: 12px;
 
             background: #22b455;
-            color: white;
+            color: var(--branco);
 
             font-size: 16px;
             font-weight: 700;
@@ -456,7 +448,7 @@
             border-radius: 12px;
 
             background: #b49222;
-            color: white;
+            color: var(--branco);
 
             font-size: 16px;
             font-weight: 700;
@@ -545,7 +537,7 @@
                 <div class="popUpFuncionario-confirmarServidor">
                     <button class="btnPopUp01" onclick="fecharFunc()">Cancelar</button>
                     <button class="btnPopUp02" onclick="addFunc3()"
-                        style="display: flex; color: white; justify-content: space-around; width: 100px; margin-top: 10px; align-items: center;">Próximo
+                        style="display: flex; color: var(--branco); justify-content: space-around; width: 100px; margin-top: 10px; align-items: center;">Próximo
                         <img width="20px" src="../assets/svg/seta-direita.png" alt=""></button>
                 </div>
             </div>
@@ -989,175 +981,13 @@
 
 </html>
 <script>
-
     var dadosFormatados = [];
     window.onload = function () {
         PuxarDados();
+        verificarModo();
         var fk_empresa = sessionStorage.getItem('FK_EMPRESA');
         var inputPrefix = document.getElementById('input_prefix_servidor');
         var btnProximo = document.querySelector('.btnPopUp02'); // Botão "Próximo"
-
-
-
-    }
-
-
-
-    function componentesMonitorados(cpuCritica, ramCritica, discoCritico, cpuNormal, ramNormal, discoNormal) {
-        const ctx = document.getElementById('myChart');
-        if (ctx) {
-            // Busca a instância do Chart.js associada a este elemento canvas
-            const chartExistente = Chart.getChart(ctx);
-
-            // Se o gráfico existir, destrói ele
-            if (chartExistente) {
-                chartExistente.destroy();
-            }
-        }
-        new Chart(ctx, {
-            type: 'bar',
-
-            data: {
-                labels: ['CPU', 'RAM', 'Disco'],
-
-                datasets: [{
-                    label: 'Componentes monitorados',
-
-                    data: [
-                        cpuNormal,
-                        ramNormal,
-                        discoNormal
-                    ],
-
-                    borderWidth: 1,
-                    borderRadius: 5,
-                    barThickness: 100,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)'
-                    ],
-                }]
-            },
-
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-
-                scales: {
-                    x: {
-                        grid: {
-                            ticks: {
-                                color: 'white'
-                            }
-                        }
-                    },
-
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            ticks: {
-                                color: 'white'
-                            }
-                        }
-                    }
-                },
-
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: 'white',
-
-                            font: {
-                                size: 20
-                            }
-                        }
-                    }
-                }
-            }
-        });
-
-    }
-    function componentesCriticosRosca(cpuCritica, ramCritica, discoCritico) {
-        const ctx = document.getElementById('myChart2');
-
-        if (ctx) {
-            const chartExistente = Chart.getChart(ctx);
-
-            if (chartExistente) {
-                chartExistente.destroy();
-            }
-        }
-
-        new Chart(ctx, {
-            type: 'doughnut',
-
-            data: {
-                labels: ['CPU crítica', 'RAM crítica', 'Disco crítico'],
-
-                datasets: [{
-                    label: 'Capturas críticas',
-
-                    data: [
-                        cpuCritica,
-                        ramCritica,
-                        discoCritico
-                    ],
-
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.75)',
-                        'rgba(54, 162, 235, 0.75)',
-                        'rgba(255, 206, 86, 0.75)'
-                    ],
-
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)'
-                    ],
-
-                    borderWidth: 2
-                }]
-            },
-
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-
-                cutout: '65%',
-
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-
-                        labels: {
-                            color: 'white',
-
-                            font: {
-                                size: 14
-                            }
-                        }
-                    },
-
-                    tooltip: {
-                        callbacks: {
-                            label: function (context) {
-                                const total = context.dataset.data.reduce((soma, valor) => soma + valor, 0);
-                                const valor = context.raw;
-
-                                if (total === 0) {
-                                    return `${context.label}: 0%`;
-                                }
-
-                                const porcentagem = ((valor / total) * 100).toFixed(1);
-
-                                return `${context.label}: ${valor} capturas (${porcentagem}%)`;
-                            }
-                        }
-                    }
-                }
-            }
-        });
     }
 
     function normalizar(texto) {
@@ -1494,7 +1324,6 @@
     async function PuxarDados() {
         const resposta = await fetch("/s3/gabriel");
         const dados = await resposta.json();
-        console.log(dados)
         dadosFormatados = dados.map(item => ({
             id: item.id_servidor,
             servidor: item.home_broker,
@@ -1508,9 +1337,10 @@
             horario: item.timestamp
         }));
         console.log(dadosFormatados);
-        componentesMonitorados(dadosFormatados);
-        verificar(dadosFormatados)
+        verificar(dadosFormatados);
     }
+
+    let meuGraficoRosca = null;
     function verificar(dadosFormatados) {
         var servidores_criticos = 0;
         var servidores_saudaveis = 0;
@@ -1564,22 +1394,28 @@
         document.getElementById("total-servidores").textContent = nomes.length;
         document.getElementById("total-componentes").textContent = componentes_totais;
         document.getElementById("componentesCritico").textContent = componentes_criticos;
-        document.getElementById("componentesSaudavel").textContent =
-        componentes_totais - componentes_criticos;
+        document.getElementById("componentesSaudavel").textContent = componentes_totais - componentes_criticos;
 
         componentesMonitorados(
-            cpuCritica,
-            ramCritica,
-            discoCritico,
             cpuNormal,
             ramNormal,
             discoNormal
         );
-        componentesCriticosRosca(
-            cpuCritica,
-            ramCritica,
-            discoCritico
-        );
+
+        if (cpuCritica != 0 || cpuCritica == null ||
+            ramCritica != 0 || ramCritica == null ||
+            discoCritico != 0 || discoCritico == null
+        ) {
+            componentesCriticosRosca(
+                cpuCritica,
+                ramCritica,
+                discoCritico
+            );
+            graficoCritico.style.display = 'flex';
+        } else {
+            graficoCritico.style.display = 'none';
+            graficoNormal.style.width = '100%';
+        }
         preencherTabela(dadosFormatados, nomes);
     }
 
@@ -1598,10 +1434,10 @@
             nomesPassados.add(dado.servidor);
             let linha = document.createElement("tr");
             linha.style.display = "grid";
-            linha.style.gridTemplateColumns = "1fr 1fr 1fr 1fr 1fr 1fr";
+            linha.style.gridTemplateColumns = "1fr 0.7fr 1fr 0.7fr 0.7fr 0.7fr 0.7fr";
             linha.style.alignItems = "center";
             linha.style.textAlign = "center";
-            linha.style.color = "white";
+            linha.style.color = "var(--branco)";
             linha.style.padding = "14px 0";
             linha.style.borderBottom = "1px solid rgba(255,255,255,.06)";
             if (dado.status === "Crítico") {
@@ -1610,24 +1446,25 @@
                 linha.style.backgroundColor = "transparent";
             }
             linha.style.display = "grid";
-            linha.style.gridTemplateColumns = "1.4fr 1fr 1.4fr .8fr .8fr .8fr 1fr";
+            linha.style.gridTemplateColumns = "1fr 0.7fr 1fr 0.7fr 0.7fr 0.7fr 0.7fr";
             linha.style.alignItems = "center";
             linha.style.minHeight = "74px";
             linha.style.borderBottom = "1px solid rgba(255,255,255,.08)";
-            linha.style.color = "white";
+            linha.style.color = "var(--branco)";
             linha.innerHTML = `
-                    <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start;">${dado.servidor}</div>
+                    <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.servidor}</div>
             <div style="
                     padding:0 18px;
                     display:flex;
                     align-items:center;
                     justify-content:flex-start;
                     font-weight:700;
+                    font-size: 20px;
                     color:${dado.status === "Crítico" ? "red" : "green"};">${dado.status}</div>
-                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start;">${dado.horario}</div>
-                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start;">${dado.cpu ?? "-"}</div>
-                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start;">${dado.ram ?? "-"}</div>
-                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start;">${dado.disco ?? "-"}</div>
+                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.horario}</div>
+                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.cpu ?? "-"}</div>
+                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.ram ?? "-"}</div>
+                <div style="padding:0 18px; display:flex; align-items:center; justify-content:flex-start; font-size: 20px;">${dado.disco ?? "-"}</div>
             <div style="
                     padding:0 18px;
                     display:flex;   
@@ -1642,17 +1479,14 @@
                     cursor:pointer;
                     font-weight:700;">Ver detalhes</button></div>
             `;
-corpoTabela.appendChild(linha);
+            corpoTabela.appendChild(linha);
         }
     }
 
     function verDetalhes(idServidor) {
-
         sessionStorage.setItem("ID_SERVIDOR", idServidor);
         document.getElementById('redirecionamento').style.display = 'flex';
         console.log("Servidor salvo:", idServidor);
-
-
     }
 
     function pesquisar() {
@@ -1664,5 +1498,149 @@ corpoTabela.appendChild(linha);
 
         verificar(dadosFiltrados);
     }
-    verificarModo(), buscarPrefixo()
+
+    function componentesCriticosRosca(cpuCritica, ramCritica, discoCritico) {
+        const ctx = document.getElementById('myChart2');
+        if (meuGraficoRosca) {
+            meuGraficoRosca.destroy();
+        }
+
+        meuGraficoRosca = new Chart(ctx, {
+            type: 'doughnut',
+
+            data: {
+                labels: ['CPU crítica', 'RAM crítica', 'Disco crítico'],
+
+                datasets: [{
+                    label: 'Capturas críticas',
+
+                    data: [
+                        cpuCritica,
+                        ramCritica,
+                        discoCritico
+                    ],
+
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.75)',
+                        'rgba(54, 162, 235, 0.75)',
+                        'rgba(255, 206, 86, 0.75)'
+                    ],
+
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)'
+                    ],
+
+                    borderWidth: 2
+                }]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+
+                cutout: '65%',
+
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+
+                        labels: {
+                            color: 'white',
+
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                const total = context.dataset.data.reduce((soma, valor) => soma + valor, 0);
+                                const valor = context.raw;
+
+                                if (total === 0) {
+                                    return `${context.label}: 0%`;
+                                }
+
+                                const porcentagem = ((valor / total) * 100).toFixed(1);
+
+                                return `${context.label}: ${valor} capturas (${porcentagem}%)`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    function componentesMonitorados(cpuNormal, ramNormal, discoNormal) {
+        const ctx = document.getElementById('myChart');
+        if (ctx) {
+            const chartExistente = Chart.getChart(ctx);
+            if (chartExistente) {
+                chartExistente.destroy();
+            }
+        }
+        new Chart(ctx, {
+            type: 'bar',
+
+            data: {
+                labels: ['CPU', 'RAM', 'Disco'],
+
+                datasets: [{
+                    label: 'Componentes saúdaveis',
+
+                    data: [
+                        cpuNormal,
+                        ramNormal,
+                        discoNormal
+                    ],
+
+                    borderWidth: 1,
+                    borderRadius: 5,
+                    barThickness: 100,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 206, 86, 0.8)'
+                    ],
+                }]
+            },
+
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white',
+                            font: {
+                                size: 25
+                            },
+                            boxWidth: 0
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: 'white' }
+                    },
+                    y: {
+                        ticks: { color: 'white' },
+                        title: {
+                            display: true,
+                            text: 'Quantidade de Componentes',
+                            color: 'white',
+                            font: {
+                                size: 18
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
 </script>
