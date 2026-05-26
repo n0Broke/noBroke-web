@@ -282,26 +282,26 @@
 
           <div class="campo">
             <label for="nomeInput">Nome</label>
-            <input type="text" id="nomeInput">
+            <input type="text" id="ipt_Nome">
           </div>
 
           <div class="campo">
             <label for="emailInput">E-mail</label>
-            <input type="text" id="emailInput">
+            <input type="text" id="ipt_Email">
           </div>
 
           <div class="campo">
             <label for="telefoneInput">Telefone</label>
-            <input type="text" id="telefoneInput">
+            <input type="text" id="ipt_Telefone">
           </div>
 
           <div class="campo">
             <label for="mensagemTextarea">Mensagem</label>
-            <textarea id="mensagemTextarea" rows="4"></textarea>
+            <textarea id="ipt_Mensagem" rows="4"></textarea>
           </div>
 
           <div class="btn-container">
-            <button type="submit" class="btn">Enviar</button>
+            <button onclick="dispararEmail(event)" id="btnEnviar" type="submit" class="btn">Enviar</button>
           </div>
 
         </div>
@@ -363,5 +363,56 @@
     });
   });
 
+  // ==============================================
+    // Função Disparar Email
+    function dispararEmail(event) {
+        event.preventDefault(); // Evita que a página dê reload
+
+        // Captura os dados dos inputs
+        const nomeVar = document.getElementById("ipt_Nome").value;
+        const emailVar = document.getElementById("ipt_Email").value;
+        const telefoneVar = document.getElementById("ipt_Telefone").value;
+        const mensagemVar = document.getElementById("ipt_Mensagem").value;
+
+        // Validação: Verifica se os campos estão vazios
+        if (nomeVar === "" || emailVar === "" || telefoneVar === "" || mensagemVar === "") {
+            alert("Por favor, preencha todos os campos antes de enviar");
+            return; // Para a execução da função aqui e não envia o e-mail
+        }
+
+        // Validação: Verificar se o formato do e-mail está correto (contém @, domínio, etc)
+        if (!emailVar.includes('@')) {
+            alert("Por favor, insira um email válido");
+            return; // Para a execução da função aqui e não envia o e-mail
+        }
+        // Se passou pelas validações, controla o estado do botão e muda o nome dele (n permite ser clicado denovo)
+        const btn = document.getElementById("btnEnviar");
+        btn.disabled = true;
+        btn.innerText = "Enviando...";
+
+        // Monta o objeto com os mesmos nomes de variáveis do seu template do EmailJS
+        const dadosTemplate = {
+            nome: nomeVar,
+            email: emailVar,
+            assunto: telefoneVar,
+            mensagem: mensagemVar,
+            horario: new Date().toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }) + ' - ' + new Date().toLocaleDateString('pt-BR')
+        };
+
+        // Dispara o e-mail usando o EmailJS (Sem usar backend)
+        emailjs.send("service_ugxh2vf", "template_r9byu68", dadosTemplate)
+            .then(function (response) {
+                alert("Mensagem enviada com sucesso!");
+                document.getElementById("formContato").reset(); // Limpa o formulário
+            }, function (error) {
+                console.error("Erro no EmailJS:", error);
+                alert("Falha ao enviar a mensagem. Verifique o console.");
+            })
+            .finally(function () {
+                // Devolve o botão ao estado normal
+                btn.disabled = false;
+                btn.innerText = "Enviar mensagem";
+            });
+    }
 
 </script>
